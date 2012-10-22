@@ -1,0 +1,1 @@
+<div class="content_maintable_stats" style="padding-top: 25px; padding-bottom: 25px;"><?php echo (achievements_server_achievement_table());?></div>

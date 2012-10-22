@@ -1,0 +1,12 @@
+body {
+	margin:0;
+	padding:0;
+	background-repeat:no-repeat;
+}
+#top {
+	font-family:calibri;
+	font-size:10px;
+	left:10px;
+	position:fixed;
+	top:10px;
+}
