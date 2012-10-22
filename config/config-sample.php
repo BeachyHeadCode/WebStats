@@ -1,5 +1,5 @@
 <?php 
-//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250 
+//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250, mrplows-server.us, Webstats for Minecraft (c) 2011-2012
 //Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is http://mrplows-server.us ** currently offline.
 
 //Sets up the MySQL Database and info to reach it to access the MySQL tabels used in this project.
@@ -20,23 +20,29 @@ define('WS_CONFIG_DBNAME', 'minecraft');
 define('MQ_SERVER_ADDR', 'localhost');
 define('MQ_SERVER_PORT', '25565');
 
+//Default Server Name   Just optical, it's shown at the stats-page.
 define('WS_CONFIG_SERVER', 'Mr. Plow&#039;s Server');
+//Default Title Of The Website.
 define('WS_OPTICAL_TITLE', 'Mr. Plow&#039;s Server');
+//Default Title Of The Website Tab.
 define('WS_OPTICAL_TAB_TITLE', 'Mr. Plow&#039;s Server - Webstatistic for Minecraft');
+//Default Module (default: stats)   put in the name of your favorite module (folder-name).
 define('WS_CONFIG_MODULE', 'stats');
+//Default Background (e.g. sand, rock, dirt, obsidian, bluefade, grayfade, greenfade, blackfade...).
 define('WS_CONFIG_BACKGROUND', 'blackfade');
 
 //Sets the default rows "players" per page.
 define('WS_CONFIG_PAGENUM', '25');
 
-//How long to Cache The players photo.
+//Time in seconds, images are cached 86400 = 1day, 259200 = 3days
 define('WS_CONFIG_CACHETIME', '259200');
 
 //If you want a 3d player on the players page set to true.
 define('WS_CONFIG_3D_USER', true);
 
-//
+//Deadline for players, not listed in stats-page: 2678400s = 1 month (inactive at the moment).
 define('WS_CONFIG_DEADLINE', '1209600');
+//Default Logo "http://....."   Image with max 350x270px
 define('WS_CONFIG_LOGO', 'images/LOGO.png');
 define('WS_HOMEPAGE_LOGO', 'images/header/forum.png');
 define('WS_MAINSITE', 'http://mrplows-server.us');
@@ -44,27 +50,27 @@ define('LOGOIMAGE', true);
 define('WS_BOOKMARK', 'Server Stats');
 define('WS_PHOTO_PHP_CHANGE', 'large_player_image'); 
 
-//Achievements Settings
+//Achievements Settings.
 define('WS_CONFIG_PLAYERACHIEVEMENTS', 'playerachievements');
 define('WS_CONFIG_ACHIEVEMENTS', 'ws_achievements'); 
-//iConomy Settings
+//iConomy Settings.
 define('WS_ICONOMY_OMIT', 'admin');
 define('WS_CONFIG_ICONOMY', 'iconomy');
 define('WS_ICONOMY_MAIN', 'Dollar(s)');
 define('WS_ICONOMY_SUB', 'Cent(s)');
 define('WS_ICONOMY_MAIN_SHORT', '$');
 define('WS_ICONOMY_SUB_SHORT', '�');
-//Jail Settings
+//Jail Settings.
 define('WS_CONFIG_JAIL', 'jail_');
-//Jobs Settings
+//Jobs Settings.
 define('WS_CONFIG_JOBS', 'jobs');
-//McMMO Settings
+//McMMO Settings.
 define('WS_CONFIG_MCMMO', 'mcmmo_');
 define('WS_CONFIG_MCMMO_DEFAULT', 'user ASC');
-//PermissionsEX Settings
+//PermissionsEX Settings.
 define('WS_CONFIG_PERMISSIONS', 'permissions');
 define('WS_PERMISSIONS_DEFAULT_GROUP', 'Default');
-//Stats Settings
+//Stats Settings.
 define('WS_CONFIG_STATS', 'stats');
 define('WS_CONFIG_PLAYTIME', true);
 

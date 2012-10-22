@@ -11,13 +11,13 @@ Webstatistic for Minecraft is shortened to WS in the following text:
 
 For issue, suggestion, source code, and other content go HERE
 
-Vote For The Plugin. HERE
+Vote For The Plugin. <a href="http://www.surveymonkey.com/s/8HF72BK">HERE</a>
 
 - Steam Group <a href="http://steamcommunity.com/groups/WSFM">HERE</a>
 
 Cool Links To Use
-Achievement Maker
-Database Converter
+<a href="http://plugins.maniacraft.de/SaAPlugin/achgen">Achievement Maker</a>
+<a href="http://89.144.25.51:8888/convert.php">Database Converter</a>
 
 What's "Webstatistic for Minecraft"?
 Every serveradmin wants, at some point, host some statistic data for the players, so that they can compete which each other (who destroyed the most cobblestone blocks or whatever). They can use it as a system to determine prices, or just to have an overview to compare stuff with each other.
@@ -25,8 +25,8 @@ If there are plugins WS should support in future, the plugin must be MySQL based
 What you mean with "modular system" ?
 WS has a core plugin, which is the above mentioned stats plugin for minecraft. In generall all stats collected by this plugin are evaluable.
 Beside this plugin, WS supports other plugins which collects data in MySQL databases. The following plugins are already supported:
-- Achievements *WORKS (with stats)
-- Achievements 2.0 *PLUGIN DOES NOT WORK IN LATTEST CRAFTBUKKIT BUILD (not WS fault)
+- <a href="http://dev.bukkit.org/server-mods/achievements/">Achievements</a> *WORKS (with stats)
+- <a href="http://dev.bukkit.org/server-mods/tno-achievements/">Achievements 2.0</a> *PLUGIN DOES NOT WORK IN LATTEST CRAFTBUKKIT BUILD (not WS fault)
 - BeardAch * NOT KNOWN YET. Sorry
 -----------------------------------------------------------------------------------------------------------------------
 - iConomy *WORKS
@@ -45,14 +45,16 @@ What are the requirements of WS?
 And for the noobs use xampp *as seen below
 
 Suggested:
-- <a href="">XAMPP</a> ~ sets up everything for you.
-- EasyPHP ~ sets up everything for you.
-- Ping MOTD ~ Plugin that seems to never brake, try it out.
+- <a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> ~ sets up everything for you.
+- <a href="http://www.easyphp.org/">EasyPHP</a> ~ sets up everything for you.
+- <a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plugin that seems to never brake, try it out.
 
 Installation
-1~Extract the zip file in your webserver directory *most lickly
+1~Extract the zip file in your webserver directory *most likely
 2~The directory "image-cache" needs write permission (chmod 777) !
-~'modules\player-image\image-cache'
+	~'modules\player-image\image-cache'
+	~'modules\player-image\image-cache\player-skin'
+	~'config\config.php'
 
 To-Do:
 - Fix McMMO
