@@ -166,7 +166,10 @@ class DBConfig {
 				echo "<strong>error </strong>, Proses has been stopped" . "<br />";
 			}
 			else if ($type==4){
-				echo "<strong>error </strong>, no connection !!! Make sure your username password and host are correct!" . "<br />";
+				echo "<span style='color: red;'>There was an error while connnecting to the MySQL database. Please contact the webmaster (user, password or host incorrect).</span>" . "<br />";
+			}
+			else if ($type==5){
+				echo "<span style='color: red;'>There was an error while selecting the database. Please contact the webmaster (database name incorrect).</span>";
 			}
 			else{
 				echo "Error creating database: " . mysql_error() . "<br />";

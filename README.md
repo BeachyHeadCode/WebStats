@@ -1,11 +1,11 @@
-WebStats
+<a href="">WebStats</a>
 ========
 
 MySQL - PHP web data page for public viewing of Minecraft plugin data
 
 ------------------------------------------------------------------------------------------------------------
 
-This was based on [WEB] Webstatistic for Minecraft v1.10b [1337] - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies. 
+This was based on <a href="">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies. 
 
 Webstatistic for Minecraft is shortened to WS in the following text:
 
@@ -29,13 +29,14 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 - <a href="http://dev.bukkit.org/server-mods/tno-achievements/">Achievements 2.0</a> *PLUGIN DOES NOT WORK IN LATTEST CRAFTBUKKIT BUILD (not WS fault)
 - BeardAch * NOT KNOWN YET. Sorry
 -----------------------------------------------------------------------------------------------------------------------
-- iConomy *WORKS
-- Jail * WORKS
-- Jobs *WORKS
-- McMMO *WORKS
-- Stats *WORKS (In Build 1.1-R6)
-- Stats 2.0 *WORKS (Up to Build 1.1-R4)
-- BeardStat *WORKS[Known R6-build 2034 (MC:1.2.3)] - Uses same layout as Stats as I know of.
+- <a href="">iConomy</a> *WORKS
+- <a href="">Jail</a> * WORKS
+- <a href="">Jobs</a> *WORKS
+- <a href="">McMMO</a> *WORKS
+- <a href="">Stats</a> *WORKS (In Build 1.1-R6)
+- <a href="">Stats 2.0</a> *WORKS (Up to Build 1.1-R4)
+- <a href="">BeardStat</a> *WORKS[Known R6-build 2034 (MC:1.2.3)] - Uses same layout as Stats as I know of.
+- <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats by lolmewnstats</a> - TBA
 
 
 What are the requirements of WS?
