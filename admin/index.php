@@ -14,7 +14,7 @@ require_once("../include/logonfunctions.php");
 if($_GET['LOGOUT'] == 'TRUE')
 	require_once('logout.php');
 
-if(!isset($_SESSION['pml_userid']) && ($_SESSION['pml_userrank'] >= 1)){
+if(!isset($_SESSION['pml_userid'])){
 	require_once('login.php');
 
 }
@@ -82,7 +82,7 @@ else
 			<div class="nav-bar">
 				<li><a href="../"><?php echo translate(var6);?></a></li>
 				<li><a href="ip.php">IP Tracker</a></li>
-				<li><a href="install/setup-config.php">Installer</a></li>
+				<li><a href="setup-config.php">Installer</a></li>
 				<li><a href="#">Settings</a></li>
 				<li><a href="achievements-install/index.php">Achievement - Installer</a></li>
 				<li align="right"><a href="?LOGOUT=TRUE">LOGOUT</a></li>

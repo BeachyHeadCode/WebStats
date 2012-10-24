@@ -1,6 +1,6 @@
 <?php
-if (version_compare(PHP_VERSION, '5.2.4') >= 0)
-{
+require_once('include/version.php');
+if (version_compare(PHP_VERSION, '3.2.4') >= 0){
 	$start_time = explode(" ",microtime()); 
 	$start_time = $start_time[1] + $start_time[0]; 	
 	if(file_exists('config/config.php'))
@@ -398,4 +398,5 @@ else{
   <script src="javascripts/app.js"></script>
 </body>
 </html>
-<?php } else echo 'Please install php version 5.2.5 or better!'; ?>
+<?php } else { echo 'Please install php version 5.2.5 or better!';}
+?>

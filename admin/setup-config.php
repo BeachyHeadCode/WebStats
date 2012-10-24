@@ -278,7 +278,7 @@ asideleft
 							<label for="MySQLPort">Enter the MySQL Port Number<input name="MySQLPort" placeholder="3306" value="<?php if(isset($_SESSION['MySQLPort'])){ echo $_SESSION['MySQLPort'];} ?>" type="text" title="Enter the MySQL Port Number" maxlength="5"/></label>
 							<label for="MySQLUserName">Enter the MySQL User Name<input name="MySQLUserName" accesskey="" placeholder="root" value="<?php if(isset($_SESSION['MySQLUserName'])){ echo $_SESSION['MySQLUserName'];} ?>" type="text" title="Enter the MySQL User Name" maxlength="16"/></label>
 							<label for="MySQLPassword">Enter the MySQL Password<input name="MySQLPassword" placeholder="password" value="<?php if(isset($_SESSION['MySQLPassword'])){ echo $_SESSION['MySQLPassword'];} ?>" type="text" title="Enter the MySQL Password" maxlength="64"/></label>
-							<label for="MySQLDatabase">Enter Database<input name="MySQLDatabase" placeholder="WebStats" type="text" id="MySQLDatabase" title="MySQL Database" value="<?php if(!isset($_SESSION['MySQLDatabase'])){ echo WebStats;}else{ echo $_SESSION['MySQLDatabase'];} ?>" maxlength="64" /></label>
+							<label for="MySQLDatabase">Enter Database<input name="MySQLDatabase" placeholder="WebStats" type="text" id="MySQLDatabase" title="MySQL Database" value="<?php if(!isset($_SESSION['MySQLDatabase'])){ echo 'WebStats';}else{ echo $_SESSION['MySQLDatabase'];} ?>" maxlength="64" /></label>
 							<input name="SubmitDatabase" type="submit" title="submit" onclick="MM_validateForm('MySQLHost','','R','MySQLPort','','NisNum','MySQLUserName','','R','MySQLPassword','','R','MySQLDatabase','','R');return document.MM_returnValue" class="small success button"/> 
 							<input name="reload" type="submit" title="Reload" value="Reload" onClick="return confirm('Are you sure you want to reset?')"  class="small secondary button" /><br/>
 					</fieldset>
@@ -317,26 +317,23 @@ asideleft
 			$pass = $_SESSION['MySQLPassword'];
 			$db = $_SESSION['MySQLDatabase'];
 			$createdb = true;
+			
 			$DB = new DBConfig();
 			$DB -> config();	
 			$DB -> conn($host, $user, $pass, $db, $createdb);
 			$username = $_SESSION['Username'];
-			$password=$_SESSION['Password'];
+			$password = $_SESSION['Password'];
+
 			if(!empty($_SESSION['Username']) && !empty($_SESSION['Password'])){
-				$finduser = 'SELECT `username` FROM `users` WHERE `username` = "$username"';
-				
+					$finduser='SELECT * FROM `users` WHERE `username` = "$username"';
 				if (!mysql_query($finduser)){
-					$userinsert = "INSERT INTO users (username, password, IP, hostname, location, date, actcode, rank) VALUES ('$username', '$password', '$ip', '$hostname', '$location', '$today', '', '1')";
+					$userinsert = "INSERT INTO `users`(`username`, `password`, `IP`, `hostname`, `location`, `date`, `email`, `cookie_pass`, `actcode`, `rank`, `lastactive`, `lastlogin`) VALUES ('".$username."', '".md5($password)."', '".$ip."', '".$hostname."', '".$location."', '".$today."', '".$email."', '', '', '1', NOW(), NOW())";	
 				}
 				else{
 					echo 'Username already exists!';
 				}
 			}
-			else{
-				$_SESSION['test']=2;
-			}
-			if (!mysql_query($userinsert) && !empty($username) && !empty($password))
-			{
+			if (!mysql_query($userinsert)){
 				if(mysql_query("CREATE TABLE IF NOT EXISTS `users` (
 		`ID` INT(11) NOT NULL AUTO_INCREMENT,
 		`username` VARCHAR(50) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Username',
