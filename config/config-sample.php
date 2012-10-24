@@ -44,10 +44,16 @@ define('WS_CONFIG_3D_USER', true);
 define('WS_CONFIG_DEADLINE', '1209600');
 //Default Logo "http://....."   Image with max 350x270px
 define('WS_CONFIG_LOGO', 'images/LOGO.png');
+//The logo header image that will be turned on or off in the define "LOGOIMAGE".
 define('WS_HOMEPAGE_LOGO', 'images/header/forum.png');
+//If there is a link somewhere it will return you to this location. * currently named Main Site on menu.
 define('WS_MAINSITE', 'http://mrplows-server.us');
+//Set to true if you want to have a static photo of your site logo. Else set to false,
+//if you want to have a dynamic photo with your site name, online status, and MOTD; this mode will slow down the load time.
 define('LOGOIMAGE', true);
+//The title to the bookmark quick drag link.
 define('WS_BOOKMARK', 'Server Stats');
+//What type of mode do you want to set (e.g. large_player_image, full_player_image)?
 define('WS_PHOTO_PHP_CHANGE', 'large_player_image'); 
 
 //Achievements Settings.

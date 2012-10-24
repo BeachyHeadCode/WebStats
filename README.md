@@ -1,11 +1,11 @@
-<a href="">WebStats</a>
+<a href="http://cky2250.github.com/WebStats/">WebStats</a> ~ <a href="http://forums.bukkit.org/threads/web-webstatistic-for-minecraft.17793/">Bukkit Forum</a>
 ========
 
 MySQL - PHP web data page for public viewing of Minecraft plugin data
 
 ------------------------------------------------------------------------------------------------------------
 
-This was based on <a href="">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies. 
+This was based on <a href="http://forums.bukkit.org/threads/web-webstatistic-for-minecraft-v1-10b-1337.17793/">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies. 
 
 Webstatistic for Minecraft is shortened to WS in the following text:
 
@@ -80,11 +80,14 @@ Downloads:
 
 v3.0(No ETA)
 - Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.
-- Added Admin Page
-- Added Smart Phone Support * iPhone
+- Added Admin Page.
+- Added Smart Phone Support * iPhone(Added Foundation v3.1)
+- Added Sample Config.
+- Added IP Tracker.
+- Updated A few items photos larger image.
 
 v2.1(4/5/2012 EST 10:23AM)
-- Add PermisionsEX Support
+- Add PermisionsEX Support.
 - Fixed PHP Errors Showing For The Banner Photo.
 - Fixed McMMO Images Only Showing Under Some Servers. *Thanks To beleg
 - Fixed Main Menu Problem.*Thanks To holsamoht
