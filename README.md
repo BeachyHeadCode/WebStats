@@ -29,14 +29,14 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 - <a href="http://dev.bukkit.org/server-mods/tno-achievements/">Achievements 2.0</a> *PLUGIN DOES NOT WORK IN LATTEST CRAFTBUKKIT BUILD (not WS fault)
 - BeardAch * NOT KNOWN YET. Sorry
 -----------------------------------------------------------------------------------------------------------------------
-- <a href="">iConomy</a> *WORKS
-- <a href="">Jail</a> * WORKS
-- <a href="">Jobs</a> *WORKS
-- <a href="">McMMO</a> *WORKS
-- <a href="">Stats</a> *WORKS (In Build 1.1-R6)
-- <a href="">Stats 2.0</a> *WORKS (Up to Build 1.1-R4)
-- <a href="">BeardStat</a> *WORKS[Known R6-build 2034 (MC:1.2.3)] - Uses same layout as Stats as I know of.
-- <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats by lolmewnstats</a> - TBA
+- <a href="http://dev.bukkit.org/server-mods/iconomy/">iConomy</a> ~ <a href="https://github.com/iConomy/Core">GitHub</a> *WORKS
+- <a href="http://dev.bukkit.org/server-mods/jail/">Jail</a> ~ <a href="https://github.com/matejdro/Jail">GitHub</a> * WORKS
+- <a href="http://dev.bukkit.org/server-mods/jobs/">Jobs</a> ~ <a href="https://github.com/phrstbrn/Jobs">GitHub</a> *WORKS
+- <a href="http://dev.bukkit.org/server-mods/mcmmo/">McMMO</a> ~ <a href="https://github.com/mcMMO-Dev/mcMMO">GitHub</a> *WORKS
+- <a href="http://dev.bukkit.org/server-mods/stats/">Stats</a> *WORKS (In Build 1.1-R6)
+- <a href="http://dev.bukkit.org/server-mods/tno-stats/">Stats 2.0</a> *WORKS (Up to Build 1.1-R4)
+- <a href="http://dev.bukkit.org/server-mods/beardstat/">BeardStat</a> *WORKS[Known R6-build 2034 (MC:1.2.3)] - Uses same layout as Stats as I know of.
+- <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a> - TBA
 
 
 What are the requirements of WS?
@@ -58,16 +58,6 @@ Installation
 	~'config\config.php'
 
 To-Do:
-- Fix McMMO
-- 3d player option*have the code just need to install it
-- Add McMMO To Profile Page
-- Add Install Page For Setting Up config Info.
-- Option for Photo "banner reload" with server online stats.
-- Add style to the pages. ~It Is Close Enough
-- Fix Some PHP Code Problems(FIXED ALL SEARCH ENGINES) and (MATERIAL PAGE)
-- Add Jail Support
-- Add PermisionsEX Support
-- Finish Crafting Pages
 - Finish Brewing Pages
 - Add Smelting Pages
 - Admin Page
@@ -79,9 +69,8 @@ To-Do:
 - Add BeardStat & BeardAch Support
 - Add HawkEye Support
 - Add Statistician v2.0 Support
-
 - Add Smart Phone Support * iPhone, Droid.
-
+- Add <a href="http://dev.bukkit.org/server-mods/jailplusplus/">Jail ++</a> ~ <a href="https://github.com/UltimateDev/jailplusplus/">GitHub</a>
 
 Will Not Add:
 -Achievement, since it does not support bukkit build 2126
@@ -89,8 +78,10 @@ Will Not Add:
 Downloads:
 
 
-v2.2(No ETA)
+v3.0(No ETA)
 - Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.
+- Added Admin Page
+- Added Smart Phone Support * iPhone
 
 v2.1(4/5/2012 EST 10:23AM)
 - Add PermisionsEX Support

@@ -1,4 +1,8 @@
 <?php
+	if(file_exists('../config/config.php'))
+		include('../config/config.php');
+	else
+		header("location:setup-config.php");
 session_start();
 error_reporting(0);
 $start_time = explode(" ",microtime()); 
@@ -6,10 +10,6 @@ $start_time = $start_time[1] + $start_time[0];
 include('../language/en.php');
 include('../legacy/decrypt.php');
 include('../include/functions.php');
-	if(file_exists('../config/config.php'))
-		include('../config/config.php');
-	else
-		header("location:/setup-config.php");
 require_once("../include/logonfunctions.php");
 if($_GET['LOGOUT'] == 'TRUE')
 	require_once('logout.php');

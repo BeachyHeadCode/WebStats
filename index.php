@@ -325,10 +325,10 @@ else{
 		<?php
 			include('modules/'.$_SESSION['mode'].'/config/config.php');
 			include('modules/'.$_SESSION['mode'].'/include/functions.php');
-			$db_host		= WS_MySQL_DBHOST.":".WS_MySQL_PORT;
-			$db_user		= WS_MySQL_USERNAME;
-			$db_pass		= WS_MySQL_PASSWORD; 
-			$db				= WS_MySQL_DB;
+			$db_host		= WS_CONFIG_DBHOST.":".WS_CONFIG_DBPORT;
+			$db_user		= WS_CONFIG_DBUNAME;
+			$db_pass		= WS_CONFIG_DBPASS; 
+			$db				= WS_CONFIG_DBNAME;
 			$createdb		= false;
 			if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn($db_host, $db_user, $db_pass, $db, $createdb);}
 				include('modules/'.$_SESSION['mode'].'/index.php');
