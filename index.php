@@ -6,12 +6,13 @@ if (version_compare(PHP_VERSION, '5.2.4') >= 0)
 	if(file_exists('config/config.php'))
 		include('config/config.php');
 	else
-		header("location:admin/install/setup-config.php");
+		header("location:admin/setup-config.php");
 	include('config/ini.php');
 	include('legacy/decrypt.php');
 	include('legacy/encrypt.php');
 	include('language/en.php');
-	include('include/functions.php');
+	require_once("include/logonfunctions.php");
+	require_once('include/functions.php');
 	if(WS_CONFIG_3D_USER === false){rename("modules/player-image/full_player_image.php", "modules/player-image/full_player_image.off");}
 	if(WS_CONFIG_3D_USER === true){rename("modules/player-image/full_player_image.off", "modules/player-image/full_player_image.php");}
 	if($image_control == true) {include('modules/player-image/include/functions.php');}
@@ -87,28 +88,16 @@ $hostname=gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
 $result="SELECT * FROM stats WHERE IP='$ip'";	
 
-$db_host		= WS_CONFIG_DBHOST.":".WS_CONFIG_DBPORT;
-$db_user		= WS_CONFIG_DBUNAME;
-$db_pass		= WS_CONFIG_DBPASS; 
-$ws_stats		= 'WebStats';
-
-$link = @mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a connection');
-mysql_set_charset('ascii');
+$db_host		= WS_MySQL_DBHOST.":".WS_MySQL_PORT;
+$db_user		= WS_MySQL_USERNAME;
+$db_pass		= WS_MySQL_PASSWORD; 
+$db				= WS_MySQL_DB;
+$createdb		= true;
+$DB = new DBConfig();$DB -> config();$DB -> conn($db_host, $db_user, $db_pass, $ws_stats, $createdb);
 
 //CHANGED DATABASE TO "WebStats"
-	$test_db =	mysql_select_db($ws_stats,$link);
-	if(!$test_db)
-	{
-		if(mysql_query("CREATE DATABASE IF NOT EXISTS `WebStats`",$link))
-		{
-			echo "Database created :) \n";
-		}
-		else
-		{
-			echo "Error creating database: " . mysql_error();
-		}
-	}
-	$query = mysql_query($result,$link);
+
+	$query = mysql_query("SELECT * FROM `stats`");
 	$field = mysql_fetch_array($query);
 
 if(!isset($field[IP])){
@@ -119,7 +108,7 @@ if(!isset($field[IP])){
 			$bot=0;
 		}
 		$data="INSERT INTO stats (IP, hostname, location, referer, pageurl, date, bot) VALUES ('$ip', '$hostname', '$location', '$referer', '$pageurl', '$today' ,'$bot')";
-		if (!mysql_query($data,$link))
+		if (!mysql_query($data))
 		{
 			if(mysql_query("CREATE TABLE IF NOT EXISTS `stats` (
 `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -132,7 +121,7 @@ if(!isset($field[IP])){
 `pageview` INT(9) NOT NULL DEFAULT '1' COMMENT 'This value is developed by every click that the IP has viewed the site pages monitored by this code.',
 `bot` INT(1) NOT NULL COMMENT 'This value is decided by a list of known bot urls and IPs that have been set.',
 PRIMARY KEY (`ID`)
-) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`",$link))
+) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`"))
 			{
 				echo "table created :) \n";
 			}
@@ -177,10 +166,8 @@ for($i=0; $i < count($field)/2; $i++)
 	$query = mysql_query($queryentrie,$link);
 	$row = mysql_fetch_array($query);
 
+$DB -> close();
 }
-// mysql_close($link) needs to be after if close
-mysql_close($link)
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -233,7 +220,43 @@ mysql_close($link)
 	<script type='text/javascript' src="javascripts/jquery-cookie.min.js"></script>              
 </head>
 <body class="off-canvas" style="background-repeat:repeat;text-align:center;color:#333322;background-attachment:fixed;background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png'); <?php echo (defaultt); ?>">
+<?php
+$ip=$_SERVER['REMOTE_ADDR'];
+if(isset($_SESSION['pml_userid'])){
+?>
+<div class="top-bar">
+	<ul>
+		<li class="name"><h1><a href="/admin">Admin Page</a></h1></li>
+		<li class="toggle-topbar"><a href="#"></a></li>
+	</ul>
+	<section>
+		<ul class="left">
+		<li><a href="/admin/ip.php">IP Tracker</a></li>
+    </ul>
+	<ul class="left">
+		<li><a href="/admin/install/setup-config.php">Installer</a></li>
+	</ul>
+	<ul class="right">
+		<li><a href="/admin/?LOGOUT=TRUE">LOGOUT</a></li>
+	</ul>
+	</section>
+</div>
+<?php
+}
+else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
+?>
+<div class="top-bar">
+	<ul>
+		<li class="name"><h1><a href="/admin">Admin Page</a></h1></li>
+		<li class="toggle-topbar"><a href="#"></a></li>
+	</ul>
+</div>
+<?php
+}
+else{
 
+}
+?>
 	<section id="sidebar" role="complementaryleft">
 		<div onmousedown="return false;" onselectstart="return false;">
 			<b>Ads</b>
@@ -302,7 +325,12 @@ mysql_close($link)
 		<?php
 			include('modules/'.$_SESSION['mode'].'/config/config.php');
 			include('modules/'.$_SESSION['mode'].'/include/functions.php');
-			if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn();}
+			$db_host		= WS_MySQL_DBHOST.":".WS_MySQL_PORT;
+			$db_user		= WS_MySQL_USERNAME;
+			$db_pass		= WS_MySQL_PASSWORD; 
+			$db				= WS_MySQL_DB;
+			$createdb		= false;
+			if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn($db_host, $db_user, $db_pass, $db, $createdb);}
 				include('modules/'.$_SESSION['mode'].'/index.php');
 			if (WS_CONFIG_NoMySQL != true) {$DB -> close();}
 			$time_end = explode(" ",microtime());
@@ -326,13 +354,15 @@ mysql_close($link)
        	<span style="font-size:xx-small">(Loading time: <?php echo $speed; ?>s)</span>
 		</p>
 		<?php 
-	//		if (iptracker === true)
-	//				echo"&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
-	//				if(isset($date[0]))
-	//					echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
-	//				else
-	//				{ echo '';}
-	//		}
+			if (iptracker === true){
+					echo"&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
+					if(isset($date[0]))
+						echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
+					else { 
+						echo '';
+					}
+					
+			}
 ?>
 	</footer>
 	</div>

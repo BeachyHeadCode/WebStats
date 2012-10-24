@@ -27,7 +27,7 @@ error_reporting(0);
 
 define('ABSPATH', dirname(dirname(__FILE__)).'/');
 define('WPINC', 'include');
-require_once("../../include/functions.php");
+require_once("../include/functions.php");
 
 session_start();
 
@@ -50,8 +50,6 @@ if(!empty($_POST["SubmitDatabase"])){
 	$_SESSION['MySQLUserName']=$_POST['MySQLUserName'];
 	$_SESSION['MySQLPassword']=$_POST['MySQLPassword'];
 	$_SESSION['MySQLDatabase']=$_POST['MySQLDatabase'];
-	$_SESSION['Username']=$_POST['Username'];
-	$_SESSION['Password']=$_POST['Password'];
 }
 
 	final class ip2location_lite{
@@ -328,7 +326,7 @@ asideleft
 				$finduser = 'SELECT `username` FROM `users` WHERE `username` = "$username"';
 				
 				if (!mysql_query($finduser)){
-					$userinsert = "INSERT INTO users (username, password, IP, hostname, location, date) VALUES ('$username', '$password', '$ip', '$hostname', '$location', '$today')";
+					$userinsert = "INSERT INTO users (username, password, IP, hostname, location, date, actcode, rank) VALUES ('$username', '$password', '$ip', '$hostname', '$location', '$today', '', '1')";
 				}
 				else{
 					echo 'Username already exists!';

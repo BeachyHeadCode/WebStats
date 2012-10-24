@@ -85,6 +85,16 @@ else
 	$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 return $pageURL;
 }
+function adminPageURL() {
+$pageURL = 'http';
+if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+	$pageURL .= "://";
+if ($_SERVER["SERVER_PORT"] != "80")
+	$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"]."/admin";
+else
+	$pageURL .= $_SERVER["SERVER_NAME"]."/admin";
+return $pageURL;
+}
 class DBConfig {
 	var $host; var $user; var $pass; var $db; var $db_link; var $conn = false; var $persistant = false; public $error = false;
 	public function config(){

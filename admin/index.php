@@ -1,23 +1,25 @@
 <?php
 session_start();
-
 error_reporting(0);
 $start_time = explode(" ",microtime()); 
 $start_time = $start_time[1] + $start_time[0];
 include('../language/en.php');
 include('../legacy/decrypt.php');
 include('../include/functions.php');
-include('../config/config.php');
+	if(file_exists('../config/config.php'))
+		include('../config/config.php');
+	else
+		header("location:/setup-config.php");
 require_once("../include/logonfunctions.php");
 if($_GET['LOGOUT'] == 'TRUE')
 	require_once('logout.php');
 
-if(!isset($_SESSION['pml_userid'])){
+if(!isset($_SESSION['pml_userid']) && ($_SESSION['pml_userrank'] >= 1)){
 	require_once('login.php');
+
 }
 else
 {
-	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -54,7 +56,7 @@ else
 		<!--Header Start-->
 		<div class="row">
 			<div class="twelve columns">
-				<h2>Welcome, <?php echo $_SESSION['USERID']; ?> to the admin page</h2>
+				<h2>Welcome, <?php echo $_SESSION['username']; ?> to the admin page</h2>
 				<hr />
 			</div>
 			<div class="row">
@@ -80,7 +82,7 @@ else
 			<div class="nav-bar">
 				<li><a href="../"><?php echo translate(var6);?></a></li>
 				<li><a href="ip.php">IP Tracker</a></li>
-				<li><a href="install/">Installer</a></li>
+				<li><a href="install/setup-config.php">Installer</a></li>
 				<li><a href="#">Settings</a></li>
 				<li><a href="achievements-install/index.php">Achievement - Installer</a></li>
 				<li align="right"><a href="?LOGOUT=TRUE">LOGOUT</a></li>
@@ -243,7 +245,7 @@ for ($i=0;$i<=sizeof($commits);$i++)
 							<label class="right inline">Name:</label>
 						</div>
 						<div class="ten mobile-three columns">
-							<input type="text" placeholder="e.g. John Doe" class="eight" />
+							<input type="text" placeholder="e.g. John Doe" class="eight" disabled />
 						</div>
 					</div>
 					<div class="row">
@@ -251,7 +253,7 @@ for ($i=0;$i<=sizeof($commits);$i++)
 							<label class="right inline">Email:</label>
 						</div>
 						<div class="ten mobile-three columns">
-							<input type="text" placeholder="e.g. admin@mrplows-server.us" class="eight" />
+							<input type="text" placeholder="e.g. admin@mrplows-server.us" class="eight" disabled />
 						</div>
 					</div>
 					<div class="row">
@@ -259,7 +261,7 @@ for ($i=0;$i<=sizeof($commits);$i++)
 							<label class="right inline">Subject:</label>
 						</div>
 						<div class="ten mobile-three columns">
-							<input type="text" placeholder="e.g. Issue, enhancement, want to buy" class="eight" />
+							<input type="text" placeholder="e.g. Issue, enhancement, want to buy" class="eight" disabled/>
 						</div>
 					</div>
 					<div class="row">
@@ -267,7 +269,7 @@ for ($i=0;$i<=sizeof($commits);$i++)
 							<label class="right inline">Message:</label>
 						</div>
 						<div class="ten mobile-three columns">
-							<textarea placeholder="Message" class="eight"></textarea>
+							<textarea placeholder="Message" class="eight" disabled></textarea>
 						</div>
 					</div>	
 					<div class="row">

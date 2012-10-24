@@ -27,7 +27,7 @@ function pml_checklogin($goto,$status = "0") {
 		// Check cookie data with data in database
 	$DB = new DBConfig();
 	$DB -> config();	
-	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, $createdb);
+	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
 		
 		$sql = "SELECT * FROM `users` WHERE id = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
 		$query = mysql_query($sql);
