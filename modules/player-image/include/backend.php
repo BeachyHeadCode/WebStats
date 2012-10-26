@@ -52,24 +52,24 @@ function minecraft_skin_3d_part($original, $user, $xpos, $ypos, $width, $height,
 	imagefilledrectangle($temp,0,0,$texturesize,$texturesize,$trans);
    }
    //Save Image
-   imagepng($temp, "image-cache/skins/".$user."/".$name.".png");
+   imagepng($temp, "../../images/image-cache/skins/".$user."/".$name.".png");
    imagedestroy($temp); 
 }
 
 function minecraft_skin_download($user) {
- if(!file_exists('image-cache/skins/'.$user.'/base.png')) {
+ if(!file_exists('../../images/image-cache/skins/'.$user.'/base.png')) {
   if(@getimagesize('http://s3.amazonaws.com/MinecraftSkins/'.$user.'.png')) {
    //Make a new directory
-   If(!is_dir('image-cache/skins/'.$user)) {
-    mkdir('image-cache/skins/'.$user,0777);
+   If(!is_dir('../../images/image-cache/skins/'.$user)) {
+    mkdir('../../images/image-cache/skins/'.$user,0777);
    }
    //Download the skin from Minecraft.net and put it in image-cache/skins/
    $url = 'http://s3.amazonaws.com/MinecraftSkins/'.$user.'.png';
-   $img = 'image-cache/skins/'.$user.'/base.png';
+   $img = '../../images/image-cache/skins/'.$user.'/base.png';
    file_put_contents($img, file_get_contents($url));
    
    //Create another image twice the size
-   $original = imagecreatefrompng('image-cache/skins/'.$user.'/base.png');
+   $original = imagecreatefrompng('../../images/image-cache/skins/'.$user.'/base.png');
    
    /////////////////////////
    // Body Parts (for 3D) //
@@ -131,7 +131,7 @@ function minecraft_skin_download($user) {
 }
 
 function minecraft_skin_delete($user) {
- rrmdir('image-cache/skins/'.$user);
+ rrmdir('../../images/image-cache/skins/'.$user);
 }
 
 // Functions not created by me

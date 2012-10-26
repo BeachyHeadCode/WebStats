@@ -285,13 +285,31 @@ if($_SESSION['pluginconfigstats'] == true){ ?>
 				</thead>
                 <tbody>           
 				<tr>
-					<td><input type="checkbox" name="pluginconfigachiv" title="Achievements On" value="<?php if(!isset($_SESSION['pluginconfigachiv'])){ echo 'true';}else{ echo $_SESSION['pluginconfigachiv'];} ?>" <?php echo (isset($_POST['pluginconfigachiv'])?'checked="checked"':'') ?>/><br/></td>
+					<!--<td><input type="checkbox" name="pluginconfigachiv" title="Achievements On" value="< ?php if(!isset($_SESSION['pluginconfigachiv'])){ echo 'true';}else{ echo $_SESSION['pluginconfigachiv'];} ?>" < ?php echo (isset($_POST['pluginconfigachiv'])?'checked="checked"':'') ?>/><br/></td>-->
+					<td><select style="display:none;" id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigachiv">  
+						<?php $achievementstype = array('Achievements', 'Avhievements 2.0', 'Stats & Achievements');
+										for($i=0; $i <= (sizeof($achievementstype)-1); $i++){
+											if($_SESSION['pluginconfigachiv'] == $achievementstype[$i])
+												echo ("<option value='".$achievementstype[$i]."' SELECTED>".$achievementstype[$i]."</option>");
+											else 
+												echo "<option value='".$achievementstype[$i]."'>".$achievementstype[$i]."</option>";
+										}?>
+					</select></td>
 					<td><input type="checkbox" name="pluginconfigiconomy" title="iConomy On" value="<?php if(!isset($_SESSION['pluginconfigiconomy'])){ echo 'true';}else{ echo $_SESSION['pluginconfigiconomy'];} ?>" <?php echo (isset($_POST['pluginconfigiconomy'])?'checked="checked"':'') ?>/></td>
                     <td><input type="checkbox" name="pluginconfigjail" title="Jail On" value="<?php if(!isset($_SESSION['pluginconfigjail'])){ echo 'true';}else{ echo $_SESSION['pluginconfigjail'];} ?>" <?php echo (isset($_POST['pluginconfigjail'])?'checked="checked"':'') ?>/></td>
 					<td><input type="checkbox" name="pluginconfigjobs" title="Jobs On" value="<?php if(!isset($_SESSION['pluginconfigjobs'])){ echo 'true';}else{ echo $_SESSION['pluginconfigjobs'];} ?>" <?php echo (isset($_POST['pluginconfigjobs'])?'checked="checked"':'') ?>/></td>
 					<td><input type="checkbox" name="pluginconfigmcmmo" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigmcmmo'])){ echo 'true';}else{ echo $_SESSION['pluginconfigmcmmo'];} ?>" <?php echo (isset($_POST['pluginconfigmcmmo'])?'checked="checked"':'') ?>/></td>
                     <td><input type="checkbox" name="pluginconfigpermissionsex" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigpermissionsex'])){ echo 'true';}else{ echo $_SESSION['pluginconfigpermissionsex'];} ?>" <?php echo (isset($_POST['pluginconfigpermissionsex'])?'checked="checked"':'') ?>/></td>
-                    <td><input type="checkbox" name="pluginconfigstats" title="Stats On" value="<?php if(!isset($_SESSION['pluginconfigstats'])){ echo 'true';}else{ echo $_SESSION['pluginconfigstats'];} ?>" <?php echo (isset($_POST['pluginconfigstats'])?'checked="checked"':'') ?>/><br/></td>
+                    <!--<td><input type="checkbox" name="pluginconfigstats" title="Stats On" value="< ?php if(!isset($_SESSION['pluginconfigstats'])){ echo 'true';}else{ echo $_SESSION['pluginconfigstats'];} ?>" < ?php echo (isset($_POST['pluginconfigstats'])?'checked="checked"':'') ?>/><br/></td>-->
+					<td><select style="display:none;" id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigstats">  
+						<?php $statstype = array('BeardStat', 'HawkEye', 'Logblock', 'Stats & Achievements', 'Stats', 'Stats 2.0', 'Stats by lolmewnstats', 'Statistician v2.0');
+										for($i=0; $i <= (sizeof($statstype)-1); $i++){
+											if($_SESSION['pluginconfigstats'] == $statstype[$i])
+												echo ("<option value='".$statstype[$i]."' SELECTED>".$statstype[$i]."</option>");
+											else 
+												echo "<option value='".$statstype[$i]."'>".$statstype[$i]."</option>";
+										}?>
+					</select></td>
 				</tr>
                 </tbody>
 			</table>
@@ -408,9 +426,9 @@ google_ad_height = 50;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>';
-if($_SESSION['pluginconfigachiv'] ==true){
+if(isset($_SESSION['pluginconfigachiv'])){
 	$achievments="define('WS_CONFIG_PLAYERACHIEVEMENTS', '".$_SESSION['page']['achiev_player_table_name']."');\n	define('WS_CONFIG_ACHIEVEMENTS', 'ws_achievements'); \n";
-	$pluginconfigstatusachiv="define('pluginconfigstatusachiv', ".$_SESSION['pluginconfigachiv'].");\n";
+	$pluginconfigstatusachiv="define('pluginconfigstatusachiv', true);\n";
 }
 if($_SESSION['pluginconfigiconomy'] ==true){
 	$iConomy="define('WS_ICONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\n	define('WS_CONFIG_ICONOMY', '".$_SESSION['page']['iconomy_table_name']."');\n	define('WS_ICONOMY_MAIN', '".$_SESSION['page']['iconomy_major_currency']."');\n	define('WS_ICONOMY_SUB', '".$_SESSION['page']['iconomy_minor_currency']."');\n	define('WS_ICONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\n	define('WS_ICONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
@@ -432,11 +450,11 @@ if($_SESSION['pluginconfigpermissionsex'] == true){
 	$permissionsex="define('WS_CONFIG_PERMISSIONS', '".$_SESSION['page']['permissionsex_table_name']."');\n define('WS_PERMISSIONS_DEFAULT_GROUP', '".$_SESSION['page']['permissionsex_default_group']."');\n";
 	$pluginconfigstatuspermissionsex="define('pluginconfigpermissionsex', ".$_SESSION['pluginconfigpermissionsex'].");\n";
 }
-if($_SESSION['pluginconfigstats'] == true){
+if(isset($_SESSION['pluginconfigstats'])){
 	if($_SESSION['page']['timechange_on/off'] == true)
 		$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
 	$stats="define('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
-	$pluginconfigstatusstats="define('pluginconfigstatusstats', ".$_SESSION['pluginconfigstats'].");\n";
+	$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n	define('".$_SESSION['pluginconfigstats']."', true);\n";
 }
 if($_SESSION['page']['3d_on/off'] == true)
 	$threedsetting="define('WS_CONFIG_3D_USER', ".$_SESSION['page']['3d_on/off'].");\n	";

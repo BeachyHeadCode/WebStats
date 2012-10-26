@@ -71,7 +71,7 @@ $(document).ready(function() {
 
 <div class="content_maintable_stats" style="width:460px;">
     <div id="placeholder"></div>
-	<table style=" margin:auto;">
+	<table style="margin:auto;">
 		<thead>
 			<th align="center" class="id"><?php echo translate('var73'); ?></th>
 			<th align="center" class="icon"><?php echo translate('var73'); ?></th>
