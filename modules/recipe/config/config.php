@@ -4,7 +4,7 @@
 define('WS_CONFIG_NoMySQL', true);
 
 //	Start	recipe	declaration
-
+//format id of item output |topleft, topmiddle, topright|left, middle, right|bottomleft, bottom, bottomright| number of the output
 $recipe	=	array(
 	0	=>	'5|,,|,,|,17,|4',
 	1	=>	'5|,,|,,|,17-1,|4',
@@ -51,7 +51,7 @@ $recipe	=	array(
 	42	=>	'96|,,|5,5,5|5,5,5|2',
 	43	=>	'72|,,|,,|5,5,|1',
 	44	=>	'70|,,|,,|1,1,|1',
-	45	=>	'77|,,|,1,|,1,|1',
+	45	=>	'77|,,|,1,|,,|1', //fixed 10/25/2012 for the new button format in crafting table.
 	46	=>	'76|,,|,331,|,280,|1',
 	47	=>	'69|,,|,280,|,4,|1',
 	48	=>	'25|5,5,5|5,331,5|5,5,5|1',
@@ -183,9 +183,18 @@ $recipe	=	array(
 //End Recipe
 
 //Start brewing recipe	declaration
-
+//format
+// item number input | input 1, input 2, input 3| number of output
 $brewing	=	array(
-	0	=>	'377|,373,373-9|1',
-	1	=>	'372|,373-16,|1'
+	0	=>	'372|,373,|1|373-16',//Primary Start
+	1	=>	'331|,373,|1|373-64',
+	2	=>	'370|,373,|1|373-8192',// many inputs start
+	3	=>	'382|,373,|1|373|373-8192',
+	4	=>	'377|,373,|1|373-8192',
+	5	=>	'378|,373,|1|373-8192',
+	6	=>	'353|,373,|1|373-8192',
+	7	=>	'375|,373,|1|373-8192',//many inputs end
+	8	=>	'348|,373,|1|373-32',
+	9	=>	'376|,373,|1|373-8202'//Primary End
 );
 ?>
