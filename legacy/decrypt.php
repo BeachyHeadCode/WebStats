@@ -9,8 +9,6 @@ function decrypt($item)
 		elseif ($item == "cobble")					{$item = "4";}
 		elseif ($item == "wood")					{$item = "5";}
 		elseif ($item == "sapling")				{$item = "6";}
-		elseif ($item == "6:1")					{$item = "6-1";}
-		elseif ($item == "6:2")					{$item = "6-2";}
 		elseif ($item == "adminium")				{$item = "7";}
 		elseif ($item == "water")					{$item = "8";}
 		elseif ($item == "stillwater")				{$item = "9";}
@@ -32,27 +30,14 @@ function decrypt($item)
 		elseif ($item == "musicblock")				{$item = "25";}
 		elseif ($item == "bedblock")				{$item = "26";}
 		elseif ($item == "Wool")					{$item = "35";}
-		elseif ($item == "35:1")					{$item = "35-1";}
-		elseif ($item == "35:2")					{$item = "35-2";}
-		elseif ($item == "35:3")					{$item = "35-3";}
-		elseif ($item == "35:4")					{$item = "35-4";}
-		elseif ($item == "35:5")					{$item = "35-5";}
-		elseif ($item == "35:6")					{$item = "35-6";}
-		elseif ($item == "35:7")					{$item = "35-7";}
-		elseif ($item == "35:8")					{$item = "35-8";}
-		elseif ($item == "35:9")					{$item = "35-9";}
-		elseif ($item == "35:10")					{$item = "35-10";}
-		elseif ($item == "35:11")					{$item = "35-11";}
-		elseif ($item == "35:12")					{$item = "35-12";}
-		elseif ($item == "35:13")					{$item = "35-13";}
-		elseif ($item == "35:14")					{$item = "35-14";}
-		elseif ($item == "35:15")					{$item = "35-15";}
 		elseif ($item == "flower")					{$item = "37";}
 		elseif ($item == "rose")					{$item = "38";}
 		elseif ($item == "brownmushroom")			{$item = "39";}
 		elseif ($item == "redmushroom")				{$item = "40";}
 		elseif ($item == "gold")					{$item = "41";}
+		elseif ($item == "goldblock")					{$item = "41";}
 		elseif ($item == "iron")					{$item = "42";}
+		elseif ($item == "ironblock")					{$item = "42";}
 		elseif ($item == "doublestair")				{$item = "43";}
 		elseif ($item == "brickwall")				{$item = "45";}
 		elseif ($item == "tnt")					{$item = "46";}

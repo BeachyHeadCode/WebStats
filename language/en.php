@@ -9,13 +9,12 @@ function translate($item)
 		elseif ($item == "1")			{$item = "Stone";}
 		elseif ($item == "2")			{$item = "Grass";}
 		elseif ($item == "3")			{$item = "Dirt";}
+		elseif ($item == "3")			{$item = "Dirt";}
 		elseif ($item == "4")			{$item = "Cobblestone";}
 		elseif ($item == "5")			{$item = "Wooden Plank";}
 		elseif ($item == "6")			{$item = "Sapling";}
 		elseif ($item == "6:1")		{$item = "Redwood Sapling";}
 		elseif ($item == "6:2")         {$item = "Birch Sapling";}
-		elseif ($item == "6-1")		{$item = "Redwood Sapling";}
-		elseif ($item == "6-2")         {$item = "Birch Sapling";}
 		elseif ($item == "7")			{$item = "Bedrock";}
 		elseif ($item == "8")			{$item = "Water";}
 		elseif ($item == "9")           {$item = "Stationary Water";}
@@ -29,13 +28,9 @@ function translate($item)
 		elseif ($item == "17")          {$item = "Wood";}
 		elseif ($item == "17:1")        {$item = "Redwood";}
 		elseif ($item == "17:2")        {$item = "Birchwood";}
-		elseif ($item == "17-1")        {$item = "Redwood";}
-		elseif ($item == "17-2")        {$item = "Birchwood";}
 		elseif ($item == "18")          {$item = "Leaves";}
 		elseif ($item == "18:1")        {$item = "Redwood Leaves";}
 		elseif ($item == "18:2")        {$item = "Birchwood Leaves";}
-		elseif ($item == "18-1")        {$item = "Redwood Leaves";}
-		elseif ($item == "18-2")        {$item = "Birchwood Leaves";}
 		elseif ($item == "19")          {$item = "Sponge";}
 		elseif ($item == "20")          {$item = "Glass";}
 		elseif ($item == "21")          {$item = "Lapis Lazuli Ore";}
@@ -51,8 +46,6 @@ function translate($item)
 		elseif ($item == "31")          {$item = "Dead Shrub";}
 		elseif ($item == "31:1")        {$item = "Tall Grass";}
 		elseif ($item == "31:2")        {$item = "Live Shrub";}
-		elseif ($item == "31-1")        {$item = "Tall Grass";}
-		elseif ($item == "31-2")        {$item = "Live Shrub";}
 		elseif ($item == "32")          {$item = "Dead Shrub";}
 		elseif ($item == "33")          {$item = "Piston";}
 		elseif ($item == "34")          {$item = "Piston Head";}
@@ -72,21 +65,6 @@ function translate($item)
 		elseif ($item == "35:13")       {$item = "Dark Green Wool";}
 		elseif ($item == "35:14")       {$item = "Red Wool";}
 		elseif ($item == "35:15")       {$item = "Black Wool";}
-		elseif ($item == "35-1")        {$item = "Orange Wool";}
-		elseif ($item == "35-2")        {$item = "Magenta Wool";}
-		elseif ($item == "35-3")        {$item = "Light Blue Wool";}
-		elseif ($item == "35-4")        {$item = "Yellow Wool";}
-		elseif ($item == "35-5")        {$item = "Light Green Wool";}
-		elseif ($item == "35-6")        {$item = "Pink Wool";}
-		elseif ($item == "35-7")        {$item = "Gray Wool";}
-		elseif ($item == "35-8")        {$item = "Light Gray Wool";}
-		elseif ($item == "35-9")        {$item = "Cyan Wool";}
-		elseif ($item == "35-10")       {$item = "Purple Wool";}
-		elseif ($item == "35-11")       {$item = "Blue Wool";}
-		elseif ($item == "35-12")       {$item = "Brown Wool";}
-		elseif ($item == "35-13")       {$item = "Dark Green Wool";}
-		elseif ($item == "35-14")       {$item = "Red Wool";}
-		elseif ($item == "35-15")       {$item = "Black Wool";}
 		elseif ($item == "37")          {$item = "Dandelion";}
 		elseif ($item == "38")          {$item = "Rose";}
 		elseif ($item == "39")          {$item = "Brown Mushroom";}
@@ -99,22 +77,12 @@ function translate($item)
 		elseif ($item == "43:3")        {$item = "Double Cobblestone Slab";}
 		elseif ($item == "43:4")        {$item = "Double Brick Slab";}
 		elseif ($item == "43:5")        {$item = "Double Stone Brick Slab";}
-		elseif ($item == "43-1")        {$item = "Double Sandstone Slab";}
-		elseif ($item == "43-2")        {$item = "Double Wooden Slab";}
-		elseif ($item == "43-3")        {$item = "Double Cobblestone Slab";}
-		elseif ($item == "43-4")        {$item = "Double Brick Slab";}
-		elseif ($item == "43-5")        {$item = "Double Stone Brick Slab";}
 		elseif ($item == "44")          {$item = "Stone Slab";}
 		elseif ($item == "44:1")        {$item = "Sandstone Slab";}
 		elseif ($item == "44:2")        {$item = "Wooden Slab";}
 		elseif ($item == "44:3")        {$item = "Cobblestone Slab";}
 		elseif ($item == "44:4")        {$item = "Brick Slab";}
 		elseif ($item == "44:5")        {$item = "Stone Brick Slab";}
-		elseif ($item == "44-1")        {$item = "Sandstone Slab";}
-		elseif ($item == "44-2")        {$item = "Wooden Slab";}
-		elseif ($item == "44-3")        {$item = "Cobblestone Slab";}
-		elseif ($item == "44-4")        {$item = "Brick Slab";}
-		elseif ($item == "44-5")        {$item = "Stone Brick Slab";}
 		elseif ($item == "45")          {$item = "Brick";}
 		elseif ($item == "46")          {$item = "TNT";}
 		elseif ($item == "47")          {$item = "Bookshelf";}
@@ -170,13 +138,9 @@ function translate($item)
 		elseif ($item == "97")          {$item = "Stone (Silverfish)";}
 		elseif ($item == "97:1")        {$item = "Cobblestone (Silverfish)";}
 		elseif ($item == "97:2")        {$item = "Stone Brick (Silverfish)";}
-		elseif ($item == "97-1")        {$item = "Cobblestone (Silverfish)";}
-		elseif ($item == "97-2")        {$item = "Stone Brick (Silverfish)";}
 		elseif ($item == "98")          {$item = "Stone Brick";}
 		elseif ($item == "98:1")        {$item = "Mossy Stone Brick";}
 		elseif ($item == "98:2")        {$item = "Cracked Stone Brick";}
-		elseif ($item == "98-1")        {$item = "Mossy Stone Brick";}
-		elseif ($item == "98-2")        {$item = "Cracked Stone Brick";}
 		elseif ($item == "99")          {$item = "Red Mushroom Cap";}
 		elseif ($item == "100")         {$item = "Brown Mushroom Cap";}
 		elseif ($item == "100:1")       {$item = "Brown Mushroom Cap";}
@@ -189,16 +153,6 @@ function translate($item)
 		elseif ($item == "100:8")           {$item = "Brown Mushroom Cap";}
 		elseif ($item == "100:9")           {$item = "Brown Mushroom Cap";}
 		elseif ($item == "100:10")           {$item = "Brown Mushroom Stem";}
-		elseif ($item == "100-1")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-2")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-3")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-4")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-5")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-6")        {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-7")         {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-8")           {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-9")           {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100-10")           {$item = "Brown Mushroom Stem";}
 		elseif ($item == "101")           {$item = "Iron Bars";}
 		elseif ($item == "102")           {$item = "Glass Pane";}
 		elseif ($item == "103")           {$item = "Melon Block";}
@@ -210,13 +164,6 @@ function translate($item)
 		elseif ($item == "104:5")           {$item = "Pumpkin Stem - Stage 5";}
 		elseif ($item == "104:6")           {$item = "Pumpkin Stem - Stage 6";}
 		elseif ($item == "104:7")           {$item = "Pumpkin Stem - Stage 7";}
-		elseif ($item == "104-1")           {$item = "Pumpkin Stem - Stage 1";}
-		elseif ($item == "104-2")           {$item = "Pumpkin Stem - Stage 2";}
-		elseif ($item == "104-3")           {$item = "Pumpkin Stem - Stage 3";}
-		elseif ($item == "104-4")           {$item = "Pumpkin Stem - Stage 4";}
-		elseif ($item == "104-5")           {$item = "Pumpkin Stem - Stage 5";}
-		elseif ($item == "104-6")           {$item = "Pumpkin Stem - Stage 6";}
-		elseif ($item == "104-7")           {$item = "Pumpkin Stem - Stage 7";}
 		elseif ($item == "105")           {$item = "Melon Stem";}
 		elseif ($item == "105:1")           {$item = "Melon Stem - Stage 1";}
 		elseif ($item == "105:2")           {$item = "Melon Stem - Stage 2";}
@@ -225,13 +172,6 @@ function translate($item)
 		elseif ($item == "105:5")           {$item = "Melon Stem - Stage 5";}
 		elseif ($item == "105:6")           {$item = "Melon Stem - Stage 6";}
 		elseif ($item == "105:7")           {$item = "Melon Stem - Stage 7";}
-		elseif ($item == "105-1")           {$item = "Melon Stem - Stage 1";}
-		elseif ($item == "105-2")           {$item = "Melon Stem - Stage 2";}
-		elseif ($item == "105-3")           {$item = "Melon Stem - Stage 3";}
-		elseif ($item == "105-4")           {$item = "Melon Stem - Stage 4";}
-		elseif ($item == "105-5")           {$item = "Melon Stem - Stage 5";}
-		elseif ($item == "105-6")           {$item = "Melon Stem - Stage 6";}
-		elseif ($item == "105-7")           {$item = "Melon Stem - Stage 7";}
 		elseif ($item == "106")           {$item = "Vines";}
 		elseif ($item == "106:1")           {$item = "Vines - South";}
 		elseif ($item == "106:2")           {$item = "Vines - West";}
@@ -268,7 +208,6 @@ function translate($item)
 		elseif ($item == "262")           {$item = "Arrow";}
 		elseif ($item == "263")           {$item = "Coal";}
 		elseif ($item == "263:1")         {$item = "Charcoal";}
-		elseif ($item == "263-1")         {$item = "Charcoal";}
 		elseif ($item == "264")           {$item = "Diamond";}
 		elseif ($item == "265")           {$item = "Iron Ingot";}
 		elseif ($item == "266")           {$item = "Gold Ingot";}
@@ -372,21 +311,6 @@ function translate($item)
 		elseif ($item == "351:13")           {$item = "Magenta Dye";}
 		elseif ($item == "351:14")           {$item = "Orange Dye";}
 		elseif ($item == "351:15")           {$item = "Bone Meal";}
-		elseif ($item == "351-1")           {$item = "Rose Red";}
-		elseif ($item == "351-2")           {$item = "Cactus Green";}
-		elseif ($item == "351-3")           {$item = "Coco Beans";}
-		elseif ($item == "351-4")           {$item = "Lapis Lazuli";}
-		elseif ($item == "351-5")           {$item = "Purple Dye";}
-		elseif ($item == "351-6")           {$item = "Cyan Dye";}
-		elseif ($item == "351-7")           {$item = "Light Gray Dye";}
-		elseif ($item == "351-8")           {$item = "Gray Dye";}
-		elseif ($item == "351-9")           {$item = "Pink Dye";}
-		elseif ($item == "351-10")           {$item = "Lime Dye";}
-		elseif ($item == "351-11")           {$item = "Dandelion Yellow";}
-		elseif ($item == "351-12")           {$item = "Light Blue Dye";}
-		elseif ($item == "351-13")           {$item = "Magenta Dye";}
-		elseif ($item == "351-14")           {$item = "Orange Dye";}
-		elseif ($item == "351-15")           {$item = "Bone Meal";}
 		elseif ($item == "352")           		{$item = "Bone";}
 		elseif ($item == "353")           {$item = "Sugar";}
 		elseif ($item == "354")           {$item = "Cake";}
@@ -406,77 +330,60 @@ function translate($item)
 		elseif ($item == "368")           {$item = "Ender Pearl";}
 		elseif ($item == "369")           {$item = "Blaze Rod";}
 		elseif ($item == "370")           {$item = "Ghast Tear";}
-		elseif ($item == "371")           {$item = "Gold Nugget";}
-		elseif ($item == "372")           {$item = "Nether Wart Seeds";}
-		elseif ($item == "373")           {$item = "Potion";}
-		elseif ($item == "373:0")           {$item = "Water Bottle / Mundane Potion";}
-		elseif ($item == "373:1")           {$item = "Potion of Regeneration";}
-		elseif ($item == "373:2")           {$item = "Potion of Swiftness";}
-		elseif ($item == "373:3")           {$item = "Potion of Fire Resistance";}
-		elseif ($item == "373:4")           {$item = "Potion of Poison";}
-		elseif ($item == "373:5")           {$item = "Potion of Healing";}
-		elseif ($item == "373:6")           {$item = "Clear Potion";}
-		elseif ($item == "373:7")           {$item = "Clear Potion";}
-		elseif ($item == "373:8")           {$item = "Potion of Weakness";}
-		elseif ($item == "373:9")           {$item = "Potion of Strength";}
-		elseif ($item == "373:10")           {$item = "Potion of Slowness";}
-		elseif ($item == "373:11")           {$item = "Diffuse Potion";}
-		elseif ($item == "373:12")           {$item = "Potion of Harming";}
-		elseif ($item == "373:13")           {$item = "Artless Potion";}
-		elseif ($item == "373:14")           {$item = "Thin Potion";}
-		elseif ($item == "373:15")           {$item = "Thin Potion";}
-		elseif ($item == "373:16")           {$item = "Awkward Potion";}
-		elseif ($item == "373:17")           {$item = "Potion of Regeneration";}
-		elseif ($item == "373:18")           {$item = "Potion of Swiftness";}
-		elseif ($item == "373:19")           {$item = "Potion of Fire Resistance";}
-		elseif ($item == "373:20")           {$item = "Potion of Poison";}
-		elseif ($item == "373:21")           {$item = "Potion of Healing";}
-		elseif ($item == "373:22")           {$item = "Bungling Potion";}
-		elseif ($item == "373:23")           {$item = "Bungling Potion";}
-		elseif ($item == "373:24")           {$item = "Potion of Weakness";}
-		elseif ($item == "373:25")           {$item = "Potion of Strength";}
-		elseif ($item == "373:26")           {$item = "Potion of Slowness";}
-		elseif ($item == "373:27")           {$item = "Smooth Potion";}
-		elseif ($item == "373:28")           {$item = "Potion of Harming";}
-		elseif ($item == "373:29")           {$item = "Suave Potion";}
-		elseif ($item == "373:30")           {$item = "Debonair Potion";}
-		elseif ($item == "373:31")           {$item = "Debonair Potion";}
-		elseif ($item == "373:32")           {$item = "Thick Potion";}
-		elseif ($item == "373:33")           {$item = "Potion of Regeneration II";}
-		elseif ($item == "373:34")           {$item = "Potion of Swiftness II";}
-		elseif ($item == "373:35")           {$item = "Potion of Fire Resistance";}
-		elseif ($item == "373:36")           {$item = "Potion of Poison II";}
-		elseif ($item == "373:37")           {$item = "Potion of Healing II";}
-		elseif ($item == "373:38")           {$item = "Charming Potion";}
-		elseif ($item == "373:39")           {$item = "Charming Potion";}
-		elseif ($item == "373:40")           {$item = "Potion of Weakness";}
-		elseif ($item == "373:41")           {$item = "Potion of Strength II";}
-		elseif ($item == "373:42")           {$item = "Potion of Slowness";}
-		elseif ($item == "373:43")           {$item = "Refined Potion";}
-		elseif ($item == "373:44")           {$item = "Potion of Harming II";}
-		elseif ($item == "373:45")           {$item = "Cordial Potion";}
-		elseif ($item == "373:46")           {$item = "Sparkling Potion";}
-		elseif ($item == "373:47")           {$item = "Sparkling Potion";}
-		elseif ($item == "373:48")           {$item = "Potent Potion";}
-		elseif ($item == "373:49")           {$item = "Potion of Regeneration II";}
-		elseif ($item == "373:50")           {$item = "Potion of Swiftness II";}
-		elseif ($item == "373:51")           {$item = "Potion of Fire Resistance";}
-		elseif ($item == "373:52")           {$item = "Potion of Poison II";}
-		elseif ($item == "373:53")           {$item = "Potion of Healing II";}
-		elseif ($item == "373:54")           {$item = "Rank Potion";}
-		elseif ($item == "373:55")           {$item = "Rank Potion";}
-		elseif ($item == "373:56")           {$item = "Potion of Weakness";}
-		elseif ($item == "373:57")           {$item = "Potion of Strength II";}
-		elseif ($item == "373:58")           {$item = "Potion of Slowness";}
-		elseif ($item == "373:59")           {$item = "Acrid Potion";}
-		elseif ($item == "373:60")           {$item = "Potion of Harming II";}
-		elseif ($item == "373:61")           {$item = "Gross Potion";}
-		elseif ($item == "373:62")           {$item = "Stinky Potion";}
-		elseif ($item == "373:63")           {$item = "Stinky Potion";}
-		elseif ($item == "374")           {$item = "Glass Bottle";}
-		elseif ($item == "375")           {$item = "Spider Eye";}
-		elseif ($item == "376")           {$item = "Fermented Spider Eye";}
-		elseif ($item == "377")           {$item = "Blaze Powder";}
+		elseif ($item == "371")				{$item = "Gold Nugget";}
+		elseif ($item == "372")				{$item = "Nether Wart Seeds";}
+		//------------------------------- START POTIONS -----------------------------------------
+		elseif ($item == "373")				{$item = "Potion";}
+		//--------- BASE POTIONS ---------
+		elseif ($item == "373:0")			{$item = "Water Bottle";}
+		elseif ($item == "373:16")			{$item = "Awkward Potion";}
+		elseif ($item == "373:32")			{$item = "Thick Potion";}
+		elseif ($item == "373:64")			{$item = "Mundane Potion (extended)";}
+		elseif ($item == "373:8192")		{$item = "Mundane Potion";}
+		// --------------------- PRIMARY POTIONS ---------------------
+		//--------- POSITIVE EFFECTS ---------
+		elseif ($item == "373:8193")		{$item = "Potion of Regeneration";}
+		elseif ($item == "373:8257")		{$item = "Potion of Regeneration (extended)";}
+		elseif ($item == "373:8255")		{$item = "Potion of Regeneration II";}
+		elseif ($item == "373:8194")		{$item = "Potion of Swiftness";}
+		elseif ($item == "373:8258")		{$item = "Potion of Swiftness (extended)";}
+		elseif ($item == "373:8226")		{$item = "Potion of Swiftness II";}
+		elseif ($item == "373:8195")		{$item = "Potion of Fire Resistance";}
+		elseif ($item == "373:8259")		{$item = "Potion of Fire Resistance (extended)";}
+		elseif ($item == "373:8227")		{$item = "Potion of Fire Resistance II (reverted)";}
+		elseif ($item == "373:8197")		{$item = "Potion of Healing";}
+		elseif ($item == "373:8261")		{$item = "Potion of Healing (reverted)";}
+		elseif ($item == "373:8229")		{$item = "Potion of Healing II";}
+		elseif ($item == "373:8198")		{$item = "Potion of Night Vision";}
+		elseif ($item == "373:8262")		{$item = "Potion of Night Vision";}
+		elseif ($item == "373:8201")		{$item = "Potion of Strength";}
+		elseif ($item == "373:8265")		{$item = "Potion of Strength";}
+		elseif ($item == "373:8233")		{$item = "Potion of Strength II";}
+		elseif ($item == "373:8206")		{$item = "Potion of Invisibility";}
+		elseif ($item == "373:8270")		{$item = "Potion of Invisibility";}
+		//--------- NEGATIVE EFFECTS ---------
+		elseif ($item == "373:8196")		{$item = "Potion of Poison";}
+		elseif ($item == "373:8260")		{$item = "Potion of Poison";}
+		elseif ($item == "373:8228")		{$item = "Potion of Poison II";}
+		elseif ($item == "373:8200")		{$item = "Potion of Weakness";}
+		elseif ($item == "373:8264")		{$item = "Potion of Weakness";}
+		elseif ($item == "373:8232")		{$item = "Potion of Weakness II (reverted)";}
+		elseif ($item == "373:8202")		{$item = "Potion of Slowness";}
+		elseif ($item == "373:8266")		{$item = "Potion of Slowness";}
+		elseif ($item == "373:8234")		{$item = "Potion of Slowness II (reverted)";}
+		elseif ($item == "373:8204")		{$item = "Potion of Harming";}
+		elseif ($item == "373:8268")		{$item = "Potion of Harming (reverted)";}
+		elseif ($item == "373:8236")		{$item = "Potion of Harming II";}
+		//--------- UNBREWABLE POTIONS ---------
+		elseif ($item == "373:8289")		{$item = "Potion of Regeneration II (extended)";}
+		elseif ($item == "373:8290")		{$item = "Potion of Swiftness II (extended)";}
+		elseif ($item == "373:8297")		{$item = "Potion of Strength II (extended)";}
+		elseif ($item == "373:8292")		{$item = "Potion of Poison II (extended)";}
+		//------------------------------- END POTIONS -----------------------------------------
+		elseif ($item == "374")				{$item = "Glass Bottle";}
+		elseif ($item == "375")				{$item = "Spider Eye";}
+		elseif ($item == "376")				{$item = "Fermented Spider Eye";}
+		elseif ($item == "377")				{$item = "Blaze Powder";}
 		elseif ($item == "378")           {$item = "Magma Cream";}
 		elseif ($item == "379")           {$item = "Brewing Stand";}
 		elseif ($item == "380")           {$item = "Cauldron";}

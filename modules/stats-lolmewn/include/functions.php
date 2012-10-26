@@ -1,5 +1,4 @@
 <?php
-
 function get_amount($user, $stat, $type)
 {
 	$query = mysql_query("SELECT value FROM ".WS_CONFIG_STATS." WHERE player='$user' AND stat='$stat' AND category='$type'");
@@ -538,13 +537,14 @@ function set_server_getkill_table($search)
 }
 
 function set_server_destroy_table($search)
-{
+{	
 	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'blockdestroy' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
+		$image = str_replace(":", "-", $row[1]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[1]).'" style="cursor:url(images/cursors/hover.cur),auto;" >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[1].'" style="cursor:url(images/cursors/hover.cur),auto;" >'.translate(''.$row[1].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -558,8 +558,9 @@ function set_server_build_table($search)
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
+		$image = str_replace(":", "-", $row[1]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt(''.$row[1].'')).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt(''.$row[1].'').'" style="cursor:url(images/cursors/hover.cur),auto;" >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[1].'" style="cursor:url(images/cursors/hover.cur),auto;" >'.translate(''.$row[1].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
 		$output .= "\n";
 		$output .= '</div>';

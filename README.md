@@ -64,7 +64,6 @@ To-Do:
 - Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement
 - Add Rest Of ID's and Add The Extra ID's To Main ID's Page example ( 15:1 15:2 goes onto 15 page)
 - Add InventorySQL
-- change code for better security(CHANGED MySQL IN SOME PLACES)
 - Add Stats & Achievements Support
 - Add BeardStat & BeardAch Support
 - Add HawkEye Support
@@ -85,7 +84,14 @@ v3.0(No ETA)
 - Added Sample Config.
 - Added IP Tracker.
 - Updated A few items photos larger image.
+- Updated Brewing Functions
+- Added A few Brewing Items
+- Removed/Updated ID page functions * still slow (using foundations) due to the amount of css.
+- Updated Config Installer with notes on what is what.
+- MySQL is much more easy for people to understand *(now once more able to set databases for each plugin verse 1 for all - not recommended).
 
+
+--------------------------------		OLD 		----------------------------------------------------------
 v2.1(4/5/2012 EST 10:23AM)
 - Add PermisionsEX Support.
 - Fixed PHP Errors Showing For The Banner Photo.

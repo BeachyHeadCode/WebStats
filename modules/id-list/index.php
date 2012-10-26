@@ -55,11 +55,9 @@ function do_search(evt) {
 $(document).ready(function() {
   var placeholder = $('#placeholder');
   if (placeholder) {
-    placeholder.html('<div id="controls"></div><input id="search" autocomplete="off" />');
+    placeholder.html('<div id="controls"></div><input placeholder="Enter an item number or block name..." id="search" type="text" autocomplete="off" />');
     var search_field = $('#search');
     search_field.focus();
-    search_field.css('color', 'gray');
-    search_field.val('Enter an item or block name...');
     search_field.click(hide_placeholder_text);
     search_field.focus(hide_placeholder_text);
     search_field.keydown(hide_placeholder_text);
