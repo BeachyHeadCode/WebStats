@@ -78,6 +78,7 @@ define('WS_CONFIG_PERMISSIONS', 'permissions');
 define('WS_PERMISSIONS_DEFAULT_GROUP', 'Default');
 //Stats Settings.
 define('WS_CONFIG_STATS', 'stats');
+define('WS_CONFIG_STATS_LOLMEWN_PREFIX', 'stats');
 define('WS_CONFIG_PLAYTIME', true);
 
 //Google Ads. If you want to support me while I update many features for you keep this here. If you dont want them on, remove the code. If you want your own ads, change the code. 

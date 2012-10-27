@@ -43,14 +43,17 @@ else
 	-->
   
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" href="../stylesheets/foundation.min.css">
-	<link rel="stylesheet" href="../stylesheets/app.css">
-	<script src="javascripts/modernizr.foundation.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/app.css">
+
+	<script type="text/javascript" src="javascripts/modernizr.foundation.js"></script>
 
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	
+	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>  
 </head>
 <body style="background-color:rgb(228, 228, 228);">
 		<!--Header Start-->
@@ -288,7 +291,7 @@ for ($i=0;$i<=sizeof($commits);$i++)
 			<div class="row footer" align="center">
 		<p>
 			<em>
-				<a href="http://mrplows-server.us" target="_blank">mrplows-server.us</a> &#169; <a href="http://forums.bukkit.org/threads/web-webstatistic-for-minecraft-v2-1-mrplows-any-build.60843/">Webstatistic v<?php include('../include/version.php'); echo $version;?></a> for <a href="http://minecraft.net">Minecraft</a>
+				<a href="http://www.mrplows-server.us" target="_blank">www.mrplows-server.us</a> &#169; <a href="http://forums.bukkit.org/threads/web-webstatistic-for-minecraft-v2-1-mrplows-any-build.60843/">Webstatistic v<?php include('../include/version.php'); echo $version;?></a> for <a href="http://minecraft.net">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
 				<a href="termsofuse.php">Terms Of Use</a>
@@ -298,42 +301,8 @@ for ($i=0;$i<=sizeof($commits);$i++)
 		</p><br/>
 			</div>
 </div>
-
-  <!-- Included JS Files (Uncompressed) -->
-  <!--
-  
-  <script src="javascripts/jquery.js"></script>
-  
-  <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
-  
-  <script src="javascripts/jquery.foundation.forms.js"></script>
-  
-  <script src="javascripts/jquery.foundation.reveal.js"></script>
-  
-  <script src="javascripts/jquery.foundation.orbit.js"></script>
-  
-  <script src="javascripts/jquery.foundation.navigation.js"></script>
-  
-  <script src="javascripts/jquery.foundation.buttons.js"></script>
-  
-  <script src="javascripts/jquery.foundation.tabs.js"></script>
-  
-  <script src="javascripts/jquery.foundation.tooltips.js"></script>
-  
-  <script src="javascripts/jquery.foundation.accordion.js"></script>
-  
-  <script src="javascripts/jquery.placeholder.js"></script>
-  
-  <script src="javascripts/jquery.foundation.alerts.js"></script>
-  
-  <script src="javascripts/jquery.foundation.topbar.js"></script>
-  
-  -->
-  
   <!-- Included JS Files (Compressed) -->
-  <script src="../javascripts/jquery.js"></script>
-  <script src="../javascripts/foundation.min.js"></script>
-  
+  <script src="../javascripts/foundation.min.js"></script>  
   <!-- Initialize JS Plugins -->
   <script src="../javascripts/app.js"></script>
 </body>

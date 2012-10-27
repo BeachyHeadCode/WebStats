@@ -80,7 +80,7 @@ Downloads:
 v3.0(No ETA)
 - Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.
 - Added Admin Page.
-- Added Smart Phone Support * iPhone(Added Foundation v3.1)
+- Added Smart Phone Support * iPhone(Added Foundation v3.2)
 - Added Sample Config.
 - Added IP Tracker.
 - Updated A few items photos larger image.
@@ -89,7 +89,7 @@ v3.0(No ETA)
 - Removed/Updated ID page functions * still slow (using foundations) due to the amount of css.
 - Updated Config Installer with notes on what is what.
 - MySQL is much more easy for people to understand *(now once more able to set databases for each plugin verse 1 for all - not recommended).
-
+- Capability of a dynamic stats plugin change
 
 --------------------------------		OLD 		----------------------------------------------------------
 v2.1(4/5/2012 EST 10:23AM)

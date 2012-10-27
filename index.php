@@ -187,7 +187,7 @@ $DB -> close();
 	<meta name="keywords" content="minecraft, stats, bukkit, mrplow, cky2250, html5, foundation" />
 	<meta name="copyright" content="mrplows-server.us Copyright (c) 2012" />
 	<title><?php echo (WS_OPTICAL_TAB_TITLE);?></title>
-	<link rel="stylesheet" type="text/css" href="css/layout.css"/>
+	<link rel="stylesheet" type="text/css" href="stylesheets/layout.css"/>
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<!-- For third-generation iPad with high-resolution Retina display: -->
@@ -206,16 +206,16 @@ $DB -> close();
 	<link rel="stylesheet" href="stylesheets/foundation.css">
 	-->
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" href="stylesheets/foundation.min.css">
-	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/app.css">
 
-	<script src="javascripts/modernizr.foundation.js"></script>
+	<script type="text/javascript" src="javascripts/modernizr.foundation.js"></script>
 
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.js'></script>            
+	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>            
 </head>
 <body class="off-canvas" style="background-repeat:repeat;text-align:center;color:#333322;background-attachment:fixed;background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png'); <?php echo (defaultt); ?>">
 <?php
@@ -374,19 +374,29 @@ else{
 		</div>
 </section>
   <!-- Included JS Files (Uncompressed) -->
-
-  <script src="javascripts/modernizr.foundation.js"></script>
+  <!--
+  
+  <script src="javascripts/jquery.js"></script>
   <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+  <script src="javascripts/jquery.foundation.forms.js"></script>
   <script src="javascripts/jquery.foundation.reveal.js"></script>
   <script src="javascripts/jquery.foundation.orbit.js"></script>
   <script src="javascripts/jquery.foundation.navigation.js"></script>
   <script src="javascripts/jquery.foundation.buttons.js"></script>
   <script src="javascripts/jquery.foundation.tabs.js"></script>
-  <script src="javascripts/jquery.foundation.forms.js"></script>
   <script src="javascripts/jquery.foundation.tooltips.js"></script>
   <script src="javascripts/jquery.foundation.accordion.js"></script>
   <script src="javascripts/jquery.placeholder.js"></script>
   <script src="javascripts/jquery.foundation.alerts.js"></script>
+  <script src="javascripts/jquery.foundation.topbar.js"></script>
+  <script src="javascripts/jquery.foundation.joyride.js"></script>
+  <script src="javascripts/jquery.foundation.clearing.js"></script>
+  <script src="javascripts/jquery.foundation.magellan.js"></script>
+  
+  -->
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/foundation.min.js"></script>
   <!-- Initialize JS Plugins -->
   <script src="javascripts/app.js"></script>
 </body>

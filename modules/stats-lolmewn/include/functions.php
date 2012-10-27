@@ -1,17 +1,16 @@
 <?php
-function get_amount($user, $stat, $type)
+function get_amount($user, $stat, $location)
 {
-	$query = mysql_query("SELECT value FROM ".WS_CONFIG_STATS." WHERE player='$user' AND stat='$stat' AND category='$type'");
-	$daten = @mysql_fetch_array($query);
-	return $daten[0];
+	$query = mysql_query("SELECT `$stat`, `player` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."$location` WHERE player='$user'");
+	$data = @mysql_fetch_array($query);
+	return $data[0];
 }
-
 function get_user($sort)
 {
 	if(!isset($sort)) {$sort = 'player';}
-	if($sort == 'player') {$sortkey = 'GROUP BY player ORDER BY player';}
-	else {$sortkey = 'WHERE stat LIKE "'.$sort.'" GROUP BY player ORDER BY value DESC';}
-	$query = mysql_query("SELECT player, stat, value FROM ".WS_CONFIG_STATS." ".$sortkey."");
+	$sortkey = "ORDER BY $sort";
+
+	$query = mysql_query("SELECT * FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` ".$sortkey."");
 	$time = 0;
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -21,13 +20,13 @@ function get_user($sort)
 	return $players;	
 }
 
-function get_user_stats($sort, $start, $end)
-{
-	if(!isset($sort)) {$sort = 'player';}
-	$deadline = time() - WS_CONFIG_DEADLINE;
-	if($sort == 'player') {$sortkey = 'GROUP BY player ORDER BY player';}
-	else {$sortkey = 'WHERE stat LIKE "'.$sort.'" GROUP BY player ORDER BY value DESC';}
-	$query = mysql_query("SELECT player, stat, value FROM ".WS_CONFIG_STATS." ".$sortkey." LIMIT ".$start.",".$end."");
+function get_user_stats($sort, $start, $end) {
+	if(!isset($sort)) {
+		$sort = 'player';
+	}
+	//$deadline = time() - WS_CONFIG_DEADLINE;
+	$sortkey = "ORDER BY $sort";
+	$query = mysql_query("SELECT $sort FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -83,9 +82,9 @@ function set_index_table($player, $pos)
 	}
 	$output .= '<tr><td>'.$pos.'</td>';
 	$output .= '<td>&nbsp;&nbsp;'.$image.'<a href="index.php?mode=show-player&user='.$player.'" style="cursor:url(images/cursors/hover.cur),auto;" >'.$player.'</a></td>';
-	$output .= '<td>'.get_played(get_amount($player, "playedfor", "stats")).'</td>';
-	$output .= '<td>'.get_date(get_amount($player, "lastlogin", "stats")).'</td>';
-	$output .= '<td>'.get_status($player).'</td>';
+	$output .= '<td>'.get_played(get_amount($player, "playtime", "_player")).'</td>';
+	//$output .= '<td>'.get_date(get_amount($player, "lastlogin", "stats")).'</td>';
+	//$output .= '<td>'.get_status($player).'</td>';
 	$output .= "</tr>";
 	return $output;
 }
@@ -213,7 +212,7 @@ function set_player_details_table_3d($player)
 
 function set_player_destroy_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'blockdestroy' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'blockdestroy' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -228,7 +227,7 @@ function set_player_destroy_table($player, $search)
 
 function set_player_build_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'blockcreate' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'blockcreate' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -243,7 +242,7 @@ function set_player_build_table($player, $search)
 
 function set_player_damagereceived_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagetaken' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'damagetaken' AND stat != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -253,7 +252,7 @@ function set_player_damagereceived_table($player, $search)
 		$output .= "\n";
 		$output .= '</div>';
 	} 
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagetaken' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'damagetaken' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) 
 	{
 		$output .= '<div style="clear: both;">';
@@ -267,7 +266,7 @@ function set_player_damagereceived_table($player, $search)
 
 function set_player_damagedealt_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagedealt' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'damagedealt' AND stat != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -277,7 +276,7 @@ function set_player_damagedealt_table($player, $search)
 		$output .= "\n";
 		$output .= '</div>';
 	}  
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagedealt' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'damagedealt' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) 
 	{
 		$output .= '<div style="clear: both;">';
@@ -291,7 +290,7 @@ function set_player_damagedealt_table($player, $search)
 
 function set_player_didkill_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'kills' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'kills' AND stat != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -301,7 +300,7 @@ function set_player_didkill_table($player, $search)
 		$output .= "\n";
 		$output .= '</div>';
 	} 	
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'kills' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'kills' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) 
 	{
 		$output .= '<div style="clear: both;">';
@@ -315,7 +314,7 @@ function set_player_didkill_table($player, $search)
 
 function set_player_getkill_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'deaths' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'deaths' AND stat != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -325,7 +324,7 @@ function set_player_getkill_table($player, $search)
 		$output .= "\n";
 		$output .= '</div>';
 	} 	
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'deaths' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'deaths' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) 
 	{
 		$output .= '<div style="clear: both;">';
@@ -339,7 +338,7 @@ function set_player_getkill_table($player, $search)
 
 function set_player_founditem_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'itempickup' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'itempickup' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -354,7 +353,7 @@ function set_player_founditem_table($player, $search)
 
 function set_player_dropitem_table($player, $search)
 {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'itemdrop' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE player='".$player."' AND category = 'itemdrop' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -367,32 +366,31 @@ function set_player_dropitem_table($player, $search)
 	return $output;
 }
 
-function get_server_player()
-{
-	$query = mysql_query("SELECT player, stat, value FROM ".WS_CONFIG_STATS." GROUP BY player");
-	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
-		$players[$time] = $row[0];
-		$time++;
-	}  
-	return $time;
+function get_server_player() {
+	$query = mysql_query("SELECT COUNT(`player`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player`");
+	$row = mysql_fetch_array($query);
+	return $row[0];
 }
 
-function get_server_count($cat, $stat)
-{
-	$query = mysql_query("SELECT value FROM ".WS_CONFIG_STATS." WHERE category='".$cat."' AND stat LIKE '".$stat."'");
-	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
-		$time = $time + $row[0];
-	}  
-	return $time;
+function get_server_count_block($column) {
+	$query = mysql_query("SELECT SUM(`$column`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_block` ");
+	$row = mysql_fetch_array($query);
+	return $row[0];
 }
 
+function get_server_count_player($column) {
+	$query = mysql_query("SELECT SUM(`$column`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` ");
+	$row = mysql_fetch_array($query);
+	return $row[0];
+}
+function get_server_count_player_move() {
+	$query = mysql_query("SELECT SUM(`distance`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_move` ");
+	$row = mysql_fetch_array($query);
+	return $row[0];
+}
 function get_server_played()
 {
-	$query = mysql_query("SELECT value FROM ".WS_CONFIG_STATS." WHERE category='stats' AND stat = 'playedfor'");
+	$query = mysql_query("SELECT value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category='stats' AND stat = 'playedfor'");
 	$time = 0;
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -435,18 +433,18 @@ function set_server_details_table()
 				
 				<div>
 					<div class="head_stat">'.translate("var8").':</div>
-					<div class="head_content"> '.get_server_count('blockdestroy', '%%').'</div>
+					<div class="head_content"> '.get_server_count_block('break').'</div>
 				</div>
 				
 				<div>
 					<div class="head_stat">'.translate("var9").':</div>
-					<div class="head_content"> '.get_server_count('blockcreate', '%%').'</div>
+					<div class="head_content"> '.get_server_count_block('amount').'</div>
 				</div>
 				
-				<div>
+				<!--<div>
 					<div class="head_stat">'.translate("var24").':</div>
-					<div class="head_content"> '.get_server_count('stats', 'armswing').'</div>
-				</div>
+					<div class="head_content"> '.get_server_count_player('armswing').'</div>
+				</div>-->
 				
 				<div>
 					<div class="head_stat">'.translate("var4").':</div>
@@ -455,40 +453,40 @@ function set_server_details_table()
 				
 				<div>
 					<div class="head_stat">'.translate("var25").':</div>
-					<div class="head_content">'.get_server_count("stats", "login").'</div>
+					<div class="head_content">'.get_server_count_player("joins").'</div>
 				</div>
 				
 				<div>
 					<div class="head_stat">'.translate("var17").':</div>
-					<div class="head_content"> '.get_server_count("stats", "move").' '.translate("var18").'</div>
+					<div class="head_content"> '.get_server_count_player_move().' '.translate("var18").'</div>
 				</div>
 				
-				<div>
+				<!--<div>
 					<div class="head_stat">'.translate("var26").':</div>
-					<div class="head_content"> '.get_server_count("stats", "openchest").'</div>
-				</div>
+					<div class="head_content"> '.get_server_count_player("openchest").'</div>
+				</div>-->
 				
 				<div>
 					<div class="head_stat">'.translate("var27").':</div>
-					<div class="head_content"> '.get_server_count("stats", "command").'</div>
+					<div class="head_content"> '.get_server_count_player("commandsdone").'</div>
 				</div>
 				
-				<div>
+				<!--<div>
 					<div class="head_stat">'.translate("var28").':</div>
-					<div class="head_content"> '.get_server_count("stats", "chat").'</div>
+					<div class="head_content"> '.get_server_count_player("stats", "chat").'</div>
 				</div>
 				
 				<div>
 					<div class="head_stat">'.translate("var29").':</div>
-					<div class="head_content">'.get_server_count("stats", "chatletters").'</div>
-				</div>';
+					<div class="head_content">'.get_server_count_player("stats", "chatletters").'</div>
+				</div>-->';
 	$output .= '</div>';
 	return $output;
 }
 
 function set_server_didkill_table($search)
 {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'kills' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'kills' AND stat != 'total' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -498,7 +496,7 @@ function set_server_didkill_table($search)
 		$output .= "\n";
 		$output .= '</div>';
 	}	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'kills' AND stat = 'total' GROUP BY stat");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'kills' AND stat = 'total' GROUP BY stat");
 	while($row = mysql_fetch_array($query)) 
 	{
 		
@@ -513,7 +511,7 @@ function set_server_didkill_table($search)
 
 function set_server_getkill_table($search)
 {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'deaths' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'deaths' AND stat != 'total' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -523,7 +521,7 @@ function set_server_getkill_table($search)
 		$output .= "\n";
 		$output .= '</div>';
 	}	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'deaths' AND stat = 'total' GROUP BY stat");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'deaths' AND stat = 'total' GROUP BY stat");
 	while($row = mysql_fetch_array($query)) 
 	{
 		
@@ -538,7 +536,7 @@ function set_server_getkill_table($search)
 
 function set_server_destroy_table($search)
 {	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'blockdestroy' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'blockdestroy' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -554,7 +552,7 @@ function set_server_destroy_table($search)
 
 function set_server_build_table($search)
 {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'blockcreate' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'blockcreate' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -570,7 +568,7 @@ function set_server_build_table($search)
 
 function set_server_damagereceived_table($search)
 {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagetaken' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'damagetaken' AND stat != 'total' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -580,7 +578,7 @@ function set_server_damagereceived_table($search)
 		$output .= "\n";
 		$output .= '</div>';
 	}  
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagetaken' AND stat = 'total' GROUP BY stat");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'damagetaken' AND stat = 'total' GROUP BY stat");
 	while($row = mysql_fetch_array($query)) 
 	{
 		
@@ -595,7 +593,7 @@ function set_server_damagereceived_table($search)
 
 function set_server_damagedealt_table($search)
 {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagedealt' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'damagedealt' AND stat != 'total' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -605,7 +603,7 @@ function set_server_damagedealt_table($search)
 		$output .= "\n";
 		$output .= '</div>';
 	} 
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagedealt' AND stat = 'total' GROUP BY stat");
+	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'damagedealt' AND stat = 'total' GROUP BY stat");
 	while($row = mysql_fetch_array($query)) 
 	{
 		
@@ -621,7 +619,7 @@ function set_server_damagedealt_table($search)
 function set_material_destroy_table($material, $search)
 {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE category = 'blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{		
@@ -641,7 +639,7 @@ function set_material_destroy_table($material, $search)
 function set_material_build_table($material, $search)
 {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE category='blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category='blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -660,7 +658,7 @@ function set_material_build_table($material, $search)
 function set_creature_damagereceived_table($creature, $search)
 {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE `category` = 'damagetaken' AND `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE `category` = 'damagetaken' AND `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
 	$output = '';
 	while($row = mysql_fetch_array($query))
 	{
@@ -680,7 +678,7 @@ function set_creature_damagereceived_table($creature, $search)
 function set_creature_damagedealt_table($creature, $search)
 {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE category = 'damagedealt' AND stat = '".encrypt($creature)."' GROUP BY player ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` WHERE category = 'damagedealt' AND stat = '".encrypt($creature)."' GROUP BY player ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -704,7 +702,7 @@ function blacklist()
 	$player_all = get_user('player');
 	for($i=0; $i < sizeof($player_all); $i++)
 	{
-		$query = mysql_query("UPDATE ".WS_CONFIG_STATS." SET player='".$marker."".$player_all[$i]."' WHERE player='".$player_all[$i]."'");
+		$query = mysql_query("UPDATE `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` SET player='".$marker."".$player_all[$i]."' WHERE player='".$player_all[$i]."'");
 	}	
 }
 
