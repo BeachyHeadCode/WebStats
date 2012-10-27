@@ -63,7 +63,7 @@ function fix_server_vars() {
  * Dies if requirements are not met.
  *
  */
-function wp_check_php_mysql_versions() {
+function ws_check_php_mysql_versions() {
 	global $required_php_version;
 	$php_version = phpversion();
 	if ( version_compare( $required_php_version, $php_version, '>' ) ) {
@@ -133,6 +133,7 @@ class DBConfig {
 				if((!$db) && ($createdb === true)){
 					if(mysql_query("CREATE DATABASE IF NOT EXISTS `".$this->db."`", $this->db_link)){
 						echo "Database created :) <br />";
+						mysql_select_db($this->db, $this->db_link);
 					}
 					else{
 						if ($this->error){

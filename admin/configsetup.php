@@ -1,5 +1,9 @@
 <?php 
-
+if(file_exists($_SERVER["DOCUMENT_ROOT"].'\config\config.php')){
+//IF YOU DONT KNOW YOU CAN VIEW IP LOG FROM PHP IN THE FOLDER IT WAS INSTALLED.
+	echo '<h1><div align="center">Hello if you are reading this your IP is tracked and the admin may ban you for viewing this.<br /> HAVE A GOOD DAY!</div></h1>';
+}
+else{
 session_start(); // start or resume a session
 
 // http://stackoverflow.com/questions/1779205/create-temporary-file-and-auto-removed
@@ -96,9 +100,8 @@ numcheck = /\d/;
 return !numcheck.test(keychar);
 }
 </script>
-<?php  if($_SESSION['config'] == 'Yes'){
-$filename = 'config.php';}
-else{$filename = '../../config/config.php';} 
+<?php  
+$filename = $_SERVER["DOCUMENT_ROOT"].'\config\config.php';
 define('noclick','<span onmousedown="return false;" onselectstart="return false;" style="cursor:default;">');
 ?>
   	<div align="center"><h1>WebStats Install</h1></div>
@@ -121,9 +124,9 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 				echo noclick ?>Edit Config: </span><input type="radio" name="config" value="Yes" title="YES!"<?php if($_POST['config']=='Yes'){ echo'checked="checked"';}  ?> /><br/>
             <?php } 
 			else{
-            	echo noclick ?>Edit Config: </span><input type="radio" name="config" value="Yesfile" title="No Config.php Loaded." <?php if($_POST['config']=='Yes'){ echo'checked="checked"';}  ?>/><span>File Does Not Exist You May Upload</span><br/>
+            	echo noclick ?>Edit Config: </span><input type="radio" name="config" value="Yesfile" title="No Config.php Loaded." <?php if($_POST['config']=='Yes' or $_SESSION['config']=='Yes'){ echo'checked="checked"';}  ?>/><span>File Does Not Exist You May Upload</span><br/>
             <?php }?>
-			<label for="config">New Config:<input type="radio" name="config" value="No" title="No!" <?php if($_POST['config']=='No'){ echo'checked="checked"';}  ?> /></label>
+			<label for="config">New Config:<input type="radio" name="config" value="No" title="No!" <?php if($_POST['config']=='No' or $_SESSION['config']=='No'){ echo'checked="checked"';}  ?> /></label>
             <input name="submit" type="submit" title="submit" class="small success button"/> <input name="reloadform" type="submit" title="Reload" value="Reload" onClick="return confirm('Are you sure you want to reset the form?')"  class="small secondary button" /><br/>
 	</fieldset>
 </form>
@@ -197,7 +200,7 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 	<select style="display:none;" id="customDropdown" class="select2" title="Background" name="page[default_background]">  
 		<?php 
 			$filetypes = array('gif', 'jpg', 'png');
-			$handle= opendir ("../../images/background");
+			$handle= opendir ("../images/background");
 			while ($file = readdir ($handle)){
 				$info = pathinfo($file);
 				if(!in_array($info['extension'], $filetypes))continue;
@@ -285,9 +288,8 @@ if($_SESSION['pluginconfigstats'] == true){ ?>
 				</thead>
                 <tbody>           
 				<tr>
-					<!--<td><input type="checkbox" name="pluginconfigachiv" title="Achievements On" value="< ?php if(!isset($_SESSION['pluginconfigachiv'])){ echo 'true';}else{ echo $_SESSION['pluginconfigachiv'];} ?>" < ?php echo (isset($_POST['pluginconfigachiv'])?'checked="checked"':'') ?>/><br/></td>-->
 					<td><select style="display:none;" id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigachiv">  
-						<?php $achievementstype = array('Achievements', 'Avhievements 2.0', 'Stats & Achievements');
+						<?php $achievementstype = array('Chose Plugin', 'Achievements', 'Avhievements 2.0', 'Stats & Achievements');
 										for($i=0; $i <= (sizeof($achievementstype)-1); $i++){
 											if($_SESSION['pluginconfigachiv'] == $achievementstype[$i])
 												echo ("<option value='".$achievementstype[$i]."' SELECTED>".$achievementstype[$i]."</option>");
@@ -300,9 +302,8 @@ if($_SESSION['pluginconfigstats'] == true){ ?>
 					<td><input type="checkbox" name="pluginconfigjobs" title="Jobs On" value="<?php if(!isset($_SESSION['pluginconfigjobs'])){ echo 'true';}else{ echo $_SESSION['pluginconfigjobs'];} ?>" <?php echo (isset($_POST['pluginconfigjobs'])?'checked="checked"':'') ?>/></td>
 					<td><input type="checkbox" name="pluginconfigmcmmo" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigmcmmo'])){ echo 'true';}else{ echo $_SESSION['pluginconfigmcmmo'];} ?>" <?php echo (isset($_POST['pluginconfigmcmmo'])?'checked="checked"':'') ?>/></td>
                     <td><input type="checkbox" name="pluginconfigpermissionsex" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigpermissionsex'])){ echo 'true';}else{ echo $_SESSION['pluginconfigpermissionsex'];} ?>" <?php echo (isset($_POST['pluginconfigpermissionsex'])?'checked="checked"':'') ?>/></td>
-                    <!--<td><input type="checkbox" name="pluginconfigstats" title="Stats On" value="< ?php if(!isset($_SESSION['pluginconfigstats'])){ echo 'true';}else{ echo $_SESSION['pluginconfigstats'];} ?>" < ?php echo (isset($_POST['pluginconfigstats'])?'checked="checked"':'') ?>/><br/></td>-->
 					<td><select style="display:none;" id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigstats">  
-						<?php $statstype = array('BeardStat', 'HawkEye', 'Logblock', 'Stats & Achievements', 'Stats', 'Stats 2.0', 'Stats by lolmewnstats', 'Statistician v2.0');
+						<?php $statstype = array('Chose Plugin', 'BeardStat', 'HawkEye', 'Logblock', 'Stats & Achievements', 'Stats', 'Stats 2.0', 'Stats by lolmewnstats', 'Statistician v2.0');
 										for($i=0; $i <= (sizeof($statstype)-1); $i++){
 											if($_SESSION['pluginconfigstats'] == $statstype[$i])
 												echo ("<option value='".$statstype[$i]."' SELECTED>".$statstype[$i]."</option>");
@@ -331,7 +332,7 @@ if($_SESSION['pluginconfigstats'] == true){ ?>
 	<select style="display:none;" id="customDropdown" class="select2" title="Background" name="page[default_background]">  
 		<?php 
 			$filetypes = array('gif', 'jpg', 'png');
-			$handle= opendir ("../../images/background");
+			$handle= opendir ("../images/background");
 			while ($file = readdir ($handle)){
 				$info = pathinfo($file);
 				if(!in_array($info['extension'], $filetypes))continue;
@@ -357,12 +358,12 @@ if($_SESSION['pluginconfigstats'] == true){ ?>
 	<label for="page">Main Page Link: <input name="page[homepage_link]" type="text" id="page[homepage_link]" title="Server Name" value="<?php if(!isset($_SESSION['page']['homepage_link'])){ echo 'http://mrplows-server.us';}else{ echo $_SESSION['page']['homepage_link'];} ?>" maxlength="64"/></label>
 	<label for="page">Browser Bookmark Text: <input name="page[bookmark_title]" type="text" id="page[bookmark_title]" title="Server Name" value="<?php if(!isset($_SESSION['page']['bookmark_title'])){ echo 'Server Stats';}else{ echo $_SESSION['page']['bookmark_title'];} ?>" maxlength="40"/></label>
 	<span>Plug-ins</span><hr/>
-<?php if($_SESSION['pluginconfigachiv'] == true){ ?>
+<?php if(($_SESSION['pluginconfigachiv'] == true) and ($_SESSION['pluginconfigachiv'] != 'Chose Plugin')){ ?>
 	<label for="page">Achievments Player Table Name: <input name="page[achiev_player_table_name]" type="text" id="page[achiev_player_table_name]" title="Playertable Name" value="<?php if(!isset($_SESSION['page']['achiev_player_table_name'])){ echo 'playerachievements';}else{ echo $_SESSION['page']['achiev_player_table_name'];} ?>" maxlength="18"/></label>	
 <?php } 
 if($_SESSION['pluginconfigiconomy'] == true){ ?>
-	<label for="page">Iconomy Admin User: <input name="page[iconomy_admin]" type="text" id="page[iconomy_admin]" title="Server Name" value="<?php if(!isset($_SESSION['page']['iconomy_admin'])){ echo 'admin';}else{ echo $_SESSION['page']['iconomy_admin'];} ?>" maxlength="16"/></label>
-	<label for="page">Iconomy Mysql Table Name: <input name="page[iconomy_table_name]" type="text" id="page[iconomy_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['iconomy_table_name'])){ echo 'iconomy';}else{ echo $_SESSION['page']['iconomy_table_name'];} ?>" maxlength="16"/></label>
+	<label for="page">Iconomy - Admin User: <input name="page[iconomy_admin]" type="text" id="page[iconomy_admin]" title="Server Name" value="<?php if(!isset($_SESSION['page']['iconomy_admin'])){ echo 'admin';}else{ echo $_SESSION['page']['iconomy_admin'];} ?>" maxlength="16"/></label>
+	<label for="page">Iconomy - Mysql Table Name: <input name="page[iconomy_table_name]" type="text" id="page[iconomy_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['iconomy_table_name'])){ echo 'iconomy';}else{ echo $_SESSION['page']['iconomy_table_name'];} ?>" maxlength="16"/></label>
 	<label for="page">Iconomy - Name of Major Currency: <input name="page[iconomy_major_currency]" type="text" id="page[iconomy_major_currency]" title="iConomy Major Currency" value="<?php if(!isset($_SESSION['page']['iconomy_major_currency'])){ echo 'Dollar(s)';}else{ echo $_SESSION['page']['iconomy_major_currency'];} ?>" maxlength="20"/></label>
 	<label for="page">Iconomy - Name of Minor Currency: <input name="page[iconomy_minor_currency]" type="text" id="page[iconomy_minor_currency]" title="iConomy Minor Currency" value="<?php if(!isset($_SESSION['page']['iconomy_minor_currency'])){ echo 'Cent(s)';}else{ echo $_SESSION['page']['iconomy_minor_currency'];} ?>" maxlength="20"/></label>
 	<label for="page">Iconomy - Major Symbol: <input name="page[iconomy_major_symbol]" type="text" id="page[iconomy_major_symbol]" title="iConomy Major Symbol" value="<?php if(!isset($_SESSION['page']['iconomy_major_symbol'])){ echo '$';}else{ echo $_SESSION['page']['iconomy_major_symbol'];} ?>" maxlength="1"/></label>
@@ -385,8 +386,8 @@ if($_SESSION['pluginconfigpermissionsex'] == true){ ?>
 	<label for="page">PermissionsEx MySQL Table Name: <input name="page[permissionsex_table_name]" type="text" id="page[permissionsex_table_name]" title="PermissionsEx Table Name" value="<?php if(!isset($_SESSION['page']['permissionsex_table_name'])){ echo 'permissions';}else{ echo $_SESSION['page']['permissionsex_table_name'];} ?>" maxlength="16"/></label> 
     <label for="page">PermissionsEx Default Group Name: <input name="page[permissionsex_default_group]" type="text" id="page[permissionsex_default_group]" title="PermissionsEx Default Group Name" value="<?php if(!isset($_SESSION['page']['permissionsex_default_group'])){ echo 'Default';}else{ echo $_SESSION['page']['permissionsex_default_group'];} ?>" maxlength="25"/></label>
 <?php }
-if($_SESSION['pluginconfigstats'] == true){ ?>
-	<label for="page">Stats MySQL Table: <input name="page[stats_table_name]" type="text" id="page[stats_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['stats_table_name'])){ echo 'stats';}else{ echo $_SESSION['page']['stats_table_name'];} ?>" maxlength="16"/></label>
+if(($_SESSION['pluginconfigstats'] == true) and ($_SESSION['pluginconfigstats'] != 'Chose Plugin')){ ?>
+	<label for="page">Stats - MySQL Table: <input name="page[stats_table_name]" type="text" id="page[stats_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['stats_table_name'])){ echo 'stats';}else{ echo $_SESSION['page']['stats_table_name'];} ?>" maxlength="16"/></label>
 	<label for="page">Stats - Show Played Time In Days, Hours, Minutes : <input type="checkbox" name="page[timechange_on/off]" title="Stats Time Variable" value="<?php if(!isset($_SESSION['page']['timechange_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['timechange_on/off'];} ?>" <?php echo (isset($_POST['page']['timechange_on/off'])?'checked="checked"':'') ?>/></label> 
 <?php } ?>
 	<input name="submitconfig" type="submit" title="Submit Config" onclick="MM_validateForm('mysql[URL]','','R','mysql[PORT]','','RisNum','mysql[user]','','R','mysql[pass]','','R','mysql[data]','','R','page[server_name]','','R','page[server_title]','','R','page[MQ_SERVER_ADDR]','','R','page[MQ_SERVER_PORT]','','RisNum','page[tab_title]','','R','page[default_module]','','R','page[users_per_page]','','R','page[2d_cache_time]','','RisNum','page[player_inactivity]','','RisNum','page[logo_image_link]','','R','page[logo_image_filename]','','R','page[homepage_link]','','R','page[bookmark_title]','','R');return document.MM_returnValue" value="Submit Config" class="small success button" />
@@ -426,7 +427,7 @@ google_ad_height = 50;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>';
-if(isset($_SESSION['pluginconfigachiv'])){
+if((isset($_SESSION['pluginconfigachiv'])) and ($_SESSION['pluginconfigachiv'] != 'Chose Plugin')){
 	$achievments="define('WS_CONFIG_PLAYERACHIEVEMENTS', '".$_SESSION['page']['achiev_player_table_name']."');\n	define('WS_CONFIG_ACHIEVEMENTS', 'ws_achievements'); \n";
 	$pluginconfigstatusachiv="define('pluginconfigstatusachiv', true);\n";
 }
@@ -450,11 +451,20 @@ if($_SESSION['pluginconfigpermissionsex'] == true){
 	$permissionsex="define('WS_CONFIG_PERMISSIONS', '".$_SESSION['page']['permissionsex_table_name']."');\n define('WS_PERMISSIONS_DEFAULT_GROUP', '".$_SESSION['page']['permissionsex_default_group']."');\n";
 	$pluginconfigstatuspermissionsex="define('pluginconfigpermissionsex', ".$_SESSION['pluginconfigpermissionsex'].");\n";
 }
-if(isset($_SESSION['pluginconfigstats'])){
-	if($_SESSION['page']['timechange_on/off'] == true)
-		$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
-	$stats="define('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
-	$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n	define('".$_SESSION['pluginconfigstats']."', true);\n";
+if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] != 'Chose Plugin')){
+	if($_SESSION['pluginconfigstats'] == "stats"){
+		if($_SESSION['page']['timechange_on/off'] == true)
+			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
+		$stats="define('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
+		$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n	define('".$_SESSION['pluginconfigstats']."', true);\n";
+	}
+	else if($_SESSION['pluginconfigstats'] == "Stats by lolmewnstats"){
+		if($_SESSION['page']['timechange_on/off'] == true)
+			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
+		$stats="define('WS_CONFIG_STATS_LOLMEWN_PREFIX', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
+		$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n	define('".$_SESSION['pluginconfigstats']."', true);\n";
+	}
+	else{}
 }
 if($_SESSION['page']['3d_on/off'] == true)
 	$threedsetting="define('WS_CONFIG_3D_USER', ".$_SESSION['page']['3d_on/off'].");\n	";
@@ -468,23 +478,34 @@ if($_POST["submitconfig"] == 'Submit Config')
 	if (is_writable($filename)) {
 		if (!$handle = fopen($filename, 'w')) {
 			echo "Cannot open file ($filename) you may need writing permisions. You can however create the <code>$filename</code> manually and paste the following text into it.";
-        	?><textarea cols="98" rows="15"><?php
-				echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');
-			?></textarea><?php
-			exit;
+        	?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
     	}
     	if (fwrite($handle, $tempfile) === FALSE) {
         	echo "Cannot write to file ($filename). You can however create the <code>$filename</code> manually and paste the following text into it.";
-        	?><textarea cols="98" rows="15"><?php
-				echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');
-			?></textarea><?php
-			exit;
+        	?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
     	}
     	fclose($handle);
-	}else 
-		echo "The file $filename is not writable";
+	}else {
+		$filenamelocal = 'config.php';
+		$ourFileHandle = fopen($filenamelocal, 'w');
+		if (is_writable($filenamelocal)) {
+			if (!$handle = fopen($filenamelocal, 'w')) {
+				echo "Cannot open file ($filenamelocal) you may need writing permisions. You can however create the <code>$filenamelocal</code> manually and paste the following text into it.";
+				?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+			}
+			if (fwrite($handle, $tempfile) === FALSE) {
+				echo "Cannot write to file ($filenamelocal). You can however create the <code>$filenamelocal</code> manually and paste the following text into it.";
+				?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+			}
+			fclose($handle);
+		}else {
+			echo "Cannot write to file ($filename). You can however create the <code>$filename</code> manually and paste the following text into it.";
+			?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+		}
+	}
 }
 //End No--------------------------
 }
 ?>
 </article>
+<?php } ?>

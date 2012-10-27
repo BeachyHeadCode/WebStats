@@ -265,7 +265,10 @@ asideleft
 					</ol>
 					<p><strong><?php echo( "If for any reason this automatic file creation doesn't work, don't worry. All this does is fill in the database information to a configuration file. You may also simply open <code>config-sample.php</code> in a text editor, fill in your information, and save it as <code>config.php</code>." ); ?></strong></p>
 					<p><?php echo( "In all likelihood, these items were supplied to you by your Web Host. If you do not have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;" ); ?></p>
-					<p class="step"><a href="setup-config.php?step=1<?php if ( isset( $_GET['noapi'] ) ) echo '&amp;noapi'; ?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a></p>
+					<p class="step">
+						<a href="setup-config.php?step=1<?php if ( isset( $_GET['noapi'] ) ) echo '&amp;noapi'; ?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a>
+						<a href="setup-config.php?step=3<?php echo '&amp;noapi'; ?>" class="button"><?php echo( 'I&#8217;ll pass and lose a lot of options' ); ?></a>
+					</p>
 			<?php	
 			break;
 			case 1:
@@ -289,10 +292,16 @@ asideleft
 			case 2:
 				$tryagain_link = '</p><p class="step"><a href="setup-config.php?step=1" onclick="javascript:history.go(-1);return false;" class="button">Try Again</a>';
 
-				if(empty($_POST["MySQLHost"]))
+				if(empty($_POST["MySQLHost"]) && empty($_SESSION["MySQLHost"]))
 					ws_die(( '<strong>ERROR</strong>: "Host Location" must not be empty.' . $tryagain_link ));
-				if(empty($_POST["MySQLPort"]))
+				if(empty($_POST["MySQLPort"]) && empty($_SESSION["MySQLPort"]))
 					ws_die(( '<strong>ERROR</strong>: "Host Port" must not be empty.' . $tryagain_link ));
+				if(empty($_POST["MySQLUserName"]) && empty($_SESSION["MySQLUserName"]))
+					ws_die(( '<strong>ERROR</strong>: "Username" must not be empty.' . $tryagain_link ));
+				if(empty($_POST["MySQLPassword"]) && empty($_SESSION["MySQLPassword"]))
+					ws_die(( '<strong>ERROR</strong>: "Password" must not be empty.' . $tryagain_link ));
+				if(empty($_POST["MySQLDatabase"]) && empty($_SESSION["MySQLDatabase"]))
+					ws_die(( '<strong>ERROR</strong>: "Database" must not be empty.' . $tryagain_link ));
 				display_header();
 			?>
 			<form action="setup-config.php?step=3" method="post" class="custom">
@@ -308,7 +317,17 @@ asideleft
 			break;
 			case 3:
 				display_header();
-				require_once('configsetup.php');
+				if(isset( $_GET['noapi'] )){
+					require_once('configsetup.php');
+				}
+				else{
+					if ($usernameTaken === false){
+						require_once('configsetup.php');
+					}
+					else{
+						ws_die(( '<strong>ERROR</strong>: "Username" ('.$_SESSION['Username'].') was taken.' . $tryagain_link ));
+					}
+				}
 			break;
 		}
 		if($step == 1 || $step == 2) {
@@ -323,14 +342,16 @@ asideleft
 			$DB -> conn($host, $user, $pass, $db, $createdb);
 			$username = $_SESSION['Username'];
 			$password = $_SESSION['Password'];
-
+			
 			if(!empty($_SESSION['Username']) && !empty($_SESSION['Password'])){
-					$finduser='SELECT * FROM `users` WHERE `username` = "$username"';
-				if (!mysql_query($finduser)){
-					$userinsert = "INSERT INTO `users`(`username`, `password`, `IP`, `hostname`, `location`, `date`, `email`, `cookie_pass`, `actcode`, `rank`, `lastactive`, `lastlogin`) VALUES ('".$username."', '".md5($password)."', '".$ip."', '".$hostname."', '".$location."', '".$today."', '".$email."', '', '', '1', NOW(), NOW())";	
+				$query = mysql_query("SELECT `username` FROM `users` WHERE `username` = '$username' and `username` != ''");
+				$row = mysql_fetch_array($query);
+				if (isset($row[0])){
+					echo "Username ('$row[0]') already exists!<br />";
+					$usernameTaken = true;
 				}
 				else{
-					echo 'Username already exists!';
+					$userinsert = "INSERT INTO `users`(`username`, `password`, `IP`, `hostname`, `location`, `date`, `email`, `cookie_pass`, `actcode`, `rank`, `lastactive`, `lastlogin`) VALUES ('$username', '".md5($password)."', '$ip', '$hostname', '$location', '$today', '$email', '', '', '1', NOW(), NOW())";
 				}
 			}
 			if (!mysql_query($userinsert)){
@@ -351,6 +372,7 @@ asideleft
 		PRIMARY KEY (`ID`)
 ) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")){
 					echo "Table Created :) \n";
+					mysql_query($userinsert);
 				}
 				else
 				{
