@@ -282,8 +282,8 @@ else{
 					<h2>Minecraft Server</h2>
 					<p>
 						<table>
-							<tr><th><span>Minecraft Server:</span><br/><?php echo MQ_SERVER_ADDR.":".MQ_SERVER_PORT?></th></tr>
-							<tr><th><span>Teamspeak:</span><br/></th></tr>
+							<tr><th><span>Minecraft Server: </span><?php echo MQ_SERVER_ADDR.":".MQ_SERVER_PORT?></th></tr>
+							<tr><th><span>Teamspeak: </span></th></tr>
                         <?php    $minecraftServer = pingMineServ(MQ_SERVER_ADDR, MQ_SERVER_PORT);
 								if($minecraftServer !== -1){?>
                             <tr><th><a href="include/minecraftquery/index.php"<span>Click Here For More Server Info</span></a><br/></th></tr>
@@ -294,7 +294,7 @@ else{
 				</div>
 				</div>
 				<div class="row">
-					<div class="ten columns">
+					<div class="nine columns">
 						<div name="Languages By Google" class="head_language">
 							<div id="google_translate_element"></div>
 							<script>
@@ -303,16 +303,16 @@ else{
 							<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 						</div>
 					</div>
-					<div class="two column">
+					<div class="three column">
 						<div class="head_language">
-							<span>Drag to your bookmark bar:</span><br />
+							<span>Drag to your bookmark bar:</span><br /><br />
 							<a id="bookmarklet" href="<?php echo curPageURL();?>" <?php echo (hover);?> title="Drag to your bookmarks bar."><?php echo(WS_BOOKMARK);?></a>
 						</div>
 					</div>
 				</div>
 			</div>			    
 	</header>
-	<div class="row" style="background-image:url(../images/table_bg.png);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;">
+	<div class="row" style="background-image:url(../images/table_bg.png);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;padding-top:30px;">
 		<?php include('include/menu.php'); ?>
 	</div>
 	<div class="row" role="searchbar">

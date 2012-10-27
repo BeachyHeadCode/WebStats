@@ -1,19 +1,16 @@
 <?php
-function get_amount($user, $stat, $location)
-{
+function get_amount($user, $stat, $location) {
 	$query = mysql_query("SELECT `$stat`, `player` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."$location` WHERE player='$user'");
 	$data = @mysql_fetch_array($query);
 	return $data[0];
 }
-function get_user($sort)
-{
+function get_user($sort) {
 	if(!isset($sort)) {$sort = 'player';}
 	$sortkey = "ORDER BY $sort";
 
 	$query = mysql_query("SELECT * FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` ".$sortkey."");
 	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$players[$time] = $row[0];
 		$time++;
 	}  
@@ -24,7 +21,7 @@ function get_user_stats($sort, $start, $end) {
 	if(!isset($sort)) {
 		$sort = 'player';
 	}
-	//$deadline = time() - WS_CONFIG_DEADLINE;
+	$deadline = time() - WS_CONFIG_DEADLINE;
 	$sortkey = "ORDER BY $sort";
 	$query = mysql_query("SELECT $sort FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;

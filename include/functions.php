@@ -263,7 +263,7 @@ function get_pages($numbers, $mode, $sort)
 					$pages .='<li class="arrow unavailable"><a href="">&raquo;</a></li>';
 				}
 			}
-			elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-6))){
+			elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))){
 				$pages = '<li class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></li>';
 				$pages .= '<li><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
 				$pages .= '<li class="unavailable"><a href="">&hellip;</a></li>';
@@ -277,7 +277,7 @@ function get_pages($numbers, $mode, $sort)
 					}
 				}
 				$pages .= '<li class="unavailable"><a href="">&hellip;</a></li>';
-				$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.$numbers.'</a></li>';
+				$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></li>';
 				$pages .='<li class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></li>';
 			}
 			elseif($_GET["page"] == $numbers){
@@ -295,7 +295,7 @@ function get_pages($numbers, $mode, $sort)
 				}
 				$pages .='<li class="arrow unavailable"><a href="">&raquo;</a></li>';
 			}
-			/*if(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))){
+			if(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))){
 				$pages = '<li class="arrow"><a href="">&laquo;</a></li>';
 				$pages .= '<li><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
 				$pages .= '<li class="unavailable"><a href="">&hellip;</a></li>';
@@ -311,7 +311,7 @@ function get_pages($numbers, $mode, $sort)
 					}
 				}
 				$pages .='<li class="arrow"><a href="">&raquo;</a></li>';
-			}*/
+			}
 		}
 		else{
 			$pages = '<li class="arrow unavailable"><a href="">&laquo;</a></li>';

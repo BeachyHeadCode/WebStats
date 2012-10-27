@@ -19,8 +19,29 @@ function id_index_table(){
 					$z = ':'.$x;
 					$item_name = translate($i.$z);
 				}
-				else if($x == 8193 or $x == 8255 or $x == 8257){  
+				else if($x == 8195 or $x == 8227 or $x == 8259){  // Potion of Fire Resistance
+					$z = '-2';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8193 or $x == 8255 or $x == 8257){  // Potion of Regeneration
 					$z = '-5';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8229 or $x == 8261 or $x == 8197){  // Potion of Healing
+					$z = '-7';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8194 or $x == 8226 or $x == 8258){  // Potion of Swiftness
+					$z = '-11';
 					$item_id = $i;
 					$item_img = $i.$z;
 					$z = ':'.$x;
