@@ -109,7 +109,7 @@ v2.0-Delta (3/26/2012 EST 8:--PM)
 - Fixed Players Not Being Shown On Material Page.
 - Added Search Feature*works to ID page.
 - Added Search For Players in Any Plugin.
-- Added Jail.
+- Added <a href="http://dev.bukkit.org/server-mods/jail/">Jail</a>.
 - Re-Added Return To Homepage.
 
 v2.0-gamma (3/21/2012 EST 4:51PM)

@@ -434,6 +434,10 @@ function translate($item)
 		elseif ($item == "m27")						{$item = "Mooshroom";}
 		elseif ($item == "m28")						{$item = "Ocelot";}
 		elseif ($item == "m29")						{$item = "Iron Golem";}
+		elseif ($item == "m30")						{$item = "Wither";}
+		elseif ($item == "m31")						{$item = "Wither Skeleton";}
+		elseif ($item == "m32")						{$item = "Zombie Villager";}
+		elseif ($item == "m33")						{$item = "Bat";}
 
 		// Begin of Damagesource translation
 		elseif ($item == "d0")						{$item = "Total";}

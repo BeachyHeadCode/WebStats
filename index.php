@@ -1,6 +1,6 @@
 <?php
 require_once('include/version.php');
-if (version_compare(PHP_VERSION, '3.2.4') >= 0){
+if (version_compare(PHP_VERSION, $required_php_version) >= 0){
 	$start_time = explode(" ",microtime()); 
 	$start_time = $start_time[1] + $start_time[0]; 	
 	if(file_exists('config/config.php'))
@@ -25,7 +25,7 @@ if (version_compare(PHP_VERSION, '3.2.4') >= 0){
 	$_SESSION['mode']=$_GET['mode'];
 	$_SESSION['page']['numbers']=$_POST['page']['numbers'];
 
-if(iptracker === true) // to be added to allow this to be toggled on and off withing the admin page
+if($iptracker === true) // to be added to allow this to be toggled on and off withing the admin page
 {	
 	final class ip2location_lite{
 	protected $errors = array();
@@ -215,9 +215,7 @@ $DB -> close();
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
-    <script type="text/javascript" src="javascripts/jquery.easing.1.3.js"></script>
-	<script type='text/javascript' src="javascripts/jquery-cookie.min.js"></script>              
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.js'></script>            
 </head>
 <body class="off-canvas" style="background-repeat:repeat;text-align:center;color:#333322;background-attachment:fixed;background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png'); <?php echo (defaultt); ?>">
 <?php
@@ -354,14 +352,13 @@ else{
        	<span style="font-size:xx-small">(Loading time: <?php echo $speed; ?>s)</span>
 		</p>
 		<?php 
-			if (iptracker === true){
+			if ($iptracker === true){
 					echo"&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
 					if(isset($date[0]))
 						echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
 					else { 
 						echo '';
 					}
-					
 			}
 ?>
 	</footer>
@@ -377,9 +374,8 @@ else{
 		</div>
 </section>
   <!-- Included JS Files (Uncompressed) -->
-  <!--
+
   <script src="javascripts/modernizr.foundation.js"></script>
-  <script src="javascripts/jquery.js"></script>
   <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
   <script src="javascripts/jquery.foundation.reveal.js"></script>
   <script src="javascripts/jquery.foundation.orbit.js"></script>
@@ -391,12 +387,9 @@ else{
   <script src="javascripts/jquery.foundation.accordion.js"></script>
   <script src="javascripts/jquery.placeholder.js"></script>
   <script src="javascripts/jquery.foundation.alerts.js"></script>
-  -->
-  <!-- Included JS Files (Compressed) -->
-  <script src="javascripts/foundation.min.js"></script>
   <!-- Initialize JS Plugins -->
   <script src="javascripts/app.js"></script>
 </body>
 </html>
-<?php } else { echo 'Please install php version 5.2.5 or better!';}
+<?php } else { ECHO ('Please install php version 5.2.5 or better!');}
 ?>
