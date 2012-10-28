@@ -9,8 +9,6 @@ This was based on <a href="http://forums.bukkit.org/threads/web-webstatistic-for
 
 Webstatistic for Minecraft is shortened to WS in the following text:
 
-For issue, suggestion, source code, and other content go HERE
-
 Vote For The Plugin. <a href="http://www.surveymonkey.com/s/8HF72BK">HERE</a>
 
 - Steam Group <a href="http://steamcommunity.com/groups/WSFM">HERE</a>
@@ -30,14 +28,12 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 - BeardAch * NOT KNOWN YET. Sorry
 -----------------------------------------------------------------------------------------------------------------------
 - <a href="http://dev.bukkit.org/server-mods/iconomy/">iConomy</a> ~ <a href="https://github.com/iConomy/Core">GitHub</a> *WORKS
+- <a href="http://dev.bukkit.org/server-mods/iconomy-continued/">iConomy [Continued]</a> ~ <a href="https://github.com/rtainc/iCo">GitHub</a> * Sould Work
 - <a href="http://dev.bukkit.org/server-mods/jail/">Jail</a> ~ <a href="https://github.com/matejdro/Jail">GitHub</a> * WORKS
 - <a href="http://dev.bukkit.org/server-mods/jobs/">Jobs</a> ~ <a href="https://github.com/phrstbrn/Jobs">GitHub</a> *WORKS
 - <a href="http://dev.bukkit.org/server-mods/mcmmo/">McMMO</a> ~ <a href="https://github.com/mcMMO-Dev/mcMMO">GitHub</a> *WORKS
 - <a href="http://dev.bukkit.org/server-mods/stats/">Stats</a> *WORKS (In Build 1.1-R6)
 - <a href="http://dev.bukkit.org/server-mods/tno-stats/">Stats 2.0</a> *WORKS (Up to Build 1.1-R4)
-- <a href="http://dev.bukkit.org/server-mods/beardstat/">BeardStat</a> *WORKS[Known R6-build 2034 (MC:1.2.3)] - Uses same layout as Stats as I know of.
-- <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a> - TBA
-
 
 What are the requirements of WS?
 - PHP (tested with v5.2.5 and above)
@@ -58,18 +54,20 @@ Installation
 	~'config\config.php'
 
 To-Do:
-- Finish Brewing Pages
 - Add Smelting Pages
 - Admin Page
 - Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement
 - Add Rest Of ID's and Add The Extra ID's To Main ID's Page example ( 15:1 15:2 goes onto 15 page)
-- Add InventorySQL
-- Add Stats & Achievements Support
-- Add BeardStat & BeardAch Support
-- Add HawkEye Support
-- Add Statistician v2.0 Support
+- Add <a href="http://dev.bukkit.org/server-mods/inventorysql/">InventorySQL</a> ~ <a href="https://github.com/ThisIsAreku/InventorySQL">GitHub</a>
+- Add <a href="http://dev.bukkit.org/server-mods/saaplugin/">Stats & Achievements</a> ~ <a href="http://git.s7t.de/maniacraft-plugins/statsandachievements">source</a>
+- Add <a href="http://dev.bukkit.org/server-mods/beardach/">BeardAch</a> ~ <a href="https://github.com/tehbeard/BeardAch">GitHub</a>
+- Add <a href="http://dev.bukkit.org/server-mods/hawkeye/">HawkEye</a> ~ <a href="https://github.com/oliverw92/HawkEye">GitHub</a>
+- Add <a href="http://dev.bukkit.org/server-mods/statisticianv2/">Statistician v2.0</a> ~ <a href="https://github.com/Crimsonfoxy/Statistician-v2">GitHub</a>
 - Add Smart Phone Support * iPhone, Droid.
 - Add <a href="http://dev.bukkit.org/server-mods/jailplusplus/">Jail ++</a> ~ <a href="https://github.com/UltimateDev/jailplusplus/">GitHub</a>
+- Add <a href="http://dev.bukkit.org/server-mods/beardstat/">BeardStat</a> ~ <a href="https://github.com/tehbeard/BeardStat">GitHub</a>
+- Add <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a> - TBA
+- Add <a href="http://dev.bukkit.org/server-mods/iconomy-continued/">iConomy [Continued]</a> <a href="https://github.com/rtainc/iCo">GitHub</a>
 
 Will Not Add:
 -Achievement, since it does not support bukkit build 2126
@@ -77,7 +75,7 @@ Will Not Add:
 Downloads:
 
 
-v3.0(No ETA)
+v3.0-beta(out) final(No ETA)
 - Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.
 - Added Admin Page.
 - Added Smart Phone Support * iPhone(Added Foundation v3.2)
@@ -85,11 +83,12 @@ v3.0(No ETA)
 - Added IP Tracker.
 - Updated A few items photos larger image.
 - Updated Brewing Functions
-- Added A few Brewing Items
+- Added All Brewing Items Up To Minecraft v1.4
 - Removed/Updated ID page functions * still slow (using foundations) due to the amount of css.
 - Updated Config Installer with notes on what is what.
 - MySQL is much more easy for people to understand *(now once more able to set databases for each plugin verse 1 for all - not recommended).
-- Capability of a dynamic stats plugin change
+- Capability of a dynamic stats and achievments plugin change. 
+- Added Support for <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats v1.071 by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a>
 
 --------------------------------		OLD 		----------------------------------------------------------
 v2.1(4/5/2012 EST 10:23AM)

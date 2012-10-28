@@ -77,6 +77,8 @@ define('WS_CONFIG_MCMMO_DEFAULT', 'user ASC');
 define('WS_CONFIG_PERMISSIONS', 'permissions');
 define('WS_PERMISSIONS_DEFAULT_GROUP', 'Default');
 //Stats Settings.
+//Set What Stats Plugin To Use (e.g. stats, stats-lolmewn).
+define('WS_CONFIG_STATS_PLUGIN', 'stats-lolmewn');
 define('WS_CONFIG_STATS', 'stats');
 define('WS_CONFIG_STATS_LOLMEWN_PREFIX', 'stats');
 define('WS_CONFIG_PLAYTIME', true);
