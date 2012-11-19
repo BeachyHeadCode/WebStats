@@ -39,14 +39,14 @@ else
 	<link rel="apple-touch-icon" href="../images/favicon.png" />
 	<!-- Included CSS Files (Uncompressed) -->
 	<!--
-	<link rel="stylesheet" href="stylesheets/foundation.css">
+	<link rel="stylesheet" href="../stylesheets/foundation.css">
 	-->
   
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" type="text/css" href="stylesheets/foundation.min.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/app.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/app.css">
 
-	<script type="text/javascript" src="javascripts/modernizr.foundation.js"></script>
+	<script type="text/javascript" src="../javascripts/modernizr.foundation.js"></script>
 
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
