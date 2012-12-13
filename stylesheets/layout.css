@@ -50,7 +50,7 @@ transition: 0.25s all ease-in; */
 	position:					fixed;
 	float:						right;
 	right:						0px;
-	top:						160px;
+	top:						180px;
 	padding:					5px;
 	background-image:				url(../images/table_bg.png);	
 	margin: 					auto;
