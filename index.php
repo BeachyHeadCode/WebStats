@@ -215,6 +215,11 @@ $DB -> close();
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	<link rel="stylesheet" href="stylesheets/general_enclosed_foundicons.css">
+	<!--[if lt IE 8]>
+		<link rel="stylesheet" href="stylesheets/general_enclosed_foundicons_ie7.css">
+	<![endif]-->
+  
 	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>            
 </head>
 <body class="off-canvas" style="background-repeat:repeat;text-align:center;color:#333322;background-attachment:fixed;background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png'); <?php echo (defaultt); ?>">
@@ -343,7 +348,7 @@ else{
 		<div role="footerAD"><?php echo (WS_GOOGLE_FOOTER); ?></div>
 		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div>
 		<p><em>
-				<a href="http://mrplows-server.us" target="_blank">mrplows-server.us</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a href="http://minecraft.net">Minecraft</a>
+				<a href="http://cky2250.github.com/WebStats/" target="_blank">mrplows-server.us</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a href="http://minecraft.net">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
 				<a href="termsofuse.php">Terms Of Use</a>

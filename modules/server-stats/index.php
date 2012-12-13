@@ -29,8 +29,8 @@ else {$_GET['search'] = 'ORDER BY SUM(value) DESC';}
 		<li class="active" id="PlayerTab">
 			<table>
 				<tr>
-					<td style="min-width:363px;"><?php echo translate('var21'); ?>:</td>
-					<td style="min-width:363px;"><?php echo translate('var22'); ?>:</td>
+					<td style="min-width:363px;"><?php echo translate('var21');?>:</td>
+					<td style="min-width:363px;"><?php echo translate('var22');?>:</td>
 				</tr>
 				<tr>
 					<td style="min-width:373px;"><?php echo (set_server_didkill_table($_GET['search'])); ?></td>
@@ -41,28 +41,26 @@ else {$_GET['search'] = 'ORDER BY SUM(value) DESC';}
 		<li id="BlocksTab">   
 			<table>
 				<tr>
-					<td style="min-width:363px;"><?php echo translate('var8'); ?>: </td>
-					<td style="min-width:363px;"><?php echo translate('var9'); ?> </td>
+					<td style="min-width:363px;"><?php echo translate('var8');?>:</td>
+					<td style="min-width:363px;"><?php echo translate('var9');?>:</td>
 				</tr>
 				<tr>
-					<td style="min-width:373px;"><?php echo (set_server_destroy_table($_GET['search'])); ?> </td>
-					<td style="min-width:373px;"><?php echo (set_server_build_table($_GET['search'])); ?> </td>
+					<td style="min-width:373px;"><?php echo (set_server_destroy_table($_GET['search']));?></td>
+					<td style="min-width:373px;"><?php echo (set_server_build_table($_GET['search']));?></td>
 				</tr>
 			</table>
 		</li>
 		<li id="DamageTab">
 			<table>                
 				<tr>
-					<td style="min-width:363px;"><?php echo translate('var11'); ?> </td>
-					<td style="min-width:363px;"><?php echo translate('var10'); ?>: </td>
+					<td style="min-width:363px;"><?php echo translate('var11');?>:</td>
+					<td style="min-width:363px;"><?php echo translate('var10');?>:</td>
 				</tr>					
 				<tr>
-					<td style="min-width:373px;"><?php echo (set_server_damagedealt_table($_GET['search'])); ?> </td>
-					<td style="min-width:373px;"><?php echo (set_server_damagereceived_table($_GET['search'])); ?> </td>
+					<td style="min-width:373px;"><?php echo (set_server_damagedealt_table($_GET['search']));?></td>
+					<td style="min-width:373px;"><?php echo (set_server_damagereceived_table($_GET['search']));?></td>
 				</tr>
 			</table>
 		</li>	
 	</ul>
 </div>
-
-

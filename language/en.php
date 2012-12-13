@@ -198,6 +198,28 @@ function translate($item)
 		elseif ($item == "122")           {$item = "Dragon Egg";}
 		elseif ($item == "123")           {$item = "Redstone Lamp (inactive)";}
 		elseif ($item == "124")           {$item = "Redstone Lamp (active)";}
+		elseif ($item == "125")           {$item = "Wooden Double Slab";}
+		elseif ($item == "126")           {$item = "Wooden Slab";}
+		elseif ($item == "127")           {$item = "Cocoa Pod";}
+		elseif ($item == "128")           {$item = "Sandstone Stairs";}
+		elseif ($item == "129")           {$item = "Emerald Ore";}
+		elseif ($item == "130")           {$item = "Ender Chest";}
+		elseif ($item == "131")           {$item = "Tripwire Hook";}
+		elseif ($item == "132")           {$item = "Tripwire";}
+		elseif ($item == "133")           {$item = "Block of Emerald";}
+		elseif ($item == "134")           {$item = "Spruce Wood Stairs";}
+		elseif ($item == "135")           {$item = "Birch Wood Stairs";}
+		elseif ($item == "136")           {$item = "Jungle Wood Stairs";}
+		elseif ($item == "137")           {$item = "Command Block";}
+		elseif ($item == "138")           {$item = "Beacon";}
+		elseif ($item == "139")           {$item = "Cobblestone Wall";}
+		elseif ($item == "140")           {$item = "Flower Pot";}
+		elseif ($item == "141")           {$item = "Carrots";}
+		elseif ($item == "142")           {$item = "Potatoes";}
+		elseif ($item == "143")           {$item = "Wooden Button";}
+		elseif ($item == "144")           {$item = "Head";}
+		elseif ($item == "145")           {$item = "Anvil";}
+		
 		elseif ($item == "200")           {$item = "Ender Crystal";}
 		elseif ($item == "256")           {$item = "Iron Shovel";}
 		elseif ($item == "257")           {$item = "Iron Pickaxe";}
@@ -389,9 +411,49 @@ function translate($item)
 		elseif ($item == "380")           {$item = "Cauldron";}
 		elseif ($item == "381")           {$item = "Eye of Ender";}
 		elseif ($item == "382")           {$item = "Glistering Melon";}
-		elseif ($item == "383")           {$item = "Spawn Egg ";}
+		//------------- SPAWN EGGS -----
+		elseif ($item == "383:50")           {$item = "Spawn Creeper";}
+		elseif ($item == "383:51")           {$item = "Spawn Skeleton";}
+		elseif ($item == "383:52")           {$item = "Spawn Spider";}
+		elseif ($item == "383:54")           {$item = "Spawn Zombie";}
+		elseif ($item == "383:55")           {$item = "Spawn Slime";}
+		elseif ($item == "383:56")           {$item = "Spawn Ghast";}
+		elseif ($item == "383:57")           {$item = "Spawn Pigman";}
+		elseif ($item == "383:58")           {$item = "Spawn Enderman";}
+		elseif ($item == "383:59")           {$item = "Spawn Cave Spider";}
+		elseif ($item == "383:60")           {$item = "Spawn Silverfish";}
+		elseif ($item == "383:61")           {$item = "Spawn Blaze";}
+		elseif ($item == "383:62")           {$item = "Spawn Magma Cube";}
+		elseif ($item == "383:90")           {$item = "Spawn Pig";}
+		elseif ($item == "383:91")           {$item = "Spawn Sheep";}
+		elseif ($item == "383:92")           {$item = "Spawn Cow";}
+		elseif ($item == "383:93")           {$item = "Spawn Chicken";}
+		elseif ($item == "383:94")           {$item = "Spawn Squid";}
+		elseif ($item == "383:95")           {$item = "Spawn Wolf";}
+		elseif ($item == "383:96")           {$item = "Spawn Mooshroom";}
+		elseif ($item == "383:98")           {$item = "Spawn Ocelot";}
+		elseif ($item == "383:120")           {$item = "Spawn Villager";}
+		//------------- END SPAWN ENGGS ---------------------
 		elseif ($item == "384")           {$item = "Bottle o' Enchanting";}
 		elseif ($item == "385")           {$item = "Fire Charge";}
+		elseif ($item == "386")           {$item = "Book and Quill";}
+		elseif ($item == "387")           {$item = "Written Book";}
+		elseif ($item == "388")           {$item = "Emerald";}
+		elseif ($item == "389")           {$item = "Item Frame";}
+		elseif ($item == "390")           {$item = "Flower Pot";}
+		elseif ($item == "391")           {$item = "Carrots";}
+		elseif ($item == "392")           {$item = "Potato";}
+		elseif ($item == "393")           {$item = "Baked Potato";}
+		elseif ($item == "394")           {$item = "Poisonous Potato";}
+		elseif ($item == "395")           {$item = "Map";}
+		elseif ($item == "396")           {$item = "Golden Carrot";}
+		elseif ($item == "398")           {$item = "Carrot on a Stick";}
+		elseif ($item == "399")           {$item = "Nether Star";}
+		elseif ($item == "400")           {$item = "Pumpkin Pie";}
+		elseif ($item == "401")           {$item = "Firework Rocket";}
+		elseif ($item == "402")           {$item = "Firework Star";}
+		elseif ($item == "403")           {$item = "Enchanted Book";}
+		
 		elseif ($item == "2256")           {$item = "Gold Music Disc";}
 		elseif ($item == "2257")           {$item = "Green Music Disc";}
 		elseif ($item == "2258")           {$item = "Blocks Disc";}
@@ -403,6 +465,7 @@ function translate($item)
 		elseif ($item == "2264")           {$item = "Strad Disc";}
 		elseif ($item == "2265")           {$item = "Ward Disc";}
 		elseif ($item == "2266")           {$item = "11 Disc";}
+		elseif ($item == "2267")           {$item = "wait Disc";}
 		
 		// Begin of Enemy translation
 		elseif ($item == "m1")						{$item = "Chicken";}
@@ -438,8 +501,35 @@ function translate($item)
 		elseif ($item == "m31")						{$item = "Wither Skeleton";}
 		elseif ($item == "m32")						{$item = "Zombie Villager";}
 		elseif ($item == "m33")						{$item = "Bat";}
+		elseif ($item == "m34")						{$item = "Witch";}
 
-		// Begin of Damagesource translation
+		// Beginning of Biomes
+		elseif ($item == "b-1")						{$item = "Uncalculated";}
+		elseif ($item == "b0")						{$item = "Ocean";}
+		elseif ($item == "b1")						{$item = "Plains";}
+		elseif ($item == "b2")						{$item = "Desert";}
+		elseif ($item == "b3")						{$item = "Extreme Hills";}
+		elseif ($item == "b4")						{$item = "Forest";}
+		elseif ($item == "b5")						{$item = "Taiga";}
+		elseif ($item == "b6")						{$item = "Swampland";}
+		elseif ($item == "b7")						{$item = "River";}
+		elseif ($item == "b8")						{$item = "Hell (Nether)";}
+		elseif ($item == "b9")						{$item = "Sky (End)";}
+		elseif ($item == "b10")						{$item = "Frozen Ocean";}
+		elseif ($item == "b11")						{$item = "Frozen River";}
+		elseif ($item == "b12")						{$item = "Ice Plains";}
+		elseif ($item == "b13")						{$item = "Ice Mountains";}
+		elseif ($item == "b14")						{$item = "Mushroom Island";}
+		elseif ($item == "b15")						{$item = "Mushroom Island Shore";}
+		elseif ($item == "b16")						{$item = "Beach";}
+		elseif ($item == "b17")						{$item = "Desert Hills";}
+		elseif ($item == "b18")						{$item = "Forest Hills";}
+		elseif ($item == "b19")						{$item = "Taiga Hills";}
+		elseif ($item == "b20")						{$item = "Extreme Hills Edge";}
+		elseif ($item == "b21")						{$item = "Jungle";}
+		elseif ($item == "b22")						{$item = "Jungle Hills";}
+		
+		// Beginning of Damagesource translation
 		elseif ($item == "d0")						{$item = "Total";}
 		elseif ($item == "d1")						{$item = "Drowning";}
 		elseif ($item == "d2")						{$item = "Suffocation";}
@@ -448,7 +538,7 @@ function translate($item)
 		elseif ($item == "d5")						{$item = "Explosion";}
 		elseif ($item == "d6")						{$item = "Fire Stick";}
 		
-		// Begin of Website translation
+		// Beginning of Website translation
 		elseif ($item == "var1") 					{$item = "Order by name";}
 		elseif ($item == "var2")					{$item = "Order by value";}
 		elseif ($item == "var3") 					{$item = "Player";}

@@ -104,8 +104,8 @@
 	<li class="active" id="BlocksTab">
 	<table>
 		<tr>
-			<td style="min-width:363px;"><?php echo translate('var8'); ?>:</td>
-			<td style="min-width:363px;"><?php echo translate('var9');?></td>
+			<td style="min-width:363px;"><?php echo translate('var8');?>:</td>
+			<td style="min-width:363px;"><?php echo translate('var9');?>:</td>
 		</tr>
 		<tr>
 			<td style="min-width:373px;"><?php echo(set_player_destroy_table(htmlentities($_GET['user']), $_GET['search']));?></td>
@@ -118,8 +118,8 @@
 	<li id="DamageTab"> 
 	<table>
 		<tr>
-			<td style="min-width:363px;"><?php echo translate('var10'); ?>:</td>
-			<td style="min-width:363px;"><?php echo translate('var11'); ?>:</td>
+			<td style="min-width:363px;"><?php echo translate('var10');?>:</td>
+			<td style="min-width:363px;"><?php echo translate('var11');?>:</td>
 		</tr>
 		<tr>
 			<td style="min-width:373px;"><?php echo(set_player_damagedealt_table(htmlentities($_GET['user']), $_GET['search']));?></td>

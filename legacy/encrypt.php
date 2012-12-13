@@ -206,6 +206,7 @@ function encrypt($item)
 		elseif ($item == "354")             {$item = "cake";}
 		elseif ($item == "355")             {$item = "bed";}
 		elseif ($item == "356")             {$item = "repeater";}
+		elseif ($item == "401")             {$item = "fireworkrocket";}
 		elseif ($item == "2256")             {$item = "goldrecord";}
 		elseif ($item == "2257")             {$item = "greenrecord";}
 

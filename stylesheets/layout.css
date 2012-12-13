@@ -590,3 +590,74 @@ a:hover {
 #permissionsex_permissions{
 			width:						300px;
 }
+
+.grid-Furnace {
+padding-left: 24px;
+padding-right: 24px;
+}
+.grid-Crafting_Table, .grid-Furnace, .grid-Brewing_Stand table, .grid-generic {
+background: #C6C6C6;
+border: outset 2px #999;
+padding: 6px;
+text-align: left !important;
+}
+
+.grid-Furnace .arrow {
+padding-right: 18px !important;
+padding-left: 14px !important;
+}
+.grid-Furnace .arrow, .grid-Furnace .output {
+text-align: center;
+vertical-align: middle;
+}
+.grid-Furnace .arrow, .grid-Furnace .output {
+text-align: center;
+vertical-align: middle;
+}
+
+.grid-Furnace .arrow, .grid-Furnace .output {
+text-align: center;
+vertical-align: middle;
+}
+.grid2.output {
+height: 48px;
+width: 48px;
+}
+.grid2 {
+display: inline-block;
+position: relative;
+text-align: left !important;
+background-color: #8B8B8B;
+height: 32px;
+width: 32px;
+padding: 2px;
+vertical-align: bottom;
+}
+.grid2 .border {
+display: block;
+margin: -2px 0 0 -2px;
+border-style: solid none none solid;
+border-width: 2px;
+border-color: #373737;
+height: 100%;
+}
+Inherited from td.output
+.grid-Furnace .arrow, .grid-Furnace .output {
+text-align: center;
+}
+Inherited from table.grid-Furnace
+.grid-Crafting_Table, .grid-Furnace, .grid-Brewing_Stand table, .grid-generic {
+text-align: left !important;
+}
+
+.grid2.output .image {
+top: 10px;
+left: 10px;
+}
+.grid2 .image, .grid2 .default-image {
+position: absolute;
+line-height: 16px;
+top: 2px;
+width: 32px;
+height: 32px;
+}

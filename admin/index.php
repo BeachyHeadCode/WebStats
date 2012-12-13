@@ -52,7 +52,10 @@ else
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	
+	<link rel="stylesheet" href="stylesheets/general_enclosed_foundicons.css">
+	<!--[if lt IE 8]>
+		<link rel="stylesheet" href="../../stylesheets/general_enclosed_foundicons_ie7.css">
+	<![endif]-->
 	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>  
 </head>
 <body style="background-color:rgb(228, 228, 228);">
