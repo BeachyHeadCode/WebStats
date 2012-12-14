@@ -128,13 +128,9 @@ return $output;
 <title>WebStats &rsaquo; ADMIN PAGE &rsaquo; IP Track</title>
 	<link rel="SHORTCUT ICON" type='image/x-icon' href="../images/favicon.ico"/>
 	<link rel="apple-touch-icon" href="../images/favicon.png" />
-	<!-- Included CSS Files (Uncompressed) -->
-	<!--
-	<link rel="stylesheet" href="stylesheets/foundation.css">
-	-->
   
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" href="../stylesheets/foundation.min.css">
+	<link rel="stylesheet" href="../stylesheets/foundation.css">
 	<link rel="stylesheet" href="../stylesheets/app.css">
 	<script src="javascripts/modernizr.foundation.js"></script>
 

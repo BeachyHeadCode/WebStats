@@ -51,7 +51,6 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>Add <a href="http://dev.bukkit.org/server-mods/statisticianv2/">Statistician v2.0</a> ~ <a href="https://github.com/Crimsonfoxy/Statistician-v2">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/jailplusplus/">Jail ++</a> ~ <a href="https://github.com/UltimateDev/jailplusplus/">GitHub</a></li>
 	<li>Add Smart Phone Support * iPhone, Droid.</li>
-	<li>Add <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a> - TBA</li>
 	<li>Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.</li>
 </ul>
 			
@@ -59,17 +58,19 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <h4>v3.0-beta(out) final(No ETA)</h4>
 <ul>
 	<li>Added Admin Page.</li>
-	<li>Added Smart Phone Support * iPhone(Added Foundation v3.1)</li>
+	<li>Added Smart Phone Support * iPhone(Added Foundation v3.2.2)</li>
 	<li>Added Sample Config.</li>
 	<li>Added IP Tracker.</li>
+	<li>Added Smelting function and added all current.</li>
 	<li>Updated A few items photos larger image.</li>
 	<li>Updated Brewing Functions</li>
 	<li>Added All Brewing Items Up To Minecraft v1.4</li>
 	<li>Removed/Updated ID page functions * still slow (using foundations) due to the amount of css.</li>
 	<li>Updated Config Installer with notes on what is what.</li>
 	<li>MySQL is much more easy for people to understand *(now once more able to set databases for each plugin verse 1 for all - not recommended).</li>
-	<li>Capability of a dynamic stats and achievments plugin change.</li>
+	<li>Capability of a dynamic achievments, economy, and stats  plugin change.</li>
 	<li>Added Support for <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats v1.071 by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a></li>
+	<li>Added Support for <a href="http://dev.bukkit.org/server-mods/mineconomy/">MineConomy</a> ~ <a href="https://github.com/MjolnirCommando/MineConomy">GitHub</a></li>
 </ul>
 <hr />
 

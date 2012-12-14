@@ -7,67 +7,62 @@
 
 //if (!isset($_GET['sort'])) {$_GET['sort'] = 'playedfor';}
 if (!isset($_GET['sort'])) {$_GET['sort'] = 'player';}
-
-	if(file_exists('modules/stats/index.php'))
-	{
+	
+	//START STATS PLUGIN TYPE ----------------
+	if(file_exists('modules/stats/index.php')){
 		$stats_control = true;
 	}
-	if(file_exists('modules/jail/index.php'))
-	{
+	if(file_exists('modules/stats-lolmewn/index.php')){
+		$statslolmewn_control = true;
+	}
+	//END STATS PLUGIN TYPE ----------------
+	if(file_exists('modules/jail/index.php')){
 		$jail_control = true;
 	}
-	if(file_exists('modules/jobs/index.php'))
-	{
+	if(file_exists('modules/jobs/index.php')){
 		$job_control = true;
 	}
-	if(file_exists('modules/iconomy/index.php'))
-	{
+	//START CURRENCY PLUGIN TYPES -----------
+	if(file_exists('modules/iconomy/index.php')){
 		$iconomy_control = true;
 	}
-	if(file_exists('modules/show-player/include/functions_achievements.php'))
-	{
+	if(file_exists('modules/mineconomy/index.php')){
+		$mineconomy_control = true;
+	}
+	//END CURRENCY PLUGIN TYPES -----------
+	if(file_exists('modules/show-player/include/functions_achievements.php')){
 		$achievements_control = true;
 	}
 	//START PLAYER IMAGES TYPES-----------------------------------------------
-	if(file_exists('modules/player-image/index.php'))
-	{
+	if(file_exists('modules/player-image/index.php')){
 		$image_control = true;
 	}
-	if(file_exists('modules/player-image/full_player_image.php'))
-	{
+	if(file_exists('modules/player-image/full_player_image.php')){
 		$image_control_3d = true;
 	}
 	//END PLAYER IMAGES TYPES-------------------------------------------------
-	if(file_exists('modules/id-list/index.php'))
-	{
+	if(file_exists('modules/id-list/index.php')){
 		$idlist_control = true;
 	}	
-	if(file_exists('modules/search/index.php'))
-	{
+	if(file_exists('modules/search/index.php')){
 		$search_control = true;
 	}	
-	if(file_exists('modules/recipe/index.php'))
-	{
+	if(file_exists('modules/recipe/index.php')){
 		$recipe_control = true;
 	}	
-	if(file_exists('modules/mcmmo/index.php'))
-	{
+	if(file_exists('modules/mcmmo/index.php')){
 		$mcmmo_control = true;
 	}
-	if(file_exists('modules/permissionsex/include/functions.php'))
-	{
+	if(file_exists('modules/permissionsex/include/functions.php')){
 		$permissionsex_control = true;
 	}
-	if(file_exists('modules/InventorySQL/index.php')) //TO BE ADDED------------
-	{
-		$InventorySQL_control = true;
+	if(file_exists('modules/InventorySQL/index.php')) { //TO BE ADDED------------
+		$inventorySQL_control = true;
 	}
-	if(file_exists('modules/logblock/index.php')) //TO BE ADDED------------
-	{
-		$logclock = true;
+	if(file_exists('modules/logblock/index.php')) { //TO BE ADDED------------
+		$logblock = true;
 	}
-	if(file_exists('modules/achievement/index.php')) //TO BE ADDED------------
-	{
+	if(file_exists('modules/achievement/index.php')) { //TO BE ADDED------------
 		$achievement_control = true;
 	}
 ?>

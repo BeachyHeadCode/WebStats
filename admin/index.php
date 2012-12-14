@@ -37,13 +37,9 @@ else
 	<link rel="stylesheet" type="text/css" href="../css/layout_admin.css"/>
 	<link rel="SHORTCUT ICON" type='image/x-icon' href="../images/favicon.ico"/>
 	<link rel="apple-touch-icon" href="../images/favicon.png" />
-	<!-- Included CSS Files (Uncompressed) -->
-	<!--
-	<link rel="stylesheet" href="../stylesheets/foundation.css">
-	-->
   
-	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" type="text/css" href="../stylesheets/foundation.min.css">
+	<!-- Included CSS Files (Uncompressed) -->
+	<link rel="stylesheet" type="text/css" href="../stylesheets/foundation.css">
 	<link rel="stylesheet" type="text/css" href="../stylesheets/app.css">
 
 	<script type="text/javascript" src="../javascripts/modernizr.foundation.js"></script>

@@ -222,27 +222,27 @@ function get_pages($numbers, $mode, $sort)
 			$numbers = $numbers / 25;
 		}
 	}
-	$output .= '<ul class="pagination">';
+	$output .= '<table class="pagination"><tbody><tr valign="top">';
 		if(isset($_GET["page"])){
 			
 			if(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)){
 				
 				if($_GET["page"]==1){
-					$pages = '<li class="arrow unavailable"><a href="">&laquo;</a></li>';
-					$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
+					$pages = '<td style="margin-left:50px;" class="arrow unavailable"><a href="">&laquo;</a></td>';
+					$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				}
 				else{
-					$pages = '<li class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></li>';
-					$pages .= '<li><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
+					$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+					$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				}
 				if($numbers >= 10){
 					for($i=1; $i < 10; $i++){
 						$page = $i + 1;
 						if($_GET["page"]==$page){
-							$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+							$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 						else{
-							$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+							$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 					}
 				}
@@ -250,93 +250,93 @@ function get_pages($numbers, $mode, $sort)
 					for($i=1; $i <= $numbers; $i++){
 						$page = $i + 1;
 						if($_GET["page"]==$page){
-							$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+							$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 						else{
-							$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+							$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 					}
 				}
 				if($_GET["page"] < $numbers){
-					$pages .='<li class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></li>';
+					$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
 				}
 				else{
-					$pages .='<li class="arrow unavailable"><a href="">&raquo;</a></li>';
+					$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
 				}
 			}
 			elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))){
-				$pages = '<li class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></li>';
-				$pages .= '<li><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
-				$pages .= '<li class="unavailable"><a href="">&hellip;</a></li>';
+				$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
 				for($i=($_GET["page"]-5); $i < ($_GET["page"]+4); $i++){
 					$page = $i + 1;
 					if($_GET["page"]==$page){
-						$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 					else{
-						$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
-				$pages .= '<li class="unavailable"><a href="">&hellip;</a></li>';
-				$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></li>';
-				$pages .='<li class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></li>';
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
+				$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></td>';
+				$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
 			}
 			elseif($_GET["page"] == $numbers){
-				$pages = '<li class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></li>';
-				$pages .= '<li><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
-				$pages .= '<li class="unavailable"><a href="">&hellip;</a></li>';
+				$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
 				for($i=($_GET["page"]-5); $i < $numbers; $i++){
 					$page = $i + 1;
 					if($_GET["page"]==$page){
-						$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 					else{
-						$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
-				$pages .='<li class="arrow unavailable"><a href="">&raquo;</a></li>';
+				$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
 			}
 			if(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))){
-				$pages = '<li class="arrow"><a href="">&laquo;</a></li>';
-				$pages .= '<li><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
-				$pages .= '<li class="unavailable"><a href="">&hellip;</a></li>';
+				$pages = '<td class="arrow"><a href="">&laquo;</a></td>';
+				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
 				for($i=($_GET["page"]-5); $i < $numbers; $i++)
 				{
 					$page = $i + 1;
 					
 					if($_GET["page"]==$page){
-						$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 					else{
-						$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
-				$pages .='<li class="arrow"><a href="">&raquo;</a></li>';
+				$pages .='<td class="arrow"><a href="">&raquo;</a></td>';
 			}
 		}
 		else{
-			$pages = '<li class="arrow unavailable"><a href="">&laquo;</a></li>';
-			$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></li>';
+			$pages = '<td class="arrow unavailable"><a href="">&laquo;</a></td>';
+			$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 			if($numbers >= 10){
 				for($i=1; $i <= 10; $i++){
 					$page = $i + 1;
 					if(1==$page){
-						$pages .= '<li class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 					else{
-						$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
 			}
 			else{
 				for($i=1; $i <= $numbers; $i++){
 					$page = $i + 1;
-					$pages .= '<li><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></li>';
+					$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 				}
 			}
-			$pages .='<li class="arrow"><a href="index.php?mode='.$mode.'&page=2&sort='.$sort.'">&raquo;</a></li>';		
+			$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page=2&sort='.$sort.'">&raquo;</a></td>';		
 		}
-    $output .= $pages.'</ul></form></div>';
+    $output .= $pages.'</tr></tbody></table></form></div>';
 	return $output;
 }
 function get_status($player){

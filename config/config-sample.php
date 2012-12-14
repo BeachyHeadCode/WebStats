@@ -66,7 +66,7 @@ define('WS_CONFIG_ICONOMY', 'iconomy');
 define('WS_ICONOMY_MAIN', 'Dollar(s)');
 define('WS_ICONOMY_SUB', 'Cent(s)');
 define('WS_ICONOMY_MAIN_SHORT', '$');
-define('WS_ICONOMY_SUB_SHORT', '�');
+define('WS_ICONOMY_SUB_SHORT', '¢');
 //Jail Settings.
 define('WS_CONFIG_JAIL', 'jail_');
 //Jobs Settings.
@@ -74,6 +74,8 @@ define('WS_CONFIG_JOBS', 'jobs');
 //McMMO Settings.
 define('WS_CONFIG_MCMMO', 'mcmmo_');
 define('WS_CONFIG_MCMMO_DEFAULT', 'user ASC');
+//MineConomy Settings.
+define('WS_CONFIG_MINECONOMY', 'mineconomy_accounts');
 //PermissionsEX Settings.
 define('WS_CONFIG_PERMISSIONS', 'permissions');
 define('WS_PERMISSIONS_DEFAULT_GROUP', 'Default');
@@ -120,12 +122,13 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
 </script>');
 
 //Set the plugin that you want on to true.
-define('pluginconfigstatusachiv', true);	//Achievements
-define('pluginconfigstatusiconomy', true);	//iConomy
-define('pluginconfigstatusjail', true);		//Jail
-define('pluginconfigstatusjobs', true);		//Jobs
-define('pluginconfigstatusmcmmo', true);	//McMMO
-define('pluginconfigpermissionsex', true);	//PermissionsEX
-define('pluginconfigstatusstats', true);	//Stats
+define('pluginconfigstatusachiv', true);		//Achievements
+define('pluginconfigstatusiconomy', false);		//iConomy
+define('pluginconfigstatusmineconomy', true);	//MineConomy
+define('pluginconfigstatusjail', true);			//Jail
+define('pluginconfigstatusjobs', true);			//Jobs
+define('pluginconfigstatusmcmmo', true);		//McMMO
+define('pluginconfigpermissionsex', true);		//PermissionsEX
+define('pluginconfigstatusstats', true);		//Stats
 define('serveraddr','')  
 ?>

@@ -202,11 +202,9 @@ $DB -> close();
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   
 	<!-- Included CSS Files (Uncompressed) -->
-	<!--
 	<link rel="stylesheet" href="stylesheets/foundation.css">
-	-->
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" type="text/css" href="stylesheets/foundation.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="stylesheets/foundation.min.css">-->
 	<link rel="stylesheet" type="text/css" href="stylesheets/app.css">
 
 	<script type="text/javascript" src="javascripts/modernizr.foundation.js"></script>
@@ -237,7 +235,7 @@ if(isset($_SESSION['pml_userid'])){
 		<li><a href="/admin/ip.php">IP Tracker</a></li>
     </ul>
 	<ul class="left">
-		<li><a href="/admin/install/setup-config.php">Installer</a></li>
+		<li><a href="/admin/settings.php">Settings</a></li>
 	</ul>
 	<ul class="right">
 		<li><a href="/admin/?LOGOUT=TRUE">LOGOUT</a></li>

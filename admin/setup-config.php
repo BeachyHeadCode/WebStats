@@ -130,12 +130,8 @@ function display_header() {
 	<link rel="SHORTCUT ICON" type='image/x-icon' href="../../images/favicon.ico" />
 	<link rel="apple-touch-icon" href="images/favicon.png" />
 
-	<!-- Included CSS Files (Uncompressed) -->
-	<!--
-		link rel="stylesheet" href="stylesheets/foundation.css">
-	-->
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" href="../../stylesheets/foundation.min.css">
+	<link rel="stylesheet" href="../../stylesheets/foundation.css">
 	<link rel="stylesheet" href="../../stylesheets/app.css">
 
 	<script src="../../javascripts/modernizr.foundation.js"></script>
@@ -395,7 +391,7 @@ asideleft
 		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	</script>
 		<p>
-			<a href="http://adf.ly/1049208/mr-plows-server" target="_blank">mrplows-server.us</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v4.0</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
+			<a href="http://adf.ly/1049208/mr-plows-server" target="_blank">mrplows-server.us</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v4.1</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
 			<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
 		</p>
 	</footer>
