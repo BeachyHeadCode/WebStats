@@ -225,7 +225,7 @@ $DB -> close();
 $ip=$_SERVER['REMOTE_ADDR'];
 if(isset($_SESSION['pml_userid'])){
 ?>
-<div class="top-bar">
+<div class="admin-bar">
 	<ul>
 		<li class="name"><h1><a href="/admin">Admin Page</a></h1></li>
 		<li class="toggle-topbar"><a href="#"></a></li>
@@ -235,7 +235,7 @@ if(isset($_SESSION['pml_userid'])){
 		<li><a href="/admin/ip.php">IP Tracker</a></li>
     </ul>
 	<ul class="left">
-		<li><a href="/admin/settings.php">Settings</a></li>
+		<li><a href="/admin/?mode=settings">Settings</a></li>
 	</ul>
 	<ul class="right">
 		<li><a href="/admin/?LOGOUT=TRUE">LOGOUT</a></li>
@@ -246,7 +246,7 @@ if(isset($_SESSION['pml_userid'])){
 }
 else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 ?>
-<div class="top-bar">
+<div class="admin-bar">
 	<ul>
 		<li class="name"><h1><a href="/admin">Admin Page</a></h1></li>
 		<li class="toggle-topbar"><a href="#"></a></li>

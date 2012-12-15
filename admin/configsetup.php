@@ -17,9 +17,6 @@ $script  = filter_input(INPUT_SERVER, 'SCRIPT_NAME', FILTER_SANITIZE_URL);
 // mush session_id and fileId into an access token
 $secret        = 'i can haz salt?';
 $expectedToken = md5($secret . session_id() . $fileId);
-if(!empty($_POST["submit"])){ 
-	$_SESSION['config']=$_POST['config'];
-}
 if(!empty($_POST["submitmysql"])){ 
 	$_SESSION['mysql']['URL']=$_POST['mysql']['URL'];
 	$_SESSION['mysql']['PORT']=$_POST['mysql']['PORT'];
@@ -142,7 +139,7 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 									echo "<option value='".$achievementstype[$i]."'>".$achievementstype[$i]."</option>";
 						}?>
 					</select></td>
-					<td><select style="display:none;" id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigeconomy">
+					<td><select style="display:none;" id="customDropdown" class="select2" title="Economy Plugin" name="pluginconfigeconomy">
 						<?php $economytype = array('Chose Plugin', 'iConomy', 'MineConomy');
 							for($i=0; $i <= (sizeof($economytype)-1); $i++){
 								if($_SESSION['pluginconfigeconomy'] == $economytype[$i])
@@ -200,6 +197,7 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 			}closedir($handle);
 		?>
     </select>
+	<img id="imageplaceholder" src="../images/background/bg_blackfade.png" alt="Background" style="height: 200px; max-width: 100%;" width="300px" />
 	<label for="page">Users Per Page Listing: <input name="page[users_per_page]" type="text" id="page[users_per_page]" title="Users Per Page"  value="<?php if(!isset($_SESSION['page']['users_per_page'])){ echo '25';}else{ echo $_SESSION['page']['users_per_page'];} ?>" maxlength="3" /></label>
 	<label for="page">2D Image Cache Time: <input name="page[2d_cache_time]" type="text" id="page[2d_cache_time]" title="Server Name" value="<?php if(!isset($_SESSION['page']['2d_cache_time'])){ echo '259200';}else{ echo $_SESSION['page']['2d_cache_time'];} ?>" maxlength="7"/></label>
 	<label for="page">Turn 3D Player ON: <input type="checkbox" name="page[3d_on/off]" title="Stats LOGO On/Off" value="<?php if(!isset($_SESSION['page']['3d_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['3d_on/off'];} ?>" <?php echo (isset($_POST['page']['3d_on/off'])?'checked="checked"':'') ?>/></label>

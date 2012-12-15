@@ -1,6 +1,4 @@
 <?php
-
-include('modules/iconomy/include/functions.php'); 
-include('modules/iconomy/config/config.php');
-
+include('modules/mineconomy/include/functions.php'); 
+include('modules/mineconomy/config/config.php');
 ?>

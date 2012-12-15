@@ -162,6 +162,19 @@ function MM_popupMsg(msg) { //v1.0
   alert(msg);
 }
     </script>
+<script>
+function displayImage()
+{
+	//var x=document.getElementsByName("page[default_background]");
+	//var a=document.getElementById('customDropdown background').value;
+	var a = document.getElementById("customDropdown background");
+	var b = a.options[a.selectedIndex].text;
+	var c="../images/background/bg_";
+	var d=".png";
+	var e=c.concat(b,d);
+	document.getElementById("imageplaceholder").src=e;
+}
+</script>
 </head>
 <style type="text/css">
 body{background-color:rgb(228, 228, 228);}

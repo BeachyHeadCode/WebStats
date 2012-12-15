@@ -62,7 +62,7 @@ function mineconomy_server_get_money_table(){
 	$money = mineconomy_server_get_money();
 	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
 					<div class="head_stat">'.translate("var47").':</div>
-					<div class="head_content">'.$money[0].''.$money[2].'</div>
+					<div class="head_content">'.$money[0].$money[2].'</div>
 				</div>';
 	$output .= "\n";
 	return $output;

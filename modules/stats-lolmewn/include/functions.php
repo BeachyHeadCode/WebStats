@@ -455,7 +455,7 @@ function set_server_details_table()
 				
 				<div>
 					<div class="head_stat">'.translate("var17").':</div>
-					<div class="head_content"> '.get_server_count_player_move().' '.translate("var18").'</div>
+					<div class="head_content"> '.round(get_server_count_player_move(), 2).' '.translate("var18").'</div>
 				</div>
 				
 				<!--<div>

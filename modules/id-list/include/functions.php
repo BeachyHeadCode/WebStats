@@ -3,7 +3,7 @@
 function id_index_table(){
 	global $stats_control;
 	for ($i=0; $i <= 2300; $i++){
-   		if($i == 6 or $i == 17 or $i == 18 or $i == 31 or $i == 35 or $i == 43 or $i == 44 or $i == 97 or $i == 98 or $i == 263 or $i == 351 or $i == 373){
+   		if($i == 6 or $i == 17 or $i == 18 or $i == 31 or $i == 35 or $i == 43 or $i == 44 or $i == 97 or $i == 98 or $i == 263 or $i == 351 or $i == 373 or $i == 383){
 			for ($x=0; $x <= 8300; $x++){
 				
 				if($x == 0 and $x != 373){
@@ -19,6 +19,13 @@ function id_index_table(){
 					$z = ':'.$x;
 					$item_name = translate($i.$z);
 				}
+/* 				else if($x == 8229 or $x == 8261 or $x == 8197){  // Potion of Healing
+					$z = '-1';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
 				else if($x == 8195 or $x == 8227 or $x == 8259){  // Potion of Fire Resistance
 					$z = '-2';
 					$item_id = $i;
@@ -26,27 +33,69 @@ function id_index_table(){
 					$z = ':'.$x;
 					$item_name = translate($i.$z);
 				}
-				else if($x == 8193 or $x == 8255 or $x == 8257){  // Potion of Regeneration
+				else if($x == 8204 or $x == 8268 or $x == 8236){  // Potion of Harming
+					$z = '-3';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8196 or $x == 8260 or $x == 8228 or $x == 8292){  // Potion of Poison
+					$z = '-4';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8193 or $x == 8255 or $x == 8257 or $x == 8289){  // Potion of Regeneration
 					$z = '-5';
 					$item_id = $i;
 					$item_img = $i.$z;
 					$z = ':'.$x;
 					$item_name = translate($i.$z);
 				}
-				else if($x == 8229 or $x == 8261 or $x == 8197){  // Potion of Healing
+				else if($x == 8202 or $x == 8266 or $x == 8234){  // Potion of Slowness
+					$z = '-6';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8201 or $x == 8265 or $x == 8233 or $x == 8297){  // Potion of Strength
 					$z = '-7';
 					$item_id = $i;
 					$item_img = $i.$z;
 					$z = ':'.$x;
 					$item_name = translate($i.$z);
 				}
-				else if($x == 8194 or $x == 8226 or $x == 8258){  // Potion of Swiftness
-					$z = '-11';
+				else if($x == 8194 or $x == 8226 or $x == 8258 or $x == 8290){  // Potion of Swiftness
+					$z = '-8';
 					$item_id = $i;
 					$item_img = $i.$z;
 					$z = ':'.$x;
 					$item_name = translate($i.$z);
 				}
+				else if($x == 8200 or $x == 8264 or $x == 8232){  // Potion of Weakness
+					$z = '-9';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8198 or $x == 8262){  // Potion of Night Vision
+					$z = '-10';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				}
+				else if($x == 8206 or $x == 8270){  // Potion of Invisibility
+					$z = '-11';
+					$item_id = $i;
+					$item_img = $i.$z;
+					$z = ':'.$x;
+					$item_name = translate($i.$z);
+				} */
 				else{
 					$z = ':'.$x;
 					$item_name = translate($i.$z);

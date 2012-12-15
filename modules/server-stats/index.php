@@ -5,13 +5,23 @@ else {$_GET['search'] = 'ORDER BY SUM(value) DESC';}
 ?>
 <div class="head_maintable_stats">
 	<?php echo (set_server_details_table()); ?>
-	<?php if($iconomy_control == true) 
-	{
-		include('modules/iconomy/api/api.php');
-		echo'<div align="right" style="clear:both;">'; 
-		echo (iconomy_server_get_money_table()); 
-		echo'</div>';
-	} 
+	<?php 
+		if(($iconomy_control === true) and (pluginconfigstatusiconomy === true)){
+			include('modules/iconomy/api/api.php');
+			echo'<div align="right" style="clear:both;">'; 
+			echo (iconomy_server_get_money_table()); 
+			echo'</div>';
+		}
+ 		elseif(($mineconomy_control === true) and (pluginconfigstatusmineconomy === true)){
+			include('modules/mineconomy/api/api.php');
+			echo'<div align="right" style="clear:both;">'; 
+			echo (mineconomy_server_get_money_table()); 
+			echo'</div>';
+		}
+		else{
+			echo'<div align="right" style="clear:both;">'; 
+			echo'</div>';
+		}
 	?>
 </div>
 <br /><br />

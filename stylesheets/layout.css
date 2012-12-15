@@ -646,3 +646,62 @@ table.pagination td.unavailable a { cursor: default; color: #999; }
 table.pagination td.unavailable:hover a, table.pagination td.unavailable a:focus { background: transparent; }
 table.pagination td.current a { background: #2ba6cb; color: white; font-weight: bold; cursor: default; }
 table.pagination td.current a:hover { background: #2ba6cb; }
+
+/* Foundation Top Bar
+ Requires: -jquery.foundation.topbar.js
+ Notes: - <nav class="admin-bar"> can have .fixed added to make it stick to the top of viewport. Can add .contain-to-grid to admin-bar to make it full width but content on grid. - <li class="name"> creates a branding area that can be linked to homepage - Can include text, image or both inside this <li>. - <li class="divider"> creates a divider between nav items, add margins for space - <li class="search"> Needs to hold a <form> which can use .row.collapse and pre/postfix buttons or default type="search"
+*/
+/* Element that controls breakpoint, no need to change this ever */
+.admin-bar-js-breakpoint { width: 940px !important; visibility: hidden; }
+
+/* Wrapped around .admin-bar to contain to grid width */
+.contain-to-grid { width: 100%; background: #222222; }
+
+/* Wrapped around .admin-bar to make it fixed at the top */
+.fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
+
+/* <nav> */
+.admin-bar { background: #222222; height: 45px; line-height: 45px; margin: 0 0 30px; padding: 0; width: 100%; /* Contain width to .row width */ /* First <ul> for branding, title, name, etc */ /* topbar global <ul> styles */ }
+.contain-to-grid .admin-bar { max-width: 940px; margin: 0 auto; }
+.admin-bar > ul .name h1 { line-height: 45px; margin: 0; }
+.admin-bar > ul .name h1 a { font-weight: bold; padding: 0 22.5px; font-size: 17px !important; }
+.admin-bar > ul .name img { margin-top: -5px; vertical-align: middle; }
+.admin-bar.expanded { height: inherit; }
+.admin-bar ul { margin-left: 0; display: inline; height: 45px; line-height: 45px; list-style: none; /* Main Navigation links style */ /* Left Side <ul> */ /* Right Side <ul> */ }
+.admin-bar ul > li { float: left; /* Dividers between navigation */ /* Put a button in an <li> but give is a class */ /* Put a search bar or text input in the bar */ /* Hide the triangle for breakpoint menu */ /* li.has-dropdown */ }
+.admin-bar ul > li a:not(.button) { color: white; display: block; font-size: 13px; font-weight: bold; height: 45px; line-height: 45px; padding: 0 15px; }
+.admin-bar ul > li:not(.name):hover, .admin-bar ul > li:not(.name).active { background: black; }
+.admin-bar ul > li:not(.name):hover a, .admin-bar ul > li:not(.name).active a { color: #d9d9d9; }
+.admin-bar ul > li.divider { background: black; -webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); -moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); height: 100%; margin-right: 1px; width: 1px; }
+.admin-bar ul > li.has-button a.button { margin: 0 11.25px; }
+.admin-bar ul > li.has-button:hover { background: #222222; }
+.admin-bar ul > li.has-button:hover a { color: #fff; }
+.admin-bar ul > li.search { padding: 0 15px; }
+.admin-bar ul > li.search form { display: inline-block; margin-bottom: 0; vertical-align: middle; width: 200px; }
+.admin-bar ul > li.search form input[type=text] { -moz-border-radius-topright: 0; -webkit-border-top-right-radius: 0; border-top-right-radius: 0; -moz-border-radius-bottomright: 0; -webkit-border-bottom-right-radius: 0; border-bottom-right-radius: 0; float: left; font-size: 13px; margin-top: -1px; height: 22.5px; }
+.admin-bar ul > li.search form input[type=text] + .button { border-left: none; -moz-border-radius-topleft: 0; -webkit-border-top-left-radius: 0; border-top-left-radius: 0; -moz-border-radius-bottomleft: 0; -webkit-border-bottom-left-radius: 0; border-bottom-left-radius: 0; float: left; font-size: 12px; margin-top: -1px; padding: 5px 12px 4px; }
+.admin-bar ul > li.search form input[type=search] { font-size: 16px; margin-bottom: 0; }
+.admin-bar ul > li.search:hover { background: #222222; }
+.admin-bar ul > li.toggle-topbar { display: none; }
+.admin-bar ul > li.has-dropdown { position: relative; /* Dropdown Level 2+ */ }
+.admin-bar ul > li.has-dropdown:hover > .dropdown { display: block; visibility: visible; }
+.admin-bar ul > li.has-dropdown a { padding-right: 33.75px; }
+.admin-bar ul > li.has-dropdown a:after { content: ""; display: block; width: 0; height: 0; border: solid 5px; border-color: white transparent transparent transparent; margin-right: 15px; margin-top: -2.5px; position: absolute; right: 0; top: 50%; }
+.admin-bar ul > li.has-dropdown .dropdown { background: #222222; left: 0; margin: 0; padding: 9px 0 0 0; position: absolute; visibility: hidden; z-index: 99; }
+.admin-bar ul > li.has-dropdown .dropdown li { background: #222222; line-height: 1; min-width: 100%; padding-bottom: 5px; }
+.admin-bar ul > li.has-dropdown .dropdown li a { color: white; font-weight: normal; height: 100%; line-height: 1; padding: 5px 17px 5px 15px; white-space: nowrap; }
+.admin-bar ul > li.has-dropdown .dropdown li a:after { border: none; }
+.admin-bar ul > li.has-dropdown .dropdown li a:hover { background: #3c3c3c; }
+.admin-bar ul > li.has-dropdown .dropdown li label { color: #6f6f6f; font-size: 10px; font-weight: bold; margin: 0; padding-left: 15px; text-transform: uppercase; }
+.admin-bar ul > li.has-dropdown .dropdown li.divider { border-top: solid 1px black; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset; height: 10px; padding: 0; width: 100%; }
+.admin-bar ul > li.has-dropdown .dropdown li:last-child { padding-bottom: 10px; }
+.admin-bar ul > li.has-dropdown .dropdown li.active a { background: black; }
+.admin-bar ul > li.has-dropdown .dropdown li.has-dropdown > a { padding-right: 30px; }
+.admin-bar ul > li.has-dropdown .dropdown li.has-dropdown > a:after { border: none; content: "\00bb"; right: 5px; top: 6px; }
+.admin-bar ul > li.has-dropdown .dropdown li.has-dropdown .dropdown { position: absolute; left: 100%; top: 0; }
+.admin-bar ul > li.has-dropdown .dropdown li.has-dropdown:hover > .dropdown { display: block; }
+.admin-bar ul.left { float: left; width: auto; margin-bottom: 0; }
+.admin-bar ul.right { float: right; width: auto; margin-bottom: 0; /* Dropdown Right Side Alignment */ }
+.admin-bar ul.right .has-dropdown .dropdown { left: auto; right: -1px; }
+.admin-bar ul.right .has-dropdown .dropdown li.has-dropdown > .dropdown { right: 100%; left: auto; width: 100%; }
+.admin-bar .js-generated { display: none; }

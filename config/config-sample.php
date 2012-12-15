@@ -122,13 +122,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
 </script>');
 
 //Set the plugin that you want on to true.
-define('pluginconfigstatusachiv', true);		//Achievements
-define('pluginconfigstatusiconomy', false);		//iConomy
-define('pluginconfigstatusmineconomy', true);	//MineConomy
-define('pluginconfigstatusjail', true);			//Jail
-define('pluginconfigstatusjobs', true);			//Jobs
-define('pluginconfigstatusmcmmo', true);		//McMMO
-define('pluginconfigpermissionsex', true);		//PermissionsEX
-define('pluginconfigstatusstats', true);		//Stats
+define('pluginconfigstatusachiv', true);			//Achievements
+define('pluginconfigstatusiconomy', false);			//iConomy
+define('pluginconfigstatusmineconomy', true);		//MineConomy
+define('pluginconfigstatusjail', true);				//Jail
+define('pluginconfigstatusjobs', true);				//Jobs
+define('pluginconfigstatusmcmmo', true);			//McMMO
+define('pluginconfigpermissionsex', true);			//PermissionsEX
+define('pluginconfigstatusstats', true);			//Stats
+define('pluginconfigstatusbeardstats', true);		//BeardStats
+define('pluginconfigstatusstatslolmewnstats', true);//Stats by lolmewnstats
 define('serveraddr','')  
 ?>

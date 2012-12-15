@@ -5,8 +5,8 @@ $ip=$_SERVER['REMOTE_ADDR'];
 require_once("../include/logonfunctions.php");
 require_once('../include/functions.php');
 
-if(file_exists('../../config/config.php'))
-	include('../../config/config.php');
+if(file_exists('../config/config.php'))
+	include('../config/config.php');
 else
 	header("/setup-config.php");
 		
