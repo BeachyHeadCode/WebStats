@@ -329,7 +329,7 @@ cursor:url(images/cursors/hover.cur), auto;
 			text-decoration:			underline;
         	font-weight: 				bold;
 			float:						left;
-			text-align:					left;
+/* 			text-align:					left; */
 			padding-left:				10px;
 			height:						25px;
 }
@@ -567,56 +567,8 @@ a:hover {
 			width:						300px;
 }
 
-.grid-Furnace {
-padding-left: 24px;
-padding-right: 24px;
-}
-.grid-Crafting_Table, .grid-Furnace, .grid-Brewing_Stand table, .grid-generic {
-background: #C6C6C6;
-border: outset 2px #999;
-padding: 6px;
-text-align: left !important;
-}
 
-.grid-Furnace .arrow {
-padding-right: 18px !important;
-padding-left: 14px !important;
-}
-.grid-Furnace .arrow, .grid-Furnace .output {
-text-align: center;
-vertical-align: middle;
-}
-.grid-Furnace .arrow, .grid-Furnace .output {
-text-align: center;
-vertical-align: middle;
-}
 
-.grid-Furnace .arrow, .grid-Furnace .output {
-text-align: center;
-vertical-align: middle;
-}
-.grid2.output {
-height: 48px;
-width: 48px;
-}
-.grid2 {
-display: inline-block;
-position: relative;
-text-align: left !important;
-background-color: #8B8B8B;
-height: 32px;
-width: 32px;
-padding: 2px;
-vertical-align: bottom;
-}
-.grid2 .border {
-display: block;
-margin: -2px 0 0 -2px;
-border-style: solid none none solid;
-border-width: 2px;
-border-color: #373737;
-height: 100%;
-}
 Inherited from td.output
 .grid-Furnace .arrow, .grid-Furnace .output {
 text-align: center;
@@ -626,17 +578,13 @@ Inherited from table.grid-Furnace
 text-align: left !important;
 }
 
-.grid2.output .image {
-top: 10px;
-left: 10px;
-}
-.grid2 .image, .grid2 .default-image {
-position: absolute;
-line-height: 16px;
-top: 2px;
-width: 32px;
-height: 32px;
-}
+
+
+
+
+
+
+
 /* Pagination ---------------------- */
 table.pagination {  background: none !important; border: none !important; height: 24px; margin: 0 auto; }
 table.pagination td {  height: 24px; width: 24px; color: #999; font-size: 14px; margin: 5px; }
@@ -705,3 +653,62 @@ table.pagination td.current a:hover { background: #2ba6cb; }
 .admin-bar ul.right .has-dropdown .dropdown { left: auto; right: -1px; }
 .admin-bar ul.right .has-dropdown .dropdown li.has-dropdown > .dropdown { right: 100%; left: auto; width: 100%; }
 .admin-bar .js-generated { display: none; }
+
+
+table tbody tr td {vertical-align: middle !important;}
+
+
+
+
+.grid2 .animated .image,.grid2 .paused .image{display:none}
+.grid2 .animated .image.active,.grid2 .paused .image.active{display:block}
+.grid2{display:inline-block;position:relative;text-align:left !important;background-color:#8B8B8B;height:36px;width:32px;padding:2px;vertical-align:bottom}
+.grid2.output{height:48px;width:48px}.grid2 img{image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-webkit-optimize-contrast;-ms-interpolation-mode:nearest-neighbor}
+.grid2 .border{display:block;margin:-2px -2px 0px -2px;border-style:solid none none solid;border-width:2px;border-color:#373737;height:110%}
+.grid2 .border > span{display:block;margin-right:-2px;border-style:none solid solid none;border-width:2px;border-color:#FFFFFF;height:100%}
+.grid2 .image,.grid2 .default-image{position:absolute;line-height:16px;top:2px;width:32px;height:32px}
+.grid2.output .image{top:10px;left:10px}.grid2 .image > a.new{background-image:url("http://media-mcw.cursecdn.com/3/35/Grid_Unknown.png");display:block;width:32px;height:32px;outline:none;text-indent:-99999px}
+.grid2 .number{position:absolute;right:-2px;bottom:-2px;text-align:right;font-family:Minecraft;font-size:16px;color:#FFF;pointer-events:none;text-shadow:2px 2px 0px #3F3F3F;filter:dropshadow(color=#3F3F3F,offx=2,offy=2)}
+.grid2 .number a{color:#FFF;text-decoration:none}
+.grid2 .number .selflink{font-weight:normal}
+.grid2 .image a.new + .number{display:none}
+.grid .animated .image,.grid .paused .image{display:none}
+.grid .animated .image.active,.grid .paused .image.active{display:block}
+.grid{display:inline-block;position:relative;text-align:left !important;background-color:#8B8B8B;height:32px;width:32px;padding:2px;vertical-align:bottom}
+.grid.output{height:48px;width:48px}
+.grid .border{display:block;margin:-2px 0 0 -2px;border-style:solid none none solid;border-width:2px;border-color:#373737;height:34px;width:34px}
+.grid .border span{display:block;margin-right:-2px;border-style:none solid solid none;border-width:2px;border-color:#FFFFFF;height:100%}
+.grid .image,.grid .default-image{position:absolute;line-height:16px;top:2px;width:32px}
+.grid.output .image{top:10px;left:10px}
+.grid .image > a.new{background-image:url("http://media-mcw.cursecdn.com/3/35/Grid_Unknown.png");display:block;width:32px;height:32px;outline:none;text-indent:-99999px}
+.grid .number{display:block;margin:-12px -4px 0 0;text-align:right;font-family:Minecraft;font-size:16px;pointer-events:none}
+.grid .number .selflink,.grid .number a{color:#3F3F3F;text-decoration:none;font-weight:normal}
+.grid .image a.new + .number{display:none}
+.grid .number span{position:absolute;right:-2px;bottom:2px;color:#FFFFFF}
+.grid-Crafting_Table,.grid-Furnace,.grid-Brewing_Stand,.grid-generic{background:#C6C6C6;border:outset 2px #999;padding:6px;text-align:left !important}
+.grid-Crafting_Table td,.grid-Furnace td,.grid-Brewing_Stand td,.grid-generic td{border:none;padding:0}
+.grid-Crafting_Table .arrow,.grid-Crafting_Table .shapeless{text-align:center;vertical-align:bottom !important;}
+.grid-Crafting_Table .arrow{width:40px;padding-bottom:5px}
+.grid-Crafting_Table .shapeless span{cursor:help}
+.grid-Furnace{padding-left:24px;padding-right:24px}
+.grid-Furnace .arrow,.grid-Furnace .output{text-align:center;vertical-align:middle}
+.grid-Furnace .arrow{position:absolute;bottom:38px;left:64px;z-index:5;}
+.grid-Brewing_Stand{position:relative;width:144px}
+.grid-Brewing_Stand .arrow{position:absolute;bottom:58px;left:112px;z-index:5;}
+.grid-Brewing_Stand .bubbles{position:absolute;bottom:58px;left:38px;z-index:5;}
+.grid-Brewing_Stand .input{position:absolute;bottom:66px;left:76px;z-index:5;}
+.grid-Brewing_Stand .output1{position:absolute;bottom:18px;left:31px;z-index:5; }
+.grid-Brewing_Stand .output2{position:absolute;bottom:6px;left:76px;z-index:6;}
+.grid-Brewing_Stand .output3{position:absolute;bottom:18px;left:121px;z-index:5;}
+.grid-Brewing_Stand .output4{padding:4px 0 14px 10px !important; position: absolute; top:5px; left:150px;}
+.grid-Brewing_Stand .paths{position:absolute;bottom:38px;left:62px;z-index:5}
+.grid-Brewing_Stand .input .grid2{
+	top: -12px !important;
+}
+@font-face{
+font-family:Minecraft;
+src:url("fonts/minecraft.eot?#iefix"),url("fonts/minecraft.woff") format('woff'),url("http://www.minecraftwiki.net/fonts/minecraft.ttf") format('truetype') 
+}
+table.grid-Crafting_Table tbody tr:nth-child(even), table.grid-Furnace tbody tr:nth-child(even), table.grid-Brewing_Stand tbody tr:nth-child(even){
+	background: none !important;
+}

@@ -28,7 +28,6 @@ function recipeparser_crafting($id){
 	$parser_step_2_line_3 = explode(",", $parser_step_1[2]);
 	$parser_step_2_line_4 = explode(",", $parser_step_1[3]);	
 	$parser_step_2_line_5 = $parser_step_1[4];
-	
 	if ($parser_step_2_line_1 == '') 	{$parser_step_2_line_1 	  = 'null';}
 	if ($parser_step_2_line_2[0] == '') {$parser_step_2_line_2[0] = 'null';}
 	if ($parser_step_2_line_3[0] == '') {$parser_step_2_line_3[0] = 'null';}
@@ -39,23 +38,23 @@ function recipeparser_crafting($id){
 	if ($parser_step_2_line_2[2] == '') {$parser_step_2_line_2[2] = 'null';}
 	if ($parser_step_2_line_3[2] == '') {$parser_step_2_line_3[2] = 'null';}
 	if ($parser_step_2_line_4[2] == '') {$parser_step_2_line_4[2] = 'null';}
-	
-	echo '<div style="width:238px; height:132px; background-image:url(modules/recipe/images/crafting_background.png); position:relative; border:1px solid #000000; float:left; margin:4px;">';
-		if($parser_step_2_line_2[0] != 'null'){echo '<div style="position: absolute; top:28px; left:10px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[0].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_2[0].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:28px; left:10px;"></div>';}
-		if($parser_step_2_line_3[0] != 'null'){echo '<div style="position: absolute; top:64px; left:10px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_3[0].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_3[0].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:64px; left:10px;"></div>';}
-		if($parser_step_2_line_4[0] != 'null'){echo '<div style="position: absolute; top:100px; left:10px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4[0].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_4[0].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:100px; left:10px;"></div>';}
-	
-		if($parser_step_2_line_2[1] != 'null'){echo '<div style="position: absolute; top:28px; left:45px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[1].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_2[1].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:28px; left:45px;"></div>';}
-		if($parser_step_2_line_3[1] != 'null'){echo '<div style="position: absolute; top:64px; left:45px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_3[1].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_3[1].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:64px; left:45px;"></div>';}
-		if($parser_step_2_line_4[1] != 'null'){echo '<div style="position: absolute; top:100px; left:45px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4[1].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_4[1].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:100px; left:45px;"></div>';}
-	
-		if($parser_step_2_line_2[2] != 'null'){echo '<div style="position: absolute; top:28px; left:82px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[2].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_2[2].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:28px; left:82px;"></div>';}
-		if($parser_step_2_line_3[2] != 'null'){echo '<div style="position: absolute; top:64px; left:82px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_3[2].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_3[2].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:64px; left:82px;"></div>';}
-		if($parser_step_2_line_4[2] != 'null'){echo '<div style="position: absolute; top:100px; left:82px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4[2].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_4[2].'.png" width="25px" height="25px" border="0" ></a></div>';} else {echo '<div style="position: absolute; top:100px; left:82px;"></div>';}
-				
-		echo '<div style="position: absolute; top:64px; left:198px; z-index:0;" align="right"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_1.'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_1.'.png" width="25px" height="25px" border="0" ></a></div>';
-		echo '<div style="position: absolute; top:79px; left:205px; text-align:right; vertical-align:bottom; z-index:5; color:#333333; width:25px; height:25px;"><b>'.$parser_step_2_line_5.'</b></div>';
-	echo '</div>';
+	echo '<table cellpadding="0" cellspacing="0" class="grid-Crafting_Table" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody>';
+		echo '<tr>';
+			if($parser_step_2_line_2[0] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[0].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_2[0]).'"><img src="images/icons/'.$parser_step_2_line_2[0].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+			if($parser_step_2_line_2[1] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[1].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_2[1]).'"><img src="images/icons/'.$parser_step_2_line_2[1].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+			if($parser_step_2_line_2[2] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[2].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_2[2]).'"><img src="images/icons/'.$parser_step_2_line_2[2].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+			echo '<td rowspan="2" class="arrow"><img alt="Grid layout Arrow (small).png" src="modules/recipe/images/Grid_layout_Arrow_%28small%29.png"width="32" height="27" /></td>';
+			echo '<td rowspan="3"><span class="grid2 output"><span class="border"><span><span class="image" title="'.translate($parser_step_2_line_1).'"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_1.'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_1.'.png" width="32px" height="32px" border="0" ></a><span class="number">'.$parser_step_2_line_5.'</span></span></span></span></span></td>';
+		echo '</tr><tr>';
+			if($parser_step_2_line_3[0] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_3[0].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_3[0]).'"><img src="images/icons/'.$parser_step_2_line_3[0].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+			if($parser_step_2_line_3[1] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_3[1].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_3[1]).'"><img src="images/icons/'.$parser_step_2_line_3[1].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+			if($parser_step_2_line_3[2] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_3[2].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_3[2]).'"><img src="images/icons/'.$parser_step_2_line_3[2].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+		echo '</tr><tr>';
+			if($parser_step_2_line_4[0] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4[0].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_4[0]).'"><img src="images/icons/'.$parser_step_2_line_4[0].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+			if($parser_step_2_line_4[1] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4[1].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_4[1]).'"><img src="images/icons/'.$parser_step_2_line_4[1].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+			if($parser_step_2_line_4[2] != 'null'){echo '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4[2].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_4[2]).'"><img src="images/icons/'.$parser_step_2_line_4[2].'.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';} else {echo '<td><span class="grid2"><span class="border"><span><span class="image">&nbsp;</span></span></span></span></td>';}
+		echo '</tr>';
+	echo '</tbody></table>';
 }
 function recipeparser_collect($collection){
 	global $recipe;
@@ -98,18 +97,23 @@ function recipeparser_brewing($id){
 	if ($parser_step_2_line_4 == '')	{$parser_step_2_line_4 = 'null';}
 	
 	$translate_line4 = str_replace("-", ":", $parser_step_2_line_4);
+	$translate_line2_item2 = str_replace("-", ":", $parser_step_2_line_2[1]);
 	
-	echo '<div style="width:144px; height:132px; background-image:url(modules/recipe/images/brewing_grid.png); position:relative; border:1px solid #000000; float:left; margin:4px;">';
-	echo '<div style="position: absolute; top:19px; left:21px;"><img src="modules/recipe/images/brewing_bubbles.gif" width="24px" height="57px" border="0" ></div>';
-
-		if($parser_step_2_line_2[0] != 'null'){echo '<div style="position: absolute; top:85px; left:7px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[0].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img title="" src="images/icons/'.$parser_step_2_line_2[0].'.png" width="25px" height="25px" border="0" /></a></div>';} else {echo '<div style="position: absolute; top:28px; left:10px;"></div>';}
-		if($parser_step_2_line_2[1] != 'null'){echo '<div style="position: absolute; top:100px; left:55px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[1].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img title="" src="images/icons/'.$parser_step_2_line_2[1].'.png" width="25px" height="25px" border="0" /></a></div>';} else {echo '<div style="position: absolute; top:28px; left:45px;"></div>';}
-		if($parser_step_2_line_2[2] != 'null'){echo '<div style="position: absolute; top:85px; left:100px;"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[2].'" style="cursor:url(images/cursors/hover.cur),auto;" ><img title="" src="images/icons/'.$parser_step_2_line_2[2].'.png" width="25px" height="25px" border="0" /></a></div>';} else {echo '<div style="position: absolute; top:85px; left:100px;"></div>';}
-				
-		echo '<div style="position: absolute; top:24px; left:54px; z-index:0;" align="right"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_1.'" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/'.$parser_step_2_line_1.'.png" width="25px" height="25px" border="0" ></a></div>';
-		echo '<div style="position: absolute; top:40px; left:58px; text-align:right; vertical-align:bottom; z-index:5; color:#333333; width:25px; height:25px;"><b>'.$parser_step_2_line_3.'</b></div>';
-		echo '<div style="position: absolute; top:35px; left:100px;"><span>Equals</span><br /><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4.'" style="cursor:url(images/cursors/hover.cur),auto;" ><img title="'.translate($translate_line4).'" src="images/icons/'.$parser_step_2_line_4.'.png" width="25px" height="25px" border="0" ></a></div>';
-	echo '</div>';
+	echo '<table cellpadding="0" cellspacing="0" class="grid-Brewing_Stand" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody>';
+		echo '<tr>';
+			echo '<td class="bubbles"><img alt="Grid layout Brewing Bubbles.gif" src="modules/recipe/images/brewing_bubbles.gif" width="24px" height="57px" border="0" /></td>';
+			echo '<td class="input"><span class="grid2"><span class="border"><span><a href="index.php?mode=material-stats&material='.$parser_step_2_line_1.'" style="cursor:url(images/cursors/hover.cur),auto;" class="image" title="'.translate($parser_step_2_line_1).'"><img src="images/icons/'.$parser_step_2_line_1.'.png" width="32px" height="32px" border="0" ></a></span></span></span></td>';
+			echo '<td class="arrow"><img alt="Grid layout Brewing Arrow.png" src="modules/recipe/images/Grid_layout_Brewing_Arrow.png"width="18" height="57"></td>';
+		echo '</tr><tr>';
+			if($parser_step_2_line_2[0] != 'null'){echo '<td class="output1"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[0].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_2[0]).'"><img src="images/icons/'.$parser_step_2_line_2[0].'.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';} else {echo '<td class="output1"><span class="grid2"><span class="border"><span><span class="default-image"><img src="modules/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';}
+			if($parser_step_2_line_2[1] != 'null'){echo '<td class="output2"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[1].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($translate_line2_item2).'"><img src="images/icons/'.$parser_step_2_line_2[1].'.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';} else {echo '<td class="output2"><span class="grid2"><span class="border"><span><span class="default-image"><img src="modules/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';}
+			if($parser_step_2_line_2[2] != 'null'){echo '<td class="output3"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[2].'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($parser_step_2_line_2[2]).'"><img src="images/icons/'.$parser_step_2_line_2[2].'.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';} else {echo '<td class="output3"><span class="grid2"><span class="border"><span><span class="default-image"><img src="modules/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';}
+		echo '</tr><tr>';
+			echo '<td class="paths" colspan="3"><img alt="Grid layout Brewing Paths.png" src="modules/recipe/images/Grid_layout_Brewing_Paths.png" width="60" height="40" /></td>';
+			//echo '<td style="position: absolute; top:40px; left:58px; text-align:right; vertical-align:bottom; z-index:5; color:#333333; width:25px; height:25px;"><b>'.$parser_step_2_line_3.'</b></td>';
+			echo '<td class="output4"><span>Equals</span><br /><a href="index.php?mode=material-stats&material='.$parser_step_2_line_4.'" style="cursor:url(images/cursors/hover.cur),auto;" title="'.translate($translate_line4).'"><img src="images/icons/'.$parser_step_2_line_4.'.png" width="32px" height="32px" border="0" ></a></td>';
+		echo '</tr>';
+	echo '</tbody></table>';
 }
 function brewingparser_collect($collection){
 	global $recipe;
@@ -117,7 +121,7 @@ function brewingparser_collect($collection){
 		recipeparser_brewing($collection[$i]);
 	}
 }
-//----------------------- BREWING -----------------------
+//----------------------- SMELTING -----------------------
 function smeltingparser_fetch($id){
 	global $smelting;
 	$temp_array = array();
@@ -144,7 +148,7 @@ function recipeparser_smelting($id){
 	if ($parser_step_2_line_2[0] == '')	{$parser_step_2_line_2[0] = 'null';}
 	if ($parser_step_2_line_2[1] == '')	{$parser_step_2_line_2[1] = 'null';}
 	
- 	echo '<table cellpadding="0" cellspacing="0" class="grid-Furnace"><tbody>';
+ 	echo '<table cellpadding="0" cellspacing="0" class="grid-Furnace" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody>';
 	echo '<tr><td><span class="grid2"><span class="border"><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_2[0].'" title="'.translate($parser_step_2_line_2[0]).'" style="cursor:url(images/cursors/hover.cur),auto;" ><img alt="'.translate($parser_step_2_line_2[0]).'" src="images/icons/'.$parser_step_2_line_2[0].'.png" width="32px" height="32px" border="0" /></a></span></span></span></td>';
  	echo '<td rowspan="3" class="arrow"><img alt="Grid layout Furnace Progress.png" src="modules/recipe/images/Grid_layout_Furnace_Progress.png" width="44" height="36"></td>';	
 	echo '<td rowspan="3" class="output"><span class="grid2 output"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material='.$parser_step_2_line_1.'" title="'.translate($parser_step_2_line_1).'" style="cursor:url(images/cursors/hover.cur),auto;" ><img alt="'.translate($parser_step_2_line_1).'" src="images/icons/'.$parser_step_2_line_1.'.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td></tr>';

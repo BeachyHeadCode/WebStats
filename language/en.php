@@ -424,6 +424,8 @@ function translate($item)
 		elseif ($item == "383:60")           {$item = "Spawn Silverfish";}
 		elseif ($item == "383:61")           {$item = "Spawn Blaze";}
 		elseif ($item == "383:62")           {$item = "Spawn Magma Cube";}
+		elseif ($item == "383:65")           {$item = "Spawn Bat";}
+		elseif ($item == "383:66")           {$item = "Spawn Witch";}
 		elseif ($item == "383:90")           {$item = "Spawn Pig";}
 		elseif ($item == "383:91")           {$item = "Spawn Sheep";}
 		elseif ($item == "383:92")           {$item = "Spawn Cow";}

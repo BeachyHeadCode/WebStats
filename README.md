@@ -1,11 +1,11 @@
-<a href="http://cky2250.github.com/WebStats/">WebStats</a> ~ <a href="http://forums.bukkit.org/threads/web-webstatistic-for-minecraft.17793/">Bukkit Forum</a>
+<a href="http://cky2250.github.com/WebStats/">WebStats</a> ~ <a href="http://forums.bukkit.org/threads/60843/">Bukkit Forum</a>
 <hr />
 
 MySQL - PHP web data page for public viewing of Minecraft plugin data
 
 <hr />
 
-This was based on <a href="http://forums.bukkit.org/threads/web-webstatistic-for-minecraft-v1-10b-1337.17793/">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies. 
+This was based on <a href="http://forums.bukkit.org/threads/17793/">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies. 
 
 modular system
 

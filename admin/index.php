@@ -85,6 +85,7 @@ $_SESSION['mode']=$_GET['mode'];
  		<div class="row">
 			<div class="nav-bar">
 				<li><a href="../"><?php echo translate(var6);?></a></li>
+				<li><a href="?mode=home">Home</a></dd>
 				<li><a href="ip.php">IP Tracker</a></li>
 				<li><a href="setup-config.php">Installer</a></li>
 				<li><a href="?mode=settings">Settings</a></li>
@@ -92,17 +93,6 @@ $_SESSION['mode']=$_GET['mode'];
 				<li align="right"><a href="?LOGOUT=TRUE">LOGOUT</a></li>
 			</div>
 		</div>
-<!--		<div class="row">
-			<dl class="tabs contained">
-				<dd><a href="../">< ?php echo translate(var6);?></a></dd>
-				<dd class="active"><a href="#home">Home</a></dd>
-				<dd class="hide-for-small"><a href="ip.php">IP Tracker</a></dd>
-				<dd class="hide-for-small"><a href="setup-config.php">Installer</a></dd>
-				<dd class="hide-for-small"><a href="#settings">Settings</a></dd>
-				<dd class="hide-for-small"><a href="achievements-install/index.php">Achievement - Installer</a></li>
-				<dd class="hide-for-small" align="right"><a href="?LOGOUT=TRUE">LOGOUT</a></dd>
-			</dl>
-		</div>-->
 		<div class="row" style="background-image: url(../images/table_bg.png);"> <!--MAIN-->
 			<div style="margin:25px;">
 		<p>
@@ -115,11 +105,6 @@ $_SESSION['mode']=$_GET['mode'];
 				$speed = $time_end - $start_time;
 				$speed = substr($speed,0,8);
 		?>
-<!-- 			</li>
-			<li id="settingsTab">
-			< ?php include("settings.php");?>
-			</li>
-			</ul> -->
 			</div>
 			</div> <!--MAIN END-->
 			<div class="row footer" align="center">
