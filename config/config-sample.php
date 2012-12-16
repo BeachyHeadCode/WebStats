@@ -20,6 +20,7 @@ define('WS_CONFIG_DBNAME', 'minecraft');
 //Sets up the Minecraft Server location for the dynamic photo and popup windows to reach the server.
 define('MQ_SERVER_ADDR', 'localhost');
 define('MQ_SERVER_PORT', '25565');
+define('MQ_TIMEOUT', '1');
 
 //Default Server Name   Just optical, it's shown at the stats-page.
 define('WS_CONFIG_SERVER', 'Mr. Plow&#039;s Server');

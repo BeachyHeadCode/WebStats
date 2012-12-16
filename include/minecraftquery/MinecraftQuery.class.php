@@ -13,35 +13,45 @@ class MinecraftQuery
 	 * GitHub: https://github.com/xPaw/PHP-Minecraft-Query
 	 */
 	
+	const STATISTIC = 0x00;
+	const HANDSHAKE = 0x09;
+	
 	private $Socket;
-	private $Challenge;
 	private $Players;
 	private $Info;
 	
 	public function Connect( $Ip, $Port = 25565, $Timeout = 3 )
 	{
-		if( $this->Socket = FSockOpen( 'udp://' . $Ip, (int)$Port ) )
+		if( !is_int( $Timeout ) || $Timeout < 0 )
 		{
-			Socket_Set_TimeOut( $this->Socket, $Timeout );
+			throw new InvalidArgumentException( 'Timeout must be an integer.' );
+		}
+		
+		$this->Socket = @FSockOpen( 'udp://' . $Ip, (int)$Port, $ErrNo, $ErrStr, $Timeout );
+		
+		if( $ErrNo || $this->Socket === false )
+		{
+			throw new MinecraftQueryException( 'Could not create socket: ' . $ErrStr );
+		}
+		
+		Stream_Set_Timeout( $this->Socket, $Timeout );
+		Stream_Set_Blocking( $this->Socket, true );
+		
+		try
+		{
+			$Challenge = $this->GetChallenge( );
 			
-			if( !$this->GetChallenge( ) )
-			{
-				FClose( $this->Socket );
-				throw new MinecraftQueryException( "Failed to receive challenge." );
-			}
-			
-			if( !$this->GetStatus( ) )
-			{
-				FClose( $this->Socket );
-				throw new MinecraftQueryException( "Failed to receive status." );
-			}
-			
+			$this->GetStatus( $Challenge );
+		}
+		// We catch this because we want to close the socket, not very elegant
+		catch( MinecraftQueryException $e )
+		{
 			FClose( $this->Socket );
+			
+			throw new MinecraftQueryException( $e->getMessage( ) );
 		}
-		else
-		{
-			throw new MinecraftQueryException( "Can't open connection." );
-		}
+		
+		FClose( $this->Socket );
 	}
 	
 	public function GetInfo( )
@@ -56,25 +66,23 @@ class MinecraftQuery
 	
 	private function GetChallenge( )
 	{
-		$Data = $this->WriteData( "\x09" );
-	
-		if( !$Data )
+		$Data = $this->WriteData( self :: HANDSHAKE );
+		
+		if( $Data === false )
 		{
-			return false;
+			throw new MinecraftQueryException( "Failed to receive challenge." );
 		}
 		
-		$this->Challenge = Pack( 'N', $Data );
-		
-		return true;
+		return Pack( 'N', $Data );
 	}
 	
-	private function GetStatus( )
+	private function GetStatus( $Challenge )
 	{
-		$Data = $this->WriteData( "\x00", $this->Challenge . "\x01\x02\x03\x04" );
+		$Data = $this->WriteData( self :: STATISTIC, $Challenge . Pack( 'c*', 0x00, 0x00, 0x00, 0x00 ) );
 		
 		if( !$Data )
 		{
-			return false;
+			throw new MinecraftQueryException( "Failed to receive status." );
 		}
 		
 		$Last = "";
@@ -95,8 +103,8 @@ class MinecraftQuery
 			'map'        => 'Map',
 			'numplayers' => 'Players',
 			'maxplayers' => 'MaxPlayers',
-			'hostport'   => 'HostPort'//,
-			//'hostip'     => 'HostIp'
+			'hostport'   => 'HostPort',
+			'hostip'     => 'HostIp'
 		);
 		
 		foreach( $Data as $Key => $Value )
@@ -114,8 +122,6 @@ class MinecraftQuery
 			}
 			else if( $Last != false )
 			{
-				// TODO: Filter html vars, potential security "exploits"?
-				
 				$Info[ $Last ] = $Value;
 			}
 		}
@@ -131,7 +137,7 @@ class MinecraftQuery
 			$Data = Explode( ": ", $Info[ 'Plugins' ], 2 );
 			
 			$Info[ 'RawPlugins' ] = $Info[ 'Plugins' ];
-			$Info[ 'Software' ]    = $Data[ 0 ];
+			$Info[ 'Software' ]   = $Data[ 0 ];
 			
 			if( Count( $Data ) == 2 )
 			{
@@ -149,21 +155,24 @@ class MinecraftQuery
 		{
 			$this->Players = Explode( "\x00", $Players );
 		}
-		
-		return true;
 	}
 	
 	private function WriteData( $Command, $Append = "" )
 	{
-		$Command = "\xFE\xFD" . $Command . "\x01\x02\x03\x04" . $Append;
+		$Command = Pack( 'c*', 0xFE, 0xFD, $Command, 0x01, 0x02, 0x03, 0x04 ) . $Append;
 		$Length  = StrLen( $Command );
 		
 		if( $Length !== FWrite( $this->Socket, $Command, $Length ) )
 		{
-			return false;
+			throw new MinecraftQueryException( "Failed to write on socket." );
 		}
 		
-		$Data = FRead( $this->Socket, 1440 );
+		$Data = FRead( $this->Socket, 2048 );
+		
+		if( $Data === false )
+		{
+			throw new MinecraftQueryException( "Failed to read from socket." );
+		}
 		
 		if( StrLen( $Data ) < 5 || $Data[ 0 ] != $Command[ 2 ] )
 		{

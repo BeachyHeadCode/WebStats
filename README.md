@@ -55,22 +55,26 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 </ul>
 			
 <h3>Current Pending Update:</h3>
-<h4>v3.0-beta(out) final(No ETA)</h4>
+<h4>v3.0 final(No ETA) - Changelog bellow is current GitHub Source changes</h4>
 <ul>
 	<li>Added Admin Page.</li>
-	<li>Added Smart Phone Support * iPhone(Added Foundation v3.2.2)</li>
-	<li>Added Sample Config.</li>
+	<li>Added Capability of a dynamic achievments, economy, and stats  plugin change.</li>
 	<li>Added IP Tracker.</li>
-	<li>Added Smelting function and added all current.</li>
-	<li>Updated A few items photos larger image.</li>
-	<li>Updated Brewing Functions</li>
-	<li>Added All Brewing Items Up To Minecraft v1.4</li>
-	<li>Removed/Updated ID page functions * still slow (using foundations) due to the amount of css.</li>
-	<li>Updated Config Installer with notes on what is what.</li>
-	<li>MySQL is much more easy for people to understand *(now once more able to set databases for each plugin verse 1 for all - not recommended).</li>
-	<li>Capability of a dynamic achievments, economy, and stats  plugin change.</li>
+	<li>Added Sample Config.</li>
+	<li>Added Smart Phone Support * iPhone(Added Foundation v3.2.2)</li>
+	<li>Added Smelting function and added all current. ~ (12/16/2012)</li>
 	<li>Added Support for <a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats v1.071 by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a></li>
 	<li>Added Support for <a href="http://dev.bukkit.org/server-mods/mineconomy/">MineConomy</a> ~ <a href="https://github.com/MjolnirCommando/MineConomy">GitHub</a></li>
+	<li>Fixed errors with dynamic photo. ~ <a href="https://github.com/cky2250/PHP-Minecraft-Query">GitHub</a></li>
+	<li>Updated A few items photos larger image.</li>
+	<li>Updated Brewing Functions, Added All Brewing Items Up To Minecraft v1.4.5 ~ (12/16/2012)</li>
+	<li>Updated ID page functions * still slow (using foundations) due to the amount of css.</li>
+	<li>Updated Config Installer with notes on what is what.</li>
+	<li>Updated MySQL, much more easy for people to understand *(now once more able to set databases for each plugin verse 1 for all - not recommended).</li>
+</ul>
+<h4>Known Problems</h4>
+<ul>
+	<li>When the screen is inbetween an area where the menu turns to drop down but does not drop down. - Fix make the page smaller.</li>
 </ul>
 <hr />
 

@@ -1,10 +1,10 @@
 <?php
 error_reporting(0);
+include('../config/config.php');
 include('online_status.php');
 include('minecraftquery.php');
 $port = MQ_SERVER_PORT;
 $server = MQ_SERVER_ADDR;
-//include('minecraftquery.php');
 
 // Create the image---------------------------------------------------------------------------------
 $x=250;
@@ -50,12 +50,19 @@ imagettftext($im, 11, 0, 540, 80, $black, $font, $pingtext);
 
 $minecraftServer = pingMineServ($server, $port);
 if($minecraftServer !==-1){
-$minecraftQuery = QueryMinecraft(localhost, $port);
+if (!extension_loaded('sockets')) {
+  $notloaded='The sockets extension is not loaded.';
+  $howtofix='uncomment ";extension=php_sockets.dll" in your .ini file';
+  imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $notloaded);
+  imagettftext($im, 11, 0, 0, 80, $black, $font, $howtofix);
+}
+else{
+$minecraftQuery = QueryMinecraft($server, $port);
 $textmotd= $minecraftQuery[HostName];
 $textonline= 'Player(s) Online: '.$minecraftQuery[Players].'/'.$minecraftQuery[MaxPlayers];
 imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $textmotd);
 imagettftext($im, 11, 0, 0, 80, $black, $font, $textonline);
-
+}
 
 if($ping==5){
 $src=imagecreatefrompng("../images/serverstatus/bar5.png");

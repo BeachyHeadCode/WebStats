@@ -1,8 +1,7 @@
 <?php
 require_once('include/version.php');
 if (version_compare(PHP_VERSION, $required_php_version) >= 0){
-	$start_time = explode(" ",microtime()); 
-	$start_time = $start_time[1] + $start_time[0]; 	
+	$Timer = MicroTime( true );
 	if(file_exists('config/config.php'))
 		include('config/config.php');
 	else
@@ -183,7 +182,7 @@ $DB -> close();
 	<meta name="viewport" content="width=device-width" />
   
 	<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.us)" />
-	<meta content='minecraft stats' name='description' />
+	<meta name="description" content="minecraft stats"	/>
 	<meta name="keywords" content="minecraft, stats, bukkit, mrplow, cky2250, html5, foundation" />
 	<meta name="copyright" content="mrplows-server.us Copyright (c) 2012" />
 	<title><?php echo (WS_OPTICAL_TAB_TITLE);?></title>
@@ -334,10 +333,6 @@ else{
 			if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn($db_host, $db_user, $db_pass, $db, $createdb);}
 				include('modules/'.$_SESSION['mode'].'/index.php');
 			if (WS_CONFIG_NoMySQL != true) {$DB -> close();}
-			$time_end = explode(" ",microtime());
-			$time_end = $time_end[1] + $time_end[0];
-			$speed = $time_end - $start_time;
-			$speed = substr($speed,0,8);
 			?>
 		</div>
 	</section>
@@ -352,7 +347,7 @@ else{
 				<a href="termsofuse.php">Terms Of Use</a>
        	</em>
 		&nbsp;&nbsp;&nbsp; 
-       	<span style="font-size:xx-small">(Loading time: <?php echo $speed; ?>s)</span>
+       	<span style="font-size:xx-small">(Loading time: <?php echo Number_Format( ( MicroTime( true ) - $Timer ), 4, '.', '' ); ?>s)</span>
 		</p>
 		<?php 
 			if ($iptracker === true){

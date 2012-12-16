@@ -137,6 +137,11 @@ for ($i=0;$i<=sizeof($commits);$i++){
 		</td>
 	</tr>
 </table>
+<div class="row">
+	<div class="three columns centered">
+		<iframe width="234" height="60" frameborder="0" scrolling="NO" marginwidth="0" marginheight="0" src="http://my.dot.tk/cgi-bin/amb/ambassador.dottk?nr=494109::11032956::531"></iframe>
+	</div>
+</div>
 <form action="" method="post" name="Email">
 	<fieldset>
 		<legend style="background: none;"><h4>EMAIL ANY QUESTIONS.</h4></legend>
