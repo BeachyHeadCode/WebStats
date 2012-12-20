@@ -133,5 +133,8 @@ define('pluginconfigpermissionsex', true);			//PermissionsEX
 define('pluginconfigstatusstats', true);			//Stats
 define('pluginconfigstatusbeardstats', true);		//BeardStats
 define('pluginconfigstatusstatslolmewnstats', true);//Stats by lolmewnstats
-define('serveraddr','')  
+define('serveraddr','');
+
+//ADMIN PAGE SETTINGS
+define('iptracker', 'false');
 ?>

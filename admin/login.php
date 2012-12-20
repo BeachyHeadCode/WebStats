@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
@@ -25,10 +25,40 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+    <style type="text/css">
+	html, body {
+		height: 100%;
+	}
+	body {
+		background-color:rgb(228, 228, 228);
+		margin: 0;
+	}
+	#container[id] {
+		top: 50%;
+		margin-top: -200px;
+		position: absolute;
+		left:0;
+		
+		width:100%;
+		min-height: 100%;
+		padding: 10px;
+	}
+	#middle[id] {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		width:	500px;
+		vertical-align: middle;
+		position: static;
+	}
+	</style>
 </head>
-	<body style="background-color:rgb(228, 228, 228);">
-		<section style="width: 500px; margin: auto;">
-			<?php pml_login(); ?>
+	<body>
+		<section id="container">
+			<div id="middle">
+				<h3>Login</h3>
+				<?php pml_login(); ?>
+			</div>
 		</section>
 	</body>
 </html>

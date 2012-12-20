@@ -79,6 +79,12 @@ for ($i=0;$i<=sizeof($commits);$i++){
 	$commitURL[$i] = "https://github.com/$owner/$repoName/commit/$commitSHA";
 }
 ?>
+<div>
+	<a href="http://mcstats.org/plugin/WebStats"><img alt="Graph" src="http://mcstats.org/signature/webstats.png" /></a>
+</div>
+<p>
+	<a href="http://www.xml-sitemaps.com/">Create a Sitemap to help google.</a>
+</p>
 <h3><a href="<?php echo $repoURL; ?>">Latest Github Activity for <?php echo $repoName; ?></a></h3>
 <table>
 	<tr style="vertical-align:top;">
@@ -182,3 +188,8 @@ for ($i=0;$i<=sizeof($commits);$i++){
 			</div>					
 	</fieldset>
 </form>
+<p>
+<a href="http://tool.motoricerca.info/robots-checker.phtml?checkreferer=1">
+<img src="http://tool.motoricerca.info/pic/valid-robots.png" border="0"
+alt="Valid Robots.txt" width="88" height="31"></a>
+</p>
