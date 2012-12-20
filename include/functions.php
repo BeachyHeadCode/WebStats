@@ -348,6 +348,11 @@ function get_status($player){
 		$status = '<span class="offline">Offline</span>';
 	return $status;
 }
+function get_tag($tag,$xml)
+{
+	preg_match_all('/<'.$tag.'>(.*)<\/'.$tag.'>$/imU',$xml,$match);
+	return $match[1];
+}
 function is_bot(){
 	/* This function will check whether the visitor is a search engine robot */
 	$botlist = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi",
@@ -358,7 +363,6 @@ function is_bot(){
 	"Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot",
 	"Mediapartners-Google", "Sogou web spider", "WebAlta Crawler","TweetmemeBot",
 	"Butterfly","Twitturls","Me.dium","Twiceler");
-
 	foreach($botlist as $bot){
 		if(strpos($_SERVER['HTTP_USER_AGENT'],$bot)!==false)
 		return true;	// Is a bot
@@ -387,7 +391,7 @@ function ws_die( $message = '', $title = '', $args = array() ) {
 /**
  * Kill WebStats execution and display HTML message with error message.
  *
- * This is the default handler for wp_die if you want a custom one for your
+ * This is the default handler for ws_die if you want a custom one for your
  * site then you can overload using the wp_die_handler filter in wp_die
  *
  * @since 3.0

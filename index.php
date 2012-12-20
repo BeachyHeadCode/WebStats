@@ -23,53 +23,53 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0){
 	if(empty($_GET['mode'])) $_GET['mode'] = WS_CONFIG_MODULE;
 	$_SESSION['mode']=$_GET['mode'];
 	$_SESSION['page']['numbers']=$_POST['page']['numbers'];
+if(iptracker === true){ // to be added to allow this to be toggled on and off withing the admin page
 
-if($iptracker === true) // to be added to allow this to be toggled on and off withing the admin page
-{	
 	final class ip2location_lite{
-	protected $errors = array();
-	protected $service = 'api.ipinfodb.com';
-	protected $version = 'v3';
-	protected $apiKey = '29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001';
-
-	public function __construct(){}
-	public function __destruct(){}
-	public function setKey($key){
-		if(!empty($key)) $this->apiKey = $key;
-	}
-	public function getError(){
-		return implode("\n", $this->errors);
-	}
-	public function getCountry($host){
-		return $this->getResult($host, 'ip-country');
-	}
-	public function getCity($host){
-		return $this->getResult($host, 'ip-city');
-	}
-	private function getResult($host, $name){
-		$ip = @gethostbyname($host);
-
-		if(preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $ip)){
-			$xml = @file_get_contents('http://' . $this->service . '/' . $this->version . '/' . $name . '/?key=' . $this->apiKey . '&ip=' . $ip . '&format=xml');
-
-			try{
-				$response = @new SimpleXMLElement($xml);
-
-				foreach($response as $field=>$value){
-					$result[(string)$field] = (string)$value;
-				}
-
-				return $result;
-			}
-			catch(Exception $e){
-				$this->errors[] = $e->getMessage();
-				return;
-			}
+		protected $errors = array();
+		protected $service = 'api.ipinfodb.com';
+		protected $version = 'v3';
+		protected $apiKey = '29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001';
+		
+		public function __construct(){}
+		public function __destruct(){}
+		public function setKey($key){
+			if(!empty($key)) $this->apiKey = $key;
 		}
-		$this->errors[] = '"' . $host . '" is not a valid IP address or hostname.';
-		return;
+		public function getError(){
+			return implode("\n", $this->errors);
+		}
+		public function getCountry($host){
+			return $this->getResult($host, 'ip-country');
+		}
+		public function getCity($host){
+			return $this->getResult($host, 'ip-city');
+		}
+		private function getResult($host, $name){
+			$ip = @gethostbyname($host);
+
+			if(preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $ip)){
+				$xml = @file_get_contents('http://' . $this->service . '/' . $this->version . '/' . $name . '/?key=' . $this->apiKey . '&ip=' . $ip . '&format=xml');
+
+				try{
+					$response = @new SimpleXMLElement($xml);
+
+					foreach($response as $field=>$value){
+						$result[(string)$field] = (string)$value;
+					}
+
+					return $result;
+				}
+				catch(Exception $e){
+					$this->errors[] = $e->getMessage();
+					return;
+				}
+			}
+			$this->errors[] = '"' . $host . '" is not a valid IP address or hostname.';
+			return;
+		}
 	}
-}
+
 //Load the class
 	$ipLite = new ip2location_lite;
 	$ipLite->setKey('29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001');
@@ -78,6 +78,9 @@ if($iptracker === true) // to be added to allow this to be toggled on and off wi
 //Getting the result
 	
 $location = $locations['countryCode'].",".$locations['regionName'].','.$locations['cityName'].','.$locations['zipCode'];
+$country = $locations['regionName'];
+$countrycode = $locations['countryCode'];
+$city = $locations['cityName'];
 $ip=$_SERVER['REMOTE_ADDR'];
 $hostname=$_SERVER['REMOTE_HOST'];
 $referer=$_SERVER['HTTP_REFERER'];
@@ -86,31 +89,27 @@ $today = date("D M j G:i:s T Y");
 $hostname=gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
 $result="SELECT * FROM stats WHERE IP='$ip'";	
+	
+	if (!$country){
+		$country='UNKNOWN';
+		$countrycode='XX';
+		$city='(Unknown City?)';
+		$zipcode='UNKNOWN';
+		$location = $countrycode.",".$country.','.$city.','.$zipcode;
+	}
+	
+$DB = new DBConfig();
+$DB -> config();
+$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
 
-$db_host		= WS_MySQL_DBHOST.":".WS_MySQL_PORT;
-$db_user		= WS_MySQL_USERNAME;
-$db_pass		= WS_MySQL_PASSWORD; 
-$db				= WS_MySQL_DB;
-$createdb		= true;
-$DB = new DBConfig();$DB -> config();$DB -> conn($db_host, $db_user, $db_pass, $ws_stats, $createdb);
-
-//CHANGED DATABASE TO "WebStats"
-
-	$query = mysql_query("SELECT * FROM `stats`");
-	$field = mysql_fetch_array($query);
-
-if(!isset($field[IP])){
-		if(is_bot()){
-			$bot=1;
-		}
-		else{
-			$bot=0;
-		}
-		$data="INSERT INTO stats (IP, hostname, location, referer, pageurl, date, bot) VALUES ('$ip', '$hostname', '$location', '$referer', '$pageurl', '$today' ,'$bot')";
-		if (!mysql_query($data))
-		{
+$query = mysql_query("SELECT * FROM `stats` WHERE IP='$ip'");
+$field = mysql_fetch_array($query);
+if(!isset($field[IP])){if(is_bot()){$bot=1;}else{$bot=0;}
+		$data="INSERT INTO stats (IP, hostname, location, referer, pageurl, date, bot, country, countrycode, city, online) VALUES ('$ip', '$hostname', '$location', '$referer', '$pageurl', '$today', '$bot', '$country', '$countrycode', '$city', '0')";
+		if (!mysql_query($data)){
 			if(mysql_query("CREATE TABLE IF NOT EXISTS `stats` (
 `ID` INT(11) NOT NULL AUTO_INCREMENT,
+`username` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'If a stats plugin recoreds the user ingame name with IP.',
 `IP` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is very accurate, since it is decided by PHP. It is unknown to wether it will record IPv6.',
 `hostname` VARCHAR(500) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is decided by PHP, so this is very accurate but may go too far and give the ISP hostname for the IP.',
 `location` VARCHAR(500) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This code is taken from an outside source and is not know to be correct or incorrect.',
@@ -119,55 +118,52 @@ if(!isset($field[IP])){
 `date` VARCHAR(200) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is the current date for which the user has viewed the page.',
 `pageview` INT(9) NOT NULL DEFAULT '1' COMMENT 'This value is developed by every click that the IP has viewed the site pages monitored by this code.',
 `bot` INT(1) NOT NULL COMMENT 'This value is decided by a list of known bot urls and IPs that have been set.',
-PRIMARY KEY (`ID`)
-) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`"))
-			{
+`country` varchar(64) collate utf8_unicode_ci NOT NULL default '' COMMENT 'What Country they are from.',
+`countrycode` varchar(2) collate utf8_unicode_ci NOT NULL default '' COMMENT 'What Country code they are from.',
+`city` varchar(64) collate utf8_unicode_ci NOT NULL default '' COMMENT 'What City they are from.',
+`dt` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT 'Current timestamp.',
+`online INT(1) NOT NULL COMMENT 'If the ip is online or not.',
+PRIMARY KEY (`ID`),
+UNIQUE KEY `ip` (`ip`),
+KEY `countrycode` (`countrycode`)
+) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")){
 				echo "table created :) \n";
-			}
-			else
-			{
-				die('Error creating table: ' . mysql_error());
-			}
+			}else{ die('Error creating table: ' . mysql_error());}
 		}
 }
-	$query = mysql_query("SELECT date FROM stats WHERE IP='$ip'",$link);
+	$query = mysql_query("SELECT date FROM `stats` WHERE IP='$ip'");
 	$date = mysql_fetch_array($query);
-for($i=0; $i < count($field)/2; $i++)
-{
-	if($field[$i]==$ip)
-	{
-		$pageview = "UPDATE stats SET pageview = pageview+1 WHERE IP='$ip'";
+for($i=0; $i < count($field)/2; $i++){
+	if($field[$i]==$ip){
+		$pageview = "UPDATE stats SET pageview = pageview+1, online = 1 WHERE IP='$ip'";
 		$update_date = "UPDATE stats SET date='$today' WHERE IP='$ip'";
 		$currentpageurl = "UPDATE stats SET pageurl='$pageurl' WHERE IP='$ip'";
-		if (!mysql_query($update_date,$link))
-		{
-			die('Error: ' . mysql_error());
-		}
-		if (!mysql_query($pageview,$link))
-		{
-			die('Error: ' . mysql_error());
-		}
-		if (!mysql_query($currentpageurl,$link))
-		{
-			die('Error: ' . mysql_error());
-		}
+		$query = mysql_query("UPDATE stats SET dt=NOW() WHERE ip='$ip'");
+		
+		if (!mysql_query($update_date))die('Error on $update_date: ' . mysql_error());
+		if (!mysql_query($pageview))die('Error on $pageview: ' . mysql_error());
+		if (!mysql_query($currentpageurl))die('Error on $currentpageurl: ' . mysql_error());
 	}
 }
 	$totalbotpageviews = "SELECT SUM(pageview) FROM stats WHERE bot='1'";
-	$totalbotquery=mysql_query($totalbotpageviews,$link);
+	$totalbotquery=mysql_query($totalbotpageviews);
 	$totalbot =mysql_fetch_array($totalbotquery);
 	
 	$totalpageviews = "SELECT SUM(pageview) FROM stats WHERE bot='0'";
-	$totalviewquery=mysql_query($totalpageviews,$link);
+	$totalviewquery=mysql_query($totalpageviews);
 	$total = mysql_fetch_array($totalviewquery);
 	
 	$queryentrie ="SELECT COUNT(pageview) FROM stats";
-	$query = mysql_query($queryentrie,$link);
+	$query = mysql_query($queryentrie);
 	$row = mysql_fetch_array($query);
+	mysql_query("UPDATE stats SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:10:0')");
 
-$DB -> close();
-}
-?>
+	// Counting all the online visitors:
+list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats WHERE online='1'"));
+
+// Outputting the number as plain text:
+
+$DB -> close();}?>
 <!DOCTYPE html>
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -264,7 +260,7 @@ else{
 		<?php echo (WS_GOOGLE_ASIDE);?>
 	</section>
 <!-- SEARCH BAR -->
-<div id="main" role="main" class="row"><!--Main Wrapper Start-->
+<div id="main" role="main" class="row" style="padding-bottom:50px"><!--Main Wrapper Start-->
 	<div class="twelve columns centered" style="min-width:780px">
 	<header id="header" class="row" style="margin-top:1cm;">
 			<div class="twelve columns centered">
@@ -315,7 +311,7 @@ else{
 			</div>			    
 	</header>
 	<div class="row" style="background-image:url(../images/table_bg.png);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;padding-top:30px;">
-		<?php include('include/menu.php'); ?>
+		<?php include('assets/menu.php'); ?>
 	</div>
 	<div class="row" role="searchbar">
 		<?php if($search_control == true)include('modules/search/index.php'); ?>
@@ -350,13 +346,15 @@ else{
        	<span style="font-size:xx-small">(Loading time: <?php echo Number_Format( ( MicroTime( true ) - $Timer ), 4, '.', '' ); ?>s)</span>
 		</p>
 		<?php 
-			if ($iptracker === true){
-					echo"&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
+			$mcstats = false;
+			if($mcstats === true){
+				include_once("admin/test.php");
+			}
+			if (iptracker === true){
+					echo"&nbsp;&nbsp;Users Online:&nbsp;".$totalOnline."&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
 					if(isset($date[0]))
 						echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
-					else { 
-						echo '';
-					}
+					else { echo '';}
 			}
 ?>
 	</footer>

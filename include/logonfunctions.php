@@ -208,8 +208,7 @@ function pml_login($todo = "",$action = "") {
 		}
 		// Login form
 		?>
-<div class="row">
-		<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
+		<form method="post" style="margin-left: auto; margin-right: auto; width:355px;" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
 			<table>
 				<tr>
 					<td><label for="username"><?php echo translate('login-username'); ?>:</label></td>
@@ -220,7 +219,7 @@ function pml_login($todo = "",$action = "") {
 					<td><input size="24" maxlength="24" placeholder="password" type="password" id="password" name="password" <?php if(isset($_POST['password'])) { echo 'value="'.$_POST['password'].'"'; } ?> /></td>
 				</tr>
 				<tr>
-					<td align="right"><input type="checkbox" id="cookie" name="cookie" value="true" <?php if(isset($_POST['cookie'])) { echo "checked"; } ?> /></td>
+					<td><input type="checkbox" id="cookie" name="cookie" value="true" <?php if(isset($_POST['cookie'])) { echo "checked"; } ?> /></td>
 					<td><label for="cookie"><?php echo translate('login-cookie'); ?></label></td>
 				</tr>
 				<tr>
@@ -229,7 +228,6 @@ function pml_login($todo = "",$action = "") {
 				</tr>
 			</table>
 		</form>
-</div>
 		<?php
 		
 	}else{
