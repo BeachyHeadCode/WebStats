@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /assets/
+Disallow: /config/
+Disallow: /include/php_extention/
+Disallow: /include/minecraftquery/
+Disallow: /include/lastrun.log
+Disallow: /include/php.ini
+Disallow: /include/sql.sql
+Disallow: /include/version.yml
+Disallow: /include/write.xml
+Disallow: /fonts/
+Disallow: /javascripts/
+Disallow: /README.md
+Disallow: /web.config
