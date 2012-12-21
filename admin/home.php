@@ -80,7 +80,14 @@ for ($i=0;$i<=sizeof($commits);$i++){
 }
 ?>
 <div style="margin: 0px auto;width: 478px;">
-	<a href="http://mcstats.org/plugin/WebStats"><img alt="Graph" src="http://mcstats.org/signature/webstats.png" /></a>
+	<a href="http://mcstats.org/plugin/WebStats">
+	<?php if (file_exists('../images/image-cache/webstats.png')){
+		echo '<img alt="Graph" src="../images/image-cache/webstats.png" />';
+	} else {
+		echo '<img alt="Graph" src="http://mcstats.org/signature/webstats.png" />';
+	}
+	?>
+	</a>
 </div>
 <p>
 	<h4>Info</h4>

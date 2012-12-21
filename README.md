@@ -60,6 +60,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>Added Admin Page.</li>
 	<li>Added Capability of a dynamic achievments, economy, and stats  plugin change.</li>
 	<li>Added IP Tracker.</li>
+	<li>Added mcstats.org tracker.</li>
 	<li>Added Sample Config.</li>
 	<li>Added Smart Phone Support * iPhone(Added Foundation v3.2.2)</li>
 	<li>Added Smelting function and added all current. ~ (12/16/2012)</li>

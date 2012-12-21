@@ -24,55 +24,9 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0){
 	$_SESSION['mode']=$_GET['mode'];
 	$_SESSION['page']['numbers']=$_POST['page']['numbers'];
 if(iptracker === true){ // to be added to allow this to be toggled on and off withing the admin page
-
-	final class ip2location_lite{
-		protected $errors = array();
-		protected $service = 'api.ipinfodb.com';
-		protected $version = 'v3';
-		protected $apiKey = '29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001';
-		
-		public function __construct(){}
-		public function __destruct(){}
-		public function setKey($key){
-			if(!empty($key)) $this->apiKey = $key;
-		}
-		public function getError(){
-			return implode("\n", $this->errors);
-		}
-		public function getCountry($host){
-			return $this->getResult($host, 'ip-country');
-		}
-		public function getCity($host){
-			return $this->getResult($host, 'ip-city');
-		}
-		private function getResult($host, $name){
-			$ip = @gethostbyname($host);
-
-			if(preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $ip)){
-				$xml = @file_get_contents('http://' . $this->service . '/' . $this->version . '/' . $name . '/?key=' . $this->apiKey . '&ip=' . $ip . '&format=xml');
-
-				try{
-					$response = @new SimpleXMLElement($xml);
-
-					foreach($response as $field=>$value){
-						$result[(string)$field] = (string)$value;
-					}
-
-					return $result;
-				}
-				catch(Exception $e){
-					$this->errors[] = $e->getMessage();
-					return;
-				}
-			}
-			$this->errors[] = '"' . $host . '" is not a valid IP address or hostname.';
-			return;
-		}
-	}
-
 //Load the class
 	$ipLite = new ip2location_lite;
-	$ipLite->setKey('29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001');
+	//$ipLite->setKey('29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001');
 //Get locations
 	$locations = $ipLite->getCity($_SERVER['REMOTE_ADDR']);
 //Getting the result
@@ -163,58 +117,10 @@ list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats W
 
 // Outputting the number as plain text:
 
-$DB -> close();}?>
-<!DOCTYPE html>
+$DB -> close();}
 
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-	
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width" />
-  
-	<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.us)" />
-	<meta name="description" content="minecraft stats"	/>
-	<meta name="keywords" content="minecraft, stats, bukkit, mrplow, cky2250, html5, foundation" />
-	<meta name="copyright" content="mrplows-server.us Copyright (c) 2012" />
-	<title><?php echo (WS_OPTICAL_TAB_TITLE);?></title>
-	<link rel="stylesheet" type="text/css" href="stylesheets/layout.css"/>
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- For third-generation iPad with high-resolution Retina display: -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicons/apple-touch-icon-144x144-precomposed.png">
-	<!-- For iPhone with high-resolution Retina display: -->
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicons/apple-touch-icon-114x114-precomposed.png">
-	<!-- For first- and second-generation iPad: -->
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicons/apple-touch-icon-72x72-precomposed.png">
-	<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-	<link rel="apple-touch-icon-precomposed" href="images/favicon.png">
-	<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-  
-	<!-- Included CSS Files (Uncompressed) -->
-	<link rel="stylesheet" href="stylesheets/foundation.css">
-	<!-- Included CSS Files (Compressed) -->
-	<!--<link rel="stylesheet" type="text/css" href="stylesheets/foundation.min.css">-->
-	<link rel="stylesheet" type="text/css" href="stylesheets/app.css">
-
-	<script type="text/javascript" src="javascripts/modernizr.foundation.js"></script>
-
-	<!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link rel="stylesheet" href="stylesheets/general_enclosed_foundicons.css">
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" href="stylesheets/general_enclosed_foundicons_ie7.css">
-	<![endif]-->
-  
-	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>            
-</head>
+include("assets/header.php");
+?>
 <body class="off-canvas" style="background-repeat:repeat;text-align:center;color:#333322;background-attachment:fixed;background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png'); <?php echo (defaultt); ?>">
 <?php
 $ip=$_SERVER['REMOTE_ADDR'];
@@ -397,5 +303,7 @@ else{
   <script src="javascripts/app.js"></script>
 </body>
 </html>
-<?php } else { ECHO ('Please install php version 5.2.5 or better!');}
+<?php 
+	require('include/mcstats.php');
+} else { ECHO ('Please install php version 5.2.5 or better!');}
 ?>
