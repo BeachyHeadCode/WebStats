@@ -37,18 +37,18 @@ function get_commits($repo, $user){
 }
 function get_downloads($repo, $user){
 	$repoName = $repo["name"];  //takes the array and only outputs the name of the repo.
-return json_decode(get_json("repos/$user/$repoName/downloads"),true); // returns all the downloadable files.
+	return json_decode(get_json("repos/$user/$repoName/downloads"),true); // returns all the downloadable files.
 }
 function format_filesize($number, $decimals = 3, $force_unit = false, $dec_char = ',', $thousands_char = ' '){
 //string format_filesize(int(0,) $number, (bool(0), int(0,4)) $force_unit, int $decimals, char $dec_char, char $thousands_char)
-        $units = array('Byte','KB','MB','GB','TB','PB');
-        if($force_unit === false)
-            $unit = floor(log($number, 2) / 10);
-        else
-            $unit = $force_unit;
-        if($unit == 0)
-            $decimals = 0;
-        return number_format($number / pow(1024, $unit), $decimals, $dec_char, $thousands_char).' '.$units[$unit];
+	$units = array('Byte','KB','MB','GB','TB','PB');
+	if($force_unit === false)
+		$unit = floor(log($number, 2) / 10);
+	else
+		$unit = $force_unit;
+	if($unit == 0)
+		$decimals = 0;
+	return number_format($number / pow(1024, $unit), $decimals, $dec_char, $thousands_char).' '.$units[$unit];
 }
 $username="cky2250";
 $repo = get_repo($username);//grabs the repo
@@ -79,11 +79,17 @@ for ($i=0;$i<=sizeof($commits);$i++){
 	$commitURL[$i] = "https://github.com/$owner/$repoName/commit/$commitSHA";
 }
 ?>
-<div>
+<div style="margin: 0px auto;width: 478px;">
 	<a href="http://mcstats.org/plugin/WebStats"><img alt="Graph" src="http://mcstats.org/signature/webstats.png" /></a>
 </div>
 <p>
-	<a href="http://www.xml-sitemaps.com/">Create a Sitemap to help google.</a>
+	<h4>Info</h4>
+	<a href="http://www.xml-sitemaps.com/">Create a Sitemap to help google.</a><br />
+<?php
+	if(ini_get('variables_order') == "GPCS"){
+		echo 'Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';
+	}
+?>
 </p>
 <h3><a href="<?php echo $repoURL; ?>">Latest Github Activity for <?php echo $repoName; ?></a></h3>
 <table>
@@ -143,10 +149,8 @@ for ($i=0;$i<=sizeof($commits);$i++){
 		</td>
 	</tr>
 </table>
-<div class="row">
-	<div class="three columns centered">
-		<iframe width="234" height="60" frameborder="0" scrolling="NO" marginwidth="0" marginheight="0" src="http://my.dot.tk/cgi-bin/amb/ambassador.dottk?nr=494109::11032956::531"></iframe>
-	</div>
+<div class="three columns centered">
+	<iframe width="234" height="60" frameborder="0" scrolling="NO" marginwidth="0" marginheight="0" src="http://my.dot.tk/cgi-bin/amb/ambassador.dottk?nr=494109::11032956::531"></iframe>
 </div>
 <form action="" method="post" name="Email">
 	<fieldset>
@@ -189,7 +193,5 @@ for ($i=0;$i<=sizeof($commits);$i++){
 	</fieldset>
 </form>
 <p>
-<a href="http://tool.motoricerca.info/robots-checker.phtml?checkreferer=1">
-<img src="http://tool.motoricerca.info/pic/valid-robots.png" border="0"
-alt="Valid Robots.txt" width="88" height="31"></a>
+	<a href="http://tool.motoricerca.info/robots-checker.phtml?checkreferer=1"><img src="http://tool.motoricerca.info/pic/valid-robots.png" border="0" alt="Valid Robots.txt" width="88" height="31"></a>
 </p>

@@ -1,15 +1,158 @@
 <?php
+
+function ip_get_pages($numbers, $mode, $sort) {	
+	$setamount = WS_CONFIG_PAGENUM;
+	$numberofpages = array(25, 35, 45, 50, 75, 100);
+	for($i=0; $i <= sizeof($numberofpages)-1; $i++){
+		if($_SESSION['page']['numbers'] == $numberofpages[$i])
+			$dropdownselected = ("<option value='".$numberofpages[$i]."' SELECTED>".$numberofpages[$i]."</option>");
+		else 
+			$dropdown .= "<option value='".$numberofpages[$i]."'>".$numberofpages[$i]."</option>";
+	}	
+	$output =	'<div style="margin:auto;" align="center">
+	<form class="custom" method="post" action="">	
+		<select onchange="this.form.submit();" style="display:none;" id="customDropdown" class="select2" title="Number of items per page" name="page[numbers]">
+'.$dropdownselected.$dropdown.'</select>';
+	if(isset($_SESSION['page']['numbers'])){
+		$numbers = $numbers / $_SESSION['page']['numbers'];
+	}
+	else{
+		if(isset($setamount)){
+			$numbers = $numbers / $setamount;
+		}
+		else{
+			$numbers = $numbers / 25;
+		}
+	}
+	$output .= '<table class="pagination"><tbody><tr valign="top">';
+		if(isset($_GET["page"])){
+			
+			if(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)){
+				
+				if($_GET["page"]==1){
+					$pages = '<td style="margin-left:50px;" class="arrow unavailable"><a href="">&laquo;</a></td>';
+					$pages .= '<td class="current"><a href="ip.php?page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				}
+				else{
+					$pages = '<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+					$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				}
+				if($numbers >= 10){
+					for($i=1; $i < 10; $i++){
+						$page = $i + 1;
+						if($_GET["page"]==$page){
+							$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						}
+						else{
+							$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						}
+					}
+				}
+				else{
+					for($i=1; $i <= $numbers; $i++){
+						$page = $i + 1;
+						if($_GET["page"]==$page){
+							$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						}
+						else{
+							$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						}
+					}
+				}
+				if($_GET["page"] < $numbers){
+					$pages .='<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
+				}
+				else{
+					$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
+				}
+			}
+			elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))){
+				$pages = '<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+				$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
+				for($i=($_GET["page"]-5); $i < ($_GET["page"]+4); $i++){
+					$page = $i + 1;
+					if($_GET["page"]==$page){
+						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+					else{
+						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+				}
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
+				$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></td>';
+				$pages .='<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
+			}
+			elseif($_GET["page"] == $numbers){
+				$pages = '<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+				$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
+				for($i=($_GET["page"]-5); $i < $numbers; $i++){
+					$page = $i + 1;
+					if($_GET["page"]==$page){
+						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+					else{
+						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+				}
+				$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
+			}
+			if(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))){
+				$pages = '<td class="arrow"><a href="">&laquo;</a></td>';
+				$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
+				for($i=($_GET["page"]-5); $i < $numbers; $i++)
+				{
+					$page = $i + 1;
+					
+					if($_GET["page"]==$page){
+						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+					else{
+						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+				}
+				$pages .='<td class="arrow"><a href="">&raquo;</a></td>';
+			}
+		}
+		else{
+			$pages = '<td class="arrow unavailable"><a href="">&laquo;</a></td>';
+			$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+			if($numbers >= 10){
+				for($i=1; $i <= 10; $i++){
+					$page = $i + 1;
+					if(1==$page){
+						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+					else{
+						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					}
+				}
+			}
+			else{
+				for($i=1; $i <= $numbers; $i++){
+					$page = $i + 1;
+					$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+				}
+			}
+			$pages .='<td class="arrow"><a href="ip.php?mode='.$mode.'&page=2&sort='.$sort.'">&raquo;</a></td>';		
+		}
+    $output .= $pages.'</tr></tbody></table></form></div>';
+	return $output;
+}
+
 session_start();
 error_reporting(0);
 $ip=$_SERVER['REMOTE_ADDR'];
 require_once("../include/logonfunctions.php");
 require_once('../include/functions.php');
-
 if(file_exists('../config/config.php'))
 	include('../config/config.php');
 else
-	header("/setup-config.php");
+	header("setup-config.php");
 		
+if (!isset($_GET['sort'])) {$_GET['sort'] = 'IPdesc';}
 
 if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1')
 {
@@ -141,71 +284,21 @@ return $output;
 </head>
 <body style="background-color:rgb(228, 228, 228);">
 <style>
+.nav-bar{
+	margin-top: 0px !important;
+}
 .content_maintable{
-			width:						660px; 
 			border:						1px solid #333333; 
 			background-image:			url(../images/table_bg.png);	
 			margin: 					auto;
 			min-height: 				100%;
-			height:						auto !important;
 			height:						100%;
 			overflow:					hidden !important;	
 }
-.content_headline_num {
+.content_headline {
 			font-size: 					14px; 
 			font-weight: 				bold;
 			height: 					25px;
-			float:						left;
-			width:						35px;
-}
-.content_headline_IP {
-			font-size: 					14px; 
-			font-weight: 				bold;
-			height: 					25px;
-			float:						left;
-			width:						150px;
-}
-.content_headline_hostname {
-			font-size: 					14px; 
-			font-weight: 				bold;
-			height: 					25px;
-			float:						left;
-			width:						250px;
-}
-.content_headline_location {
-			font-size: 					14px; 
-			font-weight: 				bold;
-			height: 					25px;
-			float:						left;
-			width:320px;
-}
-.content_headline_referer {
-			font-size: 					14px; 
-			font-weight: 				bold;
-			height: 					25px;
-			float:						left;
-			width:						280px;
-}
-.content_headline_pageurl {
-			font-size: 					14px; 
-			font-weight: 				bold;
-			height: 					25px;
-			float:						left;
-			width:						300px;
-}
-.content_headline_pageviews {
-			font-size: 					14px; 
-			font-weight: 				bold;
-			height: 					25px;
-			float:						left;
-			width:						80px;
-}
-.content_headline_date {
-			font-size: 					14px; 
-			font-weight: 				bold;
-			height: 					25px;
-			float:						left;
-			width:						210px;
 }
 a:link {
 			color:						black;
@@ -215,21 +308,20 @@ a:link {
 
 a:visited {
 			color: 						black;
-			text-decoration: 				none;
-			font-weight: 					bold;
+			text-decoration: 			none;
+			font-weight: 				bold;
 }
 a:hover {
 			color:						black;
-			text-decoration: 				underline;
-			font-weight: 					bold;				
+			text-decoration: 			underline;
+			font-weight: 				bold;				
 }
 </style>
 <nav class="nav-bar">
 	<li class="name"><a href="index.php">Admin Page</a></li>
 </nav>
-<div align="center">
-	<h2>IP Track<br/>
-    <?php echo ''.$ip.'  Welcome';?></h2>
+<div style="text-align: center;">
+	<h2>IP Track ( <?php echo $ip.' )  Welcome';?></h2>
 </div>
 <?php 
 $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB); 
@@ -241,33 +333,33 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
         <?php
 		if($_GET['sort']!=='IPdesc'){
 		?>
-        	<th align="left" class="content_headline_IP"><a href="ip.php?sort=IPdesc">IP:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=IPdesc">IP:</a></th>
         <?php }else{?>
-        	<th align="left" class="content_headline_IP"><a href="ip.php?sort=IPasc">IP:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=IPasc">IP:</a></th>
         <?php }if($_GET['sort']!=='hostnamedesc'){?>
-        	<th align="left" class="content_headline_hostname"><a href="ip.php?sort=hostnamedesc">Hostname:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=hostnamedesc">Hostname:</a></th>
         <?php }else{?>
-        	<th align="left" class="content_headline_hostname"><a href="ip.php?sort=hostnameasc">Hostname:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=hostnameasc">Hostname:</a></th>
 		<?php }if($_GET['sort']!=='locationdesc'){?>
-        	<th align="left" class="content_headline_location"><a href="ip.php?sort=locationdesc">Location:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=locationdesc">Location:</a></th>
         <?php }else{?>
-        	<th align="left" class="content_headline_location"><a href="ip.php?sort=locationasc">Location:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=locationasc">Location:</a></th>
         <?php }if($_GET['sort']!=='refererdesc'){?>
-       		<th align="left" class="content_headline_referer"><a href="ip.php?sort=refererdesc">Referer:</a></th>
+       		<th align="left" class="content_headline"><a href="ip.php?sort=refererdesc">Referer:</a></th>
         <?php }else{?>
-        	<th align="left" class="content_headline_referer"><a href="ip.php?sort=refererasc">Referer:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=refererasc">Referer:</a></th>
         <?php }if($_GET['sort']!=='pageurldesc'){?>
-        	<th align="left" class="content_headline_pageurl"><a href="ip.php?sort=pageurldesc">Page URL:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=pageurldesc">Page URL:</a></th>
         <?php }else{?>
-        	<th align="left" class="content_headline_pageurl"><a href="ip.php?sort=pageurlasc">Page URL:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=pageurlasc">Page URL:</a></th>
         <?php }if($_GET['sort']!=='pageviewsdesc'){?>
-        	<th align="left" class="content_headline_pageviews"><a href="ip.php?sort=pageviewsdesc">Page views:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=pageviewsdesc">Page views:</a></th>
         <?php }else{?>
-       		<th align="left" class="content_headline_pageviews"><a href="ip.php?sort=pageviewsasc">Page views:</a></th>
+       		<th align="left" class="content_headline"><a href="ip.php?sort=pageviewsasc">Page views:</a></th>
         <?php }if($_GET['sort']!=='datedesc'){?>
-        	<th align="left" class="content_headline_date"><a href="ip.php?sort=datedesc">Date:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=datedesc">Date:</a></th>
         <?php }else{?>
-        	<th align="left" class="content_headline_date"><a href="ip.php?sort=dateasc">Date:</a></th>
+        	<th align="left" class="content_headline"><a href="ip.php?sort=dateasc">Date:</a></th>
         <?php } ?>
         
 	</thead>
@@ -291,8 +383,7 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
 			?>
             <tbody id="names" align="center">
             <?php
-			for($i=0; $i < sizeof($IPs); $i++)
-			{
+			for($i=0; $i < sizeof($IPs); $i++){
 				echo (server_IP_table($IPs[$i], $i+$start));
 			}
 			?>
@@ -300,7 +391,7 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
             </table>
 			<?php
 			
-			echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $_GET['sort'])) . "</div>";
+			echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $mode, $_GET['sort'], basename(__FILE__, '.php'))) . "</div>";
 			$DB -> close();			
 		?>
 </div>
@@ -309,6 +400,6 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
 
 <?php }
 else{
-header("location:".adminPageURL());
-	}
+	header("location:".adminPageURL());
+}
 ?>

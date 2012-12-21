@@ -13,13 +13,11 @@ include('../include/functions.php');
 require_once("../include/logonfunctions.php");
 if($_GET['LOGOUT'] == 'TRUE')
 	require_once('logout.php');
-
-if(!isset($_SESSION['pml_userid'])){
+if(!isset($_SESSION['pml_userid'])) {
 	require_once('login.php');
 
 }
-else
-{
+else {
 if(empty($_GET['mode'])) $_GET['mode'] = 'home';
 $_SESSION['mode']=$_GET['mode'];
 ?>
@@ -86,7 +84,7 @@ $_SESSION['mode']=$_GET['mode'];
 			<div class="nav-bar">
 				<li><a href="../"><?php echo translate(var6);?></a></li>
 				<li><a href="?mode=home">Home</a></dd>
-				<li><a href="ip.php">IP Tracker</a></li>
+				<li><a href="?mode=ip">IP Tracker</a></li>
 				<li><a href="setup-config.php">Installer</a></li>
 				<li><a href="?mode=settings">Settings</a></li>
 				<li><a href="achievements-install/index.php">Achievement - Installer</a></li>

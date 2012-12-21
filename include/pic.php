@@ -51,17 +51,22 @@ imagettftext($im, 11, 0, 540, 80, $black, $font, $pingtext);
 $minecraftServer = pingMineServ($server, $port);
 if($minecraftServer !==-1){
 if (!extension_loaded('sockets')) {
+	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+		dl('php_extention/php_sockets.dll');
+	} else {
+		dl('php_extention/php_sockets.so');
+    }
   $notloaded='The sockets extension is not loaded.';
   $howtofix='uncomment ";extension=php_sockets.dll" in your .ini file';
   imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $notloaded);
   imagettftext($im, 11, 0, 0, 80, $black, $font, $howtofix);
 }
 else{
-$minecraftQuery = QueryMinecraft($server, $port);
-$textmotd= $minecraftQuery[HostName];
-$textonline= 'Player(s) Online: '.$minecraftQuery[Players].'/'.$minecraftQuery[MaxPlayers];
-imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $textmotd);
-imagettftext($im, 11, 0, 0, 80, $black, $font, $textonline);
+	$minecraftQuery = QueryMinecraft($server, $port);
+	$textmotd= $minecraftQuery[HostName];
+	$textonline= 'Player(s) Online: '.$minecraftQuery[Players].'/'.$minecraftQuery[MaxPlayers];
+	imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $textmotd);
+	imagettftext($im, 11, 0, 0, 80, $black, $font, $textonline);
 }
 
 if($ping==5){
