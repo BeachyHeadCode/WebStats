@@ -153,12 +153,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		<li class="toggle-topbar"><a href="#"></a></li>
 	</ul>
 </div>
-<?php
-}
-else{
-
-}
-?>
+<?php } ?>
 	<section id="sidebar" role="complementaryleft">
 		<div onmousedown="return false;" onselectstart="return false;">
 			<b>Ads</b>
