@@ -1,147 +1,4 @@
 <?php
-
-function ip_get_pages($numbers, $mode, $sort) {	
-	$setamount = WS_CONFIG_PAGENUM;
-	$numberofpages = array(25, 35, 45, 50, 75, 100);
-	for($i=0; $i <= sizeof($numberofpages)-1; $i++){
-		if($_SESSION['page']['numbers'] == $numberofpages[$i])
-			$dropdownselected = ("<option value='".$numberofpages[$i]."' SELECTED>".$numberofpages[$i]."</option>");
-		else 
-			$dropdown .= "<option value='".$numberofpages[$i]."'>".$numberofpages[$i]."</option>";
-	}	
-	$output =	'<div style="margin:auto;" align="center">
-	<form class="custom" method="post" action="">	
-		<select onchange="this.form.submit();" style="display:none;" id="customDropdown" class="select2" title="Number of items per page" name="page[numbers]">
-'.$dropdownselected.$dropdown.'</select>';
-	if(isset($_SESSION['page']['numbers'])){
-		$numbers = $numbers / $_SESSION['page']['numbers'];
-	}
-	else{
-		if(isset($setamount)){
-			$numbers = $numbers / $setamount;
-		}
-		else{
-			$numbers = $numbers / 25;
-		}
-	}
-	$output .= '<table class="pagination"><tbody><tr valign="top">';
-		if(isset($_GET["page"])){
-			
-			if(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)){
-				
-				if($_GET["page"]==1){
-					$pages = '<td style="margin-left:50px;" class="arrow unavailable"><a href="">&laquo;</a></td>';
-					$pages .= '<td class="current"><a href="ip.php?page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-				}
-				else{
-					$pages = '<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
-					$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-				}
-				if($numbers >= 10){
-					for($i=1; $i < 10; $i++){
-						$page = $i + 1;
-						if($_GET["page"]==$page){
-							$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-						}
-						else{
-							$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-						}
-					}
-				}
-				else{
-					for($i=1; $i <= $numbers; $i++){
-						$page = $i + 1;
-						if($_GET["page"]==$page){
-							$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-						}
-						else{
-							$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-						}
-					}
-				}
-				if($_GET["page"] < $numbers){
-					$pages .='<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
-				}
-				else{
-					$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
-				}
-			}
-			elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))){
-				$pages = '<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
-				$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
-				for($i=($_GET["page"]-5); $i < ($_GET["page"]+4); $i++){
-					$page = $i + 1;
-					if($_GET["page"]==$page){
-						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
-						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-				}
-				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
-				$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></td>';
-				$pages .='<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
-			}
-			elseif($_GET["page"] == $numbers){
-				$pages = '<td class="arrow"><a href="ip.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
-				$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
-				for($i=($_GET["page"]-5); $i < $numbers; $i++){
-					$page = $i + 1;
-					if($_GET["page"]==$page){
-						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
-						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-				}
-				$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
-			}
-			if(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))){
-				$pages = '<td class="arrow"><a href="">&laquo;</a></td>';
-				$pages .= '<td><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
-				for($i=($_GET["page"]-5); $i < $numbers; $i++)
-				{
-					$page = $i + 1;
-					
-					if($_GET["page"]==$page){
-						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
-						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-				}
-				$pages .='<td class="arrow"><a href="">&raquo;</a></td>';
-			}
-		}
-		else{
-			$pages = '<td class="arrow unavailable"><a href="">&laquo;</a></td>';
-			$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-			if($numbers >= 10){
-				for($i=1; $i <= 10; $i++){
-					$page = $i + 1;
-					if(1==$page){
-						$pages .= '<td class="current"><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
-						$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-				}
-			}
-			else{
-				for($i=1; $i <= $numbers; $i++){
-					$page = $i + 1;
-					$pages .= '<td><a href="ip.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-				}
-			}
-			$pages .='<td class="arrow"><a href="ip.php?mode='.$mode.'&page=2&sort='.$sort.'">&raquo;</a></td>';		
-		}
-    $output .= $pages.'</tr></tbody></table></form></div>';
-	return $output;
-}
-
 session_start();
 error_reporting(0);
 $ip=$_SERVER['REMOTE_ADDR'];
@@ -212,8 +69,7 @@ function get_IP_stats_order($sort, $start, $end){
 			break;
 		}
 	}
-	else 	
-	{
+	else {
 		$sortkey = 'ORDER BY date ASC';
 	}
 	$result = "SELECT * FROM stats WHERE stats.IP != '' ".$sortkey." LIMIT ".$start.",".$end."";
@@ -233,30 +89,22 @@ function server_IP_table($IP, $pos){
 	$query = "SELECT * FROM stats WHERE stats.IP = '".$IP."' AND stats.IP != ''";
 	$result = mysql_query($query) or die(mysql_error());
 	$data = mysql_fetch_array($result);
-	if($data['bot']==1){
 	$output .= '<tr class="item">';
-			$output  = '<td align="center" class="content_headline_num" style="'.$height.'" bgcolor="#CCCCCC">'.$pos.'<br/>BOT</td>';     
-		$output .= '<td align="center" class="content_headline_IP" style="'.$height.'">'.$data['IP'].'</td>';
-		$output .= '<td align="center" class="content_headline_hostname" style="'.$height.'"><a href="http://'.$data['hostname'].'" target="_blank">'.$data['hostname'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_location" style="'.$height.'"><a href="http://maps.googleapis.com/maps/api/staticmap?center='.$data['location'].'&zoom=7&size=1000x1000&maptype=roadmap&sensor=false" target="_blank">'.$data['location'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_referer" style="'.$height.'"><a href="'.$data['referer'].'" target="_blank">'.$data['referer'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_pageurl" style="'.$height.'"><a href="'.$data['pageurl'].'" target="_blank">'.$data['pageurl'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_pageviews" style="'.$height.'">'.$data['pageview'].'</td>';
-		$output .= '<td align="center" class="content_headline_date" style="'.$height.'">'.$data['date'].'</td>';
-	$output .= "</tr>";
+	if($data['bot']==1){
+	
+			$output  = '<td align="center" class="content_headline_num" style="text-align: center;" bgcolor="#CCCCCC">'.$pos.'<br/>BOT</td>';     
+
+	} else {
+		$output  = '<td align="center" class="content_headline_num" style="text-align: center;">'.$pos.'</td>';     
 	}
-	else{
-		$output .= '<tr class="item">';
-		$output  = '<td align="center" class="content_headline_num" style="'.$height.'">'.$pos.'</td>';     
-		$output .= '<td align="center" class="content_headline_IP" style="'.$height.'">'.$data['IP'].'</td>';
-		$output .= '<td align="center" class="content_headline_hostname" style="'.$height.'"><a href="http://'.$data['hostname'].'" target="_blank">'.$data['hostname'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_location" style="'.$height.'"><a href="http://maps.googleapis.com/maps/api/staticmap?center='.$data['location'].'&zoom=7&size=1000x1000&maptype=roadmap&sensor=false" target="_blank">'.$data['location'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_referer" style="'.$height.'"><a href="'.$data['referer'].'" target="_blank">'.$data['referer'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_pageurl" style="'.$height.'"><a href="'.$data['pageurl'].'" target="_blank">'.$data['pageurl'].'</a></td>';
-		$output .= '<td align="center" class="content_headline_pageviews" style="'.$height.'">'.$data['pageview'].'</td>';
-		$output .= '<td align="center" class="content_headline_date" style="'.$height.'">'.$data['date'].'</td>';
+		$output .= '<td align="center" class="content_headline" style="text-align: center;">'.$data['IP'].'</td>';
+		$output .= '<td align="center" class="content_headline" style="text-align: center;"><a href="http://'.$data['hostname'].'" target="_blank">'.$data['hostname'].'</a></td>';
+		$output .= '<td align="center" class="content_headline" style="text-align: center;"><a href="http://maps.googleapis.com/maps/api/staticmap?center='.$data['location'].'&zoom=7&size=1000x1000&maptype=roadmap&sensor=false" target="_blank">'.$data['location'].'</a></td>';
+		$output .= '<td align="center" class="content_headline" style="text-align: center;"><a href="'.$data['referer'].'" target="_blank">'.$data['referer'].'</a></td>';
+		$output .= '<td align="center" class="content_headline" style="text-align: center;"><a href="'.$data['pageurl'].'" target="_blank">'.$data['pageurl'].'</a></td>';
+		$output .= '<td align="center" class="content_headline" style="text-align: center;">'.$data['pageview'].'</td>';
+		$output .= '<td align="center" class="content_headline" style="text-align: center;">'.$data['date'].'</td>';
 	$output .= "</tr>";
-	}
 return $output;
 }
 ?>
@@ -317,16 +165,17 @@ a:hover {
 			font-weight: 				bold;				
 }
 </style>
-<nav class="nav-bar">
-	<li class="name"><a href="index.php">Admin Page</a></li>
-</nav>
+<?php if($_GET["mode"] != 'ip') { ?>
+	<nav class="nav-bar">
+		<li class="name"><a href="index.php">Admin Page</a></li>
+	</nav>
+<?php } ?>
 <div style="text-align: center;">
 	<h2>IP Track ( <?php echo $ip.' )  Welcome';?></h2>
 </div>
 <?php 
 $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB); 
 ?>
-<div class="content_maintable" style="width:1700px;">
 <table style="margin:auto;">
 	<thead>
         <th align="left" class="content_headline_num" style="">Num:</th>
@@ -363,43 +212,37 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
         <?php } ?>
         
 	</thead>
-		<?php
-
-			if (isset($_GET["page"]) <= 0)
-			{
+	<?php
+			if (isset($_GET["page"]) <= 0) {
 				$page = '1';
 			}
-			if (isset($_GET["page"]) > 0)
-			{	
+			if (isset($_GET["page"]) > 0) {	
 				$page = $_GET["page"];
 			}
 			
 			$start = $page * WS_CONFIG_PAGENUM - WS_CONFIG_PAGENUM;
 			$end = WS_CONFIG_PAGENUM;
-			
-			$sort = $_GET['sort'];
-			$IPs = get_IP_stats_order($sort, $start, $end);
-			$IP_count = get_IP_stats_count();
-			?>
-            <tbody id="names" align="center">
-            <?php
+		$sort = $_GET['sort'];
+		$IPs = get_IP_stats_order($sort, $start, $end);
+		$IP_count = get_IP_stats_count();
+	?>
+	<tbody id="names" align="center">
+		<?php
 			for($i=0; $i < sizeof($IPs); $i++){
 				echo (server_IP_table($IPs[$i], $i+$start));
 			}
-			?>
-            </tbody>
-            </table>
-			<?php
-			
-			echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $mode, $_GET['sort'], basename(__FILE__, '.php'))) . "</div>";
-			$DB -> close();			
 		?>
-</div>
+	</tbody>
+</table>
+	<?php
+		echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $mode, $_GET['sort'], basename(__FILE__, '.php'))) . "</div>";
+		$DB -> close();			
+	?>
 </body>
 </html>
 
-<?php }
-else{
+<?php 
+} else {
 	header("location:".adminPageURL());
 }
 ?>
