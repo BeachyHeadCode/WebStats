@@ -442,12 +442,13 @@ function _default_ws_die_handler( $message, $title = '', $args = array() ) {
 	$back_text = ('&laquo; Back');
 	$message .= "\n<p><a href='javascript:history.back()'>$back_text</a></p>";
 	header( 'Content-Type: text/html; charset=utf-8' );
-?>
+	if(empty($title)){$title = 'Web Stats &rsaquo; Error';}
+echo <<<END
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><?php //if(empty($title)){echo 'Web Stats &rsaquo; Error';}else{ echo $title}?></title>
+	<title>$title</title>
 	<style type="text/css">
 		body {
 			background: #fff;
@@ -528,10 +529,10 @@ function _default_ws_die_handler( $message, $title = '', $args = array() ) {
 	</style>
 </head>
 <body id="error-page">
-	<?php echo $message; ?>
+	$message;
 </body>
 </html>
-<?php
+END;
 	die();
 }
 ?>

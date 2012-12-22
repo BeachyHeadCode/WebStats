@@ -1,17 +1,18 @@
 <?php
-require_once('include/version.php');
+define('ROOT', './');
+require_once ROOT . 'include/version.php';
 if (version_compare(PHP_VERSION, $required_php_version) >= 0){
 	$Timer = MicroTime( true );
 	if(file_exists('config/config.php'))
-		include('config/config.php');
+		include_once ROOT . 'config/config.php';
 	else
 		header("location:admin/setup-config.php");
-	include('config/ini.php');
-	include('legacy/decrypt.php');
-	include('legacy/encrypt.php');
-	include('language/en.php');
-	require_once("include/logonfunctions.php");
-	require_once('include/functions.php');
+	include_once ROOT . 'config/ini.php';
+	include_once ROOT . 'legacy/decrypt.php';
+	include_once ROOT . 'legacy/encrypt.php';
+	include_once ROOT . 'language/en.php';
+	require_once ROOT . "include/logonfunctions.php";
+	require_once ROOT . 'include/functions.php';
 	if(WS_CONFIG_3D_USER === false){rename("modules/player-image/full_player_image.php", "modules/player-image/full_player_image.off");}
 	if(WS_CONFIG_3D_USER === true){rename("modules/player-image/full_player_image.off", "modules/player-image/full_player_image.php");}
 	if($image_control == true) {include('modules/player-image/include/functions.php');}
@@ -51,7 +52,6 @@ $result="SELECT * FROM stats WHERE IP='$ip'";
 		$zipcode='UNKNOWN';
 		$location = $countrycode.",".$country.','.$city.','.$zipcode;
 	}
-	
 $DB = new DBConfig();
 $DB -> config();
 $DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);

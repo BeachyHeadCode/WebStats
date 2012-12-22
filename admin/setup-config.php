@@ -31,12 +31,12 @@ require_once("../include/functions.php");
 
 session_start();
 
-if(!empty($_POST["SubmitUserAndPass"])){
+if(!empty($_POST["SubmitUserAndPass"])) {
 	$_SESSION['Username']=$_POST['Username'];
 	$_SESSION['Password']=$_POST['Password'];
 }
 
-if(!empty($_POST["reload"])){
+if(!empty($_POST["reload"])) {
 	session_unset();
 	session_destroy();
 	session_write_close();
@@ -51,55 +51,13 @@ if(!empty($_POST["SubmitDatabase"])){
 	$_SESSION['MySQLPassword']=$_POST['MySQLPassword'];
 	$_SESSION['MySQLDatabase']=$_POST['MySQLDatabase'];
 }
-
-	final class ip2location_lite{
-	protected $errors = array();
-	protected $service = 'api.ipinfodb.com';
-	protected $version = 'v3';
-	protected $apiKey = '29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001';
-
-	public function __construct(){}
-	public function __destruct(){}
-	public function setKey($key){
-		if(!empty($key)) $this->apiKey = $key;
-	}
-	public function getError(){
-		return implode("\n", $this->errors);
-	}
-	public function getCountry($host){
-		return $this->getResult($host, 'ip-country');
-	}
-	public function getCity($host){
-		return $this->getResult($host, 'ip-city');
-	}
-	private function getResult($host, $name){
-		$ip = @gethostbyname($host);
-		if(preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $ip)){
-			$xml = @file_get_contents('http://' . $this->service . '/' . $this->version . '/' . $name . '/?key=' . $this->apiKey . '&ip=' . $ip . '&format=xml');
-			try{
-				$response = @new SimpleXMLElement($xml);
-				foreach($response as $field=>$value){
-					$result[(string)$field] = (string)$value;
-				}
-				return $result;
-			}
-			catch(Exception $e){
-				$this->errors[] = $e->getMessage();
-				return;
-			}
-		}
-		$this->errors[] = '"' . $host . '" is not a valid IP address or hostname.';
-		return;
-	}
-}
-//Load the class
+ //Load the class
 	$ipLite = new ip2location_lite;
-	$ipLite->setKey('29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001');
 //Get locations
 	$locations = $ipLite->getCity($_SERVER['REMOTE_ADDR']);
 //Getting the result
 	
-$location = $locations['countryCode'].",".$locations['regionName'].','.$locations['cityName'].','.$locations['zipCode'];
+//$location = $locations['countryCode'].",".$locations['regionName'].','.$locations['cityName'].','.$locations['zipCode'];
 $ip=$_SERVER['REMOTE_ADDR'];
 $hostname=$_SERVER['REMOTE_HOST'];
 $referer=$_SERVER['HTTP_REFERER'];
@@ -163,8 +121,7 @@ function MM_popupMsg(msg) { //v1.0
 }
     </script>
 <script>
-function displayImage()
-{
+function displayImage() {
 	//var x=document.getElementsByName("page[default_background]");
 	//var a=document.getElementById('customDropdown background').value;
 	var a = document.getElementById("customDropdown background");
@@ -177,83 +134,81 @@ function displayImage()
 </script>
 </head>
 <style type="text/css">
-body{background-color:rgb(228, 228, 228);}
-.inner-wrapper{
-			width:						980px;
-			position:					relative;
-			padding:					5px;
-			border-left:					2px solid #DDDDDD;
-			border-right:					2px solid #DDDDDD;
-			background-image:				url(../../images/table_bg.png);	
-			margin: 					0 auto;
-			min-height: 					100%;
-			height:						auto !important;
-			height:						100%;
-			overflow:					hidden !important;
-			z-index:					1;
-}
-table{table-layout:fixed;}
-table thead th {padding-right:12px;}
-table tbody tr td{text-align:center;}
-fieldset{
-border: 1px solid #000;
-padding: 3px;
-}
-hr{border: 1px solid #000;}
-footer{
-			width:								980px;
-			padding:							5px;
-			margin:								0 auto;
-			margin-bottom:						20px;
-			position:							relative;
-			height:								auto;
-			border-top:							2px dotted #511B00;
-			border:								2px solid #DDDDDD;
-			border-top:							none;
-			background-image:					url(../../images/table_bg.png);
-			border-bottom-left-radius:			30px;
-			border-bottom-right-radius:			30px;
-			z-index:							1;
-			text-align:							center;
-}
-aside
-{
-			width:						120px;
-			position:					fixed;
-			float:						right;
-			right:						0px;
-			top:						100px;
-			padding:					5px;
-			background-image:				url(../../images/table_bg.png);	
-			margin: 					auto;
-			height:						auto !important;
-			height:						100%;
-			overflow:					hidden !important;
-			vertical-align:				top;
-			z-index:					1;
-			border-bottom-left-radius:				10px;
-			border-top-left-radius:				10px;
-			border:							2px solid #DDDDDD;
-}
-asideleft
-{
-			width:						120px;
-			position:					fixed;
-			left:						0;
-			float:						left;
-			top:						100px;
-			padding:					5px;
-			background-image:				url(../../images/table_bg.png);	
-			margin: 					auto;
-			height:						auto !important;
-			height:						100%;
-			overflow:					hidden !important;	
-			vertical-align:				top;
-			z-index:					1;	
-			border-top-right-radius:				10px;
-			border-bottom-right-radius:				10px;
-			border:							2px solid #DDDDDD;
-}
+	body{background-color:rgb(228, 228, 228);}
+	.inner-wrapper {
+				width:						980px;
+				position:					relative;
+				padding:					5px;
+				border-left:					2px solid #DDDDDD;
+				border-right:					2px solid #DDDDDD;
+				background-image:				url(../../images/table_bg.png);	
+				margin: 					0 auto;
+				min-height: 					100%;
+				height:						auto !important;
+				height:						100%;
+				overflow:					hidden !important;
+				z-index:					1;
+	}
+	table{table-layout:fixed;}
+	table thead th {padding-right:12px;}
+	table tbody tr td{text-align:center;}
+	fieldset{
+	border: 1px solid #000;
+	padding: 3px;
+	}
+	hr{border: 1px solid #000;}
+	footer {
+				width:								980px;
+				padding:							5px;
+				margin:								0 auto;
+				margin-bottom:						20px;
+				position:							relative;
+				height:								auto;
+				border-top:							2px dotted #511B00;
+				border:								2px solid #DDDDDD;
+				border-top:							none;
+				background-image:					url(../../images/table_bg.png);
+				border-bottom-left-radius:			30px;
+				border-bottom-right-radius:			30px;
+				z-index:							1;
+				text-align:							center;
+	}
+	aside {
+				width:						120px;
+				position:					fixed;
+				float:						right;
+				right:						0px;
+				top:						100px;
+				padding:					5px;
+				background-image:				url(../../images/table_bg.png);	
+				margin: 					auto;
+				height:						auto !important;
+				height:						100%;
+				overflow:					hidden !important;
+				vertical-align:				top;
+				z-index:					1;
+				border-bottom-left-radius:				10px;
+				border-top-left-radius:				10px;
+				border:							2px solid #DDDDDD;
+	}
+	asideleft {
+				width:						120px;
+				position:					fixed;
+				left:						0;
+				float:						left;
+				top:						100px;
+				padding:					5px;
+				background-image:				url(../../images/table_bg.png);	
+				margin: 					auto;
+				height:						auto !important;
+				height:						100%;
+				overflow:					hidden !important;	
+				vertical-align:				top;
+				z-index:					1;	
+				border-top-right-radius:				10px;
+				border-bottom-right-radius:				10px;
+				border:							2px solid #DDDDDD;
+	}
 </style>
 	<body><!-- BODY -->
 		<div class="main-wrapper">
@@ -358,8 +313,7 @@ asideleft
 				if (isset($row[0])){
 					echo "Username ('$row[0]') already exists!<br />";
 					$usernameTaken = true;
-				}
-				else{
+				} else {
 					$userinsert = "INSERT INTO `users`(`username`, `password`, `IP`, `hostname`, `location`, `date`, `email`, `cookie_pass`, `actcode`, `rank`, `lastactive`, `lastlogin`) VALUES ('$username', '".md5($password)."', '$ip', '$hostname', '$location', '$today', '$email', '', '', '1', NOW(), NOW())";
 				}
 			}
@@ -382,9 +336,7 @@ asideleft
 ) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")){
 					echo "Table Created :) \n";
 					mysql_query($userinsert);
-				}
-				else
-				{
+				} else {
 					echo('Error Creating Table: ' . mysql_error() . '<br />');
 				}
 			}
