@@ -1,20 +1,21 @@
 <?php
+define('ROOT', '../');
 if(file_exists('../config/config.php'))
-	include('../config/config.php');
+	include_once ROOT . 'config/config.php';
 else
 	header("location:setup-config.php");
 session_start();
 error_reporting(0);
 $start_time = explode(" ",microtime()); 
 $start_time = $start_time[1] + $start_time[0];
-include('../language/en.php');
-include('../legacy/decrypt.php');
-include('../include/functions.php');
-require_once("../include/logonfunctions.php");
+include_once ROOT . 'language/en.php';
+include_once ROOT . 'legacy/decrypt.php';
+include_once ROOT . 'include/functions.php';
+require_once ROOT . "include/logonfunctions.php";
 if($_GET['LOGOUT'] == 'TRUE')
-	require_once('logout.php');
+	require_once 'logout.php';
 if(!isset($_SESSION['pml_userid'])) {
-	require_once('login.php');
+	require_once 'login.php';
 
 }
 else {

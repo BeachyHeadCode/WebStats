@@ -46,7 +46,7 @@ function do_search(evt) {
     else
       $(item).hide();
   });
-
+  
   if (evt.keyCode == 13) {
     target.blur();
     evt.preventDefault();
@@ -69,11 +69,11 @@ $(document).ready(function() {
 
 <div class="content_maintable_stats" style="width:460px;">
     <div id="placeholder"></div>
-	<table style="margin:auto;">
+	<table id="item-table" style="margin:auto;">
 		<thead>
-			<th align="center" class="id"><?php echo translate('var73'); ?></th>
-			<th align="center" class="icon"><?php echo translate('var73'); ?></th>
-			<th align="center" class="name"><?php echo translate('var74'); ?></th>
+			<th style="text-align: center;" class="id"><?php echo translate('var73'); ?></th>
+			<th style="text-align: center;" class="icon"><?php echo translate('var73'); ?></th>
+			<th style="text-align: left;" class="name"><?php echo translate('var74'); ?></th>
 		</thead>
 		<tbody id="names" align="center">
 			<?php echo id_index_table();?>

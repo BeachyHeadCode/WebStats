@@ -5,32 +5,38 @@ function translate($item)
 {
 		$item = decrypt($item);
 		
-		if ($item == "0")			{$item = "Air";}
+		if ($item == "0")				{$item = "Air";}
 		elseif ($item == "1")			{$item = "Stone";}
 		elseif ($item == "2")			{$item = "Grass";}
 		elseif ($item == "3")			{$item = "Dirt";}
 		elseif ($item == "3")			{$item = "Dirt";}
 		elseif ($item == "4")			{$item = "Cobblestone";}
-		elseif ($item == "5")			{$item = "Wooden Plank";}
+		elseif ($item == "5")			{$item = "Wooden Plank Oak";}
+		elseif ($item == "5:1")			{$item = "Wooden Plank Spruce";}
+		elseif ($item == "5:2")			{$item = "Wooden Plank Birch";}
+		elseif ($item == "5:3")			{$item = "Wooden Plank Jungle";}
 		elseif ($item == "6")			{$item = "Sapling";}
-		elseif ($item == "6:1")		{$item = "Redwood Sapling";}
+		elseif ($item == "6:1")			{$item = "Redwood Sapling";}
 		elseif ($item == "6:2")         {$item = "Birch Sapling";}
+		elseif ($item == "6:3")         {$item = "Jungle Sapling";}
 		elseif ($item == "7")			{$item = "Bedrock";}
 		elseif ($item == "8")			{$item = "Water";}
 		elseif ($item == "9")           {$item = "Stationary Water";}
-		elseif ($item == "10")		{$item = "Lava";}
-		elseif ($item == "11")		{$item = "Stationary Lava";}
-		elseif ($item == "12")		{$item = "Sand";}
-		elseif ($item == "13")		{$item = "Gravel";}
-		elseif ($item == "14")		{$item = "Gold Ore";}
-		elseif ($item == "15")		{$item = "Iron Ore";}
-		elseif ($item == "16")		{$item = "Coal Ore";}
-		elseif ($item == "17")          {$item = "Wood";}
-		elseif ($item == "17:1")        {$item = "Redwood";}
-		elseif ($item == "17:2")        {$item = "Birchwood";}
-		elseif ($item == "18")          {$item = "Leaves";}
-		elseif ($item == "18:1")        {$item = "Redwood Leaves";}
-		elseif ($item == "18:2")        {$item = "Birchwood Leaves";}
+		elseif ($item == "10")			{$item = "Lava";}
+		elseif ($item == "11")			{$item = "Stationary Lava";}
+		elseif ($item == "12")			{$item = "Sand";}
+		elseif ($item == "13")			{$item = "Gravel";}
+		elseif ($item == "14")			{$item = "Gold Ore";}
+		elseif ($item == "15")			{$item = "Iron Ore";}
+		elseif ($item == "16")			{$item = "Coal Ore";}
+		elseif ($item == "17")          {$item = "Wood Oak";}
+		elseif ($item == "17:1")        {$item = "Wood Spruce";}
+		elseif ($item == "17:2")        {$item = "Wood Birch";}
+		elseif ($item == "17:3")        {$item = "Wood Jungle";}
+		elseif ($item == "18")          {$item = "Leaves Oak";}
+		elseif ($item == "18:1")        {$item = "Leaves Redwood";}
+		elseif ($item == "18:2")        {$item = "Leaves Birch";}
+		elseif ($item == "18:3")        {$item = "Leaves Jungle";}
 		elseif ($item == "19")          {$item = "Sponge";}
 		elseif ($item == "20")          {$item = "Glass";}
 		elseif ($item == "21")          {$item = "Lapis Lazuli Ore";}
@@ -43,9 +49,9 @@ function translate($item)
 		elseif ($item == "28")          {$item = "Detector Rail";}
 		elseif ($item == "29")          {$item = "Sticky Piston";}
 		elseif ($item == "30")          {$item = "Web";}
-		elseif ($item == "31")          {$item = "Dead Shrub";}
+		elseif ($item == "31")          {$item = "Tall Grass Dead Shrub";}
 		elseif ($item == "31:1")        {$item = "Tall Grass";}
-		elseif ($item == "31:2")        {$item = "Live Shrub";}
+		elseif ($item == "31:2")        {$item = "Tall Grass Fern";}
 		elseif ($item == "32")          {$item = "Dead Shrub";}
 		elseif ($item == "33")          {$item = "Piston";}
 		elseif ($item == "34")          {$item = "Piston Head";}
@@ -54,7 +60,7 @@ function translate($item)
 		elseif ($item == "35:2")        {$item = "Magenta Wool";}
 		elseif ($item == "35:3")        {$item = "Light Blue Wool";}
 		elseif ($item == "35:4")        {$item = "Yellow Wool";}
-		elseif ($item == "35:5")        {$item = "Light Green Wool";}
+		elseif ($item == "35:5")        {$item = "Lime Wool";}
 		elseif ($item == "35:6")        {$item = "Pink Wool";}
 		elseif ($item == "35:7")        {$item = "Gray Wool";}
 		elseif ($item == "35:8")        {$item = "Light Gray Wool";}
@@ -62,7 +68,7 @@ function translate($item)
 		elseif ($item == "35:10")       {$item = "Purple Wool";}
 		elseif ($item == "35:11")       {$item = "Blue Wool";}
 		elseif ($item == "35:12")       {$item = "Brown Wool";}
-		elseif ($item == "35:13")       {$item = "Dark Green Wool";}
+		elseif ($item == "35:13")       {$item = "Green Wool";}
 		elseif ($item == "35:14")       {$item = "Red Wool";}
 		elseif ($item == "35:15")       {$item = "Black Wool";}
 		elseif ($item == "37")          {$item = "Dandelion";}
@@ -71,12 +77,12 @@ function translate($item)
 		elseif ($item == "40")          {$item = "Red Mushroom";}
 		elseif ($item == "41")          {$item = "Gold Block";}
 		elseif ($item == "42")          {$item = "Iron Block";}
-		elseif ($item == "43")          {$item = "Double Stone Slab";}
-		elseif ($item == "43:1")        {$item = "Double Sandstone Slab";}
-		elseif ($item == "43:2")        {$item = "Double Wooden Slab";}
-		elseif ($item == "43:3")        {$item = "Double Cobblestone Slab";}
-		elseif ($item == "43:4")        {$item = "Double Brick Slab";}
-		elseif ($item == "43:5")        {$item = "Double Stone Brick Slab";}
+		elseif ($item == "43")          {$item = "Stone Slab Double";}
+		elseif ($item == "43:1")        {$item = "Sandstone Slab Double";}
+		elseif ($item == "43:2")        {$item = "Wooden Slab Double";}
+		elseif ($item == "43:3")        {$item = "Cobblestone Slab Double";}
+		elseif ($item == "43:4")        {$item = "Brick Slab Double";}
+		elseif ($item == "43:5")        {$item = "Stone Brick Slab Double";}
 		elseif ($item == "44")          {$item = "Stone Slab";}
 		elseif ($item == "44:1")        {$item = "Sandstone Slab";}
 		elseif ($item == "44:2")        {$item = "Wooden Slab";}
@@ -85,36 +91,36 @@ function translate($item)
 		elseif ($item == "44:5")        {$item = "Stone Brick Slab";}
 		elseif ($item == "45")          {$item = "Brick";}
 		elseif ($item == "46")          {$item = "TNT";}
-		elseif ($item == "47")          {$item = "Bookshelf";}
+		elseif ($item == "47")          {$item = "Bookcase";}
 		elseif ($item == "48")          {$item = "Mossy Cobblestone";}
 		elseif ($item == "49")          {$item = "Obsidian";}
 		elseif ($item == "50")          {$item = "Torch";}
 		elseif ($item == "51")          {$item = "Fire";}
-		elseif ($item == "52")          {$item = "Monster Spawner";}
-		elseif ($item == "53")          {$item = "Wooden Stairs";}
+		elseif ($item == "52")          {$item = "Mob Spawner";}
+		elseif ($item == "53")          {$item = "Wooden Stairs Oak";}
 		elseif ($item == "54")          {$item = "Chest";}
 		elseif ($item == "55")          {$item = "Redstone Wire";}
 		elseif ($item == "56")          {$item = "Diamond Ore";}
 		elseif ($item == "57")          {$item = "Diamond Block";}
 		elseif ($item == "58")          {$item = "Workbench";}
-		elseif ($item == "59")          {$item = "Wheat Crops";}
-		elseif ($item == "60")          {$item = "Soil";}
+		elseif ($item == "59")          {$item = "Wheat Crop";}
+		elseif ($item == "60")          {$item = "Farmland";}
 		elseif ($item == "61")          {$item = "Furnace";}
-		elseif ($item == "62")          {$item = "Burning Furnace";}
-		elseif ($item == "63")          {$item = "Sign Post";}
-		elseif ($item == "64")          {$item = "Wooden Door Block";}
+		elseif ($item == "62")          {$item = "Furnace Smelting";}
+		elseif ($item == "63")          {$item = "Sign Block";}
+		elseif ($item == "64")          {$item = "Wood Door Block";}
 		elseif ($item == "65")          {$item = "Ladder";}
 		elseif ($item == "66")          {$item = "Rails";}
 		elseif ($item == "67")          {$item = "Cobblestone Stairs";}
-		elseif ($item == "68")          {$item = "Wall Sign";}
+		elseif ($item == "68")          {$item = "Sign Wall Block";}
 		elseif ($item == "69")          {$item = "Lever";}
 		elseif ($item == "70")          {$item = "Stone Pressure Plate";}
 		elseif ($item == "71")          {$item = "Iron Door Block";}
 		elseif ($item == "72")          {$item = "Wooden Pressure Plate";}
 		elseif ($item == "73")          {$item = "Redstone Ore";}
 		elseif ($item == "74")          {$item = "Glowing Redstone Ore";}
-		elseif ($item == "75")          {$item = "Redstone Torch (off)";}
-		elseif ($item == "76")          {$item = "Redstone Torch (on)";}
+		elseif ($item == "75")          {$item = "Redstone Torch off";}
+		elseif ($item == "76")          {$item = "Redstone Torch on";}
 		elseif ($item == "77")          {$item = "Stone Button";}
 		elseif ($item == "78")          {$item = "Snow";}
 		elseif ($item == "79")          {$item = "Ice";}
@@ -129,39 +135,40 @@ function translate($item)
 		elseif ($item == "88")          {$item = "Soul Sand";}
 		elseif ($item == "89")          {$item = "Glowstone";}
 		elseif ($item == "90")          {$item = "Portal";}
-		elseif ($item == "91")          {$item = "Jack-O-Lantern";}
+		elseif ($item == "91")   		{$item = "Jack-O-Lantern";}
 		elseif ($item == "92")          {$item = "Cake Block";}
 		elseif ($item == "93")          {$item = "Redstone Repeater Block (off)";}
 		elseif ($item == "94")          {$item = "Redstone Repeater Block (on)";}
 		elseif ($item == "95")          {$item = "Locked Chest";}
 		elseif ($item == "96")          {$item = "Trapdoor";}
-		elseif ($item == "97")          {$item = "Stone (Silverfish)";}
-		elseif ($item == "97:1")        {$item = "Cobblestone (Silverfish)";}
-		elseif ($item == "97:2")        {$item = "Stone Brick (Silverfish)";}
-		elseif ($item == "98")          {$item = "Stone Brick";}
-		elseif ($item == "98:1")        {$item = "Mossy Stone Brick";}
-		elseif ($item == "98:2")        {$item = "Cracked Stone Brick";}
-		elseif ($item == "99")          {$item = "Red Mushroom Cap";}
-		elseif ($item == "100")         {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:1")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:2")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:3")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:4")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:5")       {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:6")        {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:7")         {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:8")           {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:9")           {$item = "Brown Mushroom Cap";}
-		elseif ($item == "100:10")           {$item = "Brown Mushroom Stem";}
-		elseif ($item == "101")           {$item = "Iron Bars";}
-		elseif ($item == "102")           {$item = "Glass Pane";}
-		elseif ($item == "103")           {$item = "Melon Block";}
-		elseif ($item == "104")           {$item = "Pumpkin Stem";}
-		elseif ($item == "104:1")           {$item = "Pumpkin Stem - Stage 1";}
-		elseif ($item == "104:2")           {$item = "Pumpkin Stem - Stage 2";}
-		elseif ($item == "104:3")           {$item = "Pumpkin Stem - Stage 3";}
-		elseif ($item == "104:4")           {$item = "Pumpkin Stem - Stage 4";}
-		elseif ($item == "104:5")           {$item = "Pumpkin Stem - Stage 5";}
+		elseif ($item == "97")          {$item = "Silverfish Stone";}
+		elseif ($item == "97:1")        {$item = "Silverfish Cobblestone";}
+		elseif ($item == "97:2")        {$item = "Silverfish Stone Brick";}
+		elseif ($item == "98")          {$item = "Stone Bricks";}
+		elseif ($item == "98:1")        {$item = "Mossy Stone Bricks";}
+		elseif ($item == "98:2")        {$item = "Cracked Stone Bricks";}
+		elseif ($item == "98:3")        {$item = "Chiseled Stone Brick";}
+		elseif ($item == "99")          {$item = "Brown Mushroom Block";}
+		elseif ($item == "100")         {$item = "Red Mushroom Block";}
+		elseif ($item == "100:1")       {$item = "Red Mushroom Cap";}
+		elseif ($item == "100:2")       {$item = "Red Mushroom Cap";}
+		elseif ($item == "100:3")       {$item = "Red Mushroom Cap";}
+		elseif ($item == "100:4")       {$item = "Red Mushroom Cap";}
+		elseif ($item == "100:5")       {$item = "Red Mushroom Cap";}
+		elseif ($item == "100:6")		{$item = "Red Mushroom Cap";}
+		elseif ($item == "100:7")		{$item = "Brown Mushroom Cap";}
+		elseif ($item == "100:8")		{$item = "Brown Mushroom Cap";}
+		elseif ($item == "100:9")		{$item = "Brown Mushroom Cap";}
+		elseif ($item == "100:10")		{$item = "Brown Mushroom Stem";}
+		elseif ($item == "101")			{$item = "Iron Bars";}
+		elseif ($item == "102")			{$item = "Glass Pane";}
+		elseif ($item == "103") 		{$item = "Melon Block";}
+		elseif ($item == "104")  		{$item = "Pumpkin Stem";}
+		elseif ($item == "104:1")		{$item = "Pumpkin Stem - Stage 1";}
+		elseif ($item == "104:2")		{$item = "Pumpkin Stem - Stage 2";}
+		elseif ($item == "104:3")		{$item = "Pumpkin Stem - Stage 3";}
+		elseif ($item == "104:4")		{$item = "Pumpkin Stem - Stage 4";}
+		elseif ($item == "104:5")		{$item = "Pumpkin Stem - Stage 5";}
 		elseif ($item == "104:6")           {$item = "Pumpkin Stem - Stage 6";}
 		elseif ($item == "104:7")           {$item = "Pumpkin Stem - Stage 7";}
 		elseif ($item == "105")           {$item = "Melon Stem";}
@@ -317,8 +324,8 @@ function translate($item)
 		elseif ($item == "348")           {$item = "Glowstone Dust";}
 		elseif ($item == "349")           {$item = "Raw Fish";}
 		elseif ($item == "350")           {$item = "Cooked Fish";}
-		elseif ($item == "351")           {$item = "Ink Sack";}
-		elseif ($item == "351:1")           {$item = "Rose Red";}
+		elseif ($item == "351")				{$item = "Ink Sack";}
+		elseif ($item == "351:1")			{$item = "Rose Red";}
 		elseif ($item == "351:2")           {$item = "Cactus Green";}
 		elseif ($item == "351:3")           {$item = "Coco Beans";}
 		elseif ($item == "351:4")           {$item = "Lapis Lazuli";}
@@ -456,18 +463,18 @@ function translate($item)
 		elseif ($item == "402")           {$item = "Firework Star";}
 		elseif ($item == "403")           {$item = "Enchanted Book";}
 		
-		elseif ($item == "2256")           {$item = "Gold Music Disc";}
-		elseif ($item == "2257")           {$item = "Green Music Disc";}
-		elseif ($item == "2258")           {$item = "Blocks Disc";}
-		elseif ($item == "2259")           {$item = "Chirp Disc";}
-		elseif ($item == "2260")           {$item = "Far Disc";}
-		elseif ($item == "2261")           {$item = "Mall Disc";}
-		elseif ($item == "2262")           {$item = "Mellohi Disc";}
-		elseif ($item == "2263")           {$item = "Stal Disc";}
-		elseif ($item == "2264")           {$item = "Strad Disc";}
-		elseif ($item == "2265")           {$item = "Ward Disc";}
-		elseif ($item == "2266")           {$item = "11 Disc";}
-		elseif ($item == "2267")           {$item = "wait Disc";}
+		elseif ($item == "2256")           {$item = "Music Disk 13";}
+		elseif ($item == "2257")           {$item = "Music Disk Cat";}
+		elseif ($item == "2258")           {$item = "Music Disk Blocks";}
+		elseif ($item == "2259")           {$item = "Music Disk Chirp";}
+		elseif ($item == "2260")           {$item = "Music Disk Far";}
+		elseif ($item == "2261")           {$item = "Music Disk Mall";}
+		elseif ($item == "2262")           {$item = "Music Disk Mellohi";}
+		elseif ($item == "2263")           {$item = "Music Disk Stal";}
+		elseif ($item == "2264")           {$item = "Music Disk Strad";}
+		elseif ($item == "2265")           {$item = "Music Disk Ward";}
+		elseif ($item == "2266")           {$item = "Music Disk 11";}
+		elseif ($item == "2267")           {$item = "Music Disk Wait";}
 		
 		// Begin of Enemy translation
 		elseif ($item == "m1")						{$item = "Chicken";}

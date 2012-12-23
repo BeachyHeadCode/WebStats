@@ -105,7 +105,7 @@ if(iptracker === true){
 	$DB = new DBConfig();
 	$DB -> config();
 	$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
-	mysql_query("UPDATE stats SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:10:0')");
+	mysql_query("UPDATE stats SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:30:0')");
 	list($playersOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats WHERE online='1'"));
 	define(playersOnline, $playersOnline);
 	$DB -> close();
