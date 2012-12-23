@@ -1,82 +1,85 @@
-<script type="text/javascript" charset="utf-8">
-
-RegExp.escape = function(str) {
-  return str.replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, '\\$1');
-};
-
-function lc_strip_spaces(str) {
-  return str.toLowerCase().replace(/ /g, '');
-}
-
-var placeholder_hidden = false;
-
-function hide_placeholder_text(evt) {
-  $(evt.currentTarget).css('color', '').val('').unbind('click').unbind('focus').unbind('keydown');
-  placeholder_hidden = true;
-}
-
-function do_search(evt) {
-  var target = $(evt.currentTarget);
-  var raw_keywords = target.val();
-  if (!placeholder_hidden)
-    raw_keywords = '';
-  var keywords = lc_strip_spaces(raw_keywords);
-  var keywords_no_colon = keywords.replace(/:$/, '');
-
-  var regex = new RegExp('(' + RegExp.escape(raw_keywords).replace(/ +/gi, ' ?') + ')', 'gi');
-
-  $('.item').each(function(index, item) {
-    var id = $.trim($('.id', item).text());
-    var name_element = $('.name a', item);
-    var raw_name = name_element.text();
-    var name = lc_strip_spaces(raw_name);
-	
-    name_element.html(raw_name.replace(regex, '<span class="highlight">$1</span>'));
-
-    var alternate_id = id;
-    if (id.indexOf(':') < 0)
-      alternate_id += ':0';
-
-    var id_matches = id == keywords_no_colon || alternate_id == keywords;
-    if (keywords_no_colon.indexOf(':') < 0 && alternate_id.substring(0, alternate_id.indexOf(':')) == keywords_no_colon)
-      id_matches = true;
-
-    if (name.indexOf(keywords) >= 0 || id_matches)
-      $(item).show();
-    else
-      $(item).hide();
-  });
-  
-  if (evt.keyCode == 13) {
-    target.blur();
-    evt.preventDefault();
-  }
-}
-$(document).ready(function() {
-  var placeholder = $('#placeholder');
-  if (placeholder) {
-    placeholder.html('<div id="controls"></div><input placeholder="Enter an item number or block name..." id="search" type="text" autocomplete="off" />');
-    var search_field = $('#search');
-    search_field.focus();
-    search_field.click(hide_placeholder_text);
-    search_field.focus(hide_placeholder_text);
-    search_field.keydown(hide_placeholder_text);
-    search_field.keyup(do_search);
-  }
-});
-</script>
 <h2>Items</h2><br/>
 
 <div class="content_maintable_stats" style="width:460px;">
-    <div id="placeholder"></div>
-	<table id="item-table" style="margin:auto;">
+
+	<form id="search" class="navbar-form pull-right" method="get" autocomplete="off">
+		<i class="icon-search icon-white"></i>
+		<input id="search-bar" type="search" name="item-search" placeholder="Search For Item..."/>
+	</form>
+	<table id="item-table" class="table table-bordered init-hidden">
 		<thead>
-			<th style="text-align: center;" class="id"><?php echo translate('var73'); ?></th>
-			<th style="text-align: center;" class="icon"><?php echo translate('var73'); ?></th>
-			<th style="text-align: left;" class="name"><?php echo translate('var74'); ?></th>
+			<tr>
+				<th id="icon-column">Item Photo</th>
+				<th id="id-column">Item ID</th>
+				<th id="name-column">Item Name</th>
+				<th id="type-column">Type</th>
+			</tr>
 		</thead>
-		<tbody id="names" align="center">
-			<?php echo id_index_table();?>
-    	</tbody>
-    </table>
+	</table>
 </div>
+
+<script>
+function addItems(callback) {
+	logInfo("Adding potions...");
+	$.ajax({
+		type: "GET",
+		url: "language/items.xml", 
+		dataType: "xml",
+		success: function(xml) {	
+			$(xml).find('item').each(function() {	
+				addItem(getValue(this, 'name'),
+						  getValue(this, 'icon'),
+						  getValue(this, 'id'),
+						  getValue(this, 'type'));
+			});
+			logInfo("Done!");
+			callback();
+		}
+	});
+}
+
+function addItem(name, icon, id, type) {
+	$('<tr></tr>').html(
+		'<td><a href="http://www.minecraftwiki.net/wiki/' + name + '" target="_blank"><img src="images/icons/'+icon+'.png" width="32px" height="32px" border="0" /></a></td>' +
+		'<td>' + id + '</td>' +
+		'<td><a href="index.php?mode=material-stats&material=' + icon + '" >' + name + '</a></td>' +
+		'<td>' + type + '</td>'
+	)
+	.appendTo('#item-table');
+	
+	logDebug('Added ' + name + ' (' + type + ').');
+}
+$(document).ready(function() {
+	addItems(function() {
+		$("#item-table").fadeIn("slow");
+	});
+});
+$("#search-bar").on("keyup", function() {
+	var term = $(this).val().toLowerCase();
+	var visible = 0;
+	
+	$("#item-table tr").each(function(index) {
+		if (index !== 0) {
+			$row = $(this);
+			var value = "";
+			
+			$(this).find("td").each(function() {
+				value += $(this).text();
+			});
+			
+			value = value.toLowerCase();
+			
+			if (value.indexOf(term) == -1) {
+			    $row.hide();
+			} else {
+			    $row.show();
+			    visible++;
+			}
+		}
+	});
+	
+	if (term) {
+		logInfo(visible + " results found.");
+	}
+});
+</script>

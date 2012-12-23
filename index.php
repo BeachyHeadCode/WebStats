@@ -119,6 +119,7 @@ list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats W
 
 $DB -> close();}
 
+header('Cache-control: max-age='.(60*60*24*365));
 include("assets/header.php");
 ?>
 <body class="off-canvas" style="background-repeat:repeat;text-align:center;color:#333322;background-attachment:fixed;background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png'); <?php echo (defaultt); ?>">
