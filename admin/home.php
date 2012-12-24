@@ -144,14 +144,11 @@ for ($i=0;$i<=sizeof($commits);$i++){
 		</td>
 		<td>
 			<table>
-	
-<?php 
-	for ($i=0; $i <= 4; $i++)
-	{
-		echo "<tr><td>".$commits[$i]["commit"]["message"]."(<a href=".$commitURL[$i].">see commit</a>) -- ".$commits[$i]["author"]["login"]."</td></tr>";
-	}
-?>
-	
+			<?php 
+				for ($i=0; $i <= 4; $i++) {
+					echo "<tr><td>".$commits[$i]["commit"]["message"]."(<a href=".$commitURL[$i].">see commit</a>) -- ".$commits[$i]["author"]["login"]."</td></tr>";
+				}
+			?>
 			</table>
 		</td>
 	</tr>
@@ -183,7 +180,7 @@ for ($i=0;$i<=sizeof($commits);$i++){
 					<label class="right inline">Subject:</label>
 				</div>
 				<div class="ten mobile-three columns">
-					<input type="text" placeholder="e.g. Issue, enhancement, want to buy" class="eight" disabled/>
+					<input type="text" placeholder="e.g. Issue, enhancement, want to buy" class="eight" id="subject" disabled />
 				</div>
 			</div>
 			<div class="row">
@@ -191,14 +188,22 @@ for ($i=0;$i<=sizeof($commits);$i++){
 					<label class="right inline">Message:</label>
 				</div>
 				<div class="ten mobile-three columns">
-					<textarea placeholder="Message" class="eight" disabled></textarea>
+					<textarea placeholder="Message" class="eight" id="body" disabled></textarea>
 				</div>
-			</div>	
+			</div>
 			<div class="row">
-				<input type="submit" onselectstart="return false;" class="button" value="Send &raquo;" />
+				<input type="button" onselectstart="return false;" class="button" id="submit" value="Send &raquo;" />
 			</div>					
 	</fieldset>
 </form>
 <p>
 	<a href="http://tool.motoricerca.info/robots-checker.phtml?checkreferer=1"><img src="http://tool.motoricerca.info/pic/valid-robots.png" border="0" alt="Valid Robots.txt" width="88" height="31"></a>
 </p>
+<script>
+$('input#submit').click(function() {
+    var subject = $('input#subject').val();
+	var body = $('textarea#body').val();
+    //send to server and process response
+	window.open('mailto:admin@mrplows-server.us?subject=' + subject + '&#038;body=' + body + ')
+});
+</script>
