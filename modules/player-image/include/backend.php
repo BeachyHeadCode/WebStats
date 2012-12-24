@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-
 //List of Variables used on the site
 if(isset($_GET['user'])) $user = htmlentities($_GET['user'],ENT_QUOTES); //Minecraft Username
 if(isset($_GET['refresh'])) $refresh = htmlentities($_GET['refresh'],ENT_QUOTES); //Used for refreshing minecraft skins

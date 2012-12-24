@@ -13,11 +13,10 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0){
 	include_once ROOT . 'language/en.php';
 	require_once ROOT . "include/logonfunctions.php";
 	require_once ROOT . 'include/functions.php';
-	if(WS_CONFIG_3D_USER === false){rename("modules/player-image/full_player_image.php", "modules/player-image/full_player_image.off");}
-	if(WS_CONFIG_3D_USER === true){rename("modules/player-image/full_player_image.off", "modules/player-image/full_player_image.php");}
+	//if(WS_CONFIG_3D_USER === false){rename("modules/player-image/full_player_image.php", "modules/player-image/full_player_image.off");}
+	//if(WS_CONFIG_3D_USER === true){rename("modules/player-image/full_player_image.off", "modules/player-image/full_player_image.php");}
 	if($image_control == true) {include('modules/player-image/include/functions.php');}
 	define('hover', 'style="cursor:url(images/cursors/hover.cur), auto;"');
-	define('defaultt', 'cursor:url(images/cursors/default.cur), auto;');
 	session_start();
 	if(!empty($_POST["user"])) $test = strtolower($_POST['user']);
 	$_SESSION['user']=$test;
@@ -122,7 +121,7 @@ $DB -> close();}
 header('Cache-control: max-age='.(60*60*24*365));
 include("assets/header.php");
 ?>
-<body class="off-canvas" style="background-repeat:repeat;text-align:center;color:#333322;background-attachment:fixed;background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png'); <?php echo (defaultt); ?>">
+<body class="off-canvas" style="background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png');">
 <?php
 $ip=$_SERVER['REMOTE_ADDR'];
 if(isset($_SESSION['pml_userid'])){
@@ -164,37 +163,37 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 <!-- SEARCH BAR -->
 <div id="main" role="main" class="row" style="padding-bottom:50px"><!--Main Wrapper Start-->
 	<div class="twelve columns centered" style="min-width:780px">
-	<header id="header" class="row" style="margin-top:1cm;">
+	<header id="header" class="row">
 			<div class="twelve columns centered">
 				<div class="row">
-				<?php
-				if(LOGOIMAGE === true)
-					echo '<a href="'.WS_MAINSITE.'" '.hover.'><img src="'.WS_HOMEPAGE_LOGO.'" width="615px" height="100px" border="0"></a>';
-				else{
-					
-					?><a href="#" data-reveal-id="serverModal" <?php echo (hover);?>><?php
-					echo '<img id="pic" src="include/pic.php" />';
-					?></a><?php
-				}	
-				?>
-              <a href="#" data-reveal-id="serverModal"><div id="status"><?php require('include/online_status.php');?></div></a>
-                <div id="serverModal" class="reveal-modal">
-					<h2>Minecraft Server</h2>
-					<p>
-						<table>
-							<tr><th><span>Minecraft Server: </span><?php echo MQ_SERVER_ADDR.":".MQ_SERVER_PORT?></th></tr>
-							<tr><th><span>Teamspeak: </span></th></tr>
-                        <?php    $minecraftServer = pingMineServ(MQ_SERVER_ADDR, MQ_SERVER_PORT);
-								if($minecraftServer !== -1){?>
-                            <tr><th><a href="include/minecraftquery/index.php"<span>Click Here For More Server Info</span></a><br/></th></tr>
-                            <?php } ?>
-						</table>
-					</p>
-					<a class="close-reveal-modal">&#215;</a>
-				</div>
+					<?php
+					if(LOGOIMAGE === true)
+						echo '<a href="'.WS_MAINSITE.'" style="cursor:url(images/cursors/hover.cur), auto;"><img src="'.WS_HOMEPAGE_LOGO.'" width="615px" height="100px" border="0"></a>';
+					else{
+						
+						?><a href="#" data-reveal-id="serverModal" style="cursor:url(images/cursors/hover.cur), auto;"><?php
+						echo '<img id="pic" src="include/pic.php" />';
+						?></a><?php
+					}	
+					?>
+					<a href="#" data-reveal-id="serverModal"><div id="status"><?php require('include/online_status.php');?></div></a>
+					<div id="serverModal" class="reveal-modal">
+						<h2>Minecraft Server</h2>
+						<p>
+							<table>
+								<tr><th><span>Minecraft Server: </span><?php echo MQ_SERVER_ADDR.":".MQ_SERVER_PORT?></th></tr>
+								<tr><th><span>Teamspeak: </span></th></tr>
+							<?php    $minecraftServer = pingMineServ(MQ_SERVER_ADDR, MQ_SERVER_PORT);
+									if($minecraftServer !== -1){?>
+								<tr><th><a href="include/minecraftquery/index.php"<span>Click Here For More Server Info</span></a><br/></th></tr>
+								<?php } ?>
+							</table>
+						</p>
+						<a class="close-reveal-modal">&#215;</a>
+					</div>
 				</div>
 				<div class="row">
-					<div class="nine columns">
+					<div class="eight columns">
 						<div name="Languages By Google" class="head_language">
 							<div id="google_translate_element"></div>
 							<script>
@@ -203,16 +202,14 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 							<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 						</div>
 					</div>
-					<div class="three column">
-						<div class="head_language">
+					<div class="four column">
 							<span>Drag to your bookmark bar:</span><br /><br />
-							<a id="bookmarklet" href="<?php echo curPageURL();?>" <?php echo (hover);?> title="Drag to your bookmarks bar."><?php echo(WS_BOOKMARK);?></a>
-						</div>
+							<a id="bookmarklet" href="<?php echo curPageURL();?>" style="cursor:url(images/cursors/hover.cur), auto;" title="Drag to your bookmarks bar."><?php echo(WS_BOOKMARK);?></a>
 					</div>
 				</div>
 			</div>			    
 	</header>
-	<div class="row" style="background-image:url(../images/table_bg.png);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;padding-top:30px;">
+	<div class="row" style="background-image:url(../images/table_bg.png);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;">
 		<?php include('assets/menu.php'); ?>
 	</div>
 	<div class="row" role="searchbar">

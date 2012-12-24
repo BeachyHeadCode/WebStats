@@ -4,12 +4,16 @@ body{
 		font-size: 					12px;
 		line-height: 				1.4;
 		height:						100%;
-		cursor: 					url(images/cursors/default.cur), auto;
+		cursor: 					url(../images/cursors/default.cur), default;
 		z-index:					-1;
+		background-repeat:			repeat;
+		text-align:					center;
+		color:						#333322;
+		background-attachment:		fixed;
 }
 header{
 		min-height:					100%;
-		max-height:					160px;
+		max-height:					250px;
 		border:						2px solid #DDDDDD;
 		border-bottom:				none;
 		background-image:			url(../images/table_bg.png);
@@ -152,12 +156,11 @@ table tr td a img{
 cursor:url(images/cursors/hover.cur), auto;
 }
 .head_language {
-			float:						right;
-			width:						500px;
-			height:						20px;
+			float:						left;
+			max-width:					178px;
+			width:						100%;
 			position:					relative;
-			padding-top:				10px;
-			top:						-20px;
+			padding-left:				10px;
 			right:						10px;
 			text-align:					right;
 			vertical-align:				top;
@@ -362,6 +365,7 @@ cursor:url(images/cursors/hover.cur), auto;
 }
 
 a:link {
+			cursor:						url(../images/cursors/hover.cur), auto;
 			color:						#333322;
 			text-decoration:			none;
         	font-weight: 				bold;

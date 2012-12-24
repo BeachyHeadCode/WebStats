@@ -1,7 +1,7 @@
 <?php 
 include("../../config/config.php");
+define("ROOT", "../../");
 ?>
-
 <!--
 3-D Minecraft Skin Viewer
 By Kent Rasmussen @ earthiverse.ath.cx
@@ -62,12 +62,12 @@ to change view
 
     //Hat
     var hat_materials = [];
-    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/hat_right.png')})]);
-    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/hat_left.png')})]);
-    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/hat_top.png')})]);
-    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/hat_bottom.png')})]);
-    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/hat_back.png')})]);
-    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/hat_front.png')})]);
+    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/hat_right.png')})]);
+    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/hat_left.png')})]);
+    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/hat_top.png')})]);
+    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/hat_bottom.png')})]);
+    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/hat_back.png')})]);
+    hat_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/hat_front.png')})]);
 
     hat = new THREE.Mesh( new THREE.CubeGeometry(9, 9, 9, 0, 0, 0, hat_materials), new THREE.MeshFaceMaterial());
     hat.position.x = 0;
@@ -78,12 +78,12 @@ to change view
 
     //Body
     var body_materials = [];
-    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/body_right.png')})]);
-    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/body_left.png')})]);
-    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/body_top.png')})]);
-    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/body_bottom.png')})]);
-    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/body_back.png')})]);
-    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/body_front.png')})]);
+    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/body_right.png')})]);
+    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/body_left.png')})]);
+    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/body_top.png')})]);
+    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/body_bottom.png')})]);
+    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/body_back.png')})]);
+    body_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/body_front.png')})]);
 
     body = new THREE.Mesh( new THREE.CubeGeometry(8, 12, 4, 0, 0, 0, body_materials), new THREE.MeshFaceMaterial());
     body.position.x = 0;
@@ -94,12 +94,12 @@ to change view
 
     //Arm_Left
     var arm_left_materials = [];
-    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_left_inner.png')})]);
-    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_left_outer.png')})]);
-    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_left_top.png')})]);
-    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_left_bottom.png')})]);
-    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_left_back.png')})]);
-    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_left_front.png')})]);
+    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_left_inner.png')})]);
+    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_left_outer.png')})]);
+    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_left_top.png')})]);
+    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_left_bottom.png')})]);
+    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_left_back.png')})]);
+    arm_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_left_front.png')})]);
 
     arm_left = new THREE.Mesh( new THREE.CubeGeometry(4, 12, 4, 0, 0, 0, arm_left_materials), new THREE.MeshFaceMaterial());
     arm_left.position.x = 6;
@@ -110,12 +110,12 @@ to change view
 
     //Arm_Right
     var arm_right_materials = [];
-    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_right_outer.png')})]);
-    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_right_inner.png')})]);
-    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_right_top.png')})]);
-    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_right_bottom.png')})]);
-    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_right_back.png')})]);
-    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/arm_right_front.png')})]);
+    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_right_outer.png')})]);
+    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_right_inner.png')})]);
+    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_right_top.png')})]);
+    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_right_bottom.png')})]);
+    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_right_back.png')})]);
+    arm_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/arm_right_front.png')})]);
 
     arm_right = new THREE.Mesh( new THREE.CubeGeometry(4, 12, 4, 0, 0, 0, arm_right_materials), new THREE.MeshFaceMaterial());
     arm_right.position.x = -6;
@@ -126,12 +126,12 @@ to change view
 
     //Leg_Left
     var leg_left_materials = [];
-    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_left_inner.png')})]);
-    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_left_outer.png')})]);
-    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_left_top.png')})]);
-    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_left_bottom.png')})]);
-    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_left_back.png')})]);
-    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_left_front.png')})]);
+    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_left_inner.png')})]);
+    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_left_outer.png')})]);
+    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_left_top.png')})]);
+    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_left_bottom.png')})]);
+    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_left_back.png')})]);
+    leg_left_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_left_front.png')})]);
 
     leg_left = new THREE.Mesh( new THREE.CubeGeometry(4, 12, 4, 0, 0, 0, leg_left_materials), new THREE.MeshFaceMaterial());
     leg_left.position.x = 2;
@@ -142,12 +142,12 @@ to change view
 
     //Leg_Right
     var leg_right_materials = [];
-    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_right_inner.png')})]);
-    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_right_outer.png')})]);
-    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_right_top.png')})]);
-    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_right_bottom.png')})]);
-    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_right_back.png')})]);
-    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/leg_right_front.png')})]);
+    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_right_inner.png')})]);
+    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_right_outer.png')})]);
+    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_right_top.png')})]);
+    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_right_bottom.png')})]);
+    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_right_back.png')})]);
+    leg_right_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/leg_right_front.png')})]);
 
     leg_right = new THREE.Mesh( new THREE.CubeGeometry(4, 12, 4, 0, 0, 0, leg_right_materials), new THREE.MeshFaceMaterial());
     leg_right.position.x = -2;
@@ -158,12 +158,12 @@ to change view
 
     //Head
     var head_materials = [];
-    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/head_right.png')})]);
-    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/head_left.png')})]);
-    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/head_top.png')})]);
-    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/head_bottom.png')})]);
-    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/head_back.png')})]);
-    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('image-cache/skins/<?php echo $user; ?>/head_front.png')})]);
+    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/head_right.png')})]);
+    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/head_left.png')})]);
+    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/head_top.png')})]);
+    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/head_bottom.png')})]);
+    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/head_back.png')})]);
+    head_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('<?php echo ROOT; ?>images/image-cache/skins/<?php echo $user; ?>/head_front.png')})]);
 
     head = new THREE.Mesh( new THREE.CubeGeometry(8, 8, 8, 0, 0, 0, head_materials), new THREE.MeshFaceMaterial());
     head.position.x = 0;
