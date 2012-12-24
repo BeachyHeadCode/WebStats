@@ -1,7 +1,7 @@
-<a href="http://dev.bukkit.org/server-mods/jobs/pages/commands/"><h2>Jobs</h2></a><br/>
-<div class="head_maintable_stats">
-	<?php echo (job_server_details_table()); ?>
-</div>
+<a href="http://dev.bukkit.org/server-mods/jobs/pages/permissions/"><h2>Jobs</h2></a><br/>
+
+<?php echo (job_server_details_table()); ?>
+
 <br/><br/>
 
 <table style="width:100%;" >

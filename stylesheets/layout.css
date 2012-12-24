@@ -6,10 +6,9 @@ body{
 		height:						100%;
 		cursor: 					url(../images/cursors/default.cur), default;
 		z-index:					-1;
-		background-repeat:			repeat;
+		background-repeat:			repeat !important;
 		text-align:					center;
-		color:						#333322;
-		background-attachment:		fixed;
+		background-attachment:		fixed !important;
 }
 header{
 		min-height:					100%;
@@ -114,8 +113,8 @@ transition: 0.25s all ease-in; */
 			position:							relative;
 			top:								0px;
 			height:								auto;
-			border:							2px solid #DDDDDD;
-			border-top:					none;
+			border:								2px solid #DDDDDD;
+			border-top:							none;
 			background-image:					url(../images/table_bg.png);
 			border-bottom-left-radius:			30px;
 			border-bottom-right-radius:			30px;
@@ -132,13 +131,10 @@ transition: 0.25s all ease-in; */
 			border:							2px solid #DDDDDD;
 			border-bottom:					none;
 			background-image:				url(../images/table_bg.png);
-			z-index:						100;
+			z-index:						5;
 }
 .main{
 			position:						relative;
-			top:							0px;
-			padding-top:					25px;
-			padding-bottom:					25px;
 			border-left:					2px solid #DDDDDD;
 			border-right:					2px solid #DDDDDD;
 			background-image: 				url(../images/table_bg.png);	
@@ -147,7 +143,7 @@ transition: 0.25s all ease-in; */
 			min-height: 					100%;
 			height: 						auto !important;
 			height: 						100%;
-			z-index: 						100;
+			z-index: 						5;
 }
 
 .Stil1 {font-size: xx-large;}
@@ -247,7 +243,7 @@ cursor:url(images/cursors/hover.cur), auto;
 			height:						270px;
 			border:						1px solid #333333;
 			float:						left;
-			background-repeat: 			no-repeat; 
+			background-repeat: 			no-repeat;
 			background-position: 		center;
 			text-align:					center;
 			vertical-align:				middle;
@@ -257,8 +253,8 @@ cursor:url(images/cursors/hover.cur), auto;
 			vertical-align:				top; 
 			border:						1px solid #333333; 
 			padding: 					10px;
-			width:						350px;
-			height: 					250px;
+			width:						400px;
+			height: 					270px;
 			float:						right;
 }
 
@@ -714,5 +710,9 @@ font-family:Minecraft;
 src:url("fonts/minecraft.eot?#iefix"),url("fonts/minecraft.woff") format('woff'),url("http://www.minecraftwiki.net/fonts/minecraft.ttf") format('truetype') 
 }
 table.grid-Crafting_Table tbody tr:nth-child(even), table.grid-Furnace tbody tr:nth-child(even), table.grid-Brewing_Stand tbody tr:nth-child(even){
-	background: none !important;
+	background: 			none !important;
+}
+
+#item-table {
+	margin: 				0px 0px 0px !important;
 }

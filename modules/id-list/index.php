@@ -20,7 +20,7 @@
 
 <script>
 function addItems(callback) {
-	logInfo("Adding potions...");
+	logInfo("Adding items...");
 	$.ajax({
 		type: "GET",
 		url: "language/items.xml", 
