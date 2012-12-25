@@ -15,7 +15,6 @@
 ?>
 <!--MAIN BOX AND PHOTO START-->
 <div class="row">
-	<div class="head_maintable_stats">
 		<?php 
 			if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
 				echo (set_player_details_table_3d(htmlentities($_GET['user']))); 
@@ -24,13 +23,17 @@
 			} 
 		?>
 		<?php 
-			if($iconomy_control == true && pluginconfigstatusiconomy===true) {
+			if($iconomy_control == true && pluginconfigstatusiconomy === true) {
 				echo '<div align="right" style="clear:both;">';
 				echo iconomy_player_get_money_table(htmlentities($_GET['user']));
 				echo '</div>';
 			}
+			if($mineconomy_control == true && pluginconfigstatusmineconomy === true) {
+				echo '<div align="right" style="clear:both;">';
+				//echo mineconomy_player_get_money_table(htmlentities($_GET['user']));
+				echo '</div>';
+			}
 		?>
-	</div>
 </div>
 <!--MAIN BOX AND PHOTO END-->
 <br />

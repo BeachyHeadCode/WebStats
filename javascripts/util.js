@@ -1,21 +1,21 @@
 function log(msg) {
-	console.log('[Potions] ' + msg);
+	console.log(msg);
 }
 
 function logInfo(msg) {
-	console.info('[Potions] ' + msg);
+	console.info(msg);
 }
 
 function logWarning(msg) {
-	console.warn('[Potions] ' + msg);
+	console.warn(msg);
 }
 
 function logDebug(msg) {
-	console.debug('[Potions] ' + msg);
+	console.debug(msg);
 }
 
 function logError(msg) {
-	console.error('[Potions] ' + msg);
+	console.error(msg);
 }
 
 function getValue(file, value) {

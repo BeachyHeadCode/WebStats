@@ -35,7 +35,6 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 	$_SESSION['Username']=$_POST['Username'];
 	$_SESSION['Password']=$_POST['Password'];
 }
-
 if(!empty($_POST["reload"])) {
 	session_unset();
 	session_destroy();
@@ -44,7 +43,7 @@ if(!empty($_POST["reload"])) {
 	session_regenerate_id(true);
 	header('Location: setup-config.php?step=1');
 }
-if(!empty($_POST["SubmitDatabase"])){
+if(!empty($_POST["SubmitDatabase"])) {
 	$_SESSION['MySQLHost']=$_POST['MySQLHost'];
 	$_SESSION['MySQLPort']=$_POST['MySQLPort'];
 	$_SESSION['MySQLUserName']=$_POST['MySQLUserName'];
@@ -93,70 +92,84 @@ function display_header() {
 	<link rel="stylesheet" href="../../stylesheets/app.css">
 
 	<script src="../../javascripts/modernizr.foundation.js"></script>
-
-  <!-- IE Fix for HTML5 Tags -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+	<script src="../../javascripts/util.js"></script>
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
 	<script type="text/javascript">
-function MM_validateForm() { //v4.0
-  if (document.getElementById){
-    var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
-    for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=document.getElementById(args[i]);
-      if (val) { nm=val.name; if ((val=val.value)!="") {
-        if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
-          if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
-        } else if (test!='R') { num = parseFloat(val);
-          if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
-          if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
-            min=test.substring(8,p); max=test.substring(p+1);
-            if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
-      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
-    } if (errors) alert('The following error(s) occurred:\n'+errors);
-    document.MM_returnValue = (errors == '');
-} }
-function MM_popupMsg(msg) { //v1.0
-  alert(msg);
-}
+		function MM_validateForm() { //v4.0
+		  if (document.getElementById){
+			var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+			for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=document.getElementById(args[i]);
+			  if (val) { nm=val.name; if ((val=val.value)!="") {
+				if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+				  if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+				} else if (test!='R') { num = parseFloat(val);
+				  if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+				  if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+					min=test.substring(8,p); max=test.substring(p+1);
+					if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+			  } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+			} if (errors) alert('The following error(s) occurred:\n'+errors);
+			document.MM_returnValue = (errors == '');
+		} }
+		function MM_popupMsg(msg) { //v1.0
+		  alert(msg);
+		}
     </script>
-<script>
-function displayImage() {
-	//var x=document.getElementsByName("page[default_background]");
-	//var a=document.getElementById('customDropdown background').value;
-	var a = document.getElementById("customDropdown background");
-	var b = a.options[a.selectedIndex].text;
-	var c="../images/background/bg_";
-	var d=".png";
-	var e=c.concat(b,d);
-	document.getElementById("imageplaceholder").src=e;
-}
-</script>
+	<script>
+		function displayImage() {
+			//var x=document.getElementsByName("page[default_background]");
+			//var a=document.getElementById('customDropdown background').value;
+			var a = document.getElementById("customDropdown background");
+			var b = a.options[a.selectedIndex].text;
+			var c="../../images/background/bg_";
+			var d=".png";
+			var e=c.concat(b,d);
+			log(e);
+			document.getElementById("imageplaceholder").src=e;
+		}
+	</script>
 </head>
 <style type="text/css">
-	body{background-color:rgb(228, 228, 228);}
+	body {
+				background-color:					rgb(228, 228, 228);
+	}
+	input[type="submit"].button {
+				margin:10px 0px 0px 12px;
+	}
 	.inner-wrapper {
-				width:						980px;
-				position:					relative;
-				padding:					5px;
-				border-left:					2px solid #DDDDDD;
-				border-right:					2px solid #DDDDDD;
-				background-image:				url(../../images/table_bg.png);	
-				margin: 					0 auto;
-				min-height: 					100%;
-				height:						auto !important;
-				height:						100%;
-				overflow:					hidden !important;
-				z-index:					1;
+				width:								980px;
+				position:							relative;
+				padding:							5px;
+				border-left:						2px solid #DDDDDD;
+				border-right:						2px solid #DDDDDD;
+				background-image:					url(../../images/table_bg.png);	
+				margin: 							0 auto;
+				min-height: 						100%;
+				height:								auto !important;
+				height:								100%;
+				z-index:							5;
 	}
-	table{table-layout:fixed;}
-	table thead th {padding-right:12px;}
-	table tbody tr td{text-align:center;}
+	table {
+				table-layout:						fixed;
+				margin: 							0px auto;
+	}
+	table thead th {
+				padding-right:						12px;
+	}
+	table tbody tr td {
+				text-align:							center;
+	}
 	fieldset{
-	border: 1px solid #000;
-	padding: 3px;
+				border:								1px solid #000;
+				padding:							3px;
 	}
-	hr{border: 1px solid #000;}
+	hr {
+				border: 							1px solid #000;
+	}
 	footer {
 				width:								980px;
 				padding:							5px;
@@ -170,44 +183,44 @@ function displayImage() {
 				background-image:					url(../../images/table_bg.png);
 				border-bottom-left-radius:			30px;
 				border-bottom-right-radius:			30px;
-				z-index:							1;
+				z-index:							2;
 				text-align:							center;
 	}
 	aside {
-				width:						120px;
-				position:					fixed;
-				float:						right;
-				right:						0px;
-				top:						100px;
-				padding:					5px;
-				background-image:				url(../../images/table_bg.png);	
-				margin: 					auto;
-				height:						auto !important;
-				height:						100%;
-				overflow:					hidden !important;
-				vertical-align:				top;
-				z-index:					1;
-				border-bottom-left-radius:				10px;
+				width:								120px;
+				position:							fixed;
+				float:								right;
+				right:								0px;
+				top:								100px;
+				padding:							5px;
+				background-image:					url(../../images/table_bg.png);	
+				margin: 							auto;
+				height:								auto !important;
+				height:								100%;
+				overflow:							hidden !important;
+				vertical-align:						top;
+				z-index:							1;
+				border-bottom-left-radius:			10px;
 				border-top-left-radius:				10px;
-				border:							2px solid #DDDDDD;
+				border:								2px solid #DDDDDD;
 	}
 	asideleft {
-				width:						120px;
-				position:					fixed;
-				left:						0;
-				float:						left;
-				top:						100px;
-				padding:					5px;
-				background-image:				url(../../images/table_bg.png);	
-				margin: 					auto;
-				height:						auto !important;
-				height:						100%;
-				overflow:					hidden !important;	
-				vertical-align:				top;
-				z-index:					1;	
-				border-top-right-radius:				10px;
-				border-bottom-right-radius:				10px;
-				border:							2px solid #DDDDDD;
+				width:								120px;
+				position:							fixed;
+				left:								0;
+				float:								left;
+				top:								100px;
+				padding:							5px;
+				background-image:					url(../../images/table_bg.png);	
+				margin: 							auto;
+				height:								auto !important;
+				height:								100%;
+				overflow:							hidden !important;	
+				vertical-align:						top;
+				z-index:							1;	
+				border-top-right-radius:			10px;
+				border-bottom-right-radius:			10px;
+				border:								2px solid #DDDDDD;
 	}
 </style>
 	<body><!-- BODY -->
@@ -346,46 +359,42 @@ function displayImage() {
 				</article>
 			</div>
 			<footer>
-    <script type="text/javascript">
-		google_ad_client = "ca-pub-6169723647730707";
-		google_ad_slot = "0514393560";
-		google_ad_width = 468;
-		google_ad_height = 15;
-	</script>
-	<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	</script>
-		<p>
-			<a href="http://adf.ly/1049208/mr-plows-server" target="_blank">mrplows-server.us</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v4.1</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
-			<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
-		</p>
-	</footer>
+				<script type="text/javascript">
+					google_ad_client = "ca-pub-6169723647730707";
+					google_ad_slot = "0514393560";
+					google_ad_width = 468;
+					google_ad_height = 15;
+				</script>
+				<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+				<p>
+					<a href="http://adf.ly/1049208/mr-plows-server" target="_blank">mrplows-server.us</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v4.2</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
+					<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
+				</p>
+			</footer>
 		</div>
-    <aside>
-    <script type="text/javascript"><!--
-		google_ad_client = "ca-pub-6169723647730707";
-		/* Stats Plugin */
-		google_ad_slot = "4875550823";
-		google_ad_width = 120;
-		google_ad_height = 600;
-		//-->
-	</script>
-		<script type="text/javascript"src="http://pagead2.googlesyndication.com/pagead/show_ads.js" ></script>
-    </aside>
-    <asideleft>
-    <script type="text/javascript"><!--
-		google_ad_client = "ca-pub-6169723647730707";
-		/* Stats Plugin */
-		google_ad_slot = "4875550823";
-		google_ad_width = 120;
-		google_ad_height = 600;
-		//-->
-	</script>
-	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js" ></script>
-    </asideleft> 
-	
+		<aside>
+			<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-6169723647730707";
+				/* Stats Plugin */
+				google_ad_slot = "4875550823";
+				google_ad_width = 120;
+				google_ad_height = 600;
+				//-->
+			</script>
+			<script type="text/javascript"src="http://pagead2.googlesyndication.com/pagead/show_ads.js" ></script>
+		</aside>
+		<asideleft>
+			<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-6169723647730707";
+				/* Stats Plugin */
+				google_ad_slot = "4875550823";
+				google_ad_width = 120;
+				google_ad_height = 600;
+				//-->
+			</script>
+			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js" ></script>
+		</asideleft>
 		<!-- Included JS Files (Compressed) -->
-		<script src="../../javascripts/jquery.js"></script>
 		<script src="../../javascripts/foundation.min.js"></script>
 		<!-- Initialize JS Plugins -->
 		<script src="../../javascripts/app.js"></script>

@@ -213,20 +213,15 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		<?php include('assets/menu.php'); ?>
 	</div>
 	<div class="row" role="searchbar">
-		<?php if($search_control == true)include('modules/search/index.php'); ?>
+		<?php if($search_control == true && WS_CONFIG_SEARCH_BAR == true)include('modules/search/index.php'); ?>
 	</div>
 	<section class="row main" style="min-width:780px">
    	  	<div class="ten columns centered">
 		<?php
-			include('modules/'.$_SESSION['mode'].'/config/config.php');
-			include('modules/'.$_SESSION['mode'].'/include/functions.php');
-			$db_host		= WS_CONFIG_DBHOST.":".WS_CONFIG_DBPORT;
-			$db_user		= WS_CONFIG_DBUNAME;
-			$db_pass		= WS_CONFIG_DBPASS; 
-			$db				= WS_CONFIG_DBNAME;
-			$createdb		= false;
-			if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn($db_host, $db_user, $db_pass, $db, $createdb);}
-				include('modules/'.$_SESSION['mode'].'/index.php');
+			include_once ROOT . 'modules/'.$_SESSION['mode'].'/config/config.php';
+			include_once ROOT . 'modules/'.$_SESSION['mode'].'/include/functions.php';
+			if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn(WS_CONFIG_DBHOST.":".WS_CONFIG_DBPORT, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, false);}
+				include_once ROOT . 'modules/'.$_SESSION['mode'].'/index.php';
 			if (WS_CONFIG_NoMySQL != true) {$DB -> close();}
 			?>
 		</div>
@@ -244,11 +239,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		&nbsp;&nbsp;&nbsp; 
        	<span style="font-size:xx-small">(Loading time: <?php echo Number_Format( ( MicroTime( true ) - $Timer ), 4, '.', '' ); ?>s)</span>
 		</p>
-		<?php 
-			$mcstats = false;
-			if($mcstats === true){
-				include_once("admin/test.php");
-			}
+		<?php
 			if (iptracker === true){
 					echo"&nbsp;&nbsp;Users Online:&nbsp;".$totalOnline."&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
 					if(isset($date[0]))
@@ -297,6 +288,6 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 </body>
 </html>
 <?php 
-	require('include/mcstats.php');
+	require_once ROOT . 'include/mcstats.php';
 } else { ECHO ('Please install php version 5.2.5 or better!');}
 ?>

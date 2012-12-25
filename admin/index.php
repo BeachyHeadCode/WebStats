@@ -35,7 +35,7 @@ $_SESSION['mode']=$_GET['mode'];
 	<meta content='minecraft stats' name='description' />
 	<meta content='minecraft, stats, bukkit, mrplow, cky2250' name='keywords'/>
 	<title>WebStats &rsaquo; ADMIN PAGE</title>
-	<link rel="stylesheet" type="text/css" href="../css/layout_admin.css"/>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/layout_admin.css"/>
 	<link rel="SHORTCUT ICON" type='image/x-icon' href="../images/favicon.ico"/>
 	<link rel="apple-touch-icon" href="../images/favicon.png" />
   

@@ -8,18 +8,15 @@ function get_mineconomy_user_count(){
 
 //ICONOMY SORT
 function get_mineconomy_user_stats($sort, $start, $end){
-	if($sort != 'balance') 
-	{
+	if($sort != 'balance') {
 		$sortkey = 'ORDER BY account ASC';
 	}
-	elseif($sort == 'balance')
-	{
+	elseif($sort == 'balance') {
 		$sortkey = 'ORDER BY balance DESC';
 	}
 	$query = mysql_query("SELECT account, balance FROM ".WS_CONFIG_MINECONOMY." ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$players[$time] = $row[0];
 		$time++;
 	}  
@@ -27,7 +24,7 @@ function get_mineconomy_user_stats($sort, $start, $end){
 }
 
 //PLAYER MONEY COUNT
-function mineconomy_player_get_money($player){
+function mineconomy_player_get_money($player) {
 	$query = mysql_query("SELECT account, balance, currency FROM ".WS_CONFIG_MINECONOMY." WHERE account = '".$player."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
@@ -37,7 +34,7 @@ function mineconomy_player_get_money($player){
 }
 
 //SERVER MONEY COUNT
-function mineconomy_server_get_money(){
+function mineconomy_server_get_money() {
 	$query = mysql_query("SELECT COUNT(account), SUM(balance), currency FROM ".WS_CONFIG_MINECONOMY." WHERE account != '".WS_ICONOMY_OMIT."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
@@ -47,7 +44,7 @@ function mineconomy_server_get_money(){
 }
 
 //PLAYER BOX MONEY COUNT
-function mineconomy_player_get_money_table($player){
+function mineconomy_player_get_money_table($player) {
 	$money = mineconomy_player_get_money($player);
 	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
 					<div class="head_stat">'.translate("var50").':</div>
@@ -58,7 +55,7 @@ function mineconomy_player_get_money_table($player){
 }
 
 //SERVER BOX MONEY COUNT
-function mineconomy_server_get_money_table(){
+function mineconomy_server_get_money_table() {
 	$money = mineconomy_server_get_money();
 	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
 					<div class="head_stat">'.translate("var47").':</div>
@@ -69,7 +66,7 @@ function mineconomy_server_get_money_table(){
 }
 
 //TOP BOX
-function mineconomy_server_details_table(){
+function mineconomy_server_details_table() {
 	$money = mineconomy_server_get_money();
 	
 	$output = '<div class="head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
@@ -105,17 +102,16 @@ function mineconomy_server_details_table(){
 }
 
 //LOWER PAGE PLAYER TABLE
-function mineconomy_server_player_table($player, $money){
+function mineconomy_server_player_table($player, $money) {
 	global $image_control;
 	global $stats_control;
 	
-	if($image_control == true){
+	if($image_control == true) {
 		$image = small_image($player);
 	}
-	if($stats_control == true){ 
+	if($stats_control == true) { 
 		$stats = '<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; 
-	}
-	else{ 
+	} else { 
 		$stats = ''.$player.'';
 	}
 

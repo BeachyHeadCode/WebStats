@@ -86,11 +86,9 @@ function set_index_table($player, $pos)
 	return $output;
 }
 
-function set_player_details_table($player)
-{
+function set_player_details_table($player) {
 	global $image_control;
-	if($image_control == true) 
-	{
+	if($image_control == true) {
 		$image = large_image($player);	
 	}
 	$output = '<div class="head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
@@ -145,12 +143,10 @@ function set_player_details_table($player)
 	return $output;
 }
 
-function set_player_details_table_3d($player)
-{
+function set_player_details_table_3d($player) {
 
 	global $image_control_3d;
-	if($image_control_3d == true) 
-	{
+	if($image_control_3d == true) {
 		$NAME = $_GET['user'];
 		$image = '<iframe frameborder="0" src="modules/player-image/full_player_image.php?user='.$NAME.'" title="skin" width="350px" height="300px"></iframe>';
 	}

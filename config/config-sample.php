@@ -42,6 +42,9 @@ define('WS_CONFIG_CACHETIME', '259200');
 //If you want a 3d player on the players page set to true.
 define('WS_CONFIG_3D_USER', true);
 
+//Search Bar on, true. Off, false.
+define('WS_CONFIG_SEARCH_BAR', true);
+
 //Deadline for players, not listed in stats-page: 2678400s = 1 month (inactive at the moment).
 define('WS_CONFIG_DEADLINE', '1209600');
 //Default Logo "http://....."   Image with max 350x270px
@@ -122,7 +125,7 @@ google_ad_height = 600;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
 </script>');
 
-//Set the plugin that you want on to true.
+//Set the plugin that you want on, to true.
 define('pluginconfigstatusachiv', true);			//Achievements
 define('pluginconfigstatusiconomy', false);			//iConomy
 define('pluginconfigstatusmineconomy', true);		//MineConomy
@@ -136,5 +139,5 @@ define('pluginconfigstatusstatslolmewnstats', true);//Stats by lolmewnstats
 define('serveraddr','');
 
 //ADMIN PAGE SETTINGS
-define('iptracker', 'false');
+define('iptracker', false);
 ?>

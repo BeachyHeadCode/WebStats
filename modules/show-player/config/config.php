@@ -5,4 +5,5 @@
 	if($jail_control == true){include('modules/jail/api/api.php');}
 	if($job_control == true){include('modules/jobs/api/api.php');}
 	if($mcmmo_control == true){include('modules/mcmmo/api/api.php');}
+	if($mineconomy_control == true){include('modules/mineconomy/api/api.php');}
 ?>

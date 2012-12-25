@@ -9,183 +9,179 @@ if(file_exists('../config/config.php'))
 	include('../config/config.php');
 else
 	header("/setup-config.php");
-if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
-if(!empty($_POST["submitmysql"])){ 
-	$_SESSION['mysql']['URL']=$_POST['mysql']['URL'];
-	$_SESSION['mysql']['PORT']=$_POST['mysql']['PORT'];
-	$_SESSION['mysql']['user']=$_POST['mysql']['user'];
-	$_SESSION['mysql']['pass']=$_POST['mysql']['pass'];
-	$_SESSION['mysql']['data']=$_POST['mysql']['data'];
-	$_SESSION['pluginconfigachiv']=$_POST['pluginconfigachiv'];
-	$_SESSION['pluginconfigiconomy']=$_POST['pluginconfigiconomy'];
-	$_SESSION['pluginconfigjail']=$_POST['pluginconfigjail'];
-	$_SESSION['pluginconfigjobs']=$_POST['pluginconfigjobs'];
-	$_SESSION['pluginconfigmcmmo']=$_POST['pluginconfigmcmmo'];
-	$_SESSION['pluginconfigpermissionsex']=$_POST['pluginconfigpermissionsex'];
-	$_SESSION['pluginconfigstats']=$_POST['pluginconfigstats'];
-	$_SESSION['pluginconfigeconomy']=$_POST['pluginconfigeconomy'];
-}
-if(!empty($_POST["submitconfig"])){
-	$server_name = htmlspecialchars($_POST['page']['server_name'], ENT_QUOTES);
-	$_SESSION['page']['server_name']=$server_name;
-	$server_title = htmlspecialchars($_POST['page']['server_title'], ENT_QUOTES);
-	$_SESSION['page']['server_title']=$server_title;
-	$_SESSION['page']['MQ_SERVER_ADDR']=$_POST['page']['MQ_SERVER_ADDR'];
-	$_SESSION['page']['MQ_SERVER_PORT']=$_POST['page']['MQ_SERVER_PORT'];
-	$tab_title = htmlspecialchars($_POST['page']['tab_title'], ENT_QUOTES);
-	$_SESSION['page']['tab_title']=$tab_title;
-	$_SESSION['page']['default_module']=$_POST['page']['default_module'];
-	$_SESSION['page']['default_background']=$_POST['page']['default_background'];
-	$_SESSION['page']['users_per_page']=$_POST['page']['users_per_page'];
-	$_SESSION['page']['2d_cache_time']=$_POST['page']['2d_cache_time'];
-	$_SESSION['page']['3d_on/off']=$_POST['page']['3d_on/off'];
-	$_SESSION['page']['player_inactivity']=$_POST['page']['player_inactivity'];
-	$_SESSION['page']['logo_image_link']=$_POST['page']['logo_image_link'];
-	$_SESSION['page']['logo_image_filename']=$_POST['page']['logo_image_filename'];
-	$_SESSION['page']['homepage_link']=$_POST['page']['homepage_link'];
-	$_SESSION['page']['logo_on/off']=$_POST['page']['logo_on/off'];
-	$_SESSION['page']['bookmark_title']=$_POST['page']['bookmark_title'];
-	$_SESSION['page']['achiev_player_table_name']=$_POST['page']['achiev_player_table_name'];
-	$_SESSION['page']['iconomy_admin']=$_POST['page']['iconomy_admin'];
-	$_SESSION['page']['iconomy_table_name']=$_POST['page']['iconomy_table_name'];
-	$_SESSION['page']['iconomy_major_currency']=$_POST['page']['iconomy_major_currency'];
-	$_SESSION['page']['iconomy_minor_currency']=$_POST['page']['iconomy_minor_currency'];
-	$_SESSION['page']['iconomy_major_symbol']=$_POST['page']['iconomy_major_symbol'];
-	$_SESSION['page']['iconomy_minor_symbol']=$_POST['page']['iconomy_minor_symbol'];
-	$_SESSION['page']['mineconomy_table']=$_POST['page']['mineconomy_table'];
-	$_SESSION['page']['jail_table_name']=$_POST['page']['jail_table_name'];
-	$_SESSION['page']['jobs_table_name']=$_POST['page']['jobs_table_name'];
-	$_SESSION['page']['mcmmo_table_name']=$_POST['page']['mcmmo_table_name'];
-	$_SESSION['page']['mcmmo_def_sort']=$_POST['page']['mcmmo_def_sort'];
-	$_SESSION['page']['permissionsex_table_name']=$_POST['page']['permissionsex_table_name'];
-	$_SESSION['page']['permissionsex_default_group']=$_POST['page']['permissionsex_default_group'];
-	$_SESSION['page']['stats_table_name']=$_POST['page']['stats_table_name'];
-	$_SESSION['page']['timechange_on/off']=$_POST['page']['timechange_on/off'];
-}
-
-define('noclick','<span onmousedown="return false;" onselectstart="return false;" style="cursor:default;">');
+	
+if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1') {
+	if(!empty($_POST["submitmysql"])) { 
+		$_SESSION['mysql']['URL']=$_POST['mysql']['URL'];
+		$_SESSION['mysql']['PORT']=$_POST['mysql']['PORT'];
+		$_SESSION['mysql']['user']=$_POST['mysql']['user'];
+		$_SESSION['mysql']['pass']=$_POST['mysql']['pass'];
+		$_SESSION['mysql']['data']=$_POST['mysql']['data'];
+		$_SESSION['pluginconfigachiv']=$_POST['pluginconfigachiv'];
+		$_SESSION['pluginconfigiconomy']=$_POST['pluginconfigiconomy'];
+		$_SESSION['pluginconfigjail']=$_POST['pluginconfigjail'];
+		$_SESSION['pluginconfigjobs']=$_POST['pluginconfigjobs'];
+		$_SESSION['pluginconfigmcmmo']=$_POST['pluginconfigmcmmo'];
+		$_SESSION['pluginconfigpermissionsex']=$_POST['pluginconfigpermissionsex'];
+		$_SESSION['pluginconfigstats']=$_POST['pluginconfigstats'];
+		$_SESSION['pluginconfigeconomy']=$_POST['pluginconfigeconomy'];
+	}
+	if(!empty($_POST["submitconfig"])) {
+		$server_name = htmlspecialchars($_POST['page']['server_name'], ENT_QUOTES);
+		$_SESSION['page']['server_name']=$server_name;
+		$server_title = htmlspecialchars($_POST['page']['server_title'], ENT_QUOTES);
+		$_SESSION['page']['server_title']=$server_title;
+		$_SESSION['page']['MQ_SERVER_ADDR']=$_POST['page']['MQ_SERVER_ADDR'];
+		$_SESSION['page']['MQ_SERVER_PORT']=$_POST['page']['MQ_SERVER_PORT'];
+		$tab_title = htmlspecialchars($_POST['page']['tab_title'], ENT_QUOTES);
+		$_SESSION['page']['tab_title']=$tab_title;
+		$_SESSION['page']['default_module']=$_POST['page']['default_module'];
+		$_SESSION['page']['default_background']=$_POST['page']['default_background'];
+		$_SESSION['page']['users_per_page']=$_POST['page']['users_per_page'];
+		$_SESSION['page']['2d_cache_time']=$_POST['page']['2d_cache_time'];
+		$_SESSION['page']['3d_on/off']=$_POST['page']['3d_on/off'];
+		$_SESSION['page']['player_inactivity']=$_POST['page']['player_inactivity'];
+		$_SESSION['page']['logo_image_link']=$_POST['page']['logo_image_link'];
+		$_SESSION['page']['logo_image_filename']=$_POST['page']['logo_image_filename'];
+		$_SESSION['page']['homepage_link']=$_POST['page']['homepage_link'];
+		$_SESSION['page']['logo_on/off']=$_POST['page']['logo_on/off'];
+		$_SESSION['page']['bookmark_title']=$_POST['page']['bookmark_title'];
+		$_SESSION['page']['achiev_player_table_name']=$_POST['page']['achiev_player_table_name'];
+		$_SESSION['page']['iconomy_admin']=$_POST['page']['iconomy_admin'];
+		$_SESSION['page']['iconomy_table_name']=$_POST['page']['iconomy_table_name'];
+		$_SESSION['page']['iconomy_major_currency']=$_POST['page']['iconomy_major_currency'];
+		$_SESSION['page']['iconomy_minor_currency']=$_POST['page']['iconomy_minor_currency'];
+		$_SESSION['page']['iconomy_major_symbol']=$_POST['page']['iconomy_major_symbol'];
+		$_SESSION['page']['iconomy_minor_symbol']=$_POST['page']['iconomy_minor_symbol'];
+		$_SESSION['page']['mineconomy_table']=$_POST['page']['mineconomy_table'];
+		$_SESSION['page']['jail_table_name']=$_POST['page']['jail_table_name'];
+		$_SESSION['page']['jobs_table_name']=$_POST['page']['jobs_table_name'];
+		$_SESSION['page']['mcmmo_table_name']=$_POST['page']['mcmmo_table_name'];
+		$_SESSION['page']['mcmmo_def_sort']=$_POST['page']['mcmmo_def_sort'];
+		$_SESSION['page']['permissionsex_table_name']=$_POST['page']['permissionsex_table_name'];
+		$_SESSION['page']['permissionsex_default_group']=$_POST['page']['permissionsex_default_group'];
+		$_SESSION['page']['stats_table_name']=$_POST['page']['stats_table_name'];
+		$_SESSION['page']['timechange_on/off']=$_POST['page']['timechange_on/off'];
+	}
+	define('noclick','<span onmousedown="return false;" onselectstart="return false;" style="cursor:default;">');
 ?>
 	
-<!DOCTYPE html>
+	<!DOCTYPE html>
 
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-	<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.us)" />
-	<meta content='minecraft stats' name='description' />
-	<meta content='minecraft, stats, bukkit, mrplow, cky2250' name='keywords'/>
-	<title>WebStats &rsaquo; Settings PAGE</title>
-	<link rel="stylesheet" type="text/css" href="../css/layout_admin.css"/>
-	<link rel="SHORTCUT ICON" type='image/x-icon' href="../images/favicon.ico"/>
-	<link rel="apple-touch-icon" href="../images/favicon.png" />
-  
-	<!-- Included CSS Files (Uncompressed) -->
-	<link rel="stylesheet" type="text/css" href="../stylesheets/foundation.css">
-	<link rel="stylesheet" type="text/css" href="../stylesheets/app.css">
+	<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+	<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+	<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+	<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+	<!--[if gt IE 8]><!--> <html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+		<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.us)" />
+		<meta content='minecraft stats' name='description' />
+		<meta content='minecraft, stats, bukkit, mrplow, cky2250' name='keywords'/>
+		<title>WebStats &rsaquo; Settings PAGE</title>
+		<link rel="stylesheet" type="text/css" href="../css/layout_admin.css"/>
+		<link rel="SHORTCUT ICON" type='image/x-icon' href="../images/favicon.ico"/>
+		<link rel="apple-touch-icon" href="../images/favicon.png" />
+	  
+		<!-- Included CSS Files (Uncompressed) -->
+		<link rel="stylesheet" type="text/css" href="../stylesheets/foundation.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/app.css">
 
-	<script type="text/javascript" src="../javascripts/modernizr.foundation.js"></script>
+		<script type="text/javascript" src="../javascripts/modernizr.foundation.js"></script>
 
-	<!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link rel="stylesheet" href="stylesheets/general_enclosed_foundicons.css">
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" href="../../stylesheets/general_enclosed_foundicons_ie7.css">
-	<![endif]-->
-	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>  
-<script>
-function displayImage()
-{
-	//var x=document.getElementsByName("page[default_background]");
-	//var a=document.getElementById('customDropdown background').value;
-	var a = document.getElementById("customDropdown background");
-	var b = a.options[a.selectedIndex].text;
-	var c="../images/background/bg_";
-	var d=".png";
-	var e=c.concat(b,d);
-	document.getElementById("imageplaceholder").src=e;
-}
-</script>
-	
-</head>
-<body style="background-color:rgb(228, 228, 228);">
-<article> 
-	<form action="#" method="post" class="custom">
-        <fieldset>
-			<legend style="background: none;"><h2>MySQL of Minecraft Plugin(s)</h2></legend>
-			<label for="mysql[URL]">Enter URL Of Host:</label> <input type="text" name="mysql[URL]" id="mysql[URL]" title="MySQL URL" value="<?php if(!isset($_SESSION['mysql']['URL'])){ echo WS_CONFIG_DBHOST;}else{ echo $_SESSION['mysql']['URL'];} ?>" maxlength="60"/><br/>
-            <label for="mysql[PORT]">Enter Port Of Host:</label> <input name="mysql[PORT]" type="text" id="mysql[PORT]" title="MySQL PORT" value="<?php if(!isset($_SESSION['mysql']['PORT'])){ echo WS_CONFIG_DBPORT;}else{ echo $_SESSION['mysql']['PORT'];} ?>" maxlength="5"/><br/>
-			<label for="mysql[user]">Enter Username:</label> <input name="mysql[user]" type="text" id="mysql[user]" accesskey="" title="MySQL Username" value="<?php if(!isset($_SESSION['mysql']['user'])){ echo WS_CONFIG_DBUNAME;}else{ echo $_SESSION['mysql']['user'];} ?>" maxlength="16"/><br/>
-			<label for="mysql[pass]">Enter Password:</label> <input name="mysql[pass]" type="text" id="mysql[pass]" title="MySQL Password" value="<?php if(!isset($_SESSION['mysql']['pass'])){ echo WS_CONFIG_DBPASS;}else{ echo $_SESSION['mysql']['pass'];} ?>" maxlength="32"/><br/>
-			<label for="mysql[data]">Enter Database:</label> <input name="mysql[data]" type="text" id="mysql[data]" title="MySQL Database" value="<?php if(!isset($_SESSION['mysql']['data'])){ echo WS_CONFIG_DBNAME;}else{ echo $_SESSION['mysql']['data'];} ?>" maxlength="64"/><br/><br/>
-            <?php echo noclick ?>What Plugins Would You Like To Use?</span><br/>
-            <table>
-				<thead>
-					<th><?php echo noclick ?>Achievements:</span></th>
-					<th><?php echo noclick ?>Economy:</span></th>
-                    <th><?php echo noclick ?>Jail:</span></th>
-					<th><?php echo noclick ?>Jobs:</span></th>
-					<th><?php echo noclick ?>McMMO:</span></th>
-                    <th><?php echo noclick ?>PermissionsEx:</span></th>
-                    <th><?php echo noclick ?>Stats:</span></th>
-				</thead>
-                <tbody>          
-				<tr>
-					<td><select <!--style="display:none;"--> id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigachiv">  
-						<?php $achievementstype = array('Chose Plugin', 'Achievements', 'Avhievements 2.0', 'Stats & Achievements');
-							for($i=0; $i <= (sizeof($achievementstype)-1); $i++){
-								if(pluginconfigstatusachiv === true)
-									$pluginachievment = 'Achievements';	
-								if ($pluginachievment == $achievementstype[$i])
-									echo ("<option value='".$achievementstype[$i]."' SELECTED>".$achievementstype[$i]."</option>");
-								else 
-									echo "<option value='".$achievementstype[$i]."'>".$achievementstype[$i]."</option>";
-						}?>
-					</select></td>
-					<td><select style="" id="customDropdown" class="select2" title="Economy Plugin" name="pluginconfigeconomy">
-						<?php $economytype = array('Chose Plugin', 'iConomy', 'MineConomy');
-							for($i=0; $i <= (sizeof($economytype)-1); $i++){
- 								if(pluginconfigstatusiconomy === true)
-									$plugineconomy = 'iConomy';
-								if(pluginconfigstatusmineconomy === true)
-									$plugineconomy = 'MineConomy';
-								if(($plugineconomy == $economytype[$i]) or ($_SESSION['pluginconfigeconomy'] == $economytype[$i]))
-									echo ("<option value='".$economytype[$i]."' SELECTED>".$economytype[$i]."</option>");
-								else 
-									echo "<option value='".$economytype[$i]."'>".$economytype[$i]."</option>";
-						}?>	
-					</select></td>
-					<td><input type="checkbox" name="pluginconfigjail" title="Jail On" value="true" <?php if(pluginconfigstatusjail === true){ echo 'checked="checked"';} ?>/></td>
-					<td><input type="checkbox" name="pluginconfigjobs" title="Jobs On" value="true" <?php if(pluginconfigstatusjobs === true){ echo 'checked="checked"';} ?>/></td>
-					<td><input type="checkbox" name="pluginconfigmcmmo" title="McMMO On" value="true" <?php if(pluginconfigstatusmcmmo === true){ echo 'checked="checked"';} ?>/></td>
-                    <td><input type="checkbox" name="pluginconfigpermissionsex" title="McMMO On" value="true" <?php if(pluginconfigpermissionsex === true){ echo 'checked="checked"';} ?>/></td>				
-					<td><select style="" id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigstats">  
-						<?php $statstype = array('Chose Plugin', 'BeardStat', 'HawkEye', 'Logblock', 'Stats & Achievements', 'Stats', 'Stats 2.0', 'Stats by lolmewnstats', 'Statistician v2.0');
-							for($i=0; $i <= (sizeof($statstype)-1); $i++){
-								
- 								if(pluginconfigstatusstats === true)
-									$pluginstat = 'Stats';
- 								if(pluginconfigstatusbeardstats === true)
-									$pluginstat = 'BeardStat';
- 								if(pluginconfigstatusstatslolmewnstats === true)
-									$pluginstat = 'Stats by lolmewnstats';
-								if($pluginstat == $statstype[$i])
-									echo ("<option value='".$statstype[$i]."' SELECTED>".$statstype[$i]."</option>");
-								else 
-									echo "<option value='".$statstype[$i]."'>".$statstype[$i]."</option>";
-						}?>
-					</select></td>
-				</tr>
-				</tbody>
-			</table>
-  <input name="submitmysql" type="submit" title="Submit MySQL" onclick="MM_validateForm('mysql[URL]','','R','mysql[PORT]','','NisNum','mysql[user]','','R','mysql[pass]','','R','mysql[data]','','R');return document.MM_returnValue" class="small success button" /><br/>
-            </fieldset>
-		</form>
+		<!-- IE Fix for HTML5 Tags -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="stylesheets/general_enclosed_foundicons.css">
+		<!--[if lt IE 8]>
+			<link rel="stylesheet" href="../../stylesheets/general_enclosed_foundicons_ie7.css">
+		<![endif]-->
+		<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>  
+		<script>
+			function displayImage() {
+				var a = document.getElementById("customDropdown background");
+				var b = a.options[a.selectedIndex].text;
+				var c="../images/background/bg_";
+				var d=".png";
+				var e=c.concat(b,d);
+				document.getElementById("imageplaceholder").src=e;
+			}
+		</script>
+	</head>
+	<body style="background-color:rgb(228, 228, 228);">
+		<article> 
+			<form action="#" method="post" class="custom">
+				<fieldset>
+					<legend style="background: none;"><h2>MySQL of Minecraft Plugin(s)</h2></legend>
+					<label for="mysql[URL]">Enter URL Of Host:</label> <input type="text" name="mysql[URL]" id="mysql[URL]" title="MySQL URL" value="<?php if(!isset($_SESSION['mysql']['URL'])){ echo WS_CONFIG_DBHOST;}else{ echo $_SESSION['mysql']['URL'];} ?>" maxlength="60"/><br/>
+					<label for="mysql[PORT]">Enter Port Of Host:</label> <input name="mysql[PORT]" type="text" id="mysql[PORT]" title="MySQL PORT" value="<?php if(!isset($_SESSION['mysql']['PORT'])){ echo WS_CONFIG_DBPORT;}else{ echo $_SESSION['mysql']['PORT'];} ?>" maxlength="5"/><br/>
+					<label for="mysql[user]">Enter Username:</label> <input name="mysql[user]" type="text" id="mysql[user]" accesskey="" title="MySQL Username" value="<?php if(!isset($_SESSION['mysql']['user'])){ echo WS_CONFIG_DBUNAME;}else{ echo $_SESSION['mysql']['user'];} ?>" maxlength="16"/><br/>
+					<label for="mysql[pass]">Enter Password:</label> <input name="mysql[pass]" type="text" id="mysql[pass]" title="MySQL Password" value="<?php if(!isset($_SESSION['mysql']['pass'])){ echo WS_CONFIG_DBPASS;}else{ echo $_SESSION['mysql']['pass'];} ?>" maxlength="32"/><br/>
+					<label for="mysql[data]">Enter Database:</label> <input name="mysql[data]" type="text" id="mysql[data]" title="MySQL Database" value="<?php if(!isset($_SESSION['mysql']['data'])){ echo WS_CONFIG_DBNAME;}else{ echo $_SESSION['mysql']['data'];} ?>" maxlength="64"/><br/><br/>
+					<?php echo noclick ?>What Plugins Would You Like To Use?</span><br/>
+					<table>
+						<thead>
+							<th><?php echo noclick ?>Achievements:</span></th>
+							<th><?php echo noclick ?>Economy:</span></th>
+							<th><?php echo noclick ?>Jail:</span></th>
+							<th><?php echo noclick ?>Jobs:</span></th>
+							<th><?php echo noclick ?>McMMO:</span></th>
+							<th><?php echo noclick ?>PermissionsEx:</span></th>
+							<th><?php echo noclick ?>Stats:</span></th>
+						</thead>
+						<tbody>          
+							<tr>
+								<td><select id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigachiv">  
+									<?php $achievementstype = array('Chose Plugin', 'Achievements', 'Avhievements 2.0', 'Stats & Achievements');
+										for($i=0; $i <= (sizeof($achievementstype)-1); $i++){
+											if(pluginconfigstatusachiv === true)
+												$pluginachievment = 'Achievements';	
+											if ($pluginachievment == $achievementstype[$i])
+												echo ("<option value='".$achievementstype[$i]."' SELECTED>".$achievementstype[$i]."</option>");
+											else 
+												echo "<option value='".$achievementstype[$i]."'>".$achievementstype[$i]."</option>";
+									}?>
+								</select></td>
+								<td><select id="customDropdown" class="select2" title="Economy Plugin" name="pluginconfigeconomy">
+									<?php $economytype = array('Chose Plugin', 'iConomy', 'MineConomy');
+										for($i=0; $i <= (sizeof($economytype)-1); $i++){
+											if(pluginconfigstatusiconomy === true)
+												$plugineconomy = 'iConomy';
+											if(pluginconfigstatusmineconomy === true)
+												$plugineconomy = 'MineConomy';
+											if(($plugineconomy == $economytype[$i]) or ($_SESSION['pluginconfigeconomy'] == $economytype[$i]))
+												echo ("<option value='".$economytype[$i]."' SELECTED>".$economytype[$i]."</option>");
+											else 
+												echo "<option value='".$economytype[$i]."'>".$economytype[$i]."</option>";
+									}?>	
+								</select></td>
+								<td><input type="checkbox" name="pluginconfigjail" title="Jail On" value="true" <?php if(pluginconfigstatusjail === true){ echo 'checked="checked"';} ?>/></td>
+								<td><input type="checkbox" name="pluginconfigjobs" title="Jobs On" value="true" <?php if(pluginconfigstatusjobs === true){ echo 'checked="checked"';} ?>/></td>
+								<td><input type="checkbox" name="pluginconfigmcmmo" title="McMMO On" value="true" <?php if(pluginconfigstatusmcmmo === true){ echo 'checked="checked"';} ?>/></td>
+								<td><input type="checkbox" name="pluginconfigpermissionsex" title="McMMO On" value="true" <?php if(pluginconfigpermissionsex === true){ echo 'checked="checked"';} ?>/></td>				
+								<td><select style="" id="customDropdown" class="select2" title="Stats Plugin" name="pluginconfigstats">  
+									<?php $statstype = array('Chose Plugin', 'BeardStat', 'HawkEye', 'Logblock', 'Stats & Achievements', 'Stats', 'Stats 2.0', 'Stats by lolmewnstats', 'Statistician v2.0');
+										for($i=0; $i <= (sizeof($statstype)-1); $i++){
+											
+											if(pluginconfigstatusstats === true)
+												$pluginstat = 'Stats';
+											if(pluginconfigstatusbeardstats === true)
+												$pluginstat = 'BeardStat';
+											if(pluginconfigstatusstatslolmewnstats === true)
+												$pluginstat = 'Stats by lolmewnstats';
+											if($pluginstat == $statstype[$i])
+												echo ("<option value='".$statstype[$i]."' SELECTED>".$statstype[$i]."</option>");
+											else 
+												echo "<option value='".$statstype[$i]."'>".$statstype[$i]."</option>";
+									}?>
+								</select></td>
+							</tr>
+						</tbody>
+					</table>
+					<input name="submitmysql" type="submit" title="Submit MySQL" onclick="MM_validateForm('mysql[URL]','','R','mysql[PORT]','','NisNum','mysql[user]','','R','mysql[pass]','','R','mysql[data]','','R');return document.MM_returnValue" class="small success button" /><br/>
+				</fieldset>
+			</form>
       <?php  	
 	$host= $_SESSION['mysql'][URL].":".$_SESSION['mysql']['PORT'];
 	$user=$_SESSION['mysql']['user'];
@@ -206,7 +202,7 @@ function displayImage()
 	<label for="page[tab_title]">Server Tab Title: <input name="page[tab_title]" type="text" id="page[tab_title]" title="Tab Name" value="<?php if(!isset($_SESSION['page']['tab_title'])){ echo WS_OPTICAL_TAB_TITLE;}else{ echo $_SESSION['page']['tab_title'];} ?>" maxlength="70"/></label>
 	<label for="page[default_module]">Choose Default Module: <input name="page[default_module]" type="text" id="page[default_module]" title="Server Name" value="<?php if(!isset($_SESSION['page']['default_module'])){ echo WS_CONFIG_MODULE;}else{ echo $_SESSION['page']['default_module'];} ?>" maxlength="64"/></label>
 	<label for="customDropdown">Choose Default Background:</label>
-	<select style="" id="customDropdown background" class="select2" title="Background" onchange="displayImage()"  name="page[default_background]">  
+	<select class="select2" id="customDropdown background" name="page[default_background]" onchange="displayImage()" title="Background">  
 		<?php 
  			$filetypes = array('gif', 'jpg', 'png');
 			$handle= opendir ("../images/background");
@@ -322,8 +318,7 @@ if($_POST["submitconfig"] == 'Submit Config'){
 }
 
 }
+} else {
+	header("location:".adminPageURL());
 }
-else{
-header("location:".adminPageURL());
-	}
 ?>

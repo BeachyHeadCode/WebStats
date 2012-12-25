@@ -579,12 +579,6 @@ text-align: left !important;
 }
 
 
-
-
-
-
-
-
 /* Pagination ---------------------- */
 table.pagination {  background: none !important; border: none !important; height: 24px; margin: 0 auto; }
 table.pagination td {  height: 24px; width: 24px; color: #999; font-size: 14px; margin: 5px; }
@@ -659,7 +653,7 @@ table tbody tr td {vertical-align: middle !important;}
 
 
 
-
+/* Materials Page Table */
 .grid2 .animated .image,.grid2 .paused .image{display:none}
 .grid2 .animated .image.active,.grid2 .paused .image.active{display:block}
 .grid2{display:inline-block;position:relative;text-align:left !important;background-color:#8B8B8B;height:36px;width:32px;padding:2px;vertical-align:bottom}
@@ -706,8 +700,8 @@ table tbody tr td {vertical-align: middle !important;}
 	top: -12px !important;
 }
 @font-face{
-font-family:Minecraft;
-src:url("fonts/minecraft.eot?#iefix"),url("fonts/minecraft.woff") format('woff'),url("http://www.minecraftwiki.net/fonts/minecraft.ttf") format('truetype') 
+	font-family:Minecraft;
+	src:url("fonts/minecraft.eot?#iefix"),url("fonts/minecraft.woff") format('woff'),url("http://www.minecraftwiki.net/fonts/minecraft.ttf") format('truetype') 
 }
 table.grid-Crafting_Table tbody tr:nth-child(even), table.grid-Furnace tbody tr:nth-child(even), table.grid-Brewing_Stand tbody tr:nth-child(even){
 	background: 			none !important;

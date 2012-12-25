@@ -10,24 +10,24 @@
 if (!isset($_GET['sort'])) {$_GET['sort'] = 'player';}
 	
 	//START STATS PLUGIN TYPE ----------------
-	if(file_exists('modules/stats/index.php')){
+	if(file_exists('modules/stats/index.php')) {
 		$stats_control = true;
 	}
-	if(file_exists('modules/stats-lolmewn/index.php')){
+	if(file_exists('modules/stats-lolmewn/index.php')) {
 		$statslolmewn_control = true;
 	}
 	//END STATS PLUGIN TYPE ----------------
-	if(file_exists('modules/jail/index.php')){
+	if(file_exists('modules/jail/index.php')) {
 		$jail_control = true;
 	}
-	if(file_exists('modules/jobs/index.php')){
+	if(file_exists('modules/jobs/index.php')) {
 		$job_control = true;
 	}
 	//START CURRENCY PLUGIN TYPES -----------
-	if(file_exists('modules/iconomy/index.php')){
+	if(file_exists('modules/iconomy/index.php')) {
 		$iconomy_control = true;
 	}
-	if(file_exists('modules/mineconomy/index.php')){
+	if(file_exists('modules/mineconomy/index.php')) {
 		$mineconomy_control = true;
 	}
 	//END CURRENCY PLUGIN TYPES -----------
@@ -35,7 +35,7 @@ if (!isset($_GET['sort'])) {$_GET['sort'] = 'player';}
 		$achievements_control = true;
 	}
 	//START PLAYER IMAGES TYPES-----------------------------------------------
-	if(file_exists('modules/player-image/index.php')){
+	if(file_exists('modules/player-image/index.php')) {
 		$image_control = true;
 	}
 	if(file_exists('modules/player-image/full_player_image.php')){
