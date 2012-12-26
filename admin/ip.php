@@ -2,14 +2,15 @@
 session_start();
 error_reporting(0);
 $ip=$_SERVER['REMOTE_ADDR'];
-require_once("../include/logonfunctions.php");
-require_once('../include/functions.php');
+require_once "../include/logonfunctions.php";
+require_once '../include/functions.php';
 if(file_exists('../config/config.php'))
-	include('../config/config.php');
+	include_once '../config/config.php';
 else
 	header("setup-config.php");
 if (!isset($_GET['sort'])) {$_GET['sort'] = 'IPdesc';}
 if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1') {
+	if(iptracker === true) {
 /* SETS NUMBER OF USERS TO PRINT */
 function get_IP_stats_count(){
 	$query = mysql_query("SELECT COUNT(IP) FROM stats");
@@ -63,22 +64,20 @@ function get_IP_stats_order($sort, $start, $end){
 				$sortkey = "ORDER BY date ASC";
 			break;
 		}
-	}
-	else {
+	} else {
 		$sortkey = 'ORDER BY date ASC';
 	}
 	$result = "SELECT * FROM stats WHERE stats.IP != '' ".$sortkey." LIMIT ".$start.",".$end."";
 	$query = mysql_query($result);
 	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$IPs[$time] = $row['IP'];
 		$time++;
 	}
 	return $IPs;
 }
 /* USED TO PRINT THE VALUES */
-function server_IP_table($IP, $pos){
+function server_IP_table($IP, $pos) {
 	$pos++;
 	$query = "SELECT * FROM stats WHERE stats.IP = '".$IP."' AND stats.IP != ''";
 	$result = mysql_query($query) or die(mysql_error());
@@ -92,7 +91,7 @@ function server_IP_table($IP, $pos){
 		$output  .= '<td style="text-align: center;">'.$pos."</td>\n";     
 	}
 		$output .= '<td style="text-align: center;">'.$data['IP']."</td>\n";
-		$output .= '<td style="text-align: center;"><a href="http://maps.googleapis.com/maps/api/staticmap?center='.$data['location'].'&zoom=7&size=1000x1000&maptype=roadmap&sensor=false" target="_blank">'.$data['location']."</a></td>\n";
+		$output .= '<td style="text-align: center;"><a href="#" data-reveal-id="'.md5($data['IP']).'">'.$data['location']."</a></td>\n";
 		$output .= '<td style="text-align: center;">'.$data['pageview']."</td>\n";
 		$output .= '<td style="text-align: center;">'.$data['date']."</td>\n";
 		$output .= '<td style="text-align: center;"><a href="#" data-reveal-id="'.md5($data['IP']).'">More +</a></td>';
@@ -130,25 +129,23 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
 <table style="margin:auto;">
 	<thead>
         <th align="left" class="content_headline_num" style="">Num:</th>
-        <?php
-		if($_GET['sort']!=='IPdesc'){
-		?>
+        <?php if($_GET['sort']!=='IPdesc') {?>
         	<th><a href="?mode=ip&sort=IPdesc">IP:</a></th>
-        <?php }else{?>
+        <?php } else {?>
         	<th><a href="?mode=ip&sort=IPasc">IP:</a></th>
-		<?php }if($_GET['sort']!=='locationdesc'){?>
+		<?php } if($_GET['sort']!=='locationdesc') {?>
         	<th><a href="?mode=ip&sort=locationdesc">Location:</a></th>
-        <?php }else{?>
+        <?php } else {?>
         	<th><a href="?mode=ip&sort=locationasc">Location:</a></th>
-        <?php }if($_GET['sort']!=='pageviewsdesc'){?>
+        <?php }if($_GET['sort']!=='pageviewsdesc') {?>
         	<th><a href="?mode=ip&sort=pageviewsdesc">Page views:</a></th>
-        <?php }else{?>
+        <?php } else {?>
        		<th><a href="?mode=ip&sort=pageviewsasc">Page views:</a></th>
-        <?php }if($_GET['sort']!=='datedesc'){?>
+        <?php } if($_GET['sort']!=='datedesc') {?>
         	<th><a href="?mode=ip&sort=datedesc">Date:</a></th>
-        <?php }else{?>
+        <?php } else {?>
         	<th><a href="?mode=ip&sort=dateasc">Date:</a></th>
-        <?php } ?>
+        <?php }?>
 	</thead>
 	<?php
 		if (isset($_GET["page"]) <= 0) {
@@ -165,7 +162,7 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
 	?>
 	<tbody>
 		<?php
-			for($i=0; $i < sizeof($IPs); $i++){
+			for($i=0; $i < sizeof($IPs); $i++) {
 				echo (server_IP_table($IPs[$i], $i+$start));
 			}
 		?>
@@ -200,7 +197,7 @@ echo <<< END
 					</tbody>
 				</table>
 				Location: $location<br/>
-				<img src="http://maps.googleapis.com/maps/api/staticmap?center=$location&zoom=7&size=1000x1000&maptype=roadmap&sensor=false" />	
+				<a href="http://maps.googleapis.com/maps/api/staticmap?center=$location&zoom=7&size=1000x1000&maptype=roadmap&sensor=false" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=$location&zoom=7&size=1000x1000&maptype=roadmap&sensor=false" /></a>	
 			</p>
 			<a class="close-reveal-modal">&#215;</a>
 	</div>
@@ -212,6 +209,13 @@ END;
 </body>
 </html>
 <?php 
+	} else {
+echo <<< END
+<h5>Check to allow IP track to track your users. This is personal and is in your own records only.</h5>
+<p>Allow: <input type="checkbox" title="IP Tracker Allow" name="" /></p>
+END;
+$file = '../config/config.php';
+	}
 } else {
 	header("location:".adminPageURL());
 }

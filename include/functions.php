@@ -4,7 +4,7 @@ final class ip2location_lite{
 	protected $service = 'api.ipinfodb.com';
 	protected $version = 'v3';
 	protected $apiKey = '29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001';
-		
+
 	public function __construct(){}
 	public function __destruct(){}
 	public function getError(){
@@ -20,14 +20,13 @@ final class ip2location_lite{
 		$ip = @gethostbyname($host);
 		if(preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $ip)){
 			$xml = @file_get_contents('http://' . $this->service . '/' . $this->version . '/' . $name . '/?key=' . $apiKey . '&ip=' . $ip . '&format=xml');
-			try{
+			try {
 				$response = @new SimpleXMLElement($xml);
 				foreach($response as $field=>$value){
 					$result[(string)$field] = (string)$value;
 				}
 				return $result;
-			}
-			catch(Exception $e){
+			} catch(Exception $e) {
 				$this->errors[] = $e->getMessage();
 				return;
 			}
@@ -54,11 +53,11 @@ function fix_server_vars() {
 	if ( empty( $_SERVER['REQUEST_URI'] ) || ( php_sapi_name() != 'cgi-fcgi' && preg_match( '/^Microsoft-IIS\//', $_SERVER['SERVER_SOFTWARE'] ) ) ) {
 
 		// IIS Mod-Rewrite
-		if ( isset( $_SERVER['HTTP_X_ORIGINAL_URL'] ) ) {
+		if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) {
 			$_SERVER['REQUEST_URI'] = $_SERVER['HTTP_X_ORIGINAL_URL'];
 		}
 		// IIS Isapi_Rewrite
-		else if ( isset( $_SERVER['HTTP_X_REWRITE_URL'] ) ) {
+		elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
 			$_SERVER['REQUEST_URI'] = $_SERVER['HTTP_X_REWRITE_URL'];
 		} else {
 			// Use ORIG_PATH_INFO if there is no PATH_INFO
@@ -79,15 +78,12 @@ function fix_server_vars() {
 			}
 		}
 	}
-
 	// Fix for PHP as CGI hosts that set SCRIPT_FILENAME to something ending in php.cgi for all requests
 	if ( isset( $_SERVER['SCRIPT_FILENAME'] ) && ( strpos( $_SERVER['SCRIPT_FILENAME'], 'php.cgi' ) == strlen( $_SERVER['SCRIPT_FILENAME'] ) - 7 ) )
 		$_SERVER['SCRIPT_FILENAME'] = $_SERVER['PATH_TRANSLATED'];
-
 	// Fix for Dreamhost and other PHP as CGI hosts
 	if ( strpos( $_SERVER['SCRIPT_NAME'], 'php.cgi' ) !== false )
 		unset( $_SERVER['PATH_INFO'] );
-
 	// Fix empty PHP_SELF
 	$PHP_SELF = $_SERVER['PHP_SELF'];
 	if ( empty( $PHP_SELF ) )
@@ -103,11 +99,10 @@ function fix_server_vars() {
 function ws_check_php_mysql_versions() {
 	global $required_php_version;
 	$php_version = phpversion();
-	if ( version_compare( $required_php_version, $php_version, '>' ) ) {
+	if (version_compare($required_php_version, $php_version, '>')) {
 		die('Your server is running PHP version $php_version but WebStats $version requires at least $required_php_version.');
 	}
-
-	if (! extension_loaded( 'mysql' )) {
+	if (!extension_loaded( 'mysql' )) {
 		die('Your PHP installation appears to be missing the MySQL extension which is required by WebStats.');
 	}
 }

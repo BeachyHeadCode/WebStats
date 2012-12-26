@@ -91,38 +91,32 @@ define('WS_CONFIG_STATS_LOLMEWN_PREFIX', 'stats');
 define('WS_CONFIG_PLAYTIME', true);
 
 //Google Ads. If you want to support me while I update many features for you keep this here. If you dont want them on, remove the code. If you want your own ads, change the code. 
-define('WS_GOOGLE_FOOTER', '<script type="text/javascript"><!--
+define('WS_GOOGLE_FOOTER', '<script type="text/javascript">
 google_ad_client = "ca-pub-6169723647730707";
 /* title ad */
 google_ad_slot = "0514393560";
 google_ad_width = 468;
 google_ad_height = 15;
-//-->
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>'); 
-define('WS_GOOGLE_FOOTER_MOBILE', '<script type="text/javascript"><!--
+define('WS_GOOGLE_FOOTER_MOBILE', '<script type="text/javascript">
 google_ad_client = "ca-pub-6169723647730707";
 /* stats footer mobile banner */
 google_ad_slot = "2053079046";
 google_ad_width = 320;
 google_ad_height = 50;
-//-->
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>'); 
-define('WS_GOOGLE_ASIDE', '<script type="text/javascript"><!--
+define('WS_GOOGLE_ASIDE', '<script type="text/javascript">
 google_ad_client = "ca-pub-6169723647730707";
 /* Stats Plugin */
 google_ad_slot = "4875550823";
 google_ad_width = 120;
 google_ad_height = 600;
-//-->
-/script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
 </script>');
 
 //Set the plugin that you want on, to true.

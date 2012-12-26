@@ -49,29 +49,27 @@ function pml_checklogin($goto,$status = "0") {
 					$_SESSION['pml_userrank'] = $rank;
 					
 					header("Location: ".$_SERVER['REQUEST_URI']);
-				}else{
+				} else {
 					// Incorrect password
 					setcookie("pml_userid_cookie", "", time() - 3600);
 					setcookie("pml_usercode_cookie", "", time() - 3600);
 					header("Location: ".$_SERVER['REQUEST_URI']);
 				}
-			}else{
+			} else {
 				setcookie("pml_userid_cookie", "", time() - 3600);
 				setcookie("pml_usercode_cookie", "", time() - 3600);
 				header("Location: ".$_SERVER['REQUEST_URI']);
 			}
-		}else{
+		} else {
 			// User doesn't exists
 			setcookie("pml_userid_cookie", "", time() - 3600);
 			setcookie("pml_usercode_cookie", "", time() - 3600);
 			header("Location: ".$_SERVER['REQUEST_URI']);
 		}
-		
-	}else{
+	} else {
 		// No user logged in
 		header("Location: ".$goto);
 	}
-	
 	ob_end_flush();
 }
 // # How to use the function pml_login()?
@@ -189,14 +187,14 @@ function pml_login($todo = "",$action = "") {
 							mysql_query($sql_updateonline) or trigger_error(mysql_error());
 							
 							header("Location: ".$_SERVER['REQUEST_URI']);
-						}else{
+						} else {
 							// Incorrect password
 							echo "<div class='row'>".translate('login-incorrect')."</div>";
 						}
-					}else{
+					} else {
 						echo "<div class='row'>".translate('login-notactive')."</div>";
 					}
-				}else{
+				} else {
 					// User doesn't exists
 					echo "<div class='row'>".translate('login-incorrect')."</div>";
 				}
@@ -219,7 +217,7 @@ function pml_login($todo = "",$action = "") {
 					<td><input size="24" maxlength="24" placeholder="password" type="password" id="password" name="password" <?php if(isset($_POST['password'])) { echo 'value="'.$_POST['password'].'"'; } ?> /></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="cookie" name="cookie" value="true" <?php if(isset($_POST['cookie'])) { echo "checked"; } ?> /></td>
+					<td style="text-align: right;"><input type="checkbox" id="cookie" name="cookie" value="true" <?php if(isset($_POST['cookie'])) { echo "checked"; } ?> /></td>
 					<td><label for="cookie"><?php echo translate('login-cookie'); ?></label></td>
 				</tr>
 				<tr>
@@ -235,9 +233,9 @@ function pml_login($todo = "",$action = "") {
 		if($todo != "") {
 			if($todo == "include") {
 				include($action);
-			}elseif($todo == "redirect") {
+			} elseif($todo == "redirect") {
 				header("Location: ".$action);
-			}else{
+			} else {
 				echo "<div class='row'>".translate('functionproblem')."</div>";
 			}
 		}else{
@@ -262,10 +260,10 @@ function pml_logout($goto = "") {
 		
 		if($goto == "") {
 			echo "<div class='row'>".translate('logout-ok')."</div>";
-		}else{
+		} else {
 			header("Location: ".$goto);
 		}
-	}else{
+	} else {
 		echo "<div class='row'>".translate('logout-nologin')."</div>";
 	}
 	

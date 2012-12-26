@@ -164,18 +164,16 @@ function mcmmo_player_skills_table($player){
 			$output .= '<a title="McMMO Server Stats" href="?mode=mcmmo"><h2>McMMO</h2></a>';
   			$output .= '<table style="margin:auto;">
 							<tr>';
-		for($i=0;$i < count($McMMOskill);$i++){
-    				$output .= '<td>
-									<img src="modules/mcmmo/images/'.$McMMOskill[$i].'.png" width="24px" height="24px" border="0" id="'.$McMMOskill[$i].'" title="'.$McMMOskill[$i].'" />
-								</td>';
+		for($i=0;$i < count($McMMOskill);$i++) {
+    		$output .= '<td>
+							<img src="modules/mcmmo/images/'.$McMMOskill[$i].'.png" width="24px" height="24px" border="0" id="'.$McMMOskill[$i].'" title="'.$McMMOskill[$i].'" />
+						</td>';
 		}
-  			$output .= '</tr>';
-  			$output .= '<tr>';
-		for($i=0;$i<(count($McMMOskill)-1);$i++){
+  			$output .= '</tr><tr>';
+		for($i=0;$i<(count($McMMOskill)-1);$i++) {
 			$output .= '<td id="'.$McMMOskill[$i].'">'.$data[$McMMOskill[$i]].'</td>';
 		}
-			$output .= '<td>'.$skilltotal.'</td>';
-  			$output .= '</tr></table>';
+		$output .= '<td>'.$skilltotal.'</td></tr></table>';
 		$output .= '</div>';
 
      return $output;

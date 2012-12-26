@@ -23,27 +23,23 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0){
 	if(empty($_GET['mode'])) $_GET['mode'] = WS_CONFIG_MODULE;
 	$_SESSION['mode']=$_GET['mode'];
 	$_SESSION['page']['numbers']=$_POST['page']['numbers'];
-if(iptracker === true){ // to be added to allow this to be toggled on and off withing the admin page
-//Load the class
+if(iptracker === true) {
+	//Load the class
 	$ipLite = new ip2location_lite;
-	//$ipLite->setKey('29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001');
-//Get locations
+	//Get locations
 	$locations = $ipLite->getCity($_SERVER['REMOTE_ADDR']);
-//Getting the result
-	
-$location = $locations['countryCode'].",".$locations['regionName'].','.$locations['cityName'].','.$locations['zipCode'];
-$country = $locations['regionName'];
-$countrycode = $locations['countryCode'];
-$city = $locations['cityName'];
-$ip=$_SERVER['REMOTE_ADDR'];
-$hostname=$_SERVER['REMOTE_HOST'];
-$referer=$_SERVER['HTTP_REFERER'];
-$pageurl=curPageURL();
-$today = date("D M j G:i:s T Y");
-$hostname=gethostbyaddr($_SERVER['REMOTE_ADDR']);
-
-$result="SELECT * FROM stats WHERE IP='$ip'";	
-	
+	//Getting the result
+	$location = $locations['countryCode'].",".$locations['regionName'].','.$locations['cityName'].','.$locations['zipCode'];
+	$country = $locations['regionName'];
+	$countrycode = $locations['countryCode'];
+	$city = $locations['cityName'];
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$hostname=$_SERVER['REMOTE_HOST'];
+	$referer=$_SERVER['HTTP_REFERER'];
+	$pageurl=curPageURL();
+	$today = date("D M j G:i:s T Y");
+	$hostname=gethostbyaddr($_SERVER['REMOTE_ADDR']);
+	$result="SELECT * FROM stats WHERE IP='$ip'";
 	if (!$country){
 		$country='UNKNOWN';
 		$countrycode='XX';
@@ -51,12 +47,12 @@ $result="SELECT * FROM stats WHERE IP='$ip'";
 		$zipcode='UNKNOWN';
 		$location = $countrycode.",".$country.','.$city.','.$zipcode;
 	}
-$DB = new DBConfig();
-$DB -> config();
-$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
+	$DB = new DBConfig();
+	$DB -> config();
+	$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
 
-$query = mysql_query("SELECT * FROM `stats` WHERE IP='$ip'");
-$field = mysql_fetch_array($query);
+	$query = mysql_query("SELECT * FROM `stats` WHERE IP='$ip'");
+	$field = mysql_fetch_array($query);
 if(!isset($field[IP])){if(is_bot()){$bot=1;}else{$bot=0;}
 		$data="INSERT INTO stats (IP, hostname, location, referer, pageurl, date, bot, country, countrycode, city, online) VALUES ('$ip', '$hostname', '$location', '$referer', '$pageurl', '$today', '$bot', '$country', '$countrycode', '$city', '0')";
 		if (!mysql_query($data)){
@@ -81,42 +77,42 @@ UNIQUE KEY `ip` (`ip`),
 KEY `countrycode` (`countrycode`)
 ) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")){
 				echo "table created :) \n";
-			}else{ die('Error creating table: ' . mysql_error());}
+			} else {die('Error creating table: ' . mysql_error());}
 		}
 }
 	$query = mysql_query("SELECT date FROM `stats` WHERE IP='$ip'");
 	$date = mysql_fetch_array($query);
-for($i=0; $i < count($field)/2; $i++){
-	if($field[$i]==$ip){
-		$pageview = "UPDATE stats SET pageview = pageview+1, online = 1 WHERE IP='$ip'";
-		$update_date = "UPDATE stats SET date='$today' WHERE IP='$ip'";
-		$currentpageurl = "UPDATE stats SET pageurl='$pageurl' WHERE IP='$ip'";
-		$query = mysql_query("UPDATE stats SET dt=NOW() WHERE ip='$ip'");
-		
-		if (!mysql_query($update_date))die('Error on $update_date: ' . mysql_error());
-		if (!mysql_query($pageview))die('Error on $pageview: ' . mysql_error());
-		if (!mysql_query($currentpageurl))die('Error on $currentpageurl: ' . mysql_error());
+	for($i=0; $i < count($field)/2; $i++){
+		if($field[$i]==$ip){
+			$pageview = "UPDATE stats SET pageview = pageview+1, online = 1 WHERE IP='$ip'";
+			$update_date = "UPDATE stats SET date='$today' WHERE IP='$ip'";
+			$currentpageurl = "UPDATE stats SET pageurl='$pageurl' WHERE IP='$ip'";
+			$query = mysql_query("UPDATE stats SET dt=NOW() WHERE ip='$ip'");
+			
+			if (!mysql_query($update_date)) die('Error on $update_date: ' . mysql_error());
+			if (!mysql_query($pageview)) die('Error on $pageview: ' . mysql_error());
+			if (!mysql_query($currentpageurl)) die('Error on $currentpageurl: ' . mysql_error());
+		}
 	}
-}
 	$totalbotpageviews = "SELECT SUM(pageview) FROM stats WHERE bot='1'";
-	$totalbotquery=mysql_query($totalbotpageviews);
-	$totalbot =mysql_fetch_array($totalbotquery);
+	$totalbotquery = mysql_query($totalbotpageviews);
+	$totalbot = mysql_fetch_array($totalbotquery);
 	
 	$totalpageviews = "SELECT SUM(pageview) FROM stats WHERE bot='0'";
-	$totalviewquery=mysql_query($totalpageviews);
+	$totalviewquery = mysql_query($totalpageviews);
 	$total = mysql_fetch_array($totalviewquery);
 	
-	$queryentrie ="SELECT COUNT(pageview) FROM stats";
+	$queryentrie = "SELECT COUNT(pageview) FROM stats";
 	$query = mysql_query($queryentrie);
 	$row = mysql_fetch_array($query);
 	mysql_query("UPDATE stats SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:10:0')");
 
 	// Counting all the online visitors:
-list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats WHERE online='1'"));
+	list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats WHERE online='1'"));
+	// Outputting the number as plain text:
 
-// Outputting the number as plain text:
-
-$DB -> close();}
+	$DB -> close();
+}
 
 header('Cache-control: max-age='.(60*60*24*365));
 include("assets/header.php");
@@ -133,7 +129,7 @@ if(isset($_SESSION['pml_userid'])){
 	</ul>
 	<section>
 		<ul class="left">
-		<li><a href="/admin/ip.php">IP Tracker</a></li>
+		<li><a href="/admin/?mode=ip">IP Tracker</a></li>
     </ul>
 	<ul class="left">
 		<li><a href="/admin/?mode=settings">Settings</a></li>

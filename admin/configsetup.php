@@ -252,38 +252,32 @@ if(($_SESSION['pluginconfigstats'] == true) and ($_SESSION['pluginconfigstats'] 
 	</fieldset>
 	</form>
 <?php }//---------PRE-SETS AND IF STATMENTS FOR fwrite START---------------------------------------------------------------
-$google_aside='<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-6169723647730707";
-		/* Stats Plugin */
-		google_ad_slot = "4875550823";
-		google_ad_width = 120;
-		google_ad_height = 600;
-		//-->
-	</script>
-	<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
-	</script>';
-$google_footer='<script type="text/javascript"><!--
+$google_aside='<script type="text/javascript">
+google_ad_client = "ca-pub-6169723647730707";
+/* Stats Plugin */
+google_ad_slot = "4875550823";
+google_ad_width = 120;
+google_ad_height = 600;
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
+</script>';
+$google_footer='<script type="text/javascript">
 google_ad_client = "ca-pub-6169723647730707";
 /* title ad */
 google_ad_slot = "0514393560";
 google_ad_width = 468;
 google_ad_height = 15;
-//-->
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>';
-$google_footer_mobile='<script type="text/javascript"><!--
+$google_footer_mobile='<script type="text/javascript">
 google_ad_client = "ca-pub-6169723647730707";
 /* stats footer mobile banner */
 google_ad_slot = "2053079046";
 google_ad_width = 320;
 google_ad_height = 50;
-//-->
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>';
 if((isset($_SESSION['pluginconfigachiv'])) and ($_SESSION['pluginconfigachiv'] != 'Chose Plugin')){
 	$achievments="define('WS_CONFIG_PLAYERACHIEVEMENTS', '".$_SESSION['page']['achiev_player_table_name']."');\n	define('WS_CONFIG_ACHIEVEMENTS', 'ws_achievements'); \n";
@@ -299,24 +293,24 @@ if((isset($_SESSION['pluginconfigeconomy'])) and ($_SESSION['pluginconfigeconomy
 		$pluginconfigstatuseconomy="define('pluginconfigstatusmineconomy', true);\n";
 	}
 }
-if($_SESSION['pluginconfigjail'] == true){
+if($_SESSION['pluginconfigjail'] == true) {
 	$jail="define('WS_CONFIG_JAIL', '".$_SESSION['page']['jail_table_name']."');\n";
 	$pluginconfigstatusjail="define('pluginconfigstatusjail', ".$_SESSION['pluginconfigjail'].");\n";
 }
-if($_SESSION['pluginconfigjobs'] == true){
+if($_SESSION['pluginconfigjobs'] == true) {
 	$jobs="define('WS_CONFIG_JOBS', '".$_SESSION['page']['jobs_table_name']."');\n";
 	$pluginconfigjobs="define('pluginconfigstatusjobs', ".$_SESSION['pluginconfigjobs'].");\n";
 }
-if($_SESSION['pluginconfigmcmmo'] == true){
+if($_SESSION['pluginconfigmcmmo'] == true) {
 	$mcmmo="define('WS_CONFIG_MCMMO', '".$_SESSION['page']['mcmmo_table_name']."');\n	define('WS_CONFIG_MCMMO_DEFAULT', '".$_SESSION['page']['mcmmo_def_sort']."');\n";
 	$pluginconfigstatusmcmmo="define('pluginconfigstatusmcmmo', ".$_SESSION['pluginconfigmcmmo'].");\n";
 }
-if($_SESSION['pluginconfigpermissionsex'] == true){
+if($_SESSION['pluginconfigpermissionsex'] == true) {
 	$permissionsex="define('WS_CONFIG_PERMISSIONS', '".$_SESSION['page']['permissionsex_table_name']."');\n define('WS_PERMISSIONS_DEFAULT_GROUP', '".$_SESSION['page']['permissionsex_default_group']."');\n";
 	$pluginconfigstatuspermissionsex="define('pluginconfigpermissionsex', ".$_SESSION['pluginconfigpermissionsex'].");\n";
 }
 if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] != 'Chose Plugin')){
-	if($_SESSION['pluginconfigstats'] == "stats"){
+	if($_SESSION['pluginconfigstats'] == "stats") {
 		if($_SESSION['page']['timechange_on/off'] == true)
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
 		$stats="define('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
@@ -326,7 +320,7 @@ if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] !=
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
 		$stats="define('WS_CONFIG_STATS_LOLMEWN_PREFIX', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
 		$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n	define('".$_SESSION['pluginconfigstats']."', true);\n";
-	} else{}
+	} else {}
 }
 if($_SESSION['page']['3d_on/off'] == true)
 	$threedsetting="define('WS_CONFIG_3D_USER', ".$_SESSION['page']['3d_on/off'].");\n	";

@@ -4,51 +4,46 @@ function permissionsex_player_table($player)
 	$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS."_inheritance WHERE ".WS_CONFIG_PERMISSIONS."_inheritance.child = '".$player."'";
 	$result = mysql_query($query);
 	$data = mysql_fetch_array($result);
-	if(isset($data['parent'])){
+	if(isset($data['parent'])) {
 		$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS." WHERE ".WS_CONFIG_PERMISSIONS.".name = '".$data['parent']."'";
 		$result = mysql_query($query);
 		$time = 0;
-		while($row = mysql_fetch_array($result)) 
-		{
+		while($row = mysql_fetch_array($result)) {
 			$permissiondata[$time] = $row['permission'];
 			$time++;
 		}
-		if($permissiondata['world']==''){$noworld='ALL';}else{$noworld=$permissiondata['world'];}
-			$output .= '<div class="head_maintable_permissionsex">';	
-			
-				$output .= '<h2>Permissions</h2>';
-				$output .= '<div style="clear:both;" class="mcmmo_player_table">';
-					$output .= '<div align="left" class="content_headline" id="permissionsex_role"><span>Role(s):</span></div>';
-					$output .= '<div align="left" class="content_headline" id="permissionsex_world"><span>World(s):</span></div>';
-				$output .= '</div>';
-				$output .= '<div style="clear:both;" class="mcmmo_player_table">';
-					$output .= '<div align="left" class="content_line" id="permissionsex_role"><a href="index.php?mode=permissionsex&group='.$data['parent'].'">'.$data['parent'].'</a></div>';
-					$output .= '<div align="left" class="content_line" id="permissionsex_world">'.$noworld.'</div>';
-				$output .= '</div><br />';
-			$output .= '</div>';
+		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
+				$output = '<h2>Permissions</h2>';
+				$output .= '<table><thead>';
+					$output .= '<tr><td>Role(s):</td>';
+					$output .= '<td>World(s):</td></tr></thead>';
+				$output .= '';
+				$output .= '<tbody>';
+					$output .= '<tr><td><a href="index.php?mode=permissionsex&group='.$data['parent'].'">'.$data['parent'].'</a></td>';
+					$output .= '<td>'.$noworld.'</td></tr>';
+				$output .= '</tbody>';
+			$output .= '</table>';
 		return $output;
-	}
-	else{
+	} else {
 		$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS." WHERE ".WS_CONFIG_PERMISSIONS.".name = '".WS_PERMISSIONS_DEFAULT_GROUP."'";
 		$result = mysql_query($query);
 		$time = 0;
-		while($row = mysql_fetch_array($result)) 
-		{
+		while($row = mysql_fetch_array($result)) {
 			$permissiondata[$time] = $row['permission'];
 			$time++;
 		}
-		if($permissiondata['world']==''){$noworld='ALL';}else{$noworld=$permissiondata['world'];}
-			$output .= '<div class="head_maintable_permissionsex">';
+		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
+			$output = '<div class="head_maintable_permissionsex">';
 				$output .= '<h2>Permissions</h2>';
-				$output .= '<div style="clear:both;" class="mcmmo_player_table">';
-					$output .= '<div align="left" class="content_headline" id="permissionsex_role"><span>Role(s):</span></div>';
-					$output .= '<div align="left" class="content_headline" id="permissionsex_world"><span>World(s):</span></div>';
-				$output .= '</div>';
-				$output .= '<div style="clear:both;" class="mcmmo_player_table">';
-					$output .= '<div align="left" class="content_line" id="permissionsex_role"><a href="index.php?mode=permissionsex&group='.WS_PERMISSIONS_DEFAULT_GROUP.'">'.WS_PERMISSIONS_DEFAULT_GROUP.'</a></div>';
-					$output .= '<div align="left" class="content_line" id="permissionsex_world">'.$noworld.'</div>';
-				$output .= '</div><br />';
-			$output .= '</div>';
+				$output .= '<table style="margin: 0px auto;"><thead><tr>';
+					$output .= '<td>Role(s):</td>';
+					$output .= '<td>World(s):</td>';
+				$output .= '</tr></thead>';
+				$output .= '<tr>';
+					$output .= '<td><a href="index.php?mode=permissionsex&group='.WS_PERMISSIONS_DEFAULT_GROUP.'">'.WS_PERMISSIONS_DEFAULT_GROUP.'</a></td>';
+					$output .= '<td>'.$noworld.'</td>';
+				$output .= '</tr>';
+			$output .= '</table></div>';
 		return $output;
 	}
 }
@@ -64,22 +59,22 @@ function permissionsex_group_table($group)
 			$time++;
 		}
 		$data = mysql_fetch_array($result);
-		if($permissiondata['world']==''){$noworld='ALL';}else{$noworld=$permissiondata['world'];}
+		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
 		$output .= '<h2>Permissions For '.$group.'</h2>';
 			$output .= '<div class="head_maintable_permissionsex">';
 			
-				$output .= '<div style="clear:both;" class="mcmmo_player_table">';
-					$output .= '<div align="left" class="content_headline" id="permissionsex_permissions">Permissions:</div>';
-					$output .= '<div align="left" class="content_headline" id="permissionsex_world">World(s): '.$noworld.'</div>';
-				$output .= '</div>';
+				$output .= '<table style="margin: 0px auto;"><thead><tr>';
+					$output .= '<td>Permissions:</td>';
+					$output .= '<td>World(s): '.$noworld.'</td>';
+				$output .= '</tr></thead>';
 				
-				$output .= '<div class="permissions_player_table">';
+				$output .= '<tbody>';
 					for($i=0; $i < sizeof($permissiondata); $i++)
 					{
-						$output .= '<div style="clear:both;" align="left" class="content_line" id="permissionsex_permissions">'.$permissiondata[$i].'</div>';
+						$output .= '<tr><td>'.$permissiondata[$i].'</td></tr>';
 					}
-				$output .= '</div>';
-			$output .= '</div>';
+				$output .= '</tbody>';
+			$output .= '</table></div>';
 		return $output;
 }
 ?>
