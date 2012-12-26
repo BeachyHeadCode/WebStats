@@ -47,7 +47,7 @@ function addItem(name, icon, id, type) {
 	)
 	.appendTo('#item-table');
 	
-	logDebug('Added ' + name + ' (' + type + ').');
+	logInfo('Added ' + name + ' (' + type + ').');
 }
 $(document).ready(function() {
 	addItems(function() {
