@@ -7,6 +7,7 @@
     <id>1</id>
     <type>Block</type>
     <description>Stone is found naturaly in maps and can also be created by smelting Cobblestone in a Furnace. When Stone is mined it drops Cobblestone.  A Wood Pickaxe (or Higher) is required to break Stone.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="1">
     <added>0.0.9a</added>
@@ -15,6 +16,7 @@
     <id>2</id>
     <type>Block</type>
     <description>Grass is one of the most common blocks on the surfaces of maps. Grass is nearly identical to Dirt, with the main difference being that it can not be picked up by the player and placed. Dirt/Grass is required for plants like Saplings to grow. Grass doesn't fall when there are no blocks under it so its useful for creating building foundations. When Grass is destroyed Dirt is dropped, there is also a small chance that a Bone will be dropped. When Bonemeal is used on Grass a Tall Grass will be created on top of it.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="2">
     <added>0.0.9a</added>
@@ -23,6 +25,7 @@
     <id>3</id>
     <type>Block</type>
     <description>Dirt is one of the most common blocks on the surfaces of maps. Dirt/Grass is required for plants like Saplings to grow. Dirt doesn't fall when there are no blocks under it so its useful for creating building foundations. Grass grows ontop of Dirt if it has sunlight falling on it and a Grass block next to it. When Dirt is destroyed Dirt is dropped, there is also a small chance that a Bone will be dropped.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="3">
     <added>0.0.9a</added>
@@ -31,6 +34,7 @@
     <id>4</id>
     <type>Block</type>
     <description>Cobblestones can be obtained from mining Stone and can be found in Dungeons. When Water and Lava touch they produce Cobblestone. Cobblestones are mainly used in constructions of buildings and paths. Using a Furnace you can turn Cobblestone back into Stone. A Wood Pickaxe (or Higher) is required to break Cobblestone.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="4">
     <added>0.0.9a</added>
@@ -39,6 +43,7 @@
     <id>5</id>
     <type>Block</type>
     <description>Wooden Planks are generaly used as a building material, but can also be used in Furnaces as a source of fuel. Planks will burn if near fire or Lava.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="5">
     <added>v1.2.4</added>
@@ -47,6 +52,7 @@
     <id>5:1</id>
     <type>Block</type>
     <description>Wooden Planks are generaly used as a building material, but can also be used in Furnaces as a source of fuel. Planks will burn if near fire or Lava.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="6">
     <added>v1.2.4</added>
@@ -55,6 +61,7 @@
     <id>5:2</id>
     <type>Block</type>
     <description>Wooden Planks are generaly used as a building material, but can also be used in Furnaces as a source of fuel. Planks will burn if near fire or Lava.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="7">
     <added>v1.2.4</added>
@@ -63,6 +70,7 @@
     <id>5:3</id>
     <type>Block</type>
     <description>Wooden Planks are generaly used as a building material, but can also be used in Furnaces as a source of fuel. Planks will burn if near fire or Lava.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="8">
     <added>v1.2.4</added>
@@ -71,6 +79,7 @@
     <id>6</id>
     <type>Item</type>
     <description>Saplings are young Trees. They require dirt under them and light (Either Sunlight or Torches) to grow. They won't grow if there is no room above them. After a few days Saplings turn into Trees which can then be harvested for Logs and Saplings. Bone Meal can be used on a Sapling to cause it to instantly grow into a Tree. There are four types of Saplings: Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="9">
     <added>v1.4.2</added>
@@ -79,6 +88,7 @@
     <id>6:1</id>
     <type>Item</type>
     <description>Saplings are young Trees. They require dirt under them and light (Either Sunlight or Torches) to grow. They won't grow if there is no room above them. After a few days Saplings turn into Trees which can then be harvested for Logs and Saplings. Bone Meal can be used on a Sapling to cause it to instantly grow into a Tree. There are four types of Saplings: Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="10">
     <added>v1.4.2</added>
@@ -87,6 +97,7 @@
     <id>6:2</id>
     <type>Item</type>
     <description>Saplings are young Trees. They require dirt under them and light (Either Sunlight or Torches) to grow. They won't grow if there is no room above them. After a few days Saplings turn into Trees which can then be harvested for Logs and Saplings. Bone Meal can be used on a Sapling to cause it to instantly grow into a Tree. There are four types of Saplings: Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="11">
     <added>v1.2</added>
@@ -95,6 +106,7 @@
     <id>6:3</id>
     <type>Item</type>
     <description>Saplings are young Trees. They require dirt under them and light (Either Sunlight or Torches) to grow. They won't grow if there is no room above them. After a few days Saplings turn into Trees which can then be harvested for Logs and Saplings. Bone Meal can be used on a Sapling to cause it to instantly grow into a Tree. There are four types of Saplings: Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="12">
     <added>v1.2</added>
@@ -103,6 +115,7 @@
     <id>7</id>
     <type>Block</type>
     <description>Bedrock can not be picked up or placed by the player. It marks the edges of the map and is an invincible block designed to prevent the player from falling out of the world.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="13">
     <added>v1.2</added>
@@ -111,6 +124,7 @@
     <id>8</id>
     <type>Block</type>
     <description>Water is generaly found on the surface of maps but it can also be found underground. Water can spread, so destroying blocks in its path will allow water to "Grow". Water can be transported by Buckets and placed in a different location. If Water touches a Lava source, it will turn into Obsidian. If it touches Lava which isn't a source it will turn into Cobblestone. Water can extinguish Fire, making it an ideal place to jump into if your on Fire.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="14">
     <added>v1.2</added>
@@ -119,6 +133,7 @@
     <id>9</id>
     <type>Block</type>
     <description>Water is generaly found on the surface of maps but it can also be found underground. Water can spread, so destroying blocks in its path will allow water to "Grow". Water can be transported by Buckets and placed in a different location. If Water touches a Lava source, it will turn into Obsidian. If it touches Lava which isn't a source it will turn into Cobblestone. Water can extinguish Fire, making it an ideal place to jump into if your on Fire.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="15">
     <added>v1.2</added>
@@ -127,6 +142,7 @@
     <id>10</id>
     <type>Block</type>
     <description>Lava is generaly found deep underground. Lava can spread, so destroying blocks in its path will allow Lava to "Grow". Lava can be transported by Buckets and placed in a different location. If a Lava source touches Water, it will turn into Obsidian. If the Lava isn't a source it will turn into Cobblestone. Lava can set objects near it on Fire when it throws bits of Lava into the air (The player can not be set on fire by what the Lava throws into the air). Unplaced objects that touch Lava are destroyed on contact making it a great place to dispose of unwanted items. Flamable objects (Including the player) which come into direct contact with Lava will be set on Fire.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="16">
     <added>v1.2</added>
@@ -135,6 +151,7 @@
     <id>11</id>
     <type>Block</type>
     <description>Lava is generaly found deep underground. Lava can spread, so destroying blocks in its path will allow Lava to "Grow". Lava can be transported by Buckets and placed in a different location. If a Lava source touches Water, it will turn into Obsidian. If the Lava isn't a source it will turn into Cobblestone. Lava can set objects near it on Fire when it throws bits of Lava into the air (The player can not be set on fire by what the Lava throws into the air). Unplaced objects that touch Lava are destroyed on contact making it a great place to dispose of unwanted items. Flamable objects (Including the player) which come into direct contact with Lava will be set on Fire.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="17">
     <added>v1.2</added>
@@ -143,6 +160,7 @@
     <id>12</id>
     <type>Block</type>
     <description>Sand a common block found near water. Sand falls when there are no blocks under it but Torches can be used to support Sand blocks. Sand can be smelted in a Furnace to produce Glass. Cactuses require sand under them to grow.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="18">
     <added>v1.2</added>
@@ -151,6 +169,7 @@
     <id>13</id>
     <type>Block</type>
     <description>Gravel a common block generaly found near water or underground. Gravel falls when there are no blocks under it but Torches can be used to support Gravel blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="19">
     <added>v1.2</added>
@@ -159,6 +178,7 @@
     <id>14</id>
     <type>Block</type>
     <description>After mined Gold Ore needs to be smelted in a Furnace to create Gold Ingots. An Iron Pickaxe (or Higher) is required to break Gold Ore.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="20">
     <added>v1.2</added>
@@ -167,6 +187,7 @@
     <id>15</id>
     <type>Block</type>
     <description>After mined Iron Ore needs to be smelted in a Furnace to create Iron Ingots. A Stone Pickaxe (or Higher) is required to break Iron Ore.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="21">
     <added>v1.2</added>
@@ -175,6 +196,7 @@
     <id>16</id>
     <type>Block</type>
     <description>When mined, Coal Ore drops one lump of Coal. A Wood Pickaxe (or Higher) is required to break Coal Ore.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="22">
     <added>v1.2</added>
@@ -183,6 +205,7 @@
     <id>17</id>
     <type>Block</type>
     <description>Wood can be obtained by attacking Trees. Axes can be used to obtain Wood faster. Wood is generaly crafted into Wooden Planks but can be used as both a building material as well as a Fuel for a Furnace. Logs will burn if near fire or Lava. There are four types of Wood, Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="23">
     <added>v1.4.2</added>
@@ -191,6 +214,7 @@
     <id>17:1</id>
     <type>Block</type>
     <description>Wood can be obtained by attacking Trees. Axes can be used to obtain Wood faster. Wood is generaly crafted into Wooden Planks but can be used as both a building material as well as a Fuel for a Furnace. Logs will burn if near fire or Lava. There are four types of Wood, Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="24">
     <added>v1.4.2</added>
@@ -199,6 +223,7 @@
     <id>17:2</id>
     <type>Block</type>
     <description>Wood can be obtained by attacking Trees. Axes can be used to obtain Wood faster. Wood is generaly crafted into Wooden Planks but can be used as both a building material as well as a Fuel for a Furnace. Logs will burn if near fire or Lava. There are four types of Wood, Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="25">
     <added>v1.2</added>
@@ -207,6 +232,7 @@
     <id>17:3</id>
     <type>Block</type>
     <description>Wood can be obtained by attacking Trees. Axes can be used to obtain Wood faster. Wood is generaly crafted into Wooden Planks but can be used as both a building material as well as a Fuel for a Furnace. Logs will burn if near fire or Lava. There are four types of Wood, Oak, Pine, Birch and Jungle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="26">
     <added>v1.2</added>
@@ -215,6 +241,7 @@
     <id>18</id>
     <type>Block</type>
     <description>Leaves can be obtained using Shears on Leaf Blocks of a Tree. They grow when a Sapling turns into a Tree. Destroying Leaves can cause Saplings to drop. Apples have a low chance of dropping when Leaves are destroyed(Birch, Spruce and Jungle Leaves do not drop Apples).</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="27">
     <added>v1.4.2</added>
@@ -223,6 +250,7 @@
     <id>18:1</id>
     <type>Block</type>
     <description>Leaves can be obtained using Shears on Leaf Blocks of a Tree. They grow when a Sapling turns into a Tree. Destroying Leaves can cause Saplings to drop. Apples have a low chance of dropping when Leaves are destroyed(Birch, Spruce and Jungle Leaves do not drop Apples).</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="28">
     <added>v1.4.2</added>
@@ -231,6 +259,7 @@
     <id>18:2</id>
     <type>Block</type>
     <description>Leaves can be obtained using Shears on Leaf Blocks of a Tree. They grow when a Sapling turns into a Tree. Destroying Leaves can cause Saplings to drop. Apples have a low chance of dropping when Leaves are destroyed(Birch, Spruce and Jungle Leaves do not drop Apples).</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="29">
     <added>v1.2</added>
@@ -239,6 +268,7 @@
     <id>18:3</id>
     <type>Block</type>
     <description>Leaves can be obtained using Shears on Leaf Blocks of a Tree. They grow when a Sapling turns into a Tree. Destroying Leaves can cause Saplings to drop. Apples have a low chance of dropping when Leaves are destroyed(Birch, Spruce and Jungle Leaves do not drop Apples).</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="30">
     <added>v1.2</added>
@@ -247,6 +277,7 @@
     <id>19</id>
     <type>Block</type>
     <description>Sponge blocks were used to prevent Water from entering an area around it in Minecraft Classic and Infdev. In current versions it serves no purpose and can not be legitimatly obtained. You can only obtain one by spawning it.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="31">
     <added>v1.2</added>
@@ -255,6 +286,7 @@
     <id>20</id>
     <type>Block</type>
     <description>Glass is a manmade substance that is not naturaly found in maps. It is created by smelting Sand in a Furnace. Glass doesn't fall when there are no blocks under it so it can be used to create Bridges. Light is not effected by Glass and passes right through it.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="32">
     <added>v1.2</added>
@@ -263,6 +295,7 @@
     <id>21</id>
     <type>Block</type>
     <description>When mined, Lapis Lazuli Ore drops one lump of Lapis Lazuli. An Iron Pickaxe (or Higher) is required to break Lapis Lazuli Ore.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="33">
     <added>v1.2</added>
@@ -271,6 +304,7 @@
     <id>22</id>
     <type>Block</type>
     <description>Lapis Lazuli Blocks are man made and are not found naturaly in the World. They are generaly used for Decoration or for storing Lapis Lazulis. An Iron Pickaxe (or Higher) is required to break Lapis Lazuli Blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="34">
     <added>v1.2</added>
@@ -279,6 +313,7 @@
     <id>23</id>
     <type>Item</type>
     <description>Dispencers throw out items placed in them when they are triggered by a redstone current. They can be used as defence against Mobs by placing Arrows inside of them and having pressure plates activate the Dispencer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="35">
     <added>v1.2</added>
@@ -287,6 +322,7 @@
     <id>24</id>
     <type>Block</type>
     <description>Sandstones are used in the construction of buildings, walls and paths. A Wood Pickaxe (or Higher) is required to break Sandstone.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="36">
     <added>v1.2.4</added>
@@ -295,6 +331,7 @@
     <id>24:1</id>
     <type>Block</type>
     <description>Sandstones are used in the construction of buildings, walls and paths. A Wood Pickaxe (or Higher) is required to break Sandstone.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="37">
     <added>v1.2.4</added>
@@ -303,6 +340,7 @@
     <id>24:2</id>
     <type>Block</type>
     <description>Sandstones are used in the construction of buildings, walls and paths. A Wood Pickaxe (or Higher) is required to break Sandstone.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="38">
     <added>v1.2.4</added>
@@ -311,6 +349,7 @@
     <id>25</id>
     <type>Item</type>
     <description>Note Blocks play a note(Sound) when they are hit or are triggered by a redstone current. You can change the note thats played by right clicking on the Note Block.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="39">
     <added>v1.2.4</added>
@@ -319,6 +358,7 @@
     <id>26</id>
     <type>Item</type>
     <description>Beds allow the player to sleep until the morning. They can only be used at night. In a multiplayer server only if all players are in a bed will the servers time change to morning. Sleeping in a bed changes your respawn point to the beds location.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="40">
     <added>v1.2.4</added>
@@ -327,6 +367,7 @@
     <id>27</id>
     <type>Item</type>
     <description>Powered Rails are used to either boost a Minecarts speed or to slow it down. When the Powered Rail has a Redstone Current going through it, Minecarts traveling over it will have the speed boosted, when no current is going through it Minecarts will be slowed down.If one side of a Powered Rail is blocked and power is running through it, Minecarts placed on it will move at speed in the opposite direction of the Block.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="41">
     <added>v1.2.4</added>
@@ -335,6 +376,7 @@
     <id>28</id>
     <type>Item</type>
     <description>Detector Rails act like Stone Pressure Plates but are only triggered by Minecarts. When a Minecart moves over it, it will power blocks adjacent to it.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="42">
     <added>v1.2.4</added>
@@ -343,6 +385,7 @@
     <id>29</id>
     <type>Item</type>
     <description>Sticky Pistons push or pull the block infront of them when toggled. They can not push or pull Blocks with special properties such as Chests.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="43">
     <added>v1.2.4</added>
@@ -351,6 +394,7 @@
     <id>30</id>
     <type>Block</type>
     <description>You can find Webs naturaly in Abandoned Mines. Webs slow players/Mobs that move inside of it. When destroyed String is dropped.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="44">
     <added>v1.2.4</added>
@@ -359,6 +403,7 @@
     <id>31</id>
     <type>Item</type>
     <description>Tall Grass grows ontop of grass Blocks. When you destroy Tall Grass there is a chance that Seeds will be dropped. You can obtain them by using Shears on them.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="45">
     <added>v1.2.4</added>
@@ -367,6 +412,7 @@
     <id>31:1</id>
     <type>Item</type>
     <description>Tall Grass grows ontop of grass Blocks. When you destroy Tall Grass there is a chance that Seeds will be dropped. You can obtain them by using Shears on them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="46">
     <added>v1.2.4</added>
@@ -375,6 +421,7 @@
     <id>31:2</id>
     <type>Item</type>
     <description>Tall Grass grows ontop of grass Blocks. When you destroy Tall Grass there is a chance that Seeds will be dropped. You can obtain them by using Shears on them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="47">
     <added>v1.2.4</added>
@@ -383,6 +430,7 @@
     <id>32</id>
     <type>Item</type>
     <description>Dead Shrubs can be found naturaly ontop of Sand Blocks. They currently have no use.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="48">
     <added>v1.2.4</added>
@@ -391,6 +439,7 @@
     <id>33</id>
     <type>Item</type>
     <description>Pistons push other Blocks when activated. They can not push Blocks with special properties such as Chests.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="49">
     <added>v1.2.4</added>
@@ -399,6 +448,7 @@
     <id>34</id>
     <type>Item</type>
     <description>Pistons push other Blocks when activated. They can not push Blocks with special properties such as Chests.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="50">
     <added>v1.2.4</added>
@@ -407,6 +457,7 @@
     <id>35</id>
     <type>Block</type>
     <description>Wool can be obtained by shearing Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="51">
     <added>v1.2.4</added>
@@ -415,6 +466,7 @@
     <id>35:1</id>
     <type>Block</type>
     <description>Orange Wool can be obtained by shearing Orange Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="52">
     <added>v1.2.4</added>
@@ -423,6 +475,7 @@
     <id>35:2</id>
     <type>Block</type>
     <description>Magenta Wool can be obtained by shearing Magenta Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="53">
     <added>v1.2.4</added>
@@ -431,6 +484,7 @@
     <id>35:3</id>
     <type>Block</type>
     <description>Light Blue Wool can be obtained by shearing Light Blue Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="54">
     <added>v1.2.4</added>
@@ -439,6 +493,7 @@
     <id>35:4</id>
     <type>Block</type>
     <description>Yellow Wool can be obtained by shearing Yellow Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="55">
     <added>v1.2.4</added>
@@ -447,6 +502,7 @@
     <id>35:5</id>
     <type>Block</type>
     <description>Lime Wool can be obtained by shearing Lime Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="56">
     <added>v1.2.4</added>
@@ -455,6 +511,7 @@
     <id>35:6</id>
     <type>Block</type>
     <description>Pink Wool can be obtained by shearing Pink Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="57">
     <added>v1.2.4</added>
@@ -463,6 +520,7 @@
     <id>35:7</id>
     <type>Block</type>
     <description>Gray Wool can be obtained by shearing Gray Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="58">
     <added>v1.2.4</added>
@@ -471,6 +529,7 @@
     <id>35:8</id>
     <type>Block</type>
     <description>Light Gray Wool can be obtained by shearing Light Gray Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="59">
     <added>v1.2.4</added>
@@ -479,6 +538,7 @@
     <id>35:9</id>
     <type>Block</type>
     <description>Cyan Wool can be obtained by shearing Cyan Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="60">
     <added>v1.2.4</added>
@@ -487,6 +547,7 @@
     <id>35:10</id>
     <type>Block</type>
     <description>Purple Wool can be obtained by shearing Purple Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="61">
     <added>v1.2.4</added>
@@ -495,6 +556,7 @@
     <id>35:11</id>
     <type>Block</type>
     <description>Blue Wool can be obtained by shearing Blue Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="62">
     <added>v1.2.4</added>
@@ -503,6 +565,7 @@
     <id>35:12</id>
     <type>Block</type>
     <description>Brown Wool can be obtained by shearing Brown Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="63">
     <added>v1.2.4</added>
@@ -511,6 +574,7 @@
     <id>35:13</id>
     <type>Block</type>
     <description>Green Wool can be obtained by shearing Green Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="64">
     <added>v1.2.4</added>
@@ -519,6 +583,7 @@
     <id>35:14</id>
     <type>Block</type>
     <description>Red Wool can be obtained by shearing Red Sheep. Its currently only used in crafting Paintings.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="65">
     <added>v1.2.4</added>
@@ -527,6 +592,7 @@
     <id>35:15</id>
     <type>Block</type>
     <description>Black Wool can be obtained from sheering Black Sheep.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="66">
     <added>v1.8Beta</added>
@@ -535,6 +601,7 @@
     <id>36</id>
     <type>Item</type>
     <description>Pistons push other Blocks when activated. They can not push Blocks with special properties such as Chests.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="67">
     <added>v1.8Beta</added>
@@ -543,6 +610,7 @@
     <id>37</id>
     <type>Item</type>
     <description>Dandelions are used in the creation of Dandelion Yellow Dye.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="68">
     <added>v1.8Beta</added>
@@ -551,6 +619,7 @@
     <id>38</id>
     <type>Item</type>
     <description>Roses are used to create Rose Red Dye.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="69">
     <added>v1.8Beta</added>
@@ -559,6 +628,7 @@
     <id>39</id>
     <type>Item</type>
     <description>Brown Mushrooms are used in creating Mushroom Stew. Mushrooms are generaly found in low light areas such as caves. Mushrooms will spread slowly in low light conditions, so can be farmed. When Bonemeal is used on a Brown Mushroom it will turn into a Giant Brown Mushroom made out of Brown Mushroom (Block)s.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="70">
     <added>v1.8Beta</added>
@@ -567,6 +637,7 @@
     <id>40</id>
     <type>Item</type>
     <description>Red Mushrooms are used in creating Mushroom Stew. Mushrooms are generaly found in low light areas such as caves. Mushrooms will spread slowly in low light conditions, so can be farmed. When Bonemeal is used on a Red Mushroom it will turn into a Giant Red Mushroom made out of Red Mushroom (Block)s.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="71">
     <added>v1.8Beta</added>
@@ -575,6 +646,7 @@
     <id>41</id>
     <type>Block</type>
     <description>Gold Blocks are man made and are not found naturaly in the World. They are generaly used for Decoration or for storing Gold Ingots. They can be crafted back into Gold Ingots.  An Iron Pickaxe (or Higher) is required to break Gold Blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="72">
     <added>v1.8Beta</added>
@@ -583,6 +655,7 @@
     <id>42</id>
     <type>Block</type>
     <description>Iron Blocks are man made and are not found naturaly in the World. They are generaly used for Decoration or for storing Iron Ingots. A Stone Pickaxe (or Higher) is required to break Iron Blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="73">
     <added>v1.8Beta</added>
@@ -591,6 +664,7 @@
     <id>43</id>
     <type>Block</type>
     <description>Stone Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="74">
     <added>v1.8Beta</added>
@@ -599,6 +673,7 @@
     <id>43:1</id>
     <type>Block</type>
     <description>Sandstone Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="75">
     <added>v1.8Beta</added>
@@ -607,6 +682,7 @@
     <id>43:2</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="76">
     <added>v1.8Beta</added>
@@ -615,6 +691,7 @@
     <id>43:3</id>
     <type>Block</type>
     <description>Cobblestone Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="77">
     <added>v1.8Beta</added>
@@ -623,6 +700,7 @@
     <id>43:4</id>
     <type>Block</type>
     <description>Brick Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="78">
     <added>v1.8Beta</added>
@@ -631,6 +709,7 @@
     <id>43:5</id>
     <type>Block</type>
     <description>Stone Brick Slab allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="79">
     <added>v1.4.6</added>
@@ -639,6 +718,7 @@
     <id>43:6</id>
     <type>Block</type>
     <description>Nether Brick Slab allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="80">
     <added>v1.4.6</added>
@@ -647,6 +727,7 @@
     <id>44</id>
     <type>Block</type>
     <description>Stone Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="81">
     <added>v1.4.6</added>
@@ -655,6 +736,7 @@
     <id>44:1</id>
     <type>Block</type>
     <description>Sandstone Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="82">
     <added>v1.4.6</added>
@@ -663,6 +745,7 @@
     <id>44:2</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="83">
     <added>v1.4.6</added>
@@ -671,6 +754,7 @@
     <id>44:3</id>
     <type>Block</type>
     <description>Cobblestone Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="84">
     <added>v1.8Beta</added>
@@ -679,6 +763,7 @@
     <id>44:4</id>
     <type>Block</type>
     <description>Brick Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="85">
     <added>v1.8Beta</added>
@@ -687,6 +772,7 @@
     <id>44:5</id>
     <type>Block</type>
     <description>Stone Brick Slab allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="86">
     <added>v1.4.6</added>
@@ -695,6 +781,7 @@
     <id>44:6</id>
     <type>Block</type>
     <description>Nether Brick Slab allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wood Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="87">
     <added>v1.4.6</added>
@@ -703,6 +790,7 @@
     <id>45</id>
     <type>Block</type>
     <description>Brick is a man made substance which can not be found naturaly in the world. It is generaly used for the walls of buildings. A Wood Pickaxe is required to break Brick.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="88">
     <added>v1.4.6</added>
@@ -711,6 +799,7 @@
     <id>46</id>
     <type>Item</type>
     <description>TNT is a placeable explosive. Its countdown is activated by Fire touching it or a Redstone current. The countdown can not be stoped once activated. Obsidian and Bedrock can not be destroyed by TNT.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="89">
     <added>v1.4.6</added>
@@ -719,6 +808,7 @@
     <id>47</id>
     <type>Block</type>
     <description>Bookcases are a decorative block which currently serves no other purpose.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="90">
     <added>v1.4.6</added>
@@ -727,6 +817,7 @@
     <id>48</id>
     <type>Block</type>
     <description>Moss Stone is only found in Dungeons. It is generaly used as the wall for the Dungeons. It can be obtained by using a Wood Pickaxe or higher.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="91">
     <added>v1.4.6</added>
@@ -735,6 +826,7 @@
     <id>49</id>
     <type>Block</type>
     <description>Obsidian is created when a Lava source is touched by Water. Obsidian can not be destroyed by TNT. Only a Diamond Pickaxe can be used to break Obsidian.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="92">
     <added>v1.4.6</added>
@@ -743,6 +835,7 @@
     <id>50</id>
     <type>Item</type>
     <description>Torches are mainly used to light up buildings as well as mines. Enemy Mobs can only spawn in dark locations, so using Torches around your buildings is advised. Torches can support the weight of blocks like Sand and Gravel when they are placed above them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="93">
     <added>v1.4.6</added>
@@ -751,6 +844,7 @@
     <id>51</id>
     <type>Block</type>
     <description>Fire is created using Flint and Steel on a flamable block. It is also created by Lava igniting flamable blocks. Fire can spread to flamable blocks that are near to it. Mobs or players touching Fire will be set on Fire. Water can put Fire out.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="94">
     <added>v1.4.6</added>
@@ -759,6 +853,7 @@
     <id>52</id>
     <type>Block</type>
     <description>Mob Spawners are at the heart of Dungeons. They spawn Mobs inside the Dungeon. Mob Spawners can be destroyed by the player but they can not be picked up. Traps can be placed around the Mob Spawner to kill Mobs that are spawned (Such as drowning them) so that what they drop can be harvested.Skeletons, Spiders and Zombies can be spawned from Mob Spawners found naturaly in the world. A Mob Spawner can only spawn one type of Mob.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="95">
     <added>v1.4.6</added>
@@ -767,6 +862,7 @@
     <id>53</id>
     <type>Block</type>
     <description>Wooden Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="96">
     <added>v1.4.6</added>
@@ -775,6 +871,7 @@
     <id>54</id>
     <type>Item</type>
     <description>Chests allow players to store items. If two chests are placed beside each other they become a large chest. Chests can not be opened if a block is placed above them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="97">
     <added>v1.4.6</added>
@@ -783,6 +880,7 @@
     <id>55</id>
     <type>Item</type>
     <description>Redstone Wires are like Electric cables. They allow you to connect objects together like Stone Buttons and Iron Doors. When power is flowing through the Wires they will glow and emit light.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="98">
     <added>v1.4.6</added>
@@ -791,6 +889,7 @@
     <id>56</id>
     <type>Block</type>
     <description>After being mined, Diamond Ore does not need to be smelted. Diamond Gems are droped when mined and can be used instantly to craft items. An Iron Pickaxe (or Higher) is required to break Diamond Ore.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="99">
     <added>v1.4.6</added>
@@ -799,6 +898,7 @@
     <id>57</id>
     <type>Block</type>
     <description>Diamond Blocks are man made and are not found naturaly in the World. They are generaly used for Decoration or for storing Diamond Gems. An Iron Pickaxe (or Higher) is required to break Diamond Blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="100">
     <added>v1.4.6</added>
@@ -807,6 +907,7 @@
     <id>58</id>
     <type>Item</type>
     <description>Workbenches give you access to a 3x3 crafting grid. It is required to craft some of the more advanced items. To use a Workbench right click on it.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="101">
     <added>v1.4.6</added>
@@ -815,6 +916,7 @@
     <id>59</id>
     <type>Item</type>
     <description>Wheat is grown by sowing Wheat Seeds. Wheats used to create Bread and Cakes. When Wheat is harvested it has a chance of droping Wheat Seeds. When holding Wheat near by animals will gather around the player. Wheat can be used on animals to make them breed.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="102">
     <added>v1.4.6</added>
@@ -823,6 +925,7 @@
     <id>60</id>
     <type>Block</type>
     <description>Farmland is a Block of Dirt/Grass which has been Tilled using a Wood Hoe or greater. Wheat Seeds, Melon Seeds and Pumpkin Seeds can only be planted on Farmland. If you or Mobs walk over Farmland too much then it will turn into Dirt and any Wheat growing on it will be destroyed. You can use the "Sneak" key (Default: Shift) to prevent Farmland from being destroyed when you walk over it. Farmland can either be wet or dry depending on if Water is within 5 Blocks of it. Wet Farmland grows crops faster.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="103">
     <added>v1.4.6</added>
@@ -831,6 +934,7 @@
     <id>61</id>
     <type>Item</type>
     <description>Furnaces allow players to smelt ores and cook food. They emit light when in use. Coal, Logs and Wooden Planks are mainly used as Fuel, which is required to smelt items.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="104">
     <added>v1.4.6</added>
@@ -839,6 +943,7 @@
     <id>62</id>
     <type>Item</type>
     <description>Furnaces allow players to smelt ores and cook food. They emit light when in use. Coal, Logs and Wooden Planks are mainly used as Fuel, which is required to smelt items.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="105">
     <added>v1.4.6</added>
@@ -847,6 +952,7 @@
     <id>63</id>
     <type>Item</type>
     <description>Signs are a decorative item that allows you to place a Sign with a custom message in the world. If you are looking at the ground when you place the Sign, it will have a pole. If you are looking at a wall when you place it, it will become a wall mounted Sign. Signs are mainly used in Multiplayer to inform other players where places are or to inform people who buildings belong to.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="106">
     <added>v1.4.6</added>
@@ -855,6 +961,7 @@
     <id>64</id>
     <type>Item</type>
     <description>Wooden Doors allow you to block monsters from entering your building. Clicking on a door changes its state from open to closed and visa versa. Wooden Doors can be opened/closed via Redstone Circuits.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="107">
     <added>v1.4.6</added>
@@ -863,6 +970,7 @@
     <id>65</id>
     <type>Item</type>
     <description>Ladders allow you to climb blocks vertically or horizontally. Ladders stop water from passing through the area they occupy, so they can be used to create underwater mine entrances. You only need to place Ladders every other block to be able to climb up them, this allows you to save materials.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="108">
     <added>v1.4.6</added>
@@ -871,6 +979,7 @@
     <id>66</id>
     <type>Item</type>
     <description>Rails are used to guide Minecarts around the world. Minecarts can not move without a track.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="109">
     <added>v1.4.6</added>
@@ -879,6 +988,7 @@
     <id>67</id>
     <type>Block</type>
     <description>Cobblestone Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="110">
     <added>v1.4.6</added>
@@ -887,6 +997,7 @@
     <id>68</id>
     <type>Item</type>
     <description>Signs are a decorative item that allows you to place a Sign with a custom message in the world. If you are looking at the ground when you place the Sign, it will have a pole. If you are looking at a wall when you place it, it will become a wall mounted Sign. Signs are mainly used in Multiplayer to inform other players where places are or to inform people who buildings belong to.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="111">
     <added>v1.4.6</added>
@@ -895,6 +1006,7 @@
     <id>69</id>
     <type>Item</type>
     <description>Levers can be used to activate objects like Iron Doors and Redstone Wires. They have two states, on and off. Levers can be switched by Left Clicking on them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="112">
     <added>v1.4.6</added>
@@ -903,6 +1015,7 @@
     <id>70</id>
     <type>Item</type>
     <description>Stone Pressure Plates can be used to activate objects like Iron Doors and Redstone Wires. They activate objects for about 1-2 seconds. Stone Pressure Plates are activated by standing on them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="113">
     <added>v1.4.6</added>
@@ -911,6 +1024,7 @@
     <id>71</id>
     <type>Item</type>
     <description>Iron Doors allow you to block monsters from entering your building. Clicking on an Iron Door does not change its open/closed state. The only way to open or close an iron door is via Levers, Stone Buttons, Wood Pressure Plate, Stone Pressure Plates and Redstone Torchs.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="114">
     <added>v1.4.6</added>
@@ -919,6 +1033,7 @@
     <id>72</id>
     <type>Item</type>
     <description>Wooden Pressure Plates can be used to activate objects like Iron Doors and Redstone Wires. They activate objects for about 1-2 seconds. Wood Pressure Plates are activated by standing on them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="115">
     <added>v1.4.6</added>
@@ -927,6 +1042,7 @@
     <id>73</id>
     <type>Block</type>
     <description>Redstone Ore is generaly found deep underground. When its hit, it emits light. When mined it drops 4 Redstone Dusts. An Iron Pickaxe (or Higher) is required to break Redstone Ore.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="116">
     <added>v1.4.6</added>
@@ -935,6 +1051,7 @@
     <id>74</id>
     <type>Block</type>
     <description>Redstone Ore is generaly found deep underground. When its hit, it emits light. When mined it drops 4 Redstone Dusts. An Iron Pickaxe (or Higher) is required to break Redstone Ore.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="117">
     <added>v1.4.6</added>
@@ -943,6 +1060,7 @@
     <id>75</id>
     <type>Item</type>
     <description>Redstone Torches are a source of power simmiler to electricity. They can be used to activate objects and to power Redstone Wires.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="118">
     <added>v1.4.6</added>
@@ -951,6 +1069,7 @@
     <id>76</id>
     <type>Item</type>
     <description>Redstone Torches are a source of power simmiler to electricity. They can be used to activate objects and to power Redstone Wires.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="119">
     <added>v1.4.6</added>
@@ -959,6 +1078,7 @@
     <id>77</id>
     <type>Item</type>
     <description>Stone Buttons can be used to activate objects like  Iron Doors and Redstone Wires. They activate objects for about 1-2 seconds. Stone Buttons can be pressed by Left Clicking on them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="120">
     <added>v1.4.6</added>
@@ -967,6 +1087,7 @@
     <id>78</id>
     <type>Block</type>
     <description>Snow forms on top of Blocks which are in a Snow biodome. If destroyed using a shovel it will drop Snowballs.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="121">
     <added>v1.4.6</added>
@@ -975,6 +1096,7 @@
     <id>79</id>
     <type>Block</type>
     <description>Ice forms only in freezing biodomes. When Ice is destroyed Water takes its place. Heat sources such as Torches and Lava can melt Ice.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="122">
     <added>v1.4.6</added>
@@ -983,6 +1105,7 @@
     <id>80</id>
     <type>Block</type>
     <description>Snow blocks are found naturaly in freezing biodomes. They can be used as a building material. 4 Snowballs are dropped when the block is destroyed with a Wood Shovel or Higher.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="123">
     <added>v1.4.6</added>
@@ -991,6 +1114,7 @@
     <id>81</id>
     <type>Item</type>
     <description>Cactus require sand under them and light (Either Sunlight or Torches) to grow. They won't grow if there is no room above them. Cactuses can grow to 3 blocks high. Cactuses half a heart of damage the player on contact and destroys any item that touches them. When harvesting its advisable to destroy the bottom Cactus block so that the blocks above won't get destroyed when they touch the bottom block.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="124">
     <added>v1.4.6</added>
@@ -999,6 +1123,7 @@
     <id>82</id>
     <type>Block</type>
     <description>Clay blocks are usualy found near Sand. When destroyed they drop 4 Clay balls.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="125">
     <added>v1.4.6</added>
@@ -1007,6 +1132,7 @@
     <id>83</id>
     <type>Item</type>
     <description>Sugar Cane require dirt under them and water beside them. They won't grow if there is no room above them. Sugar Canes can grow to 3 blocks high. If the lowest part of the Sugar Cane is destroyed the Sugar Cane above will also be destroyed allowing for quicker harvesting.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="126">
     <added>v1.4.6</added>
@@ -1015,6 +1141,7 @@
     <id>84</id>
     <type>Item</type>
     <description>Jukebox's allow you to play Music Disks. To play a Music Disk you need to Right Click on the Jukebox while you have a Music Disk equiped. To eject the Music Disk Right Click on the Jukebox. Music Disks do not loop, so you need to eject and re-insert to play it again.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="127">
     <added>v1.4.6</added>
@@ -1023,6 +1150,7 @@
     <id>85</id>
     <type>Item</type>
     <description>Jukebox's allow you to play Music Disks. To play a Music Disk you need to Right Click on the Jukebox while you have a Music Disk equiped. To eject the Music Disk Right Click on the Jukebox. Music Disks do not loop, so you need to eject and re-insert to play it again.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="128">
     <added>v1.4.6</added>
@@ -1031,6 +1159,7 @@
     <id>86</id>
     <type>Block</type>
     <description>Pumpkins are found naturaly around the world. They can not be grown by the player. Pumpkins can be worn by the player as a helmet but it gives no armor benefits. When worn they prevent Endermen from attacking when you look at them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="129">
     <added>v1.4.6</added>
@@ -1039,6 +1168,7 @@
     <id>87</id>
     <type>Block</type>
     <description>Netherrack is a very common block in The Nether. When its set on Fire it will burn forever unless put out by the player. A Wood Pickaxe (or Higher) is required to break Netherrack.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="130">
     <added>v1.4.6</added>
@@ -1047,6 +1177,7 @@
     <id>88</id>
     <type>Block</type>
     <description>Soul Sand is only found in The Nether. It slows the player down when walked on.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="131">
     <added>v1.4.6</added>
@@ -1055,6 +1186,7 @@
     <id>89</id>
     <type>Block</type>
     <description>Glowstone is found on the underside of blocks in The Nether. It emits light like a Torch but unlike Torches it can be placed underwater. Glowstone drops 3 Glowstone Dust when broken.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="132">
     <added>v1.4.6</added>
@@ -1063,6 +1195,7 @@
     <id>90</id>
     <type>Block</type>
     <description>Portals are created by the player and allow travel to and from The Nether. Portals can be created by creating a frame out of Obsidian (4 Wide and 5 Tall) and then using Flint and Steel in the middle of the frame.To travel you need to stand in the middle of the portal for about 2 seconds.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="133">
     <added>v1.4.6</added>
@@ -1071,6 +1204,7 @@
     <id>91</id>
     <type>Block</type>
     <description>Jack-O-Lantern are a haloween styed light source. They are like Torches except that they can be placed underwater.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="134">
     <added>0.0.9a</added>
@@ -1079,6 +1213,7 @@
     <id>92</id>
     <type>Item</type>
     <description>Cake can only be eaten once it has been placed on the ground by Right Clicking. Once placed the player can eat 6 slices of Cake which reduces hunger by 1 each time. It reduces hunger by 6 when fully consumed.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="135">
     <added>0.0.9a</added>
@@ -1087,6 +1222,7 @@
     <id>93</id>
     <type>Item</type>
     <description>Redstone Repeater's are designed to repeat the current they recieve. They remove the need to use two not gates to extend a redstone current. They only accept input from one side.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="136">
     <added>0.0.9a</added>
@@ -1095,6 +1231,7 @@
     <id>94</id>
     <type>Item</type>
     <description>Redstone Repeater's are designed to repeat the current they recieve. They remove the need to use two not gates to extend a redstone current. They only accept input from one side.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="137">
     <added>0.0.9a</added>
@@ -1103,6 +1240,7 @@
     <id>95</id>
     <type>Item</type>
     <description>Locked Chests were a 2011 April Fools joke. When you tryed to open one a popup apears saying that you need a Steve Co Crate Key. Clicking on Goto Store brings you to an April Fools Shop page. Locked Chests are based on Team Fortresses Mann Co. Supply Crates where keys to open them have to be bought with real money. Locked Chests emited light. Locked Chests can only be destroyed by TNT.Locked Chests have been removed from Minecraft.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="138">
     <added>0.0.9a</added>
@@ -1111,6 +1249,7 @@
     <id>96</id>
     <type>Item</type>
     <description>Trapdoors work like Wood Doors except that they open upwards. Unlike doors they only take up 1 block in size. Clicking on the Trapdoor will toggle if its open or closed. Trapdoors can be activated by redstone. Water/Lava can not pass through Trapdoors.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="139">
     <added>v1.8Beta</added>
@@ -1119,6 +1258,7 @@
     <id>97</id>
     <type>Block</type>
     <description>Silverfish Stone are Stone which spawn a Silverfish when they are destroyed.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="140">
     <added>v1.2</added>
@@ -1127,6 +1267,7 @@
     <id>97:1</id>
     <type>Block</type>
     <description>Silverfish Stone are Stone which spawn a Silverfish when they are destroyed.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="141">
     <added>v1.2</added>
@@ -1135,6 +1276,7 @@
     <id>97:2</id>
     <type>Block</type>
     <description>Silverfish Stone are Stone which spawn a Silverfish when they are destroyed.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="142">
     <added>v1.8Beta</added>
@@ -1143,6 +1285,7 @@
     <id>98</id>
     <type>Block</type>
     <description>Stone Bricks are crafted using Stone. Stone Bricks are mainly used in constructions of buildings and paths. Cracked Stone Bricks and Mossy Stone Bricks are a varient of Stone Bricks and can be used instead of Stone Bricks in Item/Block Crafting. A Wood Pickaxe (or Higher) is required to break Stone Bricks. They can be found naturaly in Strongholds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="143">
     <added>v1.8Beta</added>
@@ -1151,6 +1294,7 @@
     <id>98:1</id>
     <type>Block</type>
     <description>Stone Bricks are crafted using Stone. Stone Bricks are mainly used in constructions of buildings and paths. Cracked Stone Bricks and Mossy Stone Bricks are a varient of Stone Bricks and can be used instead of Stone Bricks in Item/Block Crafting. A Wood Pickaxe (or Higher) is required to break Stone Bricks. They can be found naturaly in Strongholds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="144">
     <added>v1.8Beta</added>
@@ -1159,6 +1303,7 @@
     <id>98:2</id>
     <type>Block</type>
     <description>Stone Bricks are crafted using Stone. Stone Bricks are mainly used in constructions of buildings and paths. Cracked Stone Bricks and Mossy Stone Bricks are a varient of Stone Bricks and can be used instead of Stone Bricks in Item/Block Crafting. A Wood Pickaxe (or Higher) is required to break Stone Bricks. They can be found naturaly in Strongholds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="145">
     <added>v1.2</added>
@@ -1167,6 +1312,7 @@
     <id>98:3</id>
     <type>Block</type>
     <description>Stone Bricks are crafted using Stone. Stone Bricks are mainly used in constructions of buildings and paths. Cracked Stone Bricks and Mossy Stone Bricks are a varient of Stone Bricks and can be used instead of Stone Bricks in Item/Block Crafting. A Wood Pickaxe (or Higher) is required to break Stone Bricks. They can be found naturaly in Strongholds.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="146">
     <added>v1.8Beta</added>
@@ -1175,6 +1321,7 @@
     <id>99</id>
     <type>Block</type>
     <description>Brown Mushroom (Block)s are part of a Giant Brown Mushroom. Giant Brown Mushrooms can be found naturaly but can also be created by using Bonemeal on a Brown Mushroom. When a Brown Mushroom (Block) is destroyed Brown Mushrooms may be dropped.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="147">
     <added>v1.8Beta</added>
@@ -1183,6 +1330,7 @@
     <id>100</id>
     <type>Block</type>
     <description>Red Mushroom (Block)s are part of a Giant Red Mushroom. Giant Red Mushrooms can be found naturaly but can also be created by using Bonemeal on a Red Mushroom. When a Red Mushroom (Block) is destroyed Red Mushrooms may be dropped.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="148">
     <added>v1.8Beta</added>
@@ -1191,6 +1339,7 @@
     <id>101</id>
     <type>Block</type>
     <description>Iron Bars are placed like Fences and change based on the blocks around them. A Wood Pickaxe (or Higher) is required to break Iron Bars.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="149">
     <added>v1.8Beta</added>
@@ -1199,6 +1348,7 @@
     <id>102</id>
     <type>Block</type>
     <description>Glass Panes are placed like Fences and change based on the blocks around them. Unlike Glass, they can be picked up once destroyed.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="150">
     <added>v1.8Beta</added>
@@ -1207,6 +1357,7 @@
     <id>103</id>
     <type>Block</type>
     <description>Melon (Block)s grow from Melon Vines. When destroyed they drop one or more Melon (Slice)s.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="151">
     <added>v1.8Beta</added>
@@ -1215,6 +1366,7 @@
     <id>104</id>
     <type>Block</type>
     <description>Pumpkin Vines are grown from Pumpkin Seeds. A Pumpkin will grow around the Pumpkin Vine if there is a free Farmland or Dirt block next to it. Pumpkin Vines will only spawn a Pumpkin if there are no Pumpkins next to it. When destroyed a Pumpkin Vine drops Pumpkin Seeds.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="152">
     <added>v1.8Beta</added>
@@ -1223,6 +1375,7 @@
     <id>105</id>
     <type>Block</type>
     <description>Melon Vines are grown from Melon Seeds. A Melon (Block) will grow around the Melon Vine if there is a free Farmland or Dirt block next to it. Melon Vines will only spawn a Melon (Block) if there are no Melon (Block)s next to it. When destroyed a Melon Vine drops Melon Seeds.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="153">
     <added>v1.8Beta</added>
@@ -1231,6 +1384,7 @@
     <id>106</id>
     <type>Block</type>
     <description>Vines can be collected using Shears. They can be found in Swamp areas.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="154">
     <added>v1.8Beta</added>
@@ -1239,6 +1393,7 @@
     <id>107</id>
     <type>Item</type>
     <description>Fence Gates allow you to block monsters from entering your fields/gardens. Right Clicking on a gate changes its state from open to closed and visa versa.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="155">
     <added>v1.8Beta</added>
@@ -1247,6 +1402,7 @@
     <id>108</id>
     <type>Block</type>
     <description>Brick Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="156">
     <added>v1.8Beta</added>
@@ -1255,6 +1411,7 @@
     <id>109</id>
     <type>Block</type>
     <description>Stone Brick Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="157">
     <added>v1.9Beta</added>
@@ -1263,6 +1420,7 @@
     <id>110</id>
     <type>Block</type>
     <description>Mycelium blocks are found in Mushroom biodomes.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="158">
     <added>v1.9Beta</added>
@@ -1271,6 +1429,7 @@
     <id>111</id>
     <type>Block</type>
     <description>Lily Pads are found in Swamp Biodomes. When destroyed they drop a Lily Pad. They can be placed on top of swamp water.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="159">
     <added>v1.9Beta</added>
@@ -1279,6 +1438,7 @@
     <id>112</id>
     <type>Block</type>
     <description>Nether bricks can be found in Nether Ruins. They can not be crafted.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="160">
     <added>v1.9Beta</added>
@@ -1287,6 +1447,7 @@
     <id>113</id>
     <type>Block</type>
     <description>Nether bricks can be found in Nether Ruins. They can not be crafted.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="161">
     <added>v1.9Beta</added>
@@ -1295,6 +1456,7 @@
     <id>114</id>
     <type>Block</type>
     <description>Nether Brick Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="162">
     <added>v1.9Beta</added>
@@ -1303,6 +1465,7 @@
     <id>115</id>
     <type>Item</type>
     <description>Nether Warts are grown by sowing Nether Wart Seeds. When a Nether Wart is harvested it has a chance of droping Nether Wart Seeds.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="163">
     <added>v1.9Beta</added>
@@ -1311,6 +1474,7 @@
     <id>116</id>
     <type>Item</type>
     <description>Enchantment Tables allow you to make Weapons, Tools and Armor more powerful and last longer.To use an Enchantment Table Right Click on it. You will then need to place a Weapon, Tool or Armor in the slot. You can pick 3 random spells from a list to use on your item, each one costs a different amount of Experience.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="164">
     <added>v1.9Beta</added>
@@ -1319,6 +1483,7 @@
     <id>117</id>
     <type>Item</type>
     <description>Brewing Stands allow you to create different types of Poitions. To use a Brewing Stand Right Click on it. See Brewing for a list of potion recipes.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="165">
     <added>v1.9Beta</added>
@@ -1327,6 +1492,7 @@
     <id>118</id>
     <type>Item</type>
     <description>Cauldron's can hold Water, allowing you to bring Water to The Nether.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="166">
     <added>v1.9Beta</added>
@@ -1335,6 +1501,7 @@
     <id>119</id>
     <type>Block</type>
     <description>End Portals transport you to The End, a dimention where Endermen come from.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="167">
     <added>v1.9Beta</added>
@@ -1343,6 +1510,7 @@
     <id>120</id>
     <type>Block</type>
     <description>End Portal Frames are found naturaly in Strongholds. When all End Portal Frame blocks of a Portal are repaired they will form an End Portal. They can be repaired with Eye of Enders</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="168">
     <added>v1.9Beta</added>
@@ -1351,6 +1519,7 @@
     <id>121</id>
     <type>Block</type>
     <description>End Stone is found in The End dimention. End Stone is dropped when its destroyed. It requires a Wood Pickaxe or higher to destroy.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="169">
     <added>v1.0</added>
@@ -1359,6 +1528,7 @@
     <id>122</id>
     <type>Item</type>
     <description>Dragon Eggs are dropped by Enderdragons when they are killed. When Right Clicked they teleport a short distance.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="170">
     <added>v1.2</added>
@@ -1367,6 +1537,7 @@
     <id>123</id>
     <type>Item</type>
     <description>Redstone Lamps are a powered light source. Unlike Glowstone and Torches you can turn Redstone Lamps on and off.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="171">
     <added>v1.2</added>
@@ -1375,6 +1546,7 @@
     <id>124</id>
     <type>Item</type>
     <description>Redstone Lamps are a powered light source. Unlike Glowstone and Torches you can turn Redstone Lamps on and off.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="172">
     <added>v1.3.1</added>
@@ -1383,6 +1555,7 @@
     <id>125</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="173">
     <added>v1.3.1</added>
@@ -1391,6 +1564,7 @@
     <id>125:1</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="174">
     <added>v1.3.1</added>
@@ -1399,6 +1573,7 @@
     <id>125:2</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="175">
     <added>v1.3.1</added>
@@ -1407,6 +1582,7 @@
     <id>125:3</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="176">
     <added>v1.3.1</added>
@@ -1415,6 +1591,7 @@
     <id>126</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="177">
     <added>v1.3.1</added>
@@ -1423,6 +1600,7 @@
     <id>126:1</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="178">
     <added>v1.3.1</added>
@@ -1431,6 +1609,7 @@
     <id>126:2</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="179">
     <added>v1.3.1</added>
@@ -1439,6 +1618,7 @@
     <id>126:3</id>
     <type>Block</type>
     <description>Wooden Slabs allow you to get to a higher block level without having to jump. They are generaly used in paths that only go up one level. Cobblestone Stairs or Wooden Stairs are used in paths that need to go up more than one block level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="180">
     <added>v1.3.1</added>
@@ -1447,6 +1627,7 @@
     <id>127</id>
     <type>Item</type>
     <description>Coca Plants grow on the side of Jungle Trees. When destroyed they drop between 1 and 3 Coca Beans.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="181">
     <added>v1.3.1</added>
@@ -1455,6 +1636,7 @@
     <id>128</id>
     <type>Block</type>
     <description>Sandstone Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="182">
     <added>v1.3.1</added>
@@ -1463,6 +1645,7 @@
     <id>129</id>
     <type>Block</type>
     <description>After being mined, Emerald Ore does not need to be smelted. Emeralds are droped when mined and can be used instantly. An Iron Pickaxe (or Higher) is required to break Emerald Ore.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="183">
     <added>v1.3.1</added>
@@ -1471,6 +1654,7 @@
     <id>130</id>
     <type>Item</type>
     <description>Ender Chests are like the regular chests except that they are a Global storage. When you place items into one Ender Chest, its contents can be accessed via any other Ender Chest in the world.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="184">
     <added>v1.3.1</added>
@@ -1479,6 +1663,7 @@
     <id>131</id>
     <type>Item</type>
     <description>Tripwire forms between two Tripwire Hooks. When a player or mod breaks the tripwire a redstone signal is fired from the two Tripwire Hooks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="185">
     <added>v1.3.1</added>
@@ -1487,6 +1672,7 @@
     <id>132</id>
     <type>Item</type>
     <description>Tripwire forms between two Tripwire Hooks. When a player or mod breaks the tripwire a redstone signal is fired from the two Tripwire Hooks.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="186">
     <added>v1.3.1</added>
@@ -1495,6 +1681,7 @@
     <id>133</id>
     <type>Block</type>
     <description>Emerald Blocks are man made and are not found naturaly in the World. They are generaly used for Decoration or for storing Emeralds. They can be crafted back into Emeralds.  An Iron Pickaxe (or Higher) is required to break Emerald Blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="187">
     <added>v1.3.1</added>
@@ -1503,6 +1690,7 @@
     <id>134</id>
     <type>Block</type>
     <description>Wooden Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="188">
     <added>v1.3.1</added>
@@ -1511,6 +1699,7 @@
     <id>135</id>
     <type>Block</type>
     <description>Wooden Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="189">
     <added>v1.3.1</added>
@@ -1519,6 +1708,7 @@
     <id>136</id>
     <type>Block</type>
     <description>Wooden Stairs allow you to get to a higher block level without having to jump. They are generaly used in paths that paths that need to go up more than one block level. Steps are used in paths that only need to go up one level.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="190">
     <added>v1.4.2</added>
@@ -1527,6 +1717,7 @@
     <id>137</id>
     <type>Item</type>
     <description>Command Blocks fire off a command when a redstone signal is sent to it.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="191">
     <added>v1.4.2</added>
@@ -1535,6 +1726,7 @@
     <id>138</id>
     <type>Item</type>
     <description>Becons are used in the construction of Pyramids. By placing one as the top block of a Pyramid consisting of Block of Iron or Block of Gold or Block of Diamond or Block of Emerald you can gain powers when in the range of the Pyramid.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="192">
     <added>v1.4.2</added>
@@ -1543,6 +1735,7 @@
     <id>139</id>
     <type>Block</type>
     <description></description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="193">
     <added>v1.4.2</added>
@@ -1551,6 +1744,7 @@
     <id>139:1</id>
     <type>Block</type>
     <description></description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="194">
     <added>v1.4.2</added>
@@ -1559,6 +1753,7 @@
     <id>140</id>
     <type>Item</type>
     <description>Flower Pots are a decorative item which can hold plants.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="195">
     <added>v1.4.2</added>
@@ -1567,6 +1762,7 @@
     <id>141</id>
     <type>Item</type>
     <description>Carrots are grown by sowing Carrots on Farmland. When Carrots are harvested they will drop one or more Carrots. Carrots can be obtained by killing Zombies.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="196">
     <added>v1.4.2</added>
@@ -1575,6 +1771,7 @@
     <id>142</id>
     <type>Item</type>
     <description>Potatoes are grown by sowing Potatoes on Farmland. Potatoes can be cooked into Baked Potatoes. When Potatoes are harvested they will drop one or more Potatoes and have a chance of dropping Poisonous Potatoes. Potatoes can be obtained by killing Zombies.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="197">
     <added>v1.4.2</added>
@@ -1583,6 +1780,7 @@
     <id>143</id>
     <type>Item</type>
     <description>Wooden Buttons can be used to activate objects like  Iron Doors and Redstone Wires. They activate objects for about 1-2 seconds. Wooden Buttons can be pressed by Left Clicking on them. Wooden Buttons activate when hit by Arrows.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="198">
     <added>v1.4.2</added>
@@ -1591,6 +1789,7 @@
     <id>144</id>
     <type>Block</type>
     <description>A decorative Skeleton Head which can be placed or used as a helmet.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="199">
     <added>v1.4.2</added>
@@ -1599,6 +1798,7 @@
     <id>144:1</id>
     <type>Block</type>
     <description>A decorative Wither Head which can be placed or used as a helmet.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="200">
     <added>v1.4.2</added>
@@ -1607,6 +1807,7 @@
     <id>144:2</id>
     <type>Block</type>
     <description>A decorative Zombie Head which can be placed or used as a helmet.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="201">
     <added>v1.4.2</added>
@@ -1615,6 +1816,7 @@
     <id>144:3</id>
     <type>Block</type>
     <description>A decorative Steve Head which can be placed or used as a helmet.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="202">
     <added>v1.4.2</added>
@@ -1623,6 +1825,7 @@
     <id>144:4</id>
     <type>Block</type>
     <description>A decorative Creeper Head which can be placed or used as a helmet.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="203">
     <added>v1.4.2</added>
@@ -1631,6 +1834,7 @@
     <id>145</id>
     <type>Item</type>
     <description>Anvils allow you to repair Armor, Weapons and Tools which have durability. Items are repaired by sacrifising a second item of the same type. Enchantments on both items will be combined.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="204">
     <added>0.0.9a</added>
@@ -1639,6 +1843,7 @@
     <id>256</id>
     <type>Item</type>
     <description>Shovels can destroy Dirt, Gravel and Sand blocks faster than using fists or other tools. The only difference between the shovel types is how meny uses you get out of them and how much damage they deal. Iron Shovels have 129 uses before they break and deal 1.5 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="205">
     <added>0.0.9a</added>
@@ -1647,6 +1852,7 @@
     <id>257</id>
     <type>Item</type>
     <description>Pickaxes can destroy Stone and Ore blocks faster than using fists or other tools. Certain type of Pickaxe are required to harvest the ores. Iron Pickaxes have 129 uses before they break and deals 2 Hearts of damage.Iron Pickaxes can break all block types except Obsidian.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="206">
     <added>0.0.9a</added>
@@ -1655,6 +1861,7 @@
     <id>258</id>
     <type>Item</type>
     <description>Axes can destroy Log and Wooden Plank blocks faster than using fists or other tools. The only difference between the axe types is how meny uses you get out of them and how much damage they deal. Iron Axes have 129 uses before they break and deal 2.5 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="207">
     <added>0.0.9a</added>
@@ -1663,6 +1870,7 @@
     <id>259</id>
     <type>Item</type>
     <description>Flint and Steel allows you to set objects in the world on Fire.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="208">
     <added>0.0.9a</added>
@@ -1671,6 +1879,7 @@
     <id>260</id>
     <type>Item</type>
     <description>Apples can be found in Dungeons. They are also dropped by Leaves. It reduces hunger by 2 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="209">
     <added>0.0.9a</added>
@@ -1679,6 +1888,7 @@
     <id>261</id>
     <type>Item</type>
     <description>Bows are a weapon in Minecraft. Bows require Arrows for ammo and are the only form of ranged weapons in the game. Bows deal 2 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="210">
     <added>0.0.9a</added>
@@ -1687,6 +1897,7 @@
     <id>262</id>
     <type>Item</type>
     <description>Arrows are used as ammo for Bows. Arrows can be obtained by killing Skeletons or by crafting. If an arrow is shot through lava it will be set on fire.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="211">
     <added>0.0.9a</added>
@@ -1695,6 +1906,7 @@
     <id>263</id>
     <type>Item</type>
     <description>Coal is mainly used to craft Torches but is also used as fuel for both Furnaces and Powered Minecarts. Coal is dropped when mining Coal Ore.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="212">
     <added>0.0.9a</added>
@@ -1703,6 +1915,7 @@
     <id>263:1</id>
     <type>Item</type>
     <description>Charcoal is an alternative to Coal. Unlike Coal, Charcoal can be created by the player by smelting Wood in a Furnace. See Coal for more information on what you can use Charcoal for.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="213">
     <added>0.0.9a</added>
@@ -1711,6 +1924,7 @@
     <id>264</id>
     <type>Item</type>
     <description>Diamond Gem is dropped when mining Diamond Ore. They are used to create Armor, Weapons and Tools.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="214">
     <added>0.0.9a</added>
@@ -1719,6 +1933,7 @@
     <id>265</id>
     <type>Item</type>
     <description>Iron Ingots are created by Smelting Iron Ore in a Furnace. They are used to create Armor, Weapons, Tools and several other items.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="215">
     <added>0.0.9a</added>
@@ -1727,6 +1942,7 @@
     <id>266</id>
     <type>Item</type>
     <description>Gold Ingots are created by Smelting Gold Ore in a Furnace. They are used to create Armor, Weapons and Tools.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="216">
     <added>0.0.9a</added>
@@ -1735,6 +1951,7 @@
     <id>267</id>
     <type>Item</type>
     <description>Swords are a weapon in Minecraft. The difference between the sword types is how meny uses you get out of them and how much damage they deal. Iron Sword have 129 uses before they break and deal 4 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="217">
     <added>0.0.9a</added>
@@ -1743,6 +1960,7 @@
     <id>268</id>
     <type>Item</type>
     <description>Swords are a weapon in Minecraft. The difference between the sword types is how meny uses you get out of them and how much damage they deal. Wooden Swords have 33 uses before they break and deal 2 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="218">
     <added>0.0.9a</added>
@@ -1751,6 +1969,7 @@
     <id>269</id>
     <type>Item</type>
     <description>Shovels can destroy Dirt, Gravel and Sand blocks faster than using fists or other tools. The only difference between the shovel types is how meny uses you get out of them and how much damage they deal. Wooden Shovels have 33 uses before they break and deal 0.5 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="219">
     <added>0.0.9a</added>
@@ -1759,6 +1978,7 @@
     <id>270</id>
     <type>Item</type>
     <description>Pickaxes can destroy Stone and Ore blocks faster than using fists or other tools. Certain type of Pickaxe are required to harvest the ores. Wood Pickaxes have 33 uses before they break and deal 1 Heart of damage.Wooden Pickaxes can break Stone and Coal Ore blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="220">
     <added>0.0.9a</added>
@@ -1767,6 +1987,7 @@
     <id>271</id>
     <type>Item</type>
     <description>Axes can destroy Log and Wooden Plank blocks faster than using fists or other tools. The only difference between the axe types is how meny uses you get out of them and how much damage they deal. Wooden Axes have 33 uses before they break and deal 1.5 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="221">
     <added>0.0.9a</added>
@@ -1775,6 +1996,7 @@
     <id>272</id>
     <type>Item</type>
     <description>Swords are a weapon in Minecraft. The difference between the sword types is how meny uses you get out of them and how much damage they deal. Stone Sword have 65 uses before they break and deal 3 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="222">
     <added>0.0.9a</added>
@@ -1783,6 +2005,7 @@
     <id>273</id>
     <type>Item</type>
     <description>Shovels can destroy Dirt, Gravel and Sand blocks faster than using fists or other tools. The only difference between the shovel types is how meny uses you get out of them and how much damage they deal. Stone Shovels have 65 uses before they break and deal 1 Heart of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="223">
     <added>0.0.9a</added>
@@ -1791,6 +2014,7 @@
     <id>274</id>
     <type>Item</type>
     <description>Pickaxes can destroy Stone and Ore blocks faster than using fists or other tools. Certain type of Pickaxe are required to harvest the ores. Stone Pickaxes have 65 uses before they break and deal 1.5 Hearts of damage.Stone Pickaxes can break Stone, Coal Ore and Iron Ore blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="224">
     <added>0.0.9a</added>
@@ -1799,6 +2023,7 @@
     <id>275</id>
     <type>Item</type>
     <description>Axes can destroy Log and Wooden Plank blocks faster than using fists or other tools. The only difference between the axe types is how meny uses you get out of them and how much damage they deal. Stone Axes have 65 uses before they break and deal 2 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="225">
     <added>0.0.9a</added>
@@ -1807,6 +2032,7 @@
     <id>276</id>
     <type>Item</type>
     <description>Swords are a weapon in Minecraft. The difference between the sword types is how meny uses you get out of them and how much damage they deal. Diamond Sword have 1025 uses before they break and deal 5 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="226">
     <added>0.0.9a</added>
@@ -1815,6 +2041,7 @@
     <id>277</id>
     <type>Item</type>
     <description>Shovels can destroy Dirt, Gravel and Sand blocks faster than using fists or other tools. The only difference between the shovel types is how meny uses you get out of them and how much damage they deal. Diamond Shovels have 1025 uses before they break and deal 2 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="227">
     <added>0.0.9a</added>
@@ -1823,6 +2050,7 @@
     <id>278</id>
     <type>Item</type>
     <description>Pickaxes can destroy Stone and Ore blocks faster than using fists or other tools. Certain type of Pickaxe are required to harvest the ores. Diamond Pickaxes have 1025 uses before they break and deal 2.5 Hearts of damage.Diamond Pickaxes can break all block types.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="228">
     <added>0.0.9a</added>
@@ -1831,6 +2059,7 @@
     <id>279</id>
     <type>Item</type>
     <description>Axes can destroy Log and Wooden Plank blocks faster than using fists or other tools. The only difference between the axe types is how meny uses you get out of them and how much damage they deal. Diamond Axes have 1025 uses before they break and deal 3 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="229">
     <added>0.0.9a</added>
@@ -1839,6 +2068,7 @@
     <id>280</id>
     <type>Item</type>
     <description>Sticks are used in crafting other items.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="230">
     <added>0.0.9a</added>
@@ -1847,6 +2077,7 @@
     <id>281</id>
     <type>Item</type>
     <description>Bowls are used to hold Mushroom Stew.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="231">
     <added>0.0.9a</added>
@@ -1855,6 +2086,7 @@
     <id>282</id>
     <type>Item</type>
     <description>Mushroom Stew can not be harvested and must be crafted. You gain 5 Hearts of health by eating it and it reduces hunger by 4.5.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="232">
     <added>0.0.9a</added>
@@ -1863,6 +2095,7 @@
     <id>283</id>
     <type>Item</type>
     <description>Swords are a weapon in Minecraft. The difference between the sword types is how meny uses you get out of them and how much damage they deal. Gold Sword have 33 uses before they break and deal 2 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="233">
     <added>0.0.9a</added>
@@ -1871,6 +2104,7 @@
     <id>284</id>
     <type>Item</type>
     <description>Shovels can destroy Dirt, Gravel and Sand blocks faster than using fists or other tools. The only difference between the shovel types is how meny uses you get out of them and how much damage they deal. Gold Shovels have 33 uses before they break and deal 0.5 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="234">
     <added>0.0.9a</added>
@@ -1879,6 +2113,7 @@
     <id>285</id>
     <type>Item</type>
     <description>Pickaxes can destroy Stone and Ore blocks faster than using fists or other tools. Certain type of Pickaxe are required to harvest the ores. Gold Pickaxes have 33 uses before they break and deal 1 Heart of damage.Gold Pickaxes can break Stone and Coal Ore blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="235">
     <added>0.0.9a</added>
@@ -1887,6 +2122,7 @@
     <id>286</id>
     <type>Item</type>
     <description>Axes can destroy Log and Wooden Plank blocks faster than using fists or other tools. The only difference between the axe types is how meny uses you get out of them and how much damage they deal. Gold Axes have 33 uses before they break and deal 1.5 Hearts of damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="236">
     <added>0.0.9a</added>
@@ -1895,6 +2131,7 @@
     <id>287</id>
     <type>Item</type>
     <description>String is droped by killing Spiders or destroying Webs. It is only useful for crafting other objects.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="237">
     <added>0.0.9a</added>
@@ -1903,6 +2140,7 @@
     <id>288</id>
     <type>Item</type>
     <description>Feathers currently have no use other than crafting Arrows.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="238">
     <added>0.0.9a</added>
@@ -1911,6 +2149,7 @@
     <id>289</id>
     <type>Item</type>
     <description>Gunpowder is used in crafting TNT. Its dropped by Creepers.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="239">
     <added>0.0.9a</added>
@@ -1919,6 +2158,7 @@
     <id>290</id>
     <type>Item</type>
     <description>Hoes can plow Dirt to prepare it for Seeds. When plowing Seeds can drop. The only difference between the hoe types is how meny uses you get out of them and how much damage they deal. Wooden Hoes have 33 uses before they break.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="240">
     <added>0.0.9a</added>
@@ -1927,6 +2167,7 @@
     <id>291</id>
     <type>Item</type>
     <description>Hoes can plow Dirt to prepare it for Seeds. When plowing Seeds can drop. The only difference between the hoe types is how meny uses you get out of them and how much damage they deal. Stone Hoes have 65 uses before they break.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="241">
     <added>0.0.9a</added>
@@ -1935,6 +2176,7 @@
     <id>292</id>
     <type>Item</type>
     <description>Hoes can plow Dirt to prepare it for Seeds. When plowing Seeds can drop. The only difference between the hoe types is how meny uses you get out of them and how much damage they deal. Iron Hoes have 129 uses before they break.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="242">
     <added>0.0.9a</added>
@@ -1943,6 +2185,7 @@
     <id>293</id>
     <type>Item</type>
     <description>Hoes can plow Dirt to prepare it for Seeds. When plowing Seeds can drop. The only difference between the hoe types is how meny uses you get out of them and how much damage they deal. Diamond Hoes have 1025 uses before they break.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="243">
     <added>0.0.9a</added>
@@ -1951,6 +2194,7 @@
     <id>294</id>
     <type>Item</type>
     <description>Hoes can plow Dirt to prepare it for Seeds. When plowing Seeds can drop. The only difference between the hoe types is how meny uses you get out of them and how much damage they deal. Gold Hoes have 33 uses before they break.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="244">
     <added>0.0.9a</added>
@@ -1959,6 +2203,7 @@
     <id>295</id>
     <type>Item</type>
     <description>Wheat Seeds can be collected by destroying Tall Grass. Wheat Seeds can only be planted in hoed areas. After a few days Wheat can be harvested.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="245">
     <added>0.0.9a</added>
@@ -1967,6 +2212,7 @@
     <id>296</id>
     <type>Item</type>
     <description>Wheat is grown by sowing Wheat Seeds. Wheats used to create Bread and Cakes. When Wheat is harvested it has a chance of droping Wheat Seeds. When holding Wheat near by animals will gather around the player. Wheat can be used on animals to make them breed.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="246">
     <added>0.0.9a</added>
@@ -1975,6 +2221,7 @@
     <id>297</id>
     <type>Item</type>
     <description>Bread is a farmable form of food. It reduces hunger by 2.5 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="247">
     <added>0.0.9a</added>
@@ -1983,6 +2230,7 @@
     <id>298</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Leather Armor can take 49 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="248">
     <added>0.0.9a</added>
@@ -1991,6 +2239,7 @@
     <id>299</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Leather Armor can take 49 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="249">
     <added>0.0.9a</added>
@@ -1999,6 +2248,7 @@
     <id>300</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Leather Armor can take 49 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="250">
     <added>0.0.9a</added>
@@ -2007,6 +2257,7 @@
     <id>301</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Leather Armor can take 49 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="251">
     <added>0.0.9a</added>
@@ -2015,6 +2266,7 @@
     <id>302</id>
     <type>Item</type>
     <description>Because Fire can not be legaly obtained it is impossible to obtain Chainmail Armor without spawning either Fire or the Chainmail Armor. While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Chainmail Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="252">
     <added>0.0.9a</added>
@@ -2023,6 +2275,7 @@
     <id>303</id>
     <type>Item</type>
     <description>Because Fire can not be legaly obtained it is impossible to obtain Chainmail Armor without spawning either Fire or the Chainmail Armor. While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Chainmail Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="253">
     <added>0.0.9a</added>
@@ -2031,6 +2284,7 @@
     <id>304</id>
     <type>Item</type>
     <description>Because Fire can not be legaly obtained it is impossible to obtain Chainmail Armor without spawning either Fire or the Chainmail Armor. While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Chainmail Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="254">
     <added>0.0.9a</added>
@@ -2039,6 +2293,7 @@
     <id>305</id>
     <type>Item</type>
     <description>Because Fire can not be legaly obtained it is impossible to obtain Chainmail Armor without spawning either Fire or the Chainmail Armor. While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Chainmail Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="255">
     <added>0.0.9a</added>
@@ -2047,6 +2302,7 @@
     <id>306</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Iron Armor can take 129 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="256">
     <added>0.0.9a</added>
@@ -2055,6 +2311,7 @@
     <id>307</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Iron Armor can take 129 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="257">
     <added>0.0.9a</added>
@@ -2063,6 +2320,7 @@
     <id>308</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Iron Armor can take 129 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="258">
     <added>0.0.9a</added>
@@ -2071,6 +2329,7 @@
     <id>309</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Iron Armor can take 129 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="259">
     <added>0.0.9a</added>
@@ -2079,6 +2338,7 @@
     <id>310</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Diamond Armor can take 385 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="260">
     <added>0.0.9a</added>
@@ -2087,6 +2347,7 @@
     <id>311</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Diamond Armor can take 385 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="261">
     <added>0.0.9a</added>
@@ -2095,6 +2356,7 @@
     <id>312</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Diamond Armor can take 385 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="262">
     <added>0.0.9a</added>
@@ -2103,6 +2365,7 @@
     <id>313</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Diamond Armor can take 385 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="263">
     <added>0.0.9a</added>
@@ -2111,6 +2374,7 @@
     <id>314</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Gold Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="264">
     <added>0.0.9a</added>
@@ -2119,6 +2383,7 @@
     <id>315</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Gold Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="265">
     <added>0.0.9a</added>
@@ -2127,6 +2392,7 @@
     <id>316</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Gold Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="266">
     <added>0.0.9a</added>
@@ -2135,6 +2401,7 @@
     <id>317</id>
     <type>Item</type>
     <description>While wearing armor you take less damage. The differences between the types of Armor is how much durability it has. Gold Armor can take 96 hits. The more the Armor is damaged the less effective it is at protecting its wearer.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="267">
     <added>0.0.9a</added>
@@ -2143,6 +2410,7 @@
     <id>318</id>
     <type>Item</type>
     <description>Flint currently has no use other than crafting Arrows and Flint and Steel.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="268">
     <added>0.0.9a</added>
@@ -2151,6 +2419,7 @@
     <id>319</id>
     <type>Item</type>
     <description>Raw Porkchop can be obtained by killing Pigs. Cooked Porkchop has a higher health gain than Raw Porkchop. It reduces hunger by 1.5 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="269">
     <added>0.0.9a</added>
@@ -2159,6 +2428,7 @@
     <id>320</id>
     <type>Item</type>
     <description>Cooked Porkchop is created by cooking Raw Porkchop in a Furnace. Cooked Porkchop has a higher health gain than Raw Porkchop. It reduces hunger by 4 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="270">
     <added>0.0.9a</added>
@@ -2167,6 +2437,7 @@
     <id>321</id>
     <type>Item</type>
     <description>Paintings are a decrative item which display artwork once placed on a wall.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="271">
     <added>0.0.9a</added>
@@ -2175,6 +2446,7 @@
     <id>322</id>
     <type>Item</type>
     <description>It reduces hunger by 2 when eaten and increases your healing rate for 5 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="272">
     <added>v1.3.1</added>
@@ -2183,6 +2455,7 @@
     <id>322:1</id>
     <type>Item</type>
     <description>It reduces hunger by 2 when eaten and increases your healing rate for 30 seconds. Gives both Fire Resistance and Resistance for a duration of 5 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="273">
     <added>v1.3.1</added>
@@ -2191,6 +2464,7 @@
     <id>323</id>
     <type>Item</type>
     <description>Signs are a decorative item that allows you to place a Sign with a custom message in the world. If you are looking at the ground when you place the Sign, it will have a pole. If you are looking at a wall when you place it, it will become a wall mounted Sign. Signs are mainly used in Multiplayer to inform other players where places are or to inform people who buildings belong to.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="274">
     <added>v1.3.1</added>
@@ -2199,6 +2473,7 @@
     <id>324</id>
     <type>Item</type>
     <description>Wooden Doors allow you to block monsters from entering your building. Clicking on a door changes its state from open to closed and visa versa. Wooden Doors can be opened/closed via Redstone Circuits.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="275">
     <added>v1.3.1</added>
@@ -2207,6 +2482,7 @@
     <id>325</id>
     <type>Item</type>
     <description>Buckets can hold either Lava, Milk or Water. To pick up Lava or Water right click on an existing block. To obtain Milk right click on a Cow. To place right click on an empty spot.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="276">
     <added>v1.3.1</added>
@@ -2215,6 +2491,7 @@
     <id>326</id>
     <type>Item</type>
     <description>Buckets can hold either Lava, Milk or Water. To pick up Lava or Water right click on an existing block. To obtain Milk right click on a Cow. To place right click on an empty spot.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="277">
     <added>v1.3.1</added>
@@ -2223,6 +2500,7 @@
     <id>327</id>
     <type>Item</type>
     <description>Buckets can hold either Lava, Milk or Water. To pick up Lava or Water right click on an existing block. To obtain Milk right click on a Cow. To place right click on an empty spot.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="278">
     <added>v1.3.1</added>
@@ -2231,6 +2509,7 @@
     <id>328</id>
     <type>Item</type>
     <description>Minecarts are a form of transportation which can carry both the player as well as animals. To ride in a Minecart you need to right click on it. Minecarts have no engine and require either gravity or a Powered Minecart to push them along a track.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="279">
     <added>v1.3.1</added>
@@ -2239,6 +2518,7 @@
     <id>329</id>
     <type>Item</type>
     <description>A Saddle allows you to ride certain mobs. Currently only Pigs are rideable. Once a Saddle is used it can not be retrieved.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="280">
     <added>v1.3.1</added>
@@ -2247,6 +2527,7 @@
     <id>330</id>
     <type>Item</type>
     <description>Iron Doors allow you to block monsters from entering your building. Clicking on an Iron Door does not change its open/closed state. The only way to open or close an iron door is via Levers, Stone Buttons, Wood Pressure Plate, Stone Pressure Plates and Redstone Torchs.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="281">
     <added>v1.3.1</added>
@@ -2255,6 +2536,7 @@
     <id>331</id>
     <type>Item</type>
     <description>Redstone Dust is droped when mining Redstone Ore. Redstone Dust does not need to be smelted to be used in crafting. Redstone Dust can be used to create Redstone Wires by placing it on the ground with Right Click.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="282">
     <added>v1.3.1</added>
@@ -2263,6 +2545,7 @@
     <id>332</id>
     <type>Item</type>
     <description>Snowballs can be obtained by destroying a Snow Block or from collecting snow from the surface of blocks using a Shovel. Snowballs can be thrown by the player, but they deal no damage. They do however push mobs back when hit.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="283">
     <added>v1.3.1</added>
@@ -2271,6 +2554,7 @@
     <id>333</id>
     <type>Item</type>
     <description>Boats allow you to travel on water at speed. If they are crashed they break and drop Sticks and Wooden Planks. To enter a Boat Right Click on it. To exit a Boat Right Click outside the Boat. You can use the movement keys to move Boats. Boats can only be used on Water.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="284">
     <added>v1.3.1</added>
@@ -2279,6 +2563,7 @@
     <id>334</id>
     <type>Item</type>
     <description>Leather is used to craft other items. It is droped by Cows.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="285">
     <added>v1.3.1</added>
@@ -2287,6 +2572,7 @@
     <id>335</id>
     <type>Item</type>
     <description>Milk can be obtained from Cows by right clicking on them while you have a Bucket equiped. Milk currently can only be used to make Cakes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="286">
     <added>v1.3.1</added>
@@ -2295,6 +2581,7 @@
     <id>336</id>
     <type>Item</type>
     <description>Clay Bricks are formed by smelting Clay in a Furnace. There only use is to create Brick.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="287">
     <added>v1.3.1</added>
@@ -2303,6 +2590,7 @@
     <id>337</id>
     <type>Item</type>
     <description>Clay is obtained by destroying Clay Blocks. Clay can be crafted back into a Clay Block or it can be turned into Clay Bricks by smelting them in a Furnace.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="288">
     <added>v1.3.1</added>
@@ -2311,6 +2599,7 @@
     <id>338</id>
     <type>Item</type>
     <description>Sugar Cane require dirt under them and water beside them. They won't grow if there is no room above them. Sugar Canes can grow to 3 blocks high. If the lowest part of the Sugar Cane is destroyed the Sugar Cane above will also be destroyed allowing for quicker harvesting.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="289">
     <added>v1.3.1</added>
@@ -2319,6 +2608,7 @@
     <id>339</id>
     <type>Item</type>
     <description>Paper currently has no use other than crafting Books.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="290">
     <added>v1.3.1</added>
@@ -2327,6 +2617,7 @@
     <id>340</id>
     <type>Item</type>
     <description>Books can be crafted into Bookcases or a Book and Quill.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="291">
     <added>v1.3.1</added>
@@ -2335,6 +2626,7 @@
     <id>341</id>
     <type>Item</type>
     <description>Slime Balls are dropped by Slimes. They currently have no use.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="292">
     <added>v1.3.1</added>
@@ -2343,6 +2635,7 @@
     <id>342</id>
     <type>Item</type>
     <description>Storage Minecarts allow you to transport items via tracks. Storage Minecarts have no engine and require either gravity or a Powered Minecart to push them along a track.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="293">
     <added>v1.3.1</added>
@@ -2351,6 +2644,7 @@
     <id>343</id>
     <type>Item</type>
     <description>Powered Minecarts can push other minecarts. They require fuel before they will work. To give a powered minecart fuel you need to equip Coal and then right click on the Powered Minecart. To get the Powered Minecart to go in a different direction, face the way you wish the Powered Minecart to go and right click on it.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="294">
     <added>v1.3.1</added>
@@ -2359,6 +2653,7 @@
     <id>344</id>
     <type>Item</type>
     <description>Eggs are dropped by Chickens randomly. They are only used in creating Cakes. When thrown (By the player or via a Dispencer) they will spawn a Chicken where they land.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="295">
     <added>v1.3.1</added>
@@ -2367,6 +2662,7 @@
     <id>345</id>
     <type>Item</type>
     <description>A Compass allways points to your spawn point. It allows you to create paths back to spawn so that if you die you will be able to get back to your buildings easily.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="296">
     <added>v1.3.1</added>
@@ -2375,6 +2671,7 @@
     <id>346</id>
     <type>Item</type>
     <description>Fishing Rods are used to catch Raw Fish. To begin fishing you need to Right Click to cast the line. When the bobber starts bobbing Right Click to reel the Raw Fish in. If you are fast enough a Raw Fish will fly out of the Water and land near you.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="297">
     <added>v1.3.1</added>
@@ -2383,6 +2680,7 @@
     <id>347</id>
     <type>Item</type>
     <description>Watches are the only way to tell the time in Minecraft. They have a picture of the sun and moon which rotates showing how much of the day or night has past.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="298">
     <added>v1.3.1</added>
@@ -2391,6 +2689,7 @@
     <id>348</id>
     <type>Item</type>
     <description>Glowstone Dust is droped by breaking Glowstone. Its only use is to create Glowstone blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="299">
     <added>0.0.9a</added>
@@ -2399,6 +2698,7 @@
     <id>349</id>
     <type>Item</type>
     <description>Raw Fish can be caught using a Fishing Rod on Water. It reduces hunger by 1 when eaten. Raw Fish can be cooked in a Furnace to produce Cooked Fish.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="300">
     <added>0.0.9a</added>
@@ -2407,6 +2707,7 @@
     <id>350</id>
     <type>Item</type>
     <description>Cooked Fish are created by cooking Raw Fish in a Furnace. It reduces hunger by 2.5 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="301">
     <added>0.0.9a</added>
@@ -2415,6 +2716,7 @@
     <id>351</id>
     <type>Item</type>
     <description>Ink Sacks can be used to Dye Sheep and Wool a Black colour. They are dropped by Squids.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="302">
     <added>0.0.9a</added>
@@ -2423,6 +2725,7 @@
     <id>351:1</id>
     <type>Item</type>
     <description>Rose Red Dye can be used to Dye Sheep and Wool a Red colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="303">
     <added>0.0.9a</added>
@@ -2431,6 +2734,7 @@
     <id>351:2</id>
     <type>Item</type>
     <description>Cactus Green Dye is made by placing Cactus in a Furnace. It can be used to dye Wool and Sheep a Green colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="304">
     <added>0.0.9a</added>
@@ -2439,6 +2743,7 @@
     <id>351:3</id>
     <type>Item</type>
     <description>Coca Beans currently are only found in Dungeons. Coca Bean can be used to Dye Sheep and Wool a Brown colour as well as make Cookies.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="305">
     <added>0.0.9a</added>
@@ -2447,6 +2752,7 @@
     <id>351:4</id>
     <type>Item</type>
     <description>Lapis Lazuli can be used to Dye Sheep and Wool a Blue colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="306">
     <added>0.0.9a</added>
@@ -2455,6 +2761,7 @@
     <id>351:5</id>
     <type>Item</type>
     <description>Purple Dye can be used to Dye Sheep and Wool a Purple colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="307">
     <added>0.0.9a</added>
@@ -2463,6 +2770,7 @@
     <id>351:6</id>
     <type>Item</type>
     <description>Cyan Dye can be used to Dye Sheep and Wool a Cyan colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="308">
     <added>0.0.9a</added>
@@ -2471,6 +2779,7 @@
     <id>351:7</id>
     <type>Item</type>
     <description>Light Gray Dye can be used to Dye Sheep and Wool a Light Gray colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="309">
     <added>0.0.9a</added>
@@ -2479,6 +2788,7 @@
     <id>351:8</id>
     <type>Item</type>
     <description>Gray Dye can be used to Dye Sheep and Wool a Gray colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="310">
     <added>0.0.9a</added>
@@ -2487,6 +2797,7 @@
     <id>351:9</id>
     <type>Item</type>
     <description>Pink Dye can be used to Dye Sheep and Wool a Pink colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="311">
     <added>0.0.9a</added>
@@ -2495,6 +2806,7 @@
     <id>351:10</id>
     <type>Item</type>
     <description>Lime Dye can be used to Dye Sheep and Wool a Lime colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="312">
     <added>0.0.9a</added>
@@ -2503,6 +2815,7 @@
     <id>351:11</id>
     <type>Item</type>
     <description>Dandelion Yellow Dye can be used to Dye Sheep and Wool a Yellow colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="313">
     <added>0.0.9a</added>
@@ -2511,6 +2824,7 @@
     <id>351:12</id>
     <type>Item</type>
     <description>Light Blue Dye can be used to Dye Sheep and Wool a Light Blue colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="314">
     <added>0.0.9a</added>
@@ -2519,6 +2833,7 @@
     <id>351:13</id>
     <type>Item</type>
     <description>Magenta Dye can be used to Dye Sheep and Wool a Magenta colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="315">
     <added>0.0.9a</added>
@@ -2527,6 +2842,7 @@
     <id>351:14</id>
     <type>Item</type>
     <description>Orange Dye can be used to Dye Sheep and Wool a Orange colour.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="316">
     <added>0.0.9a</added>
@@ -2535,6 +2851,7 @@
     <id>351:15</id>
     <type>Item</type>
     <description>Bone Meal is used in the creation of Dyes, which can then be used on Wool and Sheep. Bone Meal turns coloured Sheep to White. Bone Meal can be used on Saplings, Wheat, Grass, Red Mushrooms and Brown Mushrooms to make them grow instantly. </description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="317">
     <added>0.0.9a</added>
@@ -2543,6 +2860,7 @@
     <id>352</id>
     <type>Item</type>
     <description>Bones are dropped by Skeletons and are used to create Bone Meal. When Dirt is destroyed there is a small chance that a Bone will be dropped.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="318">
     <added>0.0.9a</added>
@@ -2551,6 +2869,7 @@
     <id>353</id>
     <type>Item</type>
     <description>Sugar's only use is in creating Cakes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="319">
     <added>0.0.9a</added>
@@ -2559,6 +2878,7 @@
     <id>354</id>
     <type>Item</type>
     <description>Cake can only be eaten once it has been placed on the ground by Right Clicking. Once placed the player can eat 6 slices of Cake which reduces hunger by 1 each time. It reduces hunger by 6 when fully consumed.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="320">
     <added>0.0.9a</added>
@@ -2567,6 +2887,7 @@
     <id>355</id>
     <type>Item</type>
     <description>Beds allow the player to sleep until the morning. They can only be used at night. In a multiplayer server only if all players are in a bed will the servers time change to morning. Sleeping in a bed changes your respawn point to the beds location.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="321">
     <added>0.0.9a</added>
@@ -2575,6 +2896,7 @@
     <id>356</id>
     <type>Item</type>
     <description>Redstone Repeater's are designed to repeat the current they recieve. They remove the need to use two not gates to extend a redstone current. They only accept input from one side.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="322">
     <added>0.0.9a</added>
@@ -2583,6 +2905,7 @@
     <id>357</id>
     <type>Item</type>
     <description>Cookies are craftable form of food. It reduces hunger by 0.5 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="323">
     <added>0.0.9a</added>
@@ -2591,6 +2914,7 @@
     <id>358</id>
     <type>Item</type>
     <description>When you hold an Empty Map it is filled in with the surrounding area and turned into a Map. Any changes players make to the world will not be reflected in your map unless you visit areas which were changed again. Maps have a limited area that they cover. You can clone Maps by crafting a filled in Map with an Empty Map.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="324">
     <added>0.0.9a</added>
@@ -2599,6 +2923,7 @@
     <id>359</id>
     <type>Item</type>
     <description>Shears allow you to obtain Wool by using them on Sheep. Using Shears on a Sheep will cause them no damage. You can also obtain Leaves, Vines and Tall Grass by using Shears on them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="325">
     <added>v1.8Beta</added>
@@ -2607,6 +2932,7 @@
     <id>360</id>
     <type>Item</type>
     <description>Melon Slices come from destroying a Melon (Block). It reduces hunger by 1 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="326">
     <added>v1.8Beta</added>
@@ -2615,6 +2941,7 @@
     <id>361</id>
     <type>Item</type>
     <description>Pumpkin Seeds can only be planted in hoed areas. After a few days they will grow into a Pumpkin Vine.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="327">
     <added>v1.8Beta</added>
@@ -2623,6 +2950,7 @@
     <id>362</id>
     <type>Item</type>
     <description>Melon Seeds can only be planted in hoed areas. After a few days they will grow into a Melon Vine.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="328">
     <added>v1.8Beta</added>
@@ -2631,6 +2959,7 @@
     <id>363</id>
     <type>Item</type>
     <description>Raw Beef can be obtained by killing Cows. Steak has a higher health gain than Raw Beef. You gain ? It reduces hunger by 1.5 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="329">
     <added>v1.8Beta</added>
@@ -2639,6 +2968,7 @@
     <id>364</id>
     <type>Item</type>
     <description>Steak is created by cooking Raw Beef in a Furnace. It reduces hunger by 4 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="330">
     <added>v1.8Beta</added>
@@ -2647,6 +2977,7 @@
     <id>365</id>
     <type>Item</type>
     <description>Raw Chicken can be obtained by killing Chickens. Cooked Chicken has a higher health gain than Raw Chicken. Raw Chicken can poison you if eaten. You gain ? It reduces hunger by 1 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="331">
     <added>v1.8Beta</added>
@@ -2655,6 +2986,7 @@
     <id>366</id>
     <type>Item</type>
     <description>Chicken Fish is created by cooking Raw Chicken in a Furnace. It reduces hunger by 3 when eaten.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="332">
     <added>v1.8Beta</added>
@@ -2663,6 +2995,7 @@
     <id>367</id>
     <type>Item</type>
     <description>It reduces hunger by 2 and poisons the player when eaten. Zombies drop rotten flesh when they die.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="333">
     <added>v1.8Beta</added>
@@ -2671,6 +3004,7 @@
     <id>368</id>
     <type>Item</type>
     <description>Right clicking while holding an Ender Pearl will transport the player to the location it is thrown to. When used it causes 5 damage to the player. They are dropped by Endermen.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="334">
     <added>v1.9Beta</added>
@@ -2679,6 +3013,7 @@
     <id>369</id>
     <type>Item</type>
     <description>Blaze Rods are dropped by Blazes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="335">
     <added>v1.9Beta</added>
@@ -2687,6 +3022,7 @@
     <id>370</id>
     <type>Item</type>
     <description>Ghast Tears are dropped by Ghasts. They are used in Brewing Potions.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="336">
     <added>v1.9Beta</added>
@@ -2695,6 +3031,7 @@
     <id>371</id>
     <type>Item</type>
     <description>Gold Nuggets are dropped by Zombie Pigmen. They can be crafted into Gold Ingots.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="337">
     <added>v1.9Beta</added>
@@ -2703,6 +3040,7 @@
     <id>372</id>
     <type>Item</type>
     <description>Nether Wart Seeds can only be planted on Soul Sand. After a few days Nether Warts can be harvested. When a Nether Wart is harvested it has a chance of droping Nether Wart Seeds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="338">
     <added>v1.9Beta</added>
@@ -2711,6 +3049,7 @@
     <id>373</id>
     <type>Item</type>
     <description>Water Bottles can be used to create potions. You can create a Water Bottle by using a Glass Bottle on Water. You can create potions using a Brewing Stand. See Brewing for a list of recipies.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="339">
     <added>v1.9Beta</added>
@@ -2719,6 +3058,7 @@
     <id>373:16</id>
     <type>Potion</type>
     <description>Awkward Potion is a base potion. It has no use by its self but can be used to craft other potions.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="340">
     <added>v1.9Beta</added>
@@ -2727,6 +3067,7 @@
     <id>373:32</id>
     <type>Potion</type>
     <description>Thick Potion is a base potion. It has no use by its self but can be used to craft other potions.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="341">
     <added>v1.9Beta</added>
@@ -2735,6 +3076,7 @@
     <id>373:64</id>
     <type>Potion</type>
     <description>Mundane Potion is a base potion. It has no use by its self but can be used to craft other potions.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="342">
     <added>v1.9Beta</added>
@@ -2743,6 +3085,7 @@
     <id>373:8193</id>
     <type>Potion</type>
     <description>Regeneration Potion increases you regeneration rate for 45 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="343">
     <added>v1.9Beta</added>
@@ -2751,6 +3094,7 @@
     <id>373:8194</id>
     <type>Potion</type>
     <description>When consumed Swiftness Potion (3:00) will make the player move faster and jump further for 3 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="344">
     <added>v1.9Beta</added>
@@ -2759,6 +3103,7 @@
     <id>373:8195</id>
     <type>Potion</type>
     <description>Fire Resistance Potions protect you from taking Fire and Lava damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="345">
     <added>v1.9Beta</added>
@@ -2767,6 +3112,7 @@
     <id>373:8196</id>
     <type>Potion</type>
     <description>When consumed Poison Potion (0:45) will poison the player for 45 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="346">
     <added>v1.9Beta</added>
@@ -2775,6 +3121,7 @@
     <id>373:8197</id>
     <type>Potion</type>
     <description>When consumed Healing Potion will heal the player by 3 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="347">
     <added>v1.4.2</added>
@@ -2783,6 +3130,7 @@
     <id>373:8198</id>
     <type>Potion</type>
     <description>When consumed Night Vision will give the player Night Vision.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="348">
     <added>v1.9Beta</added>
@@ -2791,6 +3139,7 @@
     <id>373:8200</id>
     <type>Potion</type>
     <description>When consumed Weakness Potion (1:30) will make the players attacks less powerful for 1 minute 30 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="349">
     <added>v1.9Beta</added>
@@ -2799,6 +3148,7 @@
     <id>373:8201</id>
     <type>Potion</type>
     <description>When consumed Strength Potion (3:00) will make the players attacks stronger for 3 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="350">
     <added>v1.9Beta</added>
@@ -2807,6 +3157,7 @@
     <id>373:8202</id>
     <type>Potion</type>
     <description>When consumed Slowness Potion (1:30) will make the player move slower and jump shorter for 1 minute 30 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="351">
     <added>v1.9Beta</added>
@@ -2815,6 +3166,7 @@
     <id>373:8204</id>
     <type>Potion</type>
     <description>When consumed Harming Potion will damage the player by 3 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="352">
     <added>v1.4.2</added>
@@ -2823,6 +3175,7 @@
     <id>373:8206</id>
     <type>Potion</type>
     <description>When consumed Invisibility Potion will make the player invisible.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="353">
     <added>v1.9Beta</added>
@@ -2831,6 +3184,7 @@
     <id>373:8225</id>
     <type>Potion</type>
     <description>Regeneration Potion increases you regeneration rate for 22 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="354">
     <added>v1.9Beta</added>
@@ -2839,6 +3193,7 @@
     <id>373:8226</id>
     <type>Potion</type>
     <description>When consumed Swiftness Potion II (1:30) will make the player move faster and jump further for 1 minute 30 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="355">
     <added>v1.9Beta</added>
@@ -2847,6 +3202,7 @@
     <id>373:8228</id>
     <type>Potion</type>
     <description>When consumed Poison Potion (0:22) will poison the player for 22 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="356">
     <added>v1.9Beta</added>
@@ -2855,6 +3211,7 @@
     <id>373:8229</id>
     <type>Potion</type>
     <description>When consumed Healing Potion II will heal the player by 6 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="357">
     <added>v1.9Beta</added>
@@ -2863,6 +3220,7 @@
     <id>373:8233</id>
     <type>Potion</type>
     <description>When consumed Strength Potion II (1:30) will make the players attacks stronger for 1 minute 30 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="358">
     <added>v1.9Beta</added>
@@ -2871,6 +3229,7 @@
     <id>373:8236</id>
     <type>Potion</type>
     <description>When consumed Harming Potion II will damage the player by 6 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="359">
     <added>v1.9Beta</added>
@@ -2879,6 +3238,7 @@
     <id>373:8257</id>
     <type>Potion</type>
     <description>Regeneration Potion increases you regeneration rate for 2 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="360">
     <added>v1.9Beta</added>
@@ -2887,6 +3247,7 @@
     <id>373:8258</id>
     <type>Potion</type>
     <description>When consumed Swiftness Potion (8:00) will make the player move faster and jump further for 8 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="361">
     <added>v1.9Beta</added>
@@ -2895,6 +3256,7 @@
     <id>373:8259</id>
     <type>Potion</type>
     <description>Fire Resistance Potions protect you from taking Fire and Lava damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="362">
     <added>v1.9Beta</added>
@@ -2903,6 +3265,7 @@
     <id>373:8260</id>
     <type>Potion</type>
     <description>When consumed Poison Potion (2:00) will poison the player for 2 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="363">
     <added>v1.4.2</added>
@@ -2911,6 +3274,7 @@
     <id>373:8262</id>
     <type>Potion</type>
     <description>When consumed Night Vision will give the player Night Vision.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="364">
     <added>v1.9Beta</added>
@@ -2919,6 +3283,7 @@
     <id>373:8264</id>
     <type>Potion</type>
     <description>When consumed Weakness Potion (4:00) will make the players attacks less powerful for 4 minute 0 seconds.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="365">
     <added>v1.9Beta</added>
@@ -2927,6 +3292,7 @@
     <id>373:8265</id>
     <type>Potion</type>
     <description>When consumed Strength Potion (8:00) will make the players attacks stronger for 8 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="366">
     <added>v1.9Beta</added>
@@ -2935,6 +3301,7 @@
     <id>373:8266</id>
     <type>Potion</type>
     <description>When consumed Slowness Potion (4:00) will make the player move slower and jump shorter for 4 minutes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="367">
     <added>v1.4.2</added>
@@ -2943,6 +3310,7 @@
     <id>373:8270</id>
     <type>Potion</type>
     <description>When consumed Invisibility Potion will make the player invisible.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="368">
     <added>v1.0</added>
@@ -2951,6 +3319,7 @@
     <id>373:16385</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Regeneration Splash Potions will increases the regeneration rate of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="369">
     <added>v1.0</added>
@@ -2959,6 +3328,7 @@
     <id>373:16386</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Swiftness Splash Potions will increase the speed and jump distance of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="370">
     <added>v1.0</added>
@@ -2967,6 +3337,7 @@
     <id>373:16387</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Fire Resistance Splash Potions protect anything they cover from taking Fire and Lava damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="371">
     <added>v1.0</added>
@@ -2975,6 +3346,7 @@
     <id>373:16388</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Poison Splash Potions will poison anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="372">
     <added>v1.0</added>
@@ -2983,6 +3355,7 @@
     <id>373:16389</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Healing Splash Potions will heal anything they cover by 2 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="373">
     <added>v1.4.2</added>
@@ -2991,6 +3364,7 @@
     <id>373:16390</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Invisibility Splash Potions will give anything they cover Night Vision.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="374">
     <added>v1.0</added>
@@ -2999,6 +3373,7 @@
     <id>373:16392</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Weakness Splash Potions will decrease the attack damage of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="375">
     <added>v1.0</added>
@@ -3007,6 +3382,7 @@
     <id>373:16393</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Strength Splash Potions will increase the attack damage of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="376">
     <added>v1.0</added>
@@ -3015,6 +3391,7 @@
     <id>373:16394</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Slowness Splash Potions will reduce the speed and jump distance of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="377">
     <added>v1.0</added>
@@ -3023,6 +3400,7 @@
     <id>373:16396</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Harming Splash Potions will damage anything they cover by 2 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="378">
     <added>v1.4.2</added>
@@ -3031,6 +3409,7 @@
     <id>373:16398</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Invisibility Splash Potions will make anything they cover invisible.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="379">
     <added>v1.0</added>
@@ -3039,6 +3418,7 @@
     <id>373:16417</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Regeneration Splash Potions will increases the regeneration rate of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="380">
     <added>v1.0</added>
@@ -3047,6 +3427,7 @@
     <id>373:16418</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Swiftness Splash Potions will increase the speed and jump distance of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="381">
     <added>v1.0</added>
@@ -3055,6 +3436,7 @@
     <id>373:16420</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Poison Splash Potions will poison anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="382">
     <added>v1.0</added>
@@ -3063,6 +3445,7 @@
     <id>373:16421</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Healing Splash Potions will heal anything they cover by 4 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="383">
     <added>v1.0</added>
@@ -3071,6 +3454,7 @@
     <id>373:16425</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Strength Splash Potions will increase the attack damage of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="384">
     <added>v1.0</added>
@@ -3079,6 +3463,7 @@
     <id>373:16428</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Harming Splash Potion II's will damage anything they cover by 4 hearts.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="385">
     <added>v1.0</added>
@@ -3087,6 +3472,7 @@
     <id>373:16449</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Regeneration Splash Potions will increases the regeneration rate of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="386">
     <added>v1.0</added>
@@ -3095,6 +3481,7 @@
     <id>373:16450</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Swiftness Splash Potions will increase the speed and jump distance of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="387">
     <added>v1.0</added>
@@ -3103,6 +3490,7 @@
     <id>373:16451</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Fire Resistance Splash Potions protect anything they cover from taking Fire and Lava damage.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="388">
     <added>v1.0</added>
@@ -3111,6 +3499,7 @@
     <id>373:16452</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Poison Splash Potions will poison anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="389">
     <added>v1.4.2</added>
@@ -3119,6 +3508,7 @@
     <id>373:16454</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Invisibility Splash Potions will give anything they cover Night Vision.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="390">
     <added>v1.0</added>
@@ -3127,6 +3517,7 @@
     <id>373:16456</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Weakness Splash Potions will decrease the attack damage of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="391">
     <added>v1.0</added>
@@ -3135,6 +3526,7 @@
     <id>373:16457</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Strength Splash Potions will increase the attack damage of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="392">
     <added>v1.0</added>
@@ -3143,6 +3535,7 @@
     <id>373:16458</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Slowness Splash Potions will reduce the speed and jump distance of anything they cover.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="393">
     <added>v1.4.2</added>
@@ -3151,6 +3544,7 @@
     <id>373:16462</id>
     <type>Potion</type>
     <description>Splash Potions break when thrown and cover players/mobs with there contents. Invisibility Splash Potions will make anything they cover invisible.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="394">
     <added>v1.9Beta</added>
@@ -3159,6 +3553,7 @@
     <id>374</id>
     <type>Item</type>
     <description>Glass Bottles are used in crafting Potions. You can create a Water Bottle by using it on Water.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="395">
     <added>v1.9Beta</added>
@@ -3167,6 +3562,7 @@
     <id>375</id>
     <type>Item</type>
     <description>Spider Eyes have a chance of dropping when a Cave Spider or Spider dies. When eaten they poison the player.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="396">
     <added>v1.9Beta</added>
@@ -3175,6 +3571,7 @@
     <id>376</id>
     <type>Item</type>
     <description>Fermented Spider Eyes are used in Brewing Potions.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="397">
     <added>v1.9Beta</added>
@@ -3183,6 +3580,7 @@
     <id>377</id>
     <type>Item</type>
     <description>Blaze Powder can be used to craft other items.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="398">
     <added>v1.9Beta</added>
@@ -3191,6 +3589,7 @@
     <id>378</id>
     <type>Item</type>
     <description>Magma Cream is used in Brewing Potions.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="399">
     <added>v1.9Beta</added>
@@ -3199,6 +3598,7 @@
     <id>379</id>
     <type>Item</type>
     <description>Brewing Stands allow you to create different types of Poitions. To use a Brewing Stand Right Click on it. See Brewing for a list of potion recipes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="400">
     <added>v1.9Beta</added>
@@ -3207,6 +3607,7 @@
     <id>380</id>
     <type>Item</type>
     <description>Cauldron's can hold Water, allowing you to bring Water to The Nether.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="401">
     <added>v1.9Beta</added>
@@ -3215,6 +3616,7 @@
     <id>381</id>
     <type>Item</type>
     <description>Eye of Ender's can be used to repair End Portal Frame Blocks.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="402">
     <added>v1.9Beta</added>
@@ -3223,6 +3625,7 @@
     <id>382</id>
     <type>Item</type>
     <description>Glistering Melon (Slice)'s can be used to make Healing Potions.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="403">
     <added>v1.2</added>
@@ -3231,6 +3634,7 @@
     <id>383:50</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="404">
     <added>v1.2</added>
@@ -3239,6 +3643,7 @@
     <id>383:51</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="405">
     <added>v1.2</added>
@@ -3247,6 +3652,7 @@
     <id>383:52</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="406">
     <added>v1.2</added>
@@ -3255,6 +3661,7 @@
     <id>383:54</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="407">
     <added>v1.2</added>
@@ -3263,6 +3670,7 @@
     <id>383:55</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="408">
     <added>v1.2</added>
@@ -3271,6 +3679,7 @@
     <id>383:56</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="409">
     <added>v1.2</added>
@@ -3279,6 +3688,7 @@
     <id>383:57</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="410">
     <added>v1.2</added>
@@ -3287,6 +3697,7 @@
     <id>383:58</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="411">
     <added>v1.2</added>
@@ -3295,6 +3706,7 @@
     <id>383:59</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="412">
     <added>v1.2</added>
@@ -3303,6 +3715,7 @@
     <id>383:60</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="413">
     <added>v1.2</added>
@@ -3311,6 +3724,7 @@
     <id>383:61</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="414">
     <added>v1.2</added>
@@ -3319,6 +3733,7 @@
     <id>383:62</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="415">
     <added>v1.4.2</added>
@@ -3327,6 +3742,7 @@
     <id>383:65</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="416">
     <added>v1.4.2</added>
@@ -3335,6 +3751,7 @@
     <id>383:66</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="417">
     <added>v1.2</added>
@@ -3343,6 +3760,7 @@
     <id>383:90</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="418">
     <added>v1.2</added>
@@ -3351,6 +3769,7 @@
     <id>383:91</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="419">
     <added>v1.2</added>
@@ -3359,6 +3778,7 @@
     <id>383:92</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="420">
     <added>v1.2</added>
@@ -3367,6 +3787,7 @@
     <id>383:93</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="421">
     <added>v1.2</added>
@@ -3375,6 +3796,7 @@
     <id>383:94</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="422">
     <added>v1.2</added>
@@ -3383,6 +3805,7 @@
     <id>383:95</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="423">
     <added>v1.2</added>
@@ -3391,6 +3814,7 @@
     <id>383:96</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="424">
     <added>v1.2</added>
@@ -3399,6 +3823,7 @@
     <id>383:98</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="425">
     <added>v1.2</added>
@@ -3407,6 +3832,7 @@
     <id>383:120</id>
     <type>Item</type>
     <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="426">
     <added>v1.2</added>
@@ -3415,6 +3841,7 @@
     <id>384</id>
     <type>Item</type>
     <description>Bottle of Enchanting's act like a splash potion. When dropped they spawn Experience Orbs which can be collected by players.</description>
+    <spawnonly>1</spawnonly>
   </item>
   <item ItemNumber="427">
     <added>v1.2</added>
@@ -3423,6 +3850,7 @@
     <id>385</id>
     <type>Item</type>
     <description>Fire Charge's can be used in Dispencers to fire Blaze like fireballs, like a Blazes fireball they will travel in a straight line until they hit something. They can also be used like Flint and Steel but are destroyed after only one use.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="428">
     <added>v1.3.1</added>
@@ -3431,6 +3859,7 @@
     <id>386</id>
     <type>Item</type>
     <description>The Book and Quill allow players to write there own books.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="429">
     <added>v1.3.1</added>
@@ -3439,6 +3868,7 @@
     <id>387</id>
     <type>Item</type>
     <description>Written Books are player created books. They are created when a Book and Quill is signed and can not be edited.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="430">
     <added>v1.3.1</added>
@@ -3447,6 +3877,7 @@
     <id>388</id>
     <type>Item</type>
     <description>Emeralds is dropped when mining Emerald Ore. They are used in Trading with villagers.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="431">
     <added>v1.4.2</added>
@@ -3455,6 +3886,7 @@
     <id>389</id>
     <type>Item</type>
     <description>Item Frames are like Paintings but they can hold an object inside of them. You can place most of the items/blocks in the game into an Item Frame such as Maps, Weapons, Etc.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="432">
     <added>v1.4.2</added>
@@ -3463,6 +3895,7 @@
     <id>390</id>
     <type>Item</type>
     <description>Flower Pots are a decorative item which can hold plants.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="433">
     <added>v1.4.2</added>
@@ -3471,6 +3904,7 @@
     <id>391</id>
     <type>Item</type>
     <description>Carrots are grown by sowing Carrots on Farmland. When Carrots are harvested they will drop one or more Carrots. Carrots can be obtained by killing Zombies.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="434">
     <added>v1.4.2</added>
@@ -3479,6 +3913,7 @@
     <id>392</id>
     <type>Item</type>
     <description>Potatoes are grown by sowing Potatoes on Farmland. Potatoes can be cooked into Baked Potatoes. When Potatoes are harvested they will drop one or more Potatoes and have a chance of dropping Poisonous Potatoes. Potatoes can be obtained by killing Zombies.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="435">
     <added>v1.4.2</added>
@@ -3487,6 +3922,7 @@
     <id>393</id>
     <type>Item</type>
     <description>Baked Potatoes reduce the players hunger more than Potatoes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="436">
     <added>v1.4.2</added>
@@ -3495,6 +3931,7 @@
     <id>394</id>
     <type>Item</type>
     <description>Poisonous Potatoes will poison the player on consumption. They are obtained when harvesting Potatoes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="437">
     <added>v1.4.2</added>
@@ -3503,6 +3940,7 @@
     <id>395</id>
     <type>Item</type>
     <description>When you hold an Empty Map it is filled in with the surrounding area and turned into a Map. Any changes players make to the world will not be reflected in your map unless you visit areas which were changed again. Maps have a limited area that they cover. You can clone Maps by crafting a filled in Map with an Empty Map.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="438">
     <added>v1.4.2</added>
@@ -3511,6 +3949,7 @@
     <id>396</id>
     <type>Item</type>
     <description>Golden Carrots main use is creating Night Vision Potions but can be eaten to reduce hunger by 3.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="439">
     <added>v1.4.2</added>
@@ -3519,6 +3958,7 @@
     <id>397</id>
     <type>Block</type>
     <description>A decorative Skeleton Head which can be placed or used as a helmet.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="440">
     <added>v1.4.2</added>
@@ -3527,6 +3967,7 @@
     <id>397:1</id>
     <type>Block</type>
     <description>A decorative Wither Head which can be placed or used as a helmet.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="441">
     <added>v1.4.2</added>
@@ -3535,6 +3976,7 @@
     <id>397:2</id>
     <type>Block</type>
     <description>A decorative Zombie Head which can be placed or used as a helmet.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="442">
     <added>v1.4.2</added>
@@ -3543,6 +3985,7 @@
     <id>397:3</id>
     <type>Block</type>
     <description>A decorative Steve Head which can be placed or used as a helmet.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="443">
     <added>v1.4.2</added>
@@ -3551,6 +3994,7 @@
     <id>397:4</id>
     <type>Block</type>
     <description>A decorative Creeper Head which can be placed or used as a helmet.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="444">
     <added>v1.4.2</added>
@@ -3559,6 +4003,7 @@
     <id>398</id>
     <type>Item</type>
     <description>Carrot on a Stick allows you to control a Pig which is equiped with a Saddle.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="445">
     <added>v1.4.2</added>
@@ -3567,6 +4012,7 @@
     <id>399</id>
     <type>Item</type>
     <description></description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="446">
     <added>v1.4.2</added>
@@ -3575,6 +4021,7 @@
     <id>400</id>
     <type>Item</type>
     <description>Pumpkin Pies reduce your hunger by 4 when eaten. Pumpkin Pies can be stacked.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="447">
     <added>v1.4.6</added>
@@ -3583,6 +4030,7 @@
     <id>401</id>
     <type>Item</type>
     <description>Firework Rockets can be activated by holding them and Right Clicking on the ground. They can also be used in Dispencers. When activated they will fire into the sky and explode. Different Firework Stars produce different effects. Firework Rockets can be made with either 1, 2 or 3 Gunpowder depending on how high you want the rocket to go before it explodes.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="448">
     <added>v1.4.6</added>
@@ -3591,6 +4039,7 @@
     <id>402</id>
     <type>Item</type>
     <description>Firework Stars control what effects happen when a Firework Rocket explodes. Diamond Gems can be added to the Firework Stars recipe to add a Trail effect to them and Glowstone can be added to add a Twinkle effect to them.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="449">
     <added>v1.4.6</added>
@@ -3599,6 +4048,7 @@
     <id>403</id>
     <type>Item</type>
     <description>Enchanted Books are created by using a Book in an Enchantment Table. You can then use them in an Anvil to apply enchantments.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="450">
     <added>v1.4.6</added>
@@ -3607,6 +4057,7 @@
     <id>2256</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="451">
     <added>v1.4.6</added>
@@ -3615,6 +4066,7 @@
     <id>2257</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="452">
     <added>v1.9Beta</added>
@@ -3623,6 +4075,7 @@
     <id>2258</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="453">
     <added>v1.9Beta</added>
@@ -3631,6 +4084,7 @@
     <id>2259</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="454">
     <added>v1.9Beta</added>
@@ -3639,6 +4093,7 @@
     <id>2260</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="455">
     <added>v1.9Beta</added>
@@ -3647,6 +4102,7 @@
     <id>2261</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="456">
     <added>v1.9Beta</added>
@@ -3655,6 +4111,7 @@
     <id>2262</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="457">
     <added>v1.9Beta</added>
@@ -3663,6 +4120,7 @@
     <id>2263</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="458">
     <added>v1.9Beta</added>
@@ -3671,6 +4129,7 @@
     <id>2264</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="459">
     <added>v1.9Beta</added>
@@ -3679,6 +4138,7 @@
     <id>2265</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="460">
     <added>v1.9Beta</added>
@@ -3687,6 +4147,7 @@
     <id>2266</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
   <item ItemNumber="461">
     <added>v1.4.2</added>
@@ -3695,5 +4156,6 @@
     <id>2267</id>
     <type>Item</type>
     <description>Music Disks are droped when a Skeleton kills a Creeper with its Arrows. They can also be found in dungeons. To use a Music Disk you need to put them in a Jukebox.</description>
+    <spawnonly>0</spawnonly>
   </item>
 </items>
