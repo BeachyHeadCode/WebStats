@@ -1,14 +1,11 @@
 <?php
-
-if (!isset($_GET['search'])){$_GET['search'] = 'ORDER BY player ASC';}
-else{$_GET['search'] = 'ORDER BY value DESC';}
-
-$item = $_GET['material'];
-$item_image = $_GET['material'];
-$item_image = str_replace(":", "-", $item_image);
-$item = str_replace("-", ":", $item);					
+	if (!isset($_GET['search'])) {$_GET['search'] = 'ORDER BY player ASC';
+	} else {$_GET['search'] = 'ORDER BY value DESC';}
+	$item = $_GET['material'];
+	$item_image = $_GET['material'];
+	$item_image = str_replace(":", "-", $item_image);
+	$item = str_replace("-", ":", $item);					
 ?>
-                        
 <article class="content_maintable_stats">
 	<section class="twelve columns centered content_headline">
 		<b>
@@ -25,7 +22,6 @@ $item = str_replace("-", ":", $item);
 		}
 		?>
 	</div>
-
 		<section class="twelve columns centered content_headline">
 			<a href="index.php?mode=material-stats&material=<?php echo $item; ?>" <?php echo (hover);?> ><?php echo translate('var1');?></a> - <a href="index.php?mode=material-stats&search=true&material=<?php echo $item;?>" <?php echo (hover);?>><?php echo translate('var2'); ?></a>
 		</section>
@@ -53,7 +49,7 @@ function addItemInfo(callback) {
 		success: function(xml) {	
 			$(xml).find('item').each(function() {
 				var item = getValue(this, 'id')
-				if(item == <?php echo $item; ?>){
+				if(item == "<?php echo $item; ?>"){
 					addItem(getValue(this, 'description'),
 							  getValue(this, 'added'),
 							  getValue(this, 'type'));

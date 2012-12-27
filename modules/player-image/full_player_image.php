@@ -1,5 +1,5 @@
 <?php 
-include("../../config/config.php");
+include_once "../../config/config.php";
 define("ROOT", "../../");
 ?>
 <!--
@@ -29,10 +29,11 @@ Add &webgl to render in webgl
 
 <body background="images/player_bg.png">
 
-<div id="top">
-click + drag model<br/>
-to change view
-</div>
+	<div id="top">
+	click + drag model<br/>
+	to change view
+	</div>
+
 <script type="text/javascript">
   var container, info;
   var camera, scene, renderer;
