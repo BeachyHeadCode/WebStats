@@ -33,10 +33,10 @@ if(iptracker === true) {
 	$country = $locations['regionName'];
 	$countrycode = $locations['countryCode'];
 	$city = $locations['cityName'];
-	$ip=$_SERVER['REMOTE_ADDR'];
-	$hostname=$_SERVER['REMOTE_HOST'];
-	$referer=$_SERVER['HTTP_REFERER'];
-	$pageurl=curPageURL();
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$hostname = $_SERVER['REMOTE_HOST'];
+	$referer = $_SERVER['HTTP_REFERER'];
+	$pageurl = curPageURL();
 	$today = date("D M j G:i:s T Y");
 	$hostname=gethostbyaddr($_SERVER['REMOTE_ADDR']);
 	$result="SELECT * FROM stats WHERE IP='$ip'";
@@ -53,7 +53,7 @@ if(iptracker === true) {
 
 	$query = mysql_query("SELECT * FROM `stats` WHERE IP='$ip'");
 	$field = mysql_fetch_array($query);
-if(!isset($field[IP])){if(is_bot()){$bot=1;}else{$bot=0;}
+if(!isset($field[IP])) { if(is_bot()) {$bot=1;} else {$bot=0;}
 		$data="INSERT INTO stats (IP, hostname, location, referer, pageurl, date, bot, country, countrycode, city, online) VALUES ('$ip', '$hostname', '$location', '$referer', '$pageurl', '$today', '$bot', '$country', '$countrycode', '$city', '0')";
 		if (!mysql_query($data)){
 			if(mysql_query("CREATE TABLE IF NOT EXISTS `stats` (

@@ -28,19 +28,8 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 
 <h3>To-Do:</h3>
 <ul>
-	<strike><li>Fix McMMO</li></strike>
-	<strike><li>3d player option*have the code just need to install it</li></strike>
-	<strike><li>Add McMMO To Profile Page</li></strike>
-	<strike><li>Add Install Page For Setting Up config Info.</li></strike>
 	<strike><li>Option for Photo "banner reload" with server online stats.</li></strike>
-	<strike><li>Add style to the pages. ~It Is Close Enough</li></strike>
-	<strike><li>Fix Some PHP Code Problems(FIXED ALL SEARCH ENGINES) and (MATERIAL PAGE)</li></strike>
-	<strike><li>Add Jail Support</li></strike>
-	<strike><li>Add PermisionsEX Support</li></strike>
-	<strike><li>Finish Crafting Pages</li></strike>
-	<strike><li>Finish Brewing Pages</li></strike>
-	<strike><li>Admin Page</li></strike>
-	<li>Add Smelting Pages</li>
+	<strike><li>Add style to the pages.</li></strike>
 	<li>Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement</li>
 	<li>Add Rest Of ID's and Add The Extra ID's To Main ID's Page example ( 15:1 15:2 goes onto 15 page)</li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/inventorysql/">InventorySQL</a> ~ <a href="https://github.com/ThisIsAreku/InventorySQL">GitHub</a></li>

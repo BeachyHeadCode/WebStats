@@ -9,10 +9,10 @@
 	 * GitHub: https://github.com/xPaw/PHP-Minecraft-Query
 	 */
 	
-	function QueryMinecraft( $IP, $Port = 25565, $Timeout = 2 )
-	{
+	function QueryMinecraft( $IP, $Port = 25565, $Timeout = 2 ) {
 		$Socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		Socket_Set_Option( $Socket, SOL_SOCKET, SO_SNDTIMEO, array( 'sec' => (int)$Timeout, 'usec' => 0 ) );
+		Socket_Set_Option( $Socket, SOL_SOCKET, SO_RCVTIMEO, array( 'sec' => (int)$Timeout, 'usec' => 0 ) );
 		
 		if( $Socket === FALSE || @Socket_Connect( $Socket, $IP, (int)$Port ) === FALSE )
 		{

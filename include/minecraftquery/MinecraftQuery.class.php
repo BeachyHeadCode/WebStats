@@ -1,11 +1,9 @@
 <?php
-class MinecraftQueryException extends Exception
-{
+class MinecraftQueryException extends Exception {
 	// Exception thrown by MinecraftQuery class
 }
 
-class MinecraftQuery
-{
+class MinecraftQuery {
 	/*
 	 * Class written by xPaw
 	 *

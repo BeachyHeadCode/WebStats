@@ -106,26 +106,34 @@ function ws_check_php_mysql_versions() {
 		die('Your PHP installation appears to be missing the MySQL extension which is required by WebStats.');
 	}
 }
-
+/**
+ * Sets the current page url
+ */
 function curPageURL() {
-$pageURL = 'http';
-if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-	$pageURL .= "://";
-if ($_SERVER["SERVER_PORT"] != "80")
-	$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-else
-	$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-return $pageURL;
+	$pageURL = 'http';
+	if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		$pageURL .= "://";
+	if ($_SERVER["SERVER_PORT"] != "80")
+		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+	else
+		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+	return $pageURL;
 }
+/**
+ * Sets the current page url
+ *
+ * From the admin page.
+ *
+ */
 function adminPageURL() {
-$pageURL = 'http';
-if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-	$pageURL .= "://";
-if ($_SERVER["SERVER_PORT"] != "80")
-	$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"]."/admin";
-else
-	$pageURL .= $_SERVER["SERVER_NAME"]."/admin";
-return $pageURL;
+	$pageURL = 'http';
+	if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		$pageURL .= "://";
+	if ($_SERVER["SERVER_PORT"] != "80")
+		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"]."/admin";
+	else
+		$pageURL .= $_SERVER["SERVER_NAME"]."/admin";
+	return $pageURL;
 }
 class DBConfig {
 	var $host; var $user; var $pass; var $db; var $db_link; var $conn = false; var $persistant = false; public $error = false;
@@ -220,14 +228,28 @@ class DBConfig {
 		}
 	}
 }
-/* Sets The Date */
+/**
+ * Sets The Date.
+ *
+ * @since 3.0
+ *
+ * @param integer $stamp Amount of items.
+ */
 function get_date($stamp) {
 	setlocale(LC_TIME, "de_DE");
 	$datum = date ("d. M 'y", $stamp);
 	return $datum;
 }
-/* Gets Online/Offline Status of The Player
-Sets the page numbers */
+
+/**
+ * Sets the page numbers.
+ *
+ * @since 3.0
+ *
+ * @param integer $numbers Amount of items.
+ * @param string $mode Page viewed from to set href links.
+ * @param string $sort Optional viewing control behavior to keep the way of sort.
+ */
 function get_pages($numbers, $mode, $sort) {	
 	$setamount = WS_CONFIG_PAGENUM;
 	$numberofpages = array(25, 35, 45, 50, 75, 100);
@@ -237,41 +259,33 @@ function get_pages($numbers, $mode, $sort) {
 		else 
 			$dropdown .= "<option value='".$numberofpages[$i]."'>".$numberofpages[$i]."</option>";
 	}	
-	$output =	'<div style="margin:auto;" align="center">
-	<form class="custom" method="post" action="">	
-		<select onchange="this.form.submit();" style="display:none;" id="customDropdown" class="select2" title="Number of items per page" name="page[numbers]">
+	$output = '<div style="margin:auto;" align="center"><form class="custom" method="post" action=""><select onchange="this.form.submit();" style="display:none;" id="customDropdown" class="select2" title="Number of items per page" name="page[numbers]">
 '.$dropdownselected.$dropdown.'</select>';
-	if(isset($_SESSION['page']['numbers'])){
+	if(isset($_SESSION['page']['numbers'])) {
 		$numbers = $numbers / $_SESSION['page']['numbers'];
-	}
-	else{
-		if(isset($setamount)){
+	} else {
+		if(isset($setamount)) {
 			$numbers = $numbers / $setamount;
-		}
-		else{
+		} else {
 			$numbers = $numbers / 25;
 		}
 	}
 	$output .= '<table class="pagination"><tbody><tr valign="top">';
-		if(isset($_GET["page"])){
-			
-			if(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)){
-				
-				if($_GET["page"]==1){
+		if(isset($_GET["page"])) {
+			if(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)) {
+				if($_GET["page"]==1) {
 					$pages = '<td style="margin-left:50px;" class="arrow unavailable"><a href="">&laquo;</a></td>';
 					$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-				}
-				else{
+				} else {
 					$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
 					$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				}
 				if($numbers >= 10){
 					for($i=1; $i < 10; $i++){
 						$page = $i + 1;
-						if($_GET["page"]==$page){
+						if($_GET["page"]==$page) {
 							$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-						}
-						else{
+						} else {
 							$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 					}
@@ -281,20 +295,17 @@ function get_pages($numbers, $mode, $sort) {
 						$page = $i + 1;
 						if($_GET["page"]==$page){
 							$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-						}
-						else{
+						} else {
 							$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 					}
 				}
 				if($_GET["page"] < $numbers){
 					$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
-				}
-				else{
+				} else {
 					$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
 				}
-			}
-			elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))){
+			} elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))) {
 				$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
 				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
@@ -302,16 +313,14 @@ function get_pages($numbers, $mode, $sort) {
 					$page = $i + 1;
 					if($_GET["page"]==$page){
 						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
+					} else {
 						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
 				$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></td>';
 				$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
-			}
-			elseif($_GET["page"] == $numbers){
+			} elseif($_GET["page"] == $numbers) {
 				$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
 				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
@@ -319,8 +328,7 @@ function get_pages($numbers, $mode, $sort) {
 					$page = $i + 1;
 					if($_GET["page"]==$page){
 						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
+					} else {
 						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
@@ -330,21 +338,17 @@ function get_pages($numbers, $mode, $sort) {
 				$pages = '<td class="arrow"><a href="">&laquo;</a></td>';
 				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
-				for($i=($_GET["page"]-5); $i < $numbers; $i++)
-				{
-					$page = $i + 1;
-					
+				for($i=($_GET["page"]-5); $i < $numbers; $i++) {
+					$page = $i + 1;	
 					if($_GET["page"]==$page){
 						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
+					} else {
 						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
 				$pages .='<td class="arrow"><a href="">&raquo;</a></td>';
 			}
-		}
-		else{
+		} else {
 			$pages = '<td class="arrow unavailable"><a href="">&laquo;</a></td>';
 			$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 			if($numbers >= 10){
@@ -352,13 +356,11 @@ function get_pages($numbers, $mode, $sort) {
 					$page = $i + 1;
 					if(1==$page){
 						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
-					}
-					else{
+					} else {
 						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
-			}
-			else{
+			} else {
 				for($i=1; $i <= $numbers; $i++){
 					$page = $i + 1;
 					$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
@@ -369,7 +371,14 @@ function get_pages($numbers, $mode, $sort) {
     $output .= $pages.'</tr></tbody></table></form></div>';
 	return $output;
 }
-function get_status($player){
+/**
+ * This function will check whether the player is online or not.
+ *
+ * @since 3.0
+ *
+ * @param string $player Player name.
+ */
+function get_status($player) {
 	$logout = get_amount($player, "lastlogout", "stats");
 	$login = get_amount($player, "lastlogin", "stats");
 	if ($logout <= $login)
@@ -378,13 +387,17 @@ function get_status($player){
 		$status = '<span class="offline">Offline</span>';
 	return $status;
 }
-function get_tag($tag,$xml)
-{
+function get_tag($tag,$xml) {
 	preg_match_all('/<'.$tag.'>(.*)<\/'.$tag.'>$/imU',$xml,$match);
 	return $match[1];
 }
-function is_bot(){
-	/* This function will check whether the visitor is a search engine robot */
+/**
+ * This function will check whether the visitor is a search engine robot.
+ *
+ * @since 3.0
+ *
+ */
+function is_bot() {
 	$botlist = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi",
 	"looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory",
 	"Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot",
@@ -393,9 +406,9 @@ function is_bot(){
 	"Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot",
 	"Mediapartners-Google", "Sogou web spider", "WebAlta Crawler","TweetmemeBot",
 	"Butterfly","Twitturls","Me.dium","Twiceler");
-	foreach($botlist as $bot){
+	foreach($botlist as $bot) {
 		if(strpos($_SERVER['HTTP_USER_AGENT'],$bot)!==false)
-		return true;	// Is a bot
+			return true;	// Is a bot
 	}
 	return false;	// Not a bot
 }
@@ -414,7 +427,7 @@ function is_bot(){
  * @param string $title Error title.
  * @param string|array $args Optional arguments to control behavior.
  */
-function ws_die( $message = '', $title = '', $args = array() ) {
+function ws_die($message = '', $title = '', $args = array()) {
 	$function ='_default_ws_die_handler';
 	call_user_func( $function, $message, $title, $args );
 }
