@@ -19,7 +19,11 @@ final class ip2location_lite{
 	private function getResult($host, $name){
 		$ip = @gethostbyname($host);
 		if(preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $ip)){
-			$xml = @file_get_contents('http://' . $this->service . '/' . $this->version . '/' . $name . '/?key=' . $apiKey . '&ip=' . $ip . '&format=xml');
+			$xml = @file_get_contents('http://'.$this->service.'/'.$this->version.'/'.$name.'/?key=29ec2adfa4bcfbbb7d96d934e800e512b6609fd7c3dee3264ad1c5a899165001&ip='.$ip.'&format=xml');
+			
+			if (get_magic_quotes_runtime()){
+				$xml = stripslashes($xml);
+			}
 			try {
 				$response = @new SimpleXMLElement($xml);
 				foreach($response as $field=>$value){
@@ -155,8 +159,7 @@ class DBConfig {
 				$this->error($type=1);
 			}
 			return false;
-		}
-		else {
+		} else {
 			if (empty($db)) {
 				if ($this->error){
 					$this->error($type=2);
@@ -174,8 +177,7 @@ class DBConfig {
 					if(mysql_query("CREATE DATABASE IF NOT EXISTS `".$this->db."`", $this->db_link)){
 						echo "Database created :) <br />";
 						mysql_select_db($this->db, $this->db_link);
-					}
-					else{
+					} else{
 						if ($this->error){
 							$this->error($type=5);
 						}
@@ -190,8 +192,7 @@ class DBConfig {
 		if ($this -> conn){ // check connection
 			if ($this->persistant) {
 				$this -> conn = false;
-			}
-			else {
+			} else {
 				mysql_close($this->db_link);
 				$this -> conn = false;
 			}
@@ -205,24 +206,18 @@ class DBConfig {
 	public function error($type=''){ //Choose error type
 		if (empty($type)) {
 			return false;
-		}
-		else {
+		} else {
 			if ($type==1){
 				echo "<strong>Database could not connect</strong> " . "<br />";
-			}
-			else if ($type==2){
+			} else if ($type==2){
 				echo "<strong>mysql error</strong> " . mysql_error() . "<br />";
-			}
-			else if ($type==3){
+			} else if ($type==3){
 				echo "<strong>error </strong>, Proses has been stopped" . "<br />";
-			}
-			else if ($type==4){
+			} else if ($type==4){
 				echo "<span style='color: red;'>There was an error while connnecting to the MySQL database. Please contact the webmaster (user, password or host incorrect).</span>" . "<br />";
-			}
-			else if ($type==5){
+			} else if ($type==5){
 				echo "<span style='color: red;'>There was an error while selecting the database. Please contact the webmaster (database name incorrect).</span>";
-			}
-			else{
+			} else{
 				echo "Error creating database: " . mysql_error() . "<br />";
 			}
 		}

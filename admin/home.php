@@ -192,13 +192,14 @@ for ($i=0;$i<=sizeof($commits);$i++){
 				</div>
 			</div>
 			<div class="row">
-				<input type="button" onselectstart="return false;" class="button" id="submit" value="Send &raquo;" />
+				<input type="button" onselectstart="return false;" class="button" id="submit" name="submit" value="Send &raquo;" />
 			</div>					
 	</fieldset>
 </form>
-<p>
+<div class="three columns centered">
 	<a href="http://tool.motoricerca.info/robots-checker.phtml?checkreferer=1"><img src="http://tool.motoricerca.info/pic/valid-robots.png" border="0" alt="Valid Robots.txt" width="88" height="31"></a>
-</p>
+	<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/footer_badge.png" alt="Member of The Internet Defense League" /></a>
+</div>
 <script>
 $('input#submit').click(function() {
     var subject = $('input#subject').val();

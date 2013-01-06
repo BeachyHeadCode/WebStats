@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-$ip=$_SERVER['REMOTE_ADDR'];
+$ip = $_SERVER['REMOTE_ADDR'];
 require_once "../include/logonfunctions.php";
 require_once '../include/functions.php';
 if(file_exists('../config/config.php'))
@@ -203,7 +203,7 @@ echo <<< END
 	</div>
 END;
 			}
-		echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $mode, $_GET['sort'])) . "</div>";
+		echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $_SESSION['mode'], $_GET['sort'])) . "</div>";
 		$DB -> close();			
 	?>
 </body>

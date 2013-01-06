@@ -38,8 +38,7 @@ if(iptracker === true) {
 	$referer = $_SERVER['HTTP_REFERER'];
 	$pageurl = curPageURL();
 	$today = date("D M j G:i:s T Y");
-	$hostname=gethostbyaddr($_SERVER['REMOTE_ADDR']);
-	$result="SELECT * FROM stats WHERE IP='$ip'";
+	$hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 	if (!$country){
 		$country='UNKNOWN';
 		$countrycode='XX';
@@ -51,13 +50,18 @@ if(iptracker === true) {
 	$DB -> config();
 	$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
 
-	$query = mysql_query("SELECT * FROM `stats` WHERE IP='$ip'");
+	$query = mysql_query("SELECT * FROM `ip_stats` WHERE IP='$ip'");
 	$field = mysql_fetch_array($query);
-if(!isset($field[IP])) { if(is_bot()) {$bot=1;} else {$bot=0;}
-		$data="INSERT INTO stats (IP, hostname, location, referer, pageurl, date, bot, country, countrycode, city, online) VALUES ('$ip', '$hostname', '$location', '$referer', '$pageurl', '$today', '$bot', '$country', '$countrycode', '$city', '0')";
-		if (!mysql_query($data)){
-			if(mysql_query("CREATE TABLE IF NOT EXISTS `stats` (
-`ID` INT(11) NOT NULL AUTO_INCREMENT,
+if(!isset($field[IP])) {
+	if(is_bot()) {
+		$bot=1;
+	} else {
+		$bot=0;
+	}
+	$data = "INSERT INTO `ip_stats` (username, IP, hostname, location, referer, pageurl, date, bot, country, countrycode, city, online) VALUES ('default', '$ip', '$hostname', '$location', '$referer', '$pageurl', '$today', '$bot', '$country', '$countrycode', '$city', '0')";
+	if (!mysql_query($data)) {
+		if(mysql_query("CREATE TABLE IF NOT EXISTS `ip_stats` (
+`ID` INT AUTO_INCREMENT primary key,
 `username` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'If a stats plugin recoreds the user ingame name with IP.',
 `IP` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is very accurate, since it is decided by PHP. It is unknown to wether it will record IPv6.',
 `hostname` VARCHAR(500) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is decided by PHP, so this is very accurate but may go too far and give the ISP hostname for the IP.',
@@ -71,44 +75,45 @@ if(!isset($field[IP])) { if(is_bot()) {$bot=1;} else {$bot=0;}
 `countrycode` varchar(2) collate utf8_unicode_ci NOT NULL default '' COMMENT 'What Country code they are from.',
 `city` varchar(64) collate utf8_unicode_ci NOT NULL default '' COMMENT 'What City they are from.',
 `dt` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT 'Current timestamp.',
-`online INT(1) NOT NULL COMMENT 'If the ip is online or not.',
-PRIMARY KEY (`ID`),
-UNIQUE KEY `ip` (`ip`),
+`online` INT(1) NOT NULL COMMENT 'If the ip is online or not.',
+UNIQUE KEY (`IP`),
 KEY `countrycode` (`countrycode`)
-) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")){
-				echo "table created :) \n";
-			} else {die('Error creating table: ' . mysql_error());}
+) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")) {
+$TABLESET = true;
+		} else {
+			ws_die('Error creating `ip_stats` table: '.mysql_error(), "MySQL Error");
 		}
+	}
 }
-	$query = mysql_query("SELECT date FROM `stats` WHERE IP='$ip'");
+	$query = mysql_query("SELECT date FROM `ip_stats` WHERE IP='$ip'");
 	$date = mysql_fetch_array($query);
 	for($i=0; $i < count($field)/2; $i++){
 		if($field[$i]==$ip){
-			$pageview = "UPDATE stats SET pageview = pageview+1, online = 1 WHERE IP='$ip'";
-			$update_date = "UPDATE stats SET date='$today' WHERE IP='$ip'";
-			$currentpageurl = "UPDATE stats SET pageurl='$pageurl' WHERE IP='$ip'";
-			$query = mysql_query("UPDATE stats SET dt=NOW() WHERE ip='$ip'");
-			
-			if (!mysql_query($update_date)) die('Error on $update_date: ' . mysql_error());
-			if (!mysql_query($pageview)) die('Error on $pageview: ' . mysql_error());
-			if (!mysql_query($currentpageurl)) die('Error on $currentpageurl: ' . mysql_error());
+			$pageview = "UPDATE `ip_stats` SET pageview = pageview+1, online = 1 WHERE IP='$ip'";
+			$update_date = "UPDATE `ip_stats` SET date='$today' WHERE IP='$ip'";
+			$currentpageurl = "UPDATE `ip_stats` SET pageurl='$pageurl' WHERE IP='$ip'";
+			$query = mysql_query("UPDATE `ip_stats` SET dt=NOW() WHERE ip='$ip'");
+
+			if (!mysql_query($update_date)) ws_die('Error on $update_date: '.mysql_error(), "MySQL Error");
+			if (!mysql_query($pageview)) ws_die('Error on $pageview: '.mysql_error(), "MySQL Error");
+			if (!mysql_query($currentpageurl)) ws_die('Error on $currentpageurl: '.mysql_error(), "MySQL Error");
 		}
 	}
-	$totalbotpageviews = "SELECT SUM(pageview) FROM stats WHERE bot='1'";
+	$totalbotpageviews = "SELECT SUM(pageview) FROM `ip_stats` WHERE bot='1'";
 	$totalbotquery = mysql_query($totalbotpageviews);
 	$totalbot = mysql_fetch_array($totalbotquery);
 	
-	$totalpageviews = "SELECT SUM(pageview) FROM stats WHERE bot='0'";
+	$totalpageviews = "SELECT SUM(pageview) FROM `ip_stats` WHERE bot='0'";
 	$totalviewquery = mysql_query($totalpageviews);
 	$total = mysql_fetch_array($totalviewquery);
 	
-	$queryentrie = "SELECT COUNT(pageview) FROM stats";
+	$queryentrie = "SELECT COUNT(pageview) FROM `ip_stats`";
 	$query = mysql_query($queryentrie);
 	$row = mysql_fetch_array($query);
-	mysql_query("UPDATE stats SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:10:0')");
+	mysql_query("UPDATE `ip_stats` SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:10:0')");
 
 	// Counting all the online visitors:
-	list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats WHERE online='1'"));
+	list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM `ip_stats` WHERE online='1'"));
 	// Outputting the number as plain text:
 
 	$DB -> close();
@@ -119,6 +124,21 @@ include("assets/header.php");
 ?>
 <body class="off-canvas" style="background-image: url('images/background/bg_<?php echo (WS_CONFIG_BACKGROUND); ?>.png');">
 <?php
+if($TABLESET === true) {
+echo <<<END
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#tableCreated").reveal();
+	});
+	</script>
+	<div id="tableCreated" class="reveal-modal">
+		<p>
+			Table Created :)
+		</p>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+END;
+}
 $ip=$_SERVER['REMOTE_ADDR'];
 if(isset($_SESSION['pml_userid'])){
 ?>
@@ -163,9 +183,9 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 			<div class="twelve columns centered">
 				<div class="row">
 					<?php
-					if(LOGOIMAGE === true)
+					if(LOGOIMAGE === true) {
 						echo '<a href="'.WS_MAINSITE.'" style="cursor:url(images/cursors/hover.cur), auto;"><img src="'.WS_HOMEPAGE_LOGO.'" width="615px" height="100px" border="0"></a>';
-					else{
+					} else {
 						
 						?><a href="#" data-reveal-id="serverModal" style="cursor:url(images/cursors/hover.cur), auto;"><?php
 						echo '<img id="pic" src="include/pic.php" />';
