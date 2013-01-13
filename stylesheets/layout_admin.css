@@ -24,9 +24,9 @@ body  {
 			border:						1px dotted #888888;
 			float:						left;
 			vertical-align:				middle;
-			width:70px;
-			height:25px;
-			padding-left:10px;
+			width:						70px;
+			height:						25px;
+			padding-left:				10px;
 }
 .icon {
 			font-size: 					14px; 
@@ -34,8 +34,8 @@ body  {
 			border:						1px dotted #888888;
 			float:						left;
 			vertical-align:				middle;
-			width:80px;
-			height:25px;
+			width:						80px;
+			height:						25px;
 }
 .name {
 			font-size: 					14px; 
@@ -43,9 +43,9 @@ body  {
 			border:						1px dotted #888888;
 			float:						left;
 			vertical-align:				middle;
-			width:270px;
-			height:25px;
-			padding-left:10px;
+			width:						270px;
+			height:						25px;
+			padding-left:				10px;
 }
 a:link {
 			color:						#333322;
@@ -160,7 +160,7 @@ a:hover {
 			position:							relative;
 			top:								0px;
 			height:								auto;
-			background-image:					url(../images/table_bg.png);
+			background:							rgba(255, 255, 255, .5);
 			border-bottom-left-radius:			30px;
 			border-bottom-right-radius:			30px;
 			z-index:							2;
@@ -174,7 +174,7 @@ a:hover {
 			font-size:						14px;
 			border-left:					2px solid #DDDDDD;
 			border-right:					2px solid #DDDDDD;
-			background-image:				url(../images/table_bg.png);
+			background:						rgba(255, 255, 255, .5);
 			z-index:						2;
 }
 .cleared {

@@ -225,7 +225,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 				</div>
 			</div>			    
 	</header>
-	<div class="row" style="background-image:url(../images/table_bg.png);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;">
+	<div class="row" style="background:rgba(255, 255, 255, .5);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;">
 		<?php include('assets/menu.php'); ?>
 	</div>
 	<div class="row" role="searchbar">
