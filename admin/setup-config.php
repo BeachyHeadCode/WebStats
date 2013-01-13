@@ -135,92 +135,92 @@ function display_header() {
 </head>
 <style type="text/css">
 	body {
-				background-color:					rgb(228, 228, 228);
+		background-color:					rgb(228, 228, 228);
 	}
 	input[type="submit"].button {
-				margin:10px 0px 0px 12px;
+		margin:10px 0px 0px 12px;
 	}
 	.inner-wrapper {
-				width:								980px;
-				position:							relative;
-				padding:							5px;
-				border-left:						2px solid #DDDDDD;
-				border-right:						2px solid #DDDDDD;
-				background-image:					url(../../images/table_bg.png);	
-				margin: 							0 auto;
-				min-height: 						100%;
-				height:								auto !important;
-				height:								100%;
-				z-index:							5;
+		width:								980px;
+		position:							relative;
+		padding:							5px;
+		border-left:						2px solid #DDDDDD;
+		border-right:						2px solid #DDDDDD;
+		background:							rgba(255, 255, 255, .5);	
+		margin: 							0 auto;
+		min-height: 						100%;
+		height:								auto !important;
+		height:								100%;
+		z-index:							5;
 	}
 	table {
-				table-layout:						fixed;
-				margin: 							0px auto;
+		table-layout:						fixed;
+		margin: 							0px auto;
 	}
 	table thead th {
-				padding-right:						12px;
+		padding-right:						12px;
 	}
 	table tbody tr td {
-				text-align:							center;
+		text-align:							center;
 	}
 	fieldset{
-				border:								1px solid #000;
-				padding:							3px;
+		border:								1px solid #000;
+		padding:							3px;
 	}
 	hr {
-				border: 							1px solid #000;
+		border: 							1px solid #000;
 	}
 	footer {
-				width:								980px;
-				padding:							5px;
-				margin:								0 auto;
-				margin-bottom:						20px;
-				position:							relative;
-				height:								auto;
-				border-top:							2px dotted #511B00;
-				border:								2px solid #DDDDDD;
-				border-top:							none;
-				background-image:					url(../../images/table_bg.png);
-				border-bottom-left-radius:			30px;
-				border-bottom-right-radius:			30px;
-				z-index:							2;
-				text-align:							center;
+		width:								980px;
+		padding:							5px;
+		margin:								0 auto;
+		margin-bottom:						20px;
+		position:							relative;
+		height:								auto;
+		border-top:							2px dotted #511B00;
+		border:								2px solid #DDDDDD;
+		border-top:							none;
+		background:							rgba(255, 255, 255, .5);
+		border-bottom-left-radius:			30px;
+		border-bottom-right-radius:			30px;
+		z-index:							2;
+		text-align:							center;
 	}
 	aside {
-				width:								120px;
-				position:							fixed;
-				float:								right;
-				right:								0px;
-				top:								100px;
-				padding:							5px;
-				background-image:					url(../../images/table_bg.png);	
-				margin: 							auto;
-				height:								auto !important;
-				height:								100%;
-				overflow:							hidden !important;
-				vertical-align:						top;
-				z-index:							1;
-				border-bottom-left-radius:			10px;
-				border-top-left-radius:				10px;
-				border:								2px solid #DDDDDD;
+		width:								120px;
+		position:							fixed;
+		float:								right;
+		right:								0px;
+		top:								100px;
+		padding:							5px;
+		background:							rgba(255, 255, 255, .5);	
+		margin: 							auto;
+		height:								auto !important;
+		height:								100%;
+		overflow:							hidden !important;
+		vertical-align:						top;
+		z-index:							1;
+		border-bottom-left-radius:			10px;
+		border-top-left-radius:				10px;
+		border:								2px solid #DDDDDD;
 	}
 	asideleft {
-				width:								120px;
-				position:							fixed;
-				left:								0;
-				float:								left;
-				top:								100px;
-				padding:							5px;
-				background-image:					url(../../images/table_bg.png);	
-				margin: 							auto;
-				height:								auto !important;
-				height:								100%;
-				overflow:							hidden !important;	
-				vertical-align:						top;
-				z-index:							1;	
-				border-top-right-radius:			10px;
-				border-bottom-right-radius:			10px;
-				border:								2px solid #DDDDDD;
+		width:								120px;
+		position:							fixed;
+		left:								0;
+		float:								left;
+		top:								100px;
+		padding:							5px;
+		background:							rgba(255, 255, 255, .5);
+		margin: 							auto;
+		height:								auto !important;
+		height:								100%;
+		overflow:							hidden !important;	
+		vertical-align:						top;
+		z-index:							1;	
+		border-top-right-radius:			10px;
+		border-bottom-right-radius:			10px;
+		border:								2px solid #DDDDDD;
 	}
 </style>
 	<body><!-- BODY -->
@@ -241,7 +241,7 @@ function display_header() {
 						<li><?php echo( 'Database host' ); ?></li>
 					</ol>
 					<p><strong><?php echo( "If for any reason this automatic file creation doesn't work, don't worry. All this does is fill in the database information to a configuration file. You may also simply open <code>config-sample.php</code> in a text editor, fill in your information, and save it as <code>config.php</code>." ); ?></strong></p>
-					<p><?php echo( "In all likelihood, these items were supplied to you by your Web Host. If you do not have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;" ); ?></p>
+					<p><?php echo( "In all likelihood, these items were supplied to you by your Web Host. If you do not have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;<br /><br /><b><i>Do note that text within .htaccess in the 'WebStats' folder needs to be changed to your domain name to prevent <a href='http://www.davidairey.com/stop-image-theft-hotlinking-htaccess/'>hotlinking.</a></i></b>" ); ?></p>
 					<p class="step">
 						<a href="setup-config.php?step=1<?php if ( isset( $_GET['noapi'] ) ) echo '&amp;noapi'; ?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a>
 						<a href="setup-config.php?step=3<?php echo '&amp;noapi'; ?>" class="button"><?php echo( 'I&#8217;ll pass and lose a lot of options' ); ?></a>
@@ -294,14 +294,12 @@ function display_header() {
 			break;
 			case 3:
 				display_header();
-				if(isset( $_GET['noapi'] )){
+				if(isset( $_GET['noapi'] )) {
 					require_once('configsetup.php');
-				}
-				else{
-					if ($usernameTaken === false){
+				} else {
+					if ($usernameTaken === false) {
 						require_once('configsetup.php');
-					}
-					else{
+					} else {
 						ws_die(( '<strong>ERROR</strong>: "Username" ('.$_SESSION['Username'].') was taken.' . $tryagain_link ));
 					}
 				}
@@ -323,7 +321,7 @@ function display_header() {
 			if(!empty($_SESSION['Username']) && !empty($_SESSION['Password'])){
 				$query = mysql_query("SELECT `username` FROM `users` WHERE `username` = '$username' and `username` != ''");
 				$row = mysql_fetch_array($query);
-				if (isset($row[0])){
+				if (isset($row[0])) {
 					echo "Username ('$row[0]') already exists!<br />";
 					$usernameTaken = true;
 				} else {
