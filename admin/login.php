@@ -7,7 +7,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-	<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.us)" />
+	<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.tk)" />
 	<meta content='minecraft stats' name='description' />
 	<meta content='minecraft, stats, bukkit, mrplow, cky2250' name='keywords'/>
 	<title>WebStats &rsaquo; ADMIN PAGE &rsaquo; LOGIN</title>

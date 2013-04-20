@@ -534,7 +534,7 @@ echo <<<END
 	</style>
 </head>
 <body id="error-page">
-	$message;
+	$message
 </body>
 </html>
 END;

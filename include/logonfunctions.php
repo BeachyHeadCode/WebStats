@@ -94,7 +94,7 @@ function pml_login($todo = "",$action = "") {
 
 	$DB = new DBConfig();
 	$DB -> config();	
-	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, $createdb);
+	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
 	
 	// Check if user is logged in
 	if(!isset($_SESSION['pml_userid'])) {
@@ -204,6 +204,7 @@ function pml_login($todo = "",$action = "") {
 				echo "<div class='row'>".translate('login-forgotfield')."</div>";
 			}
 		}
+		$DB -> close();
 		// Login form
 		?>
 		<form method="post" style="margin-left: auto; margin-right: auto; width:355px;" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -212,6 +213,7 @@ function pml_login($todo = "",$action = "") {
 					<td><label for="username"><?php echo translate('login-username'); ?>:</label></td>
 					<td><input size="32" maxlength="32" placeholder="admin" type="text" id="username" name="username" <?php if(isset($_POST['username'])) { echo 'value="'.$_POST['username'].'"'; } ?> /></td>
 				</tr>
+				<?php echo md5($pass)."<br />".$pass."<br />".$_POST['password']; ?>
 				<tr>
 					<td><label for="password"><?php echo translate('login-password'); ?>:</label></td>
 					<td><input size="24" maxlength="24" placeholder="password" type="password" id="password" name="password" <?php if(isset($_POST['password'])) { echo 'value="'.$_POST['password'].'"'; } ?> /></td>

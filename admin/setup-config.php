@@ -34,6 +34,51 @@ session_start();
 if(!empty($_POST["SubmitUserAndPass"])) {
 	$_SESSION['Username']=$_POST['Username'];
 	$_SESSION['Password']=$_POST['Password'];
+	
+
+	$host = $_SESSION['MySQLHost'].":".$_SESSION['MySQLPort'];
+	$user = $_SESSION['MySQLUserName'];
+	$pass = $_SESSION['MySQLPassword'];
+	$db = $_SESSION['MySQLDatabase'];
+	$createdb = true;
+	$DB = new DBConfig();
+	$DB -> config();	
+	$DB -> conn($host, $user, $pass, $db, $createdb);
+	$username = $_SESSION['Username'];
+	$password = $_SESSION['Password'];		
+	if(!empty($_SESSION['Username']) && !empty($_SESSION['Password'])){
+		$query = mysql_query("SELECT `username` FROM `users` WHERE `username` = '$username' and `username` != ''");
+		$row = mysql_fetch_array($query);
+		if (isset($row[0])) {
+			$_SESSION['usernameTaken'] = 1;
+		} else {
+			$_SESSION['usernameTaken'] = 2;
+			$userinsert = "INSERT INTO `users`(`username`, `password`, `IP`, `hostname`, `location`, `date`, `email`, `cookie_pass`, `actcode`, `rank`, `lastactive`, `lastlogin`) VALUES ('$username', '".md5($password)."', '$ip', '$hostname', '$location', '$today', '$email', '', '', '1', NOW(), NOW())";
+		}
+	}
+	if (!mysql_query($userinsert)){
+		if(mysql_query("CREATE TABLE IF NOT EXISTS `users` (
+	`ID` INT(11) NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(50) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Username',
+	`password` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Password',
+	`IP` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is very accurate, since it is decided by PHP. It is unknown to wether it will record IPv6.',
+	`hostname` VARCHAR(500) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is decided by PHP, so this is very accurate but may go too far and give the ISP hostname for the IP.',
+	`location` VARCHAR(500) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This code is taken from an outside source and is not know to be correct or incorrect.',
+	`date` VARCHAR(200) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is the current date for which the user has viewed the page.',
+	`email` VARCHAR(200) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'NOT IMPLEMENTED.',
+	`cookie_pass` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'The cookie created to remember the user and know who they are.',
+	`actcode` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'N/A.',
+	`rank` VARCHAR(3) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'N/A.',
+	`lastactive` datetime NOT NULL COMMENT 'The last date the user was logged viewing the server.',
+	`lastlogin` datetime NOT NULL COMMENT 'The last date the user loged into the server.',
+	PRIMARY KEY (`ID`)
+) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")) {
+			mysql_query($userinsert);
+		} else {
+			echo('Error Creating Table: ' . mysql_error() . '<br />');
+		}
+	}
+	$DB -> close();
 }
 if(!empty($_POST["reload"])) {
 	session_unset();
@@ -49,6 +94,17 @@ if(!empty($_POST["SubmitDatabase"])) {
 	$_SESSION['MySQLUserName']=$_POST['MySQLUserName'];
 	$_SESSION['MySQLPassword']=$_POST['MySQLPassword'];
 	$_SESSION['MySQLDatabase']=$_POST['MySQLDatabase'];
+	
+	$host = $_SESSION['MySQLHost'].":".$_SESSION['MySQLPort'];
+	$user = $_SESSION['MySQLUserName'];
+	$pass = $_SESSION['MySQLPassword'];
+	$db = $_SESSION['MySQLDatabase'];
+	
+	$createdb = true;
+	$DB = new DBConfig();
+	$DB -> config();	
+	$DB -> conn($host, $user, $pass, $db, $createdb);	
+	$DB -> close();	
 }
  //Load the class
 	$ipLite = new ip2location_lite;
@@ -297,61 +353,13 @@ function display_header() {
 				if(isset( $_GET['noapi'] )) {
 					require_once('configsetup.php');
 				} else {
-					if ($usernameTaken === false) {
+					if ($_SESSION['usernameTaken'] == 2) {
 						require_once('configsetup.php');
 					} else {
 						ws_die(( '<strong>ERROR</strong>: "Username" ('.$_SESSION['Username'].') was taken.' . $tryagain_link ));
 					}
 				}
 			break;
-		}
-		if($step == 1 || $step == 2) {
-			$host = $_SESSION['MySQLHost'].":".$_SESSION['MySQLPort'];
-			$user = $_SESSION['MySQLUserName'];
-			$pass = $_SESSION['MySQLPassword'];
-			$db = $_SESSION['MySQLDatabase'];
-			$createdb = true;
-			
-			$DB = new DBConfig();
-			$DB -> config();	
-			$DB -> conn($host, $user, $pass, $db, $createdb);
-			$username = $_SESSION['Username'];
-			$password = $_SESSION['Password'];
-			
-			if(!empty($_SESSION['Username']) && !empty($_SESSION['Password'])){
-				$query = mysql_query("SELECT `username` FROM `users` WHERE `username` = '$username' and `username` != ''");
-				$row = mysql_fetch_array($query);
-				if (isset($row[0])) {
-					echo "Username ('$row[0]') already exists!<br />";
-					$usernameTaken = true;
-				} else {
-					$userinsert = "INSERT INTO `users`(`username`, `password`, `IP`, `hostname`, `location`, `date`, `email`, `cookie_pass`, `actcode`, `rank`, `lastactive`, `lastlogin`) VALUES ('$username', '".md5($password)."', '$ip', '$hostname', '$location', '$today', '$email', '', '', '1', NOW(), NOW())";
-				}
-			}
-			if (!mysql_query($userinsert)){
-				if(mysql_query("CREATE TABLE IF NOT EXISTS `users` (
-		`ID` INT(11) NOT NULL AUTO_INCREMENT,
-		`username` VARCHAR(50) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Username',
-		`password` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Password',
-		`IP` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is very accurate, since it is decided by PHP. It is unknown to wether it will record IPv6.',
-		`hostname` VARCHAR(500) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is decided by PHP, so this is very accurate but may go too far and give the ISP hostname for the IP.',
-		`location` VARCHAR(500) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This code is taken from an outside source and is not know to be correct or incorrect.',
-		`date` VARCHAR(200) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is the current date for which the user has viewed the page.',
-		`email` VARCHAR(200) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'NOT IMPLEMENTED.',
-		`cookie_pass` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'The cookie created to remember the user and know who they are.',
-		`actcode` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'N/A.',
-		`rank` VARCHAR(3) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'N/A.',
-		`lastactive` datetime NOT NULL COMMENT 'The last date the user was logged viewing the server.',
-		`lastlogin` datetime NOT NULL COMMENT 'The last date the user loged into the server.',
-		PRIMARY KEY (`ID`)
-) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")){
-					echo "Table Created :) \n";
-					mysql_query($userinsert);
-				} else {
-					echo('Error Creating Table: ' . mysql_error() . '<br />');
-				}
-			}
-			$DB -> close();
 		}
 ?>
 				</article>

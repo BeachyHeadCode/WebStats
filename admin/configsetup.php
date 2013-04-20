@@ -343,6 +343,7 @@ if($_POST["submitconfig"] == 'Submit Config'){
         	?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
     	}
     	fclose($handle);
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">'; 
 	}else {
 		$filenamelocal = 'config.php';
 		$ourFileHandle = fopen($filenamelocal, 'w');
