@@ -44,7 +44,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 </ul>
 			
 <h3>Current Pending Update:</h3>
-<h4>v3.0 final(No ETA) - Changelog bellow is current GitHub Source changes</h4>
+<h4>v3.0 final(04/20/2013) - Changelog bellow is current GitHub Source changes</h4>
 <ul>
 	<li>Added Admin Page.</li>
 	<li>Added Capability of a dynamic achievments, economy, and stats  plugin change.</li>
@@ -65,6 +65,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <h4>Known Problems</h4>
 <ul>
 	<li>When the screen is inbetween an area where the menu turns to drop down but does not drop down. - Fix make the page smaller.</li>
+	<li>Login process does not kill.</li>
 </ul>
 <hr />
 
