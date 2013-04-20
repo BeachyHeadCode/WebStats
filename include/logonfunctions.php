@@ -213,7 +213,6 @@ function pml_login($todo = "",$action = "") {
 					<td><label for="username"><?php echo translate('login-username'); ?>:</label></td>
 					<td><input size="32" maxlength="32" placeholder="admin" type="text" id="username" name="username" <?php if(isset($_POST['username'])) { echo 'value="'.$_POST['username'].'"'; } ?> /></td>
 				</tr>
-				<?php echo md5($pass)."<br />".$pass."<br />".$_POST['password']; ?>
 				<tr>
 					<td><label for="password"><?php echo translate('login-password'); ?>:</label></td>
 					<td><input size="24" maxlength="24" placeholder="password" type="password" id="password" name="password" <?php if(isset($_POST['password'])) { echo 'value="'.$_POST['password'].'"'; } ?> /></td>

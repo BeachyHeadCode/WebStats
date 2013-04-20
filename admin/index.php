@@ -92,7 +92,7 @@ $_SESSION['mode']=$_GET['mode'];
 				<li align="right"><a href="?LOGOUT=TRUE">LOGOUT</a></li>
 			</div>
 		</div>
-		<div class="row" style="background-image: url(../images/table_bg.png);"> <!--MAIN-->
+		<div class="row" style="background-color:rgba(255, 255, 255, .5);"> <!--MAIN-->
 			<div style="margin:25px;">
 		<p>
 				This page is in the making. And will contain all the help information and locations needed. Along with more advance config settings. This will also require mysql write support since it will be used to make logon user and pass. And then read from that.
