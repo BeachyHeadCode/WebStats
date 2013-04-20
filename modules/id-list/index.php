@@ -18,7 +18,7 @@
 	</table>
 </div>
 
-<script>
+<script type="text/javascript">
 function addItems(callback) {
 	logInfo("Adding items...");
 	$.ajax({

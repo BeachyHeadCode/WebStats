@@ -39,13 +39,13 @@
 	<link rel="apple-touch-icon-precomposed" href="images/favicon.png">
 	<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-	<script type="text/javascript" src="javascripts/modernizr.foundation.js"></script>
+  	<script type="text/javascript" src="javascripts/modernizr.foundation.js"></script>
 	<script type="text/javascript" src="javascripts/util.js"></script>
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>  
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-27405484-1']);

@@ -53,18 +53,16 @@ function fix_server_vars() {
 	);
 	$_SERVER = array_merge( $default_server_values, $_SERVER );
 
-	// Fix for IIS when running with PHP ISAPI
+	/* Fix for IIS when running with PHP ISAPI */
 	if ( empty( $_SERVER['REQUEST_URI'] ) || ( php_sapi_name() != 'cgi-fcgi' && preg_match( '/^Microsoft-IIS\//', $_SERVER['SERVER_SOFTWARE'] ) ) ) {
-
-		// IIS Mod-Rewrite
+		/* IIS Mod-Rewrite */
 		if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) {
 			$_SERVER['REQUEST_URI'] = $_SERVER['HTTP_X_ORIGINAL_URL'];
-		}
-		// IIS Isapi_Rewrite
-		elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
+		} elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
+			/* IIS Isapi_Rewrite */
 			$_SERVER['REQUEST_URI'] = $_SERVER['HTTP_X_REWRITE_URL'];
 		} else {
-			// Use ORIG_PATH_INFO if there is no PATH_INFO
+			/* Use ORIG_PATH_INFO if there is no PATH_INFO */
 			if ( !isset( $_SERVER['PATH_INFO'] ) && isset( $_SERVER['ORIG_PATH_INFO'] ) )
 				$_SERVER['PATH_INFO'] = $_SERVER['ORIG_PATH_INFO'];
 
@@ -139,45 +137,51 @@ function adminPageURL() {
 		$pageURL .= $_SERVER["SERVER_NAME"]."/admin";
 	return $pageURL;
 }
+/**
+ *
+ * Sets a database connection
+ *
+ *
+ *
+ */
 class DBConfig {
 	var $host; var $user; var $pass; var $db; var $db_link; var $conn = false; var $persistant = false; public $error = false;
 	public function config(){
-		$this->error = true; $this->persistant = false;
+		$this->error = true; $this->persistant = true;
 	} 
 	function conn($host, $user, $pass, $db, $createdb){
 		$this->host = $host;
 		$this->user = $user;
 		$this->pass = $pass;
 		$this->db = $db;
-        // Establish the connection.
+        /* Establish the connection. */
 		if ($this->persistant)
 			$this->db_link = mysql_pconnect($this->host, $this->user, $this->pass, true);
 		else 
 			$this->db_link = mysql_connect($this->host, $this->user, $this->pass, true);
 		if (!$this->db_link) {
-			if ($this->error){
+			if ($this->error) {
 				$this->error($type=1);
 			}
 			return false;
 		} else {
 			if (empty($db)) {
-				if ($this->error){
+				if ($this->error) {
 					$this->error($type=2);
 				}
-			}
-			else {
-				$db = mysql_select_db($this->db, $this->db_link); // select db
-				if ((!$db) && ($createdb !== true)){
-					if ($this->error){
+			} else {
+				$db = mysql_select_db($this->db, $this->db_link); /* select db */
+				if ((!$db) && ($createdb !== true)) {
+					if ($this->error) {
 						$this->error($type=2);
 					}
 					return false;
 				}
-				if((!$db) && ($createdb === true)){
+				if((!$db) && ($createdb === true)) {
 					if(mysql_query("CREATE DATABASE IF NOT EXISTS `".$this->db."`", $this->db_link)){
 						echo "Database created :) <br />";
 						mysql_select_db($this->db, $this->db_link);
-					} else{
+					} else {
 						if ($this->error){
 							$this->error($type=5);
 						}
@@ -188,36 +192,35 @@ class DBConfig {
 			return $this->db_link;
 		}
 	}
-	function close() { // close connection
-		if ($this -> conn){ // check connection
+	function close() { /* close connection */
+		if ($this -> conn) { /* check connection */
 			if ($this->persistant) {
 				$this -> conn = false;
 			} else {
 				mysql_close($this->db_link);
 				$this -> conn = false;
 			}
-		}
-		else {
-			if ($this->error){
+		} else {
+			if ($this->error) {
 				return $this->error($type=4);
 			}
 		}
 	}
-	public function error($type=''){ //Choose error type
+	public function error($type='') { /* Choose error type */
 		if (empty($type)) {
 			return false;
 		} else {
-			if ($type==1){
+			if ($type==1) {
 				echo "<strong>Database could not connect</strong> " . "<br />";
-			} else if ($type==2){
+			} else if ($type==2) {
 				echo "<strong>mysql error</strong> " . mysql_error() . "<br />";
-			} else if ($type==3){
+			} else if ($type==3) {
 				echo "<strong>error </strong>, Proses has been stopped" . "<br />";
-			} else if ($type==4){
+			} else if ($type==4) {
 				echo "<span style='color: red;'>There was an error while connnecting to the MySQL database. Please contact the webmaster (user, password or host incorrect).</span>" . "<br />";
-			} else if ($type==5){
+			} else if ($type==5) {
 				echo "<span style='color: red;'>There was an error while selecting the database. Please contact the webmaster (database name incorrect).</span>";
-			} else{
+			} else {
 				echo "Error creating database: " . mysql_error() . "<br />";
 			}
 		}
@@ -270,98 +273,97 @@ function get_pages($numbers, $mode, $sort) {
 			if(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)) {
 				if($_GET["page"]==1) {
 					$pages = '<td style="margin-left:50px;" class="arrow unavailable"><a href="">&laquo;</a></td>';
-					$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+					$pages .= '<td class="current"><a href="?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				} else {
-					$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
-					$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+					$pages = '<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+					$pages .= '<td><a href="?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				}
 				if($numbers >= 10){
-					for($i=1; $i < 10; $i++){
+					for($i=1; $i < 10; $i++) {
 						$page = $i + 1;
 						if($_GET["page"]==$page) {
-							$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+							$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						} else {
-							$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+							$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 					}
-				}
-				else{
-					for($i=1; $i <= $numbers; $i++){
+				} else {
+					for($i=1; $i <= $numbers; $i++) {
 						$page = $i + 1;
-						if($_GET["page"]==$page){
-							$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						if($_GET["page"]==$page) {
+							$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						} else {
-							$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+							$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 						}
 					}
 				}
-				if($_GET["page"] < $numbers){
-					$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
+				if($_GET["page"] < $numbers) {
+					$pages .='<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
 				} else {
 					$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
 				}
 			} elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))) {
-				$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
-				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages = '<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+				$pages .= '<td><a href="?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
-				for($i=($_GET["page"]-5); $i < ($_GET["page"]+4); $i++){
+				for($i=($_GET["page"]-5); $i < ($_GET["page"]+4); $i++) {
 					$page = $i + 1;
-					if($_GET["page"]==$page){
-						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					if($_GET["page"]==$page) {
+						$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					} else {
-						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
-				$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></td>';
-				$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
+				$pages .= '<td><a href="?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'" '.hover.' >'.floor($numbers).'</a></td>';
+				$pages .='<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'">&raquo;</a></td>';
 			} elseif($_GET["page"] == $numbers) {
-				$pages = '<td class="arrow"><a href="index.php?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
-				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages = '<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'">&laquo;</a></td>';
+				$pages .= '<td><a href="?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
 				for($i=($_GET["page"]-5); $i < $numbers; $i++){
 					$page = $i + 1;
 					if($_GET["page"]==$page){
-						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					} else {
-						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
 				$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
 			}
-			if(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))){
+			if(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))) {
 				$pages = '<td class="arrow"><a href="">&laquo;</a></td>';
-				$pages .= '<td><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+				$pages .= '<td><a href="?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
 				$pages .= '<td class="unavailable"><a href="">&heltdp;</a></td>';
 				for($i=($_GET["page"]-5); $i < $numbers; $i++) {
 					$page = $i + 1;	
 					if($_GET["page"]==$page){
-						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					} else {
-						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
 				$pages .='<td class="arrow"><a href="">&raquo;</a></td>';
 			}
 		} else {
 			$pages = '<td class="arrow unavailable"><a href="">&laquo;</a></td>';
-			$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
-			if($numbers >= 10){
-				for($i=1; $i <= 10; $i++){
+			$pages .= '<td class="current"><a href="?mode='.$mode.'&page=1&sort='.$sort.'" '.hover.' >1</a></td>';
+			if($numbers >= 10) {
+				for($i=1; $i <= 10; $i++) {
 					$page = $i + 1;
 					if(1==$page){
-						$pages .= '<td class="current"><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					} else {
-						$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+						$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 					}
 				}
 			} else {
-				for($i=1; $i <= $numbers; $i++){
+				for($i=1; $i <= $numbers; $i++) {
 					$page = $i + 1;
-					$pages .= '<td><a href="index.php?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
+					$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'" '.hover.' >'.$page.'</a></td>';
 				}
 			}
-			$pages .='<td class="arrow"><a href="index.php?mode='.$mode.'&page=2&sort='.$sort.'">&raquo;</a></td>';		
+			$pages .='<td class="arrow"><a href="?mode='.$mode.'&page=2&sort='.$sort.'">&raquo;</a></td>';		
 		}
     $output .= $pages.'</tr></tbody></table></form></div>';
 	return $output;
@@ -439,13 +441,13 @@ function ws_die($message = '', $title = '', $args = array()) {
  * @param string $title Error title.
  * @param string|array $args Optional arguments to control behavior.
  */
-function _default_ws_die_handler( $message, $title = '', $args = array() ) {
+function _default_ws_die_handler($message, $title = '', $args = array()) {
 	$defaults = array( 'response' => 500 );
 	$message = "<p>$message</p>";
 	$back_text = ('&laquo; Back');
 	$message .= "\n<p><a href='javascript:history.back()'>$back_text</a></p>";
 	header( 'Content-Type: text/html; charset=utf-8' );
-	if(empty($title)){$title = 'Web Stats &rsaquo; Error';}
+	if(empty($title)) {$title = 'Web Stats &rsaquo; Error';}
 echo <<<END
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

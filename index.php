@@ -297,10 +297,11 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
   
   -->
   
-  <!-- Included JS Files (Compressed) -->
-  <script src="javascripts/foundation.min.js"></script>
-  <!-- Initialize JS Plugins -->
-  <script src="javascripts/app.js"></script>
+	<!-- Included JS Files (Compressed) -->
+	<script src="javascripts/foundation.min.js"></script>
+	<!-- Initialize JS Plugins -->
+	<script src="javascripts/app.js"></script>
+	<script src="javascripts/charisma.js"></script>
 </body>
 </html>
 <?php 

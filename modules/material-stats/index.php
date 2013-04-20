@@ -7,12 +7,7 @@
 	$item = str_replace("-", ":", $item);					
 ?>
 <article class="content_maintable_stats">
-	<section class="twelve columns centered content_headline">
-		<b>
-			<img src="images/icons/<?php echo $item_image;?>.png" width="15px" height="15px">
-			<u><a href="http://www.minecraftwiki.net/wiki/<?php echo translate($item);?>"<?php echo (hover);?>><?php echo translate($item); ?></a></u>
-			<img src="images/icons/<?php echo $item_image; ?>.png" width="15px" height="15px">	
-		</b>
+	<section class="twelve columns centered content_headline" id="name">
 	</section>
 	<div id="ItemInfo"></div>
 	<div class="row" style="width:675px; margin:0px auto;">
@@ -52,7 +47,8 @@ function addItemInfo(callback) {
 				if(item == "<?php echo $item; ?>"){
 					addItem(getValue(this, 'description'),
 							  getValue(this, 'added'),
-							  getValue(this, 'type'));
+							  getValue(this, 'type'),
+							  getValue(this, 'name'));
 				}						  
 			});
 			logInfo("Done!");
@@ -61,11 +57,16 @@ function addItemInfo(callback) {
 	});
 }
 
-function addItem(description, added, type) {
+function addItem(description, added, type, name) {
 	$('<p style="text-align:left"></p>').html(
 		"Type: " + type + "<br />Added: " + added + "<br /><h4>Description</h4><hr />" + description
 	)
 	.appendTo('#ItemInfo');
+	
+	$('<b></b>').html(
+			'<img src="images/icons/<?php echo $item_image;?>.png" width="15px" height="15px"><u><a href="http://www.minecraftwiki.net/wiki/' + name + '"<?php echo (hover);?>>' + name + '</a></u><img src="images/icons/<?php echo $item_image; ?>.png" width="15px" height="15px">'
+	)
+	.appendTo('#name');
 }
 $(document).ready(function() {
 	addItemInfo(function() {

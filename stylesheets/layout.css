@@ -78,7 +78,7 @@ transition: 0.25s all ease-in; */
 	border:2px solid #DDDDDD;
 }
 [role="searchbar"] {
-	background-image:url(../images/table_bg.png);	
+	background:						rgba(255, 255, 255, .5);
 	width: 100%;
 	z-index:1;
 	border:2px solid #DDDDDD;
@@ -149,7 +149,7 @@ transition: 0.25s all ease-in; */
 .Stil1 {font-size: xx-large;}
 .Stil2 {font-size: large;}
 table tr td a img{
-cursor:url(images/cursors/hover.cur), auto;
+cursor:url(../images/cursors/hover.cur), auto;
 }
 .head_language {
 			float:						left;
