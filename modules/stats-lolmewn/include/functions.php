@@ -25,16 +25,14 @@ function get_user_stats($sort, $start, $end) {
 	$sortkey = "ORDER BY $sort";
 	$query = mysql_query("SELECT $sort FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."_player` ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$players[$time] = $row[0];
 		$time++;
 	}  
 	return $players;	
 }
 
-function get_played($time)
-{
+function get_played($time) {
 	$hour = $time / 3600;
 	$hour_2 = floor($hour);
 	$minute_hour = $hour_2 * 60;

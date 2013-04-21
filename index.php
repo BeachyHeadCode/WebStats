@@ -187,9 +187,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 						echo '<a href="'.WS_MAINSITE.'" style="cursor:url(images/cursors/hover.cur), auto;"><img src="'.WS_HOMEPAGE_LOGO.'" width="615px" height="100px" border="0"></a>';
 					} else {
 						
-						?><a href="#" data-reveal-id="serverModal" style="cursor:url(images/cursors/hover.cur), auto;"><?php
-						echo '<img id="pic" src="include/pic.php" />';
-						?></a><?php
+						?><a href="#" data-reveal-id="serverModal" style="cursor:url(images/cursors/hover.cur), auto;"><img id="pic" /></a><?php
 					}	
 					?>
 					<a href="#" data-reveal-id="serverModal"><div id="status"><?php require('include/online_status.php');?></div></a>
@@ -317,6 +315,14 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 			idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'banner');
 			document.getElementsByTagName('body')[0].appendChild(idl);
 		})();
+	</script>
+	<script type="text/javascript">
+		$.ajax({ 
+			url : 'include/pic.php', 
+			processData : false,
+		}).always(function(){
+			$("#pic").attr("src", "include/pic.php");
+		});
 	</script>
 </body>
 </html>

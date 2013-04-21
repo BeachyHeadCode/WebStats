@@ -78,15 +78,16 @@
 <!-- McMMO TABLE END -->
 <br />
 <!-- STATS TABLE START -->
+
+<div class="row">
 <?php
-	if($stats_control == true && pluginconfigstatusstats===true) {
+	if(($stats_control == true && pluginconfigstatusstats===true) || ($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats===true)) {
 ?>
-	<div class="row">
-		<div class="content_maintable_stats">
-			<div class="content_headline" style="width:748px;">
+		<div class="head_maintable_stats">
+			<div class="content_headline" style="width:735px;">
 				<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>" <?php echo (hover);?>><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true" style="cursor:url(images/cursors/hover.cur),auto;" ><?php echo translate('var2'); ?></a>
 			</div>
-			<div style="clear: both; width: 748px; height: 25px;">&nbsp;</div>
+			<div style="clear: both; width: 735px; height: 25px;">&nbsp;</div>
 			<dl class="tabs">
 				<dd class="active"><a href="#Player">Player Kills/Deaths</a></dd>
 				<dd><a href="#Blocks">Destroyed/Placed Blocks</a></dd>
@@ -137,23 +138,23 @@
 			<!--Killed and Killed By ~ END-->
 			</ul>
 		</div>
+<?php } ?>
 	</div>
 <!-- STATS TABLE END-->
 <!-- ACHIEVMENTS START-->
 <?php
-	}
 	if($achievements_control == true && pluginconfigstatusachiv===true) {
 		include('modules/show-player/include/functions_achievements.php');
 ?>	
-<br/>							
-<table width="650" style="border:1px solid #333333; vertical-align:text-top;">
+<br/>						
+<table width="740" style="border:1px solid #333333; vertical-align:text-top;">
 	<tr>
 		<td width="375" style="vertical-align:text-top;" class="Stil2" align="left">
 			<strong><u><?php echo translate('var68');?>:<br/><br/></u></strong>
 		</td>
 	</tr>
 	<tr>
-		<td width="600" style="vertical-align:text-top;" align="center">
+		<td width="740" style="vertical-align:text-top;" align="center">
 			<div class="gesamtfortschritt" align="left">
 				<div class="fortschritttext"><b><?php echo achievements_player_count_table(htmlentities($_GET['user'])).' / '.achievements_server_count_table();?></b></div>
 				<div class="fortschritt" style="width:<?php echo (((achievements_player_count_table(htmlentities($_GET['user'])) * 100) / (achievements_server_count_table()))); ?>%">&nbsp;</div>
@@ -171,10 +172,10 @@
 <!--todo-->
 
 <script type="text/javascript">
-$(document).ready(function(){
-$("#hidr4").click(function () {$("span4").hide("fast", function () {$(this).prev().hide("fast", arguments.callee); });});
-$("#showr4").click(function () {$("span4").show(1000);});
-});
+	$(document).ready(function() {
+	$("#hidr4").click(function () {$("span4").hide("fast", function () {$(this).prev().hide("fast", arguments.callee); });});
+	$("#showr4").click(function () {$("span4").show(1000);});
+	});
 </script>
 
 <div class="content_maintable_achiev_title">

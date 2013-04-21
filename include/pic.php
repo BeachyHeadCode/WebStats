@@ -1,14 +1,21 @@
 <?php
 error_reporting(0);
-include('../config/config.php');
-include('online_status.php');
-include('minecraftquery.php');
-$port = MQ_SERVER_PORT;
-$server = MQ_SERVER_ADDR;
+require_once('../config/config.php');
+require_once('online_status.php');
+//require_once('minecraftquery.php');
+require_once ('minecraftquery/MinecraftQuery.class.php');
 
+	$Timer = MicroTime( true );
+	$Query = new MinecraftQuery( );
+	try {
+		$Query->Connect( MQ_SERVER_ADDR, MQ_SERVER_PORT, MQ_TIMEOUT );
+	}
+	catch( MinecraftQueryException $e ) {
+		$Error = $e->getMessage( );
+	}
 // Create the image---------------------------------------------------------------------------------
-$x=250;
-$y=20;
+$x = 250;
+$y = 20;
 //$width = 615;
 //$height = 100;
 //$im = imagecreate($width, $height);
@@ -16,7 +23,7 @@ $y=20;
 $im = imagecreatefrompng("../images/header/background.png");
 list($width, $height, $type, $attr) = getimagesize("../images/header/background.png");
 $font_size = 15;
-$angle=0;
+$angle = 0;
 $font_width = imagefontwidth($font_size);
 $font_height = imagefontheight($font_size);
 // Create some colors-------------------------------------------------------------------------------
@@ -48,79 +55,60 @@ $position_middle = ceil(($height - $text_height) / 2);
 imagettftext($im, $font_size, $angle, $position_center, $y, $black, $font, $text);
 imagettftext($im, 11, 0, 540, 80, $black, $font, $pingtext);
 
-$minecraftServer = pingMineServ($server, $port);
-if($minecraftServer !==-1){
-if (!extension_loaded('sockets')) {
-	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		dl('php_extention/php_sockets.dll');
-	} else {
-		dl('php_extention/php_sockets.so');
-    }
-  $notloaded='The sockets extension is not loaded.';
-  $howtofix='uncomment ";extension=php_sockets.dll" in your .ini file';
-  imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $notloaded);
-  imagettftext($im, 11, 0, 0, 80, $black, $font, $howtofix);
-}
-else{
-	$minecraftQuery = QueryMinecraft($server, $port);
-	$textmotd= $minecraftQuery[HostName];
-	$textonline= 'Player(s) Online: '.$minecraftQuery[Players].'/'.$minecraftQuery[MaxPlayers];
-	imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $textmotd);
-	imagettftext($im, 11, 0, 0, 80, $black, $font, $textonline);
-}
-
-if($ping==5){
-$src=imagecreatefrompng("../images/serverstatus/bar5.png");
-imagecolortransparent($src, $white);
-imagealphablending($src, false);
-imagesavealpha($src, true);
-imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
-}
-elseif($ping==4){
-$src=imagecreatefrompng("../images/serverstatus/bar4.png");
-imagecolortransparent($src, $white);
-imagealphablending($src, false);
-imagesavealpha($src, true);
-imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
-}
-elseif($ping==3){
-$src=imagecreatefrompng("../images/serverstatus/bar3.png");
-imagecolortransparent($src, $white);
-imagealphablending($src, false);
-imagesavealpha($src, true);
-imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
-}
-elseif($ping==2){
-$src=imagecreatefrompng("../images/serverstatus/bar2.png");
-imagecolortransparent($src, $white);
-imagealphablending($src, false);
-imagesavealpha($src, true);
-imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
-}
-elseif($ping==1){
-$src=imagecreatefrompng("../images/serverstatus/bar1.png");
-imagecolortransparent($src, $white);
-imagealphablending($src, false);
-imagesavealpha($src, true);
-imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
-}
-else{
-$src=imagecreatefrompng("../images/serverstatus/bar0.png");
-imagecolortransparent($src, $white);
-imagealphablending($src, false);
-imagesavealpha($src, true);
-imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
-}
-}
-else{
-$src=imagecreatefrompng("../images/serverstatus/bar0.png");
-imagecolortransparent($src, $white);
-imagealphablending($src, false);
-imagesavealpha($src, true);
-imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
+if($minecraftServer !== -1) {
+	if( ( $Info = $Query->GetInfo( ) ) !== false ) {
+			$textmotd= $Info["HostName"];
+			$textonline= 'Player(s) Online: '.$Info["Players"].'/'.$Info["MaxPlayers"];
+			imagettftext($im, 11, 0, $position_center, $position_middle, $black, $font, $textmotd);
+			imagettftext($im, 11, 0, 0, 80, $black, $font, $textonline);
+		if($ping==5) {
+			$src=imagecreatefrompng("../images/serverstatus/bar5.png");
+			imagecolortransparent($src, $white);
+			imagealphablending($src, false);
+			imagesavealpha($src, true);
+			imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
+		} elseif($ping==4) {
+			$src=imagecreatefrompng("../images/serverstatus/bar4.png");
+			imagecolortransparent($src, $white);
+			imagealphablending($src, false);
+			imagesavealpha($src, true);
+			imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
+		} elseif($ping==3) {
+			$src=imagecreatefrompng("../images/serverstatus/bar3.png");
+			imagecolortransparent($src, $white);
+			imagealphablending($src, false);
+			imagesavealpha($src, true);
+			imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
+		} elseif($ping==2) {
+			$src=imagecreatefrompng("../images/serverstatus/bar2.png");
+			imagecolortransparent($src, $white);
+			imagealphablending($src, false);
+			imagesavealpha($src, true);
+			imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
+		} elseif($ping==1) {
+			$src=imagecreatefrompng("../images/serverstatus/bar1.png");
+			imagecolortransparent($src, $white);
+			imagealphablending($src, false);
+			imagesavealpha($src, true);
+			imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
+		} else {
+			$src=imagecreatefrompng("../images/serverstatus/bar0.png");
+			imagecolortransparent($src, $white);
+			imagealphablending($src, false);
+			imagesavealpha($src, true);
+			imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
+		}
+	}
+} else {
+	$src=imagecreatefrompng("../images/serverstatus/bar0.png");
+	imagecolortransparent($src, $white);
+	imagealphablending($src, false);
+	imagesavealpha($src, true);
+	imagecopymerge($im, $src, 550, 50, 0, 0, 20, 14, 100);
 }
 header('Content-Type: image/png');
 imagepng($im);
 imagedestroy($im);
 imagedestroy($src);
+
 ?>

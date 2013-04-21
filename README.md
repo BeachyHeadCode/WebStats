@@ -28,6 +28,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 
 <h3>To-Do:</h3>
 <ul>
+	<li>Add a chat system connecting to the game, and linking that persons name to the ip tracker.</li>
 	<strike><li>Option for Photo "banner reload" with server online stats.</li></strike>
 	<strike><li>Add style to the pages.</li></strike>
 	<li>Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement</li>

@@ -294,7 +294,7 @@ cursor:url(../images/cursors/hover.cur), auto;
 			margin: 					auto;
 }
 .content_maintable_achiev_title{
-			width:						650px; 
+			width:						740px; 
 			border:						1px solid #333333; 
 			background:					rgba(255, 255, 255, .5);	
 			margin: 					auto;
@@ -307,8 +307,9 @@ cursor:url(../images/cursors/hover.cur), auto;
 .content_maintable_achiev_title span4_1{float:right;}
 
 .content_maintable_achiev {
-			width:						650px; 
+			width:						740px; 
 			border:						1px solid #333333;
+			background:					rgba(255, 255, 255, .5);
 			margin: 					auto;
 			min-height: 				100%;
 			height:						auto !important; 
@@ -452,11 +453,12 @@ a:hover {
 			height: 					20px;
 }
 .gesamtfortschritt{
-			width: 						450px;
-			background: 					#999999;
+			width: 						300px;
+			background: 				#999999;
 			z-index: 					-1;
 			height: 					20px;
-			text-align: 					right;
+			margin: 					0 auto;
+			text-align: 				right;
 }
 .cleared{
 			float: 							none;
