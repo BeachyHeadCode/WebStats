@@ -131,6 +131,7 @@ define('pluginconfigstatusstats', true);			//Stats
 define('pluginconfigstatusbeardstats', true);		//BeardStats
 define('pluginconfigstatusstatslolmewnstats', true);//Stats by lolmewnstats
 define('serveraddr','');
+define ('internetprotest', true);                   //Internet Protest info for everyone.
 
 //ADMIN PAGE SETTINGS
 define('iptracker', false);

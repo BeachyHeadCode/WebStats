@@ -270,7 +270,11 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		<div role="searchsidebar">
 		<?php if($search_control == true)include('modules/search/index.php'); ?>
 		</div>
+		
 		<div onmousedown="return false;" onselectstart="return false;" role="complementaryright">
+		<?php if (internetprotest === true) {?>
+			<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/banner_right.png" alt="Member of The Internet Defense League" /></a>
+		<?php }?>
 			<b>Ads</b>
 			<?php echo (WS_GOOGLE_ASIDE);?>
 		</div>
@@ -302,6 +306,18 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 	<!-- Initialize JS Plugins -->
 	<script src="javascripts/app.js"></script>
 	<script src="javascripts/charisma.js"></script>
+	
+	<script type="text/javascript">
+		window._idl = {};
+		_idl.variant = "banner";
+		(function() {
+			var idl = document.createElement('script');
+			idl.type = 'text/javascript';
+			idl.async = true;
+			idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'banner');
+			document.getElementsByTagName('body')[0].appendChild(idl);
+		})();
+	</script>
 </body>
 </html>
 <?php 

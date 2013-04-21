@@ -4,7 +4,7 @@
  *
  * @global string $version
  */
-$version = '3.0';
+$version = '3.0.1';
 
 /**
  * Holds the required PHP version
