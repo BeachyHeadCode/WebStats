@@ -39,7 +39,7 @@ if(iptracker === true) {
 	$pageurl = curPageURL();
 	$today = date("D M j G:i:s T Y");
 	$hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-	if (!$country){
+	if (!$country) {
 		$country='UNKNOWN';
 		$countrycode='XX';
 		$city='(Unknown City?)';
@@ -230,12 +230,12 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		<?php if($search_control == true && WS_CONFIG_SEARCH_BAR == true)include('modules/search/index.php'); ?>
 	</div>
 	<section class="row main" style="min-width:780px">
-   	  	<div class="ten columns centered">
+   	  	<div class="ten columns centered" id="modules">
 		<?php
 			include_once ROOT . 'modules/'.$_SESSION['mode'].'/config/config.php';
 			include_once ROOT . 'modules/'.$_SESSION['mode'].'/include/functions.php';
 			if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn(WS_CONFIG_DBHOST.":".WS_CONFIG_DBPORT, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, false);}
-				include_once ROOT . 'modules/'.$_SESSION['mode'].'/index.php';
+			include_once ROOT . 'modules/'.$_SESSION['mode'].'/index.php';
 			if (WS_CONFIG_NoMySQL != true) {$DB -> close();}
 			?>
 		</div>
@@ -304,7 +304,8 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 	<!-- Initialize JS Plugins -->
 	<script src="javascripts/app.js"></script>
 	<script src="javascripts/charisma.js"></script>
-	
+	<script src="javascripts/giant_uncomp.js"></script>
+
 	<script type="text/javascript">
 		window._idl = {};
 		_idl.variant = "banner";

@@ -14,9 +14,8 @@ $(document).ready(function(){
 		
 	}
 	
-	
 	//highlight current / active link
-	$('ul.main-menu li a').each(function(){
+	$('ul#main-menu li a').each(function(){
 		if($($(this))[0].href==String(window.location))
 			$(this).parent().addClass('active');
 	});
@@ -26,25 +25,6 @@ $(document).ready(function(){
 		History = window.History, // Note: We are using a capital H instead of a lower h
 		State = History.getState(),
 		$log = $('#log');
-	
-	//ajaxify menus
-	/*
-	$('a.ajax-link').click(function(e){
-		if($.browser.msie) e.which=1;
-		if(e.which!=1 || $(this).parent().hasClass('active')){ console.log('no ajax'); return; }
-		e.preventDefault();
-		if($('.btn-navbar').is(':visible'))
-		{
-			$('.btn-navbar').click();
-		}
-		$('#loading').remove();
-		$('#content').fadeOut().parent().append('<div id="loading" class="center">Loading...<div class="center"></div></div>');
-		var $clink=$(this);
-		History.pushState(null, null, $clink.attr('href'));
-		$('ul.main-menu li.active').removeClass('active');
-		$clink.parent('li').addClass('active');	
-	});
-	*/
 
 	// user document.on so that content loaded via ajax also gets the "ajax click" behaviour
 	$(document).on('click', 'a.ajax-link', function(e){
@@ -56,11 +36,11 @@ $(document).ready(function(){
 		e.stopPropagation();
 
 		$('#loading').remove();
-		$('#content').fadeOut().parent().append('<div id="loading" class="center">Loading...<div class="center"></div></div>');
+		$('#modules').fadeOut().parent().append('<div id="loading" class="center">Loading...<div class="center"></div></div>');
 
 		History.pushState(null, null, this.href);
-		$('ul.main-menu li.active').removeClass('active');
-		$('ul.main-menu li a').each(function(){
+		$('ul#main-menu li.active').removeClass('active');
+		$('ul#main-menu li a').each(function(){
 			if($($(this))[0].href==String(window.location))
 				$(this).parent().addClass('active');
 		});
@@ -68,9 +48,9 @@ $(document).ready(function(){
 		$.ajax({
 			url: this.href,
 			success:function(msg){
-				$('#content').html($(msg).find('#content').html());
+				$('#modules').html($(msg).find('#modules').html());
 				$('#loading').remove();
-				$('#content').fadeIn();
+				$('#modules').fadeIn();
 				docReady();
 				return false;
 			},
@@ -89,7 +69,7 @@ $(document).ready(function(){
 	});
 	
 	//animating menus on hover
-	$('ul.main-menu li:not(.nav-header)').hover(function(){
+	$('ul#main-menu li:not(.nav-header)').hover(function(){
 		$(this).animate({'margin-left':'+=5'},300);
 	},
 	function(){

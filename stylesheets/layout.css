@@ -710,3 +710,33 @@ table.grid-Crafting_Table tbody tr:nth-child(even), table.grid-Furnace tbody tr:
 #item-table {
 	margin: 				0px 0px 0px !important;
 }
+div.center,p.center,img.center{
+	margin-left: auto !important;
+	margin-right: auto !important;
+	float:none !important;
+	display: block;
+	text-align:center;
+}
+ul.ajax-loaders li{
+	display:inline-block;
+	list-style:none;
+	padding:10px;
+}
+ul.ajax-loaders{
+	min-height:80px;
+}
+#for-is-ajax{
+	padding-left: 12px;
+	cursor:pointer;
+}
+#loading{
+	margin-top: 20px;
+	width:128px;
+	font-weight: bold;
+}
+#loading div.center{
+	margin-top:10px;
+	height:15px;
+	width:128px;
+	background:url(../images/ajax-loaders/ajax-loader.gif);
+}
