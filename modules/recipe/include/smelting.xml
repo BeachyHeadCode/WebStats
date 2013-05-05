@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SmeltingItems>
+  <SmeltingItem SmeltNumber="0">
+    <Output>263</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>16</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="1">
+    <Output>20</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>12</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="2">
+    <Output>1</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>4</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="3">
+    <Output>336</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>337</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="4">
+    <Output>264</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>56</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="5">
+    <Output>351</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>21</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="6">
+    <Output>331</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>73</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="7">
+    <Output>388</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>129</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="8">
+    <Output>351-2</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>81</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="9">
+    <Output>320</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>319</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="10">
+    <Output>364</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>363</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="11">
+    <Output>366</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>365</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="12">
+    <Output>350</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>349</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="13">
+    <Output>393</Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1>392</Input1>
+    <Input2>263</Input2>
+  </SmeltingItem>
+  <SmeltingItem SmeltNumber="14">
+    <Output></Output>
+    <NumberOfOutput>1</NumberOfOutput>
+    <Input1></Input1>
+    <Input2></Input2>
+  </SmeltingItem>
+</SmeltingItems>

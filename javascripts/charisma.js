@@ -4,16 +4,6 @@ $(document).ready(function(){
 		$('#modal_info').modal('show');
 	});
 	
-	//disbaling some functions for Internet Explorer
-	if($.browser.msie)
-	{
-		$('#is-ajax').prop('checked',false);
-		$('#for-is-ajax').hide();
-		$('#toggle-fullscreen').hide();
-		$('.login-box').find('.input-large').removeClass('span10');
-		
-	}
-	
 	//highlight current / active link
 	$('ul#main-menu li a').each(function(){
 		if($($(this))[0].href==String(window.location))

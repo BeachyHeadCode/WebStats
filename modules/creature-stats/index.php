@@ -1,7 +1,10 @@
 <?php
 
-if (!isset($_GET['search'])){$_GET['search'] = 'ORDER BY player ASC';}
-else{$_GET['search'] = 'ORDER BY value DESC';}					
+if (!isset($_GET['search'])) {
+	$_GET['search'] = 'ORDER BY player ASC';
+} else {
+	$_GET['search'] = 'ORDER BY value DESC';
+}				
 ?>
 <div class="content_maintable_stats">
 	<div class="content_headline" style="width:748px;">

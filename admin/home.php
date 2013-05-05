@@ -93,6 +93,7 @@ for ($i=0;$i<=sizeof($commits);$i++){
 	<h4>Info</h4>
 	<a href="http://www.xml-sitemaps.com/">Create a Sitemap to help google.</a><br />
 <?php
+	if (function_exists('imagecreatetruecolor')) {}else{ echo "Pictures will not work with extension php_gd2.dll not installled for windows";}
 	if(ini_get('variables_order') == "GPCS"){
 		echo 'Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';
 	}

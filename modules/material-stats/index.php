@@ -4,13 +4,13 @@
 	$item = $_GET['material'];
 	$item_image = $_GET['material'];
 	$item_image = str_replace(":", "-", $item_image);
-	$item = str_replace("-", ":", $item);					
+	$item = str_replace("-", ":", $item);
 ?>
 <article class="content_maintable_stats">
 	<section class="twelve columns centered content_headline" id="name">
 	</section>
 	<div id="ItemInfo"></div>
-	<div class="row" style="width:675px; margin:0px auto;">
+	<div class="row" style="width:675px; margin:0px auto;" id="Recipe">
 		<?php 
 		if($recipe_control == true) {
 			include('modules/recipe/index.php'); 
@@ -34,7 +34,7 @@
 			</div>
 </article>
 
-<script>
+<script type="text/javascript">
 function addItemInfo(callback) {
 	logInfo("Adding item info...");
 	$.ajax({
@@ -43,8 +43,7 @@ function addItemInfo(callback) {
 		dataType: "xml",
 		success: function(xml) {	
 			$(xml).find('item').each(function() {
-				var item = getValue(this, 'id')
-				if(item == "<?php echo $item; ?>"){
+				if(getValue(this, 'id') == "<?php echo $item; ?>"){
 					addItem(getValue(this, 'description'),
 							  getValue(this, 'added'),
 							  getValue(this, 'type'),

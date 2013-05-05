@@ -1,5 +1,3 @@
 <?php
-
-include('modules/stats/config/config.php');
-
+	include('modules/stats/config/config.php');
 ?>
