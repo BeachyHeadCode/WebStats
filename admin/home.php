@@ -1,45 +1,54 @@
 <?php
-function get_json($url){
-  $base = "https://api.github.com/";
-  $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, $base . $url);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+function get_json($url) {
+	$base = "https://api.github.com/";
+	if(function_exists('curl_init')) {
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $base . $url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER["HTTP_USER_AGENT"]);
 
-   //curl_setopt($curl, CONNECTTIMEOUT, 1);
-  $content = curl_exec($curl);
-  curl_close($curl);
+		//curl_setopt($curl, CONNECTTIMEOUT, 1);
+		$content = curl_exec($curl);
+		curl_close($curl);
+	} else {
+		echo 'Error: curl_init function does not exist';
+		$content = 'Error: curl_init function does not exist';
+	}
   return $content;
 }
-$user='cky2250';
 function get_repo($user) {
-	// Get the json from github for the repos
-    $json = json_decode(get_json("users/$user/repos"),true);
-	// Sort the array returend by name
-	function compare_names($a, $b){
-		return strcmp($a['name'], $b['name']);
+	if(function_exists('json_decode')) {
+		// Get the json from github for the repos
+		$json = json_decode(get_json("users/$user/repos"),true);
+		// Sort the array returend by name
+		function compare_names($a, $b) {
+			return strcmp($a['name'], $b['name']);
+		}
+		usort($json, 'compare_names');
+		while (list($key, $value) = each($json))
+			if($value["name"]=="WebStats")
+				$json = $json[$key];
+	} else {
+		echo 'Error: json_decode function does not exist';
+		$json = 'Error: json_decode function does not exist';
 	}
-	usort($json, 'compare_names');
-	while (list($key, $value) = each($json))
-		if($value["name"]=="WebStats")
-			$json = $json[$key];
-			
-return $json; //returns the array of WebStats.
+	return $json; //returns the array of WebStats.
 }
 function get_user_data($user) {
 	$data = json_decode(get_json("users/$user"),true);
-return $data;
+	return $data;
 }
-function get_commits($repo, $user){
+function get_commits($repo, $user) {
   // Get the name of the repo that we'll use in the request url
   $repoName = $repo["name"];  //takes the array and only outputs the name of the repo.
   return json_decode(get_json("repos/$user/$repoName/commits"),true); //returns all commits from the repo.
 }
-function get_downloads($repo, $user){
+function get_downloads($repo, $user) {
 	$repoName = $repo["name"];  //takes the array and only outputs the name of the repo.
 	return json_decode(get_json("repos/$user/$repoName/downloads"),true); // returns all the downloadable files.
 }
-function format_filesize($number, $decimals = 3, $force_unit = false, $dec_char = ',', $thousands_char = ' '){
+function format_filesize($number, $decimals = 3, $force_unit = false, $dec_char = ',', $thousands_char = ' ') {
 //string format_filesize(int(0,) $number, (bool(0), int(0,4)) $force_unit, int $decimals, char $dec_char, char $thousands_char)
 	$units = array('Byte','KB','MB','GB','TB','PB');
 	if($force_unit === false)
@@ -68,7 +77,7 @@ $userURL = "https://github.com/$owner";
 $data=get_user_data($owner);
 $name=$data["name"];
 $location=$data["location"];
-for ($i=0;$i<=sizeof($downloads);$i++){	
+for ($i=0;$i<=sizeof($downloads);$i++) {	
 	$tempsize = $downloads[$i]["size"];
 	$tempsize = format_filesize($tempsize);
 	$download_size[$i] = "$tempsize";
@@ -81,7 +90,7 @@ for ($i=0;$i<=sizeof($commits);$i++){
 ?>
 <div style="margin: 0px auto;width: 478px;">
 	<a href="http://mcstats.org/plugin/WebStats">
-	<?php if (file_exists('../images/image-cache/webstats.png')){
+	<?php if (file_exists('../images/image-cache/webstats.png')) {
 		echo '<img alt="Graph" src="../images/image-cache/webstats.png" />';
 	} else {
 		echo '<img alt="Graph" src="http://mcstats.org/signature/webstats.png" />';
@@ -93,7 +102,8 @@ for ($i=0;$i<=sizeof($commits);$i++){
 	<h4>Info</h4>
 	<a href="http://www.xml-sitemaps.com/">Create a Sitemap to help google.</a><br />
 <?php
-	if (function_exists('imagecreatetruecolor')) {}else{ echo "Pictures will not work with extension php_gd2.dll not installled for windows";}
+	if (function_exists('imagecreatetruecolor')) {} else { echo "PHP GD is not installed or corrupt: <br />For linux users, 'sudo apt-get install php5-gd' then restart apache.";}
+	if (function_exists('curl_init')) {} else { echo "PHP Curl is not installed or corrupt: <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.";}	
 	if(ini_get('variables_order') == "GPCS"){
 		echo 'Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';
 	}
@@ -157,46 +167,6 @@ for ($i=0;$i<=sizeof($commits);$i++){
 <div class="three columns centered">
 	<iframe width="234" height="60" frameborder="0" scrolling="NO" marginwidth="0" marginheight="0" src="http://my.dot.tk/cgi-bin/amb/ambassador.dottk?nr=494109::11032956::531"></iframe>
 </div>
-<form action="" method="post" name="Email">
-	<fieldset>
-		<legend style="background: none;"><h4>EMAIL ANY QUESTIONS.</h4></legend>
-			<div class="row">
-				<div class="two mobile-one columns">
-					<label class="right inline">Name:</label>
-				</div>
-				<div class="ten mobile-three columns">
-					<input type="text" placeholder="e.g. John Doe" class="eight" disabled />
-				</div>
-			</div>
-			<div class="row">
-				<div class="two mobile-one columns">
-					<label class="right inline">Email:</label>
-				</div>
-				<div class="ten mobile-three columns">
-					<input type="text" placeholder="e.g. admin@mrplows-server.us" class="eight" disabled />
-				</div>
-			</div>
-			<div class="row">
-				<div class="two mobile-one columns">
-					<label class="right inline">Subject:</label>
-				</div>
-				<div class="ten mobile-three columns">
-					<input type="text" placeholder="e.g. Issue, enhancement, want to buy" class="eight" id="subject" disabled />
-				</div>
-			</div>
-			<div class="row">
-				<div class="two mobile-one columns">
-					<label class="right inline">Message:</label>
-				</div>
-				<div class="ten mobile-three columns">
-					<textarea placeholder="Message" class="eight" id="body" disabled></textarea>
-				</div>
-			</div>
-			<div class="row">
-				<input type="button" onselectstart="return false;" class="button" id="submit" name="submit" value="Send &raquo;" />
-			</div>					
-	</fieldset>
-</form>
 <div class="three columns centered">
 	<a href="http://tool.motoricerca.info/robots-checker.phtml?checkreferer=1"><img src="http://tool.motoricerca.info/pic/valid-robots.png" border="0" alt="Valid Robots.txt" width="88" height="31"></a>
 	<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/footer_badge.png" alt="Member of The Internet Defense League" /></a>
@@ -206,6 +176,6 @@ $('input#submit').click(function() {
     var subject = $('input#subject').val();
 	var body = $('textarea#body').val();
     //send to server and process response
-	window.open('mailto:admin@mrplows-server.us?subject=' + subject + '&#038;body=' + body + ')
+	window.open('mailto:admin@mrplows-server.us?subject=' + subject + '&#038;body=' + body)
 });
 </script>
