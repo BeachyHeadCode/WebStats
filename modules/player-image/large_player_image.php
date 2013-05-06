@@ -1,5 +1,5 @@
 <?php
-	if (function_exists('imagecreatetruecolor')){	
+	if (function_exists('imagecreatetruecolor')) {	
 		header("Content-type: image/png");
 
 		$cache_file = '../../images/image-cache/large_'.$_GET['nick'].'.png';
@@ -41,6 +41,5 @@
 			readfile($cache_file);	
 		}
 	
-	}
-	
+	} else {echo 'Error:';}
 ?>

@@ -1,13 +1,12 @@
 <?php
-	if (function_exists('imagecreatetruecolor')){
+	if (function_exists('imagecreatetruecolor')) {
 		$player = $_GET['player'];
 		
 		$cache_file = '../../images/image-cache/'.$player.'.png';
 		$cache_life = 86400; //caching time, in seconds
 		$filemtime = @filemtime($cache_file);
 		
-		if (!$filemtime or (time() - $filemtime >= $cache_life))
-		{
+		if (!$filemtime or (time() - $filemtime >= $cache_life)) {
 			$img=imagecreatetruecolor(8,8);
 			imagealphablending($img, false);
 			$transparent = imagecolorallocatealpha($img, 0, 0, 0, 127);
@@ -23,10 +22,8 @@
 			imagepng($img, $cache_file);
 			imagedestroy($img);
 			imagedestroy($im);			
-		}
-		else{	
+		} else {	
 			readfile($cache_file);
 		}
-	
 	}
 ?>

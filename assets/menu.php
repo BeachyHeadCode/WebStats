@@ -22,7 +22,7 @@
 				</ul>
 				<ul class="right" id="main-menu">
 <li class="divider show-for-medium-and-up"></li>
-<li><a class="ajax-link" title="Return to Main Site" href="<?php echo WS_MAINSITE;?>" <?php echo (hover);?>><?php echo translate(var84);?></a></li>
+<li><a title="Return to Main Site" href="<?php echo WS_MAINSITE;?>" <?php echo (hover);?>><?php echo translate(var84);?></a></li>
 <li><?php if($idlist_control === true){echo '<a href="?mode=id-list" title="'.translate(var75).'" '.hover.'><span>'.translate(var75).'</span></a>';} ?></li>
 				</ul>
 			</section>
