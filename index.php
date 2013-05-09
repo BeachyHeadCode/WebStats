@@ -1,7 +1,7 @@
 <?php
 define('ROOT', './');
 require_once ROOT . 'include/version.php';
-if (version_compare(PHP_VERSION, $required_php_version) >= 0){
+if (version_compare(PHP_VERSION, $required_php_version) >= 0) {
 	$Timer = MicroTime( true );
 	if(file_exists('config/config.php'))
 		include_once ROOT . 'config/config.php';
@@ -240,7 +240,6 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 			?>
 		</div>
 	</section>
-	<br />
 	<footer class="row footer" style="clear:both">
 		<div role="footerAD"><?php echo (WS_GOOGLE_FOOTER); ?></div>
 		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div>
