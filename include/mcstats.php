@@ -227,8 +227,7 @@ if(isset($interval) && ($forever === true)){
 		}
 		sleep($interval);
 	}
-} 
-elseif(isset($interval) && ($forever === false)){
+} elseif(isset($interval) && ($forever === false)) {
 	if(($lastRun["RequestTime"]+$interval) < time()){
 		if (function_exists('curl_init')) {	 
 			$response = get_web_page($URL,$data);
@@ -237,11 +236,10 @@ elseif(isset($interval) && ($forever === false)){
 			}
 		}
 	}
-	if($PHPTEST === true){
+	if($PHPTEST === true) {
 		echo "<br /><br />Total People Online: ".$playersOnline."<br />Server Name: ".$_SERVER['SERVER_NAME']."<br />Remote Address: ".$_SERVER['REMOTE_ADDR']."<br />User Agent: ".$_SERVER['HTTP_USER_AGENT']."<br />Remote Port: ".$_SERVER['REMOTE_PORT']."<br /> Request Time: ".$_SERVER['REQUEST_TIME']."<br />------------------------------<br /><br />".create_guid()."<br /><br />------------------------------<br />".$URL."<br />".$data."<br />".$site."<br />";
 	}
-}
-else{
+} else {
 	if (function_exists('curl_init')) {	 
 		$response = get_web_page($URL,$data);
 		if($DUMP === true){
