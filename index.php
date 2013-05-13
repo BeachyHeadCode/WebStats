@@ -244,7 +244,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		<div role="footerAD"><?php echo (WS_GOOGLE_FOOTER); ?></div>
 		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div>
 		<p><em>
-				<a target="_blank" href="http://cky2250.github.com/WebStats/">mrplows-server.us</a> &#169;<a target="_blank" href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a target="_blank" href="http://minecraft.net">Minecraft</a>
+				<a target="_blank" href="http://cky2250.github.com/WebStats/">mrplows-server.tk</a> &#169;<a target="_blank" href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a target="_blank" href="http://minecraft.net">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
 				<a href="termsofuse.php">Terms Of Use</a>
