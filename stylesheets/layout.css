@@ -118,7 +118,7 @@ transition: 0.25s all ease-in; */
 			background:							rgba(255, 255, 255, .5);
 			border-bottom-left-radius:			30px;
 			border-bottom-right-radius:			30px;
-			z-index:							1;
+			z-index:							10;
 }
 .adminheader{
 			width:							980px;
@@ -739,4 +739,76 @@ ul.ajax-loaders{
 	height:15px;
 	width:128px;
 	background:url(../images/ajax-loaders/ajax-loader.gif);
+}
+
+.panel{
+	
+	/* Styling the widget and the sliding panel at once */
+	
+	background-color:#F9F9F9;
+	border:2px solid #FFFFFF;
+	height:25px;
+	padding:4px 8px;
+	position:relative;
+	width:170px;
+	
+	cursor:pointer;
+	
+	/* CSS3 rules for rounded corners, box and text shadows: */
+	
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	
+	-moz-box-shadow:0 0 3px #CCCCCC;
+	-webkit-box-shadow:0 0 3px #CCCCCC;
+	box-shadow:0 0 3px #CCCCCC;
+	
+	text-shadow:0 2px 0 white;
+
+	/* The slideout panel */
+	
+	position:absolute;
+	cursor:default;
+	
+	bottom:50px;
+	left:0;
+	height:auto;
+	display:none;
+	margin:-2px;
+	z-index:1;
+}
+
+.flag {
+	float:left;
+	margin:0 4px;
+}
+
+.country, .people {
+	float:left;
+	font-size:10px;
+	padding:2px;
+}
+
+.country {
+	width:85px;
+	/* overflow:hidden; */
+}
+
+.people {
+	font-weight:bold;
+}
+
+.preloader1{
+	/* The rotating gif preloader image */
+	display:block;
+	margin:10px auto;
+}
+
+.geoRow {
+	/* The div that contains each country */
+	
+	height:16px;
+	overflow:hidden;
+	padding:2px 0;
 }

@@ -254,7 +254,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		</p>
 		<?php
 			if (iptracker === true){
-					echo"&nbsp;&nbsp;Users Online:&nbsp;".$totalOnline."&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
+					echo"<span class='onlineWidget'><div class='panel'><img class='preloader1' src='images/ajax-loaders/preloader.gif' alt='Loading..' width='22' height='22' /></div>Users Online:&nbsp;".$totalOnline."</span>&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
 					if(isset($date[0]))
 						echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
 					else { echo '';}
@@ -304,7 +304,8 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 	<script src="javascripts/app.js"></script>
 	<script src="javascripts/charisma.js"></script>
 	<script src="javascripts/giant_uncomp.js"></script>
-
+	<script type="text/javascript" src="javascripts/widget.js"></script>
+	
 	<script type="text/javascript">
 		window._idl = {};
 		_idl.variant = "banner";
