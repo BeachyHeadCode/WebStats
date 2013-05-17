@@ -124,44 +124,46 @@ return $output;
 	<h2>IP Track ( <?php echo $ip;?> ) Welcome</h2>
 </div>
 <?php 
-$DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB); 
+$DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
+
+if (isset($_GET["page"]) <= 0) {
+	$page = '1';
+}
+if (isset($_GET["page"]) > 0) {
+	$page = $_GET["page"];
+}
+
+if(isset($_GET["NPP"]) && $_GET["NPP"] != '') {
+	$start = $page * $_GET["NPP"] - $_GET["NPP"];
+	$end = $_GET["NPP"];
+} else {
+	$_GET["NPP"] = WS_CONFIG_PAGENUM;
+	$start = $page * WS_CONFIG_PAGENUM - WS_CONFIG_PAGENUM;
+	$end = WS_CONFIG_PAGENUM;
+}
 ?>
 <table style="margin:auto;">
 	<thead>
         <th align="left" class="content_headline_num" style="">Num:</th>
         <?php if($_GET['sort']!=='IPdesc') {?>
-        	<th><a href="?mode=ip&sort=IPdesc">IP:</a></th>
+        	<th><a href="?mode=ip&sort=IPdesc&NPP=<?php echo $_GET["NPP"];?>">IP:</a></th>
         <?php } else {?>
-        	<th><a href="?mode=ip&sort=IPasc">IP:</a></th>
+        	<th><a href="?mode=ip&sort=IPasc&NPP=<?php echo $_GET["NPP"];?>">IP:</a></th>
 		<?php } if($_GET['sort']!=='locationdesc') {?>
-        	<th><a href="?mode=ip&sort=locationdesc">Location:</a></th>
+        	<th><a href="?mode=ip&sort=locationdesc&NPP=<?php echo $_GET["NPP"];?>">Location:</a></th>
         <?php } else {?>
-        	<th><a href="?mode=ip&sort=locationasc">Location:</a></th>
+        	<th><a href="?mode=ip&sort=locationasc&NPP=<?php echo $_GET["NPP"];?>">Location:</a></th>
         <?php }if($_GET['sort']!=='pageviewsdesc') {?>
-        	<th><a href="?mode=ip&sort=pageviewsdesc">Page views:</a></th>
+        	<th><a href="?mode=ip&sort=pageviewsdesc&NPP=<?php echo $_GET["NPP"];?>">Page views:</a></th>
         <?php } else {?>
-       		<th><a href="?mode=ip&sort=pageviewsasc">Page views:</a></th>
+       		<th><a href="?mode=ip&sort=pageviewsasc&NPP=<?php echo $_GET["NPP"];?>">Page views:</a></th>
         <?php } if($_GET['sort']!=='datedesc') {?>
-        	<th><a href="?mode=ip&sort=datedesc">Date:</a></th>
+        	<th><a href="?mode=ip&sort=datedesc&NPP=<?php echo $_GET["NPP"];?>">Date:</a></th>
         <?php } else {?>
-        	<th><a href="?mode=ip&sort=dateasc">Date:</a></th>
+        	<th><a href="?mode=ip&sort=dateasc&NPP=<?php echo $_GET["NPP"];?>">Date:</a></th>
         <?php }?>
 	</thead>
-	<?php
-		if (isset($_GET["page"]) <= 0) {
-			$page = '1';
-		}
-		if (isset($_GET["page"]) > 0) {
-			$page = $_GET["page"];
-		}
-		if(isset($_GET["NPP"]) && $_GET["NPP"] != '') {
-			$start = $page * $_GET["NPP"] - $_GET["NPP"];
-			$end = $_GET["NPP"];
-		} else {
-			$_GET["NPP"] = WS_CONFIG_PAGENUM;
-			$start = $page * WS_CONFIG_PAGENUM - WS_CONFIG_PAGENUM;
-			$end = WS_CONFIG_PAGENUM;
-		}
+	<?php	
 		$sort = $_GET['sort'];
 		$IPs = get_IP_stats_order($sort, $start, $end);
 		$IP_count = get_IP_stats_count();

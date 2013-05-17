@@ -16,11 +16,7 @@
 <!--MAIN BOX AND PHOTO START-->
 <div class="row">
 		<?php 
-			if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
-				echo (set_player_details_table_3d(htmlentities($_GET['user']))); 
-			} else {
-				echo (set_player_details_table(htmlentities($_GET['user'])));
-			} 
+			echo (set_player_details_table(htmlentities($_GET['user'])));
 		?>
 		<?php 
 			if($iconomy_control == true && pluginconfigstatusiconomy === true) {
@@ -30,7 +26,7 @@
 			}
 			if($mineconomy_control == true && pluginconfigstatusmineconomy === true) {
 				echo '<div align="right" style="clear:both;">';
-				//echo mineconomy_player_get_money_table(htmlentities($_GET['user']));
+				echo mineconomy_player_get_money_table(htmlentities($_GET['user']));
 				echo '</div>';
 			}
 		?>
@@ -85,7 +81,7 @@
 ?>
 		<div class="head_maintable_stats">
 			<div class="content_headline" style="width:735px;">
-				<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>" <?php echo (hover);?>><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true" style="cursor:url(images/cursors/hover.cur),auto;" ><?php echo translate('var2'); ?></a>
+				<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
 			</div>
 			<div style="clear: both; width: 735px; height: 25px;">&nbsp;</div>
 			<dl class="tabs">
@@ -180,8 +176,8 @@
 
 <div class="content_maintable_achiev_title">
 	<span>Achievements</span><br/>
-	<span4_1 id="showr4" class="showhide" <?php echo (hover);?>>Show</span4_1>
-	<span4_1 id="hidr4" class="showhide" <?php echo (hover);?>>Hide</span4_1>
+	<span4_1 id="showr4" class="showhide">Show</span4_1>
+	<span4_1 id="hidr4" class="showhide">Hide</span4_1>
 </div>
 <div class="content_maintable_achiev">
 	<div class="slidingDiv_table4">

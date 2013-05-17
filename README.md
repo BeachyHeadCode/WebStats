@@ -16,16 +16,41 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li><a href="http://dev.bukkit.org/server-mods/tno-achievements/">Achievements 2.0</a> *PLUGIN DOES NOT WORK IN LATTEST CRAFTBUKKIT BUILD (not WS fault)</li>
 	<li>BeardAch * NOT KNOWN YET. Sorry</li>
 	<li><a href="http://dev.bukkit.org/server-mods/iconomy/">iConomy</a> ~ <a href="https://github.com/iConomy/Core">GitHub</a> *WORKS</li>
-	<li><a href="http://dev.bukkit.org/server-mods/iconomy-continued/">iConomy [Continued]</a> <a href="https://github.com/rtainc/iCo">GitHub</a> *WORKS</li>
+	<li><a href="http://dev.bukkit.org/server-mods/iconomy-continued/">iConomy [Continued]</a> ~ <a href="https://github.com/rtainc/iCo">GitHub</a> *WORKS</li>
 	<li><a href="http://dev.bukkit.org/server-mods/jail/">Jail</a> ~ <a href="https://github.com/matejdro/Jail">GitHub</a> * WORKS</li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/jailplusplus/">Jail ++</a> ~ <a href="https://github.com/UltimateDev/jailplusplus/">GitHub</a></li>
 	<li><a href="http://dev.bukkit.org/server-mods/jobs/">Jobs</a> ~ <a href="https://github.com/phrstbrn/Jobs">GitHub</a> *WORKS</li>
 	<li><a href="http://dev.bukkit.org/server-mods/mcmmo/">McMMO</a> ~ <a href="https://github.com/mcMMO-Dev/mcMMO">GitHub</a> *WORKS</li>
+	<li><a href="http://dev.bukkit.org/server-mods/mineconomy/">MineConomy</a> ~ <a href="https://github.com/MjolnirCommando/MineConomy">GitHub</a> *WORKS</li>
 	<li><a href="http://dev.bukkit.org/server-mods/stats/">Stats</a> *WORKS (In Build 1.1-R6)</li>
 	<li><a href="http://dev.bukkit.org/server-mods/tno-stats/">Stats 2.0</a> *WORKS (Up to Build 1.1-R4)</li>
 	<li><a href="http://dev.bukkit.org/server-mods/lolmewnstats/">Stats by lolmewnstats</a> ~ <a href="https://bitbucket.org/Lolmewn/stats/src">source</a> - TBA</li>
 </ul>
 <hr />
+
+<h3>What are the requirements of WS?</h3>
+<ul>
+	<li><a href="http://www.php.net/downloads.php">PHP</a> (tested with v5.2.5 and above)</li>
+	<li><a href="http://dev.mysql.com/downloads/">MySQL</a></li>
+</ul>
+
+<h2>And for the noobs use xampp *as seen below</h2>
+
+<h3>Suggested:</h3>
+<ul>
+	<li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> ~ sets up everything for you.</li>
+	<li><a href="http://www.easyphp.org/">EasyPHP</a> ~ sets up everything for you.</li>
+	<li><a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plugin that seems to never brake, try it out.</li>
+</ul>
+					
+<h3>Installation</h3>
+<p>
+1~Extract the zip file in your webserver directory *most likely<br />
+2~The directory "image-cache" needs write permission (chmod 777) !<br />
+~'modules\player-image\image-cache'<br />
+~'modules\player-image\image-cache\player-skin'<br />
+~'config\config.php'<br />
+</p>
 
 <h3>To-Do:</h3>
 <ul>

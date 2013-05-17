@@ -20,7 +20,6 @@
 
 <script type="text/javascript">
 function addItems(callback) {
-	logInfo("Adding items...");
 	$.ajax({
 		type: "GET",
 		url: "language/items.xml", 
@@ -32,7 +31,6 @@ function addItems(callback) {
 						  getValue(this, 'id'),
 						  getValue(this, 'type'));
 			});
-			logInfo("Done!");
 			callback();
 		}
 	});
@@ -46,8 +44,6 @@ function addItem(name, icon, id, type) {
 		'<td>' + type + '</td>'
 	)
 	.appendTo('#item-table');
-	
-	logInfo('Added ' + name + ' (' + type + ').');
 }
 $(document).ready(function() {
 	addItems(function() {
@@ -77,9 +73,5 @@ $("#search-bar").on("keyup", function() {
 			}
 		}
 	});
-	
-	if (term) {
-		logInfo(visible + " results found.");
-	}
 });
 </script>

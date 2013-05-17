@@ -369,6 +369,7 @@ a:link {
 }
 
 a:visited {
+			cursor:						url(../images/cursors/hover.cur), auto;
 			color: 						#333322;
 			text-decoration: 				none;
 			font-weight: 					bold;
@@ -389,6 +390,7 @@ a.footerlink:link {color:						#333322;}
 a.footerlink:visited {color:						#333322;}
 
 a:hover {
+			cursor:						url(../images/cursors/hover.cur), auto;
 			color:						#333322;
 			text-decoration: 				underline;
 			font-weight: 					bold;				

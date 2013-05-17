@@ -234,7 +234,7 @@ class DBConfig {
  * @param integer $stamp Amount of items.
  */
 function get_date($stamp) {
-	setlocale(LC_TIME, "de_DE");
+	setlocale(LC_TIME, "usa");
 	$datum = date ("d. M 'y", $stamp);
 	return $datum;
 }
