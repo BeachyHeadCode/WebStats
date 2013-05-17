@@ -16,7 +16,7 @@ $script  = filter_input(INPUT_SERVER, 'SCRIPT_NAME', FILTER_SANITIZE_URL);
 // mush session_id and fileId into an access token
 $secret        = 'i can haz salt?';
 $expectedToken = md5($secret . session_id() . $fileId);
-if(!empty($_POST["submitmysql"])){ 
+if(!empty($_POST["submitmysql"])) { 
 	$_SESSION['mysql']['URL']=$_POST['mysql']['URL'];
 	$_SESSION['mysql']['PORT']=$_POST['mysql']['PORT'];
 	$_SESSION['mysql']['user']=$_POST['mysql']['user'];
@@ -31,7 +31,7 @@ if(!empty($_POST["submitmysql"])){
 	$_SESSION['pluginconfigstats']=$_POST['pluginconfigstats'];
 	$_SESSION['pluginconfigeconomy']=$_POST['pluginconfigeconomy'];
 }
-if(!empty($_POST["submitconfig"])){
+if(!empty($_POST["submitconfig"])) {
 	$server_name = htmlspecialchars($_POST['page']['server_name'], ENT_QUOTES);
 	$_SESSION['page']['server_name']=$server_name;
 	$server_title = htmlspecialchars($_POST['page']['server_title'], ENT_QUOTES);

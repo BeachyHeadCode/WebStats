@@ -253,7 +253,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
        	<span style="font-size:xx-small">(Loading time: <?php echo Number_Format( ( MicroTime( true ) - $Timer ), 4, '.', '' ); ?>s)</span>
 		</p>
 		<?php
-			if (iptracker === true){
+			if (iptracker === true) {
 					echo"<span class='onlineWidget'><div class='panel'><img class='preloader1' src='images/ajax-loaders/preloader.gif' alt='Loading..' width='22' height='22' /></div>Users Online:&nbsp;".$totalOnline."</span>&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
 					if(isset($date[0]))
 						echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];

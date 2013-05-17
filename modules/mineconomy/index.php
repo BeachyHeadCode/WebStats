@@ -27,13 +27,14 @@
    			$page = '1';
    		} if (isset($_GET["page"]) > 0) {	
    			$page = $_GET["page"];
-   		} if(isset($_SESSION['page']['numbers'])) {
-			$start = $page * $_SESSION['page']['numbers'] - $_SESSION['page']['numbers'];
-			$end = $_SESSION['page']['numbers'];
+   		}
+		if(isset($_GET["NPP"]) && $_GET["NPP"] != '') {
+			$start = $page * $_GET["NPP"] - $_GET["NPP"];
+			$end = $_GET["NPP"];
 		} else {
 			$start = $page * WS_CONFIG_PAGENUM - WS_CONFIG_PAGENUM;
 			$end = WS_CONFIG_PAGENUM;
-		}					
+		}	
 		$sort = $_GET['sort'];
 		$players = get_mineconomy_user_stats($sort, $start, $end);
 		$player_count = get_mineconomy_user_count();

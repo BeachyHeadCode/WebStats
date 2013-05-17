@@ -3,7 +3,7 @@
 //SETS NUMBER OF USERS TO PRINT
 function get_iconomy_user_count()
 {
-	$query = mysql_query("SELECT COUNT(username) FROM ".WS_CONFIG_ICONOMY."");
+	$query = mysql_query("SELECT COUNT(`username`) FROM `".WS_CONFIG_ICONOMY."`");
 	$row = mysql_fetch_array($query);
 	return $row[0];
 }
@@ -19,7 +19,7 @@ function get_iconomy_user_stats($sort, $start, $end)
 	{
 		$sortkey = 'ORDER BY balance DESC';
 	}
-	$query = mysql_query("SELECT username, balance FROM ".WS_CONFIG_ICONOMY." ".$sortkey." LIMIT ".$start.",".$end."");
+	$query = mysql_query("SELECT `username`, `balance` FROM ".WS_CONFIG_ICONOMY." ".$sortkey." LIMIT ".$start.",".$end);
 	$time = 0;
 	while($row = mysql_fetch_array($query)) 
 	{
@@ -32,7 +32,7 @@ function get_iconomy_user_stats($sort, $start, $end)
 //PLAYER MONEY COUNT
 function iconomy_player_get_money($player)
 {
-	$query = mysql_query("SELECT username, balance FROM ".WS_CONFIG_ICONOMY." WHERE username = '".$player."'");
+	$query = mysql_query("SELECT `username`, `balance` FROM `".WS_CONFIG_ICONOMY."` WHERE `username` = '".$player."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
 	$money[2] = $row[0];
@@ -42,7 +42,7 @@ function iconomy_player_get_money($player)
 //SERVER MONEY COUNT
 function iconomy_server_get_money()
 {
-	$query = mysql_query("SELECT COUNT(username), SUM(balance) FROM ".WS_CONFIG_ICONOMY." WHERE username != '".WS_ICONOMY_OMIT."'");
+	$query = mysql_query("SELECT COUNT(`username`), SUM(`balance`) FROM `".WS_CONFIG_ICONOMY."` WHERE `username` != '".WS_ICONOMY_OMIT."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
 	$money[2] = $row[0];
@@ -111,21 +111,17 @@ function iconomy_server_details_table()
 }
 
 //LOWER PAGE PLAYER TABLE
-function iconomy_server_player_table($player, $money)
-{
+function iconomy_server_player_table($player, $money) {
 		global $image_control;
-		if($image_control == true) 
-		{
+		if($image_control == true) {
 			$image = small_image($player);
 		}
 		
 		global $stats_control;
-		if($stats_control == true)
-		{ 
+		if($stats_control == true) { 
 			$stats = '<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; 
 		}
-		else
-		{ 
+		else { 
 			$stats = ''.$player.'';
 		}
 		
@@ -135,5 +131,4 @@ function iconomy_server_player_table($player, $money)
 		$output .= "</tr>";
 	return $output;
 }
-
 ?>

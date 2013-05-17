@@ -1,7 +1,7 @@
 <?php
 //SETS NUMBER OF USERS TO PRINT
 function get_mineconomy_user_count(){
-	$query = mysql_query("SELECT COUNT(account) FROM ".WS_CONFIG_MINECONOMY."");
+	$query = mysql_query("SELECT COUNT(`account`) FROM ".WS_CONFIG_MINECONOMY);
 	$row = mysql_fetch_array($query);
 	return $row[0];
 }
@@ -14,7 +14,7 @@ function get_mineconomy_user_stats($sort, $start, $end){
 	elseif($sort == 'balance') {
 		$sortkey = 'ORDER BY balance DESC';
 	}
-	$query = mysql_query("SELECT account, balance FROM ".WS_CONFIG_MINECONOMY." ".$sortkey." LIMIT ".$start.",".$end."");
+	$query = mysql_query("SELECT `account`, `balance` FROM `".WS_CONFIG_MINECONOMY."` ".$sortkey." LIMIT ".$start.",".$end);
 	$time = 0;
 	while($row = mysql_fetch_array($query)) {
 		$players[$time] = $row[0];
@@ -25,7 +25,7 @@ function get_mineconomy_user_stats($sort, $start, $end){
 
 //PLAYER MONEY COUNT
 function mineconomy_player_get_money($player) {
-	$query = mysql_query("SELECT account, balance, currency FROM ".WS_CONFIG_MINECONOMY." WHERE account = '".$player."'");
+	$query = mysql_query("SELECT `account`, `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` = '".$player."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];
@@ -35,7 +35,7 @@ function mineconomy_player_get_money($player) {
 
 //SERVER MONEY COUNT
 function mineconomy_server_get_money() {
-	$query = mysql_query("SELECT COUNT(account), SUM(balance), currency FROM ".WS_CONFIG_MINECONOMY." WHERE account != '".WS_ICONOMY_OMIT."'");
+	$query = mysql_query("SELECT COUNT(`account`), SUM(`balance`), `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];

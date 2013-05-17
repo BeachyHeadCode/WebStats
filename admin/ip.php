@@ -154,12 +154,11 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
 		if (isset($_GET["page"]) > 0) {
 			$page = $_GET["page"];
 		}
-		
-		
-		if(isset($_GET["NPP"])) {
+		if(isset($_GET["NPP"]) && $_GET["NPP"] != '') {
 			$start = $page * $_GET["NPP"] - $_GET["NPP"];
 			$end = $_GET["NPP"];
 		} else {
+			$_GET["NPP"] = WS_CONFIG_PAGENUM;
 			$start = $page * WS_CONFIG_PAGENUM - WS_CONFIG_PAGENUM;
 			$end = WS_CONFIG_PAGENUM;
 		}
