@@ -241,12 +241,8 @@ cursor:url(../images/cursors/hover.cur), auto;
 .head_logo {
 			width:						350px; 
 			height:						270px;
-			border:						1px solid #333333;
-			float:						left;
 			background-repeat: 			no-repeat;
 			background-position: 		center;
-			text-align:					center;
-			vertical-align:				middle;
 }
 
 .head_contentbox {
@@ -710,7 +706,7 @@ table.grid-Crafting_Table tbody tr:nth-child(even), table.grid-Furnace tbody tr:
 }
 
 #item-table {
-	margin: 				0px 0px 0px !important;
+	margin: 				0px auto;
 }
 div.center,p.center,img.center{
 	margin-left: auto !important;

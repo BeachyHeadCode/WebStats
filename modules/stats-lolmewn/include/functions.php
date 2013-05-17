@@ -6,7 +6,23 @@ function get_amount($user, $stat, $location) {
 }
 
 function get_amount_sum($user, $stat, $location) {
-	$query = mysql_query("SELECT count(`$stat`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."$location` WHERE `player`='$user'");
+	$query = mysql_query("SELECT SUM(`$stat`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."$location` WHERE `player`='$user'");
+	$data = @mysql_fetch_array($query);
+	return $data[0];
+}
+
+function get_movement($user, $type) {
+	if($type > 3 || $type < 0){
+		return "Error! No movement of this type exists.";
+	} else {
+		$query = mysql_query("SELECT `distance` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."move` WHERE `player` = '$user' AND `type` = '$type'");
+		$data = @mysql_fetch_array($query);
+		return $data[0];
+	}
+}
+	
+function get_amount_break_place_sum($user, $type) {
+	$query = mysql_query("SELECT SUM(`amount`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `player`='$user' AND `break`='$type'");
 	$data = @mysql_fetch_array($query);
 	return $data[0];
 }
@@ -88,174 +104,127 @@ function set_index_table($player, $pos) {
 function set_player_details_table($player) {
 	global $image_control;
 	global $image_control_3d;
+	
+	$foot = get_movement($player, "0");
+	$boat = get_movement($player, "1");
+	$pig = get_movement($player, "2");
+	$cart = get_movement($player, "3");
+	$output = '<div class="row">
+					<div style="align:center; font-weight:bold;"><h5>'.$player.':</h5></div>
+				</div>';
+	$output .= '<div class="row">';
+	$output .= '<div class="three columns">
+				<h6>Movement</h6>
+				<table style="margin: 0 auto;">
+					<thead>
+						<tr>
+							<th>Total:</th>
+							<th>'. number_format(($foot+$boat+$pig+$cart), 2, '.', '').'</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>'.translate("var85").':</td>
+							<td>'. number_format($foot, 2, '.', '').'</td>
+						</tr>
+						<tr>
+							<td>'.translate("var86").':</td>
+							<td>'.number_format($boat, 2, '.', '').'</td>
+						</tr>
+						<tr>
+							<td>'.translate("var87").':</td>
+							<td>'.number_format($cart, 2, '.', '').'</td>
+						</tr>
+						<tr>
+							<td>'.translate("var88").':</td>
+							<td>'.number_format($pig, 2, '.', '').'</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>';
 	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
 		$NAME = $_GET['user'];
 		$image = '<iframe frameborder="0" src="modules/player-image/full_player_image.php?user='.$NAME.'" title="skin" width="350px" height="300px"></iframe>';
-		$output = '<div class="head_logo">'.$image.'</div>';
+		$output .= '<div class="six columns head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
 	} elseif($image_control == true) {
 		$image = large_image($player);	
-		$output = '<div class="head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
+		$output .= '<div class="six columns head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
 	}
-	$output .= '<div class="head_contentbox">';
-	$output .= "\n";
-	$output .= '<div style="clear:both">
-					<div class="head_stat" style="width:350px; font-weight:bold;"><div align="center">'.$player.':</div></div>
-				</div>
-				<br/><br/>
-				<div style="clear:both">
-					<div class="head_stat">'.translate("var5").':</div>
-					<div class="head_content">'.get_date(get_amount($player, "lastjoin", "player")).'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var14").':</div>
-					<div class="head_content">'.get_date(get_amount($player, "lastleave", "player")).'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var4").':</div>
-					<div class="head_content">'.get_played(get_amount($player, "playtime", "player")).'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var82").':</div>
-					<div class="head_content">'.get_amount($player, "joins", "player").'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var15").':</div>
-					<div class="head_content">'.get_status($player).'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var16").':</div>
-					<div class="head_content">'.get_amount_sum($player, "amount", "kill").' '.translate("var16").'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var17").':</div>
-					<div class="head_content">'.get_amount($player, "move", "stats").' '.translate("var18").'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var81").':</div>
-					<div class="head_content">'.get_amount($player, "command", "stats").' '.translate("var81").'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var19").':</div>
-					<div class="head_content">'.get_amount($player, "totalblockdestroy", "stats").' '.translate("var18").'</div>
-				</div>
-				<div>
-					<div class="head_stat">'.translate("var20").':</div>
-					<div class="head_content">'.get_amount($player, "totalblockcreate", "stats").' '.translate("var18").'</div>
-				</div>';
-	$output .= "\n";
+	$output .= '<div class="three columns">';
+	$output .= '<table>
+					<tbody>
+						
+				<tr>
+					<td>'.translate("var5").':</td>
+					<td>'.get_amount($player, "lastjoin", "player").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var14").':</td>
+					<td>'.get_date(get_amount($player, "lastleave", "player")).'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var4").':</td>
+					<td>'.get_played(get_amount($player, "playtime", "player")).'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var82").':</td>
+					<td>'.get_amount($player, "joins", "player").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var15").':</td>
+					<td>'.get_status($player).'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var16").':</td>
+					<td>'.get_amount_sum($player, "amount", "kill").' '.translate("var16").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var81").':</td>
+					<td>'.get_amount($player, "commandsdone", "player").' '.translate("var81").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var19").':</td>
+					<td>'.get_amount_break_place_sum($player, "1").' '.translate("var18").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var20").':</td>
+					<td>'.get_amount_break_place_sum($player, "0").' '.translate("var18").'</td>
+				</tr>
+					</tbody>
+				</table>';
 	$output .= '</div>';
 	return $output;
 }
 
-function set_player_destroy_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'blockdestroy' ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}
-	return $output;
-}
-
-function set_player_build_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'blockcreate' ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}
-	return $output;
-}
-
-function set_player_damagereceived_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'damagetaken' AND stat != 'total' ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	} 
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'damagetaken' AND stat = 'total'");
-	while($row = mysql_fetch_array($query)) 
-	{
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}
-	return $output;
-}
-
-function set_player_damagedealt_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'damagedealt' AND stat != 'total' ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}  
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'damagedealt' AND stat = 'total'");
-	while($row = mysql_fetch_array($query)) 
-	{
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
+function set_player_destroy_build_table($player) {
+	$query = mysql_query("SELECT sbo.blockID, q1.amn, q2.brk FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `player` = '".$player."' GROUP BY `blockID` ORDER BY `blockID` asc) as sbo LEFT JOIN (SELECT `blockID`, SUM(`amount`) as amn FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `player` = '".$player."' AND break = 0 GROUP BY blockID ORDER BY blockID asc) as q1 ON sbo.blockID = q1.blockID LEFT JOIN (SELECT blockID, SUM(`amount`) as brk FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `player` = '".$player."' AND `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as q2 ON sbo.blockID = q2.blockID");
+	while($row = mysql_fetch_array($query)){
+		$output .= '<tr><td><img src="images/icons/'.$row['blockID'].'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row['blockID'].'"  >'.translate(''.$row['blockID'].'').':</a></td>';	
+		$output .= '<td>'.$row['brk'].'</td>';
+		$output .= '<td>'.$row['amn'].'</td></tr>';
 	}
 	return $output;
 }
 
 function set_player_didkill_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'kills' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT `type`, `amount` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."kill` WHERE `player`='".$player."'");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	} 	
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'kills' AND stat = 'total'");
-	while($row = mysql_fetch_array($query)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_player_getkill_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'deaths' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT `entity`, `amount`, `cause` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."death` WHERE player='".$player."'");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	} 	
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'deaths' AND stat = 'total'");
-	while($row = mysql_fetch_array($query)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
 	}
 	return $output;
@@ -300,23 +269,22 @@ function get_server_count_block($column) {
 }
 
 function get_server_count_player($column) {
-	$query = mysql_query("SELECT SUM(`$column`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` ");
+	$query = mysql_query("SELECT SUM(`$column`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player`");
 	$row = mysql_fetch_array($query);
 	return $row[0];
 }
 
-function get_server_count_player_move() {
-	$query = mysql_query("SELECT SUM(`distance`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."move` ");
+function get_server_count_player_move($type) {
+	$query = mysql_query("SELECT SUM(`distance`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."move` WHERE `type`=$type");
 	$row = mysql_fetch_array($query);
 	return $row[0];
 }
 
 function get_server_played() {
-	$query = mysql_query("SELECT value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category='stats' AND stat = 'playedfor'");
-	$time = 0;
-	while($row = mysql_fetch_array($query)) {
-		$time = $time + $row[0];
-	} 
+	$query = mysql_query("SELECT SUM(`playtime`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player`");
+	$row = mysql_fetch_array($query);
+	$time = $row[0];
+	
 	$hour = $time / 3600;
 	$hour_2 = floor($hour);
 	$minute_hour = $hour_2 * 60;
@@ -340,106 +308,182 @@ function get_server_played() {
 }
 
 function set_server_details_table() {
-	$output .= '<div class="head_logo" style="background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
-
-	$output .= '<div class="head_contentbox">';
-	$output .= "\n";
-	$output .= '<div style="clear:both">
-					<div class="head_stat">'.translate("var23").':</div>
-					<div class="head_content"> '.get_server_player().'</div>
-				</div>
+	$output = '<div class="row head_logo" style="margin: 0 0;background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
+	$output .= '<div class="row" style="margin: 0 0;"><table class="six columns head_contentbox">';
+	$output .= '<tr>
+					<td>'.translate("var23").':</td>
+					<td> '.get_server_player().'</td>
+				</tr>
 				
-				<div>
-					<div class="head_stat">'.translate("var8").':</div>
-					<div class="head_content"> '.get_server_count_block('break').'</div>
-				</div>
+				<tr>
+					<td>'.translate("var8").':</td>
+					<td> '.get_server_count_block('break').'</td>
+				</tr>
 				
-				<div>
-					<div class="head_stat">'.translate("var9").':</div>
-					<div class="head_content"> '.get_server_count_block('amount').'</div>
-				</div>
+				<tr>
+					<td>'.translate("var9").':</td>
+					<td> '.get_server_count_block('amount').'</td>
+				</tr>
 				
 				<!--<div>
 					<div class="head_stat">'.translate("var24").':</div>
 					<div class="head_content"> '.get_server_count_player('armswing').'</div>
 				</div>-->
 				
-				<div>
-					<div class="head_stat">'.translate("var4").':</div>
-					<div class="head_content"> '.get_server_played().'</div>
-				</div>
+				<tr>
+					<td>'.translate("var4").':</td>
+					<td> '.get_server_played().'</td>
+				</tr>
 				
-				<div>
-					<div class="head_stat">'.translate("var25").':</div>
-					<div class="head_content">'.get_server_count_player("joins").'</div>
-				</div>
+				<tr>
+					<td>'.translate("var25").':</td>
+					<td>'.get_server_count_player("joins").'</td>
+				</tr>
 				
-				<div>
-					<div class="head_stat">'.translate("var17").':</div>
-					<div class="head_content"> '.round(get_server_count_player_move(), 2).' '.translate("var18").'</div>
-				</div>
-				
+				<tr>
+					<td>'.translate("var17").' '.translate("var85").':</div>
+					<td> '.round(get_server_count_player_move(0), 2).' '.translate("var18").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var17").' '.translate("var86").':</div>
+					<td> '.round(get_server_count_player_move(1), 2).' '.translate("var18").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var17").' '.translate("var87").':</div>
+					<td> '.round(get_server_count_player_move(2), 2).' '.translate("var18").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var17").' '.translate("var88").':</div>
+					<td> '.round(get_server_count_player_move(3), 2).' '.translate("var18").'</td>
+				</tr>
 				<!--<div>
 					<div class="head_stat">'.translate("var26").':</div>
 					<div class="head_content"> '.get_server_count_player("openchest").'</div>
 				</div>-->
 				
-				<div>
-					<div class="head_stat">'.translate("var27").':</div>
-					<div class="head_content"> '.get_server_count_player("commandsdone").'</div>
-				</div>
+				<tr>
+					<td>'.translate("var27").':</td>
+					<td> '.get_server_count_player("commandsdone").'</td>
+				</tr>
 				
+				<tr>
+					<td>'.translate("var93").':</td>
+					<td> '.get_server_count_player("arrows").'</td>
+				</tr>
+				
+				<tr>
+					<td>'.translate("var89").':</td>
+					<td> '.get_server_count_player("xpgained").'</td>
+				</tr>
+				
+				<tr>
+					<td>'.translate("var90").':</td>
+					<td> '.get_server_count_player("fishcatch").'</td>
+				</tr>
+				
+				<tr>
+					<td>'.translate("var91").':</td>
+					<td> '.get_server_count_player("damagetaken").'</td>
+				</tr>
+				
+				<tr>
+					<td>'.translate("var92").':</td>
+					<td> '.get_server_count_player("timeskicked").'</td>
+				</tr>
+
 				<!--<div>
 					<div class="head_stat">'.translate("var28").':</div>
-					<div class="head_content"> '.get_server_count_player("stats", "chat").'</div>
-				</div>
+					<div class="head_content"> '.get_server_count_player("chat").'</div>
+				</div>-->
 				
-				<div>
-					<div class="head_stat">'.translate("var29").':</div>
-					<div class="head_content">'.get_server_count_player("stats", "chatletters").'</div>
-				</div>-->';
-	$output .= '</div>';
+				<!--<tr>
+					<td>'.translate("var29").':</td>
+					<td>'.get_server_count_player("chatletters").'</td>
+				</tr>-->';
+	$output .= '</table>';
+	$output .= '<table class="six columns head_contentbox">';
+	$output .= '<tr>
+					<td>'.translate("var94").':</td>
+					<td> '.get_server_count_player("toolsbroken").'</td>
+				</tr>
+				
+				<tr>
+					<td>'.translate("var95").':</td>
+					<td> '.get_server_count_player("eggsthrown").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var96").':</td>
+					<td> '.get_server_count_player("itemscrafted").'</td>
+				</tr>
+				
+				<tr>
+					<td>'.translate("var97").':</td>
+					<td> '.get_server_count_player("omnomnom").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var98").':</td>
+					<td> '.get_server_count_player("onfire").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var28").':</td>
+					<td> '.get_server_count_player("wordssaid").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var99").':</td>
+					<td> '.get_server_count_player("votes").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var100").':</td>
+					<td> '.get_server_count_player("teleports").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var101").':</td>
+					<td> '.get_server_count_player("itempickups").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var104").':</td>
+					<td> '.get_server_count_player("itemdrops").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var102").':</td>
+					<td> '.get_server_count_player("bedenter").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var106").':</td>
+					<td> '.get_server_count_player("bucketempty").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var103").':</td>
+					<td> '.get_server_count_player("worldchange").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var105").':</td>
+					<td> '.get_server_count_player("shear").'</td>
+				</tr>
+				';
+	$output .= '</table></div>';
 	return $output;
 }
 
 function set_server_didkill_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'kills' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT `type`, SUM(`amount`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."kill` GROUP BY `type` ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
-	}	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'kills' AND stat = 'total' GROUP BY stat");
-	while($row = mysql_fetch_array($query)) {
-		
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
-		$output .= '</div>';
-	}	
+	}
 	return $output;
 }
 
 function set_server_getkill_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'deaths' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT `entity`, `cause`, SUM(`amount`) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."death` GROUP BY `entity` ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'deaths' AND stat = 'total' GROUP BY stat");
-	while($row = mysql_fetch_array($query)) {	
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
 		$output .= '</div>';
 	}
 	return $output;
@@ -462,8 +506,7 @@ function set_server_destroy_table($search) {
 function set_server_build_table($search) {
 	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'blockcreate' GROUP BY stat ".$search."");
 	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$image = str_replace(":", "-", $row[1]); 
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[1].'"  >'.translate(''.$row[1].'').':</a></div>';	
@@ -471,54 +514,6 @@ function set_server_build_table($search) {
 		$output .= "\n";
 		$output .= '</div>';
 	}	
-	return $output;
-}
-
-function set_server_damagereceived_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'damagetaken' AND stat != 'total' GROUP BY stat ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt(''.$row[1].'')).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt(''.$row[1].'').'">'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}  
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'damagetaken' AND stat = 'total' GROUP BY stat");
-	while($row = mysql_fetch_array($query)) 
-	{
-		
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'">'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
-		$output .= '</div>';
-	}
-	return $output;
-}
-
-function set_server_damagedealt_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'damagedealt' AND stat != 'total' GROUP BY stat ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'">'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	} 
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'damagedealt' AND stat = 'total' GROUP BY stat");
-	while($row = mysql_fetch_array($query)) 
-	{
-		
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'">'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
-		$output .= '</div>';
-	}
 	return $output;
 }
 

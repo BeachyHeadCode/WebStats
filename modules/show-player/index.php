@@ -76,10 +76,9 @@
 <!-- STATS TABLE START -->
 
 <div class="row">
-<?php
-	if(($stats_control == true && pluginconfigstatusstats===true) || ($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats===true)) {
-?>
-		<div class="head_maintable_stats">
+<?php if(($stats_control === true && pluginconfigstatusstats === true)) { ?>
+<div class="head_maintable_stats">
+
 			<div class="content_headline" style="width:735px;">
 				<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
 			</div>
@@ -134,12 +133,48 @@
 			<!--Killed and Killed By ~ END-->
 			</ul>
 		</div>
+
+<?php } elseif($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) { ?>
+		<div class="head_maintable_stats">
+			<dl class="tabs">
+				<dd><a href="#Player">Player Kills/Deaths</a></dd>
+				<dd class="active"><a href="#Blocks">Destroyed/Placed Blocks</a></dd>
+			</dl>
+			<ul class="tabs-content">
+				<!--Killed and Killed By ~ START-->
+				<li id="PlayerTab">
+					<table style="margin: 0 auto;">
+						<tr>
+							<td style="min-width:363px;"><?php echo translate('var12');?>:</td>
+							<td style="min-width:363px;"><?php echo translate('var13');?>:</td>
+						</tr>
+						<tr>
+							<td style="min-width:373px;"><?php echo(set_player_didkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
+							<td style="min-width:373px;"><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
+						</tr>
+					</table>
+				</li>	
+				<!--Killed and Killed By ~ END-->
+				<!--Destroyed and Placed Blocks ~ START-->
+				<li class="active" id="BlocksTab">
+					<table style="margin: 0 auto;">
+						<tr>
+							<td>ID:</td>
+							<td><?php echo translate('var8');?>:</td>
+							<td><?php echo translate('var9');?>:</td>
+						</tr>
+						<?php echo(set_player_destroy_build_table(htmlentities($_GET['user'])));?>
+					</table>
+				</li>	
+				<!--Destroyed and Placed Blocks ~ END-->
+			</ul>
+		</div>
 <?php } ?>
 	</div>
 <!-- STATS TABLE END-->
 <!-- ACHIEVMENTS START-->
 <?php
-	if($achievements_control == true && pluginconfigstatusachiv===true) {
+	if($achievements_control === true && pluginconfigstatusachiv === true) {
 		include('modules/show-player/include/functions_achievements.php');
 ?>	
 <br/>						

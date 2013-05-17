@@ -1,5 +1,4 @@
 <?php
-
 function achievements_server_achievement_table() {
 	$query = mysql_query("SELECT * FROM ".WS_CONFIG_ACHIEVEMENTS." ORDER BY ws_a_category, ws_a_stat");
 	$output = '<table cellspacing="0">';    

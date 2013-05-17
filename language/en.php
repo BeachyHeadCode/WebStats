@@ -632,6 +632,28 @@ function translate($item)
 		elseif ($item == "var82")					{$item = "# of Logins";}
 		elseif ($item == "var83")					{$item = "Jail";}
 		elseif ($item == "var84") 					{$item = "Main Site";}
+		elseif ($item == "var85") 					{$item = "By Foot";}
+		elseif ($item == "var86") 					{$item = "By Boat";}
+		elseif ($item == "var87") 					{$item = "By Minecart";}
+		elseif ($item == "var88") 					{$item = "By Pig";}
+		elseif ($item == "var89") 					{$item = "XP Gained";}
+		elseif ($item == "var90") 					{$item = "Fish Catched";}
+		elseif ($item == "var91") 					{$item = "Damage Taken";}
+		elseif ($item == "var92") 					{$item = "Times Kicked";}
+		elseif ($item == "var93") 					{$item = "Arrows";}
+		elseif ($item == "var94") 					{$item = "Tools Broken";}
+		elseif ($item == "var95") 					{$item = "Eggs Thrown";}
+		elseif ($item == "var96") 					{$item = "Items Crafted";}
+		elseif ($item == "var97") 					{$item = "Items Eaten";}
+		elseif ($item == "var98") 					{$item = "Times Caught on Fire";}
+		elseif ($item == "var99") 					{$item = "Votes";}
+		elseif ($item == "var100") 					{$item = "Teleports";}
+		elseif ($item == "var101") 					{$item = "Items Picked Up";}
+		elseif ($item == "var102") 					{$item = "Beds Entered";}
+		elseif ($item == "var103") 					{$item = "World Changes";}
+		elseif ($item == "var104") 					{$item = "Item Drops";}
+		elseif ($item == "var105") 					{$item = "Times Used Shears";}
+		elseif ($item == "var106") 					{$item = "Buckets Emptyed";}
 		//---------------	LOGIN RELATED	--------------------------------
 		elseif ($item == "login-incorrect")			{$item = "<span style='color: red;'>The username or password you entered is incorrect. Please try again.</span>";}
 		elseif ($item == "login-notactive")			{$item = "<span style='color: red;'>You're account isn't activated. Please activate your account and try again. Check your inbox for an activation e-mail if you've used the Forgot password-function.</span>";}	
