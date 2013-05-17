@@ -26,6 +26,51 @@ function addRecipeInfo(callback) {
 		}
 	});
 }
+
+function addBrewInfo(callback) {
+	$.ajax({
+		type: "GET",
+		url: "modules/recipe/include/brew.xml", 
+		dataType: "xml",
+		success: function(xml) {	
+			$(xml).find('Brew').each(
+				function() {
+					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'MainInput') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>") || (getValue(this, 'Input3') == "<?php echo $item; ?>")) {
+					addBrewItem(getValue(this, 'Output'),
+							  getValue(this, 'NumberOfOutput'),
+							  getValue(this, 'MainInput'),
+							  getValue(this, 'Input1'),
+							  getValue(this, 'Input2'),
+							  getValue(this, 'Input3'));
+					}						  
+				}
+			);
+			callback();
+		}
+	});
+}
+
+function addSmeltingInfo(callback) {
+	$.ajax({
+		type: "GET",
+		url: "modules/recipe/include/smelting.xml", 
+		dataType: "xml",
+		success: function(xml) {	
+			$(xml).find('SmeltingItem').each(
+				function() {
+					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>")) {
+					addSmeltingItem(getValue(this, 'Output'),
+							  getValue(this, 'NumberOfOutput'),
+							  getValue(this, 'MainInput'),
+							  getValue(this, 'Input1'),
+							  getValue(this, 'Input2'));
+					}						  
+				}
+			);
+			callback();
+		}
+	});
+}
 	
 function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Middle, Right, Bottomleft, Bottom, Bottomright) {
 	$('<table cellpadding="0" cellspacing="0" class="grid-Crafting_Table" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody></tbody></table>').html(
@@ -46,7 +91,21 @@ function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Mid
 		+ '</tr>'
 	)
 	.appendTo('#Recipe');
-} 
+}
+
+function addBrewItem(Output, NumberOfOutput, MainInput, Input1, Input2, Input3) {
+	$('<table cellpadding="0" cellspacing="0" class="grid-Brewing_Stand" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody></tbody></table>').html(
+		'<tr>'
+			+ '<td class="bubbles"><img alt="Grid layout Brewing Bubbles.gif" src="modules/recipe/images/brewing_bubbles.gif" width="24px" height="57px" border="0" /></td>'
+			+ '<td class="input"><span class="grid2"><span class="border"><span><a href="index.php?mode=material-stats&material=' + MainInput + '" style="cursor:url(images/cursors/hover.cur),auto;" class="image"><img src="images/icons/' + MainInput + '.png" width="32px" height="32px" border="0" ></a></span></span></span></td>'
+			+ '<td class="arrow"><img alt="Grid layout Brewing Arrow.png" src="modules/recipe/images/Grid_layout_Brewing_Arrow.png"width="18" height="57"></td>'
+		+ '</tr><tr>'
+		+ '</tr><tr>'
+			+ '<td class="paths" colspan="3"><img alt="Grid layout Brewing Paths.png" src="modules/recipe/images/Grid_layout_Brewing_Paths.png" width="60" height="40" /></td>'
+		+ '</tr>'
+	)
+	.appendTo('#Recipe');
+}
 
 function ItemLookup(item) {
 	return $.ajax({
@@ -69,6 +128,12 @@ function ItemLookup(item) {
 }
 $(document).ready(function() {
 	addRecipeInfo(function() {
+		$("#Recipe").fadeIn("slow");
+	});
+	addBrewInfo(function() {
+		$("#Recipe").fadeIn("slow");
+	});
+	addSmeltingInfo(function() {
 		$("#Recipe").fadeIn("slow");
 	});
 });

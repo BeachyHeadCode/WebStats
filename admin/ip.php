@@ -13,7 +13,7 @@ if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip
 	if(iptracker === true) {
 /* SETS NUMBER OF USERS TO PRINT */
 function get_IP_stats_count() {
-	$query = mysql_query("SELECT COUNT(IP) FROM ip_stats");
+	$query = mysql_query("SELECT COUNT(`IP`) FROM `ip_stats`");
 	$row = mysql_fetch_array($query);
 	return $row[0];
 }
@@ -67,7 +67,7 @@ function get_IP_stats_order($sort, $start, $end) {
 	} else {
 		$sortkey = 'ORDER BY date ASC';
 	}
-	$result = "SELECT * FROM ip_stats WHERE ip_stats.IP != '' ".$sortkey." LIMIT ".$start.",".$end."";
+	$result = "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` != '' ".$sortkey." LIMIT ".$start.",".$end."";
 	$query = mysql_query($result);
 	$time = 0;
 	while($row = mysql_fetch_array($query)) {
@@ -79,7 +79,7 @@ function get_IP_stats_order($sort, $start, $end) {
 /* USED TO PRINT THE VALUES */
 function server_IP_table($IP, $pos) {
 	$pos++;
-	$query = "SELECT * FROM ip_stats WHERE ip_stats.IP = '".$IP."' AND ip_stats.IP != ''";
+	$query = "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` = '".$IP."' AND `ip_stats`.`IP` != ''";
 	$result = mysql_query($query) or die(mysql_error());
 	$data = mysql_fetch_array($result);
 
@@ -154,8 +154,15 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
 		if (isset($_GET["page"]) > 0) {
 			$page = $_GET["page"];
 		}
-		$start = $page * WS_CONFIG_PAGENUM - WS_CONFIG_PAGENUM;
-		$end = WS_CONFIG_PAGENUM;
+		
+		
+		if(isset($_GET["NPP"])) {
+			$start = $page * $_GET["NPP"] - $_GET["NPP"];
+			$end = $_GET["NPP"];
+		} else {
+			$start = $page * WS_CONFIG_PAGENUM - WS_CONFIG_PAGENUM;
+			$end = WS_CONFIG_PAGENUM;
+		}
 		$sort = $_GET['sort'];
 		$IPs = get_IP_stats_order($sort, $start, $end);
 		$IP_count = get_IP_stats_count();
@@ -170,7 +177,7 @@ $DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USER
 </table>
 <?php
 	for($i=0; $i < sizeof($IPs); $i++) {
-	$query = "SELECT * FROM ip_stats WHERE ip_stats.IP = '".$IPs[$i]."' AND ip_stats.IP != ''";
+	$query = "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` = '".$IPs[$i]."' AND `ip_stats`.`IP` != ''";
 	$result = mysql_query($query) or die(mysql_error());
 	$data = mysql_fetch_array($result);
 	$ip = md5($data['IP']);
@@ -204,7 +211,7 @@ echo <<< END
 END;
 			}
 		echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $_SESSION['mode'], $_GET['sort'])) . "</div>";
-		$DB -> close();			
+		$DB -> close();	
 	?>
 </body>
 </html>
