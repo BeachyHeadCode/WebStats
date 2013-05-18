@@ -131,7 +131,7 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 			<tbody>           
 				<tr>
 					<td><select class="select2" title="Stats Plugin" name="pluginconfigachiv">  
-						<?php $achievementstype = array('Chose Plugin', 'Achievements', 'Avhievements 2.0', 'Stats & Achievements');
+						<?php $achievementstype = array('Chose Plugin', 'Achievements', 'Avhievements 2.0', 'BeardAch', 'Stats & Achievements');
 							for($i=0; $i <= (sizeof($achievementstype)-1); $i++){
 								if($_SESSION['pluginconfigachiv'] == $achievementstype[$i])
 									echo ("<option value='".$achievementstype[$i]."' SELECTED>".$achievementstype[$i]."</option>");
@@ -149,10 +149,10 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 						}?>	
 					</select></td>
                     
-					<td><input type="checkbox" name="pluginconfigjail" title="Jail On" value="<?php if(!isset($_SESSION['pluginconfigjail'])){ echo 'true';}else{ echo $_SESSION['pluginconfigjail'];} ?>" <?php echo (isset($_POST['pluginconfigjail'])?'checked="checked"':'') ?>/></td>
-					<td><input type="checkbox" name="pluginconfigjobs" title="Jobs On" value="<?php if(!isset($_SESSION['pluginconfigjobs'])){ echo 'true';}else{ echo $_SESSION['pluginconfigjobs'];} ?>" <?php echo (isset($_POST['pluginconfigjobs'])?'checked="checked"':'') ?>/></td>
-					<td><input type="checkbox" name="pluginconfigmcmmo" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigmcmmo'])){ echo 'true';}else{ echo $_SESSION['pluginconfigmcmmo'];} ?>" <?php echo (isset($_POST['pluginconfigmcmmo'])?'checked="checked"':'') ?>/></td>
-                    <td><input type="checkbox" name="pluginconfigpermissionsex" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigpermissionsex'])){ echo 'true';}else{ echo $_SESSION['pluginconfigpermissionsex'];} ?>" <?php echo (isset($_POST['pluginconfigpermissionsex'])?'checked="checked"':'') ?>/></td>
+					<td><input type="checkbox" name="pluginconfigjail" title="Jail On" value="<?php if(!isset($_SESSION['pluginconfigjail'])){ echo 'true';}else{ echo $_SESSION['pluginconfigjail'];} ?>" <?php echo (isset($_SESSION['pluginconfigjail'])?'checked="checked"':'') ?>/></td>
+					<td><input type="checkbox" name="pluginconfigjobs" title="Jobs On" value="<?php if(!isset($_SESSION['pluginconfigjobs'])){ echo 'true';}else{ echo $_SESSION['pluginconfigjobs'];} ?>" <?php echo (isset($_SESSION['pluginconfigjobs'])?'checked="checked"':'') ?>/></td>
+					<td><input type="checkbox" name="pluginconfigmcmmo" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigmcmmo'])){ echo 'true';}else{ echo $_SESSION['pluginconfigmcmmo'];} ?>" <?php echo (isset($_SESSION['pluginconfigmcmmo'])?'checked="checked"':'') ?>/></td>
+                    <td><input type="checkbox" name="pluginconfigpermissionsex" title="McMMO On" value="<?php if(!isset($_SESSION['pluginconfigpermissionsex'])){ echo 'true';}else{ echo $_SESSION['pluginconfigpermissionsex'];} ?>" <?php echo (isset($_SESSION['pluginconfigpermissionsex'])?'checked="checked"':'') ?>/></td>
 					<td>
 						<select class="select2" title="Stats Plugin" name="pluginconfigstats">
 						<?php $statstype = array('Chose Plugin', 'BeardStat', 'HawkEye', 'Logblock', 'Stats & Achievements', 'Stats', 'Stats 2.0', 'Stats by lolmewnstats', 'Statistician v2.0');
@@ -200,15 +200,15 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
     </select>
 	<img id="imageplaceholder" src="../images/background/bg_blackfade.png" alt="Background" style="height: 200px; max-width: 100%;" width="300px" />
 	<label for="page">Users Per Page Listing: <input name="page[users_per_page]" type="text" id="page[users_per_page]" title="Users Per Page"  value="<?php if(!isset($_SESSION['page']['users_per_page'])){ echo '25';}else{ echo $_SESSION['page']['users_per_page'];} ?>" maxlength="3" /></label>
-	<label for="page">2D Image Cache Time: <input name="page[2d_cache_time]" type="text" id="page[2d_cache_time]" title="Server Name" value="<?php if(!isset($_SESSION['page']['2d_cache_time'])){ echo '259200';}else{ echo $_SESSION['page']['2d_cache_time'];} ?>" maxlength="7"/></label>
-	<label for="page">Turn 3D Player ON: <input type="checkbox" name="page[3d_on/off]" title="Stats LOGO On/Off" value="<?php if(!isset($_SESSION['page']['3d_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['3d_on/off'];} ?>" <?php echo (isset($_POST['page']['3d_on/off'])?'checked="checked"':'') ?>/></label>
-	<label for="page">Turn Search Bar ON: <input type="checkbox" name="page[search]" title="Search Bar on/off" value="<?php if(!isset($_SESSION['page']['search'])){ echo 'true';}else{ echo $_SESSION['page']['search'];} ?>" <?php echo (isset($_POST['page']['search'])?'checked="checked"':'') ?>/></label>
+	<label for="page">2D Image Cache Time: <input name="page[2d_cache_time]" type="text" id="page[2d_cache_time]" title="2D Image Cache Time" value="<?php if(!isset($_SESSION['page']['2d_cache_time'])){ echo '259200';}else{ echo $_SESSION['page']['2d_cache_time'];} ?>" maxlength="7"/></label>
+	<label for="page">Turn 3D Player ON: <input type="checkbox" name="page[3d_on/off]" title="Stats LOGO On/Off" value="<?php if(!isset($_SESSION['page']['3d_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['3d_on/off'];} ?>" <?php echo (isset($_SESSION['page']['3d_on/off'])?'checked="checked"':'') ?>/></label><br />
+	<label for="page">Turn Search Bar ON: <input type="checkbox" name="page[search]" title="Search Bar on/off" value="<?php if(!isset($_SESSION['page']['search'])){ echo 'true';}else{ echo $_SESSION['page']['search'];} ?>" <?php echo (isset($_SESSION['page']['search'])?'checked="checked"':'') ?>/></label><br />
 	<label for="page">Player Inactivity Timer: <input name="page[player_inactivity]" type="text" id="page[player_inactivity]" title="Player Inactivity" value="<?php if(!isset($_SESSION['page']['player_inactivity'])){ echo '1209600';}else{ echo $_SESSION['page']['player_inactivity'];} ?>" maxlength="64"/></label>
 	<label for="page">Logo Image Link/Location: <input name="page[logo_image_link]" type="text" id="page[logo_image_link]" title="Logo Location" value="<?php if(!isset($_SESSION['page']['logo_image_link'])){ echo 'images/LOGO.png';}else{ echo $_SESSION['page']['logo_image_link'];} ?>" maxlength="64"/></label>
 	<label for="page">HomePage/Header Logo: <input name="page[logo_image_filename]" type="text" id="page[logo_image_filename]" title="Header Logo Location " value="<?php if(!isset($_SESSION['page']['logo_image_filename'])){ echo 'images/header/forum.png';}else{ echo $_SESSION['page']['logo_image_filename'];} ?>" maxlength="64"/></label>
-	<label for="page">Check To Turn Logo On: <input type="checkbox" name="page[logo_on/off]" title="Stats LOGO On/Off" value="<?php if(!isset($_SESSION['page']['logo_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['logo_on/off'];} ?>" <?php echo (isset($_POST['page']['logo_on/off'])?'checked="checked"':'') ?>/></label>
-	<label for="page">Main Page Link: <input name="page[homepage_link]" type="text" id="page[homepage_link]" title="Server Name" value="<?php if(!isset($_SESSION['page']['homepage_link'])){ echo 'http://mrplows-server.us';}else{ echo $_SESSION['page']['homepage_link'];} ?>" maxlength="64"/></label>
-	<label for="page">Browser Bookmark Text: <input name="page[bookmark_title]" type="text" id="page[bookmark_title]" title="Server Name" value="<?php if(!isset($_SESSION['page']['bookmark_title'])){ echo 'Server Stats';}else{ echo $_SESSION['page']['bookmark_title'];} ?>" maxlength="40"/></label>
+	<label for="page">Check To Turn Logo On: <input type="checkbox" name="page[logo_on/off]" title="Stats LOGO On/Off" value="<?php if(!isset($_SESSION['page']['logo_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['logo_on/off'];} ?>" <?php echo (isset($_SESSION['page']['logo_on/off'])?'checked="checked"':'') ?>/></label><br />
+	<label for="page">Main Page Link: <input name="page[homepage_link]" type="text" id="page[homepage_link]" title="Homepage Link" value="<?php if(!isset($_SESSION['page']['homepage_link'])){ echo 'https://mrplows-server.tk';}else{ echo $_SESSION['page']['homepage_link'];} ?>" maxlength="64"/></label>
+	<label for="page">Browser Bookmark Text: <input name="page[bookmark_title]" type="text" id="page[bookmark_title]" title="Browser Bookmark Text" value="<?php if(!isset($_SESSION['page']['bookmark_title'])){ echo 'Server Stats';}else{ echo $_SESSION['page']['bookmark_title'];} ?>" maxlength="40"/></label>
 	<span>Plug-ins</span><hr/>
 <?php if(($_SESSION['pluginconfigachiv'] == true) and ($_SESSION['pluginconfigachiv'] != 'Chose Plugin')){ ?>
 	<label for="page">Achievments Player Table Name: <input name="page[achiev_player_table_name]" type="text" id="page[achiev_player_table_name]" title="Playertable Name" value="<?php if(!isset($_SESSION['page']['achiev_player_table_name'])){ echo 'playerachievements';}else{ echo $_SESSION['page']['achiev_player_table_name'];} ?>" maxlength="18"/></label>	
@@ -232,7 +232,7 @@ if($_SESSION['pluginconfigjobs'] == true){ ?>
 	<label for="page">Jobs MySQL Table Name: <input name="page[jobs_table_name]" type="text" id="page[jobs_table_name]" title="Jobs Table Name" value="<?php if(!isset($_SESSION['page']['jobs_table_name'])){ echo 'jobs';}else{ echo $_SESSION['page']['jobs_table_name'];} ?>" maxlength="16"/></label>
 <?php }
 if($_SESSION['pluginconfigmcmmo'] == true){ ?>
-	<label for="page">McMMO MySQL Table: <input name="page[mcmmo_table_name]" type="text" id="page[mcmmo_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['mcmmo_table_name'])){ echo 'mcmmo_';}else{ echo $_SESSION['page']['mcmmo_table_name'];} ?>" maxlength="16"/></label>    
+	<label for="page">McMMO MySQL Table Prefix: <input name="page[mcmmo_table_name]" type="text" id="page[mcmmo_table_name]" title="McMMO Prefix Name" value="<?php if(!isset($_SESSION['page']['mcmmo_table_name'])){ echo 'mcmmo_';}else{ echo $_SESSION['page']['mcmmo_table_name'];} ?>" maxlength="16"/></label>    
 	<label for="mcmmoSort">McMMO Default Sort:</label>
 	<select style="display:none;" id="mcmmoSort" class="select2" name="page[mcmmo_def_sort]">
 		<?php $McMMOSort = array("user ASC","taming DESC","mining DESC","woodcutting DESC","repair DESC","unarmed DESC","herbalism DESC","excavation DESC","archery DESC","swords DESC","axes DESC","acrobatics DESC");
@@ -245,8 +245,8 @@ if($_SESSION['pluginconfigpermissionsex'] == true){ ?>
     <label for="page">PermissionsEx Default Group Name: <input name="page[permissionsex_default_group]" type="text" id="page[permissionsex_default_group]" title="PermissionsEx Default Group Name" value="<?php if(!isset($_SESSION['page']['permissionsex_default_group'])){ echo 'Default';}else{ echo $_SESSION['page']['permissionsex_default_group'];} ?>" maxlength="25"/></label>
 <?php }
 if(($_SESSION['pluginconfigstats'] == true) and ($_SESSION['pluginconfigstats'] != 'Chose Plugin')){ ?>
-	<label for="page">Stats - MySQL Table: <input name="page[stats_table_name]" type="text" id="page[stats_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['stats_table_name'])){ echo 'stats';}else{ echo $_SESSION['page']['stats_table_name'];} ?>" maxlength="16"/></label>
-	<label for="page">Stats - Show Played Time In Days, Hours, Minutes : <input type="checkbox" name="page[timechange_on/off]" title="Stats Time Variable" value="<?php if(!isset($_SESSION['page']['timechange_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['timechange_on/off'];} ?>" <?php echo (isset($_POST['page']['timechange_on/off'])?'checked="checked"':'') ?>/></label> 
+	<label for="page">Stats MySQL Table Prefix: <input name="page[stats_table_name]" type="text" id="page[stats_table_name]" title="Stats Prefix Name" value="<?php if(!isset($_SESSION['page']['stats_table_name'])){ echo 'stats';}else{ echo $_SESSION['page']['stats_table_name'];} ?>" maxlength="16"/></label>
+	<label for="page">Stats - Show Played Time In Days, Hours, Minutes : <input type="checkbox" name="page[timechange_on/off]" title="Stats Time Variable" value="<?php if(!isset($_SESSION['page']['timechange_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['timechange_on/off'];} ?>" <?php echo (isset($_SESSION['page']['timechange_on/off'])?'checked="checked"':'') ?>/></label> 
 <?php } ?>
 	<input name="submitconfig" type="submit" title="Submit Config" onclick="MM_validateForm('mysql[URL]','','R','mysql[PORT]','','RisNum','mysql[user]','','R','mysql[pass]','','R','mysql[data]','','R','page[server_name]','','R','page[server_title]','','R','page[MQ_SERVER_ADDR]','','R','page[MQ_SERVER_PORT]','','RisNum','page[tab_title]','','R','page[default_module]','','R','page[users_per_page]','','R','page[2d_cache_time]','','RisNum','page[player_inactivity]','','RisNum','page[logo_image_link]','','R','page[logo_image_filename]','','R','page[homepage_link]','','R','page[bookmark_title]','','R');return document.MM_returnValue" value="Submit Config" class="small success button" />
 	</fieldset>
@@ -279,17 +279,17 @@ google_ad_height = 50;
 </script>
 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>';
-if((isset($_SESSION['pluginconfigachiv'])) and ($_SESSION['pluginconfigachiv'] != 'Chose Plugin')){
-	$achievments="define('WS_CONFIG_PLAYERACHIEVEMENTS', '".$_SESSION['page']['achiev_player_table_name']."');\n	define('WS_CONFIG_ACHIEVEMENTS', 'ws_achievements'); \n";
+if((isset($_SESSION['pluginconfigachiv'])) and ($_SESSION['pluginconfigachiv'] != 'Chose Plugin')) {
+	$achievments="define('WS_CONFIG_PLAYERACHIEVEMENTS', '".$_SESSION['page']['achiev_player_table_name']."');\ndefine('WS_CONFIG_ACHIEVEMENTS', 'ws_achievements'); \n";
 	$pluginconfigstatusachiv="define('pluginconfigstatusachiv', true);\n";
 }
-if((isset($_SESSION['pluginconfigeconomy'])) and ($_SESSION['pluginconfigeconomy'] != 'Chose Plugin')){
-	if ($_SESSION['pluginconfigeconomy']=='iConomy'){
-		$economy="define('WS_ICONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\n	define('WS_CONFIG_MINECONOMY', '".$_SESSION['page']['mineconomy_table_name']."');\ndefine('WS_ICONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\ndefine('WS_ICONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
+if((isset($_SESSION['pluginconfigeconomy'])) and ($_SESSION['pluginconfigeconomy'] != 'Chose Plugin')) {
+	if ($_SESSION['pluginconfigeconomy']=='iConomy') {
+		$economy="define('WS_ICONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\ndefine('WS_CONFIG_MINECONOMY', '".$_SESSION['page']['mineconomy_table_name']."');\ndefine('WS_ICONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\ndefine('WS_ICONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
 		$pluginconfigstatuseconomy="define('pluginconfigstatusiconomy', true);\n";
 	}
-	if ($_SESSION['pluginconfigeconomy']=='MineConomy'){
-		$economy="define('WS_ICONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\n	define('WS_CONFIG_MINECONOMY', '".$_SESSION['page']['mineconomy_table']."');\n	define('WS_ICONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\n	define('WS_ICONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
+	if ($_SESSION['pluginconfigeconomy']=='MineConomy') {
+		$economy="define('WS_ICONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\ndefine('WS_CONFIG_MINECONOMY', '".$_SESSION['page']['mineconomy_table']."');\ndefine('WS_ICONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\ndefine('WS_ICONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
 		$pluginconfigstatuseconomy="define('pluginconfigstatusmineconomy', true);\n";
 	}
 }
@@ -302,36 +302,41 @@ if($_SESSION['pluginconfigjobs'] == true) {
 	$pluginconfigjobs="define('pluginconfigstatusjobs', ".$_SESSION['pluginconfigjobs'].");\n";
 }
 if($_SESSION['pluginconfigmcmmo'] == true) {
-	$mcmmo="define('WS_CONFIG_MCMMO', '".$_SESSION['page']['mcmmo_table_name']."');\n	define('WS_CONFIG_MCMMO_DEFAULT', '".$_SESSION['page']['mcmmo_def_sort']."');\n";
+	$mcmmo="define('WS_CONFIG_MCMMO', '".$_SESSION['page']['mcmmo_table_name']."');\ndefine('WS_CONFIG_MCMMO_DEFAULT', '".$_SESSION['page']['mcmmo_def_sort']."');\n";
 	$pluginconfigstatusmcmmo="define('pluginconfigstatusmcmmo', ".$_SESSION['pluginconfigmcmmo'].");\n";
 }
 if($_SESSION['pluginconfigpermissionsex'] == true) {
-	$permissionsex="define('WS_CONFIG_PERMISSIONS', '".$_SESSION['page']['permissionsex_table_name']."');\n define('WS_PERMISSIONS_DEFAULT_GROUP', '".$_SESSION['page']['permissionsex_default_group']."');\n";
+	$permissionsex="define('WS_CONFIG_PERMISSIONS', '".$_SESSION['page']['permissionsex_table_name']."');\ndefine('WS_PERMISSIONS_DEFAULT_GROUP', '".$_SESSION['page']['permissionsex_default_group']."');\n";
 	$pluginconfigstatuspermissionsex="define('pluginconfigpermissionsex', ".$_SESSION['pluginconfigpermissionsex'].");\n";
 }
-if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] != 'Chose Plugin')){
+if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] != 'Chose Plugin')) {
 	if($_SESSION['pluginconfigstats'] == "stats") {
 		if($_SESSION['page']['timechange_on/off'] == true)
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
-		$stats="define('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
-		$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n	define('".$_SESSION['pluginconfigstats']."', true);\n";
+		$stats="define('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
+		$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n";
 	} elseif($_SESSION['pluginconfigstats'] == "Stats by lolmewnstats") {
 		if($_SESSION['page']['timechange_on/off'] == true)
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
-		$stats="define('WS_CONFIG_STATS_LOLMEWN_PREFIX', '".$_SESSION['page']['stats_table_name']."');\n	$stats_time";
-		$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n	define('".$_SESSION['pluginconfigstats']."', true);\n";
+		$stats="define('WS_CONFIG_STATS_LOLMEWN_PREFIX', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
+		$pluginconfigstatusstats="define('pluginconfigstatusstatslolmewnstats', true);\n";
 	} else {}
 }
 if($_SESSION['page']['3d_on/off'] == true)
-	$threedsetting="define('WS_CONFIG_3D_USER', ".$_SESSION['page']['3d_on/off'].");\n	";
+	$threedsetting="define('WS_CONFIG_3D_USER', ".$_SESSION['page']['3d_on/off'].");\n";
 if($_SESSION['page']['logo_on/off'] == true)
-	$logoon="define('LOGOIMAGE', ".$_SESSION['page']['logo_on/off'].");\n";
+	$logoon="define('LOGOIMAGE', ".$_SESSION['page']['logo_on/off'].");";
 if($_SESSION['page']['search'] == true)
-	$search="define('WS_CONFIG_SEARCH_BAR', ".$_SESSION['page']['search'].");\n";
+	$search="define('WS_CONFIG_SEARCH_BAR', ".$_SESSION['page']['search'].");";
 	
 //---------PRE-SETS AND IF STATMENTS FOR fwrite END------------------------------------------------------------------------
 if($_POST["submitconfig"] == 'Submit Config'){
-	$tempfile = "<?php \n	//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250 \n	//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is http://mrplows-server.us \n	define('WS_MySQL_DBHOST', '".$_SESSION['MySQLHost']."');\n define('WS_MySQL_PORT', '".$_SESSION['MySQLPort']."');\n define('WS_MySQL_USERNAME', '".$_SESSION['MySQLUserName']."');\n define('WS_MySQL_PASSWORD', '".$_SESSION['MySQLPassword']."');\n define('WS_MySQL_DB', '".$_SESSION['MySQLDatabase']."');\n define('WS_CONFIG_DBHOST', '".$_SESSION['mysql']['URL']."');\n	define('WS_CONFIG_DBPORT', '".$_SESSION['mysql']['PORT']."');\n	define('WS_CONFIG_DBUNAME', '".$_SESSION['mysql']['user']."');\n	define('MQ_SERVER_ADDR', '".$_SESSION['page']['MQ_SERVER_ADDR']."');\n	define('MQ_SERVER_PORT', '".$_SESSION['page']['MQ_SERVER_PORT']."');\n	define('WS_CONFIG_DBPASS', '".$_SESSION['mysql']['pass']."');\n	define('WS_CONFIG_DBNAME', '".$_SESSION['mysql']['data']."');\n	define('WS_CONFIG_SERVER', '".$_SESSION['page']['server_name']."');\n	define('WS_OPTICAL_TITLE', '".$_SESSION['page']['server_title']."');\n	define('WS_OPTICAL_TAB_TITLE', '".$_SESSION['page']['tab_title']."');\n	define('WS_CONFIG_MODULE', '".$_SESSION['page']['default_module']."');\n	define('WS_CONFIG_BACKGROUND', '".$_SESSION['page']['default_background']."');\n	define('WS_CONFIG_PAGENUM', '".$_SESSION['page']['users_per_page']."');\n	define('WS_CONFIG_CACHETIME', '".$_SESSION['page']['2d_cache_time']."');\n	$threedsetting $search define('WS_CONFIG_DEADLINE', '".$_SESSION['page']['player_inactivity']."');\n	define('WS_CONFIG_LOGO', '".$_SESSION['page']['logo_image_link']."');\n	define('WS_HOMEPAGE_LOGO', '".$_SESSION['page']['logo_image_filename']."');\n	define('WS_MAINSITE', '".$_SESSION['page']['homepage_link']."');\n	$logoon	define('WS_BOOKMARK', '".$_SESSION['page']['bookmark_title']."');\n	 define('WS_PHOTO_PHP_CHANGE', 'large_player_image'); \n $achievments $economy	$jail $jobs $mcmmo $permissionsex $stats	define('WS_GOOGLE_FOOTER', '$google_footer'); \n define('WS_GOOGLE_FOOTER_MOBILE', '$google_footer_mobile'); \n	define('WS_GOOGLE_ASIDE', '$google_aside'); \n	$pluginconfigstatusachiv	$pluginconfigstatuseconomy	$pluginconfigstatusjail	$pluginconfigjobs	$pluginconfigstatusmcmmo	$pluginconfigstatuspermissionsex	$pluginconfigstatusstats	define('serveraddr','".$SERVERIP."')  ?>";
+	$tempfile  = "<?php \n//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250, mrplows-server.tk, Webstats for Minecraft (c) 2011-2013 \n//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. My webstie is http://mrplows-server.tk. \n//Current source for info https://github.com/cky2250/WebStats/ \n\n";
+	$tempfile .= "//Sets up the MySQL Database and info to reach it to access the MySQL tabels used in this project.\ndefine('WS_MySQL_DBHOST', '".$_SESSION['MySQLHost']."');\ndefine('WS_MySQL_PORT', '".$_SESSION['MySQLPort']."');\ndefine('WS_MySQL_USERNAME', '".$_SESSION['MySQLUserName']."');\ndefine('WS_MySQL_PASSWORD', '".$_SESSION['MySQLPassword']."');\ndefine('WS_MySQL_DB', '".$_SESSION['MySQLDatabase']."');\n\n";
+	$tempfile .= "//Sets up the MySQL Database locations for the minecraft plugins.\ndefine('WS_CONFIG_DBHOST', '".$_SESSION['mysql']['URL']."');\ndefine('WS_CONFIG_DBPORT', '".$_SESSION['mysql']['PORT']."');\ndefine('WS_CONFIG_DBUNAME', '".$_SESSION['mysql']['user']."');\ndefine('WS_CONFIG_DBPASS', '".$_SESSION['mysql']['pass']."');\ndefine('WS_CONFIG_DBNAME', '".$_SESSION['mysql']['data']."');\n\n";
+	$tempfile .= "//Sets up the Minecraft Server location for the dynamic photo and popup windows to reach the server.\ndefine('MQ_SERVER_ADDR', '".$_SESSION['page']['MQ_SERVER_ADDR']."');\ndefine('MQ_SERVER_PORT', '".$_SESSION['page']['MQ_SERVER_PORT']."');\ndefine('MQ_TIMEOUT', 1);\n\n";
+	$tempfile .= "define('WS_CONFIG_SERVER', '".$_SESSION['page']['server_name']."');\ndefine('WS_OPTICAL_TITLE', '".$_SESSION['page']['server_title']."');\ndefine('WS_OPTICAL_TAB_TITLE', '".$_SESSION['page']['tab_title']."');\ndefine('WS_CONFIG_MODULE', '".$_SESSION['page']['default_module']."');\ndefine('WS_CONFIG_BACKGROUND', '".$_SESSION['page']['default_background']."');\ndefine('WS_CONFIG_PAGENUM', '".$_SESSION['page']['users_per_page']."');\ndefine('WS_CONFIG_CACHETIME', '".$_SESSION['page']['2d_cache_time']."');\n$threedsetting$search\ndefine('WS_CONFIG_DEADLINE', '".$_SESSION['page']['player_inactivity']."');\ndefine('WS_CONFIG_LOGO', '".$_SESSION['page']['logo_image_link']."');\ndefine('WS_HOMEPAGE_LOGO', '".$_SESSION['page']['logo_image_filename']."');\ndefine('WS_MAINSITE', '".$_SESSION['page']['homepage_link']."');\n$logoon\ndefine('WS_BOOKMARK', '".$_SESSION['page']['bookmark_title']."');\ndefine('WS_PHOTO_PHP_CHANGE', 'large_player_image');\n$achievments$economy$jail$jobs$mcmmo$permissionsex$stats\ndefine('WS_GOOGLE_FOOTER', '$google_footer');\ndefine('WS_GOOGLE_FOOTER_MOBILE', '$google_footer_mobile');\ndefine('WS_GOOGLE_ASIDE', '$google_aside');\n$pluginconfigstatusachiv$pluginconfigstatuseconomy$pluginconfigstatusjail$pluginconfigjobs$pluginconfigstatusmcmmo$pluginconfigstatuspermissionsex$pluginconfigstatusstats\ndefine('serveraddr','".$SERVERIP."');\n\n";
+	$tempfile .= "define('internetprotest', true);\ndefine('iptracker', false);\n?>";
 	$ourFileHandle = fopen($filename, 'w');
 	if (is_writable($filename)) {
 		if (!$handle = fopen($filename, 'w')) {
@@ -343,8 +348,8 @@ if($_POST["submitconfig"] == 'Submit Config'){
         	?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
     	}
     	fclose($handle);
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">'; 
-	}else {
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+	} else {
 		$filenamelocal = 'config.php';
 		$ourFileHandle = fopen($filenamelocal, 'w');
 		if (is_writable($filenamelocal)) {
@@ -357,7 +362,7 @@ if($_POST["submitconfig"] == 'Submit Config'){
 				?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
 			}
 			fclose($handle);
-		}else {
+		} else {
 			echo "Cannot write to file ($filename). You can however create the <code>$filename</code> manually and paste the following text into it.";
 			?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
 		}

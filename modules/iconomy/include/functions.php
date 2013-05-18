@@ -1,18 +1,15 @@
 <?php
 
 //SETS NUMBER OF USERS TO PRINT
-function get_iconomy_user_count()
-{
+function get_iconomy_user_count() {
 	$query = mysql_query("SELECT COUNT(`username`) FROM `".WS_CONFIG_ICONOMY."`");
 	$row = mysql_fetch_array($query);
 	return $row[0];
 }
 
 //ICONOMY SORT
-function get_iconomy_user_stats($sort, $start, $end)
-{
-	if($sort != 'balance') 
-	{
+function get_iconomy_user_stats($sort, $start, $end) {
+	if($sort != 'balance') {
 		$sortkey = 'ORDER BY username ASC';
 	}
 	elseif($sort == 'balance')
@@ -30,8 +27,7 @@ function get_iconomy_user_stats($sort, $start, $end)
 }
 
 //PLAYER MONEY COUNT
-function iconomy_player_get_money($player)
-{
+function iconomy_player_get_money($player) {
 	$query = mysql_query("SELECT `username`, `balance` FROM `".WS_CONFIG_ICONOMY."` WHERE `username` = '".$player."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
@@ -40,8 +36,7 @@ function iconomy_player_get_money($player)
 }
 
 //SERVER MONEY COUNT
-function iconomy_server_get_money()
-{
+function iconomy_server_get_money() {
 	$query = mysql_query("SELECT COUNT(`username`), SUM(`balance`) FROM `".WS_CONFIG_ICONOMY."` WHERE `username` != '".WS_ICONOMY_OMIT."'");
 	$row = mysql_fetch_array($query);
 	$money = explode('.', $row[1]);
@@ -50,8 +45,7 @@ function iconomy_server_get_money()
 }
 
 //PLAYER BOX MONEY COUNT
-function iconomy_player_get_money_table($player)
-{
+function iconomy_player_get_money_table($player) {
 	$money = iconomy_player_get_money($player);
 	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
 					<div class="head_stat">'.translate("var50").':</div>
@@ -62,8 +56,7 @@ function iconomy_player_get_money_table($player)
 }
 
 //SERVER BOX MONEY COUNT
-function iconomy_server_get_money_table()
-{
+function iconomy_server_get_money_table() {
 	$money = iconomy_server_get_money();
 	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
 					<div class="head_stat">'.translate("var47").':</div>
@@ -74,8 +67,7 @@ function iconomy_server_get_money_table()
 }
 
 //TOP BOX
-function iconomy_server_details_table()
-{
+function iconomy_server_details_table() {
 	$money = iconomy_server_get_money();
 	
 	$output = '<div class="head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
@@ -120,8 +112,7 @@ function iconomy_server_player_table($player, $money) {
 		global $stats_control;
 		if($stats_control == true) { 
 			$stats = '<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; 
-		}
-		else { 
+		} else { 
 			$stats = ''.$player.'';
 		}
 		

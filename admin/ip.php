@@ -234,6 +234,7 @@ END;
 			$temp = file_get_contents($filename);
 			$temp = str_replace("define('iptracker', false);","define('iptracker', true);",$temp);
 			file_put_contents($filename, $temp);
+			echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 		}
 	}
 } else {

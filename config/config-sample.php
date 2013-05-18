@@ -1,7 +1,7 @@
 <?php 
 //Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250, mrplows-server.us, Webstats for Minecraft (c) 2011-2013
-//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is http://mrplows-server.us ** currently offline.
-//Current source for info http://cky2250.github.com/WebStats/
+//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is https://mrplows-server.tk ** currently offline.
+//Current source for info https://github.com/cky2250/WebStats/
 
 //Sets up the MySQL Database and info to reach it to access the MySQL tabels used in this project.
 define('WS_MySQL_DBHOST', 'localhost');

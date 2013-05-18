@@ -143,13 +143,13 @@ function set_player_details_table($player) {
 				</table>
 			</div>';
 	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
-		$image .= '<iframe frameborder="0" src="modules/player-image/full_player_image.php?user='.$_GET['user'].'" title="skin" width="350px" height="300px">
+		$image .= '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$_GET['user'].'" title="skin" width="350px" height="300px">
 						<p>Your browser does not support iframes.</p>
 				   </iframe>';
 	} elseif($image_control == true) {
 		$image = large_image($player);
 	}
-	$output .= '<div class="six columns head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
+	$output .= '<div class="six columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 	$output .= '<div class="three columns">';
 	$output .= '<table>
 					<tbody>

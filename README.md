@@ -74,6 +74,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <ul>
 	<li>Added Location Info on Users Online Text in Footer.</li>
 	<li>Fixed Page Navigation</li>
+	<li>Fixed IP Tracker</li>
 	<li>Updated some MySQL statments</li>
 </ul>
 <h4>Known Problems</h4>

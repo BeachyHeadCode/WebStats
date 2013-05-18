@@ -136,7 +136,7 @@ function display_header() {
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width" />
   
-	<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.us)" />
+	<meta name="author" lang="en" content="cky2250 (admin@mrplows-server.tk)" />
 	<meta content='minecraft stats' name='description' />
 	<meta content='minecraft, stats, bukkit, mrplow, cky2250' name='keywords' />
 	<title><?php echo ('WebStats &rsaquo; Setup Configuration File'); ?></title>
@@ -153,7 +153,7 @@ function display_header() {
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 	<script type="text/javascript">
 		function MM_validateForm() { //v4.0
 		  if (document.getElementById){
@@ -373,7 +373,7 @@ function display_header() {
 				</script>
 				<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 				<p>
-					<a href="http://adf.ly/1049208/mr-plows-server" target="_blank">mrplows-server.us</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v4.2</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
+					<a href="https://mrplows-server.tk" target="_blank">mrplows-server.tk</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v5</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
 					<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
 				</p>
 			</footer>

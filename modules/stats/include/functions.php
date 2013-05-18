@@ -86,11 +86,11 @@ function set_player_details_table($player) {
 	
 	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
 		$NAME = $_GET['user'];
-		$image = '<iframe frameborder="0" src="modules/player-image/full_player_image.php?user='.$NAME.'" title="skin" width="350px" height="300px"></iframe>';
+		$image = '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$NAME.'" title="skin" width="350px" height="300px"></iframe>';
 		$output = '<div class="head_logo">'.$image.'</div>';
 	} elseif($image_control == true) {
 		$image = large_image($player);
-		$output = '<div class="head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
+		$output = '<div class="head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 	}
 	
 	$output .= '<div class="head_contentbox">';

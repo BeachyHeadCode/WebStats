@@ -5,14 +5,15 @@ require_once('online_status.php');
 //require_once('minecraftquery.php');
 require_once ('minecraftquery/MinecraftQuery.class.php');
 
-	$Timer = MicroTime( true );
-	$Query = new MinecraftQuery( );
-	try {
-		$Query->Connect( MQ_SERVER_ADDR, MQ_SERVER_PORT, MQ_TIMEOUT );
-	}
-	catch( MinecraftQueryException $e ) {
-		$Error = $e->getMessage( );
-	}
+$Timer = MicroTime( true );
+$Query = new MinecraftQuery( );
+try {
+	$Query->Connect( MQ_SERVER_ADDR, MQ_SERVER_PORT, MQ_TIMEOUT );
+}
+catch( MinecraftQueryException $e ) {
+	$Error = $e->getMessage( );
+}
+	
 // Create the image---------------------------------------------------------------------------------
 $x = 250;
 $y = 20;

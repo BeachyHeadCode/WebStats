@@ -13,9 +13,9 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0) {
 	include_once ROOT . 'language/en.php';
 	require_once ROOT . "include/logonfunctions.php";
 	require_once ROOT . 'include/functions.php';
-	//if(WS_CONFIG_3D_USER === false){rename("modules/player-image/full_player_image.php", "modules/player-image/full_player_image.off");}
-	//if(WS_CONFIG_3D_USER === true){rename("modules/player-image/full_player_image.off", "modules/player-image/full_player_image.php");}
-	if($image_control == true) {include('modules/player-image/include/functions.php');}
+	//if(WS_CONFIG_3D_USER === false){rename("include/player-image/full_player_image.php", "modules/player-image/full_player_image.off");}
+	//if(WS_CONFIG_3D_USER === true){rename("include/player-image/full_player_image.off", "modules/player-image/full_player_image.php");}
+	if($image_control == true) {include('include/player-image/include/functions.php');}
 	define('hover', 'style="cursor:url(images/cursors/hover.cur), auto;"');
 	session_start();
 	if(!empty($_POST["user"])) $test = strtolower($_POST['user']);

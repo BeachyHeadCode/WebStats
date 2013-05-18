@@ -35,10 +35,10 @@ if (!isset($_GET['sort'])) {$_GET['sort'] = 'player';}
 		$achievements_control = true;
 	}
 	//START PLAYER IMAGES TYPES-----------------------------------------------
-	if(file_exists('modules/player-image/index.php')) {
+	if(file_exists('include/player-image/index.php')) {
 		$image_control = true;
 	}
-	if(file_exists('modules/player-image/full_player_image.php')){
+	if(file_exists('include/player-image/full_player_image.php')){
 		$image_control_3d = true;
 	}
 	//END PLAYER IMAGES TYPES-------------------------------------------------

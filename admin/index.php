@@ -53,7 +53,7 @@ $_SESSION['mode']=$_GET['mode'];
 	<!--[if lt IE 8]>
 		<link rel="stylesheet" href="../../stylesheets/general_enclosed_foundicons_ie7.css">
 	<![endif]-->
-	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>  
+	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js'></script>  
 </head>
 <body style="background-color:rgb(228, 228, 228);">
 		<!--Header Start-->
@@ -109,7 +109,7 @@ $_SESSION['mode']=$_GET['mode'];
 			<div class="row footer" align="center">
 		<p>
 			<em>
-				<a href="http://www.mrplows-server.us" target="_blank">www.mrplows-server.us</a> &#169; <a href="http://forums.bukkit.org/threads/web-webstatistic-for-minecraft-v2-1-mrplows-any-build.60843/">Webstatistic v<?php include('../include/version.php'); echo $version;?></a> for <a href="http://minecraft.net">Minecraft</a>
+				<a href="https://mrplows-server.tk" target="_blank">mrplows-server.tk</a> &#169; <a href="http://forums.bukkit.org/threads/60843/">Webstatistic v<?php include('../include/version.php'); echo $version;?></a> for <a href="http://minecraft.net">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
 				<a href="termsofuse.php">Terms Of Use</a>

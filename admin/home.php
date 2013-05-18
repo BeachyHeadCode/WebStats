@@ -171,11 +171,46 @@ for ($i=0;$i<=sizeof($commits);$i++){
 	<a href="http://tool.motoricerca.info/robots-checker.phtml?checkreferer=1"><img src="http://tool.motoricerca.info/pic/valid-robots.png" border="0" alt="Valid Robots.txt" width="88" height="31"></a>
 	<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/footer_badge.png" alt="Member of The Internet Defense League" /></a>
 </div>
+<form action="" method="post" name="Email">
+	<fieldset>
+		<legend style="background: none;"><h4>EMAIL ANY QUESTIONS.</h4></legend>
+			<div class="row">
+				<div class="two mobile-one columns">
+					<label class="right inline">Name:</label>
+				</div>
+				<div class="ten mobile-three columns">
+					<input type="text" placeholder="e.g. John Doe" class="eight" id="name" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="two mobile-one columns">
+					<label class="right inline">Subject:</label>
+				</div>
+				<div class="ten mobile-three columns">
+					<input type="text" placeholder="e.g. Issue, enhancement, want to buy" class="eight" id="subject" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="two mobile-one columns">
+					<label class="right inline">Message:</label>
+				</div>
+				<div class="ten mobile-three columns">
+					<textarea placeholder="Message" class="eight" id="body"></textarea>
+					<!--<input type="text" placeholder="Message" class="eight" id="body" />-->
+				</div>
+			</div>
+			<div class="row">
+				<input type="button" onselectstart="return false;" class="button" id="submit" value="Send &raquo;" />
+			</div>					
+	</fieldset>
+</form>
+
 <script>
 $('input#submit').click(function() {
     var subject = $('input#subject').val();
 	var body = $('textarea#body').val();
+	var name = $('input#name').val();
     //send to server and process response
-	window.open('mailto:admin@mrplows-server.us?subject=' + subject + '&#038;body=' + body)
+	window.open('mailto:admin@mrplows-server.tk?subject=' + subject + '&body=' + body + ' Thanks, ' + name)
 });
 </script>
