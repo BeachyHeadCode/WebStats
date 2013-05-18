@@ -65,39 +65,55 @@ function mineconomy_server_get_money_table() {
 	return $output;
 }
 
+//SERVER TOP PLAYER
+function mineconomy_server_top_money() {
+	$query = mysql_query("SELECT `account`, MAX(`balance`) as `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
+	$row = mysql_fetch_array($query);
+	$money = explode('.', $row[1]);
+	$money[1] = $row[0];
+	$money[2] = $row[2];
+	return $money;
+}
+
 //TOP BOX
 function mineconomy_server_details_table() {
 	$money = mineconomy_server_get_money();
-	
-	$output = '<div class="head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
-
-	$output .= '<div class="head_contentbox">';
-	$output .= "\n";
+	$row = mineconomy_server_top_money();
+	global $image_control;
+	global $image_control_3d;
+	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
+		$image = '<iframe frameborder="0" src="modules/player-image/full_player_image.php?user='.$row[1].'" title="skin" width="350px" height="300px"></iframe>';
+		$output = '<div class="row" style="margin:0 auto;"><div class="six columns head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
+	} elseif($image_control == true) {
+		$image = large_image($row[1]);	
+		$output = '<div class="row" style="margin:0 auto;"><div class="six columns head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
+	} else {
+		$output = '<div class="row" style="margin:0 auto;"><div class="six columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"><img src=""/></div>';
+	}
+	$output .= '<div class="six columns head_contentbox">';
 	$output .= '<div style="clear:both">
 					<div class="head_stat" style="width:350px; font-weight:bold;"><div align="center">'.translate('var44').':</div></div>
 				</div>
-				<br /><br />
 				<div style="clear:both">
 					<div class="head_stat">'.translate("var45").':</div>
 					<div class="head_content">'.$money[2].'</div>
 				</div>
 				
-				<div>
+				<div style="clear:both">
 					<div class="head_stat">'.translate("var46").':</div>
 					<div class="head_content">'.WS_ICONOMY_SUB.'</div>
 				</div>
 				
-				<div>
+				<div style="clear:both">
 					<div class="head_stat">'.translate("var47").':</div>
 					<div class="head_content">'.$money[0].' '.$money[2].'</div>
 				</div>
 				
-				<div>
+				<div style="clear:both">
 					<div class="head_stat">'.translate("var48").':</div>
 					<div class="head_content"> '.floor($money[0] / $money[1]) .' '.$money[2].'</div>
 				</div>';
-	$output .= "\n";
-	$output .= '</div>';
+	$output .= '</div></div>';
 	return $output;
 }
 

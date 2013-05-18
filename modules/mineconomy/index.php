@@ -25,7 +25,7 @@
 <?php	
 		if (isset($_GET["page"]) <= 0) {
    			$page = '1';
-   		} if (isset($_GET["page"]) > 0) {	
+   		} if (isset($_GET["page"]) > 0) {
    			$page = $_GET["page"];
    		}
 		if(isset($_GET["NPP"]) && $_GET["NPP"] != '') {

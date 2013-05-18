@@ -16,10 +16,11 @@ Add &webgl to render in webgl
 	minecraft_skin_download($user);
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 
 <head>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="include/resources/jquery-cookie.min.js"></script>
 	<script type="text/javascript" src="include/resources/3d/Three.js"></script>
 	<script type="text/javascript" src="include/resources/3d/RequestAnimationFrame.js"></script>
@@ -27,7 +28,7 @@ Add &webgl to render in webgl
 	<link href="3d-player-image/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body background="images/player_bg.png">
+<body>
 
 	<div id="top">
 	click + drag model<br/>
