@@ -1,4 +1,4 @@
-<a href="http://dev.bukkit.org/server-mods/jobs/pages/permissions/"><h2>Jobs</h2></a><br/>
+<h2><a href="http://dev.bukkit.org/server-mods/jobs/pages/permissions/">Jobs</a></h2><br />
 
 <?php echo (job_server_details_table()); ?>
 

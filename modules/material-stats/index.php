@@ -13,12 +13,12 @@
 	<div class="row" style="width:675px; margin:0px auto;" id="Recipe">
 		<?php 
 		if($recipe_control == true) {
-			include('modules/recipe/index.php'); 
+			include('include/recipe/index.php'); 
 		}
 		?>
 	</div>
 		<section class="twelve columns centered content_headline">
-			<a href="index.php?mode=material-stats&material=<?php echo $item; ?>" <?php echo (hover);?> ><?php echo translate('var1');?></a> - <a href="index.php?mode=material-stats&search=true&material=<?php echo $item;?>" <?php echo (hover);?>><?php echo translate('var2'); ?></a>
+			<a href="index.php?mode=material-stats&material=<?php echo $item; ?>"><?php echo translate('var1');?></a> - <a href="index.php?mode=material-stats&search=true&material=<?php echo $item;?>"><?php echo translate('var2'); ?></a>
 		</section>
 			<div class="row">
 				<div class="six columns content_headline_stats" style="width:363px;"><?php echo translate('var30'); ?>: </div>

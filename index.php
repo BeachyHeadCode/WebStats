@@ -227,7 +227,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		<?php include('assets/menu.php'); ?>
 	</div>
 	<div class="row" role="searchbar">
-		<?php if($search_control == true && WS_CONFIG_SEARCH_BAR == true)include('modules/search/index.php'); ?>
+		<?php if($search_control === true && WS_CONFIG_SEARCH_BAR === true)include('include/search/index.php'); ?>
 	</div>
 	<section class="row main" style="min-width:780px">
    	  	<div class="ten columns centered" id="modules">
@@ -265,7 +265,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 </div><!--Main Wrapper End-->
 <section>
 		<div role="searchsidebar">
-		<?php if($search_control == true)include('modules/search/index.php'); ?>
+		<?php if($search_control == true)include('include/search/index.php'); ?>
 		</div>
 		
 		<div onmousedown="return false;" onselectstart="return false;" role="complementaryright">

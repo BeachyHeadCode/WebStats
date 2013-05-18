@@ -45,10 +45,10 @@ if (!isset($_GET['sort'])) {$_GET['sort'] = 'player';}
 	if(file_exists('modules/id-list/index.php')){
 		$idlist_control = true;
 	}	
-	if(file_exists('modules/search/index.php')){
+	if(file_exists('include/search/index.php')){
 		$search_control = true;
 	}	
-	if(file_exists('modules/recipe/index.php')){
+	if(file_exists('include/recipe/index.php')){
 		$recipe_control = true;
 	}	
 	if(file_exists('modules/mcmmo/index.php')){
