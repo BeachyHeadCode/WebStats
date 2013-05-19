@@ -78,6 +78,24 @@ if(!empty($_POST["reloadform"])){
 	session_regenerate_id(true);
 }
 $SERVERIP=$_SERVER['SERVER_ADDR'];
+
+function dirlist($dir, $bool = "dirs"){
+   $truedir = $dir;
+   $dir = scandir($dir);
+   if($bool == "files") {
+      $direct = 'is_dir'; 
+   } elseif($bool == "dirs") {
+      $direct = 'is_file';
+   }
+   foreach($dir as $k => $v) {
+      if(($direct($truedir.$dir[$k])) || $dir[$k] == '.' || $dir[$k] == '..' || $dir[$k] == 'show-player' || $dir[$k] == 'creature-stats' || $dir[$k] == 'index.php') {
+         unset($dir[$k]);
+      }
+   }
+   $dir = array_values($dir);
+   return $dir;
+}
+
 ?>
 
 <script type="text/javascript">
@@ -178,7 +196,24 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
     <label for="page">Minecraft Server Addr.: <input name="page[MQ_SERVER_ADDR]" type="text" id="page[MQ_SERVER_ADDR]" title="Server Title" value="<?php if(!isset($_SESSION['page']['MQ_SERVER_ADDR'])){ echo 'localhost';}else{ echo $_SESSION['page']['MQ_SERVER_ADDR'];} ?>" maxlength="50"/></label>
     <label for="page">Minecraft Server Port: <input name="page[MQ_SERVER_PORT]" type="number" id="page[MQ_SERVER_PORT]" title="Server Title" value="<?php if(!isset($_SESSION['page']['MQ_SERVER_PORT'])){ echo '25565';}else{ echo $_SESSION['page']['MQ_SERVER_PORT'];} ?>" min="0" max="65535"/></label>
 	<label for="page">Server Tab Title: <input name="page[tab_title]" type="text" id="page[tab_title]" title="Tab Name" value="<?php if(!isset($_SESSION['page']['tab_title'])){ echo 'Mr. Plow&#39s Server - Webstatistic for Minecraft';}else{ echo $_SESSION['page']['tab_title'];} ?>" maxlength="70"/></label>
-	<label for="page">Choose Default Module: <input name="page[default_module]" type="text" id="page[default_module]" title="Server Name" value="<?php if(!isset($_SESSION['page']['default_module'])){ echo 'stats';}else{ echo $_SESSION['page']['default_module'];} ?>" maxlength="64"/></label>
+	
+	
+	
+	<label for="page">Choose Default Module: 
+		<select class="select2" title="Default Module" name="page[default_module]">
+<?php
+		$folders = dirlist("../modules");
+		for($i=0; $i <= (sizeof($folders)-1); $i++) {
+			if($_SESSION['page']['default_module'] == $folders[$i])
+				echo ("<option value='".$folders[$i]."' SELECTED>".$folders[$i]."</option>");
+			else 
+				echo "<option value='".$folders[$i]."'>".$folders[$i]."</option>";
+		}					
+?>
+		</select>
+	</label>
+	
+	
 	<label for="customDropdown">Choose Default Background:</label>	
 	<select class="select2" id="customDropdown background" name="page[default_background]" onchange="displayImage()" title="Background">  
 		<?php 
@@ -313,12 +348,12 @@ if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] !=
 	if($_SESSION['pluginconfigstats'] == "stats") {
 		if($_SESSION['page']['timechange_on/off'] == true)
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
-		$stats="define('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
+		$stats="define('WS_CONFIG_STATS_PLUGIN', 'stats');\ndefine('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
 		$pluginconfigstatusstats="define('pluginconfigstatusstats', true);\n";
 	} elseif($_SESSION['pluginconfigstats'] == "Stats by lolmewnstats") {
 		if($_SESSION['page']['timechange_on/off'] == true)
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
-		$stats="define('WS_CONFIG_STATS_LOLMEWN_PREFIX', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
+		$stats="define('WS_CONFIG_STATS_PLUGIN', 'stats-lolmewn');\ndefine('WS_CONFIG_STATS_LOLMEWN_PREFIX', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
 		$pluginconfigstatusstats="define('pluginconfigstatusstatslolmewnstats', true);\n";
 	} else {}
 }

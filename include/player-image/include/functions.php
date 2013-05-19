@@ -10,7 +10,7 @@ function large_image($player) {
 }
 
 function full_image($player) {
-	$image = '<img src="include/player-image/full_player_image.php?user='.$player.'" width="350" height="275">';
+	$image = '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$player.'" title="skin" width="350px" height="257px"></iframe>';
 	return $image;
 }
 ?>

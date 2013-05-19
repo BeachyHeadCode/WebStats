@@ -82,11 +82,11 @@ function mineconomy_server_details_table() {
 	global $image_control;
 	global $image_control_3d;
 	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
-		$image = '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$row[1].'" title="skin" width="350px" height="300px"></iframe>';
+		$image = full_image($row[1]);
 		$output = '<div class="row" style="margin:0 auto;"><div class="six columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 	} elseif($image_control == true) {
 		$image = large_image($row[1]);	
-		$output = '<div class="row" style="margin:0 auto;"><div class="six columns head_logo" style="background-image:url(modules/player-image/images/player_bg.png)">'.$image.'</div>';
+		$output = '<div class="row" style="margin:0 auto;"><div class="six columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 	} else {
 		$output = '<div class="row" style="margin:0 auto;"><div class="six columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"><img src=""/></div>';
 	}
