@@ -1,4 +1,4 @@
-<h2>Mine Conomy</h2><br/>
+<h2>Mine Conomy</h2><br />
 <?php
 	if ($_GET['sort'] != 'balance'){
 		$_GET['sort'] = 'username';

@@ -1,11 +1,10 @@
 <?php
-function permissionsex_player_table($player)
-{
-	$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS."_inheritance WHERE ".WS_CONFIG_PERMISSIONS."_inheritance.child = '".$player."'";
+function permissionsex_player_table($player) {
+	$query = "SELECT * FROM `".WS_CONFIG_PERMISSIONS."_inheritance` WHERE `".WS_CONFIG_PERMISSIONS."_inheritance`.`child` = '".$player."'";
 	$result = mysql_query($query);
 	$data = mysql_fetch_array($result);
 	if(isset($data['parent'])) {
-		$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS." WHERE ".WS_CONFIG_PERMISSIONS.".name = '".$data['parent']."'";
+		$query = "SELECT * FROM `".WS_CONFIG_PERMISSIONS."` WHERE `".WS_CONFIG_PERMISSIONS."`.`name` = '".$data['parent']."'";
 		$result = mysql_query($query);
 		$time = 0;
 		while($row = mysql_fetch_array($result)) {
@@ -47,14 +46,13 @@ function permissionsex_player_table($player)
 		return $output;
 	}
 }
-function permissionsex_group_table($group)
-{
-		$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS." WHERE ".WS_CONFIG_PERMISSIONS.".name = '".$group."'";
+
+function permissionsex_group_table($group) {
+		$query = "SELECT * FROM `".WS_CONFIG_PERMISSIONS."` WHERE `".WS_CONFIG_PERMISSIONS."`.`name` = '".$group."'";
 		$result = mysql_query($query);
 		$time = 0;
 		
-		while($row = mysql_fetch_array($result)) 
-		{
+		while($row = mysql_fetch_array($result)) {
 			$permissiondata[$time] = $row['permission'];
 			$time++;
 		}
@@ -69,8 +67,7 @@ function permissionsex_group_table($group)
 				$output .= '</tr></thead>';
 				
 				$output .= '<tbody>';
-					for($i=0; $i < sizeof($permissiondata); $i++)
-					{
+					for($i=0; $i < sizeof($permissiondata); $i++) {
 						$output .= '<tr><td>'.$permissiondata[$i].'</td></tr>';
 					}
 				$output .= '</tbody>';

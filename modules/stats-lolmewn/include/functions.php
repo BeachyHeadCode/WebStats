@@ -490,27 +490,27 @@ function set_server_getkill_table($search) {
 }
 
 function set_server_destroy_table($search) {	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'blockdestroy' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT `sbo`.`blockID`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` GROUP BY `blockID` ORDER BY `blockID` asc) as `sbo` LEFT JOIN (SELECT `blockID`, SUM(`amount`) as `brk` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as `q2` ON `sbo`.`blockID` = `q2`.`blockID`");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
-		$image = str_replace(":", "-", $row[1]); 
+		$image = str_replace(":", "-", $row[0]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[1].'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
-	}	
+	}
 	return $output;
 }
 
 function set_server_build_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'blockcreate' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT `sbo`.`blockID`, `q1`.`amn` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` GROUP BY `blockID` ORDER BY `blockID` asc) as `sbo` LEFT JOIN (SELECT `blockID`, SUM(`amount`) as `amn` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `break` = 0 GROUP BY `blockID` ORDER BY `blockID` asc) as `q1` ON `sbo`.`blockID` = `q1`.`blockID`");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
-		$image = str_replace(":", "-", $row[1]); 
+		$image = str_replace(":", "-", $row[0]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[1].'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
 	}	
@@ -528,7 +528,7 @@ function set_material_destroy_table($material, $search) {
 			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'" '.hover.' >'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -547,7 +547,7 @@ function set_material_build_table($material, $search) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'" '.hover.' >'.$row['player'].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -564,7 +564,7 @@ function set_creature_damagereceived_table($creature, $search) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'" '.hover.'" >'.$row['player'].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -583,7 +583,7 @@ function set_creature_damagedealt_table($creature, $search) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'" '.hover.' >'.$row['player'].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
 		$output .= "\n";
 		$output .= '</div>';

@@ -185,10 +185,10 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 				<div class="row">
 					<?php
 					if(LOGOIMAGE === true) {
-						echo '<a href="'.WS_MAINSITE.'" style="cursor:url(images/cursors/hover.cur), auto;"><img src="'.WS_HOMEPAGE_LOGO.'" width="615px" height="100px" border="0"></a>';
+						echo '<a href="'.WS_MAINSITE.'"><img src="'.WS_HOMEPAGE_LOGO.'" width="615px" height="100px" border="0"></a>';
 					} else {
 						
-						?><a href="#" data-reveal-id="serverModal" style="cursor:url(images/cursors/hover.cur), auto;"><img id="pic" /></a><?php
+						?><a href="#" data-reveal-id="serverModal"><img id="pic" /></a><?php
 					}	
 					?>
 					<a href="#" data-reveal-id="serverModal"><div id="status"><?php require('include/online_status.php');?></div></a>
@@ -219,7 +219,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 					</div>
 					<div class="four column">
 							<span>Drag to your bookmark bar:</span><br /><br />
-							<a id="bookmarklet" href="<?php echo curPageURL();?>" style="cursor:url(images/cursors/hover.cur), auto;" title="Drag to your bookmarks bar."><?php echo(WS_BOOKMARK);?></a>
+							<a id="bookmarklet" href="<?php echo curPageURL();?>" title="Drag to your bookmarks bar."><?php echo(WS_BOOKMARK);?></a>
 					</div>
 				</div>
 			</div>			    
@@ -247,7 +247,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		<div role="footerAD"><?php echo (WS_GOOGLE_FOOTER); ?></div>
 		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div>
 		<p><em>
-				<a target="_blank" href="http://cky2250.github.com/WebStats/">mrplows-server.tk</a> &#169;<a target="_blank" href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a target="_blank" href="http://minecraft.net">Minecraft</a>
+				<a target="_blank" href="https://mrplows-server.tk">mrplows-server.tk</a> &#169;<a target="_blank" href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a target="_blank" href="https://minecraft.net">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
 				<a href="termsofuse.php">Terms Of Use</a>
@@ -268,7 +268,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 </div><!--Main Wrapper End-->
 <section>
 		<div role="searchsidebar">
-		<?php if($search_control == true)include('include/search/index.php'); ?>
+		<?php if($search_control == true && WS_CONFIG_SEARCH_BAR === true)include('include/search/index.php'); ?>
 		</div>
 		
 		<div onmousedown="return false;" onselectstart="return false;" role="complementaryright">
