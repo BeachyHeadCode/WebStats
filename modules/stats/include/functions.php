@@ -472,8 +472,7 @@ function set_server_damagereceived_table($search) {
 		$output .= '</div>';
 	}  
 	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagetaken' AND stat = 'total' GROUP BY stat");
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
@@ -495,9 +494,7 @@ function set_server_damagedealt_table($search) {
 		$output .= '</div>';
 	} 
 	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagedealt' AND stat = 'total' GROUP BY stat");
-	while($row = mysql_fetch_array($query)) 
-	{
-		
+	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
@@ -509,7 +506,7 @@ function set_server_damagedealt_table($search) {
 
 function set_material_destroy_table($material, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE category = 'blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
+	$query = mysql_query("SELECT `player`, `category`, `stat`, `value` FROM `".WS_CONFIG_STATS."` WHERE `category` = 'blockdestroy' AND `stat` = '".mysql_real_escape_string($material)."' GROUP BY `player` ORDER BY `value` ".$search);
 	$output = '';
 	while($row = mysql_fetch_array($query)) {		
 		if($image_control == true) {
@@ -526,7 +523,7 @@ function set_material_destroy_table($material, $search) {
 
 function set_material_build_table($material, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE category='blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
+	$query = mysql_query("SELECT `player`, `category`, `stat`, `value` FROM `".WS_CONFIG_STATS."` WHERE `category` = 'blockdestroy' AND `stat` = '".mysql_real_escape_string($material)."' GROUP BY `player` ORDER BY `value` ".$search);
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		if($image_control == true) {

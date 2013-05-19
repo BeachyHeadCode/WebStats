@@ -519,39 +519,35 @@ function set_server_build_table($search) {
 
 function set_material_destroy_table($material, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{		
-		if($image_control == true) 
-		{
+	$query = mysql_query("SELECT `player`, `amount` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `blockID` = '".mysql_real_escape_string($material)."' AND `break` = 1 GROUP BY `blockID` ORDER BY `blockID` ".$search);
+	$output = '<table>';
+	while($row = mysql_fetch_array($query)) {		
+		if($image_control == true) {
 			$image = small_image($row[0]);
 		}
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}  
+		$output .= '<tr>';
+		$output .= '<td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
+		$output .= '<td style="width:100px;">'.$row[1].'</td>';
+		$output .= '</tr>';
+	}
+	$output .= '</table>';
 	return $output;
 }
 
 function set_material_build_table($material, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category='blockdestroy' AND stat = '".mysql_real_escape_string($material)."' GROUP BY player ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
-		if($image_control == true) 
-		{
-			$image = small_image($row['player']);
+	$query = mysql_query("SELECT `player`, `amount` FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."block` WHERE `blockID` = '".mysql_real_escape_string($material)."' AND `break` = 0 GROUP BY `blockID` ORDER BY `blockID` ".$search);
+	$output = '<table>';
+	while($row = mysql_fetch_array($query)) {
+		if($image_control == true) {
+			$image = small_image($row[0]);
 		}
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	} 
+		$output .= '<tr>';
+		$output .= '<td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
+		$output .= '<td style="width:100px;">'.$row[1].'</td>';
+		$output .= '</tr>';
+	}
+	$output .= '</table>';
 	return $output;
 }
 
@@ -576,10 +572,8 @@ function set_creature_damagedealt_table($creature, $search) {
 	global $image_control;
 	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'damagedealt' AND stat = '".encrypt($creature)."' GROUP BY player ".$search."");
 	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
-		if($image_control == true) 
-		{
+	while($row = mysql_fetch_array($query)) {
+		if($image_control == true) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';

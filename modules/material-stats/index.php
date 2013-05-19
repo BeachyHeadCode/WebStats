@@ -1,6 +1,5 @@
 <?php
-	if (!isset($_GET['search'])) {$_GET['search'] = 'ORDER BY player ASC';
-	} else {$_GET['search'] = 'ORDER BY value DESC';}
+	if (!isset($_GET['search'])) {$_GET['search'] = 'ASC';} else {$_GET['search'] = 'DESC';}
 	$item = $_GET['material'];
 	$item_image = $_GET['material'];
 	$item_image = str_replace(":", "-", $item_image);
@@ -25,10 +24,10 @@
 				<div class="six columns content_headline_stats" style="width:363px;"><?php echo translate('var31'); ?> </div>
 			</div>
 			<div class="row">
-				<div class="six columns content_headline_small" style="width:373px;">
+				<div class="six columns content_headline_small">
 					<?php echo (set_material_destroy_table($item, $_GET['search'])); ?>
 				</div>
-				<div class="six columns content_headline_small" style="width:373px;">
+				<div class="six columns content_headline_small">
 					<?php echo (set_material_build_table($item, $_GET['search'])); ?>
 				</div>
 			</div>
@@ -47,7 +46,8 @@ function addItemInfo(callback) {
 					addItem(getValue(this, 'description'),
 							  getValue(this, 'added'),
 							  getValue(this, 'type'),
-							  getValue(this, 'name'));
+							  getValue(this, 'name'),
+							  getValue(this, 'id'));
 				}						  
 			});
 			logInfo("Done!");
@@ -56,14 +56,14 @@ function addItemInfo(callback) {
 	});
 }
 
-function addItem(description, added, type, name) {
+function addItem(description, added, type, name, id) {
 	$('<p style="text-align:left"></p>').html(
-		"Type: " + type + "<br />Added: " + added + "<br /><h4>Description</h4><hr />" + description
+		"<b>Type:</b> " + type + "<br /><b>Added:</b> " + added + "<br /><b>ID:</b>" + id + "<h4>Description:</h4><hr />" + description
 	)
 	.appendTo('#ItemInfo');
 	
 	$('<b></b>').html(
-			'<img src="images/icons/<?php echo $item_image;?>.png" width="15px" height="15px"><u><a href="http://www.minecraftwiki.net/wiki/' + name + '"<?php echo (hover);?>>' + name + '</a></u><img src="images/icons/<?php echo $item_image; ?>.png" width="15px" height="15px">'
+			'<img src="images/icons/<?php echo $item_image;?>.png" width="15px" height="15px"><u><a href="http://www.minecraftwiki.net/wiki/' + name + '">' + name + '</a></u><img src="images/icons/<?php echo $item_image; ?>.png" width="15px" height="15px">'
 	)
 	.appendTo('#name');
 }
