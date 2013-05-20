@@ -10,7 +10,7 @@ function large_image($player) {
 }
 
 function full_image($player) {
-	$image = '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$player.'" title="skin" width="350px" height="257px"></iframe>';
+	$image = '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$player.'" title="skin" width="350px" height="257px"><p>Your Browser Does Not Support \'iframes\'.</p></iframe>';
 	return $image;
 }
 ?>

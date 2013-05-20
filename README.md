@@ -77,6 +77,8 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>Fixed IP Tracker</li>
 	<li>Updated some MySQL statments</li>
 	<li>Updated 404 page and now is working</li>
+	<li>Updated ID list</li>
+	<li>Updated Material Stats</li>
 </ul>
 <h4>Known Problems</h4>
 <ul>

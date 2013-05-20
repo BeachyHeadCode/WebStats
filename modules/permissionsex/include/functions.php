@@ -12,8 +12,9 @@ function permissionsex_player_table($player) {
 			$time++;
 		}
 		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
-				$output = '<h2>Permissions</h2>';
-				$output .= '<table><thead>';
+				$output = '<div class="head_maintable_permissionsex">';
+				$output .= '<h2>Permissions</h2>';
+				$output .= '<table style="margin: 0px auto;"><thead>';
 					$output .= '<tr><td>Role(s):</td>';
 					$output .= '<td>World(s):</td></tr></thead>';
 				$output .= '';
@@ -21,7 +22,7 @@ function permissionsex_player_table($player) {
 					$output .= '<tr><td><a href="index.php?mode=permissionsex&group='.$data['parent'].'">'.$data['parent'].'</a></td>';
 					$output .= '<td>'.$noworld.'</td></tr>';
 				$output .= '</tbody>';
-			$output .= '</table>';
+			$output .= '</table></div>';
 		return $output;
 	} else {
 		$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS." WHERE ".WS_CONFIG_PERMISSIONS.".name = '".WS_PERMISSIONS_DEFAULT_GROUP."'";

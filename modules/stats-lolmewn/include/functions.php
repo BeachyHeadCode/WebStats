@@ -143,9 +143,7 @@ function set_player_details_table($player) {
 				</table>
 			</div>';
 	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
-		$image .= '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$_GET['user'].'" title="skin" width="350px" height="300px">
-						<p>Your browser does not support iframes.</p>
-				   </iframe>';
+		$image = full_image($_GET['user']);
 	} elseif($image_control == true) {
 		$image = large_image($player);
 	}
@@ -227,32 +225,6 @@ function set_player_getkill_table($player, $search) {
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
 	}
-	return $output;
-}
-
-function set_player_founditem_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'itempickup' ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}  	
-	return $output;
-}
-
-function set_player_dropitem_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE player='".$player."' AND category = 'itemdrop' ".$search."");
-	$output = '';
-	while($row = mysql_fetch_array($query)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}  	
 	return $output;
 }
 
@@ -553,14 +525,14 @@ function set_material_build_table($material, $search) {
 
 function set_creature_damagereceived_table($creature, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE `category` = 'damagetaken' AND `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		if($image_control == true) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -570,16 +542,15 @@ function set_creature_damagereceived_table($creature, $search) {
 
 function set_creature_damagedealt_table($creature, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE category = 'damagedealt' AND stat = '".encrypt($creature)."' GROUP BY player ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS_LOLMEWN_PREFIX."player` WHERE stat = '".encrypt($creature)."' GROUP BY player ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		if($image_control == true) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
-		$output .= "\n";
 		$output .= '</div>';
 	} 
 	return $output;

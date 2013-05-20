@@ -1,6 +1,6 @@
 <?php
 function get_amount($user, $stat, $type) {
-	$query = mysql_query("SELECT value FROM ".WS_CONFIG_STATS." WHERE player='$user' AND stat='$stat' AND category='$type'");
+	$query = mysql_query("SELECT value FROM `".WS_CONFIG_STATS."` WHERE player='$user' AND stat='$stat' AND category='$type'");
 	$data = @mysql_fetch_array($query);
 	return $data[0];
 }
@@ -9,10 +9,9 @@ function get_user($sort) {
 	if(!isset($sort)) {$sort = 'player';}
 	if($sort == 'player') {$sortkey = 'GROUP BY player ORDER BY player';}
 	else {$sortkey = 'WHERE stat LIKE "'.$sort.'" GROUP BY player ORDER BY value DESC';}
-	$query = mysql_query("SELECT player, stat, value FROM ".WS_CONFIG_STATS." ".$sortkey."");
+	$query = mysql_query("SELECT `player`, `stat`, `value` FROM `".WS_CONFIG_STATS."` ".$sortkey."");
 	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$players[$time] = $row[0];
 		$time++;
 	}  
@@ -22,12 +21,11 @@ function get_user($sort) {
 function get_user_stats($sort, $start, $end) {
 	if(!isset($sort)) {$sort = 'player';}
 	$deadline = time() - WS_CONFIG_DEADLINE;
-	if($sort == 'player') {$sortkey = 'GROUP BY player ORDER BY player';}
+	if($sort == 'player') {$sortkey = 'GROUP BY `player` ORDER BY `player`';}
 	else {$sortkey = 'WHERE stat LIKE "'.$sort.'" GROUP BY player ORDER BY value DESC';}
-	$query = mysql_query("SELECT player, stat, value FROM ".WS_CONFIG_STATS." ".$sortkey." LIMIT ".$start.",".$end."");
+	$query = mysql_query("SELECT `player`, `stat`, `value` FROM `".WS_CONFIG_STATS."` ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$players[$time] = $row[0];
 		$time++;
 	}  
@@ -137,152 +135,138 @@ function set_player_details_table($player) {
 				</div>
 				<div>
 					<div class="head_stat">'.translate("var20").':</div>
-					<div class="head_content"> '.get_amount($player, "totalblockcreate", "stats").' '.translate("var18").'</div>
-				</div>';
-	$output .= "\n";
+					<div class="head_content"> '.get_amount($player, "totalblockcreate", "stats").' '.translate("var18")."</div>
+				</div>\n";
 	$output .= '</div>';
 	return $output;
 }
 
 function set_player_destroy_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'blockdestroy' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'blockdestroy' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_player_build_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'blockcreate' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'blockcreate' ".$search."");
 	$output = '';
-	while($row = mysql_fetch_array($query)) 
-	{
+	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_player_damagereceived_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagetaken' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'damagetaken' AND stat != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	} 
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagetaken' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'damagetaken' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_player_damagedealt_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagedealt' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'damagedealt' AND stat != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}  
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'damagedealt' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'damagedealt' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_player_didkill_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'kills' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'kills' AND stat != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	} 	
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'kills' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'kills' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_player_getkill_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'deaths' AND stat != 'total' ".$search."");
+	$query = mysql_query("SELECT `stat`, `value` FROM `".WS_CONFIG_STATS."` WHERE `player`='".$player."' AND `category` = 'deaths' AND `stat` != 'total' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 	
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'deaths' AND stat = 'total'");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'deaths' AND stat = 'total'");
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_player_founditem_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'itempickup' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'itempickup' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}  	
 	return $output;
 }
 
 function set_player_dropitem_table($player, $search) {
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE player='".$player."' AND category = 'itemdrop' ".$search."");
+	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'itemdrop' ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}  	
 	return $output;
 }
 
 function get_server_player() {
-	$query = mysql_query("SELECT player, stat, value FROM ".WS_CONFIG_STATS." GROUP BY player");
+	$query = mysql_query("SELECT player, stat, value FROM `".WS_CONFIG_STATS."` GROUP BY player");
 	$time = 0;
 	while($row = mysql_fetch_array($query)) {
 		$players[$time] = $row[0];
@@ -292,7 +276,7 @@ function get_server_player() {
 }
 
 function get_server_count($cat, $stat) {
-	$query = mysql_query("SELECT value FROM ".WS_CONFIG_STATS." WHERE category='".$cat."' AND stat LIKE '".$stat."'");
+	$query = mysql_query("SELECT value FROM `".WS_CONFIG_STATS."` WHERE category='".$cat."' AND stat LIKE '".$stat."'");
 	$time = 0;
 	while($row = mysql_fetch_array($query)) {
 		$time = $time + $row[0];
@@ -301,7 +285,7 @@ function get_server_count($cat, $stat) {
 }
 
 function get_server_played() {
-	$query = mysql_query("SELECT value FROM ".WS_CONFIG_STATS." WHERE category='stats' AND stat = 'playedfor'");
+	$query = mysql_query("SELECT value FROM `".WS_CONFIG_STATS."` WHERE category='stats' AND stat = 'playedfor'");
 	$time = 0;
 	while($row = mysql_fetch_array($query)) {
 		$time = $time + $row[0];
@@ -321,7 +305,6 @@ function get_server_played() {
 	if ($hour_2 <= 10 && $minute_3 >= 0) {
 		$played = "0$hour_2 h $minute_3 m";
 	}
-
 	if ($hour_2 > 10) {
 		$played = "$hour_2 h $minute_3 m";
 	 }
@@ -330,8 +313,7 @@ function get_server_played() {
 
 function set_server_details_table() {
 	$output = '<div class="head_logo" style="background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
-	$output .= '<div class="head_contentbox">';
-	$output .= "\n";
+	$output .= '<div class="head_contentbox">'."\n";
 	$output .= '<div style="clear:both">
 					<div class="head_stat">'.translate("var23").':</div>
 					<div class="head_content"> '.get_server_player().'</div>
@@ -391,56 +373,51 @@ function set_server_details_table() {
 }
 
 function set_server_didkill_table($search) {
-	$query = mysql_query("SELECT `category`, `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'kills' AND `stat` != 'total' GROUP BY `stat` ".$search."");
+	$query = mysql_query("SELECT `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'kills' AND `stat` != 'total' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}	
 	$query = mysql_query("SELECT `category`, `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'kills' AND `stat` = 'total' GROUP BY stat");
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2]."</div>\n";		
 		$output .= '</div>';
 	}	
 	return $output;
 }
 
 function set_server_getkill_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'deaths' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT stat, SUM(value) FROM `".WS_CONFIG_STATS."` WHERE category = 'deaths' AND stat != 'total' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'deaths' AND stat = 'total' GROUP BY stat");
+	$query = mysql_query("SELECT `stat`, SUM(value) FROM `".WS_CONFIG_STATS."` WHERE category = 'deaths' AND stat = 'total' GROUP BY stat");
 	while($row = mysql_fetch_array($query)) {
-		
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[1]."</div>\n";	
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_server_destroy_table($search) {	
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'blockdestroy' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT stat, SUM(`value`) FROM ".WS_CONFIG_STATS." WHERE `category` = 'blockdestroy' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
-		$image = str_replace(":", "-", $row[1]); 
+		$image = str_replace(":", "-", $row[0]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[1].'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
 	}	
@@ -448,13 +425,13 @@ function set_server_destroy_table($search) {
 }
 
 function set_server_build_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'blockcreate' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'blockcreate' GROUP BY stat ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
-		$image = str_replace(":", "-", $row[1]); 
+		$image = str_replace(":", "-", $row[0]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[1].'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
 	}	
@@ -467,8 +444,7 @@ function set_server_damagereceived_table($search) {
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt(''.$row[1].'')).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt(''.$row[1].'').'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2]."</div>\n";
 		$output .= '</div>';
 	}  
 	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagetaken' AND stat = 'total' GROUP BY stat");
@@ -476,29 +452,26 @@ function set_server_damagereceived_table($search) {
 		
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2]."</div>\n";	
 		$output .= '</div>';
 	}
 	return $output;
 }
 
 function set_server_damagedealt_table($search) {
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagedealt' AND stat != 'total' GROUP BY stat ".$search."");
+	$query = mysql_query("SELECT `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'damagedealt' AND `stat` != 'total' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
-	$query = mysql_query("SELECT category, stat, SUM(value) FROM ".WS_CONFIG_STATS." WHERE category = 'damagedealt' AND stat = 'total' GROUP BY stat");
+	$query = mysql_query("SELECT `stat`, SUM(`value`) FROM ".WS_CONFIG_STATS." WHERE `category` = 'damagedealt' AND `stat` = 'total' GROUP BY `stat`");
 	while($row = mysql_fetch_array($query)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= "\n";		
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[1]."</div>\n";	
 		$output .= '</div>';
 	}
 	return $output;
@@ -506,7 +479,7 @@ function set_server_damagedealt_table($search) {
 
 function set_material_destroy_table($material, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT `player`, `category`, `stat`, `value` FROM `".WS_CONFIG_STATS."` WHERE `category` = 'blockdestroy' AND `stat` = '".mysql_real_escape_string($material)."' GROUP BY `player` ORDER BY `value` ".$search);
+	$query = mysql_query("SELECT `player`, `value` FROM `".WS_CONFIG_STATS."` WHERE `category` = 'blockdestroy' AND `stat` = '".mysql_real_escape_string($material)."' GROUP BY `player` ORDER BY `value` ".$search);
 	$output = '';
 	while($row = mysql_fetch_array($query)) {		
 		if($image_control == true) {
@@ -514,8 +487,7 @@ function set_material_destroy_table($material, $search) {
 		}
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}  
 	return $output;
@@ -523,32 +495,30 @@ function set_material_destroy_table($material, $search) {
 
 function set_material_build_table($material, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT `player`, `category`, `stat`, `value` FROM `".WS_CONFIG_STATS."` WHERE `category` = 'blockdestroy' AND `stat` = '".mysql_real_escape_string($material)."' GROUP BY `player` ORDER BY `value` ".$search);
+	$query = mysql_query("SELECT `player`, `value` FROM `".WS_CONFIG_STATS."` WHERE `category` = 'blockdestroy' AND `stat` = '".mysql_real_escape_string($material)."' GROUP BY `player` ORDER BY `value` ".$search);
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		if($image_control == true) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
 	return $output;
 }
 function set_creature_damagereceived_table($creature, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE `category` = 'damagetaken' AND `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
+	$query = mysql_query("SELECT `player`, `value` FROM `".WS_CONFIG_STATS."` WHERE `category` = 'damagetaken' AND `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		if($image_control == true) {
-			$image = small_image($row['player']);
+			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
 	return $output;
@@ -556,16 +526,15 @@ function set_creature_damagereceived_table($creature, $search) {
 
 function set_creature_damagedealt_table($creature, $search) {
 	global $image_control;
-	$query = mysql_query("SELECT player, category, stat, value FROM ".WS_CONFIG_STATS." WHERE category = 'damagedealt' AND stat = '".encrypt($creature)."' GROUP BY player ".$search."");
+	$query = mysql_query("SELECT `player`, `value` FROM ".WS_CONFIG_STATS." WHERE `category` = 'damagedealt' AND `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search."");
 	$output = '';
 	while($row = mysql_fetch_array($query)) {
 		if($image_control == true) {
-			$image = small_image($row['player']);
+			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row['player'].'">'.$row['player'].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
-		$output .= "\n";
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
 	return $output;
@@ -576,7 +545,7 @@ function blacklist() {
 	$marker = '~*~';
 	$player_all = get_user('player');
 	for($i=0; $i < sizeof($player_all); $i++) {
-		$query = mysql_query("UPDATE ".WS_CONFIG_STATS." SET player='".$marker."".$player_all[$i]."' WHERE player='".$player_all[$i]."'");
+		$query = mysql_query("UPDATE `".WS_CONFIG_STATS."` SET `player`='".$marker."".$player_all[$i]."' WHERE `player`='".$player_all[$i]."'");
 	}	
 }
 ?>
