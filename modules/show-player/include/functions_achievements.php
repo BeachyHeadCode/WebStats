@@ -52,14 +52,14 @@ function achievements_player_achievement_table($player) {
 
 function achievements_player_count_table($player) {
 	global $ws_config;
-	$query = mysql_query("SELECT SUM(ws_a_points) FROM ".WS_CONFIG_PLAYERACHIEVEMENTS." LEFT JOIN ".WS_CONFIG_ACHIEVEMENTS." ON ".WS_CONFIG_PLAYERACHIEVEMENTS.".achievement = ".WS_CONFIG_ACHIEVEMENTS.".ws_a_name WHERE player = '".$player."' ORDER BY ".WS_CONFIG_ACHIEVEMENTS.".ws_a_id ASC");
+	$query = mysql_query("SELECT SUM(`ws_a_points`) FROM ".WS_CONFIG_PLAYERACHIEVEMENTS." LEFT JOIN ".WS_CONFIG_ACHIEVEMENTS." ON ".WS_CONFIG_PLAYERACHIEVEMENTS.".achievement = ".WS_CONFIG_ACHIEVEMENTS.".ws_a_name WHERE player = '".$player."' ORDER BY ".WS_CONFIG_ACHIEVEMENTS.".ws_a_id ASC");
 	$row = mysql_fetch_array($query);
 	return $row[0];
 }
 
 function achievements_server_count_table() {
 	global $ws_config;
-	$query = mysql_query("SELECT SUM(ws_a_points) FROM ".WS_CONFIG_ACHIEVEMENTS." ORDER BY ws_a_category ".$search."");
+	$query = mysql_query("SELECT SUM(`ws_a_points`) FROM ".WS_CONFIG_ACHIEVEMENTS." ORDER BY ws_a_category ".$search."");
 	$output = '<table>';    
 	$row = mysql_fetch_array($query); 
 	return $row[0];

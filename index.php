@@ -13,14 +13,8 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0) {
 	include_once ROOT . 'language/en.php';
 	require_once ROOT . "include/logonfunctions.php";
 	require_once ROOT . 'include/functions.php';
-	//if(WS_CONFIG_3D_USER === false){rename("include/player-image/full_player_image.php", "modules/player-image/full_player_image.off");}
-	//if(WS_CONFIG_3D_USER === true){rename("include/player-image/full_player_image.off", "modules/player-image/full_player_image.php");}
-	if($image_control == true) {
-		include('include/player-image/include/functions.php');
-	}
 	session_start();
-	if(!empty($_POST["user"])) $test = strtolower($_POST['user']);
-	$_SESSION['user']=$test;
+	if(!empty($_POST["user"])) $_SESSION['user']=strtolower($_POST['user']);
 	if(empty($_GET['mode'])) $_GET['mode'] = WS_CONFIG_MODULE;
 	$_SESSION['mode']=$_GET['mode'];
 	$_SESSION['page']['numbers']=$_POST['page']['numbers'];
@@ -234,6 +228,9 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
    	  	<div class="ten columns centered" id="modules">
 		<?php
 			if(file_exists(ROOT . 'modules/'.$_SESSION['mode'].'/index.php')) {
+				if($image_control == true) {
+					include('include/player-image/include/functions.php');
+				}
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/config/config.php';
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/include/functions.php';
 				if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn(WS_CONFIG_DBHOST.":".WS_CONFIG_DBPORT, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, false);}

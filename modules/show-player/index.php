@@ -178,7 +178,7 @@
 		include('modules/show-player/include/functions_achievements.php');
 ?>	
 <br/>						
-<table width="740" style="border:1px solid #333333; vertical-align:text-top;">
+<table width="740" style="border:1px solid #333333; vertical-align:text-top; margin:auto;">
 	<tr>
 		<td width="375" style="vertical-align:text-top;" class="Stil2" align="left">
 			<strong><u><?php echo translate('var68');?>:<br/><br/></u></strong>

@@ -102,9 +102,7 @@ function set_index_table($player, $pos) {
 }
 
 function set_player_details_table($player) {
-	global $image_control;
-	global $image_control_3d;
-	
+	global $image_control, $image_control_3d;
 	$foot = get_movement($player, "0");
 	$boat = get_movement($player, "1");
 	$pig = get_movement($player, "2");
@@ -142,11 +140,11 @@ function set_player_details_table($player) {
 					</tbody>
 				</table>
 			</div>';
-	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
+	if($image_control_3d === true && WS_CONFIG_3D_USER === true) {
 		$image = full_image($_GET['user']);
-	} elseif($image_control == true) {
+	} elseif($image_control === true) {
 		$image = large_image($player);
-	}
+	} else { $image = "No Image Controler";}
 	$output .= '<div class="six columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 	$output .= '<div class="three columns">';
 	$output .= '<table>

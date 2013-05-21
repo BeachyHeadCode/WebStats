@@ -6,7 +6,7 @@
 		$cache_life = '86400'; //caching time, in seconds
 		$filemtime = @filemtime($cache_file);
 		
-		if (!$filemtime or ((time() - $filemtime) >= $cache_life)){
+		if (!$filemtime or ((time() - $filemtime) >= $cache_life)) {
 			$img=imagecreatetruecolor(16,32);
 			imagealphablending($img, false);
 			$transparent = imagecolorallocatealpha($img, 0, 0, 0, 127);
@@ -36,8 +36,7 @@
 			imagedestroy($im);
 			imagedestroy($bg);
 			imagedestroy($img_2);		
-		}
-		else{	
+		} else {	
 			readfile($cache_file);	
 		}
 	
