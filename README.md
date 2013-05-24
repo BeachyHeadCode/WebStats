@@ -1,13 +1,8 @@
 <a href="https://mrplows-server.tk">WebStats</a> ~ <a href="http://forums.bukkit.org/threads/60843/">Bukkit Forum</a>
 <hr />
-
 MySQL - PHP web data page for public viewing of Minecraft plugin data
-
 <hr />
-
-This was based on <a href="http://forums.bukkit.org/threads/17793/">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies. 
-
-modular system
+This was based on <a href="http://forums.bukkit.org/threads/17793/">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies.
 
 Beside this plugin, WS supports other plugins which collects data in MySQL databases. The following plugins are already supported:
 
@@ -47,8 +42,8 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <p>
 1~Extract the zip file in your webserver directory *most likely<br />
 2~The directory "image-cache" needs write permission (chmod 777) !<br />
-~'modules\player-image\image-cache'<br />
-~'modules\player-image\image-cache\player-skin'<br />
+~'include\player-image\image-cache'<br />
+~'include\player-image\image-cache\player-skin'<br />
 ~'config\config.php'<br />
 </p>
 
@@ -70,15 +65,8 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 </ul>
 			
 <h3>Current Pending Update:</h3>
-<h4>v3.1(No ETA) - Changelog bellow is current GitHub Source changes</h4>
+<h4>v3.2(No ETA) - Changelog bellow is current GitHub Source changes</h4>
 <ul>
-	<li>Added Location Info on Users Online Text in Footer.</li>
-	<li>Fixed Page Navigation</li>
-	<li>Fixed IP Tracker</li>
-	<li>Updated some MySQL statments</li>
-	<li>Updated 404 page and now is working</li>
-	<li>Updated ID list</li>
-	<li>Updated Material Stats</li>
 </ul>
 <h4>Known Problems</h4>
 <ul>
@@ -92,11 +80,11 @@ Known
 *At least... Please Post otherwise. Thank You.
 This is using HTML5 in some areas, but the main areas are not so that everyone can view.
 <ul>
-<li>IE9+</li>
-<li>Firefox 1.5+</li>
-<li>Opera 8+</li>
-<li>Safari 3+</li>
-<li>Chrome 0.2+</li>
+	<li>IE9+</li>
+	<li>Firefox 1.5+</li>
+	<li>Opera 8+</li>
+	<li>Safari 3+</li>
+	<li>Chrome 0.2+</li>
 </ul>
 
 **DOWNLOADING FROM ANY SOURCE, FOR COMMERCIAL USE IS PROHIBITED. IF YOU NEED THIS PROJECT FOR COMMERCIAL USE, YOU WILL NEED TO PURCHASE A LICENSE. BY DOWNLOADING THIS PROJECT YOU AGREE TO THESE TERMS.
