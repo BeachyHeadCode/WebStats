@@ -12,28 +12,26 @@ ERROR_REPORTING(E_ALL);
 // The minimum rank is default 0 when there is nothing given (eg. when using like: pml_checklogin("notloggedin.php");).
 function pml_checklogin($goto,$status = "0") {
 	ob_start();
-	if(!isset($_SESSION)) { exit(translate('sessionproblem')); }
+	if(!isset($_SESSION)) {exit(translate('sessionproblem'));}
 	
 	if(isset($_SESSION['pml_userid'])) {
 		if($_SESSION['pml_userrank'] >= $status) {
 			// User logged in with right rank; everything OK, continue
-			$sql_updateonline = "UPDATE `users` SET lastactive = NOW() WHERE id = '".$_SESSION['pml_userid']."' LIMIT 1";
+			$sql_updateonline = "UPDATE `users` SET `lastactive` = NOW() WHERE `id` = '".$_SESSION['pml_userid']."' LIMIT 1";
 			mysql_query($sql_updateonline);
-		}else{
+		} else {
 			header("Location: ".$goto);
 		}
-	}elseif(isset($_COOKIE['pml_userid_cookie'])) {
+	} elseif(isset($_COOKIE['pml_userid_cookie'])) {
 		// Check cookie
 		// Check cookie data with data in database
-	$DB = new DBConfig();
-	$DB -> config();	
-	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, false);
+		$link = mysqli_connect('p:'.WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
 		
-		$sql = "SELECT * FROM `users` WHERE id = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
-		$query = mysql_query($sql);
-		if(mysql_num_rows($query) == 1) {
+		$sql = "SELECT * FROM `users` WHERE `id` = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
+		$query = mysqli_query($link, $sql);
+		if(mysqli_num_rows($query) == 1) {
 			// User exists
-			$row = mysql_fetch_array($query);
+			$row = mysqli_fetch_array($query);
 			$id = htmlspecialchars($row['id']);
 			$username = htmlspecialchars($row['username']);
 			$password_db = htmlspecialchars($row['password']);
@@ -66,6 +64,7 @@ function pml_checklogin($goto,$status = "0") {
 			setcookie("pml_usercode_cookie", "", time() - 3600);
 			header("Location: ".$_SERVER['REQUEST_URI']);
 		}
+		mysqli_close($link);	
 	} else {
 		// No user logged in
 		header("Location: ".$goto);
@@ -92,19 +91,17 @@ function pml_login($todo = "",$action = "") {
 	ob_start();
 	if(!isset($_SESSION)) { exit(translate('sessionproblem')); }
 
-	$DB = new DBConfig();
-	$DB -> config();	
-	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, false);
+	$link = mysqli_connect('p:'.WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
 	
 	// Check if user is logged in
 	if(!isset($_SESSION['pml_userid'])) {
 		if(isset($_COOKIE['pml_userid_cookie'])) {
 			// Check cookie data with data in database
-			$sql = "SELECT id,username,password,cookie_pass,actcode,rank FROM `users` WHERE id = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
-			$query = mysql_query($sql);
-			if(mysql_num_rows($query) == 1) {
+			$sql = "SELECT `id`,`username`,`password`,`cookie_pass`,`actcode`,`rank` FROM `users` WHERE `id` = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
+			$query = mysqli_query($link, $sql);
+			if(mysqli_num_rows($query) == 1) {
 				// User exists
-				$row = mysql_fetch_array($query);
+				$row = mysqli_fetch_array($query);
 				$id = htmlspecialchars($row['id']);
 				$username = htmlspecialchars($row['username']);
 				$password_db = htmlspecialchars($row['password']);
@@ -119,8 +116,8 @@ function pml_login($todo = "",$action = "") {
 						$_SESSION['pml_userid'] = $id;
 						$_SESSION['pml_userrank'] = $rank;
 						
-						$sql_updateonline = "UPDATE `users` SET lastactive = NOW() AND lastlogin = NOW() WHERE id = '".$id."' LIMIT 1";
-						mysql_query($sql_updateonline);
+						$sql_updateonline = "UPDATE `users` SET `lastactive` = NOW() AND `lastlogin` = NOW() WHERE `id` = '".$id."' LIMIT 1";
+						mysqli_query($link, $sql_updateonline);
 						
 						header("Location: ".$_SERVER['REQUEST_URI']);
 					}else{
@@ -134,7 +131,7 @@ function pml_login($todo = "",$action = "") {
 					setcookie("pml_usercode_cookie", "", time() - 3600);
 					header("Location: ".$_SERVER['REQUEST_URI']);
 				}
-			}else{
+			} else {
 				// User doesn't exists
 				setcookie("pml_userid_cookie", "", time() - 3600);
 				setcookie("pml_usercode_cookie", "", time() - 3600);
@@ -147,10 +144,10 @@ function pml_login($todo = "",$action = "") {
 			if($_POST['username'] != "" AND $_POST['password'] != "") {
 				// Check submitted data with data in database
 				$sql = "SELECT * FROM `users` WHERE username = '".$_POST['username']."' LIMIT 1";
-				$query = mysql_query($sql);
-				if(mysql_num_rows($query) == 1) {
+				$query = mysqli_query($link, $sql);
+				if(mysqli_num_rows($query) == 1) {
 					// User exists
-					$row = mysql_fetch_array($query);
+					$row = mysqli_fetch_array($query, MYSQLI_BOTH);
 					$id = htmlspecialchars($row['id']);
 					$username = htmlspecialchars($row['username']);
 					$password_db = htmlspecialchars($row['password']);
@@ -159,7 +156,7 @@ function pml_login($todo = "",$action = "") {
 					$rank = htmlspecialchars($row['rank']);
 					
 					if($actcode == "") {
-						// Useraccount is activated
+						// User account is activated
 						if($password_db == md5($_POST['password'])) {
 							// Everything ok, create sessions
 							$_SESSION['pml_userid'] = $id;
@@ -178,13 +175,12 @@ function pml_login($todo = "",$action = "") {
 										}
 									}
 									$cookie_pass = md5($pass);
-									$sql_cookiepass = "UPDATE `users` SET cookie_pass = '".$cookie_pass."' WHERE id = ".$id." LIMIT 1";
-									mysql_query($sql_cookiepass);
+									$sql_cookiepass = "UPDATE `users` SET `cookie_pass` = '".$cookie_pass."' WHERE `id` = ".$id." LIMIT 1";
+									mysqli_query($link, $sql_cookiepass);
 								}
 								setcookie("pml_usercode_cookie", $cookie_pass, time() + 365 * 86400);
 							}
-							$sql_updateonline = "UPDATE `users` SET lastactive = NOW(),lastlogin = NOW() WHERE id = '".$id."' LIMIT 1";
-							mysql_query($sql_updateonline) or trigger_error(mysql_error());
+							mysqli_query($link, "UPDATE `users` SET `lastactive` = NOW(),`lastlogin` = NOW() WHERE `id` = '".$id."' LIMIT 1") or trigger_error(mysqli_error($link));
 							
 							header("Location: ".$_SERVER['REQUEST_URI']);
 						} else {
@@ -200,11 +196,11 @@ function pml_login($todo = "",$action = "") {
 				}
 				
 				
-			}else{
+			} else {
 				echo "<div class='row'>".translate('login-forgotfield')."</div>";
 			}
 		}
-		$DB -> close();
+		
 		// Login form
 		?>
 		<form method="post" style="margin-left: auto; margin-right: auto; width:355px;" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -229,7 +225,7 @@ function pml_login($todo = "",$action = "") {
 		</form>
 		<?php
 		
-	}else{
+	} else {
 		// User is logged on, redirect to page $goto; if no $goto just view msg that user is logged in
 		if($todo != "") {
 			if($todo == "include") {
@@ -243,6 +239,7 @@ function pml_login($todo = "",$action = "") {
 			echo "<div class='row'>".translate('login-already')."</div>";
 		}
 	}
+	mysqli_close($link);
 	ob_end_flush();
 }
 // If you want the user to go to an other page when logged out, use pml_logout('pagetogoto.php'). Else just use pml_logout().

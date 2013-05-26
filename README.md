@@ -55,7 +55,6 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement</li>
 	<li>Add Rest Of ID's and Add The Extra ID's To Main ID's Page example ( 15:1 15:2 goes onto 15 page)</li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/inventorysql/">InventorySQL</a> ~ <a href="https://github.com/ThisIsAreku/InventorySQL">GitHub</a></li>
-	<li>Add <a href="http://dev.bukkit.org/server-mods/saaplugin/">Stats & Achievements</a> ~ <a href="http://git.s7t.de/maniacraft-plugins/statsandachievements">source</a></li>
 	<li><a href="http://dev.bukkit.org/server-mods/beardach/">BeardAch</a> ~ <a href="https://github.com/tehbeard/BeardAch">GitHub</a></li>
 	<li><a href="http://dev.bukkit.org/server-mods/beardstat/">BeardStat</a> ~ <a href="https://github.com/tehbeard/BeardStat">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/hawkeye/">HawkEye</a> ~ <a href="https://github.com/oliverw92/HawkEye">GitHub</a></li>
@@ -67,11 +66,12 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <h3>Current Pending Update:</h3>
 <h4>v3.2(No ETA) - Changelog bellow is current GitHub Source changes</h4>
 <ul>
-</ul>
+	<li>As Place holder for now. Added <a href="http://dev.bukkit.org/server-mods/saaplugin/">Stats & Achievements</a> ~ <a href="http://git.s7t.de/maniacraft-plugins/statsandachievements">source</a></li>
+	<li>Fixed Login process that never killed.</li>
+	<li>Moved all MySQL function to mysqli since mysql was deprecated as of PHP 5.5.0. -- could have missed some.</li>
 <h4>Known Problems</h4>
 <ul>
 	<li>When the screen is inbetween an area where the menu turns to drop down but does not drop down. - Fix make the page smaller.</li>
-	<li>Login process does not kill.</li>
 </ul>
 <hr />
 

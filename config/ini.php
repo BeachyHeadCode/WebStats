@@ -6,15 +6,15 @@
 @ini_set ( 'error_reporting', E_ALL ^ E_WARNING ^ E_NOTICE );
 @ini_set ( 'variables_order', "EGPCS" ); // this will not work
 
-//if (!isset($_GET['sort'])) {$_GET['sort'] = 'playedfor';}
-if (!isset($_GET['sort'])) {$_GET['sort'] = 'player';}
-	
 	//START STATS PLUGIN TYPE ----------------
 	if(file_exists('modules/stats/index.php')) {
 		$stats_control = true;
 	}
 	if(file_exists('modules/stats-lolmewn/index.php')) {
 		$statslolmewn_control = true;
+	}
+	if(file_exists('modules/stats-sa/index.php')) {
+		$statssa_control = true;
 	}
 	//END STATS PLUGIN TYPE ----------------
 	if(file_exists('modules/jail/index.php')) {

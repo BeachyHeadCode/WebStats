@@ -1,22 +1,24 @@
 <?php
 //SETS NUMBER OF USERS TO PRINT
-function get_mineconomy_user_count(){
-	$query = mysql_query("SELECT COUNT(`account`) FROM ".WS_CONFIG_MINECONOMY);
-	$row = mysql_fetch_array($query);
+function get_mineconomy_user_count() {
+	global $link;
+	$query = mysqli_query($link, "SELECT COUNT(`account`) FROM ".WS_CONFIG_MINECONOMY);
+	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	return $row[0];
 }
 
 //ICONOMY SORT
-function get_mineconomy_user_stats($sort, $start, $end){
+function get_mineconomy_user_stats($sort, $start, $end) {
+	global $link;
 	if($sort != 'balance') {
-		$sortkey = 'ORDER BY account ASC';
+		$sortkey = 'ORDER BY `account` ASC';
 	}
 	elseif($sort == 'balance') {
-		$sortkey = 'ORDER BY balance DESC';
+		$sortkey = 'ORDER BY `balance` DESC';
 	}
-	$query = mysql_query("SELECT `account`, `balance` FROM `".WS_CONFIG_MINECONOMY."` ".$sortkey." LIMIT ".$start.",".$end);
+	$query = mysqli_query($link, "SELECT `account`, `balance` FROM `".WS_CONFIG_MINECONOMY."` ".$sortkey." LIMIT ".$start.",".$end);
 	$time = 0;
-	while($row = mysql_fetch_array($query)) {
+	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$players[$time] = $row[0];
 		$time++;
 	}  
@@ -25,8 +27,9 @@ function get_mineconomy_user_stats($sort, $start, $end){
 
 //PLAYER MONEY COUNT
 function mineconomy_player_get_money($player) {
-	$query = mysql_query("SELECT `account`, `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` = '".$player."'");
-	$row = mysql_fetch_array($query);
+	global $link;
+	$query = mysqli_query($link, "SELECT `account`, `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` = '".$player."'");
+	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];
 	$money[2] = $row[2];
@@ -35,8 +38,9 @@ function mineconomy_player_get_money($player) {
 
 //SERVER MONEY COUNT
 function mineconomy_server_get_money() {
-	$query = mysql_query("SELECT COUNT(`account`), SUM(`balance`), `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
-	$row = mysql_fetch_array($query);
+	global $link;
+	$query = mysqli_query($link, "SELECT COUNT(`account`), SUM(`balance`), `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
+	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];
 	$money[2] = $row[2];
@@ -67,8 +71,9 @@ function mineconomy_server_get_money_table() {
 
 //SERVER TOP PLAYER
 function mineconomy_server_top_money() {
-	$query = mysql_query("SELECT `account`, MAX(`balance`) as `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
-	$row = mysql_fetch_array($query);
+	global $link;
+	$query = mysqli_query($link, "SELECT `account`, MAX(`balance`) as `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
+	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];
 	$money[2] = $row[2];
@@ -79,8 +84,7 @@ function mineconomy_server_top_money() {
 function mineconomy_server_details_table() {
 	$money = mineconomy_server_get_money();
 	$row = mineconomy_server_top_money();
-	global $image_control;
-	global $image_control_3d;
+	global $image_control, $image_control_3d;
 	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
 		$image = full_image($row[1]);
 		$output = '<div class="row" style="margin:0 auto;"><div class="six columns"><div class="head_logo" style="height: auto;margin:0 auto;background-image:url(include/player-image/images/player_bg.png);">'.$image.'</div>';
@@ -120,8 +124,7 @@ function mineconomy_server_details_table() {
 
 //LOWER PAGE PLAYER TABLE
 function mineconomy_server_player_table($player, $money) {
-	global $image_control;
-	global $stats_control;
+	global $image_control, $stats_control;
 	
 	if($image_control == true) {
 		$image = small_image($player);

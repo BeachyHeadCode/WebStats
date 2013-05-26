@@ -196,9 +196,6 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
     <label for="page">Minecraft Server Addr.: <input name="page[MQ_SERVER_ADDR]" type="text" id="page[MQ_SERVER_ADDR]" title="Server Title" value="<?php if(!isset($_SESSION['page']['MQ_SERVER_ADDR'])){ echo 'localhost';}else{ echo $_SESSION['page']['MQ_SERVER_ADDR'];} ?>" maxlength="50"/></label>
     <label for="page">Minecraft Server Port: <input name="page[MQ_SERVER_PORT]" type="number" id="page[MQ_SERVER_PORT]" title="Server Title" value="<?php if(!isset($_SESSION['page']['MQ_SERVER_PORT'])){ echo '25565';}else{ echo $_SESSION['page']['MQ_SERVER_PORT'];} ?>" min="0" max="65535"/></label>
 	<label for="page">Server Tab Title: <input name="page[tab_title]" type="text" id="page[tab_title]" title="Tab Name" value="<?php if(!isset($_SESSION['page']['tab_title'])){ echo 'Mr. Plow&#39s Server - Webstatistic for Minecraft';}else{ echo $_SESSION['page']['tab_title'];} ?>" maxlength="70"/></label>
-	
-	
-	
 	<label for="page">Choose Default Module: 
 		<select class="select2" title="Default Module" name="page[default_module]">
 <?php
@@ -212,8 +209,6 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 ?>
 		</select>
 	</label>
-	
-	
 	<label for="customDropdown">Choose Default Background:</label>	
 	<select class="select2" id="customDropdown background" name="page[default_background]" onchange="displayImage()" title="Background">  
 		<?php 
@@ -345,7 +340,7 @@ if($_SESSION['pluginconfigpermissionsex'] == true) {
 	$pluginconfigstatuspermissionsex="define('pluginconfigpermissionsex', ".$_SESSION['pluginconfigpermissionsex'].");\n";
 }
 if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] != 'Chose Plugin')) {
-	if($_SESSION['pluginconfigstats'] == "stats") {
+	if($_SESSION['pluginconfigstats'] == "stats" || $_SESSION['pluginconfigstats'] == "Stats 2.0" || $_SESSION['pluginconfigstats'] == "BeardStat") {
 		if($_SESSION['page']['timechange_on/off'] == true)
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
 		$stats="define('WS_CONFIG_STATS_PLUGIN', 'stats');\ndefine('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
@@ -353,9 +348,14 @@ if((isset($_SESSION['pluginconfigstats'])) && ($_SESSION['pluginconfigstats'] !=
 	} elseif($_SESSION['pluginconfigstats'] == "Stats by lolmewnstats") {
 		if($_SESSION['page']['timechange_on/off'] == true)
 			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
-		$stats="define('WS_CONFIG_STATS_PLUGIN', 'stats-lolmewn');\ndefine('WS_CONFIG_STATS_LOLMEWN_PREFIX', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
+		$stats="define('WS_CONFIG_STATS_PLUGIN', 'stats-lolmewn');\ndefine('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
 		$pluginconfigstatusstats="define('pluginconfigstatusstatslolmewnstats', true);\n";
-	} else {}
+	} elseif($_SESSION['pluginconfigstats'] == "Stats & Achievements") {
+		if($_SESSION['page']['timechange_on/off'] == true)
+			$stats_time="define('WS_CONFIG_PLAYTIME', ".$_SESSION['page']['timechange_on/off'].");\n";
+		$stats="define('WS_CONFIG_STATS_PLUGIN', 'stats-sa');\ndefine('WS_CONFIG_STATS', '".$_SESSION['page']['stats_table_name']."');\n$stats_time";
+		$pluginconfigstatusstats="define('pluginconfigstatussa', true);\n";
+	} 
 }
 if($_SESSION['page']['3d_on/off'] == true)
 	$threedsetting="define('WS_CONFIG_3D_USER', ".$_SESSION['page']['3d_on/off'].");\n";

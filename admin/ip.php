@@ -12,76 +12,74 @@ if (!isset($_GET['sort'])) {$_GET['sort'] = 'IPdesc';}
 if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1') {
 	if(iptracker === true) {
 /* SETS NUMBER OF USERS TO PRINT */
-function get_IP_stats_count() {
-	$query = mysql_query("SELECT COUNT(`IP`) FROM `ip_stats`");
-	$row = mysql_fetch_array($query);
+function get_IP_stats_count($link) {
+	$query = mysqli_query($link, "SELECT COUNT(`IP`) FROM `ip_stats`");
+	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	return $row[0];
 }
 /* SETS THE STATS ORDER AND PAGE NUMBERS */
-function get_IP_stats_order($sort, $start, $end) {
+function get_IP_stats_order($sort, $start, $end, $link) {
 	if(isset($sort)) {
 		switch($sort) {
 			case "IPdesc";
-				$sortkey = "ORDER BY IP DESC";
+				$sortkey = "ORDER BY `IP` DESC";
 			break;
 			case "hostnamedesce";
-				$sortkey = "ORDER BY hostname DESC";
+				$sortkey = "ORDER BY `hostname` DESC";
 			break;
 			case "locationdesc";
-				$sortkey = "ORDER BY location DESC";
+				$sortkey = "ORDER BY `location` DESC";
 			break;
 			case "refererdesc";
-				$sortkey = "ORDER BY referer DESC";
+				$sortkey = "ORDER BY `referer` DESC";
 			break;
 			case "pageurldesc";
-				$sortkey = "ORDER BY pageurl DESC";
+				$sortkey = "ORDER BY `pageurl` DESC";
 			break;
 			case "pageviewsdesc";
-				$sortkey = "ORDER BY pageview DESC";
+				$sortkey = "ORDER BY `pageview` DESC";
 			break;
 			case "datedesc";
-				$sortkey = "ORDER BY date DESC";
+				$sortkey = "ORDER BY `date` DESC";
 			break;
 			case "IPasc";
-				$sortkey = "ORDER BY IP ASC";
+				$sortkey = "ORDER BY `IP` ASC";
 			break;
 			case "hostnameasc";
-				$sortkey = "ORDER BY hostname ASC";
+				$sortkey = "ORDER BY `hostname` ASC";
 			break;
 			case "locationasc";
-				$sortkey = "ORDER BY location ASC";
+				$sortkey = "ORDER BY `location` ASC";
 			break;
 			case "refererasc";
-				$sortkey = "ORDER BY referer ASC";
+				$sortkey = "ORDER BY `referer` ASC";
 			break;
 			case "pageurlasc";
-				$sortkey = "ORDER BY pageurl ASC";
+				$sortkey = "ORDER BY `pageurl` ASC";
 			break;
 			case "pageviewsasc";
-				$sortkey = "ORDER BY pageview ASC";
+				$sortkey = "ORDER BY `pageview` ASC";
 			break;
 			case "dateasc";
-				$sortkey = "ORDER BY date ASC";
+				$sortkey = "ORDER BY `date` ASC";
 			break;
 		}
 	} else {
-		$sortkey = 'ORDER BY date ASC';
+		$sortkey = 'ORDER BY `date` ASC';
 	}
-	$result = "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` != '' ".$sortkey." LIMIT ".$start.",".$end."";
-	$query = mysql_query($result);
+	$query = mysqli_query($link, "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` != '' ".$sortkey." LIMIT ".$start.",".$end);
 	$time = 0;
-	while($row = mysql_fetch_array($query)) {
+	while($row = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 		$IPs[$time] = $row['IP'];
 		$time++;
 	}
 	return $IPs;
 }
 /* USED TO PRINT THE VALUES */
-function server_IP_table($IP, $pos) {
+function server_IP_table($IP, $pos, $link) {
 	$pos++;
-	$query = "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` = '".$IP."' AND `ip_stats`.`IP` != ''";
-	$result = mysql_query($query) or die(mysql_error());
-	$data = mysql_fetch_array($result);
+	$result = mysqli_query($link, "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` = '".$IP."' AND `ip_stats`.`IP` != ''") or ws_die(mysqli_error($link), "MySQL Error");
+	$data = mysqli_fetch_array($result, MYSQLI_BOTH);
 
 	$output = '<tr>';
 	
@@ -123,8 +121,8 @@ return $output;
 <div style="text-align: center;">
 	<h2>IP Track ( <?php echo $ip;?> ) Welcome</h2>
 </div>
-<?php 
-$DB = new DBConfig();$DB -> config();	$DB -> conn(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
+<?php
+$link = mysqli_connect('p:'.WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
 
 if (isset($_GET["page"]) <= 0) {
 	$page = '1';
@@ -165,22 +163,21 @@ if(isset($_GET["NPP"]) && $_GET["NPP"] != '') {
 	</thead>
 	<?php	
 		$sort = $_GET['sort'];
-		$IPs = get_IP_stats_order($sort, $start, $end);
-		$IP_count = get_IP_stats_count();
+		$IPs = get_IP_stats_order($sort, $start, $end, $link);
+		$IP_count = get_IP_stats_count($link);
 	?>
 	<tbody>
 		<?php
 			for($i=0; $i < sizeof($IPs); $i++) {
-				echo (server_IP_table($IPs[$i], $i+$start));
+				echo (server_IP_table($IPs[$i], $i+$start, $link));
 			}
 		?>
 	</tbody>
 </table>
 <?php
 	for($i=0; $i < sizeof($IPs); $i++) {
-	$query = "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` = '".$IPs[$i]."' AND `ip_stats`.`IP` != ''";
-	$result = mysql_query($query) or die(mysql_error());
-	$data = mysql_fetch_array($result);
+	$result = mysqli_query($link, "SELECT * FROM `ip_stats` WHERE `ip_stats`.`IP` = '".$IPs[$i]."' AND `ip_stats`.`IP` != ''") or ws_die(mysqli_error($link), "MySQL Error");
+	$data = mysqli_fetch_array($result, MYSQLI_BOTH);
 	$ip = md5($data['IP']);
 	$realip = $data['IP'];
 	$pageurl = $data['pageurl'];
@@ -212,7 +209,7 @@ echo <<< END
 END;
 			}
 		echo "<div class='row' style='margin:auto;'>" . (get_pages($IP_count, $_SESSION['mode'], $_GET['sort'])) . "</div>";
-		$DB -> close();	
+		mysqli_close($link);
 	?>
 </body>
 </html>

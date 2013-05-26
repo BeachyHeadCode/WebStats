@@ -1,80 +1,81 @@
 <?php
 function get_mcmmo_user_count() {
-	$query = mysql_query("SELECT COUNT(user) FROM ".WS_CONFIG_MCMMO."users");
-	$row = mysql_fetch_array($query);
+	global $link;
+	$query = mysqli_query($link, "SELECT COUNT(`user`) FROM `".WS_CONFIG_MCMMO."users`");
+	$row = mysqli_fetch_array($query);
 	return $row[0];
 }
 function get_mcmmo_user_stats_order($sort, $start, $end) {
+	global $link;
 	if(isset($sort)) {
 		switch($sort) {
 			case "acrobatics";
-				$sortkey = "ORDER BY acrobatics DESC";
+				$sortkey = "ORDER BY `acrobatics` DESC";
 			break;
 			case "archery";
-				$sortkey = "ORDER BY archery DESC";
+				$sortkey = "ORDER BY `archery` DESC";
 			break;
 			case "axes";
-				$sortkey = "ORDER BY axes DESC";
+				$sortkey = "ORDER BY `axes` DESC";
 			break;
 			case "acrobatics";
-				$sortkey = "ORDER BY acrobatics DESC";
+				$sortkey = "ORDER BY `acrobatics` DESC";
 			break;
 			case "excavation";
-				$sortkey = "ORDER BY excavation DESC";
+				$sortkey = "ORDER BY `excavation` DESC";
 			break;
 			case "fishing";
-				$sortkey = "ORDER BY fishing DESC";
+				$sortkey = "ORDER BY `fishing` DESC";
 			break;
 			case "herbalism";
-				$sortkey = "ORDER BY herbalism DESC";
+				$sortkey = "ORDER BY `herbalism` DESC";
 			break;
 			case "mining";
-				$sortkey = "ORDER BY mining DESC";
+				$sortkey = "ORDER BY `mining` DESC";
 			break;
 			case "repair";
-				$sortkey = "ORDER BY repair DESC";
+				$sortkey = "ORDER BY `repair` DESC";
 			break;
 			case "swords";
-				$sortkey = "ORDER BY swords DESC";
+				$sortkey = "ORDER BY `swords` DESC";
 			break;
 			case "taming";
-				$sortkey = "ORDER BY taming DESC";
+				$sortkey = "ORDER BY `taming` DESC";
 			break;
 			case "unarmed";
-				$sortkey = "ORDER BY unarmed DESC";
+				$sortkey = "ORDER BY `unarmed` DESC";
 			break;
 			case "woodcutting";
-				$sortkey = "ORDER BY woodcutting DESC";
+				$sortkey = "ORDER BY `woodcutting` DESC";
 			break;
 			case "user";
-				$sortkey = "ORDER BY user ASC";
+				$sortkey = "ORDER BY `user` ASC";
 			break;
 		}
 	} else {
 		$sortkey = 'ORDER BY '.WS_CONFIG_MCMMO_DEFAULT.'';
 	}
-	$result = "SELECT * FROM `".WS_CONFIG_MCMMO."users` LEFT JOIN `".WS_CONFIG_MCMMO."skills` ON ".WS_CONFIG_MCMMO."skills.user_id = ".WS_CONFIG_MCMMO."users.id WHERE ".WS_CONFIG_MCMMO."users.user != '' ".$sortkey." LIMIT ".$start.",".$end."";
-	$query = mysql_query($result);
+	$result = "SELECT * FROM `".WS_CONFIG_MCMMO."users` LEFT JOIN `".WS_CONFIG_MCMMO."skills` ON `".WS_CONFIG_MCMMO."skills`.`user_id` = `".WS_CONFIG_MCMMO."users`.`id` WHERE `".WS_CONFIG_MCMMO."users`.`user` != '' ".$sortkey." LIMIT ".$start.",".$end."";
+	$query = mysqli_query($link, $result);
 	$time = 0;
-	while($row = mysql_fetch_array($query)) {
+	while($row = mysqli_fetch_array($query)) {
 		$players[$time] = $row[1];
 		$time++;
 	}  
 	return $players;
 }
 function mcmmo_server_player_table($player, $pos) {
+	global $link, $stats_control, $image_control;
 	$McMMOskill = array("acrobatics","archery","axes","excavation","fishing","herbalism","mining","repair","swords","taming","unarmed","woodcutting");
 	$pos++;
 	$query = "SELECT * FROM `".WS_CONFIG_MCMMO."users` LEFT JOIN `".WS_CONFIG_MCMMO."skills` ON ".WS_CONFIG_MCMMO."users.id = ".WS_CONFIG_MCMMO."skills.user_id WHERE ".WS_CONFIG_MCMMO."users.user = '".$player."' AND ".WS_CONFIG_MCMMO."users.user != '' ";
-	$result = mysql_query($query) or mysql_error();
-	$data = mysql_fetch_array($result);
+	$result = mysqli_query($link, $query) or mysqli_error($link);
+	$data = mysqli_fetch_array($result);
 	$skilltotal=0;
 	for($i=0;$i<count($McMMOskill);$i++){$skilltotal= $skilltotal+$data[$McMMOskill[$i]];}
-	global $image_control;
 	if($image_control == true) {
 		$image = small_image($player);
 	}
-	global $stats_control;
 	if($stats_control == true) {
 		$stats = '<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; 
 	} else { 
@@ -89,14 +90,15 @@ function mcmmo_server_player_table($player, $pos) {
     
 	return $output;
 }
-function mcmmo_player_xp_pic($player, $skillname){
+function mcmmo_player_xp_pic($player, $skillname) {
+	global $link;
 	$McMMOskill = array("acrobatics","archery","axes","excavation","fishing","herbalism","mining","repair","swords","taming","unarmed","woodcutting");
 	$query = "SELECT * FROM `".WS_CONFIG_MCMMO."users` LEFT JOIN `".WS_CONFIG_MCMMO."skills` ON ".WS_CONFIG_MCMMO."users.id = ".WS_CONFIG_MCMMO."skills.user_id WHERE ".WS_CONFIG_MCMMO."users.user = '".$player."'";
-	$result = mysql_query($query) or mysql_error();
-	$data = mysql_fetch_array($result);
+	$result = mysqli_query($link, $query) or mysqli_error($link);
+	$data = mysqli_fetch_array($result);
 	$query = "SELECT * FROM `".WS_CONFIG_MCMMO."users` LEFT JOIN `".WS_CONFIG_MCMMO."experience` ON ".WS_CONFIG_MCMMO."users.id = ".WS_CONFIG_MCMMO."experience.user_id WHERE ".WS_CONFIG_MCMMO."users.user = '".$player."' AND ".WS_CONFIG_MCMMO."users.user != '' ";
-	$result = mysql_query($query) or mysql_error();
-		$mcmmoxp = mysql_fetch_array($result);
+	$result = mysqli_query($link, $query) or mysqli_error($link);
+		$mcmmoxp = mysqli_fetch_array($result);
 		for($i=0;$i<count($McMMOskill);$i++) {
 			if($McMMOskill[$i]==$skillname) {
 				$total_xp_for_level_up = 1020+(20*($data[$McMMOskill[$i]]));
@@ -124,6 +126,7 @@ function mcmmo_player_xp_pic($player, $skillname){
 	return $output;
 }
 function mcmmo_player_skills_table($player) {
+	global $link;
 	$McMMOskill = array("acrobatics","archery","axes","excavation","fishing","herbalism","mining","repair","swords","taming","unarmed","woodcutting","powerlevel");
 	$output .= '<div class="head_maintable_mcmmo">';
 	$output .= '<h2><a title="McMMO Server Stats" href="?mode=mcmmo">McMMO</a></h2>';
@@ -133,9 +136,9 @@ function mcmmo_player_skills_table($player) {
 	}
 	$output .= "</tr>\n";
 	$query = "SELECT * FROM `".WS_CONFIG_MCMMO."users` LEFT JOIN `".WS_CONFIG_MCMMO."skills` ON ".WS_CONFIG_MCMMO."users.id = ".WS_CONFIG_MCMMO."skills.user_id WHERE ".WS_CONFIG_MCMMO."users.user = '".$player."'";
-	$result = mysql_query($query);
+	$result = mysqli_query($link, $query);
 	if($result) {
-		$data = mysql_fetch_array($result);
+		$data = mysqli_fetch_array($result);
 		$skilltotal=0;
 		for($i=0;$i<count($McMMOskill);$i++){$skilltotal= $skilltotal+$data[$McMMOskill[$i]];}
 		$output .= '<tr>';
@@ -144,17 +147,16 @@ function mcmmo_player_skills_table($player) {
 		}
 		$output .= '<td>'.$skilltotal."</td></tr>\n";
 	} else {
-		$output .= '<tr>'.mysql_error()."</tr>\n"; 
+		$output .= '<tr>'.mysqli_error($link)."</tr>\n"; 
 	}
 	$output .= '</table>
 	<div id="xpimage" style="margin:auto;"></div>
 	</div>';
-
 	for($i=0;$i<count($McMMOskill);$i++) {
-$output.= '<script type="text/javascript">
-$("#'.$McMMOskill[$i].'").mouseenter(function(){$(\''.mcmmo_player_xp_pic($player, $McMMOskill[$i]).'\').appendTo($("#xpimage"));});
-$("#'.$McMMOskill[$i].'").mouseleave(function(){$("#xpimage").find("img").remove();});
-</script>';		
+		$output.= '<script type="text/javascript">
+		$("#'.$McMMOskill[$i].'").mouseenter(function(){$(\''.mcmmo_player_xp_pic($player, $McMMOskill[$i]).'\').appendTo($("#xpimage"));});
+		$("#'.$McMMOskill[$i].'").mouseleave(function(){$("#xpimage").find("img").remove();});
+		</script>';		
 	}
 	return $output;
 }

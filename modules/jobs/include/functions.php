@@ -2,8 +2,8 @@
 
 //SETS NUMBER OF USERS TO PRINT
 function get_jobs_user_count() {
-	$query = mysql_query("SELECT COUNT(`username`) FROM `".WS_CONFIG_JOBS."`");
-	$row = mysql_fetch_array($query);
+	$query = mysqli_query($link, "SELECT COUNT(`username`) FROM `".WS_CONFIG_JOBS."`");
+	$row = mysqli_fetch_array($query);
 	return $row[0];
 }	
 
@@ -12,9 +12,9 @@ function get_jobs_user_stats($sort, $start, $end) {
 	elseif($sort == 'job') {$sortkey = 'ORDER BY `job` ASC';}
 	elseif($sort == 'level') {$sortkey = 'ORDER BY `level` DESC';}
 	elseif($sort == 'experience') {$sortkey = 'ORDER BY `experience` DESC';}
-	$query = mysql_query("SELECT * FROM `".WS_CONFIG_JOBS."` GROUP BY `username` ".$sortkey." LIMIT ".$start.",".$end."");
+	$query = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_JOBS."` GROUP BY `username` ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;
-	while($row = mysql_fetch_array($query)) {
+	while($row = mysqli_fetch_array($query)) {
 		$players[$time] = $row[0];
 		$time++;
 	}  
@@ -23,8 +23,8 @@ function get_jobs_user_stats($sort, $start, $end) {
 
 function job_player_info_table($player) {
 	$count = 0;
-	$query = mysql_query("SELECT * FROM `".WS_CONFIG_JOBS."` WHERE `username`='".$player."'");
-	while($daten = mysql_fetch_array($query)) {
+	$query = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_JOBS."` WHERE `username`='".$player."'");
+	while($daten = mysqli_fetch_array($query)) {
 		$container[$count] = $daten;
 		$count++;
 	};
@@ -32,8 +32,8 @@ function job_player_info_table($player) {
 }
 
 function job_server_info_table() {
-	$query = mysql_query("SELECT COUNT(`username`), SUM(`experience`), SUM(`level`), `job` FROM `".WS_CONFIG_JOBS."` GROUP BY `job`");
-	while($row = mysql_fetch_array($query)) {
+	$query = mysqli_query($link, "SELECT COUNT(`username`), SUM(`experience`), SUM(`level`), `job` FROM `".WS_CONFIG_JOBS."` GROUP BY `job`");
+	while($row = mysqli_fetch_array($query)) {
 		$output .= '<div>';
 		$output .= '<div style="width:100px; height:25px; float:left;"><b>'.$row[3].'</b></div>';						
 		$output .= '<div style="width:50px; height:25px; float:left;">'.$row[0].'x</div>';
@@ -44,8 +44,8 @@ function job_server_info_table() {
 }
 
 function job_experience_info_table() {
-	$query = mysql_query("SELECT COUNT(`username`), SUM(`experience`), SUM(`level`), `job` FROM `".WS_CONFIG_JOBS."` GROUP BY `job`");
-	while($row = mysql_fetch_array($query)) {
+	$query = mysqli_query($link, "SELECT COUNT(`username`), SUM(`experience`), SUM(`level`), `job` FROM `".WS_CONFIG_JOBS."` GROUP BY `job`");
+	while($row = mysqli_fetch_array($query)) {
 		$output .= '<div style="width:120px; height:25px;"><b>'.$row[1].'</b></div>';
 	}	
 	$output .= "\n"; 
@@ -53,8 +53,8 @@ function job_experience_info_table() {
 }
 
 function job_level_info_table() {
-	$query = mysql_query("SELECT COUNT(`username`), SUM(`experience`), SUM(`level`), `job` FROM `".WS_CONFIG_JOBS."` GROUP BY `job`");
-	while($row = mysql_fetch_array($query)) {
+	$query = mysqli_query($link, "SELECT COUNT(`username`), SUM(`experience`), SUM(`level`), `job` FROM `".WS_CONFIG_JOBS."` GROUP BY `job`");
+	while($row = mysqli_fetch_array($query)) {
 		$output .= '<div style="width:80px; height:25px;"><b>'.$row[2].'</b></div>';
 	}	
 	$output .= "\n"; 
@@ -64,8 +64,8 @@ function job_level_info_table() {
 function job_player_list_table($player, $dummy) {
 	global $image_control;
 	global $stats_control;
-	$query = mysql_query("SELECT * FROM `".WS_CONFIG_JOBS."` WHERE `username`='".$player."'");
-	while ($info = mysql_fetch_array($query)) {
+	$query = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_JOBS."` WHERE `username`='".$player."'");
+	while ($info = mysqli_fetch_array($query)) {
 		if($image_control == true) {
 			$image = small_image($player);
 		}

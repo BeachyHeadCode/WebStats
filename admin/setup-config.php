@@ -36,19 +36,32 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 	$_SESSION['Password']=$_POST['Password'];
 	
 
-	$host = $_SESSION['MySQLHost'].":".$_SESSION['MySQLPort'];
+	$host = $_SESSION['MySQLHost'];
+	$port = $_SESSION['MySQLPort'];
 	$user = $_SESSION['MySQLUserName'];
 	$pass = $_SESSION['MySQLPassword'];
 	$db = $_SESSION['MySQLDatabase'];
-	$createdb = true;
-	$DB = new DBConfig();
-	$DB -> config();	
-	$DB -> conn($host, $user, $pass, $db, $createdb);
+	//$DB = new DBConfig();
+	//$DB -> config();	
+	//$link = $DB -> conn($host, $user, $pass, $db, true);
+	$link = mysqli_connect($host.":".$port, $user, $pass);
+	// Check connection
+	if (mysqli_connect_errno()) {
+		ws_die("Failed to connect to MySQL: " . mysqli_connect_error(), "MySQL Error");
+	}
+	if(!mysqli_select_db($link, $dbname)) {
+		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$dbname."`")) {
+			print "<script type=\"text/javascript\">";
+			print "alert('Database created :)')";
+			print "</script>";
+			mysqli_select_db($link, $dbname);
+		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$dbname."' and retry.","MySQL Error");}
+	}
 	$username = $_SESSION['Username'];
 	$password = $_SESSION['Password'];		
 	if(!empty($_SESSION['Username']) && !empty($_SESSION['Password'])){
-		$query = mysql_query("SELECT `username` FROM `users` WHERE `username` = '$username' and `username` != ''");
-		$row = mysql_fetch_array($query);
+		$query = mysqli_query($link, "SELECT `username` FROM `users` WHERE `username` = '$username' and `username` != ''");
+		$row = mysqli_fetch_array($query);
 		if (isset($row[0])) {
 			$_SESSION['usernameTaken'] = 1;
 		} else {
@@ -56,8 +69,8 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 			$userinsert = "INSERT INTO `users`(`username`, `password`, `IP`, `hostname`, `location`, `date`, `email`, `cookie_pass`, `actcode`, `rank`, `lastactive`, `lastlogin`) VALUES ('$username', '".md5($password)."', '$ip', '$hostname', '$location', '$today', '$email', '', '', '1', NOW(), NOW())";
 		}
 	}
-	if (!mysql_query($userinsert)){
-		if(mysql_query("CREATE TABLE IF NOT EXISTS `users` (
+	if (!mysqli_query($link, $userinsert)){
+		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS `users` (
 	`ID` INT(11) NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(50) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Username',
 	`password` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Password',
@@ -73,12 +86,13 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 	`lastlogin` datetime NOT NULL COMMENT 'The last date the user loged into the server.',
 	PRIMARY KEY (`ID`)
 ) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")) {
-			mysql_query($userinsert);
+			mysqli_query($link, $userinsert);
 		} else {
-			echo('Error Creating Table: ' . mysql_error() . '<br />');
+			echo('Error Creating Table: ' . mysqli_error($link) . '<br />');
 		}
 	}
-	$DB -> close();
+	mysqli_close($link);
+	//$DB -> close();
 }
 if(!empty($_POST["reload"])) {
 	session_unset();
@@ -95,16 +109,30 @@ if(!empty($_POST["SubmitDatabase"])) {
 	$_SESSION['MySQLPassword']=$_POST['MySQLPassword'];
 	$_SESSION['MySQLDatabase']=$_POST['MySQLDatabase'];
 	
-	$host = $_SESSION['MySQLHost'].":".$_SESSION['MySQLPort'];
-	$user = $_SESSION['MySQLUserName'];
-	$pass = $_SESSION['MySQLPassword'];
-	$db = $_SESSION['MySQLDatabase'];
+	$host = $_POST['MySQLHost'];
+	$port = $_POST['MySQLPort'];
+	$user = $_POST['MySQLUserName'];
+	$pass = $_POST['MySQLPassword'];
+	$dbname = $_POST['MySQLDatabase'];
 	
-	$createdb = true;
-	$DB = new DBConfig();
-	$DB -> config();	
-	$DB -> conn($host, $user, $pass, $db, $createdb);	
-	$DB -> close();	
+	//$DB = new DBConfig();
+	//$DB -> config();	
+	//$DB -> conn($host, $user, $pass, $db, true);
+	$link = mysqli_connect($host.":".$port, $user, $pass);
+	// Check connection
+	if (mysqli_connect_errno()) {
+		ws_die("Failed to connect to MySQL: " . mysqli_connect_error(), "MySQL Error");
+	}
+	if(!mysqli_select_db($link, $dbname)) {
+		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$dbname."`")) {
+			print "<script type=\"text/javascript\">";
+			print "alert('Database created :)')";
+			print "</script>";
+			mysqli_select_db($link, $dbname);
+		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$dbname."' and retry.","MySQL Error");}
+	}
+	mysqli_close($link);
+	//$DB -> close();	
 }
  //Load the class
 	$ipLite = new ip2location_lite;
@@ -373,7 +401,7 @@ function display_header() {
 				</script>
 				<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 				<p>
-					<a href="https://mrplows-server.tk" target="_blank">mrplows-server.tk</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v5</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
+					<a href="https://mrplows-server.tk" target="_blank">mrplows-server.tk</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v5.1</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
 					<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
 				</p>
 			</footer>

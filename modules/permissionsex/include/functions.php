@@ -1,13 +1,11 @@
 <?php
 function permissionsex_player_table($player) {
-	$query = "SELECT * FROM `".WS_CONFIG_PERMISSIONS."_inheritance` WHERE `".WS_CONFIG_PERMISSIONS."_inheritance`.`child` = '".$player."'";
-	$result = mysql_query($query);
-	$data = mysql_fetch_array($result);
+	$result = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_PERMISSIONS."_inheritance` WHERE `".WS_CONFIG_PERMISSIONS."_inheritance`.`child` = '".$player."'");
+	$data = mysqli_fetch_array($result, MYSQLI_BOTH);
 	if(isset($data['parent'])) {
-		$query = "SELECT * FROM `".WS_CONFIG_PERMISSIONS."` WHERE `".WS_CONFIG_PERMISSIONS."`.`name` = '".$data['parent']."'";
-		$result = mysql_query($query);
+		$result = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_PERMISSIONS."` WHERE `".WS_CONFIG_PERMISSIONS."`.`name` = '".$data['parent']."'");
 		$time = 0;
-		while($row = mysql_fetch_array($result)) {
+		while($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
 			$permissiondata[$time] = $row['permission'];
 			$time++;
 		}
@@ -25,10 +23,9 @@ function permissionsex_player_table($player) {
 			$output .= '</table></div>';
 		return $output;
 	} else {
-		$query = "SELECT * FROM ".WS_CONFIG_PERMISSIONS." WHERE ".WS_CONFIG_PERMISSIONS.".name = '".WS_PERMISSIONS_DEFAULT_GROUP."'";
-		$result = mysql_query($query);
+		$result = mysqli_query($link, "SELECT * FROM ".WS_CONFIG_PERMISSIONS." WHERE ".WS_CONFIG_PERMISSIONS.".name = '".WS_PERMISSIONS_DEFAULT_GROUP."'");
 		$time = 0;
-		while($row = mysql_fetch_array($result)) {
+		while($row = mysqlI_fetch_array($result, MYSQLI_BOTH)) {
 			$permissiondata[$time] = $row['permission'];
 			$time++;
 		}
@@ -49,15 +46,14 @@ function permissionsex_player_table($player) {
 }
 
 function permissionsex_group_table($group) {
-		$query = "SELECT * FROM `".WS_CONFIG_PERMISSIONS."` WHERE `".WS_CONFIG_PERMISSIONS."`.`name` = '".$group."'";
-		$result = mysql_query($query);
+		$result = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_PERMISSIONS."` WHERE `".WS_CONFIG_PERMISSIONS."`.`name` = '".$group."'");
 		$time = 0;
 		
-		while($row = mysql_fetch_array($result)) {
+		while($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
 			$permissiondata[$time] = $row['permission'];
 			$time++;
 		}
-		$data = mysql_fetch_array($result);
+		$data = mysqli_fetch_array($result, MYSQLI_BOTH);
 		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
 		$output .= '<h2>Permissions For '.$group.'</h2>';
 			$output .= '<div class="head_maintable_permissionsex">';

@@ -15,7 +15,18 @@
 ?>
 <!--MAIN BOX AND PHOTO START-->
 <div class="row">
-		<?php 
+<?php
+		echo '<div class="row">
+					<div style="align:center; font-weight:bold;"><h4>'.$_GET['user'].':</h4></div>
+				</div><hr />';
+	if($image_control_3d === true && WS_CONFIG_3D_USER === true) {
+		$image = full_image($_GET['user']);
+	} elseif($image_control === true) {
+		$image = large_image($_GET['user']);
+	} else { $image = "No Image Controler";}
+		echo '<div class="six columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
+	?>
+		<?php if(($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) || ($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) || ($statssa_control === true && pluginconfigstatussa === true))
 			echo (set_player_details_table(htmlentities($_GET['user'])));
 		?>
 		<?php 
@@ -76,9 +87,8 @@
 <!-- STATS TABLE START -->
 
 <div class="row">
-<?php if(($stats_control === true && pluginconfigstatusstats === true)) { ?>
+<?php if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) { ?>
 <div class="head_maintable_stats">
-
 			<div class="content_headline" style="width:735px;">
 				<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
 			</div>
@@ -168,6 +178,9 @@
 				</li>	
 				<!--Destroyed and Placed Blocks ~ END-->
 			</ul>
+		</div>
+<?php } elseif($statssa_control === true && pluginconfigstatussa === true) { ?>
+		<div class="head_maintable_stats">
 		</div>
 <?php } ?>
 	</div>

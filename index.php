@@ -41,12 +41,14 @@ if(iptracker === true) {
 		$zipcode='UNKNOWN';
 		$location = $countrycode.",".$country.','.$city.','.$zipcode;
 	}
-	$DB = new DBConfig();
-	$DB -> config();
-	$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
-
-	$query = mysql_query("SELECT * FROM `ip_stats` WHERE IP='$ip'");
-	$field = mysql_fetch_array($query);
+	
+	//$DB = new DBConfig();
+	//$DB -> config();
+	//$link = $DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
+	$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
+	
+	$query = mysqli_query($link, "SELECT * FROM `ip_stats` WHERE `IP`='$ip'");
+	$field = mysqli_fetch_array($query, MYSQLI_BOTH);
 if(!isset($field["IP"])) {
 	if(is_bot()) {
 		$bot=1;
@@ -54,8 +56,8 @@ if(!isset($field["IP"])) {
 		$bot=0;
 	}
 	$data = "INSERT INTO `ip_stats` (username, IP, hostname, location, referer, pageurl, date, bot, country, countrycode, city, online) VALUES ('default', '$ip', '$hostname', '$location', '$referer', '$pageurl', '$today', '$bot', '$country', '$countrycode', '$city', '0')";
-	if (!mysql_query($data)) {
-		if(mysql_query("CREATE TABLE IF NOT EXISTS `ip_stats` (
+	if (!mysqli_query($link, $data)) {
+		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS `ip_stats` (
 `ID` INT AUTO_INCREMENT primary key,
 `username` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'If a stats plugin recoreds the user ingame name with IP.',
 `IP` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is very accurate, since it is decided by PHP. It is unknown to wether it will record IPv6.',
@@ -76,42 +78,42 @@ KEY `countrycode` (`countrycode`)
 ) ENGINE `InnoDB` CHARACTER SET `ascii` COLLATE `ascii_general_ci`")) {
 $TABLESET = true;
 		} else {
-			ws_die('Error creating `ip_stats` table: '.mysql_error(), "MySQL Error");
+			ws_die('Error creating `ip_stats` table: '.mysqli_error($link), "MySQL Error");
 		}
 	}
 }
-	$query = mysql_query("SELECT date FROM `ip_stats` WHERE IP='$ip'");
-	$date = mysql_fetch_array($query);
+	$query = mysqli_query("SELECT `date` FROM `ip_stats` WHERE `IP`='$ip'");
+	$date = mysqli_fetch_array($query, MYSQLI_BOTH);
 	for($i=0; $i < count($field)/2; $i++){
 		if($field[$i]==$ip){
-			$pageview = "UPDATE `ip_stats` SET pageview = pageview+1, online = 1 WHERE IP='$ip'";
-			$update_date = "UPDATE `ip_stats` SET date='$today' WHERE IP='$ip'";
-			$currentpageurl = "UPDATE `ip_stats` SET pageurl='$pageurl' WHERE IP='$ip'";
-			$query = mysql_query("UPDATE `ip_stats` SET dt=NOW() WHERE ip='$ip'");
+			$pageview = "UPDATE `ip_stats` SET `pageview`=`pageview`+1, `online` = 1 WHERE `IP`='$ip'";
+			$update_date = "UPDATE `ip_stats` SET `date`='$today' WHERE `IP`='$ip'";
+			$currentpageurl = "UPDATE `ip_stats` SET `pageurl`='$pageurl' WHERE `IP`='$ip'";
+			$query = mysqli_query($link, "UPDATE `ip_stats` SET `dt`=NOW() WHERE `IP`='$ip'");
 
-			if (!mysql_query($update_date)) ws_die('Error on $update_date: '.mysql_error(), "MySQL Error");
-			if (!mysql_query($pageview)) ws_die('Error on $pageview: '.mysql_error(), "MySQL Error");
-			if (!mysql_query($currentpageurl)) ws_die('Error on $currentpageurl: '.mysql_error(), "MySQL Error");
+			if (!mysqli_query($link, $update_date)) ws_die('Error on $update_date: '.mysqli_error($link), "MySQL Error");
+			if (!mysqli_query($link, $pageview)) ws_die('Error on $pageview: '.mysqli_error($link), "MySQL Error");
+			if (!mysqli_query($link, $currentpageurl)) ws_die('Error on $currentpageurl: '.mysqli_error($link), "MySQL Error");
 		}
 	}
-	$totalbotpageviews = "SELECT SUM(pageview) FROM `ip_stats` WHERE bot='1'";
-	$totalbotquery = mysql_query($totalbotpageviews);
-	$totalbot = mysql_fetch_array($totalbotquery);
+	$totalbotpageviews = "SELECT SUM(`pageview`) FROM `ip_stats` WHERE bot='1'";
+	$totalbotquery = mysqli_query($link, $totalbotpageviews);
+	$totalbot = mysqli_fetch_array($totalbotquery, MYSQLI_BOTH);
 	
-	$totalpageviews = "SELECT SUM(pageview) FROM `ip_stats` WHERE bot='0'";
-	$totalviewquery = mysql_query($totalpageviews);
-	$total = mysql_fetch_array($totalviewquery);
+	$totalpageviews = "SELECT SUM(`pageview`) FROM `ip_stats` WHERE bot='0'";
+	$totalviewquery = mysqli_query($link, $totalpageviews);
+	$total = mysqli_fetch_array($totalviewquery, MYSQLI_BOTH);
 	
-	$queryentrie = "SELECT COUNT(pageview) FROM `ip_stats`";
-	$query = mysql_query($queryentrie);
-	$row = mysql_fetch_array($query);
-	mysql_query("UPDATE `ip_stats` SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:10:0')");
+	$queryentrie = "SELECT COUNT(`pageview`) FROM `ip_stats`";
+	$query = mysqli_query($link, $queryentrie);
+	$row = mysqli_fetch_array($query, MYSQLI_BOTH);
+	mysqli_query("UPDATE `ip_stats` SET `online` = 0 WHERE `dt`<SUBTIME(NOW(),'0 0:10:0')");
 
 	// Counting all the online visitors:
-	list($totalOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM `ip_stats` WHERE online='1'"));
+	list($totalOnline) = mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(`IP`) FROM `ip_stats` WHERE `online`='1'"), MYSQLI_BOTH);
 	// Outputting the number as plain text:
-
-	$DB -> close();
+	mysqli_close($link);
+	//$DB -> close();
 }
 
 header('Cache-control: max-age='.(60*60*24*365));
@@ -233,9 +235,10 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 				}
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/config/config.php';
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/include/functions.php';
-				if (WS_CONFIG_NoMySQL != true) {$DB = new DBConfig();$DB -> config();$DB -> conn(WS_CONFIG_DBHOST.":".WS_CONFIG_DBPORT, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, false);}
+				
+				if (WS_CONFIG_NoMySQL != true) {$link = mysqli_connect('p:'.WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);}
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/index.php';
-				if (WS_CONFIG_NoMySQL != true) {$DB -> close();}
+				if (WS_CONFIG_NoMySQL != true) {mysqli_close($link);}
 			} else {include_once ROOT . 'assets/404.html'; }
 			?>
 		</div>

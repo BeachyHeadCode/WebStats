@@ -156,9 +156,9 @@ class DBConfig {
 		$this->db = $db;
         /* Establish the connection. */
 		if ($this->persistant)
-			$this->db_link = mysql_pconnect($this->host, $this->user, $this->pass, true);
+			$this->db_link = mysqli_connect('p:'.$this->host, $this->user, $this->pass);
 		else 
-			$this->db_link = mysql_connect($this->host, $this->user, $this->pass, true);
+			$this->db_link = mysqli_connect($this->host, $this->user, $this->pass);
 		if (!$this->db_link) {
 			if ($this->error) {
 				$this->error($type=1);
@@ -170,7 +170,7 @@ class DBConfig {
 					$this->error($type=2);
 				}
 			} else {
-				$db = mysql_select_db($this->db, $this->db_link); /* select db */
+				$db = mysqli_select_db($this->db_link, $this->db); /* select db */
 				if ((!$db) && ($createdb !== true)) {
 					if ($this->error) {
 						$this->error($type=2);
@@ -178,9 +178,9 @@ class DBConfig {
 					return false;
 				}
 				if((!$db) && ($createdb === true)) {
-					if(mysql_query("CREATE DATABASE IF NOT EXISTS `".$this->db."`", $this->db_link)){
+					if(mysqli_query($this->db_link, "CREATE DATABASE IF NOT EXISTS `".$this->db."`")){
 						echo "Database created :) <br />";
-						mysql_select_db($this->db, $this->db_link);
+						mysqli_select_db($this->db_link, $this->db);
 					} else {
 						if ($this->error){
 							$this->error($type=5);
@@ -197,7 +197,7 @@ class DBConfig {
 			if ($this->persistant) {
 				$this -> conn = false;
 			} else {
-				mysql_close($this->db_link);
+				mysqli_close($this->db_link);
 				$this -> conn = false;
 			}
 		} else {
@@ -213,7 +213,7 @@ class DBConfig {
 			if ($type==1) {
 				echo "<strong>Database could not connect</strong> " . "<br />";
 			} else if ($type==2) {
-				echo "<strong>mysql error</strong> " . mysql_error() . "<br />";
+				echo "<strong>mysql error</strong> " . mysqli_error($this->db_link) . "<br />";
 			} else if ($type==3) {
 				echo "<strong>error </strong>, Proses has been stopped" . "<br />";
 			} else if ($type==4) {
@@ -221,17 +221,18 @@ class DBConfig {
 			} else if ($type==5) {
 				echo "<span style='color: red;'>There was an error while selecting the database. Please contact the webmaster (database name incorrect).</span>";
 			} else {
-				echo "Error creating database: " . mysql_error() . "<br />";
+				echo "Error creating database: " . mysqli_error($this->db_link) . "<br />";
 			}
 		}
 	}
 }
+
 /**
  * Sets The Date.
  *
  * @since 3.0
  *
- * @param integer $stamp Amount of items.
+ * @param integer $stamp Time in seconds since 1969.
  */
 function get_date($stamp) {
 	setlocale(LC_TIME, "usa");
@@ -239,6 +240,41 @@ function get_date($stamp) {
 	return $datum;
 }
 
+/**
+ * Sets Output Format.
+ *
+ * @since 3.2
+ *
+ * @param integer $time Time in seconds since 1969.
+ */
+function get_played($time) {
+	$hour = $time / 3600;
+	$hour_2 = floor($hour);
+	$minute_hour = $hour_2 * 60;
+	$minute = $time / 60; 
+	$minute_2 = $minute - $minute_hour;
+	$minute_3 = floor($minute_2);
+	$day = $hour_2 / 24;
+	$day_2 = floor($day);
+	$hour_3 = $hour_2 - ($day_2 * 24) ;
+	$dayholder = 0;
+	
+	if ($minute_3 <= 9){$minute_3 = '0'.$minute_3;};
+	if ($day_2 <= 9){$day_2 = ''.$day_2;};
+	if ($hour_3 <= 9){$hour_3 = '0'.$hour_3;};
+	if ($hour_2 < 10 && $minute_3 >= 0) {
+		$played = "0".$hour_2."<span class='timefont'>h</span> ".$minute_3."<span class='timefont'>m</span>";
+	}
+	if ($hour_2 >= 10) {
+		$played = "".$hour_2."<span class='timefont'>h</span> ".$minute_3."<span class='timefont'>m</span>";
+	}
+	if (WS_CONFIG_PLAYTIME === true) {
+		if ($hour_2 >= 24) {
+			$played = "".$day_2."<span class='timefont'>d</span> ".$hour_3."<span class='timefont'>h</span> ".$minute_3."<span class='timefont'>m</span>";
+	 	}
+	}
+	return $played;
+}
 /**
  * Sets the page numbers.
  *
@@ -394,11 +430,12 @@ function get_pages($numbers, $mode, $sort) {
  * @since 3.0
  *
  * @param string $player Player name.
+ * @param string $lastlogout Name of last logout column.
+ * @param string $lastlogin Name of last login column.
+ * @param string $table Name of the table.
  */
-function get_status($player) {
-	$logout = get_amount($player, "lastlogout", "stats");
-	$login = get_amount($player, "lastlogin", "stats");
-	if ($logout <= $login)
+function get_status($player, $lastlogout, $lastlogin, $table) {
+	if (get_amount($player, $lastlogout, $table) <= get_amount($player, $lastlogin, $table))
 		$status = '<span class="online">Online</span>';
 	else
 		$status = '<span class="offline">Offline</span>';

@@ -1,32 +1,35 @@
 <?php
 function get_amount($user, $stat, $location) {
 	global $link;
-	$query = mysqli_query($link, "SELECT `$stat` FROM `".WS_CONFIG_STATS."$location` WHERE `player`='$user'");
+	$query = mysqli_query($link, "SELECT `$stat` FROM `".WS_CONFIG_STATS."$location` WHERE `name`='$user'");
 	$data = @mysqli_fetch_array($query, MYSQLI_NUM);
 	return $data[0];
 }
 
 function get_amount_sum($user, $stat, $location) {
 	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`$stat`) FROM `".WS_CONFIG_STATS."$location` WHERE `player`='$user'");
+	$query = mysqli_query($link, "SELECT SUM(`$stat`) FROM `".WS_CONFIG_STATS."$location` WHERE `name`='$user'");
 	$data = @mysqli_fetch_array($query, MYSQLI_NUM);
 	return $data[0];
 }
 
-function get_movement($user, $type) {
-	if($type > 3 || $type < 0){
-		return "Error! No movement of this type exists.";
-	} else {
-		global $link;
-		$query = mysqli_query($link, "SELECT `distance` FROM `".WS_CONFIG_STATS."move` WHERE `player` = '$user' AND `type` = '$type'");
-		$data = @mysqli_fetch_array($query, MYSQLI_NUM);
-		return $data[0];
-	}
+function get_movement($user) {
+	global $link;
+	$query = mysqli_query($link, "SELECT `MOVE` FROM `".WS_CONFIG_STATS."_players` WHERE `name` = '$user'");
+	$data = @mysqli_fetch_array($query, MYSQLI_NUM);
+	return $data[0];
 }
 	
-function get_amount_break_place_sum($user, $type) {
+function get_amount_break($user) {
 	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`amount`) FROM `".WS_CONFIG_STATS."block` WHERE `player`='$user' AND `break`='$type'");
+	$query = mysqli_query($link, "SELECT `BLOCKDESTROY_TOTAL` FROM `".WS_CONFIG_STATS."_players` WHERE `name`='$user'");
+	$data = @mysqli_fetch_array($query, MYSQLI_NUM);
+	return $data[0];
+}
+
+function get_amount_create($user) {
+	global $link;
+	$query = mysqli_query($link, "SELECT `BLOCKCREATE_TOTAL` FROM `".WS_CONFIG_STATS."_players` WHERE `name`='$user'");
 	$data = @mysqli_fetch_array($query, MYSQLI_NUM);
 	return $data[0];
 }
@@ -36,7 +39,7 @@ function get_user($sort) {
 	if(!isset($sort)) {$sort = 'player';}
 	$sortkey = "ORDER BY $sort";
 
-	$query = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_STATS."player` ".$sortkey."");
+	$query = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_STATS."_players` ".$sortkey."");
 	$time = 0;
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$players[$time] = $row[0];
@@ -48,11 +51,11 @@ function get_user($sort) {
 function get_user_stats($sort, $start, $end) {
 	global $link;
 	if(!isset($sort)) {
-		$sort = 'player';
+		$sort = 'NAME';
 	}
 	$deadline = time() - WS_CONFIG_DEADLINE;
-	$sortkey = "ORDER BY $sort";
-	$query = mysqli_query($link, "SELECT $sort FROM `".WS_CONFIG_STATS."player` ".$sortkey." LIMIT ".$start.",".$end."");
+	$sortkey = "ORDER BY `$sort`";
+	$query = mysqli_query($link, "SELECT `$sort` FROM `".WS_CONFIG_STATS."_players` ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$players[$time] = $row[0];
@@ -69,8 +72,8 @@ function set_index_table($player, $pos) {
 	}
 	$output .= '<tr><td>'.$pos.'</td>';
 	$output .= '<td>&nbsp;&nbsp;'.$image.'<a href="index.php?mode=show-player&user='.$player.'"  >'.$player.'</a></td>';
-	$output .= '<td>'.get_played(get_amount($player, "playtime", "player")).'</td>';
-	$output .= '<td>'.get_amount($player, "lastjoin", "player").'</td>';
+	$output .= '<td>'.get_played(get_amount($player, "PLAYTIME", "_players")).'</td>';
+	$output .= '<td>'.get_date(get_amount($player, "LASTLOGIN", "_players")).'</td>';
 	$output .= '<td>'.get_status($player).'</td>';
 	$output .= "</tr>";
 	return $output;
@@ -78,10 +81,6 @@ function set_index_table($player, $pos) {
 
 function set_player_details_table($player) {
 	global $image_control, $image_control_3d;
-	$foot = get_movement($player, "0");
-	$boat = get_movement($player, "1");
-	$pig = get_movement($player, "2");
-	$cart = get_movement($player, "3");
 	$output = '<div class="row">';
 	$output .= '<div class="three columns">
 				<h6>Movement</h6>
@@ -89,7 +88,7 @@ function set_player_details_table($player) {
 					<thead>
 						<tr>
 							<th>Total:</th>
-							<th>'. number_format(($foot+$boat+$pig+$cart), 2, '.', '').'</th>
+							<th>'. get_movement($player).'</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -115,7 +114,6 @@ function set_player_details_table($player) {
 	$output .= '<div class="three columns">';
 	$output .= '<table>
 					<tbody>
-						
 				<tr>
 					<td>'.translate("var5").':</td>
 					<td>'.get_amount($player, "lastjoin", "player").'</td>
@@ -146,11 +144,11 @@ function set_player_details_table($player) {
 				</tr>
 				<tr>
 					<td>'.translate("var19").':</td>
-					<td>'.get_amount_break_place_sum($player, "1").' '.translate("var18").'</td>
+					<td>'.get_amount_break($player).' '.translate("var18").'</td>
 				</tr>
 				<tr>
 					<td>'.translate("var20").':</td>
-					<td>'.get_amount_break_place_sum($player, "0").' '.translate("var18").'</td>
+					<td>'.get_amount_create($player).' '.translate("var18").'</td>
 				</tr>
 					</tbody>
 				</table>';
@@ -538,7 +536,7 @@ function blacklist() {
 	$marker = '~*~';
 	$player_all = get_user('player');
 	for($i=0; $i < sizeof($player_all); $i++) {
-		$query = mysqli_query($link, "UPDATE `".WS_CONFIG_STATS."player` SET player='".$marker."".$player_all[$i]."' WHERE player='".$player_all[$i]."'");
+		$query = mysqli_query($link, "UPDATE `".WS_CONFIG_STATS."player` SET player='".$marker."".$player_all[$i]."' WHERE `name`='".$player_all[$i]."'");
 	}	
 }
 ?>

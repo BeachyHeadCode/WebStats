@@ -8,4 +8,5 @@
 	if($mineconomy_control === true){include('modules/mineconomy/api/api.php');}
 	if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)){include('modules/stats/api/api.php');}
 	if($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true){include('modules/stats-lolmewn/api/api.php');}
+	if($statssa_control === true && pluginconfigstatussa === true){include('modules/stats-sa/api/api.php');}
 ?>
