@@ -1,7 +1,6 @@
 <?php
 
-function decrypt($item)
-{
+function decrypt($item) {
 		if ($item == "Air")						{$item = "0";}
 		elseif ($item == "stone")					{$item = "1";}
 		elseif ($item == "grass")					{$item = "2";}

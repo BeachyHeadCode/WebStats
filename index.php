@@ -45,7 +45,12 @@ if(iptracker === true) {
 	//$DB = new DBConfig();
 	//$DB -> config();
 	//$link = $DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
-	$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
+	
+	if($persistent === true) {
+		$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
+	} else {
+		$link = mysqli_connect(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
+	}
 	
 	$query = mysqli_query($link, "SELECT * FROM `ip_stats` WHERE `IP`='$ip'");
 	$field = mysqli_fetch_array($query, MYSQLI_BOTH);
@@ -82,32 +87,18 @@ $TABLESET = true;
 		}
 	}
 }
-	$query = mysqli_query("SELECT `date` FROM `ip_stats` WHERE `IP`='$ip'");
-	$date = mysqli_fetch_array($query, MYSQLI_BOTH);
+	$query = mysqli_query($link, "SELECT `date` FROM `ip_stats` WHERE `IP`='$ip'");
+	$date = mysqli_fetch_array($query, MYSQLI_NUM);
 	for($i=0; $i < count($field)/2; $i++){
 		if($field[$i]==$ip){
-			$pageview = "UPDATE `ip_stats` SET `pageview`=`pageview`+1, `online` = 1 WHERE `IP`='$ip'";
-			$update_date = "UPDATE `ip_stats` SET `date`='$today' WHERE `IP`='$ip'";
-			$currentpageurl = "UPDATE `ip_stats` SET `pageurl`='$pageurl' WHERE `IP`='$ip'";
-			$query = mysqli_query($link, "UPDATE `ip_stats` SET `dt`=NOW() WHERE `IP`='$ip'");
-
-			if (!mysqli_query($link, $update_date)) ws_die('Error on $update_date: '.mysqli_error($link), "MySQL Error");
+			$pageview = "UPDATE `ip_stats` SET `date`='$today', `dt`=NOW(), `pageurl`='$pageurl', `pageview`=`pageview`+1, `online` = 1 WHERE `IP`='$ip'";
 			if (!mysqli_query($link, $pageview)) ws_die('Error on $pageview: '.mysqli_error($link), "MySQL Error");
-			if (!mysqli_query($link, $currentpageurl)) ws_die('Error on $currentpageurl: '.mysqli_error($link), "MySQL Error");
 		}
 	}
-	$totalbotpageviews = "SELECT SUM(`pageview`) FROM `ip_stats` WHERE bot='1'";
-	$totalbotquery = mysqli_query($link, $totalbotpageviews);
-	$totalbot = mysqli_fetch_array($totalbotquery, MYSQLI_BOTH);
-	
-	$totalpageviews = "SELECT SUM(`pageview`) FROM `ip_stats` WHERE bot='0'";
-	$totalviewquery = mysqli_query($link, $totalpageviews);
-	$total = mysqli_fetch_array($totalviewquery, MYSQLI_BOTH);
-	
-	$queryentrie = "SELECT COUNT(`pageview`) FROM `ip_stats`";
-	$query = mysqli_query($link, $queryentrie);
-	$row = mysqli_fetch_array($query, MYSQLI_BOTH);
-	mysqli_query("UPDATE `ip_stats` SET `online` = 0 WHERE `dt`<SUBTIME(NOW(),'0 0:10:0')");
+	$query = mysqli_query($link, "SELECT SUM(IF(`bot`='0', NULL, `pageview`)), SUM(IF(`bot`='1', NULL, `pageview`)), COUNT(`pageview`) FROM `ip_stats`");
+	$row = mysqli_fetch_array($query, MYSQLI_NUM);
+
+	mysqli_query($link, "UPDATE `ip_stats` SET `online` = 0 WHERE `dt`<SUBTIME(NOW(),'0 0:10:0')");
 
 	// Counting all the online visitors:
 	list($totalOnline) = mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(`IP`) FROM `ip_stats` WHERE `online`='1'"), MYSQLI_BOTH);
@@ -157,8 +148,7 @@ if(isset($_SESSION['pml_userid'])){
 	</section>
 </div>
 <?php
-}
-else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
+} elseif($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1') {
 ?>
 <div class="admin-bar">
 	<ul>
@@ -236,7 +226,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/config/config.php';
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/include/functions.php';
 				
-				if (WS_CONFIG_NoMySQL != true) {$link = mysqli_connect('p:'.WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);}
+				if (WS_CONFIG_NoMySQL != true) {if($persistent === true) {$link = mysqli_connect('p:'.WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);}else{$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);}}
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/index.php';
 				if (WS_CONFIG_NoMySQL != true) {mysqli_close($link);}
 			} else {include_once ROOT . 'assets/404.html'; }
@@ -257,7 +247,7 @@ else if($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1'){
 		</p>
 		<?php
 			if (iptracker === true) {
-					echo"<span class='onlineWidget'><div class='panel'><img class='preloader1' src='images/ajax-loaders/preloader.gif' alt='Loading..' width='22' height='22' /></div>Users Online:&nbsp;".$totalOnline."</span>&nbsp;&nbsp;Unique Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Views:&nbsp;".$total[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$totalbot[0];
+					echo"<span class='onlineWidget'><div class='panel'><img class='preloader1' src='images/ajax-loaders/preloader.gif' alt='Loading..' width='22' height='22' /></div>Users Online:&nbsp;".$totalOnline."</span>&nbsp;&nbsp;Unique Views:&nbsp;".$row[2]."&nbsp;&nbsp;Total Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$row[1];
 					if(isset($date[0]))
 						echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
 					else { echo '';}

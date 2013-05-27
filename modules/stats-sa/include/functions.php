@@ -195,35 +195,21 @@ function set_player_getkill_table($player, $search) {
 
 function get_server_player() {
 	global $link;
-	$query = mysqli_query($link, "SELECT COUNT(`player`) FROM `".WS_CONFIG_STATS."player`");
-	$row = mysqli_fetch_array($query, MYSQLI_NUM);
-	return $row[0];
-}
-
-function get_server_count_block($column) {
-	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`$column`) FROM `".WS_CONFIG_STATS."block` ");
+	$query = mysqli_query($link, "SELECT COUNT(`name`) FROM `".WS_CONFIG_STATS."_players`");
 	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	return $row[0];
 }
 
 function get_server_count_player($column) {
 	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`$column`) FROM `".WS_CONFIG_STATS."player`");
-	$row = mysqli_fetch_array($query, MYSQLI_NUM);
-	return $row[0];
-}
-
-function get_server_count_player_move($type) {
-	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`distance`) FROM `".WS_CONFIG_STATS."move` WHERE `type`=$type");
+	$query = mysqli_query($link, "SELECT SUM(`$column`) FROM `".WS_CONFIG_STATS."_players`");
 	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	return $row[0];
 }
 
 function get_server_played() {
 	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`playtime`) FROM `".WS_CONFIG_STATS."player`");
+	$query = mysqli_query($link, "SELECT SUM(`PLAYTIME`) FROM `".WS_CONFIG_STATS."_players`");
 	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	$time = $row[0];
 	
@@ -259,18 +245,18 @@ function set_server_details_table() {
 				
 				<tr>
 					<td>'.translate("var8").':</td>
-					<td> '.get_server_count_block('break').'</td>
+					<td> '.get_server_count_player('BLOCKDESTROY_TOTAL').'</td>
 				</tr>
 				
 				<tr>
 					<td>'.translate("var9").':</td>
-					<td> '.get_server_count_block('amount').'</td>
+					<td> '.get_server_count_player('BLOCKCREATE_TOTAL').'</td>
 				</tr>
 				
-				<!--<div>
-					<div class="head_stat">'.translate("var24").':</div>
-					<div class="head_content"> '.get_server_count_player('armswing').'</div>
-				</div>-->
+				<tr>
+					<td>'.translate("var24").':</td>
+					<td> '.get_server_count_player('ARMSWING').'</td>
+				</tr>
 				
 				<tr>
 					<td>'.translate("var4").':</td>
@@ -279,128 +265,78 @@ function set_server_details_table() {
 				
 				<tr>
 					<td>'.translate("var25").':</td>
-					<td>'.get_server_count_player("joins").'</td>
+					<td>'.get_server_count_player("LOGIN").'</td>
 				</tr>
 				
 				<tr>
-					<td>'.translate("var17").' '.translate("var85").':</div>
-					<td> '.round(get_server_count_player_move(0), 2).' '.translate("var18").'</td>
+					<td>'.translate("var26").':</td>
+					<td> '.get_server_count_player("OPENCHEST").'</td>
 				</tr>
-				<tr>
-					<td>'.translate("var17").' '.translate("var86").':</div>
-					<td> '.round(get_server_count_player_move(1), 2).' '.translate("var18").'</td>
-				</tr>
-				<tr>
-					<td>'.translate("var17").' '.translate("var87").':</div>
-					<td> '.round(get_server_count_player_move(2), 2).' '.translate("var18").'</td>
-				</tr>
-				<tr>
-					<td>'.translate("var17").' '.translate("var88").':</div>
-					<td> '.round(get_server_count_player_move(3), 2).' '.translate("var18").'</td>
-				</tr>
-				<!--<div>
-					<div class="head_stat">'.translate("var26").':</div>
-					<div class="head_content"> '.get_server_count_player("openchest").'</div>
-				</div>-->
 				
 				<tr>
 					<td>'.translate("var27").':</td>
-					<td> '.get_server_count_player("commandsdone").'</td>
-				</tr>
-				
-				<tr>
-					<td>'.translate("var93").':</td>
-					<td> '.get_server_count_player("arrows").'</td>
+					<td> '.get_server_count_player("COMMAND").'</td>
 				</tr>
 				
 				<tr>
 					<td>'.translate("var89").':</td>
-					<td> '.get_server_count_player("xpgained").'</td>
+					<td> '.get_server_count_player("EXP_CURRENT").'</td>
 				</tr>
 				
 				<tr>
 					<td>'.translate("var90").':</td>
-					<td> '.get_server_count_player("fishcatch").'</td>
-				</tr>
-				
-				<tr>
-					<td>'.translate("var91").':</td>
-					<td> '.get_server_count_player("damagetaken").'</td>
+					<td> '.get_server_count_player("FISHCAUGHT").'</td>
 				</tr>
 				
 				<tr>
 					<td>'.translate("var92").':</td>
-					<td> '.get_server_count_player("timeskicked").'</td>
+					<td> '.get_server_count_player("KICK").'</td>
 				</tr>
 
-				<!--<div>
-					<div class="head_stat">'.translate("var28").':</div>
-					<div class="head_content"> '.get_server_count_player("chat").'</div>
-				</div>-->
+				<tr>
+					<td>'.translate("var28").':</td>
+					<td> '.get_server_count_player("CHAT").'</td>
+				</tr>
 				
-				<!--<tr>
+				<tr>
 					<td>'.translate("var29").':</td>
-					<td>'.get_server_count_player("chatletters").'</td>
-				</tr>-->';
+					<td>'.get_server_count_player("CHATLETTERS").'</td>
+				</tr>';
 	$output .= '</table>';
 	$output .= '<table class="six columns head_contentbox">';
 	$output .= '<tr>
-					<td>'.translate("var94").':</td>
-					<td> '.get_server_count_player("toolsbroken").'</td>
+					<td>'.translate("var95").':</td>
+					<td> '.get_server_count_player("EGGTHROW").'</td>
 				</tr>
 				
-				<tr>
-					<td>'.translate("var95").':</td>
-					<td> '.get_server_count_player("eggsthrown").'</td>
-				</tr>
 				<tr>
 					<td>'.translate("var96").':</td>
-					<td> '.get_server_count_player("itemscrafted").'</td>
+					<td> '.get_server_count_player("CRAFTING_TOTAL").'</td>
 				</tr>
 				
 				<tr>
-					<td>'.translate("var97").':</td>
-					<td> '.get_server_count_player("omnomnom").'</td>
+					<td>'.translate("var107").':</td>
+					<td> '.get_server_count_player("SMELTING_TOTAL").'</td>
 				</tr>
+				
 				<tr>
-					<td>'.translate("var98").':</td>
-					<td> '.get_server_count_player("onfire").'</td>
+					<td>'.translate("var108").':</td>
+					<td> '.get_server_count_player("BREWING_TOTAL").'</td>
 				</tr>
-				<tr>
-					<td>'.translate("var28").':</td>
-					<td> '.get_server_count_player("wordssaid").'</td>
-				</tr>
-				<tr>
-					<td>'.translate("var99").':</td>
-					<td> '.get_server_count_player("votes").'</td>
-				</tr>
+				
 				<tr>
 					<td>'.translate("var100").':</td>
-					<td> '.get_server_count_player("teleports").'</td>
+					<td> '.get_server_count_player("TELEPORT").'</td>
 				</tr>
-				<tr>
-					<td>'.translate("var101").':</td>
-					<td> '.get_server_count_player("itempickups").'</td>
-				</tr>
-				<tr>
-					<td>'.translate("var104").':</td>
-					<td> '.get_server_count_player("itemdrops").'</td>
-				</tr>
+
 				<tr>
 					<td>'.translate("var102").':</td>
-					<td> '.get_server_count_player("bedenter").'</td>
+					<td> '.get_server_count_player("BEDUSED").'</td>
 				</tr>
-				<tr>
-					<td>'.translate("var106").':</td>
-					<td> '.get_server_count_player("bucketempty").'</td>
-				</tr>
-				<tr>
-					<td>'.translate("var103").':</td>
-					<td> '.get_server_count_player("worldchange").'</td>
-				</tr>
+
 				<tr>
 					<td>'.translate("var105").':</td>
-					<td> '.get_server_count_player("shear").'</td>
+					<td> '.get_server_count_player("SHEEPSHEARED").'</td>
 				</tr>
 				';
 	$output .= '</table></div>';

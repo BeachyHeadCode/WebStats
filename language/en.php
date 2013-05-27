@@ -1,8 +1,7 @@
 <?php
 // DEFAULT LANGUAGE FILE PHPMYLOGON
 // English
-function translate($item)
-{
+function translate($item) {
 		$item = decrypt($item);
 		
 		if ($item == "0")				{$item = "Air";}
@@ -654,6 +653,9 @@ function translate($item)
 		elseif ($item == "var104") 					{$item = "Item Drops";}
 		elseif ($item == "var105") 					{$item = "Times Used Shears";}
 		elseif ($item == "var106") 					{$item = "Buckets Emptyed";}
+		elseif ($item == "var107") 					{$item = "Items Smithed";}
+		elseif ($item == "var108") 					{$item = "Items Brewed";}
+		elseif ($item == "var109") 					{$item = "";}
 		//---------------	LOGIN RELATED	--------------------------------
 		elseif ($item == "login-incorrect")			{$item = "<span style='color: red;'>The username or password you entered is incorrect. Please try again.</span>";}
 		elseif ($item == "login-notactive")			{$item = "<span style='color: red;'>You're account isn't activated. Please activate your account and try again. Check your inbox for an activation e-mail if you've used the Forgot password-function.</span>";}	

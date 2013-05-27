@@ -25,7 +25,7 @@ function pml_checklogin($goto,$status = "0") {
 	} elseif(isset($_COOKIE['pml_userid_cookie'])) {
 		// Check cookie
 		// Check cookie data with data in database
-		$link = mysqli_connect('p:'.WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
+		$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
 		
 		$sql = "SELECT * FROM `users` WHERE `id` = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
 		$query = mysqli_query($link, $sql);
@@ -91,7 +91,7 @@ function pml_login($todo = "",$action = "") {
 	ob_start();
 	if(!isset($_SESSION)) { exit(translate('sessionproblem')); }
 
-	$link = mysqli_connect('p:'.WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
+	$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
 	
 	// Check if user is logged in
 	if(!isset($_SESSION['pml_userid'])) {
