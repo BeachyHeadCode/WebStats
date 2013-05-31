@@ -102,13 +102,15 @@ define(PLOTTER, "1");
 
 /* Users Online */
 if(iptracker === true){
-	$DB = new DBConfig();
-	$DB -> config();
-	$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
-	mysql_query("UPDATE stats SET online = 0 WHERE dt<SUBTIME(NOW(),'0 0:30:0')");
-	list($playersOnline) = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM stats WHERE online='1'"));
+	if($persistent === true) {
+		$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
+	} else {
+		$link = mysqli_connect(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
+	}
+	mysqli_query($link, "UPDATE `ip_stats` SET `online` = 0 WHERE `dt`<SUBTIME(NOW(),'0 0:30:0')");
+	list($playersOnline) = mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(*) FROM `ip_stats` WHERE `online`='1'"), MYSQLI_BOTH);
 	define(playersOnline, $playersOnline);
-	$DB -> close();
+	mysqli_close($link);
 }else{define(playersOnline, "1");}
 /* New data as of R6 */
 if(isset($_ENV["OS"])){

@@ -51,9 +51,8 @@ if(iptracker === true) {
 	} else {
 		$link = mysqli_connect(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
 	}
-	
-	$query = mysqli_query($link, "SELECT * FROM `ip_stats` WHERE `IP`='$ip'");
-	$field = mysqli_fetch_array($query, MYSQLI_BOTH);
+
+	$field = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM `ip_stats` WHERE `IP`='$ip'"), MYSQLI_BOTH);
 if(!isset($field["IP"])) {
 	if(is_bot()) {
 		$bot=1;
@@ -226,7 +225,13 @@ if(isset($_SESSION['pml_userid'])){
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/config/config.php';
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/include/functions.php';
 				
-				if (WS_CONFIG_NoMySQL != true) {if($persistent === true) {$link = mysqli_connect('p:'.WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);}else{$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);}}
+				if (WS_CONFIG_NoMySQL != true) {
+					if($persistent === true) {
+						$link = mysqli_connect('p:'.WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+					} else {
+						$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+					}
+				}
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/index.php';
 				if (WS_CONFIG_NoMySQL != true) {mysqli_close($link);}
 			} else {include_once ROOT . 'assets/404.html'; }
