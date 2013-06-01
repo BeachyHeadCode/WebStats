@@ -122,7 +122,7 @@ return $output;
 	<h2>IP Track ( <?php echo $ip;?> ) Welcome</h2>
 </div>
 <?php
-$link = mysqli_connect('p:'.WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB);
+$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
 
 if (isset($_GET["page"]) <= 0) {
 	$page = '1';

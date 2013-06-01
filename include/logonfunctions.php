@@ -120,13 +120,13 @@ function pml_login($todo = "",$action = "") {
 						mysqli_query($link, $sql_updateonline);
 						
 						header("Location: ".$_SERVER['REQUEST_URI']);
-					}else{
+					} else {
 						// Incorrect password
 						setcookie("pml_userid_cookie", "", time() - 3600);
 						setcookie("pml_usercode_cookie", "", time() - 3600);
 						header("Location: ".$_SERVER['REQUEST_URI']);
 					}
-				}else{
+				} else {
 					setcookie("pml_userid_cookie", "", time() - 3600);
 					setcookie("pml_usercode_cookie", "", time() - 3600);
 					header("Location: ".$_SERVER['REQUEST_URI']);
@@ -143,7 +143,7 @@ function pml_login($todo = "",$action = "") {
 		if(isset($_POST['submit'])) {
 			if($_POST['username'] != "" AND $_POST['password'] != "") {
 				// Check submitted data with data in database
-				$sql = "SELECT * FROM `users` WHERE username = '".$_POST['username']."' LIMIT 1";
+				$sql = "SELECT * FROM `users` WHERE `username` = '".$_POST['username']."' LIMIT 1";
 				$query = mysqli_query($link, $sql);
 				if(mysqli_num_rows($query) == 1) {
 					// User exists

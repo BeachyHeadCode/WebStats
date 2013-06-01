@@ -252,7 +252,7 @@ if(isset($_SESSION['pml_userid'])){
 		</p>
 		<?php
 			if (iptracker === true) {
-					echo"<span class='onlineWidget'><div class='panel'><img class='preloader1' src='images/ajax-loaders/preloader.gif' alt='Loading..' width='22' height='22' /></div>Users Online:&nbsp;".$totalOnline."</span>&nbsp;&nbsp;Unique Views:&nbsp;".$row[2]."&nbsp;&nbsp;Total Views:&nbsp;".$row[0]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$row[1];
+					echo"<span class='onlineWidget'><div class='panel'><img class='preloader1' src='images/ajax-loaders/preloader.gif' alt='Loading..' width='22' height='22' /></div>Users Online:&nbsp;".$totalOnline."</span>&nbsp;&nbsp;Unique Views:&nbsp;".$row[2]."&nbsp;&nbsp;Total Views:&nbsp;".$row[1]."&nbsp;&nbsp;Total Bot Views:&nbsp;".$row[0];
 					if(isset($date[0]))
 						echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
 					else { echo '';}

@@ -40,7 +40,7 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 	$port = $_SESSION['MySQLPort'];
 	$user = $_SESSION['MySQLUserName'];
 	$pass = $_SESSION['MySQLPassword'];
-	$db = $_SESSION['MySQLDatabase'];
+	$dbname = $_SESSION['MySQLDatabase'];
 	//$DB = new DBConfig();
 	//$DB -> config();	
 	//$link = $DB -> conn($host, $user, $pass, $db, true);
