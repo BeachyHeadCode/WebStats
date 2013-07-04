@@ -40,22 +40,24 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 	$port = $_SESSION['MySQLPort'];
 	$user = $_SESSION['MySQLUserName'];
 	$pass = $_SESSION['MySQLPassword'];
-	$dbname = $_SESSION['MySQLDatabase'];
-	//$DB = new DBConfig();
-	//$DB -> config();	
-	//$link = $DB -> conn($host, $user, $pass, $db, true);
-	$link = mysqli_connect($host.":".$port, $user, $pass);
+	$db = $_SESSION['MySQLDatabase'];
+	
+	if($persistent === true) {
+		$link = mysqli_connect('p:'. $host, $user, $pass, $db, $port);
+	} else {
+		$link = mysqli_connect($host, $user, $pass, $db, $port);
+	}
 	// Check connection
 	if (mysqli_connect_errno()) {
-		ws_die("Failed to connect to MySQL: " . mysqli_connect_error(), "MySQL Error");
+		ws_die("Failed to connect to MySQL: Error No. " . mysqli_connect_errno() . ": " . mysqli_connect_error(), "MySQL Error");
 	}
-	if(!mysqli_select_db($link, $dbname)) {
-		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$dbname."`")) {
+	if(!mysqli_select_db($link, $db)) {
+		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$db."`")) {
 			print "<script type=\"text/javascript\">";
 			print "alert('Database created :)')";
 			print "</script>";
-			mysqli_select_db($link, $dbname);
-		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$dbname."' and retry.","MySQL Error");}
+			mysqli_select_db($link, $db);
+		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$db."' and retry.","MySQL Error");}
 	}
 	$username = $_SESSION['Username'];
 	$password = $_SESSION['Password'];		
@@ -113,26 +115,26 @@ if(!empty($_POST["SubmitDatabase"])) {
 	$port = $_POST['MySQLPort'];
 	$user = $_POST['MySQLUserName'];
 	$pass = $_POST['MySQLPassword'];
-	$dbname = $_POST['MySQLDatabase'];
-	
-	//$DB = new DBConfig();
-	//$DB -> config();	
-	//$DB -> conn($host, $user, $pass, $db, true);
-	$link = mysqli_connect($host.":".$port, $user, $pass);
+	$db = $_POST['MySQLDatabase'];
+
+	if($persistent === true) {
+		$link = mysqli_connect('p:'. $host, $user, $pass, $db, $port);
+	} else {
+		$link = mysqli_connect($host, $user, $pass, $db, $port);
+	}
 	// Check connection
 	if (mysqli_connect_errno()) {
-		ws_die("Failed to connect to MySQL: " . mysqli_connect_error(), "MySQL Error");
+		ws_die("Failed to connect to MySQL: Error No. " . mysqli_connect_errno() . ": " . mysqli_connect_error(), "MySQL Error");
 	}
-	if(!mysqli_select_db($link, $dbname)) {
-		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$dbname."`")) {
+	if(!mysqli_select_db($link, $db)) {
+		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$db."`")) {
 			print "<script type=\"text/javascript\">";
 			print "alert('Database created :)')";
 			print "</script>";
-			mysqli_select_db($link, $dbname);
-		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$dbname."' and retry.","MySQL Error");}
+			mysqli_select_db($link, $db);
+		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$db."' and retry.","MySQL Error");}
 	}
-	mysqli_close($link);
-	//$DB -> close();	
+	mysqli_close($link);	
 }
  //Load the class
 	$ipLite = new ip2location_lite;
