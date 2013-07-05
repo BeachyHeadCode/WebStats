@@ -170,15 +170,14 @@ function display_header() {
 	<meta content='minecraft stats' name='description' />
 	<meta content='minecraft, stats, bukkit, mrplow, cky2250' name='keywords' />
 	<title><?php echo ('WebStats &rsaquo; Setup Configuration File'); ?></title>
-	<link rel="SHORTCUT ICON" type='image/x-icon' href="../../images/favicon.ico" />
+	<link rel="SHORTCUT ICON" type='image/x-icon' href="../images/favicon.ico" />
 	<link rel="apple-touch-icon" href="images/favicon.png" />
 
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" href="../../stylesheets/foundation.css">
-	<link rel="stylesheet" href="../../stylesheets/app.css">
+	<link rel="stylesheet" href="../stylesheets/foundation.css" />
 
-	<script src="../../javascripts/modernizr.foundation.js"></script>
-	<script src="../../javascripts/util.js"></script>
+	<script src="../javascripts/modernizr.foundation.js"></script>
+	<script src="../javascripts/util.js"></script>
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -211,7 +210,7 @@ function display_header() {
 			//var a=document.getElementById('customDropdown background').value;
 			var a = document.getElementById("customDropdown background");
 			var b = a.options[a.selectedIndex].text;
-			var c="../../images/background/bg_";
+			var c="../images/background/bg_";
 			var d=".png";
 			var e=c.concat(b,d);
 			log(e);
@@ -431,8 +430,8 @@ function display_header() {
 			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js" ></script>
 		</asideleft>
 		<!-- Included JS Files (Compressed) -->
-		<script src="../../javascripts/foundation.min.js"></script>
+		<script src="../javascripts/foundation.min.js"></script>
 		<!-- Initialize JS Plugins -->
-		<script src="../../javascripts/app.js"></script>
+		<script src="../javascripts/app.js"></script>
 	</body>
 </html>

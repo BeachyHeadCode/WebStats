@@ -102,11 +102,9 @@ for ($i=0;$i<=sizeof($commits);$i++){
 	<h4>Info</h4>
 	<a href="http://www.xml-sitemaps.com/">Create a Sitemap to help google.</a><br />
 <?php
-	if (function_exists('imagecreatetruecolor')) {} else { echo "PHP GD is not installed or corrupt: <br />For linux users, 'sudo apt-get install php5-gd' then restart apache.";}
-	if (function_exists('curl_init')) {} else { echo "PHP Curl is not installed or corrupt: <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.";}	
-	if(ini_get('variables_order') == "GPCS"){
-		echo 'Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';
-	}
+	if (function_exists('imagecreatetruecolor')) {} else {echo "<br /><b>PHP GD is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-gd' then restart apache.<br />";}
+	if (function_exists('curl_init')) {} else {echo "<br /><b>PHP Curl is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.<br />";}	
+	if(ini_get('variables_order') == "GPCS"){echo '<br />Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';}
 ?>
 </p>
 <h3><a href="<?php echo $repoURL; ?>">Latest Github Activity for <?php echo $repoName; ?></a></h3>

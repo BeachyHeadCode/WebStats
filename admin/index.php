@@ -40,8 +40,7 @@ $_SESSION['mode']=$_GET['mode'];
 	<link rel="apple-touch-icon" href="../images/favicon.png" />
   
 	<!-- Included CSS Files (Uncompressed) -->
-	<link rel="stylesheet" type="text/css" href="../stylesheets/foundation.css">
-	<link rel="stylesheet" type="text/css" href="../stylesheets/app.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/foundation.css" />
 
 	<script type="text/javascript" src="../javascripts/modernizr.foundation.js"></script>
 
