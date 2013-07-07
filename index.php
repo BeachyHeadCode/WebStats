@@ -146,7 +146,7 @@ if(isset($_SESSION['pml_userid'])) {
 ?>
 <div class="admin-bar">
 	<ul>
-		<li class="name"><h1><a href="/admin">Admin Page</a></h1></li>
+		<li class="name"><h1><a href="admin">Admin Page</a></h1></li>
 		<li class="toggle-topbar"><a href="#"></a></li>
 	</ul>
 </div>

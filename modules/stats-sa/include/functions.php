@@ -51,9 +51,9 @@ function get_user($sort) {
 function get_user_stats($sort, $start, $end) {
 	global $link;
 	if(!isset($sort)) {
-		$sort = 'NAME';
+		$sort = 'name';
 	}
-	$deadline = time() - WS_CONFIG_DEADLINE;
+	//$deadline = time() - WS_CONFIG_DEADLINE;
 	$sortkey = "ORDER BY `$sort`";
 	$query = mysqli_query($link, "SELECT `$sort` FROM `".WS_CONFIG_STATS."_players` ".$sortkey." LIMIT ".$start.",".$end."");
 	$time = 0;
@@ -467,7 +467,7 @@ function set_creature_damagedealt_table($creature, $search) {
 }
 
 // Blacklist for inactive users (using WS_CONFIG_DEADLINE)
-function blacklist() {
+ function blacklist() {
 	global $link;
 	$marker = '~*~';
 	$player_all = get_user('player');

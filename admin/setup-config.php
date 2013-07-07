@@ -326,10 +326,19 @@ function display_header() {
 						<li><?php echo( 'Database host' ); ?></li>
 					</ol>
 					<p><strong><?php echo( "If for any reason this automatic file creation doesn't work, don't worry. All this does is fill in the database information to a configuration file. You may also simply open <code>config-sample.php</code> in a text editor, fill in your information, and save it as <code>config.php</code>." ); ?></strong></p>
-					<p><?php echo( "In all likelihood, these items were supplied to you by your Web Host. If you do not have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;<br /><br /><b><i>Do note that text within .htaccess in the 'WebStats' folder needs to be changed to your domain name to prevent <a href='http://www.davidairey.com/stop-image-theft-hotlinking-htaccess/'>hotlinking.</a></i></b>" ); ?></p>
+					<p>
+						<?php 
+							echo( "In all likelihood, these items were supplied to you by your Web Host. If you do not have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;<br /><br /><b><i>Do note that text within .htaccess in the 'WebStats' folder needs to be changed to your domain name to prevent <a href='http://www.davidairey.com/stop-image-theft-hotlinking-htaccess/'>hotlinking.</a></i></b>" );
+							echo '<hr />';
+							if (!function_exists('imagecreatetruecolor')) {echo "<br /><b>PHP GD is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-gd' then restart apache.<br />";}
+							if (!function_exists('curl_init')) {echo "<br /><b>PHP Curl is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.<br />";}	
+							if (ini_get('variables_order') == "GPCS") {echo '<br />Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';}
+						?>
+					</p>
+					
 					<p class="step">
 						<a href="setup-config.php?step=1<?php if ( isset( $_GET['noapi'] ) ) echo '&amp;noapi'; ?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a>
-						<a href="setup-config.php?step=3<?php echo '&amp;noapi'; ?>" class="button"><?php echo( 'I&#8217;ll pass and lose a lot of options' ); ?></a>
+						<a href="setup-config.php?step=3<?php echo '&amp;noapi'; ?>" class="button"><?php echo( 'Skip creating admin page.' ); ?></a>
 					</p>
 			<?php	
 			break;
@@ -402,7 +411,7 @@ function display_header() {
 				</script>
 				<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 				<p>
-					<a href="https://mrplows-server.tk" target="_blank">mrplows-server.tk</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v5.1</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
+					<a href="https://mrplows-server.tk" target="_blank">mrplows-server.tk</a> &#169;<a href="http://adf.ly/5xvDw">Webstatistic Install v5.2</a> for <a href="http://adf.ly/5xvG7">Minecraft</a>
 					<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
 				</p>
 			</footer>
