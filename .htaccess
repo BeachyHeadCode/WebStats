@@ -2,12 +2,16 @@
 AddHandler php5-script .php .html
 AddHandler php-cgi .php
 
-ErrorDocument 404 assets/404.html
+ErrorDocument 404 '<h1>Error 404: Page Not Found</h1><h4>Please Play Minecraft While you think about where to go.</h4><h4>Don&rsquo;t hit update.</h4><applet code="net.minecraft.Launcher" archive="https://s3.amazonaws.com/MinecraftDownload/launcher/MinecraftLauncher.jar?v=1367502965000" codebase="/game/" width="740" height="430"><param name="separate_jvm" value="true"><param name="java_arguments" value="-Xmx1024M -Xms1024M -Dsun.java2d.noddraw=true -Dsun.awt.noerasebackground=true -Dsun.java2d.d3d=false -Dsun.java2d.opengl=false -Dsun.java2d.pmoffscreen=false"><param name="userName" value="404 Page"><param name="latestVersion" value="1367502965000"><param name="sessionId" value=""><param name="downloadTicket" value=""></applet>	<footer>Mojang &copy; 2009-2013. "Minecraft" is a trademark of Notch Development AB &mdash; <a href="http://minecraft.net/terms" target="_blank">Terms of Use</a></footer>'
+
+<ifmodule mod_rewrite.c>
 
 RewriteEngine On
 RewriteCond %{HTTP_REFERER} !^http://(.+\.)?mrplows-server\.tk/ [NC]
 RewriteCond %{HTTP_REFERER} !^$
 RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/qX4w7.gif [L]
+
+</ifmodule>
 
 php_value display_errors off
 php_value html_errors off

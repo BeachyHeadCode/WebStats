@@ -14,11 +14,9 @@ include_once ROOT . 'include/functions.php';
 require_once ROOT . "include/logonfunctions.php";
 if($_GET['LOGOUT'] == 'TRUE')
 	require_once 'logout.php';
-if(!isset($_SESSION['pml_userid'])) {
+if(!isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank'] >='2') {
 	require_once 'login.php';
-
-}
-else {
+} elseif {
 if(empty($_GET['mode'])) $_GET['mode'] = 'home';
 $_SESSION['mode']=$_GET['mode'];
 ?>

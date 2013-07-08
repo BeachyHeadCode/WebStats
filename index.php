@@ -122,7 +122,7 @@ echo <<<END
 END;
 }
 $ip=$_SERVER['REMOTE_ADDR'];
-if(isset($_SESSION['pml_userid'])) {
+if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 ?>
 <div class="admin-bar">
 	<ul>

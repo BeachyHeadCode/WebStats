@@ -17,8 +17,9 @@ function pml_checklogin($goto,$status = "0") {
 	if(isset($_SESSION['pml_userid'])) {
 		if($_SESSION['pml_userrank'] >= $status) {
 			// User logged in with right rank; everything OK, continue
-			$sql_updateonline = "UPDATE `users` SET `lastactive` = NOW() WHERE `id` = '".$_SESSION['pml_userid']."' LIMIT 1";
-			mysql_query($sql_updateonline);
+			$link = mysqli_connect(WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
+			mysqli_query($link, "UPDATE `users` SET `lastactive` = NOW() WHERE `id` = '".$_SESSION['pml_userid']."' LIMIT 1");
+			mysqli_close($link);
 		} else {
 			header("Location: ".$goto);
 		}
