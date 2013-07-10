@@ -26,7 +26,6 @@ define('INSTALLING', true);
 error_reporting(0);
 
 define('ABSPATH', dirname(dirname(__FILE__)).'/');
-define('WPINC', 'include');
 require_once("../include/functions.php");
 
 session_start();
@@ -34,7 +33,6 @@ session_start();
 if(!empty($_POST["SubmitUserAndPass"])) {
 	$_SESSION['Username']=$_POST['Username'];
 	$_SESSION['Password']=$_POST['Password'];
-	
 
 	$host = $_SESSION['MySQLHost'];
 	$port = $_SESSION['MySQLPort'];
@@ -73,7 +71,7 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 	}
 	if (!mysqli_query($link, $userinsert)){
 		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS `users` (
-	`ID` INT(11) NOT NULL AUTO_INCREMENT,
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(50) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Username',
 	`password` VARCHAR(32) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'Password',
 	`IP` VARCHAR(40) CHARACTER SET `ascii` COLLATE `ascii_general_ci` NOT NULL COMMENT 'This is very accurate, since it is decided by PHP. It is unknown to wether it will record IPv6.',
@@ -94,7 +92,6 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 		}
 	}
 	mysqli_close($link);
-	//$DB -> close();
 }
 if(!empty($_POST["reload"])) {
 	session_unset();
