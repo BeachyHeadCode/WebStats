@@ -334,6 +334,28 @@ function display_header() {
 							if (!function_exists('curl_init')) {echo "<br /><b>PHP Curl is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.<br />";}	
 							if (ini_get('variables_order') == "GPCS") {echo '<br />Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';}
 						?>
+						<br />
+						You will also need to edit the .htaccess file in the root of this project.<br />
+						<h4>Versions of Apache only:</h4>
+						<b>Linux:</b> Change your /etc/apache2/sites-enabled/000-default settings within — may look like this.<br />
+						<b>Windows:</b> locate your apache 
+						<textarea name="comments" cols="60" rows="6">
+<Directory /var/www/>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride none
+	Order allow,deny
+	allow from all
+</Directory>
+						</textarea>
+						<b>and change to...</b>
+						<textarea name="comments" cols="60" rows="6">
+<Directory /var/www/>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride all
+	Order allow,deny
+	allow from all
+</Directory>
+						</textarea>					
 					</p>
 					
 					<p class="step">

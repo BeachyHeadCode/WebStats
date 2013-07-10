@@ -1,4 +1,4 @@
-<!-- http://foundation.zurb.com/docs/navigation.php -->
+<!-- http://foundation.zurb.com/old-docs/f3/navigation.php -->
 <!-- add if statment if you are on the current page to then have it selected on the menu -->
 <div class="row">
 	<div class="twelve columns">
