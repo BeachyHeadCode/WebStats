@@ -16,7 +16,7 @@ if(($stats_control === true) and (pluginconfigstatusstats === true)) {
 	<div class="content_headline" style="width:748px;">
 		<a href="index.php?mode=server-stats"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=server-stats&search=true"><?php echo translate('var2'); ?></a>
 	</div>
-	<div style="clear: both; width: 748px; height: 25px;">&nbsp;</div>
+	<div style="clear: both; height: 25px;">&nbsp;</div>
 	<dl class="tabs">
 		<dd class="active"><a href="#Player">Player Kills/Deaths</a></dd>
 		<dd><a href="#Blocks">Destroyed/Placed Blocks</a></dd>
@@ -28,37 +28,42 @@ if(($stats_control === true) and (pluginconfigstatusstats === true)) {
 		<li class="active" id="PlayerTab">
 			<table>
 				<tr>
-					<td style="min-width:363px;"><?php echo translate('var21');?>:</td>
-					<td style="min-width:363px;"><?php echo translate('var22');?>:</td>
+					<td><?php echo translate('var21');?>:</td>
+					<td><?php echo translate('var22');?>:</td>
 				</tr>
 				<tr>
-					<td style="min-width:373px;"><?php echo (set_server_didkill_table($_GET['search'])); ?></td>
-					<td style="min-width:373px;"><?php echo (set_server_getkill_table($_GET['search'])); ?></td>
+					<td><?php echo (set_server_didkill_table($_GET['search'])); ?></td>
+					<td><?php echo (set_server_getkill_table($_GET['search'])); ?></td>
 				</tr>
 			</table>
 		</li>
+		<?php if(($statslolmewn_control === true) and (pluginconfigstatusstatslolmewnstats === true)) {?>
+		<li id="BlocksTab">   
+			<?php echo (set_server_destroy_build_table($_GET['search'])); ?>
+		</li>
+		<?php } else {?>
 		<li id="BlocksTab">   
 			<table>
 				<tr>
-					<td style="min-width:363px;"><?php echo translate('var8');?>:</td>
-					<td style="min-width:363px;"><?php echo translate('var9');?>:</td>
+					<td><?php echo translate('var8');?>:</td>
+					<td><?php echo translate('var9');?>:</td>
 				</tr>
 				<tr>
-					<td style="min-width:373px;"><?php echo (set_server_destroy_table($_GET['search']));?></td>
-					<td style="min-width:373px;"><?php echo (set_server_build_table($_GET['search']));?></td>
+					<td><?php echo (set_server_destroy_table($_GET['search']));?></td>
+					<td><?php echo (set_server_build_table($_GET['search']));?></td>
 				</tr>
 			</table>
 		</li>
-		<?php if(($stats_control === true) and (pluginconfigstatusstats === true)) {?>
+		<?php } if(($stats_control === true) and (pluginconfigstatusstats === true)) {?>
 		<li id="DamageTab">
 			<table>                
 				<tr>
-					<td style="min-width:363px;"><?php echo translate('var11');?>:</td>
-					<td style="min-width:363px;"><?php echo translate('var10');?>:</td>
+					<td><?php echo translate('var11');?>:</td>
+					<td><?php echo translate('var10');?>:</td>
 				</tr>					
 				<tr>
-					<td style="min-width:373px;"><?php echo (set_server_damagedealt_table($_GET['search']));?></td>
-					<td style="min-width:373px;"><?php echo (set_server_damagereceived_table($_GET['search']));?></td>
+					<td><?php echo (set_server_damagedealt_table($_GET['search']));?></td>
+					<td><?php echo (set_server_damagereceived_table($_GET['search']));?></td>
 				</tr>
 			</table>
 		</li>

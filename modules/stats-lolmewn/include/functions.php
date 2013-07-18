@@ -160,11 +160,11 @@ function set_player_details_table($player) {
 
 function set_player_destroy_build_table($player) {
 	global $link;
-	$query = mysqli_query($link, "SELECT sbo.blockID, q1.amn, q2.brk FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' GROUP BY `blockID` ORDER BY `blockID` asc) as sbo LEFT JOIN (SELECT `blockID`, SUM(`amount`) as amn FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' AND break = 0 GROUP BY blockID ORDER BY blockID asc) as q1 ON sbo.blockID = q1.blockID LEFT JOIN (SELECT blockID, SUM(`amount`) as brk FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' AND `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as q2 ON sbo.blockID = q2.blockID");
-	while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
-		$output .= '<tr><td><img src="images/icons/'.$row['blockID'].'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row['blockID'].'"  >'.translate(''.$row['blockID'].'').':</a></td>';	
-		$output .= '<td>'.$row['brk'].'</td>';
-		$output .= '<td>'.$row['amn'].'</td></tr>';
+	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q1`.`amn`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' GROUP BY `blockID` ORDER BY `blockID` asc) as sbo LEFT JOIN (SELECT `blockID`, SUM(`amount`) as amn FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' AND break = 0 GROUP BY blockID ORDER BY blockID asc) as q1 ON sbo.blockID = q1.blockID LEFT JOIN (SELECT blockID, SUM(`amount`) as brk FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' AND `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as q2 ON sbo.blockID = q2.blockID");
+	while($row = mysqli_fetch_array($query, MYSQLI_NUM)){
+		$output .= '<tr><td><img src="images/icons/'.$row[0].'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[2].'</td>';
+		$output .= '<td>'.$row[1].'</td></tr>';
 	}
 	return $output;
 }
@@ -175,7 +175,7 @@ function set_player_didkill_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
 	}
@@ -188,7 +188,7 @@ function set_player_getkill_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
 	}
@@ -413,12 +413,12 @@ function set_server_didkill_table($search) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `type`, SUM(`amount`) FROM `".WS_CONFIG_STATS."kill` GROUP BY `type` ".$search."");
 	$output = '';
+	$output .= '<table class="head_contentbox">';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
-		$output .= '</div>';
+		$output .= '<tr><td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[1].'</td></tr>';
 	}
+	$output .= '</table>';
 	return $output;
 }
 
@@ -426,57 +426,39 @@ function set_server_getkill_table($search) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `entity`, `cause`, SUM(`amount`) FROM `".WS_CONFIG_STATS."death` GROUP BY `entity` ".$search."");
 	$output = '';
+	$output .= '<table class="head_contentbox">';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2].'</div>';
-		$output .= '</div>';
+		$output .= '<tr><td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[2].'</td></tr>';
 	}
+	$output .= '</table>';
 	return $output;
 }
 
-function set_server_destroy_table($search) {
+function set_server_destroy_build_table($search) {
 	global $link;
-	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` GROUP BY `blockID` ORDER BY `blockID` asc) as `sbo` LEFT JOIN (SELECT `blockID`, SUM(`amount`) as `brk` FROM `".WS_CONFIG_STATS."block` WHERE `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as `q2` ON `sbo`.`blockID` = `q2`.`blockID`");
-	$output = '';
+	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q1`.`amn`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` GROUP BY `blockID` ORDER BY `blockID` asc) as sbo LEFT JOIN (SELECT `blockID`, SUM(`amount`) as amn FROM `".WS_CONFIG_STATS."block` WHERE break = 0 GROUP BY blockID ORDER BY blockID asc) as q1 ON sbo.blockID = q1.blockID LEFT JOIN (SELECT blockID, SUM(`amount`) as brk FROM `".WS_CONFIG_STATS."block` WHERE `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as q2 ON sbo.blockID = q2.blockID");
+	$output = '<table class="head_contentbox">';
+	$output .= '<tr><td></td><td>'.translate('var8').':</td><td>'.translate('var9').':</td></tr>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$image = str_replace(":", "-", $row[0]); 
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
+		$output .= '<tr><td><img src="images/icons/'.str_replace(":", "-", $row[0]).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[2].'</td>';
+		$output .= '<td>'.$row[1].'</td></tr>';
 	}
-	return $output;
-}
-
-function set_server_build_table($search) {
-	global $link;
-	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q1`.`amn` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` GROUP BY `blockID` ORDER BY `blockID` asc) as `sbo` LEFT JOIN (SELECT `blockID`, SUM(`amount`) as `amn` FROM `".WS_CONFIG_STATS."block` WHERE `break` = 0 GROUP BY `blockID` ORDER BY `blockID` asc) as `q1` ON `sbo`.`blockID` = `q1`.`blockID`");
-	$output = '';
-	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$image = str_replace(":", "-", $row[0]); 
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
-		$output .= "\n";
-		$output .= '</div>';
-	}	
+	$output .= '</table>';
 	return $output;
 }
 
 function set_material_destroy_table($material, $search) {
 	global $image_control, $link;
-	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."block` WHERE `blockID` = '".mysql_real_escape_string($material)."' AND `break` = 1 GROUP BY `blockID` ORDER BY `blockID` ".$search);
+	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."block` WHERE `blockID` = '".mysqli_real_escape_string($link, $material)."' AND `break` = 1 GROUP BY `player` ORDER BY `player` ".$search);
 	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {		
 		if($image_control == true) {
 			$image = small_image($row[0]);
 		}
-		$output .= '<tr>';
-		$output .= '<td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
-		$output .= '<td style="width:100px;">'.$row[1].'</td>';
-		$output .= '</tr>';
+		$output .= '<tr><td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
+		$output .= '<td style="width:100px;">'.$row[1].'</td></tr>';
 	}
 	$output .= '</table>';
 	return $output;
@@ -484,16 +466,14 @@ function set_material_destroy_table($material, $search) {
 
 function set_material_build_table($material, $search) {
 	global $image_control, $link;
-	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."block` WHERE `blockID` = '".mysql_real_escape_string($material)."' AND `break` = 0 GROUP BY `blockID` ORDER BY `blockID` ".$search);
+	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."block` WHERE `blockID` = '".mysqli_real_escape_string($link, $material)."' AND `break` = 0 GROUP BY `player` ORDER BY `player` ".$search);
 	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		if($image_control == true) {
 			$image = small_image($row[0]);
 		}
-		$output .= '<tr>';
-		$output .= '<td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
-		$output .= '<td style="width:100px;">'.$row[1].'</td>';
-		$output .= '</tr>';
+		$output .= '<tr><td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
+		$output .= '<td style="width:100px;">'.$row[1].'</td></tr>';
 	}
 	$output .= '</table>';
 	return $output;
@@ -501,15 +481,15 @@ function set_material_build_table($material, $search) {
 
 function set_creature_damagereceived_table($creature, $search) {
 	global $image_control, $link;
-	$query = mysqli_query($link, "SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."player` WHERE `stat` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
+	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."death` WHERE `entity` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
 	$output = '';
-	while($row = mysqli_fetch_array($query)) {
+	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		if($image_control == true) {
-			$image = small_image($row['player']);
+			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
 	} 
@@ -518,15 +498,15 @@ function set_creature_damagereceived_table($creature, $search) {
 
 function set_creature_damagedealt_table($creature, $search) {
 	global $image_control, $link;
-	$query = mysqli_query($link, "SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."player` WHERE stat = '".encrypt($creature)."' GROUP BY player ".$search."");
+	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."kill` WHERE `type` = '".encrypt($creature)."' GROUP BY `player` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		if($image_control == true) {
-			$image = small_image($row['player']);
+			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
 		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row['value'].'</div>';
+		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
 	} 
 	return $output;
