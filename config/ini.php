@@ -31,11 +31,11 @@
 		$mineconomy_control = true;
 	}
 	//END CURRENCY PLUGIN TYPES -----------
-	if(file_exists('modules/show-player/include/functions_achievements.php')){
+	if(file_exists('modules/show-player/include/functions_achievements.php')) {
 		$achievements_control = true;
 	}
 	//START PLAYER IMAGES TYPES-----------------------------------------------
-	if(file_exists('include/player-image/index.php')) {
+	if(file_exists('include/player-image/large_player_image.php')) {
 		$image_control = true;
 	}
 	if(file_exists('include/player-image/full_player_image.php')){

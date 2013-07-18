@@ -135,4 +135,5 @@ define ('internetprotest', true);                   //Internet Protest info for 
 
 //ADMIN PAGE SETTINGS
 define('iptracker', false);
+define('ads', true);
 ?>
