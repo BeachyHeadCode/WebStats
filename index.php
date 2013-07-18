@@ -151,12 +151,12 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 	</ul>
 </div>
 <?php } ?>
-	<section id="sidebar" role="complementaryleft">
+	<?php if(ads === true) {?><section id="sidebar" role="complementaryleft">
 		<div onmousedown="return false;" onselectstart="return false;">
 			<b>Ads</b>
 		</div>
 		<?php echo (WS_GOOGLE_ASIDE);?>
-	</section>
+	</section><?php }?>
 <!-- SEARCH BAR -->
 <div id="main" role="main" class="row" style="padding-bottom:50px"><!--Main Wrapper Start-->
 	<div class="twelve columns centered" style="min-width:780px">
@@ -234,8 +234,8 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 		</div>
 	</section>
 	<footer class="row footer" style="clear:both">
-		<div role="footerAD"><?php echo (WS_GOOGLE_FOOTER); ?></div>
-		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div>
+		<?php if(ads === true) { ?><div role="footerAD"><?php echo (WS_GOOGLE_FOOTER); ?></div>
+		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div><?php }?>
 		<p><em>
 				<a target="_blank" href="https://mrplows-server.tk">mrplows-server.tk</a> &#169;<a target="_blank" href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a target="_blank" href="https://minecraft.net">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
@@ -261,13 +261,14 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 		<?php if($search_control == true && WS_CONFIG_SEARCH_BAR === true)include('include/search/index.php'); ?>
 		</div>
 		
-		<div onmousedown="return false;" onselectstart="return false;" role="complementaryright">
+		<?php if (internetprotest === true && ads === true) {?><div onmousedown="return false;" onselectstart="return false;" role="complementaryright">
 		<?php if (internetprotest === true) {?>
 			<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/banner_right.png" alt="Member of The Internet Defense League" /></a>
 		<?php }?>
+			<?php if(ads === true) {?>
 			<b>Ads</b>
-			<?php echo (WS_GOOGLE_ASIDE);?>
-		</div>
+			<?php echo (WS_GOOGLE_ASIDE);}?>
+		</div><?php }?>
 </section>
 	<!-- Included JS Files (Compressed) -->
 	<script src="javascripts/foundation.min.js"></script>

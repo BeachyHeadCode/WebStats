@@ -2,7 +2,7 @@
 function addRecipeInfo(callback) {
 	$.ajax({
 		type: "GET",
-		url: "modules/recipe/include/recipes.xml", 
+		url: "include/recipe/include/recipes.xml", 
 		dataType: "xml",
 		success: function(xml) {	
 			$(xml).find('recipe').each(
@@ -30,7 +30,7 @@ function addRecipeInfo(callback) {
 function addBrewInfo(callback) {
 	$.ajax({
 		type: "GET",
-		url: "modules/recipe/include/brew.xml", 
+		url: "include/recipe/include/brew.xml", 
 		dataType: "xml",
 		success: function(xml) {	
 			$(xml).find('Brew').each(
@@ -53,7 +53,7 @@ function addBrewInfo(callback) {
 function addSmeltingInfo(callback) {
 	$.ajax({
 		type: "GET",
-		url: "modules/recipe/include/smelting.xml", 
+		url: "include/recipe/include/smelting.xml", 
 		dataType: "xml",
 		success: function(xml) {	
 			$(xml).find('SmeltingItem').each(
@@ -78,7 +78,7 @@ function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Mid
 			+ '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Topleft + '" style="cursor:url(images/cursors/hover.cur),auto;"><img src="images/icons/' + Topleft + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>'
 			+ '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Top + '" style="cursor:url(images/cursors/hover.cur),auto;"><img src="images/icons/' + Top + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>'
 			+ '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Topright + '" style="cursor:url(images/cursors/hover.cur),auto;"><img src="images/icons/' + Topright + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>'
-			+ '<td rowspan="2" class="arrow"><img alt="Grid layout Arrow (small).png" src="modules/recipe/images/Grid_layout_Arrow_%28small%29.png"width="32" height="27" /></td>'
+			+ '<td rowspan="2" class="arrow"><img alt="Grid layout Arrow (small).png" src="include/recipe/images/Grid_layout_Arrow_%28small%29.png"width="32" height="27" /></td>'
 			+ '<td rowspan="3"><span class="grid2 output"><span class="border"><span><span id="'+Output+'" class="image"><a href="index.php?mode=material-stats&material=' + Output + '" style="cursor:url(images/cursors/hover.cur),auto;" ><img src="images/icons/' + Output + '.png" width="32px" height="32px" border="0" ></a><span class="number">' + NumberOfOutput + '</span></span></span></span></span></td>'
 		+ '</tr><tr>'
 			+ '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Left + '" style="cursor:url(images/cursors/hover.cur),auto;"><img src="images/icons/' + Left + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>'
@@ -96,12 +96,12 @@ function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Mid
 function addBrewItem(Output, NumberOfOutput, MainInput, Input1, Input2, Input3) {
 	$('<table cellpadding="0" cellspacing="0" class="grid-Brewing_Stand" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody></tbody></table>').html(
 		'<tr>'
-			+ '<td class="bubbles"><img alt="Grid layout Brewing Bubbles.gif" src="modules/recipe/images/brewing_bubbles.gif" width="24px" height="57px" border="0" /></td>'
+			+ '<td class="bubbles"><img alt="Grid layout Brewing Bubbles.gif" src="include/recipe/images/brewing_bubbles.gif" width="24px" height="57px" border="0" /></td>'
 			+ '<td class="input"><span class="grid2"><span class="border"><span><a href="index.php?mode=material-stats&material=' + MainInput + '" style="cursor:url(images/cursors/hover.cur),auto;" class="image"><img src="images/icons/' + MainInput + '.png" width="32px" height="32px" border="0" ></a></span></span></span></td>'
-			+ '<td class="arrow"><img alt="Grid layout Brewing Arrow.png" src="modules/recipe/images/Grid_layout_Brewing_Arrow.png"width="18" height="57"></td>'
+			+ '<td class="arrow"><img alt="Grid layout Brewing Arrow.png" src="include/recipe/images/Grid_layout_Brewing_Arrow.png"width="18" height="57"></td>'
 		+ '</tr><tr>'
 		+ '</tr><tr>'
-			+ '<td class="paths" colspan="3"><img alt="Grid layout Brewing Paths.png" src="modules/recipe/images/Grid_layout_Brewing_Paths.png" width="60" height="40" /></td>'
+			+ '<td class="paths" colspan="3"><img alt="Grid layout Brewing Paths.png" src="include/recipe/images/Grid_layout_Brewing_Paths.png" width="60" height="40" /></td>'
 		+ '</tr>'
 	)
 	.appendTo('#Recipe');

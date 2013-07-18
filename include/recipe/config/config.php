@@ -1,8 +1,5 @@
 <?php
 
-// Don't edit this entry!
-define('WS_CONFIG_NoMySQL', true);
-
 //	Start	recipe	declaration
 //format id of item output |topleft, topmiddle, topright|left, middle, right|bottomleft, bottom, bottomright| number of the output
 $recipe	=	array(
