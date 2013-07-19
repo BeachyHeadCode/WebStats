@@ -1,8 +1,4 @@
 <?php
-include("../../config/config.php");
-include("../../../language/en.php");
-ERROR_REPORTING(E_ALL);
-
 // VARS
 // $_SESSION['pml_userid']  ==> the PhpMyLogon userID (only if user is logged on)
 // $_SESSION['pml_userrank'] ==> the rank (0=defuser) of the PML user (only if logged on)
@@ -265,53 +261,6 @@ function pml_logout($goto = "") {
 	} else {
 		echo "<div class='row'>".translate('logout-nologin')."</div>";
 	}
-	
 	ob_end_flush();
-}
-
-// If you have pages that don't have to be secured, but you still want to let the user online in the who's online list, use this function.
-function pml_updateonline(){
-	// should update lastactive in the database
-	// just pml_updateonline()
-}
-
-function pml_forgotpass(){
-	// should give a form for filling in emailaddress and/or username
-	// then e-mail a new password to the user, and set the user to non-active
-	// maybe use something like pml_forgotpass('url_to_activate_page')
-}
-
-function pml_onlineusers(){
-	// view all online users
-	// something like: SELECT username FROM pml_table WHERE DATE_SUB(NOW(),INTERVAL 5 MINUTE) <= lastactive ORDER BY lastactive DESC
-	// or something like that
-	// just pml_onlineusers()
-}
-
-function pml_registrate(){
-	// Registration form
-	// check for already existing usernames, email
-	// Create an activation code
-	// E-mail user a link with the activation code 
-	// maybe use something like pml_registrate('url_to_activate_page')
-	
-}
-
-function pml_activate(){
-	// Page for activating after forgotpass or registrating
-	// set active = 1 and blank actcode
-	// just pml_activate()
-}
-
-function pml_options(){
-	// let user change his options (password, email (re-activate it for security reasons), ...)
-	// just pml_options()
-}
-
-function pml_admin(){
-	// check from config which rank is admin, and check if user is admin (security)
-	// search for an user (username/emailaddress)
-	// edit users
-	// delete users
 }
 ?>

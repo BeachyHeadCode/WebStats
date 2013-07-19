@@ -3,7 +3,12 @@
 // English
 function translate($item) {
 		$item = decrypt($item);
-		
+/* 		$xml = simplexml_load_file("language/items.xml");
+		foreach($xml->children() as $items) {
+			if ($item == $items->id) {
+				return $items->name;
+			}
+		} */
 		if ($item == "0")				{$item = "Air";}
 		elseif ($item == "1")			{$item = "Stone";}
 		elseif ($item == "2")			{$item = "Grass";}

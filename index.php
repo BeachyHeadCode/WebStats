@@ -197,10 +197,12 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 							<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 						</div>
 					</div>
+					<?php if(bookmark === true) {?>
 					<div class="four column">
 							<span>Drag to your bookmark bar:</span><br /><br />
 							<a id="bookmarklet" href="<?php echo curPageURL();?>" title="Drag to your bookmarks bar."><?php echo(WS_BOOKMARK);?></a>
 					</div>
+					<?php }?>
 				</div>
 			</div>			    
 	</header>

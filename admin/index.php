@@ -14,9 +14,9 @@ include_once ROOT . 'include/functions.php';
 require_once ROOT . "include/logonfunctions.php";
 if($_GET['LOGOUT'] == 'TRUE')
 	require_once 'logout.php';
-if(!isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank'] >='2') {
+if(!isset($_SESSION['pml_userid']) && ($_SESSION['pml_userrank'] >= '2')) {
 	require_once 'login.php';
-} elseif {
+} else {
 if(empty($_GET['mode'])) $_GET['mode'] = 'home';
 $_SESSION['mode']=$_GET['mode'];
 ?>
@@ -72,7 +72,7 @@ $_SESSION['mode']=$_GET['mode'];
 				<div class="two columns">
 					<div id="bookmarklet">
 						<div onmousedown="return false;" onselectstart="return false;" '.default.'>Drag to your bookmarks bar:<br /><br /></div>
-						<a href="<?php echo curPageURL();?>" <?php echo (hover);?>>ADMIN PAGE</a>
+						<a href="<?php echo curPageURL();?>">ADMIN PAGE</a>
 					</div>
 				</div>
 			</div>
