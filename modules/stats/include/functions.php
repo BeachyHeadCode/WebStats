@@ -6,6 +6,24 @@ function get_amount($user, $stat, $type) {
 	return $data[0];
 }
 
+/**
+ * This function will check whether the player is online or not.
+ *
+ * @since 3.0
+ *
+ * @param string $player Player name.
+ * @param string $lastlogout Name of last logout column.
+ * @param string $lastlogin Name of last login column.
+ * @param string $table Name of the table.
+ */
+function get_status($player, $lastlogout, $lastlogin, $table) {
+	if (get_amount($player, $lastlogout, $table) <= get_amount($player, $lastlogin, $table))
+		$status = '<span class="online">Online</span>';
+	else
+		$status = '<span class="offline">Offline</span>';
+	return $status;
+}
+
 function get_user($sort) {
 	global $link;
 	if(!isset($sort)) {$sort = 'player';}

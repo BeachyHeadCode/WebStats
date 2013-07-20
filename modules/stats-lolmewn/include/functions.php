@@ -6,6 +6,13 @@ function get_amount($user, $stat, $location) {
 	return $data[0];
 }
 
+function get_amount_break_place_sum($user, $type) {
+	global $link;
+	$query = mysqli_query($link, "SELECT SUM(`amount`) FROM `".WS_CONFIG_STATS."block` WHERE `player`='$user' AND `break`='$type'");
+	$data = @mysqli_fetch_array($query, MYSQLI_NUM);
+	return $data[0];
+}
+
 function get_amount_sum($user, $stat, $location) {
 	global $link;
 	$query = mysqli_query($link, "SELECT SUM(`$stat`) FROM `".WS_CONFIG_STATS."$location` WHERE `player`='$user'");
@@ -23,12 +30,21 @@ function get_movement($user, $type) {
 		return $data[0];
 	}
 }
-	
-function get_amount_break_place_sum($user, $type) {
-	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`amount`) FROM `".WS_CONFIG_STATS."block` WHERE `player`='$user' AND `break`='$type'");
-	$data = @mysqli_fetch_array($query, MYSQLI_NUM);
-	return $data[0];
+
+/**
+ * This function will check whether the player is online or not.
+ *
+ * @since 3.2
+ *
+ * @param string $lastlogout Name of last logout column.
+ * @param string $lastlogin Name of last login column.
+ */
+function get_status($lastlogout, $lastlogin) {
+	if(strtotime($lastlogin) >= strtotime($lastlogout))
+		$status = '<span class="online">Online</span>';
+	else
+		$status = '<span class="offline">Offline</span>';
+	return $status;
 }
 
 function get_user($sort) {
@@ -71,7 +87,7 @@ function set_index_table($player, $pos) {
 	$output .= '<td>&nbsp;&nbsp;'.$image.'<a href="index.php?mode=show-player&user='.$player.'"  >'.$player.'</a></td>';
 	$output .= '<td>'.get_played(get_amount($player, "playtime", "player")).'</td>';
 	$output .= '<td>'.get_amount($player, "lastjoin", "player").'</td>';
-	$output .= '<td>'.get_status($player).'</td>';
+	$output .= '<td>'.get_status(get_amount($player, "lastleave", "player"), get_amount($player, "lastjoin", "player")).'</td>';
 	$output .= "</tr>";
 	return $output;
 }
@@ -134,7 +150,7 @@ function set_player_details_table($player) {
 				</tr>
 				<tr>
 					<td>'.translate("var15").':</td>
-					<td>'.get_status($player).'</td>
+					<td>'.get_status(get_amount($player, "lastleave", "player"), get_amount($player, "lastjoin", "player")).'</td>
 				</tr>
 				<tr>
 					<td>'.translate("var16").':</td>
@@ -172,26 +188,28 @@ function set_player_destroy_build_table($player) {
 function set_player_didkill_table($player, $search) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `type`, `amount` FROM `".WS_CONFIG_STATS."kill` WHERE `player`='".$player."'");
-	$output = '';
+	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
-		$output .= '</div>';
+		$output .= '<tr>';
+		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[1].'</td>';
+		$output .= '</tr>';
 	}
+	$output .= '</table>';
 	return $output;
 }
 
 function set_player_getkill_table($player, $search) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `entity`, `amount`, `cause` FROM `".WS_CONFIG_STATS."death` WHERE player='".$player."'");
-	$output = '';
+	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></div>';	
-		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
-		$output .= '</div>';
+		$output .= '<tr>';
+		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[1].'</td>';
+		$output .= '</tr>';
 	}
+	$output .= '</table>';
 	return $output;
 }
 
@@ -438,8 +456,8 @@ function set_server_getkill_table($search) {
 function set_server_destroy_build_table($search) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q1`.`amn`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` GROUP BY `blockID` ORDER BY `blockID` asc) as sbo LEFT JOIN (SELECT `blockID`, SUM(`amount`) as amn FROM `".WS_CONFIG_STATS."block` WHERE break = 0 GROUP BY blockID ORDER BY blockID asc) as q1 ON sbo.blockID = q1.blockID LEFT JOIN (SELECT blockID, SUM(`amount`) as brk FROM `".WS_CONFIG_STATS."block` WHERE `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as q2 ON sbo.blockID = q2.blockID");
-	$output = '<table class="head_contentbox">';
-	$output .= '<tr><td></td><td>'.translate('var8').':</td><td>'.translate('var9').':</td></tr>';
+	$output = '<table>';
+	$output .= '<tr><td>ID:</td><td>'.translate('var8').':</td><td>'.translate('var9').':</td></tr>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<tr><td><img src="images/icons/'.str_replace(":", "-", $row[0]).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[2].'</td>';

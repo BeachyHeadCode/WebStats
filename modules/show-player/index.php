@@ -155,12 +155,12 @@
 				<li id="PlayerTab">
 					<table style="margin: 0 auto;">
 						<tr>
-							<td style="min-width:363px;"><?php echo translate('var12');?>:</td>
-							<td style="min-width:363px;"><?php echo translate('var13');?>:</td>
+							<td><?php echo translate('var12');?>:</td>
+							<td><?php echo translate('var13');?>:</td>
 						</tr>
 						<tr>
-							<td style="min-width:373px;"><?php echo(set_player_didkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-							<td style="min-width:373px;"><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
+							<td><?php echo(set_player_didkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
+							<td><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
 						</tr>
 					</table>
 				</li>	
