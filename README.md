@@ -35,7 +35,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <ul>
 	<li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> ~ sets up everything for you.</li>
 	<li><a href="http://www.easyphp.org/">EasyPHP</a> ~ sets up everything for you.</li>
-	<li><a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plugin that seems to never brake, try it out.</li>
+	<li><a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plugin that seems to never define break, try it out.</li>
 </ul>
 					
 <h3>Installation</h3>
