@@ -24,16 +24,16 @@ if(iptracker === true) {
 	//Get locations
 	$locations = $ipLite->getCity($_SERVER['REMOTE_ADDR']);
 	//Getting the result
-	$location = $locations['countryCode'].",".$locations['regionName'].','.$locations['cityName'].','.$locations['zipCode'];
-	$country = $locations['regionName'];
+	$location    = $locations['countryCode'].",".$locations['regionName'].','.$locations['cityName'].','.$locations['zipCode'];
+	$country     = $locations['regionName'];
 	$countrycode = $locations['countryCode'];
-	$city = $locations['cityName'];
-	$ip = $_SERVER['REMOTE_ADDR'];
-	$hostname = $_SERVER['REMOTE_HOST'];
-	$referer = $_SERVER['HTTP_REFERER'];
-	$pageurl = curPageURL();
-	$today = date("D M j G:i:s T Y");
-	$hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+	$city        = $locations['cityName'];
+	$ip          = $_SERVER['REMOTE_ADDR'];
+	$hostname    = $_SERVER['REMOTE_HOST'];
+	$referer     = $_SERVER['HTTP_REFERER'];
+	$pageurl     = curPageURL();
+	$today       = date("D M j G:i:s T Y");
+	$hostname    = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 	if (!$country) {
 		$country='UNKNOWN';
 		$countrycode='XX';
