@@ -35,7 +35,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <ul>
 	<li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> ~ sets up everything for you.</li>
 	<li><a href="http://www.easyphp.org/">EasyPHP</a> ~ sets up everything for you.</li>
-	<li><a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plugin that seems to never brake, try it out.</li>
+	<li><a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plugin that seems to never break, try it out.</li>
 </ul>
 					
 <h3>Installation</h3>
@@ -88,4 +88,3 @@ This is using HTML5 in some areas, but the main areas are not so that everyone c
 </ul>
 
 **DOWNLOADING FROM ANY SOURCE, FOR COMMERCIAL USE IS PROHIBITED. IF YOU NEED THIS PROJECT FOR COMMERCIAL USE, YOU WILL NEED TO PURCHASE A LICENSE. BY DOWNLOADING THIS PROJECT YOU AGREE TO THESE TERMS.
-**I HAVE A LAWYER, IF THERE IS ANY PROBLEM.

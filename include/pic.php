@@ -39,7 +39,7 @@ imagecolortransparent($im, $white);
 $text = WS_OPTICAL_TITLE;
 
 
-$font = '../css/minecraft.ttf';
+$font = '../fonts/minecraft.ttf';
 
 //Text Width----------------------------------------------------------------------------------------
 $text_width = $font_width * strlen($text);
