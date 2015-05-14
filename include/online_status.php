@@ -33,10 +33,10 @@ function pingMineServ($domain, $port) {
     }
     return $status;
 }
-$status = pingDomain(MQ_SERVER_ADDR); //This Is To Get The Ping Of The Server - Only use if minecraft server is not hosted near web server. or would resualt in very low ping for everyone
+//$status = pingDomain(MQ_SERVER_ADDR); //This Is To Get The Ping Of The Server - Only use if minecraft server is not hosted near web server. or would resualt in very low ping for everyone
 $minecraftServer = pingMineServ(MQ_SERVER_ADDR, MQ_SERVER_PORT);
-//$status = pingDomain($_SERVER['REMOTE_ADDR']); //This Is To Get Ping Of The User - use if minecraft server is hosted on the web server.
-//echo $minecraftServer;
+$status = pingDomain($_SERVER['REMOTE_ADDR']); //This Is To Get Ping Of The User - use if minecraft server is hosted on the web server.
+
 if($status > 0 && $status <= 45 && $minecraftServer !== -1) {
 	$pingtext = 'Ping: '.$status;
 	$ping = 5;
