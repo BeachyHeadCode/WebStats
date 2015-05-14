@@ -23,9 +23,7 @@ function pml_checklogin($goto,$status = "0") {
 		// Check cookie
 		// Check cookie data with data in database
 		$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
-		
-		$sql = "SELECT * FROM `users` WHERE `id` = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
-		$query = mysqli_query($link, $sql);
+		$query = mysqli_query($link, "SELECT * FROM `users` WHERE `id` = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1");
 		if(mysqli_num_rows($query) == 1) {
 			// User exists
 			$row = mysqli_fetch_array($query);
@@ -41,6 +39,7 @@ function pml_checklogin($goto,$status = "0") {
 				if($cookie_pass == $_COOKIE['pml_usercode_cookie']) {
 					// Everything ok, create sessions
 					$_SESSION['pml_userid'] = $id;
+					$_SESSION['pml_username'] = $username;
 					$_SESSION['pml_userrank'] = $rank;
 					
 					header("Location: ".$_SERVER['REQUEST_URI']);
@@ -87,15 +86,12 @@ function pml_checklogin($goto,$status = "0") {
 function pml_login($todo = "",$action = "") {
 	ob_start();
 	if(!isset($_SESSION)) { exit(translate('sessionproblem')); }
-
 	$link = mysqli_connect('p:'.WS_MySQL_DBHOST, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, WS_MySQL_PORT);
-	
 	// Check if user is logged in
 	if(!isset($_SESSION['pml_userid'])) {
 		if(isset($_COOKIE['pml_userid_cookie'])) {
 			// Check cookie data with data in database
-			$sql = "SELECT `id`,`username`,`password`,`cookie_pass`,`actcode`,`rank` FROM `users` WHERE `id` = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1";
-			$query = mysqli_query($link, $sql);
+			$query = mysqli_query($link, "SELECT * FROM `users` WHERE `id` = '".$_COOKIE['pml_userid_cookie']."' LIMIT 1");
 			if(mysqli_num_rows($query) == 1) {
 				// User exists
 				$row = mysqli_fetch_array($query);
@@ -111,11 +107,9 @@ function pml_login($todo = "",$action = "") {
 					if($cookie_pass == $_COOKIE['pml_usercode_cookie']) {
 						// Everything ok, create sessions
 						$_SESSION['pml_userid'] = $id;
+						$_SESSION['pml_username'] = $username;
 						$_SESSION['pml_userrank'] = $rank;
-						
-						$sql_updateonline = "UPDATE `users` SET `lastactive` = NOW() AND `lastlogin` = NOW() WHERE `id` = '".$id."' LIMIT 1";
-						mysqli_query($link, $sql_updateonline);
-						
+						mysqli_query($link, "UPDATE `users` SET `lastactive` = NOW() AND `lastlogin` = NOW() WHERE `id` = '".$id."' LIMIT 1");
 						header("Location: ".$_SERVER['REQUEST_URI']);
 					} else {
 						// Incorrect password
@@ -134,14 +128,11 @@ function pml_login($todo = "",$action = "") {
 				setcookie("pml_usercode_cookie", "", time() - 3600);
 				header("Location: ".$_SERVER['REQUEST_URI']);
 			}
-		
 		}
-			
 		if(isset($_POST['submit'])) {
 			if($_POST['username'] != "" AND $_POST['password'] != "") {
 				// Check submitted data with data in database
-				$sql = "SELECT * FROM `users` WHERE `username` = '".$_POST['username']."' LIMIT 1";
-				$query = mysqli_query($link, $sql);
+				$query = mysqli_query($link, "SELECT * FROM `users` WHERE `username` = '".$_POST['username']."' LIMIT 1");
 				if(mysqli_num_rows($query) == 1) {
 					// User exists
 					$row = mysqli_fetch_array($query, MYSQLI_BOTH);
@@ -157,6 +148,7 @@ function pml_login($todo = "",$action = "") {
 						if($password_db == md5($_POST['password'])) {
 							// Everything ok, create sessions
 							$_SESSION['pml_userid'] = $id;
+							$_SESSION['pml_username'] = $username;
 							$_SESSION['pml_userrank'] = $rank;
 							if(isset($_POST['cookie'])) {
 								// Also create cookie
@@ -178,7 +170,6 @@ function pml_login($todo = "",$action = "") {
 								setcookie("pml_usercode_cookie", $cookie_pass, time() + 365 * 86400);
 							}
 							mysqli_query($link, "UPDATE `users` SET `lastactive` = NOW(),`lastlogin` = NOW() WHERE `id` = '".$id."' LIMIT 1") or trigger_error(mysqli_error($link));
-							
 							header("Location: ".$_SERVER['REQUEST_URI']);
 						} else {
 							// Incorrect password
@@ -191,8 +182,6 @@ function pml_login($todo = "",$action = "") {
 					// User doesn't exists
 					echo "<div class='row'>".translate('login-incorrect')."</div>";
 				}
-				
-				
 			} else {
 				echo "<div class='row'>".translate('login-forgotfield')."</div>";
 			}
@@ -232,7 +221,7 @@ function pml_login($todo = "",$action = "") {
 			} else {
 				echo "<div class='row'>".translate('functionproblem')."</div>";
 			}
-		}else{
+		} else {
 			echo "<div class='row'>".translate('login-already')."</div>";
 		}
 	}
@@ -252,7 +241,6 @@ function pml_logout($goto = "") {
 		}
 		session_unset();
 		session_destroy(); 
-		
 		if($goto == "") {
 			echo "<div class='row'>".translate('logout-ok')."</div>";
 		} else {

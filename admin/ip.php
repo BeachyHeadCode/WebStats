@@ -40,7 +40,7 @@ function get_IP_stats_order($sort, $start, $end, $link) {
 				$sortkey = "ORDER BY `pageview` DESC";
 			break;
 			case "datedesc";
-				$sortkey = "ORDER BY `date` DESC";
+				$sortkey = "ORDER BY `dt` DESC";
 			break;
 			case "IPasc";
 				$sortkey = "ORDER BY `IP` ASC";
@@ -61,7 +61,7 @@ function get_IP_stats_order($sort, $start, $end, $link) {
 				$sortkey = "ORDER BY `pageview` ASC";
 			break;
 			case "dateasc";
-				$sortkey = "ORDER BY `date` ASC";
+				$sortkey = "ORDER BY `dt` ASC";
 			break;
 		}
 	} else {

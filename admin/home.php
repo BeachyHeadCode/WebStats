@@ -59,7 +59,7 @@ function format_filesize($number, $decimals = 3, $force_unit = false, $dec_char 
 		$decimals = 0;
 	return number_format($number / pow(1024, $unit), $decimals, $dec_char, $thousands_char).' '.$units[$unit];
 }
-$username="cky2250";
+$username="MrPlow254";
 $repo = get_repo($username);//grabs the repo
 $commits = get_commits($repo, $username); //holds all the commits from the repo
 $downloads = get_downloads($repo, $username); //holds all the downloads from the repo

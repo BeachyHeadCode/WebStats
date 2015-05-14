@@ -12,7 +12,7 @@
 	<div class="row" style="width:675px; margin:0px auto;" id="Recipe">
 	<?php 
 		if($recipe_control == true) {
-			//include('include/recipe/index.php'); 
+			include('include/recipe/index.php'); 
 		}?>
 	</div>
 		<section class="twelve columns centered content_headline">
@@ -47,12 +47,29 @@ function addItemInfo(callback) {
 							  getValue(this, 'type'),
 							  getValue(this, 'name'),
 							  getValue(this, 'id'));
-				}						  
+				}
 			});
 			logInfo("Done!");
 			callback();
 		}
 	});
+}
+
+function addItemName(id) {
+	var name;
+	$.ajax({
+		type: "GET",
+		async: false,
+		url: "language/items.xml",
+		dataType: "xml",
+		success: function(xml) {	
+			$(xml).find('item').each(function() {
+				if(getValue(this, 'id') == id) {
+					name = getValue(this, 'name');
+				}
+			});
+		}
+	}); return name;
 }
 
 function addItem(description, added, type, name, id) {
@@ -66,6 +83,7 @@ function addItem(description, added, type, name, id) {
 	)
 	.appendTo('#name');
 }
+
 function addRecipeInfo(callback) {
 	$.ajax({
 		type: "GET",
@@ -89,6 +107,7 @@ function addRecipeInfo(callback) {
 					}
 				}
 			);
+			logInfo("Done!");
 			callback();
 		}
 	});
@@ -112,6 +131,7 @@ function addBrewInfo(callback) {
 					}
 				}
 			);
+			logInfo("Done!");
 			callback();
 		}
 	});
@@ -128,12 +148,12 @@ function addSmeltingInfo(callback) {
 					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>")) {
 					addSmeltingItem(getValue(this, 'Output'),
 							  getValue(this, 'NumberOfOutput'),
-							  getValue(this, 'MainInput'),
 							  getValue(this, 'Input1'),
 							  getValue(this, 'Input2'));
 					}
 				}
 			);
+			logInfo("Done!");
 			callback();
 		}
 	});
@@ -141,47 +161,47 @@ function addSmeltingInfo(callback) {
 
 function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Middle, Right, Bottomleft, Bottom, Bottomright) {
 	if(Topleft != '') {
-		Topleft = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Topleft + '"><img src="images/icons/' + Topleft + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Topleft = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Topleft + '" title="' + addItemName(Topleft) + '"><img src="images/icons/' + Topleft + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Topleft = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Top != '') {
-		Top = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Top + '"><img src="images/icons/' + Top + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Top = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Top + '" title="' + addItemName(Top) + '"><img src="images/icons/' + Top + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Top = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Topright != '') {
-		Topright = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Topright + '"><img src="images/icons/' + Topright + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Topright = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Topright + '" title="' + addItemName(Topright) + '"><img src="images/icons/' + Topright + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Topright = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Left != '') {
-		Left = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Left + '"><img src="images/icons/' + Left + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Left = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Left + '" title="' + addItemName(Left) + '"><img src="images/icons/' + Left + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Left = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Middle != '') {
-		Middle = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Middle + '"><img src="images/icons/' + Middle + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Middle = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Middle + '" title="' + addItemName(Middle) + '"><img src="images/icons/' + Middle + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Middle = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Right != '') {
-		Right = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Right + '"><img src="images/icons/' + Right + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Right = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Right + '" title="' + addItemName(Right) + '"><img src="images/icons/' + Right + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Right = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Bottomleft != '') {
-		Bottomleft = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Bottomleft + '"><img src="images/icons/' + Bottomleft + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Bottomleft = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Bottomleft + '" title="' + addItemName(Bottomleft) + '"><img src="images/icons/' + Bottomleft + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Bottomleft = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Bottom != '') {
-		Bottom = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Bottom + '"><img src="images/icons/' + Bottom + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Bottom = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Bottom + '" title="' + addItemName(Bottom) + '"><img src="images/icons/' + Bottom + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Bottom = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Bottomright != '') {
-		Bottomright = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Bottomright + '"><img src="images/icons/' + Bottomright + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
+		Bottomright = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Bottomright + '" title="' + addItemName(Bottomright) + '"><img src="images/icons/' + Bottomright + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
 		Bottomright = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
@@ -191,7 +211,7 @@ function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Mid
 			+ Top 
 			+ Topright 
 			+ '<td rowspan="2" class="arrow"><img alt="Grid layout Arrow (small).png" src="include/recipe/images/Grid_layout_Arrow_%28small%29.png"width="32" height="27" /></td>'
-			+ '<td rowspan="3"><span class="grid2 output"><span class="border"><span><span id="'+Output+'" class="image"><a href="index.php?mode=material-stats&material=' + Output + '" ><img src="images/icons/' + Output + '.png" width="32px" height="32px" border="0" ></a><span class="number">' + NumberOfOutput + '</span></span></span></span></span></td>'
+			+ '<td rowspan="3"><span class="grid2 output"><span class="border"><span><span id="'+Output+'" class="image"><a href="index.php?mode=material-stats&material=' + Output + '" title="' + addItemName(Output) + '"><img src="images/icons/' + Output + '.png" width="32px" height="32px" border="0" ></a><span class="number">' + NumberOfOutput + '</span></span></span></span></span></td>'
 		+ '</tr><tr>'
 			+ Left
 			+ Middle
@@ -221,27 +241,27 @@ function addBrewItem(Output, NumberOfOutput, MainInput, Input1, Input2, Input3) 
 
 function addSmeltingItem(Output, NumberOfOutput, Input1, Input2) {
 	if(Output != '') {
-		Output = '<td rowspan="3" class="output"><span class="grid2 output"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Output + '" title="' + Output + '" ><img alt="' + Output + '" src="images/icons/' + Output + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
+		Output = '<td rowspan="3" class="output"><span class="grid2 output"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Output + '" title="' + addItemName(Output) + '"><img alt="' + Output + '" src="images/icons/' + Output + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
 	} else {
 		Output = '<td rowspan="3" class="output"><span class="grid2 output"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Input1 != '') {
-		Input1 = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input1 + '" title="' + Input1 + '"><img alt="' + Input1 + '" src="images/icons/' + Input1 + '.png"width="32" height="32"></a></span></span></span></span></td>';
+		Input1 = '<td><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input1 + '" title="' + addItemName(Input1) + '"><img alt="' + Input1 + '" src="images/icons/' + Input1 + '.png"width="32" height="32"></a></span></span></span></span></td>';
 	} else {
 		Input1 = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
 	if(Input2 != '') {
-		Input2 = '<td><span class="grid2"><span class="border"><span class="image"><a href="index.php?mode=material-stats&material=' + Input2 + '" title="' + Input2 + '" ><img src="images/icons/' + Input2 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></td>';
+		Input2 = '<td><span class="grid2"><span class="border"><span class="image"><a href="index.php?mode=material-stats&material=' + Input2 + '" title="' + addItemName(Input2) + '"><img src="images/icons/' + Input2 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></td>';
 	} else {
 		Input2 = '<td><span class="grid2"><span class="border"><span class="image"></span></span></span></td>';
 	}
 	$('<table cellpadding="0" cellspacing="0" class="grid-Furnace" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody></tbody></table>').html(
 		'<tr>'
-			+ Input2
+			+ Input1
 			+ '<td rowspan="3" class="arrow"><img alt="Grid layout Furnace Progress.png" src="include/recipe/images/Grid_layout_Furnace_Progress.png" width="44" height="36"></td>'
 			+ Output
 		+ '</tr><tr><td><span class="image"><img alt="Furnace Grid Fire.png" src="include/recipe/images/furnace_grid_fire.png" width="36" height="36"></span></td></tr><tr>'
-			+ Input1
+			+ Input2
 		+ '</tr>'
 	)
 	.appendTo('#Recipe');
@@ -251,7 +271,7 @@ $(document).ready(function() {
 	addItemInfo(function() {
 		$("#ItemInfo").fadeIn("slow");
 	});
-	addRecipeInfo(function() {
+/* 	addRecipeInfo(function() {
 		$("#Recipe").fadeIn("slow");
 	});
 	addBrewInfo(function() {
@@ -259,6 +279,6 @@ $(document).ready(function() {
 	});
 	addSmeltingInfo(function() {
 		$("#Recipe").fadeIn("slow");
-	});
+	}); */
 });
 </script>

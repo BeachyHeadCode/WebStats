@@ -315,10 +315,14 @@ function get_pages($numbers, $mode, $sort) {
 	}
 	$output .= '<table class="pagination"><tbody><tr valign="top">';
 		if(isset($_GET["page"])) {
-			if(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)) {
+			if(1 == $numbers) {
+				$pages = '<td style="margin-left:50px;" class="arrow unavailable">&laquo;</td>';
+				$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">1</span></td>';
+				$pages .='<td class="arrow unavailable">&raquo;</td>';
+			} elseif(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)) {
 				if($_GET["page"]==1) {
 					$pages = '<td style="margin-left:50px;" class="arrow unavailable">&laquo;</td>';
-					$pages .= '<td class="current"><a href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
+					$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">1</a></td>';
 				} else {
 					$pages = '<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'&NPP='.$_GET["NPP"].'">&laquo;</a></td>';
 					$pages .= '<td><a href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
@@ -327,7 +331,7 @@ function get_pages($numbers, $mode, $sort) {
 					for($i=1; $i < 10; $i++) {
 						$page = $i + 1;
 						if($_GET["page"]==$page) {
-							$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
+							$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$page.'</a></td>';
 						} else {
 							$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
 						}
@@ -335,7 +339,7 @@ function get_pages($numbers, $mode, $sort) {
 				} else {
 					for($i=2; $i <= $numbers; $i++) {
 						if($_GET["page"]==$i) {
-							$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
+							$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$i.'</a></td>';
 						} else {
 							$pages .= '<td><a href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
 						}
@@ -353,7 +357,7 @@ function get_pages($numbers, $mode, $sort) {
 				for($i=($_GET["page"]-5); $i < ($_GET["page"]+4); $i++) {
 					$page = $i + 1;
 					if($_GET["page"]==$page) {
-						$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
+						$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$page.'</a></td>';
 					} else {
 						$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
 					}
@@ -368,7 +372,7 @@ function get_pages($numbers, $mode, $sort) {
 				for($i=($_GET["page"]-5); $i < $numbers; $i++) {
 					$page = $i + 1;	
 					if($_GET["page"]==$page){
-						$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
+						$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$page.'</a></td>';
 					} else {
 						$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
 					}
@@ -384,7 +388,7 @@ function get_pages($numbers, $mode, $sort) {
 					$pages .= '<td class="unavailable">&hellip;</td>';
 					for($i=$size; $i < $numbers; $i++) {
 						if($_GET["page"]==$i) {
-							$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
+							$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$i.'</a></td>';
 						} else {
 							$pages .= '<td><a href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
 						}
@@ -394,18 +398,38 @@ function get_pages($numbers, $mode, $sort) {
 					if((($_GET["page"]-$i) >= 1)){$size = $_GET["page"]-$i; break 1;}
 				}
 				$pages .='<td class="arrow unavailable">&raquo;</td>';
-			} elseif($_GET["page"] == $numbers) {
-				$pages = '<td class="arrow unavailable">&laquo;</td>';
-				$pages .= '<td class="current"><a href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
+			} elseif(($_GET["page"] == $numbers) && ($numbers <= 9)) {
+				$pages = '<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'&NPP='.$_GET["NPP"].'">&laquo;</a></td>';
+				$pages .= '<td><a href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
+					for($i=2; $i <= $numbers; $i++) {
+						if($_GET["page"]==$i) {
+							$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$i.'</a></td>';
+						} else {
+							$pages .= '<td><a href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
+						}
+					}
+				$pages .='<td class="arrow unavailable">&raquo;</td>';
+			} elseif(($_GET["page"] == $numbers) && ($numbers > 9)) {
+				$pages = '<td class="arrow"><a href="">&laquo;</a></td>';
+				$pages .= '<td><a href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
+				$pages .= '<td class="unavailable">&hellip;</td>';
+				for($i=($_GET["page"]-5); $i < $numbers; $i++) {
+					$page = $i + 1;	
+					if($_GET["page"]==$page){
+						$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$page.'</a></td>';
+					} else {
+						$pages .= '<td><a href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
+					}
+				}
 				$pages .='<td class="arrow unavailable">&raquo;</td>';
 			}
 		} else {
 			$pages = '<td class="arrow unavailable">&laquo;</td>';
-			$pages .= '<td class="current"><a href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
+			$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">1</a></td>';
 			if($numbers >= 10) {
 				for($i=1; $i <= 10; $i++) {
 					if($i==$_GET["page"]){
-						$pages .= '<td class="current"><a href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
+						$pages .= '<td style="background: #f5f5f5;" class="current"><a href="#">'.$i.'</a></td>';
 					} else {
 						$pages .= '<td><a href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
 					}

@@ -682,7 +682,7 @@ table tbody tr td {vertical-align: middle !important;}
 .grid-Crafting_Table .arrow,.grid-Crafting_Table .shapeless{text-align:center;vertical-align:bottom !important;}
 .grid-Crafting_Table .arrow{width:40px;padding-bottom:5px}
 .grid-Crafting_Table .shapeless span{cursor:help}
-.grid-Furnace{padding-left:24px;padding-right:24px; line-height: 0;}
+.grid-Furnace{padding-left:24px;padding-right:24px}
 .grid-Furnace .arrow,.grid-Furnace .output{text-align:center;vertical-align:middle}
 .grid-Furnace .arrow{position:absolute;bottom:38px;left:64px;z-index:5;}
 .grid-Brewing_Stand{position:relative;width:144px}

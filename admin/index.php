@@ -109,7 +109,7 @@ $_SESSION['mode']=$_GET['mode'];
 				<a href="https://mrplows-server.tk" target="_blank">mrplows-server.tk</a> &#169; <a href="http://forums.bukkit.org/threads/60843/">Webstatistic v<?php include('../include/version.php'); echo $version;?></a> for <a href="http://minecraft.net">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
-				<a href="termsofuse.php">Terms Of Use</a>
+				<a href="../termsofuse.php">Terms Of Use</a>
        		</em>
 			&nbsp;&nbsp;&nbsp; 
        		<span style="font-size:xx-small">(Loading time: <?php echo $speed; ?>s)</span>

@@ -7,14 +7,11 @@ ErrorDocument 404 '<h1>Error 404: Page Not Found</h1><h4>Please Play Minecraft W
 <ifmodule mod_rewrite.c>
 
 RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^http://(.+\.)?mrplows-server\.tk/ [NC]
+RewriteCond %{HTTP_REFERER} !^http://(.+\.)?nicholas-smith\.tk/ [NC]
 RewriteCond %{HTTP_REFERER} !^$
 RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/qX4w7.gif [L]
 
 </ifmodule>
-
-//Prevent directory listings
-Options All -Indexes
 
 php_value display_errors off
 php_value html_errors off
