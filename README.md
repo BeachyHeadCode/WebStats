@@ -61,6 +61,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>Add <a href="http://dev.bukkit.org/server-mods/statisticianv2/">Statistician v2.0</a> ~ <a href="https://github.com/Crimsonfoxy/Statistician-v2">GitHub</a></li>
 	<li>Add Smart Phone Support * iPhone, Droid.</li>
 	<li>Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.</li>
+	<li>Add User login to make an about me page for their account, along with some other features.</li>
 </ul>
 			
 <h3>Current Pending Update:</h3>
@@ -69,6 +70,9 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>As Place holder for now. Added <a href="http://dev.bukkit.org/server-mods/saaplugin/">Stats & Achievements</a> ~ <a href="http://git.s7t.de/maniacraft-plugins/statsandachievements">source</a></li>
 	<li>Fixed Login process that never killed.</li>
 	<li>Moved all MySQL function to mysqli since mysql was deprecated as of PHP 5.5.0. -- could have missed some.</li>
+	<li>IP page sort function changes for the date.</li>
+	<li>Updated to latest minecraft items 5/18/15</li>
+	<li>Javascript materials page.</li>
 <h4>Known Problems</h4>
 <ul>
 	<li>When the screen is inbetween an area where the menu turns to drop down but does not drop down. - Fix make the page smaller.</li>

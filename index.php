@@ -221,9 +221,11 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 	<div class="row" style="background:rgba(255, 255, 255, .5);border-right:2px solid #DDDDDD;border-left:2px solid #DDDDDD;">
 		<?php include('assets/menu.php'); ?>
 	</div>
+	<?php if($search_control === true && WS_CONFIG_SEARCH_BAR === true) { ?>
 	<div class="row" role="searchbar">
-		<?php if($search_control === true && WS_CONFIG_SEARCH_BAR === true)include('include/search/index.php'); ?>
+		<?php include('include/search/index.php'); ?>
 	</div>
+	<?php } ?>
 	<section class="row main" style="min-width:780px">
    	  	<div class="ten columns centered" id="modules">
 		<?php
@@ -251,7 +253,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 		<?php if(ads === true) { ?><div role="footerAD"><?php echo (WS_GOOGLE_FOOTER); ?></div>
 		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div><?php }?>
 		<p><em>
-				<a target="_blank" href="https://mrplows-server.tk">mrplows-server.tk</a> &#169;<a target="_blank" href="http://adf.ly/5xvDw">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a target="_blank" href="https://minecraft.net">Minecraft</a>
+				<a href="https://nicholas-smith.tk/webstats/" target="_blank">nicholas-smith.tk</a> &#169;<a href="http://bukkit.org/threads/web-webstatistic-for-minecraft-v3-1-mrplows.60843/" target="_blank" title="[WEB] Webstatistic for Minecraft">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a href="https://minecraft.net" target="_blank" title="Minecraft">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
 				<a href="termsofuse.php">Terms Of Use</a>
@@ -271,11 +273,11 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') {
 	</div>
 </div><!--Main Wrapper End-->
 <section>
+		<?php if($search_control == true && WS_CONFIG_SEARCH_BAR === true) {?>
 		<div role="searchsidebar">
-		<?php if($search_control == true && WS_CONFIG_SEARCH_BAR === true)include('include/search/index.php'); ?>
+		<?php include('include/search/index.php'); ?>
 		</div>
-		
-		<?php if (internetprotest === true && ads === true) {?><div onmousedown="return false;" onselectstart="return false;" role="complementaryright">
+		<?php } if (internetprotest === true && ads === true) {?><div onmousedown="return false;" onselectstart="return false;" role="complementaryright">
 		<?php if (internetprotest === true) {?>
 			<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/banner_right.png" alt="Member of The Internet Defense League" /></a>
 		<?php }?>
