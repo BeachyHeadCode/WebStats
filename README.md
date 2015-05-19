@@ -51,7 +51,6 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <ul>
 	<li>Add a chat system connecting to the game, and linking that persons name to the ip tracker.</li>
 	<strike><li>Option for Photo "banner reload" with server online stats.</li></strike>
-	<strike><li>Add style to the pages.</li></strike>
 	<li>Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement</li>
 	<li>Add Rest Of ID's and Add The Extra ID's To Main ID's Page example ( 15:1 15:2 goes onto 15 page)</li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/inventorysql/">InventorySQL</a> ~ <a href="https://github.com/ThisIsAreku/InventorySQL">GitHub</a></li>
@@ -59,7 +58,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li><a href="http://dev.bukkit.org/server-mods/beardstat/">BeardStat</a> ~ <a href="https://github.com/tehbeard/BeardStat">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/hawkeye/">HawkEye</a> ~ <a href="https://github.com/oliverw92/HawkEye">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/statisticianv2/">Statistician v2.0</a> ~ <a href="https://github.com/Crimsonfoxy/Statistician-v2">GitHub</a></li>
-	<li>Add Smart Phone Support * iPhone, Droid.</li>
+	<strike><li>Add Smart Phone Support * iPhone, Droid.</li></strike>
 	<li>Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.</li>
 	<li>Add User login to make an about me page for their account, along with some other features.</li>
 </ul>
@@ -72,10 +71,12 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>Moved all MySQL function to mysqli since mysql was deprecated as of PHP 5.5.0. -- could have missed some.</li>
 	<li>IP page sort function changes for the date.</li>
 	<li>Updated to latest minecraft items 5/18/15</li>
-	<li>Javascript materials page.</li>
+	<li>JavaScript materials page.</li>
+	<li>Updated to Foundation 5.5.2</li>
+	<li>Optimized CSS for multi-platform</li>
 <h4>Known Problems</h4>
 <ul>
-	<li>When the screen is inbetween an area where the menu turns to drop down but does not drop down. - Fix make the page smaller.</li>
+	<li>Tables don't fit mobile.</li>
 </ul>
 <hr />
 

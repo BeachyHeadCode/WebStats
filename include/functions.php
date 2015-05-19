@@ -519,6 +519,7 @@ echo <<<END
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>$title</title>
+	<link rel="stylesheet" href="../css/foundation-icons.css" />
 	<style type="text/css">
 		body {
 			background: #fff;

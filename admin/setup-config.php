@@ -18,6 +18,7 @@
  */
 define('INSTALLING', true);
 define('ROOT', '../');
+include_once ROOT . 'include/version.php';
 
 /**
  * Disable error reporting
@@ -48,7 +49,7 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 	}
 	// Check connection
 	if (mysqli_connect_errno()) {
-		ws_die("Failed to connect to MySQL: Error No. " . mysqli_connect_errno() . ": " . mysqli_connect_error(), "MySQL Error");
+		ws_die("<i class='fi-alert'></i> Failed to connect to MySQL: Error No. " . mysqli_connect_errno() . ": " . mysqli_connect_error(), "MySQL Error");
 	}
 	if(!mysqli_select_db($link, $db)) {
 		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$db."`")) {
@@ -56,7 +57,7 @@ if(!empty($_POST["SubmitUserAndPass"])) {
 			print "alert('Database created :)')";
 			print "</script>";
 			mysqli_select_db($link, $db);
-		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$db."' and retry.","MySQL Error");}
+		} else {ws_die("<i class='fi-alert'></i> Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$db."' and retry.","MySQL Error");}
 	}
 	$username = $_SESSION['Username'];
 	$password = $_SESSION['Password'];		
@@ -122,7 +123,7 @@ if(!empty($_POST["SubmitDatabase"])) {
 	}
 	// Check connection
 	if (mysqli_connect_errno()) {
-		ws_die("Failed to connect to MySQL: Error No. " . mysqli_connect_errno() . ": " . mysqli_connect_error(), "MySQL Error");
+		ws_die("<i class='fi-alert'></i> Failed to connect to MySQL: Error No. " . mysqli_connect_errno() . ": " . mysqli_connect_error(), "MySQL Error");
 	}
 	if(!mysqli_select_db($link, $db)) {
 		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".$db."`")) {
@@ -130,7 +131,7 @@ if(!empty($_POST["SubmitDatabase"])) {
 			print "alert('Database created :)')";
 			print "</script>";
 			mysqli_select_db($link, $db);
-		} else {ws_die("Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$db."' and retry.","MySQL Error");}
+		} else {ws_die("<i class='fi-alert'></i> Could not make Database (".mysqli_error($link)."). Please manually create the Database named '".$db."' and retry.","MySQL Error");}
 	}
 	mysqli_close($link);	
 }
@@ -151,6 +152,7 @@ $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 0;
 
 function display_header() {
 	header( 'Content-Type: text/html; charset=utf-8' );
+define('layout',ROOT . 'css/layout_admin.css');
 include_once ROOT . "assets/header.php";
 ?>
 <script type="text/javascript">
@@ -193,7 +195,6 @@ include_once ROOT . "assets/header.php";
 		margin:10px 0px 0px 12px;
 	}
 	.inner-wrapper {
-		width:								980px;
 		position:							relative;
 		padding:							5px;
 		border-left:						2px solid #DDDDDD;
@@ -223,7 +224,6 @@ include_once ROOT . "assets/header.php";
 		border: 							1px solid #000;
 	}
 	footer {
-		width:								980px;
 		padding:							5px;
 		margin:								0 auto;
 		margin-bottom:						20px;
@@ -276,9 +276,15 @@ include_once ROOT . "assets/header.php";
 	}
 </style>
 
-<body><!-- BODY -->
-	<div class="main-wrapper">
-		<div class="inner-wrapper show-for-medium-up">
+<body>
+	<div class="row main-wrapper">
+		<!--Title-->
+		<h3 class="title"><i class="fi-wrench"></i> Install & Configure</h3>
+		<!--Body-->
+		<div class="row inner-wrapper show-for-medium-up">
+			<div class="alert-box">
+			 <strong><i class="fi-alert"></i>Warning:</strong> This is beta software. Open an issue on <a href="https://github.com/MrPlow254/WebStats/issues" target="_blank">GitHub</a> if you find any problems and we may try and fix it.
+			</div>
 			<article>
 		<?php
 }//end function display_header();
@@ -286,94 +292,95 @@ include_once ROOT . "assets/header.php";
 			case 0:
 				display_header();
 		?>
-				<p><?php echo( 'Welcome to WebStats. Before getting started, we need some information on the database. You will need to know the following items before proceeding.' ) ?></p>
-					<ol>
-						<li><?php echo( 'Database name' ); ?></li>
-						<li><?php echo( 'Database username' ); ?></li>
-						<li><?php echo( 'Database password' ); ?></li>
-						<li><?php echo( 'Database host' ); ?></li>
-					</ol>
-					<p><strong><?php echo( "If for any reason this automatic file creation doesn't work, don't worry. All this does is fill in the database information to a configuration file. You may also simply open <code>config-sample.php</code> in a text editor, fill in your information, and save it as <code>config.php</code>." ); ?></strong></p>
-					<p>
-						<?php 
-							echo( "In all likelihood, these items were supplied to you by your Web Host. If you do not have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;<br /><br /><b><i>Do note that text within .htaccess in the 'WebStats' folder needs to be changed to your domain name to prevent <a href='http://www.davidairey.com/stop-image-theft-hotlinking-htaccess/'>hotlinking.</a></i></b>" );
-							echo '<hr />';
-							if (!function_exists('imagecreatetruecolor')) {echo "<br /><b>PHP GD is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-gd' then restart apache.<br />";}
-							if (!function_exists('curl_init')) {echo "<br /><b>PHP Curl is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.<br />";}	
-							if (ini_get('variables_order') == "GPCS") {echo '<br />Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';}
-						?>
-						<br />
-						You will also need to edit the .htaccess file in the root of this project.<br />
-						<h4>Versions of Apache only:</h4>
-						<b>Linux:</b> Change your /etc/apache2/sites-enabled/000-default settings within — may look like this.<br />
-						<b>Windows:</b> locate your apache 
-						<textarea name="comments" cols="60" rows="6">
+<h1>Welcome to WebStats v<?php echo $version;?>!</h1>
+<p>Before getting started, we need some information on the database. You will need to know the following items before proceeding.</p>
+<ol>
+	<li>Database name</li>
+	<li>Database username</li>
+	<li>Database password</li>
+	<li>Database host</li>
+</ol>
+<p><strong>If for any reason this automatic file creation doesn't work, don't worry. All this does is fill in the database information to a configuration file. You may also simply open <code>config-sample.php</code> in a text editor, fill in your information, and save it as <code>config.php</code>.</strong></p>
+<p> 
+	In all likelihood, these items were supplied to you by your Web Host. If you do not have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;<br /><br />
+	<b><i>Do note that text within .htaccess in the 'WebStats' folder needs to be changed to your domain name to prevent <a href='http://www.davidairey.com/stop-image-theft-hotlinking-htaccess/'>hotlinking.</a></i></b>
+	<hr />
+	<?php 
+	if (!function_exists('imagecreatetruecolor')) {echo "<br /><strong class='[success alert secondary] [round radius] label'><i class='step fi-alert size-24'></i>Warning:</strong> <b>PHP GD is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-gd' then restart apache.<br />";}
+	if (!function_exists('curl_init')) {echo "<br /><strong class='[success alert secondary] [round radius] label'><i class='step fi-alert size-24'></i>Warning:</strong> <b>PHP Curl is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.<br />";}	
+	if (ini_get('variables_order') == "GPCS") {echo '<br /><strong class="[success alert secondary] [round radius] label"><i class="step fi-alert size-24"></i>Warning:</strong> Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';}
+	?>
+	<br />
+	You will also need to edit the .htaccess file in the root of this project.<br />
+	<h4>Versions of Apache only:</h4>
+	<b>Linux:</b> Change your /etc/apache2/sites-enabled/000-default settings within — may look like this.<br />
+	<b>Windows:</b> locate your apache 
+	<textarea name="comments" cols="60" rows="6">
 <Directory /var/www/>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride none
 	Order allow,deny
 	allow from all
 </Directory>
-						</textarea>
-						<b>and change to...</b>
-						<textarea name="comments" cols="60" rows="6">
+	</textarea>
+	<b>and change to...</b>
+	<textarea name="comments" cols="60" rows="6">
 <Directory /var/www/>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride all
 	Order allow,deny
 	allow from all
 </Directory>
-						</textarea>					
-					</p>
-					
-					<p class="step">
-						<a href="setup-config.php?step=1<?php if ( isset( $_GET['noapi'] ) ) echo '&amp;noapi'; ?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a>
-						<a href="setup-config.php?step=3<?php echo '&amp;noapi'; ?>" class="button"><?php echo( 'Skip creating admin page.' ); ?></a>
-					</p>
+	</textarea>					
+</p>
+<hr />
+<p>
+	<i class="fi-bookmark"></i> The next two steps allow for you to have an admin page for this project. If you decide that you would rather not create this you can skip creating the admin page. This can later be added going to you /admin/setup-config.php file. It will then end when you get the step to create the config if the config file exists.
+</p>
+<p class="step">
+	<a href="setup-config.php?step=1<?php if ( isset( $_GET['noapi'] ) ) echo '&amp;noapi'; ?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a>
+	<a href="setup-config.php?step=3<?php echo '&amp;noapi'; ?>" class="button"><?php echo( 'Skip creating admin page.' ); ?></a>
+</p>
 			<?php	
 			break;
 			case 1:
 				display_header();
 			?>
-				<form action="setup-config.php?step=2" method="post" class="custom">
-					<fieldset>
-						<legend style="background: none;"><h3>Lets Setup your Database</h3></legend>
-							<label for="MySQLHost">Enter the MySQL I.P. or URL<input name="MySQLHost" placeholder="localhost" value="<?php if(isset($_SESSION['MySQLHost'])){ echo $_SESSION['MySQLHost'];} ?>" type="text" title="Enter the MySQL I.P. or URL" maxlength="60"/></label>
-							<label for="MySQLPort">Enter the MySQL Port Number<input name="MySQLPort" placeholder="3306" value="<?php if(isset($_SESSION['MySQLPort'])){ echo $_SESSION['MySQLPort'];} ?>" type="text" title="Enter the MySQL Port Number" maxlength="5"/></label>
-							<label for="MySQLUserName">Enter the MySQL User Name<input name="MySQLUserName" accesskey="" placeholder="root" value="<?php if(isset($_SESSION['MySQLUserName'])){ echo $_SESSION['MySQLUserName'];} ?>" type="text" title="Enter the MySQL User Name" maxlength="16"/></label>
-							<label for="MySQLPassword">Enter the MySQL Password<input name="MySQLPassword" placeholder="password" value="<?php if(isset($_SESSION['MySQLPassword'])){ echo $_SESSION['MySQLPassword'];} ?>" type="text" title="Enter the MySQL Password" maxlength="64"/></label>
-							<label for="MySQLDatabase">Enter Database<input name="MySQLDatabase" placeholder="WebStats" type="text" id="MySQLDatabase" title="MySQL Database" value="<?php if(!isset($_SESSION['MySQLDatabase'])){ echo 'WebStats';}else{ echo $_SESSION['MySQLDatabase'];} ?>" maxlength="64" /></label>
-							<input name="SubmitDatabase" type="submit" title="submit" onclick="MM_validateForm('MySQLHost','','R','MySQLPort','','NisNum','MySQLUserName','','R','MySQLPassword','','R','MySQLDatabase','','R');return document.MM_returnValue" class="small success button"/> 
-							<input name="reload" type="submit" title="Reload" value="Reload" onClick="return confirm('Are you sure you want to reset?')"  class="small secondary button" /><br/>
-					</fieldset>
-				</form>
-				
+<h1><i class="fi-clipboard-notes"></i> Configuration</h1>
+<p>
+	Enter the database details to your the MySQL server where you have created a database for this project's data. <strong>The table and database will be created if it does not exist.</strong> Please note that the user only needs SELECT, and CREATE permissions on the database.
+</p>
+<form action="setup-config.php?step=2" method="post" class="custom">
+	<fieldset>
+		<legend style="background: none;"><h3><i class="fi-database"></i> Lets Setup your Database</h3></legend>
+			<label for="MySQLHost">*Enter the MySQL I.P. or URL<input name="MySQLHost" placeholder="localhost" value="<?php if(isset($_SESSION['MySQLHost'])){ echo $_SESSION['MySQLHost'];} ?>" type="text" title="Enter the MySQL I.P. or URL" maxlength="60"/></label>
+			<label for="MySQLPort">*Enter the MySQL Port Number<input name="MySQLPort" placeholder="3306" value="<?php if(isset($_SESSION['MySQLPort'])){ echo $_SESSION['MySQLPort'];} ?>" type="text" title="Enter the MySQL Port Number" maxlength="5"/></label>
+			<label for="MySQLUserName">*Enter the MySQL User Name<input name="MySQLUserName" accesskey="" placeholder="root" value="<?php if(isset($_SESSION['MySQLUserName'])){ echo $_SESSION['MySQLUserName'];} ?>" type="text" title="Enter the MySQL User Name" maxlength="16"/></label>
+			<label for="MySQLPassword">*Enter the MySQL Password<input name="MySQLPassword" placeholder="password" value="<?php if(isset($_SESSION['MySQLPassword'])){ echo $_SESSION['MySQLPassword'];} ?>" type="text" title="Enter the MySQL Password" maxlength="64"/></label>
+			<label for="MySQLDatabase">*Enter Database<input name="MySQLDatabase" placeholder="WebStats" type="text" id="MySQLDatabase" title="MySQL Database" value="<?php if(!isset($_SESSION['MySQLDatabase'])){ echo 'WebStats';}else{ echo $_SESSION['MySQLDatabase'];} ?>" maxlength="64" /></label>
+			<small>All items marked with a star are required items. Please fill them out.</small><br />
+			<input name="SubmitDatabase" type="submit" title="submit" onclick="MM_validateForm('MySQLHost','','R','MySQLPort','','NisNum','MySQLUserName','','R','MySQLPassword','','R','MySQLDatabase','','R');return document.MM_returnValue" class="small success button"/> 
+			<input name="reload" type="submit" title="Reload" value="Reload" onClick="return confirm('Are you sure you want to reset?')"  class="small secondary button" /><br/>
+	</fieldset>
+</form>
 			<?php
 			break;
 			case 2:
-				$tryagain_link = '</p><p class="step"><a href="setup-config.php?step=1" onclick="javascript:history.go(-1);return false;" class="button">Try Again</a>';
-
-				if(empty($_POST["MySQLHost"]) && empty($_SESSION["MySQLHost"]))
-					ws_die(( '<strong>ERROR</strong>: "Host Location" must not be empty.' . $tryagain_link ));
-				if(empty($_POST["MySQLPort"]) && empty($_SESSION["MySQLPort"]))
-					ws_die(( '<strong>ERROR</strong>: "Host Port" must not be empty.' . $tryagain_link ));
-				if(empty($_POST["MySQLUserName"]) && empty($_SESSION["MySQLUserName"]))
-					ws_die(( '<strong>ERROR</strong>: "Username" must not be empty.' . $tryagain_link ));
-				if(empty($_POST["MySQLPassword"]) && empty($_SESSION["MySQLPassword"]))
-					ws_die(( '<strong>ERROR</strong>: "Password" must not be empty.' . $tryagain_link ));
-				if(empty($_POST["MySQLDatabase"]) && empty($_SESSION["MySQLDatabase"]))
-					ws_die(( '<strong>ERROR</strong>: "Database" must not be empty.' . $tryagain_link ));
 				display_header();
 			?>
-			<form action="setup-config.php?step=3" method="post" class="custom">
-				<fieldset>
-					<legend style="background: none;"><h3>Username & Password</h3></legend>
-						<label for="Username">Enter Your Admin Username<input name="Username" placeholder="admin" type="text" id="Username" title="Project's Admin Username" value="<?php if(!isset($_SESSION['Username'])){}else{ echo $_SESSION['Username'];} ?>" maxlength="64" /></label>
-						<label for="Password">Enter Your Admin Password<input name="Password" placeholder="Password" type="password" id="Password" title="Project's Admin Username" value="<?php if(!isset($_SESSION['Password'])){}else{ echo $_SESSION['Password'];} ?>" maxlength="64" /></label>
-						<input name="SubmitUserAndPass" type="submit" title="submit" class="small success button"/> 
-						<input name="reload" type="submit" title="Reload" value="Reload" onClick="return confirm('Are you sure you want to reset?')"  class="small secondary button" /><br/>
-				</fieldset>
-			</form>
+<h1><i class="fi-clipboard-notes"></i> Configuration</h1>
+<p>
+	Enter the username and password you design for logging into the admin page.
+</p>
+<form action="setup-config.php?step=3" method="post" class="custom">
+	<fieldset>
+		<legend style="background: none;"><h3>Username & Password</h3></legend>
+			<label for="Username">Enter Your Admin Username<input name="Username" placeholder="admin" type="text" id="Username" title="Project's Admin Username" value="<?php if(!isset($_SESSION['Username'])){}else{ echo $_SESSION['Username'];} ?>" maxlength="64" /></label>
+			<label for="Password">Enter Your Admin Password<input name="Password" placeholder="Password" type="password" id="Password" title="Project's Admin Username" value="<?php if(!isset($_SESSION['Password'])){}else{ echo $_SESSION['Password'];} ?>" maxlength="64" /></label>
+			<input name="SubmitUserAndPass" type="submit" title="submit" class="small success button"/> 
+			<input name="reload" type="submit" title="Reload" value="Reload" onClick="return confirm('Are you sure you want to reset?')"  class="small secondary button" /><br/>
+	</fieldset>
+</form>
 			<?php
 			break;
 			case 3:
@@ -384,7 +391,7 @@ include_once ROOT . "assets/header.php";
 					if ($_SESSION['usernameTaken'] == 2) {
 						require_once('configsetup.php');
 					} else {
-						ws_die(( '<strong>ERROR</strong>: "Username" ('.$_SESSION['Username'].') was taken.' . $tryagain_link ));
+						ws_die(( '<strong><i class="fi-alert"></i>ERROR</strong>: "Username" ('.$_SESSION['Username'].') was taken.' . $tryagain_link ));
 					}
 				}
 			break;
@@ -395,6 +402,7 @@ include_once ROOT . "assets/header.php";
 		<div class="inner-wrapper show-for-small-only" align="center">
 			Please continue the install on a desktop.
 		</div>
+		<div class="row">
 		<footer>
 			<script type="text/javascript">
 				google_ad_client = "ca-pub-6169723647730707";
@@ -408,6 +416,7 @@ include_once ROOT . "assets/header.php";
 				<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
 			</p>
 		</footer>
+		</div>
 	</div>
 	<aside>
 		<script type="text/javascript"><!--
@@ -433,7 +442,5 @@ include_once ROOT . "assets/header.php";
 	</asideleft>
 	<!-- Included JS Files (Compressed) -->
 	<script src="<?php echo ROOT;?>js/foundation.min.js"></script>
-	<!-- Initialize JS Plugins -->
-	<script src="<?php echo ROOT;?>javascripts/app.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php 
-//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250, mrplows-server.us, Webstats for Minecraft (c) 2011-2013
-//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is https://mrplows-server.tk.
-//Current source for info https://github.com/cky2250/WebStats/
+//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250, 'aka' MrPlow254, nicholas-smith.tk, Webstats for Minecraft (c) 2011-2015
+//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is https://nicholas-smith.tk.
+//Current source for info https://github.com/MrPlow254/WebStats/
 
 //Sets up the MySQL Database and info to reach it to access the MySQL tabels used in this project.
 define('WS_MySQL_DBHOST', 'localhost');
@@ -27,7 +27,7 @@ define('WS_CONFIG_SERVER', 'Mr. Plow&#039;s Server');
 //Default Title Of The Website.
 define('WS_OPTICAL_TITLE', 'Mr. Plow&#039;s Server');
 //Default Title Of The Website Tab.
-define('WS_OPTICAL_TAB_TITLE', 'Mr. Plow&#039;s Server - Webstatistic for Minecraft');
+$WS_OPTICAL_TAB_TITLE = 'Mr. Plow&#039;s Server - Webstatistic for Minecraft';
 //Default Module (default: stats)   put in the name of your favorite module (folder-name).
 define('WS_CONFIG_MODULE', 'stats');
 //Default Background (e.g. sand, rock, dirt, obsidian, bluefade, grayfade, greenfade, blackfade...).
