@@ -80,9 +80,9 @@ include_once ROOT . "assets/header.php";
 	<!--MAIN-->
 	<div class="row" style="background-color:rgba(255, 255, 255, .5);">
 			<div style="margin:25px;">
-				<p>
-					This page is in the making. And will contain all the help information and locations needed. Along with more advance config settings. This will also require mysql write support since it will be used to make logon user and pass. And then read from that.
-				</p>
+				<div data-alert class="alert-box">
+					<strong><i class="fi-alert"></i>Warning:</strong> This page is in the making. It will contain all the help information and locations needed. Along with more advance config page to update settings. This will also require MySQL read and write support since it will be used to make login username and password.
+				</div>
 				<?php 	
 				include($_SESSION['mode'].'.php');
 				$time_end = explode(" ",microtime());

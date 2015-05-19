@@ -76,7 +76,7 @@ if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip
 			document.getElementById("imageplaceholder").src=e;
 		}
 	</script>
-	<article> 
+	<article>
 		<form action="#" method="post" class="custom">
 			<fieldset>
 				<legend style="background: none;"><h2>MySQL of Minecraft Plugin(s)</h2></legend>

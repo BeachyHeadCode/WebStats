@@ -227,6 +227,6 @@ $('input#submit').click(function() {
 	var body = $('textarea#body').val();
 	var name = $('input#name').val();
     //send to server and process response
-	window.open('mailto:admin@mrplows-server.tk?subject=' + subject + '&body=' + body + ' Thanks, ' + name)
+	window.open('mailto:admin@nicholas-smith.tk?subject=' + subject + '&body=' + body + ' Thanks, ' + name)
 });
 </script>

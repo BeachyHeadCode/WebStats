@@ -283,7 +283,7 @@ include_once ROOT . "assets/header.php";
 		<!--Body-->
 		<div class="row inner-wrapper show-for-medium-up">
 			<div class="alert-box">
-			 <strong><i class="fi-alert"></i>Warning:</strong> This is beta software. Open an issue on <a href="https://github.com/MrPlow254/WebStats/issues" target="_blank">GitHub</a> if you find any problems and we may try and fix it.
+				<strong><i class="fi-alert"></i>Warning:</strong> This is beta software. Open an issue on <a href="https://github.com/MrPlow254/WebStats/issues" target="_blank">GitHub</a> if you find any problems and we may try and fix it.
 			</div>
 			<article>
 		<?php
