@@ -1,4 +1,5 @@
-<?php 
+<?php
+if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])){exit();}
 if(file_exists($_SERVER["DOCUMENT_ROOT"].'\config\config.php')){
 //IF YOU DONT KNOW YOU CAN VIEW IP LOG FROM PHP IN THE FOLDER IT WAS INSTALLED.
 	echo '<h1><div align="center">Hello if you are reading this your IP is tracked and the admin may ban you for viewing this.<br /> HAVE A GOOD DAY!</div></h1>';
@@ -97,7 +98,6 @@ function dirlist($dir, $bool = "dirs"){
 }
 
 ?>
-
 <script type="text/javascript">
 function noNumbers(e){
 var keynum;var keychar;var numcheck;
@@ -114,7 +114,7 @@ return !numcheck.test(keychar);
 $filename = $_SERVER["DOCUMENT_ROOT"].'\config\config.php';
 define('noclick','<span onmousedown="return false;" onselectstart="return false;" style="cursor:default;">');
 ?>
-  	<div align="center"><h1>WebStats Install</h1></div>
+<center><h1>WebStats Install</h1></center>
 <article>
     <p align="center">You Are Here Because Your Config File Is Not Set, or Not Installed. Place The File Created Into The Config Folder.</p>
 </article>
@@ -370,7 +370,7 @@ if($_POST["submitconfig"] == 'Submit Config'){
 	$tempfile .= "//Sets up the MySQL Database and info to reach it to access the MySQL tabels used in this project.\ndefine('WS_MySQL_DBHOST', '".$_SESSION['MySQLHost']."');\ndefine('WS_MySQL_PORT', '".$_SESSION['MySQLPort']."');\ndefine('WS_MySQL_USERNAME', '".$_SESSION['MySQLUserName']."');\ndefine('WS_MySQL_PASSWORD', '".$_SESSION['MySQLPassword']."');\ndefine('WS_MySQL_DB', '".$_SESSION['MySQLDatabase']."');\n\n";
 	$tempfile .= "//Sets up the MySQL Database locations for the minecraft plugins.\ndefine('WS_CONFIG_DBHOST', '".$_SESSION['mysql']['URL']."');\ndefine('WS_CONFIG_DBPORT', '".$_SESSION['mysql']['PORT']."');\ndefine('WS_CONFIG_DBUNAME', '".$_SESSION['mysql']['user']."');\ndefine('WS_CONFIG_DBPASS', '".$_SESSION['mysql']['pass']."');\ndefine('WS_CONFIG_DBNAME', '".$_SESSION['mysql']['data']."');\n\n";
 	$tempfile .= "//Sets up the Minecraft Server location for the dynamic photo and popup windows to reach the server.\ndefine('MQ_SERVER_ADDR', '".$_SESSION['page']['MQ_SERVER_ADDR']."');\ndefine('MQ_SERVER_PORT', '".$_SESSION['page']['MQ_SERVER_PORT']."');\ndefine('MQ_TIMEOUT', 1);\n\n";
-	$tempfile .= "define('WS_CONFIG_SERVER', '".$_SESSION['page']['server_name']."');\ndefine('WS_OPTICAL_TITLE', '".$_SESSION['page']['server_title']."');\ndefine('WS_OPTICAL_TAB_TITLE', '".$_SESSION['page']['tab_title']."');\ndefine('WS_CONFIG_MODULE', '".$_SESSION['page']['default_module']."');\ndefine('WS_CONFIG_BACKGROUND', '".$_SESSION['page']['default_background']."');\ndefine('WS_CONFIG_PAGENUM', '".$_SESSION['page']['users_per_page']."');\ndefine('WS_CONFIG_CACHETIME', '".$_SESSION['page']['2d_cache_time']."');\n$threedsetting$search\ndefine('WS_CONFIG_DEADLINE', '".$_SESSION['page']['player_inactivity']."');\ndefine('WS_CONFIG_LOGO', '".$_SESSION['page']['logo_image_link']."');\ndefine('WS_HOMEPAGE_LOGO', '".$_SESSION['page']['logo_image_filename']."');\ndefine('WS_MAINSITE', '".$_SESSION['page']['homepage_link']."');\n$logoon\ndefine('WS_BOOKMARK', '".$_SESSION['page']['bookmark_title']."');\ndefine('WS_PHOTO_PHP_CHANGE', 'large_player_image');\n$achievments$economy$jail$jobs$mcmmo$permissionsex$stats\ndefine('WS_GOOGLE_FOOTER', '$google_footer');\ndefine('WS_GOOGLE_FOOTER_MOBILE', '$google_footer_mobile');\ndefine('WS_GOOGLE_ASIDE', '$google_aside');\n$pluginconfigstatusachiv$pluginconfigstatuseconomy$pluginconfigstatusjail$pluginconfigjobs$pluginconfigstatusmcmmo$pluginconfigstatuspermissionsex$pluginconfigstatusstats\ndefine('serveraddr','".$SERVERIP."');\n\n";
+	$tempfile .= "define('WS_CONFIG_SERVER', '".$_SESSION['page']['server_name']."');\ndefine('WS_OPTICAL_TITLE', '".$_SESSION['page']['server_title']."');\n$WS_OPTICAL_TAB_TITLE='".$_SESSION['page']['tab_title']."';\ndefine('WS_CONFIG_MODULE', '".$_SESSION['page']['default_module']."');\ndefine('WS_CONFIG_BACKGROUND', '".$_SESSION['page']['default_background']."');\ndefine('WS_CONFIG_PAGENUM', '".$_SESSION['page']['users_per_page']."');\ndefine('WS_CONFIG_CACHETIME', '".$_SESSION['page']['2d_cache_time']."');\n$threedsetting$search\ndefine('WS_CONFIG_DEADLINE', '".$_SESSION['page']['player_inactivity']."');\ndefine('WS_CONFIG_LOGO', '".$_SESSION['page']['logo_image_link']."');\ndefine('WS_HOMEPAGE_LOGO', '".$_SESSION['page']['logo_image_filename']."');\ndefine('WS_MAINSITE', '".$_SESSION['page']['homepage_link']."');\n$logoon\ndefine('WS_BOOKMARK', '".$_SESSION['page']['bookmark_title']."');\ndefine('WS_PHOTO_PHP_CHANGE', 'large_player_image');\n$achievments$economy$jail$jobs$mcmmo$permissionsex$stats\ndefine('WS_GOOGLE_FOOTER', '$google_footer');\ndefine('WS_GOOGLE_FOOTER_MOBILE', '$google_footer_mobile');\ndefine('WS_GOOGLE_ASIDE', '$google_aside');\n$pluginconfigstatusachiv$pluginconfigstatuseconomy$pluginconfigstatusjail$pluginconfigjobs$pluginconfigstatusmcmmo$pluginconfigstatuspermissionsex$pluginconfigstatusstats\ndefine('serveraddr','".$SERVERIP."');\n\n";
 	$tempfile .= "define('internetprotest', true);\ndefine('iptracker', false);\n?>";
 	$ourFileHandle = fopen($filename, 'w');
 	if (is_writable($filename)) {

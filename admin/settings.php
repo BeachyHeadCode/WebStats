@@ -1,12 +1,13 @@
 <?php
+if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])){exit();}
 session_start();
 error_reporting(0);
 $ip=$_SERVER['REMOTE_ADDR'];
-require_once("../include/logonfunctions.php");
-require_once('../include/functions.php');
+require_once ROOT . "include/logonfunctions.php";
+require_once ROOT . 'include/functions.php';
 
-if(file_exists('../config/config.php'))
-	include('../config/config.php');
+if(file_exists(ROOT . 'config/config.php'))
+	include ROOT . 'config/config.php';
 else
 	header("/setup-config.php");
 	
@@ -224,54 +225,52 @@ if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip
 				}?>
 				</select><br/>
 			<?php }
-if($_SESSION['pluginconfigpermissionsex'] == true){ ?>
+if($_SESSION['pluginconfigpermissionsex'] == true) : ?>
 	<label for="page">PermissionsEx MySQL Table Name: <input name="page[permissionsex_table_name]" type="text" id="page[permissionsex_table_name]" title="PermissionsEx Table Name" value="<?php if(!isset($_SESSION['page']['permissionsex_table_name'])){ echo WS_CONFIG_PERMISSIONS;}else{ echo $_SESSION['page']['permissionsex_table_name'];} ?>" maxlength="16"/></label>
     <label for="page">PermissionsEx Default Group Name: <input name="page[permissionsex_default_group]" type="text" id="page[permissionsex_default_group]" title="PermissionsEx Default Group Name" value="<?php if(!isset($_SESSION['page']['permissionsex_default_group'])){ echo WS_PERMISSIONS_DEFAULT_GROUP;}else{ echo $_SESSION['page']['permissionsex_default_group'];} ?>" maxlength="25"/></label>
-<?php }
-if($_SESSION['pluginconfigstats'] == true){ ?>
+<?php endif; if($_SESSION['pluginconfigstats'] == true) : ?>
 	<label for="page">Stats MySQL Table: <input name="page[stats_table_name]" type="text" id="page[stats_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['stats_table_name'])){ echo WS_CONFIG_STATS;}else{ echo $_SESSION['page']['stats_table_name'];} ?>" maxlength="16"/></label>
 	<label for="page">Stats - Show Played Time In Days, Hours, Minutes : <input type="checkbox" name="page[timechange_on/off]" title="Stats Time Variable" value="<?php if(!isset($_SESSION['page']['timechange_on/off'])){ echo 'true';}else{ echo $_SESSION['page']['timechange_on/off'];} ?>" <?php if(WS_CONFIG_PLAYTIME === true){ echo 'checked="checked"';} ?>/></label> 
-<?php } ?>
+<?php endif; ?>
 	<input name="submitconfig" type="submit" title="Submit Config" onclick="MM_validateForm('mysql[URL]','','R','mysql[PORT]','','RisNum','mysql[user]','','R','mysql[pass]','','R','mysql[data]','','R','page[server_name]','','R','page[server_title]','','R','page[MQ_SERVER_ADDR]','','R','page[MQ_SERVER_PORT]','','RisNum','page[tab_title]','','R','page[default_module]','','R','page[users_per_page]','','R','page[2d_cache_time]','','RisNum','page[player_inactivity]','','RisNum','page[logo_image_link]','','R','page[logo_image_filename]','','R','page[homepage_link]','','R','page[bookmark_title]','','R');return document.MM_returnValue" value="Submit Config" class="small success button" />
 	</fieldset>
 	</form>
 </article>
-<?php
-//---------PRE-SETS AND IF STATMENTS FOR fwrite END------------------------------------------------------------------------
-if($_POST["submitconfig"] == 'Submit Config'){
-	$tempfile = "<?php \n	//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250 \n	//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is http://mrplows-server.us \n	define('WS_MySQL_DBHOST', '".$_SESSION['MySQLHost']."');\n define('WS_MySQL_PORT', '".$_SESSION['MySQLPort']."');\n define('WS_MySQL_USERNAME', '".$_SESSION['MySQLUserName']."');\n define('WS_MySQL_PASSWORD', '".$_SESSION['MySQLPassword']."');\n define('WS_MySQL_DB', '".$_SESSION['MySQLDatabase']."');\n define('WS_CONFIG_DBHOST', '".$_SESSION['mysql']['URL']."');\n	define('WS_CONFIG_DBPORT', '".$_SESSION['mysql']['PORT']."');\n	define('WS_CONFIG_DBUNAME', '".$_SESSION['mysql']['user']."');\n	define('MQ_SERVER_ADDR', '".$_SESSION['page']['MQ_SERVER_ADDR']."');\n	define('MQ_SERVER_PORT', '".$_SESSION['page']['MQ_SERVER_PORT']."');\n	define('WS_CONFIG_DBPASS', '".$_SESSION['mysql']['pass']."');\n	define('WS_CONFIG_DBNAME', '".$_SESSION['mysql']['data']."');\n	define('WS_CONFIG_SERVER', '".$_SESSION['page']['server_name']."');\n	define('WS_OPTICAL_TITLE', '".$_SESSION['page']['server_title']."');\n	define('WS_OPTICAL_TAB_TITLE', '".$_SESSION['page']['tab_title']."');\n	define('WS_CONFIG_MODULE', '".$_SESSION['page']['default_module']."');\n	define('WS_CONFIG_BACKGROUND', '".$_SESSION['page']['default_background']."');\n	define('WS_CONFIG_PAGENUM', '".$_SESSION['page']['users_per_page']."');\n	define('WS_CONFIG_CACHETIME', '".$_SESSION['page']['2d_cache_time']."');\n	$threedsetting define('WS_CONFIG_DEADLINE', '".$_SESSION['page']['player_inactivity']."');\n	define('WS_CONFIG_LOGO', '".$_SESSION['page']['logo_image_link']."');\n	define('WS_HOMEPAGE_LOGO', '".$_SESSION['page']['logo_image_filename']."');\n	define('WS_MAINSITE', '".$_SESSION['page']['homepage_link']."');\n	$logoon	define('WS_BOOKMARK', '".$_SESSION['page']['bookmark_title']."');\n	 define('WS_PHOTO_PHP_CHANGE', 'large_player_image'); \n $achievments $economy	$jail $jobs $mcmmo $permissionsex $stats	define('WS_GOOGLE_FOOTER', '$google_footer'); \n define('WS_GOOGLE_FOOTER_MOBILE', '$google_footer_mobile'); \n	define('WS_GOOGLE_ASIDE', '$google_aside'); \n	$pluginconfigstatusachiv	$pluginconfigstatuseconomy	$pluginconfigstatusjail	$pluginconfigjobs	$pluginconfigstatusmcmmo	$pluginconfigstatuspermissionsex	$pluginconfigstatusstats	define('serveraddr','".$SERVERIP."')  ?>";
-	$ourFileHandle = fopen($filename, 'w');
-	if (is_writable($filename)) {
-		if (!$handle = fopen($filename, 'w')) {
-			echo "Cannot open file ($filename) you may need writing permisions. You can however create the <code>$filename</code> manually and paste the following text into it.";
-        	?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
-    	}
-    	if (fwrite($handle, $tempfile) === FALSE) {
-        	echo "Cannot write to file ($filename). You can however create the <code>$filename</code> manually and paste the following text into it.";
-        	?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
-    	}
-    	fclose($handle);
-	} else {
-		$filenamelocal = 'config.php';
-		$ourFileHandle = fopen($filenamelocal, 'w');
-		if (is_writable($filenamelocal)) {
-			if (!$handle = fopen($filenamelocal, 'w')) {
-				echo "Cannot open file ($filenamelocal) you may need writing permisions. You can however create the <code>$filenamelocal</code> manually and paste the following text into it.";
-				?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+		<?php
+		//---------PRE-SETS AND IF STATMENTS FOR fwrite END------------------------------------------------------------------------
+		if($_POST["submitconfig"] == 'Submit Config') {
+			$tempfile = "<?php \n	//Developed by Nick Smith, 'aka' cky nick254, 'aka' mrplow, 'aka' cky2250 \n	//Please help me out in any way with any *type* ~ hint of payments that do not require paypal. my webstie is http://mrplows-server.us \n	define('WS_MySQL_DBHOST', '".$_SESSION['MySQLHost']."');\n define('WS_MySQL_PORT', '".$_SESSION['MySQLPort']."');\n define('WS_MySQL_USERNAME', '".$_SESSION['MySQLUserName']."');\n define('WS_MySQL_PASSWORD', '".$_SESSION['MySQLPassword']."');\n define('WS_MySQL_DB', '".$_SESSION['MySQLDatabase']."');\n define('WS_CONFIG_DBHOST', '".$_SESSION['mysql']['URL']."');\n	define('WS_CONFIG_DBPORT', '".$_SESSION['mysql']['PORT']."');\n	define('WS_CONFIG_DBUNAME', '".$_SESSION['mysql']['user']."');\n	define('MQ_SERVER_ADDR', '".$_SESSION['page']['MQ_SERVER_ADDR']."');\n	define('MQ_SERVER_PORT', '".$_SESSION['page']['MQ_SERVER_PORT']."');\n	define('WS_CONFIG_DBPASS', '".$_SESSION['mysql']['pass']."');\n	define('WS_CONFIG_DBNAME', '".$_SESSION['mysql']['data']."');\n	define('WS_CONFIG_SERVER', '".$_SESSION['page']['server_name']."');\n	define('WS_OPTICAL_TITLE', '".$_SESSION['page']['server_title']."');\n	define('WS_OPTICAL_TAB_TITLE', '".$_SESSION['page']['tab_title']."');\n	define('WS_CONFIG_MODULE', '".$_SESSION['page']['default_module']."');\n	define('WS_CONFIG_BACKGROUND', '".$_SESSION['page']['default_background']."');\n	define('WS_CONFIG_PAGENUM', '".$_SESSION['page']['users_per_page']."');\n	define('WS_CONFIG_CACHETIME', '".$_SESSION['page']['2d_cache_time']."');\n	$threedsetting define('WS_CONFIG_DEADLINE', '".$_SESSION['page']['player_inactivity']."');\n	define('WS_CONFIG_LOGO', '".$_SESSION['page']['logo_image_link']."');\n	define('WS_HOMEPAGE_LOGO', '".$_SESSION['page']['logo_image_filename']."');\n	define('WS_MAINSITE', '".$_SESSION['page']['homepage_link']."');\n	$logoon	define('WS_BOOKMARK', '".$_SESSION['page']['bookmark_title']."');\n	 define('WS_PHOTO_PHP_CHANGE', 'large_player_image'); \n $achievments $economy	$jail $jobs $mcmmo $permissionsex $stats	define('WS_GOOGLE_FOOTER', '$google_footer'); \n define('WS_GOOGLE_FOOTER_MOBILE', '$google_footer_mobile'); \n	define('WS_GOOGLE_ASIDE', '$google_aside'); \n	$pluginconfigstatusachiv	$pluginconfigstatuseconomy	$pluginconfigstatusjail	$pluginconfigjobs	$pluginconfigstatusmcmmo	$pluginconfigstatuspermissionsex	$pluginconfigstatusstats	define('serveraddr','".$SERVERIP."')  ?>";
+			$ourFileHandle = fopen($filename, 'w');
+			if (is_writable($filename)) {
+				if (!$handle = fopen($filename, 'w')) {
+					echo "Cannot open file ($filename) you may need writing permisions. You can however create the <code>$filename</code> manually and paste the following text into it.";
+					?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+				}
+				if (fwrite($handle, $tempfile) === FALSE) {
+					echo "Cannot write to file ($filename). You can however create the <code>$filename</code> manually and paste the following text into it.";
+					?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+				}
+				fclose($handle);
+			} else {
+				$filenamelocal = 'config.php';
+				$ourFileHandle = fopen($filenamelocal, 'w');
+				if (is_writable($filenamelocal)) {
+					if (!$handle = fopen($filenamelocal, 'w')) {
+						echo "Cannot open file ($filenamelocal) you may need writing permisions. You can however create the <code>$filenamelocal</code> manually and paste the following text into it.";
+						?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+					}
+					if (fwrite($handle, $tempfile) === FALSE) {
+						echo "Cannot write to file ($filenamelocal). You can however create the <code>$filenamelocal</code> manually and paste the following text into it.";
+						?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+					}
+					fclose($handle);
+				} else {
+					echo "Cannot write to file ($filename). You can however create the <code>$filename</code> manually and paste the following text into it.";
+					?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
+				}
 			}
-			if (fwrite($handle, $tempfile) === FALSE) {
-				echo "Cannot write to file ($filenamelocal). You can however create the <code>$filenamelocal</code> manually and paste the following text into it.";
-				?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
-			}
-			fclose($handle);
-		} else {
-			echo "Cannot write to file ($filename). You can however create the <code>$filename</code> manually and paste the following text into it.";
-			?><textarea cols="98" rows="15"><?php echo htmlentities($tempfile, ENT_COMPAT, 'UTF-8');?></textarea><?php
 		}
 	}
-}
-
-}
 } else {
 	header("location:".adminPageURL());
 }
