@@ -77,7 +77,6 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <h4>Known Problems</h4>
 <ul>
 	<li>Tables don't fit mobile.</li>
-	<li>ajax not working for page loading</li>
 </ul>
 <hr />
 

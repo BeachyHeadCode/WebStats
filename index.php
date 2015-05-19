@@ -309,8 +309,18 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 	<!--Included JS Files (Compressed)-->
 	<script src="js/foundation.min.js"></script>
 	<!--Initialize JS Plugins-->
-
+	<!-- library for cookie management -->
+	<script src="js/vendor/jquery.cookie.js"></script>
+	<!-- data table plugin -->
+	<script src='js/vendor/jquery.dataTables.min.js'></script>
+	<!-- history.js for cross-browser state change on ajax -->
+	<script src="js/vendor/jquery.history.js"></script>
+	<!--Migrate older jQuery code to jQuery 1.9+-->
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+	<!--ajax-->
+	<script src="js/charisma.js"></script>
 	<script type="text/javascript" src="js/widget.js"></script>
+
 	<script type="text/javascript">
 		window._idl = {};
 		_idl.variant = "banner";
