@@ -1,7 +1,6 @@
-<h2>Items</h2><br/>
+<h2>Items</h2><br />
 
 <div class="content_maintable_stats" style="width:460px;">
-
 	<form id="search" class="navbar-form pull-right" method="get" autocomplete="off">
 		<i class="icon-search icon-white"></i>
 		<input id="search-bar" type="search" name="item-search" placeholder="Search For Item..."/>

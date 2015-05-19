@@ -62,19 +62,19 @@ transition: 0.25s all ease-in; */
 	border:							2px solid #DDDDDD;
 }
 [role="searchsidebar"] {
-	width:120px;
-	text-align:left;
-	position:fixed;
-	float:right;
-	right:0px;
-	top:79px;
-	padding:5px;
-	background:						rgba(255, 255, 255, .5);	
-	margin:auto;
-	height:auto !important;
-	height:100%;
-	z-index:10;
-	border:2px solid #DDDDDD;
+	width:							120px;
+	text-align:						left;
+	position:						fixed;
+	float:							right;
+	right:							0px;
+	top:							79px;
+	padding:						5px;
+	background:						rgba(255, 255, 255, .5);
+	margin:							auto;
+	height:							auto !important;
+	height:							100%;
+	z-index:						10;
+	border:							2px solid #DDDDDD;
 }
 [role="searchbar"] {
 	background:						rgba(255, 255, 255, .5);
@@ -83,10 +83,10 @@ transition: 0.25s all ease-in; */
 	border:							2px solid #DDDDDD;
 }
 [role="main"] {
-	z-index: 100;
+	z-index: 50;
 	position: relative;
 }
-@media all and (min-width: 1289px) {
+@media all and (min-width: 1291px) {
 	[role="searchbar"]{display: none;}
 	[role="footerADMobile"]{display: none;}
 }
@@ -137,7 +137,6 @@ transition: 0.25s all ease-in; */
 	border-right:					2px solid #DDDDDD;
 	background:						rgba(255, 255, 255, .5);	
 	margin:  						0 auto;
-	min-width: 						700px;
 	min-height: 					100%;
 	height: 						auto !important;
 	height: 						100%;
@@ -146,7 +145,7 @@ transition: 0.25s all ease-in; */
 .Stil1 {font-size: xx-large;}
 .Stil2 {font-size: large;}
 table tr td a img{
-	cursor:url(../images/cursors/hover.cur), auto  !important;
+	cursor:						url(../images/cursors/hover.cur), auto  !important;
 }
 .head_language {
 	float:						left;
@@ -167,8 +166,8 @@ table tr td a img{
 	margin: 					auto;
 	min-height: 				100%;
 	height:						auto !important;
-	height:						100%; /* Mindesthöhe für den IE */
-	overflow:					hidden !important; /* FF Scroll-leiste */ 
+	height:						100%;
+	overflow:					hidden !important;
 }
 .head_maintable_stats {
 	width:						740px; 
@@ -218,9 +217,9 @@ table tr td a img{
 	font-size:					14px;
 }
 .mcmmo_player_table{
-	margin-left: auto;
-	margin-right: auto;
-	width: 620px;
+	margin-left:				auto;
+	margin-right:				auto;
+	width:						620px;
 }
 .permissions_player_table{
 	clear:						both;
@@ -448,7 +447,7 @@ a:hover {
 	background:						rgba(255, 255, 255, .5);
 	height:							auto !important;
 	height:							100%;
-	border-top-left-radius:				10px;
+	border-top-left-radius:			10px;
 	border:							2px solid #DDDDDD;
 }
 .asideleftreturn {
@@ -461,7 +460,7 @@ a:hover {
 	background:						rgba(255, 255, 255, .5);
 	height:							auto !important;
 	height:							100%;
-	border-top-right-radius:				10px;
+	border-top-right-radius:		10px;
 	border:							2px solid #DDDDDD;
 }
 #bookmarklet {
@@ -488,7 +487,7 @@ a:hover {
 	margin:						0 10px 10px 10px;
 }
 #pic:hover {
-	border: 1px solid white;
+	border:						1px solid white;
 }
 .showhide {
 	font-size:					9px;
@@ -509,8 +508,8 @@ a:hover {
 		list-style: 					none;
 }
 .menetext li a {
-	font: bold 14px arial;
-	text-decoration: none;
+	font:					bold 14px arial;
+	text-decoration:		none;
 	color: #000;
 	outline: none;
 	text-align: center;
@@ -564,7 +563,7 @@ table.pagination td.current a:hover { background: #2ba6cb; }
 .contain-to-grid { width: 100%; background: #222222; }
 
 /* Wrapped around .admin-bar to make it fixed at the top */
-.fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
+.fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 51; }
 
 /* <nav> */
 .admin-bar { background: #222222; height: 45px; line-height: 45px; margin: 0 0 30px; padding: 0; width: 100%; /* Contain width to .row width */ /* First <ul> for branding, title, name, etc */ /* topbar global <ul> styles */ }

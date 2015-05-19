@@ -130,9 +130,10 @@ include_once ROOT . "assets/header.php";
 	</div>
 <?php endif;
 $ip=$_SERVER['REMOTE_ADDR'];
-if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') : ?>
+if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
+?>
 <!-- ADMIN BAR -->
-<div class="admin-bar contain-to-grid sticky">
+<div class="admin-bar fixed">
 	<nav class="top-bar" data-topbar role="navigation">
 		<ul class="title-area">
 			<li class="name"><h1><a href="admin/">Admin Page</a></h1></li>
@@ -154,25 +155,24 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') : ?>
 </div>
 <?php elseif($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1' || '192.168.1.1') : ?>
 <!-- ADMIN BAR -->
-<div class="admin-bar">
+<div class="admin-bar fixed">
 	<nav class="top-bar" data-topbar role="navigation">
 		<ul class="title-area">
 			<li class="name"><h1><a href="admin">Admin Page</a></h1></li>
 		</ul>
 	</nav>
 </div>
+<?php endif; ?>
 <!-- SEARCH BAR -->
-<?php endif; if(ads === true) : ?>
 <section id="sidebar" role="complementaryleft">
 	<div onmousedown="return false;" onselectstart="return false;">
 		<b>Ads</b>
 	</div>
 	<?php echo WS_GOOGLE_ASIDE;?>
 </section>
-<?php endif; ?>
 
 <!--Main Wrapper Start-->
-<div id="main" role="main" class="row" style="padding-bottom:50px">
+<div id="main" role="main" style="padding-bottom:50px">
 	<!--Header-->
 	<header id="header" class="row header">
 		<div class="row">
@@ -185,22 +185,22 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') : ?>
 					?><center><a href="#" data-reveal-id="serverModal"><img id="pic" /></a></center><?php
 				}
 				?>
+				<!--Reveal Modal-->
 				<a href="#" data-reveal-id="serverModal"><div id="status"><?php require('include/online_status.php'); ?></div></a>
-				<div id="serverModal" class="reveal-modal">
-					<h2>Minecraft Server</h2>
-					<p>
-						<table>
-							<tr><th><span>Minecraft Server: </span><?php echo MQ_SERVER_ADDR.":".MQ_SERVER_PORT; ?></th></tr>
-							<tr><th><span>Teamspeak: </span></th></tr>
+				<div id="serverModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					<h2 id="modalTitle">Minecraft Server</h2>
+					<p class="lead">
+						<b>Minecraft Server: </b><?php echo MQ_SERVER_ADDR.":".MQ_SERVER_PORT; ?>
+						<br />
+						<b>Teamspeak: </b>
 							<?php
 								$minecraftServer = pingMineServ(MQ_SERVER_ADDR, MQ_SERVER_PORT);
 								if($minecraftServer !== -1) :
 							?>
-							<tr><th><a href="include/minecraftquery/index.php"<span>Click Here For More Server Info</span></a><br/></th></tr>
+							<a href="include/minecraftquery/index.php" target="_blank">Click Here For More Server Info</a>
 							<?php endif; ?>
-						</table>
 					</p>
-					<a class="close-reveal-modal">&#215;</a>
+					<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 				</div>
 			</div>
 		</div>
@@ -309,8 +309,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') : ?>
 	<!--Included JS Files (Compressed)-->
 	<script src="js/foundation.min.js"></script>
 	<!--Initialize JS Plugins-->
-	<script src="js/charisma.js"></script>
-	<script src="js/giant_uncomp.js"></script>
+
 	<script type="text/javascript" src="js/widget.js"></script>
 	<script type="text/javascript">
 		window._idl = {};
