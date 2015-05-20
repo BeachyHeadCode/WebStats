@@ -152,7 +152,7 @@ $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 0;
 
 function display_header() {
 	header( 'Content-Type: text/html; charset=utf-8' );
-define('layout',ROOT . 'css/layout_admin.css');
+define('layout','');
 include_once ROOT . "assets/header.php";
 ?>
 <script type="text/javascript">
@@ -282,16 +282,56 @@ include_once ROOT . "assets/header.php";
 		<h3 class="title"><i class="fi-wrench"></i> Install & Configure</h3>
 		<!--Body-->
 		<div class="row inner-wrapper show-for-medium-up">
-			<div class="alert-box">
+			<div class="alert-box info radius">
 				<strong><i class="fi-alert"></i>Warning:</strong> This is beta software. Open an issue on <a href="https://github.com/MrPlow254/WebStats/issues" target="_blank">GitHub</a> if you find any problems and we may try and fix it.
 			</div>
-			<article>
-		<?php
+<?php
+		$fault = false;
+		if (file_exists('../config/')) {
+			if (!is_writable('../config/')) {
+				$fault = true;
+?>
+				<div class="alert-box alert">
+					<strong><i class="fi-alert"></i> Configuration Warning:</strong>config-directory is not writeable: <?php echo realpath('../config/').'/'; ?>.<br />
+					Please use command <code>chmod -R 666 <?php echo realpath('../config/').'/'; ?></code> to make the folder writeable.
+				</div>
+<?php
+			}
+		} else {
+			$fault = true;
+?>
+			<div class="alert-box alert">
+				<strong><i class="fi-alert"></i> Configuration Warning:</strong>config-directory is not writeable: <?php echo realpath('../config/').'/'; ?>.<br />
+				Please use command <code>chmod -R 666 <?php echo realpath('../config/').'/'; ?></code> to make the folder writeable.
+			</div>
+<?php 
+		}
+		if (file_exists('../images/image-cache/')) {
+			if (!is_writable('../images/image-cache/')) {
+				$fault = true;
+?>
+				<div class="alert-box alert radius">
+					<strong><i class="fi-alert"></i> Configuration Warning:</strong> The folder <code><?php echo realpath('../images/image-cache/').'/'; ?></code> is not writeable by the web-server.
+					Please use command <code>chmod -R 666 <?php echo realpath('../images/image-cache/').'/'; ?></code> to make the folder writeable.
+				</div>
+<?php
+			}
+		} else {
+			$fault = true;
+?>
+			<div class="alert-box alert radius">
+				<strong><i class="fi-alert"></i> Configuration Warning:</strong> The folder <code><?php echo realpath('../images/image-cache/').'/'; ?></code> is not writeable by the web-server.
+				Please use command <code>chmod -R 666 <?php echo realpath('../images/image-cache/').'/'; ?></code> to make the folder writeable.
+			</div>
+<?php 
+		}
+		return $fault;
 }//end function display_header();
 		switch($step) {
 			case 0:
-				display_header();
+				$fault=display_header();
 		?>
+<article>
 <h1>Welcome to WebStats v<?php echo $version;?>!</h1>
 <p>Before getting started, we need some information on the database. You will need to know the following items before proceeding.</p>
 <ol>
@@ -338,14 +378,15 @@ include_once ROOT . "assets/header.php";
 	<i class="fi-bookmark"></i> The next two steps allow for you to have an admin page for this project. If you decide that you would rather not create this you can skip creating the admin page. This can later be added going to you /admin/setup-config.php file. It will then end when you get the step to create the config if the config file exists.
 </p>
 <p class="step">
-	<a href="setup-config.php?step=1<?php if ( isset( $_GET['noapi'] ) ) echo '&amp;noapi'; ?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a>
-	<a href="setup-config.php?step=3<?php echo '&amp;noapi'; ?>" class="button"><?php echo( 'Skip creating admin page.' ); ?></a>
+	<a <?php if($fault){echo 'disabled href="#"';}else{echo 'href="setup-config.php?step=1'; if (isset($_GET['noapi'])) echo '&amp;noapi';}?>" class="button"><?php echo( 'Let&#8217;s go!' ); ?></a>
+	<a <?php if($fault){echo 'disabled href="#"';}else{echo 'href="setup-config.php?step=3&amp;noapi';}?>" class="button"><?php echo( 'Skip creating admin page.' ); ?></a>
 </p>
 			<?php	
 			break;
 			case 1:
 				display_header();
 			?>
+<article>
 <h1><i class="fi-clipboard-notes"></i> Configuration</h1>
 <p>
 	Enter the database details to your the MySQL server where you have created a database for this project's data. <strong>The table and database will be created if it does not exist.</strong> Please note that the user only needs SELECT, and CREATE permissions on the database.
@@ -368,6 +409,7 @@ include_once ROOT . "assets/header.php";
 			case 2:
 				display_header();
 			?>
+<article>
 <h1><i class="fi-clipboard-notes"></i> Configuration</h1>
 <p>
 	Enter the username and password you design for logging into the admin page.
@@ -385,6 +427,7 @@ include_once ROOT . "assets/header.php";
 			break;
 			case 3:
 				display_header();
+				echo '<article>';
 				if(isset( $_GET['noapi'] )) {
 					require_once('configsetup.php');
 				} else {
@@ -402,8 +445,7 @@ include_once ROOT . "assets/header.php";
 		<div class="inner-wrapper show-for-small-only" align="center">
 			Please continue the install on a desktop.
 		</div>
-		<div class="row">
-		<footer>
+		<footer class="row">
 			<script type="text/javascript">
 				google_ad_client = "ca-pub-6169723647730707";
 				google_ad_slot = "0514393560";
@@ -412,11 +454,10 @@ include_once ROOT . "assets/header.php";
 			</script>
 			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 			<p>
-				<a href="https://nicholas-smith.tk" target="_blank">nicholas-smith.tk</a> &#169;<a href="http://bukkit.org/threads/web-webstatistic-for-minecraft-v3-1-mrplows.60843/" target="_blank">Webstatistic Install v5.2.1</a> for <a href="https://minecraft.net/" target="_blank">Minecraft</a>
+				<a href="https://nicholas-smith.tk" target="_blank">nicholas-smith.tk</a> &#169;<a href="http://bukkit.org/threads/web-webstatistic-for-minecraft-v3-1-mrplows.60843/" target="_blank">Webstatistic Install v5.3</a> for <a href="https://minecraft.net/" target="_blank">Minecraft</a>
 				<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
 			</p>
 		</footer>
-		</div>
 	</div>
 	<aside>
 		<script type="text/javascript"><!--

@@ -1,3 +1,7 @@
+#
+# NOTE: Do not edit, change, delete, or `attempt to fix this file`. We will not provide support for it.
+#
+
 # Interpret both .php & .html as PHP:
 AddHandler php5-script .php .html
 AddHandler php-cgi .php
@@ -16,7 +20,16 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/qX4w7.gif [L]
 php_value display_errors off
 php_value html_errors off
 
-<Files php.ini>
+# BEGIN Security Features
+# Deny config.php
+<files config.php>
+  order allow,deny
+  deny from all
+</files>
+
+# Deny php.user.ini
+<Files php.user.ini>
   order allow,deny
   deny from all
 </Files>
+# END Security Features

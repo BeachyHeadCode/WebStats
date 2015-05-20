@@ -163,7 +163,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 	</nav>
 </div>
 <?php endif; ?>
-<!-- SEARCH BAR -->
+
 <section id="sidebar" role="complementaryleft">
 	<div onmousedown="return false;" onselectstart="return false;">
 		<b>Ads</b>
@@ -292,6 +292,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 <!--Side Bar Right-->
 <section>
 	<?php if($search_control == true && WS_CONFIG_SEARCH_BAR === true) {?>
+	<!-- SEARCH BAR -->
 	<div role="searchsidebar">
 		<?php include ROOT . 'include/search/index.php'; ?>
 	</div>

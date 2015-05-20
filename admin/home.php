@@ -122,6 +122,9 @@ if($json!='API rate limit exceeded') {
 	if (!function_exists('imagecreatetruecolor')) {echo "<br /><b>PHP GD is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-gd' then restart apache.<br />";}
 	if (!function_exists('curl_init')) {echo "<br /><b>PHP Curl is not installed or corrupt:</b> <br />For linux users, 'sudo apt-get install php5-curl' then restart apache.<br />";}	
 	if (ini_get('variables_order') == "GPCS") {echo '<br />Your INI file shows variables_order = "GPCS", however we would like it to be "EGPCS"<br />';}
+	if (function_exists('apache_get_modules')) {
+		if (in_array('mod_rewrite', apache_get_modules())) {echo 'If you have not activated mod_rewrite<br />sudo a2enmod rewrite<br />sudo service apache2 restart<br />';}
+	}
 	?>
 </p>
 <h3><a href="<?php echo $repoURL; ?>" target="_blank">Latest Github Activity for <?php echo $repoName; ?></a></h3>
