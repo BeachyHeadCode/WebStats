@@ -1,5 +1,9 @@
 <?php
-final class ip2location_lite{
+/**
+ * Ip Tracker API.
+ *
+ */
+final class ip2location_lite {
 	protected $errors = array();
 	protected $service = 'api.ipinfodb.com';
 	protected $version = 'v3';
@@ -41,7 +45,7 @@ final class ip2location_lite{
 }
 
 /**
- * Fix $_SERVER variables for various setups.
+ * Fix $_SERVER variables for various set-ups.
  *
  */
 function fix_server_vars() {
@@ -108,6 +112,7 @@ function ws_check_php_mysql_versions() {
 		die('Your PHP installation appears to be missing the MySQL extension which is required by WebStats.');
 	}
 }
+
 /**
  * Sets the current page url
  */
@@ -121,6 +126,7 @@ function curPageURL() {
 		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 	return $pageURL;
 }
+
 /**
  * Sets the current page url
  *
@@ -137,11 +143,10 @@ function adminPageURL() {
 		$pageURL .= $_SERVER["SERVER_NAME"]."/admin";
 	return $pageURL;
 }
+
 /**
  *
  * Sets a database connection
- *
- *
  *
  */
 class DBConfig {
@@ -275,6 +280,7 @@ function get_played($time) {
 	}
 	return $played;
 }
+
 /**
  * Sets the page numbers.
  *
@@ -348,7 +354,7 @@ function get_pages($numbers, $mode, $sort) {
 				if($_GET["page"] < $numbers) {
 					$pages .='<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'&NPP='.$_GET["NPP"].'">&raquo;</a></td>';
 				} else {
-					$pages .='<td class="arrow unavailable"><a href="">&raquo;</a></td>';
+					$pages .='<td class="arrow unavailable">&raquo;</td>';
 				}
 			} elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))) {
 				$pages = '<td class="arrow"><a href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'&NPP='.$_GET["NPP"].'">&laquo;</a></td>';
@@ -453,6 +459,7 @@ function get_tag($tag,$xml) {
 	preg_match_all('/<'.$tag.'>(.*)<\/'.$tag.'>$/imU',$xml,$match);
 	return $match[1];
 }
+
 /**
  * This function will check whether the visitor is a search engine robot.
  *
@@ -474,6 +481,7 @@ function is_bot() {
 	}
 	return false;	// Not a bot
 }
+
 /**
  * Kill WebStats execution and display HTML message with error message.
  *
@@ -493,6 +501,7 @@ function ws_die($message = '', $title = '', $args = array()) {
 	$function ='_default_ws_die_handler';
 	call_user_func( $function, $message, $title, $args );
 }
+
 /**
  * Kill WebStats execution and display HTML message with error message.
  *

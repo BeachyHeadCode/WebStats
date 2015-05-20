@@ -293,7 +293,7 @@ include_once ROOT . "assets/header.php";
 ?>
 				<div class="alert-box alert">
 					<strong><i class="fi-alert"></i> Configuration Warning:</strong>config-directory is not writeable: <?php echo realpath('../config/').'/'; ?>.<br />
-					Please use command <code>chmod -R 666 <?php echo realpath('../config/').'/'; ?></code> to make the folder writeable.
+					Please use command <code>chmod 666 <?php echo realpath('../config/').'/'; ?></code> to make the folder writeable.
 				</div>
 <?php
 			}
@@ -302,7 +302,7 @@ include_once ROOT . "assets/header.php";
 ?>
 			<div class="alert-box alert">
 				<strong><i class="fi-alert"></i> Configuration Warning:</strong>config-directory is not writeable: <?php echo realpath('../config/').'/'; ?>.<br />
-				Please use command <code>chmod -R 666 <?php echo realpath('../config/').'/'; ?></code> to make the folder writeable.
+				Please use command <code>chmod 666 <?php echo realpath('../config/').'/'; ?></code> to make the folder writeable.
 			</div>
 <?php 
 		}
