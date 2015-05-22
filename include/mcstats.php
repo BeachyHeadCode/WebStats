@@ -1,16 +1,13 @@
 <?php
 /*  Copyright 2012-2013 Nick Smith. All rights reserved. */
 
+if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])){exit();}
 $LOG = false; /* Do you want to run a log on this php file. */
 $XML = true;
 $PHPTEST = false;
 $forever = false;
 $DUMP = false;
 
-if(file_exists('config/config.php'))
-	include_once('config/config.php');
-else
-	header("location:admin/setup-config.php");
 require_once('include/functions.php');
 require_once('include/version.php');
 

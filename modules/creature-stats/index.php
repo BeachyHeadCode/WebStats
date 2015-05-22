@@ -9,7 +9,7 @@ if (!isset($_GET['search'])) {
 	<div class="content_headline" style="width:748px;">
 		<b>
 			<img src="images/icons/<?php echo $_GET['creature']; ?>.png" width="15px" height="15px">
-				<u><a href="http://www.minecraftwiki.net/wiki/<?php echo translate($_GET['creature']);?>"><?php echo translate($_GET['creature']); ?></a></u>
+				<u><a href="http://minecraft.gamepedia.com/<?php echo translate($_GET['creature']);?>"><?php echo translate($_GET['creature']); ?></a></u>
 			<img src="images/icons/<?php echo $_GET['creature']; ?>.png" width="15px" height="15px">
 		</b>
 	</div>

@@ -9,12 +9,7 @@
 	<section class="small-12 small-centered columns content_headline" id="name">
 	</section>
 	<div id="ItemInfo"></div>
-	<div class="row" style="width:675px; margin:0px auto;" id="Recipe">
-	<?php 
-		if($recipe_control == true) {
-			include('include/recipe/index.php'); 
-		}?>
-	</div>
+	<div class="row" style="width:675px; margin:0px auto;" id="Recipe"></div>
 	<?php if(function_exists(set_material_destroy_table) and function_exists(set_material_build_table)) : ?>
 	<section class="small-12 small-centered columns content_headline">
 		<a class="ajax-link" href="index.php?mode=material-stats&material=<?php echo $item; ?>"><?php echo translate('var1');?></a> - <a class="ajax-link" href="index.php?mode=material-stats&search=true&material=<?php echo $item;?>"><?php echo translate('var2'); ?></a>
@@ -39,9 +34,10 @@ function addItemInfo(callback) {
 	logInfo("Adding item info...");
 	$.ajax({
 		type: "GET",
+		async: false,
 		url: "language/items.xml", 
 		dataType: "xml",
-		success: function(xml) {	
+		success: function(xml) {
 			$(xml).find('item').each(function() {
 				if(getValue(this, 'id') == "<?php echo $item; ?>"){
 					addItem(getValue(this, 'description'),
@@ -51,7 +47,7 @@ function addItemInfo(callback) {
 							  getValue(this, 'id'));
 				}
 			});
-			logInfo("Done!");
+			logInfo("Add Item Info: <?php echo $item;?> - Done!");
 			callback();
 		}
 	});
@@ -81,7 +77,7 @@ function addItem(description, added, type, name, id) {
 	.appendTo('#ItemInfo');
 	
 	$('<b></b>').html(
-			'<img src="images/icons/<?php echo $item_image;?>.png" width="15px" height="15px"><u><a href="http://www.minecraftwiki.net/wiki/' + name + '">' + name + '</a></u><img src="images/icons/<?php echo $item_image; ?>.png" width="15px" height="15px">'
+			'<img src="images/icons/<?php echo $item_image;?>.png" width="15px" height="15px"><u><a href="http://minecraft.gamepedia.com/' + name + '">' + name + '</a></u><img src="images/icons/<?php echo $item_image; ?>.png" width="15px" height="15px">'
 	)
 	.appendTo('#name');
 }
@@ -109,7 +105,7 @@ function addRecipeInfo(callback) {
 					}
 				}
 			);
-			logInfo("Done!");
+			logInfo("Add Recipe <?php echo $item; ?> - Done!");
 			callback();
 		}
 	});
@@ -133,7 +129,7 @@ function addBrewInfo(callback) {
 					}
 				}
 			);
-			logInfo("Done!");
+			logInfo("Add Brew <?php echo $item; ?> - Done!");
 			callback();
 		}
 	});
@@ -155,7 +151,7 @@ function addSmeltingInfo(callback) {
 					}
 				}
 			);
-			logInfo("Done!");
+			logInfo("Add Smelting <?php echo $item; ?> - Done!");
 			callback();
 		}
 	});
@@ -273,7 +269,7 @@ $(document).ready(function() {
 	addItemInfo(function() {
 		$("#ItemInfo").fadeIn("slow");
 	});
-/* 	addRecipeInfo(function() {
+ 	addRecipeInfo(function() {
 		$("#Recipe").fadeIn("slow");
 	});
 	addBrewInfo(function() {
@@ -281,6 +277,6 @@ $(document).ready(function() {
 	});
 	addSmeltingInfo(function() {
 		$("#Recipe").fadeIn("slow");
-	}); */
+	});
 });
 </script>

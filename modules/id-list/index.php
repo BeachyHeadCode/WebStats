@@ -38,7 +38,7 @@ function addItems(callback) {
 
 function addItem(name, icon, id, type) {
 	$('<tr></tr>').html(
-		'<td><a href="http://www.minecraftwiki.net/wiki/' + name + '" target="_blank"><img src="images/icons/'+icon+'.png" width="32px" height="32px" border="0" /></a></td>' +
+		'<td><a href="http://minecraft.gamepedia.com/' + name + '" target="_blank"><img src="images/icons/'+icon+'.png" width="32px" height="32px" border="0" /></a></td>' +
 		'<td>' + id + '</td>' +
 		'<td><a class="ajax-link" href="index.php?mode=material-stats&material=' + icon + '" >' + name + '</a></td>' +
 		'<td>' + type + '</td>'
