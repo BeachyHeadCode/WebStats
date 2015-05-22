@@ -85,13 +85,13 @@ function addItem(description, added, type, name, id) {
 function addRecipeInfo(callback) {
 	$.ajax({
 		type: "GET",
-		url: "include/recipe/include/recipes.xml", 
+		url: "include/recipe/include/recipes.xml",
 		dataType: "xml",
 		success: function(xml) {	
 			$(xml).find('recipe').each(
 				function() {
 					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Topleft') == "<?php echo $item; ?>") || (getValue(this, 'Topmiddle') == "<?php echo $item; ?>") || (getValue(this, 'Topright') == "<?php echo $item; ?>") || (getValue(this, 'Left') == "<?php echo $item; ?>") || (getValue(this, 'Middle') == "<?php echo $item; ?>") || (getValue(this, 'Right') == "<?php echo $item; ?>") || (getValue(this, 'Bottomleft') == "<?php echo $item; ?>") || (getValue(this, 'Bottom') == "<?php echo $item; ?>") || (getValue(this, 'Bottomright') == "<?php echo $item; ?>")) {
-					addRecipeItem(getValue(this, 'Output'),
+						addRecipeItem(getValue(this, 'Output'),
 							  getValue(this, 'NumberOfOutput'),
 							  getValue(this, 'Topleft'),
 							  getValue(this, 'Topmiddle'),
@@ -120,7 +120,7 @@ function addBrewInfo(callback) {
 			$(xml).find('Brew').each(
 				function() {
 					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'MainInput') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>") || (getValue(this, 'Input3') == "<?php echo $item; ?>")) {
-					addBrewItem(getValue(this, 'Output'),
+						addBrewItem(getValue(this, 'Output'),
 							  getValue(this, 'NumberOfOutput'),
 							  getValue(this, 'MainInput'),
 							  getValue(this, 'Input1'),
@@ -144,7 +144,7 @@ function addSmeltingInfo(callback) {
 			$(xml).find('SmeltingItem').each(
 				function() {
 					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>")) {
-					addSmeltingItem(getValue(this, 'Output'),
+						addSmeltingItem(getValue(this, 'Output'),
 							  getValue(this, 'NumberOfOutput'),
 							  getValue(this, 'Input1'),
 							  getValue(this, 'Input2'));

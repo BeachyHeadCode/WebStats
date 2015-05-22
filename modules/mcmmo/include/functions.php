@@ -18,8 +18,8 @@ function get_mcmmo_user_stats_order($sort, $start, $end) {
 			case "axes";
 				$sortkey = "ORDER BY `axes` DESC";
 			break;
-			case "acrobatics";
-				$sortkey = "ORDER BY `acrobatics` DESC";
+			case "blast_mining";
+				$sortkey = "ORDER BY `blast_mining` DESC";
 			break;
 			case "excavation";
 				$sortkey = "ORDER BY `excavation` DESC";
