@@ -19,7 +19,7 @@ $(document).ready(function(){
 	// user document.on so that content loaded via ajax also gets the "ajax click" behaviour
 	$(document).on('click', 'a.ajax-link', function(e){
 		console.log('fire ajax call');
-		if($.browser.msie) e.which=1;
+		//if($.browser.msie) e.which=1;
 		if(e.which!=1){ alert('no'); return; }
 
 		e.preventDefault();
@@ -91,33 +91,6 @@ function docReady() {
 		var options = $.parseJSON($(this).attr('data-noty-options'));
 		noty(options);
 	});
-
-
-	//uniform - styler for checkbox, radio and file input
-	$("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
-
-	//chosen - improves select
-	$('[data-rel="chosen"],[rel="chosen"]').chosen();
-
-
-	//makes elements soratble, elements that sort need to have id attribute to save the result
-	$('.sortable').sortable({
-		revert:true,
-		cancel:'.btn,.box-content,.nav-header',
-		update:function(event,ui){
-			//line below gives the ids of elements, you can make ajax call here to save it to the database
-			//console.log($(this).sortable('toArray'));
-		}
-	});
-
-	//slider
-	$('.slider').slider({range:true,values:[10,65]});
-
-	//tooltip
-	$('[rel="tooltip"],[data-rel="tooltip"]').tooltip({"placement":"bottom",delay: { show: 400, hide: 200 }});
-
-	//popover
-	$('[rel="popover"],[data-rel="popover"]').popover();
 
 	//datatable
 	$('.datatable').dataTable({

@@ -1,4 +1,6 @@
 <?php
-	// Don't edit this entry!
-	define('WS_CONFIG_NoMySQL', false);
+	$WS_CONFIG_NoMySQL=false;
+	$menuname="Stats";
+	if(pluginconfigstatusstats === true)
+		$on=true;
 ?>

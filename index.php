@@ -244,8 +244,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 				}
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/config/config.php';
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/include/functions.php';
-				
-				if (WS_CONFIG_NoMySQL != true) {
+				if ($WS_CONFIG_NoMySQL != true) {
 					if($persistent === true) {
 						$link = mysqli_connect('p:'.WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
 					} else {
@@ -253,7 +252,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 					}
 				}
 				include_once ROOT . 'modules/'.$_SESSION['mode'].'/index.php';
-				if (WS_CONFIG_NoMySQL != true) {mysqli_close($link);}
+				if ($WS_CONFIG_NoMySQL != true) {mysqli_close($link);}
 			} else {include_once ROOT . 'assets/404.html'; }
 			?>
 		</div>

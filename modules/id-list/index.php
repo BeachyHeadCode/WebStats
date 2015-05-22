@@ -30,6 +30,7 @@ function addItems(callback) {
 						  getValue(this, 'id'),
 						  getValue(this, 'type'));
 			});
+			logInfo('ID list loaded: ' + $(xml).find('item').size());
 			callback();
 		}
 	});
@@ -48,6 +49,7 @@ $(document).ready(function() {
 	addItems(function() {
 		$("#item-table").fadeIn("slow");
 	});
+	
 });
 $("#search-bar").on("keyup", function() {
 	var term = $(this).val().toLowerCase();

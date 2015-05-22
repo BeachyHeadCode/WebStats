@@ -1,4 +1,3 @@
 <?php
-	// Don't edit this entry!
-	define('WS_CONFIG_NoMySQL', true);
+	$WS_CONFIG_NoMySQL=true;
 ?>
