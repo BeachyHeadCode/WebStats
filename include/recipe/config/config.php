@@ -189,9 +189,6 @@ $recipe	=	array(
 );
 // End Recipe
 //
-$recipe	=	array(
-	0	=>	'5|,,|,,|,17,|4'
-);
 // Start brewing recipe	declaration
 // Format
 // item number input | input 1, input 2, input 3| number of output | output
