@@ -1,5 +1,6 @@
 <div class="row">
 	<h2><a href="http://mcmmo.wikia.com" target="_blank" title="McMMo Wiki">McMMO</a></h2><br />
+	<center>
 	<table>
 		<tr>
 			<td>Num:</td>
@@ -42,5 +43,6 @@
 			}						
 ?>
 	</table>
+	</center>
 </div>
 <?php echo (get_pages($player_count, $_GET['mode'], $_GET['sort']));?>

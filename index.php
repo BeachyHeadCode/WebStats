@@ -332,11 +332,19 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 		})();
 	</script>
 	<script type="text/javascript">
-		$.ajax({ 
+		//Sever pic creation request.
+		$.ajax({
 			url : 'include/pic.php', 
 			processData : false,
 		}).always(function(){
 			$("#pic").attr("src", "include/pic.php");
+		});
+		//MCSTATS.ORG update request.
+		$.ajax({
+			url : '<?php echo ROOT . 'include/mcstats.php';?>', 
+			processData : false,
+		}).always(function(){
+			logInfo('mstats updated!');
 		});
 	</script>
 	<script type="text/javascript">
@@ -354,6 +362,4 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
     </script>
 </body>
 </html>
-<?php 
-	require_once ROOT . 'include/mcstats.php';
-} else { echo 'Please install php version 5.2.5 or better!';} ?>
+<?php }else{echo 'Please install php version 5.2.5 or better!';} ?>
