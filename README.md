@@ -64,16 +64,16 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 </ul>
 			
 <h3>Current Pending Update:</h3>
-<h4>v3.2(No ETA) - Changelog bellow is current GitHub Source changes</h4>
+<h4>v4(No ETA) - Changelog bellow is current GitHub Source changes</h4>
 <ul>
-	<li>As Place holder for now. Added <a href="http://dev.bukkit.org/server-mods/saaplugin/">Stats & Achievements</a> ~ <a href="http://git.s7t.de/maniacraft-plugins/statsandachievements">source</a></li>
-	<li>Fixed Login process that never killed.</li>
 	<li>Moved all MySQL function to mysqli since mysql was deprecated as of PHP 5.5.0.</li>
 	<li>IP page sort function changes for the date.</li>
 	<li>Updated to latest minecraft items 5/18/15</li>
 	<li>JavaScript materials page.</li>
 	<li>Updated to Foundation 5.5.2</li>
 	<li>Optimized CSS for multi-platform</li>
+	<li>ajax usage</li>
+	<li>dynamic menu</li>
 <h4>Known Problems</h4>
 <ul>
 	<li>Tables don't fit mobile.</li>
