@@ -1,6 +1,6 @@
 <?php
 	$WS_CONFIG_NoMySQL=false;
-	if($iconomy_control === true){include_once_once('modules/iconomy/api/api.php');}
+	if($iconomy_control === true){include_once('modules/iconomy/api/api.php');}
 	if($permissionsex_control === true){include_once('modules/permissionsex/api/api.php');}
 	if($jail_control === true){include_once('modules/jail/api/api.php');}
 	if($job_control === true){include_once('modules/jobs/api/api.php');}

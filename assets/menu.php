@@ -69,7 +69,7 @@ for($i=0; $i <= sizeof($array); $i++) {
 			<ul class="right" id="main-menu">
 				<li class="divider"></li>
 				<li><a title="Return to Main Site" href="<?php echo WS_MAINSITE;?>"><?php echo translate(var84);?></a></li>
-<?php if($idlist_control === true){echo '<li><a href="?mode=id-list" title="'.translate(var75).'"><span>'.translate(var75).'</span></a></li>';} ?>
+<?php if($idlist_control === true){echo '<li><a class="ajax-link" href="?mode=id-list" title="'.translate(var75).'"><span>'.translate(var75).'</span></a></li>';} ?>
 			</ul>
 		</section>
 	</nav>

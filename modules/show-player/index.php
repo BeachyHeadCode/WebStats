@@ -5,7 +5,7 @@
 	else 
 		$_GET['search'] = 'ORDER BY value DESC';
 	if (isset($_POST['user'])) {
-		include('include/search/api/api.php');
+		include_once('include/search/api/api.php');
 		$check_user = search_check_user($_POST['user']);
 	}
 	if ($check_user == false)
