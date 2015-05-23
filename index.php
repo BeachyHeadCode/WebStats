@@ -153,7 +153,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 		</section>
 	</nav>
 </div>
-<?php elseif($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1' || '192.168.1.1') : ?>
+<?php elseif($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1' || strpos($ip,'192.168.')) : ?>
 <!-- ADMIN BAR -->
 <div class="admin-bar fixed">
 	<nav class="top-bar" data-topbar role="navigation">
@@ -335,17 +335,22 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 		//Sever pic creation request.
 		$.ajax({
 			url : 'include/pic.php', 
-			processData : false,
-		}).always(function(){
+			processData : false
+		})
+		.always(function(){
 			$("#pic").attr("src", "include/pic.php");
 		});
 		//MCSTATS.ORG update request.
 		$.ajax({
-			url : '<?php echo ROOT . 'include/mcstats.php';?>', 
-			processData : false,
-		}).always(function(){
+			url : 'include/mcstats.php', 
+			processData : false
+		})
+		.fail(function() {
+			logError( "mstats error" );
+		})
+		.always(function(){
 			logInfo('mstats updated!');
-		});
+		})
 	</script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -362,4 +367,6 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
     </script>
 </body>
 </html>
-<?php }else{echo 'Please install php version 5.2.5 or better!';} ?>
+<?php 
+//include ROOT . 'include/mcstats.php';
+}else{echo 'Please install php version 5.2.5 or better!';} ?>
