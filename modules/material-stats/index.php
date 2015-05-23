@@ -9,7 +9,15 @@
 	<section class="small-12 small-centered columns content_headline" id="name">
 	</section>
 	<div id="ItemInfo"></div>
-	<div class="row" style="width:675px; margin:0px auto;" id="Recipe"></div>
+	<div class="row" id="RecipeTables">
+		<div class="small-12 small-centered columns" id="Recipe"></div>
+	</div>
+	<div class="row" id="BrewTables">
+		<div class="small-12 small-centered columns" id="Brew"></div>
+	</div>
+	<div class="row" id="SmeltingTables">
+		<div class="small-12 small-centered columns" id="Smelting"></div>
+	</div>
 	<?php if(function_exists(set_material_destroy_table) and function_exists(set_material_build_table)) : ?>
 	<section class="small-12 small-centered columns content_headline">
 		<a class="ajax-link" href="index.php?mode=material-stats&material=<?php echo $item; ?>"><?php echo translate('var1');?></a> - <a class="ajax-link" href="index.php?mode=material-stats&search=true&material=<?php echo $item;?>"><?php echo translate('var2'); ?></a>
@@ -87,12 +95,14 @@ function addRecipeInfo(callback) {
 		type: "GET",
 		url: "include/recipe/include/recipes.xml",
 		dataType: "xml",
-		success: function(xml) {	
+		success: function(xml) {
+			id=false;
 			$(xml).find('recipe').each(
 				function() {
 					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Topleft') == "<?php echo $item; ?>") || (getValue(this, 'Topmiddle') == "<?php echo $item; ?>") || (getValue(this, 'Topright') == "<?php echo $item; ?>") || (getValue(this, 'Left') == "<?php echo $item; ?>") || (getValue(this, 'Middle') == "<?php echo $item; ?>") || (getValue(this, 'Right') == "<?php echo $item; ?>") || (getValue(this, 'Bottomleft') == "<?php echo $item; ?>") || (getValue(this, 'Bottom') == "<?php echo $item; ?>") || (getValue(this, 'Bottomright') == "<?php echo $item; ?>")) {
 						addRecipeItem(getValue(this, 'Output'),
 							  getValue(this, 'NumberOfOutput'),
+							  getValue(this, 'RecipeType'),
 							  getValue(this, 'Topleft'),
 							  getValue(this, 'Topmiddle'),
 							  getValue(this, 'Topright'),
@@ -102,9 +112,13 @@ function addRecipeInfo(callback) {
 							  getValue(this, 'Bottomleft'),
 							  getValue(this, 'Bottom'),
 							  getValue(this, 'Bottomright'));
+						id=true;
 					}
 				}
 			);
+			if(id==true) {
+				$('<h2>Recipe</h2><hr />').prependTo('#RecipeTables');
+			}
 			logInfo("Add Recipe <?php echo $item; ?> - Done!");
 			callback();
 		}
@@ -116,7 +130,8 @@ function addBrewInfo(callback) {
 		type: "GET",
 		url: "include/recipe/include/brew.xml", 
 		dataType: "xml",
-		success: function(xml) {	
+		success: function(xml) {
+			id=false;
 			$(xml).find('Brew').each(
 				function() {
 					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'MainInput') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>") || (getValue(this, 'Input3') == "<?php echo $item; ?>")) {
@@ -126,9 +141,13 @@ function addBrewInfo(callback) {
 							  getValue(this, 'Input1'),
 							  getValue(this, 'Input2'),
 							  getValue(this, 'Input3'));
+						id=true;
 					}
 				}
 			);
+			if(id==true) {
+				$('<h2>Brewing</h2><hr />').prependTo('#BrewTables');
+			}
 			logInfo("Add Brew <?php echo $item; ?> - Done!");
 			callback();
 		}
@@ -140,7 +159,8 @@ function addSmeltingInfo(callback) {
 		type: "GET",
 		url: "include/recipe/include/smelting.xml", 
 		dataType: "xml",
-		success: function(xml) {	
+		success: function(xml) {
+			id=false;
 			$(xml).find('SmeltingItem').each(
 				function() {
 					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>")) {
@@ -148,16 +168,20 @@ function addSmeltingInfo(callback) {
 							  getValue(this, 'NumberOfOutput'),
 							  getValue(this, 'Input1'),
 							  getValue(this, 'Input2'));
+						id=true;
 					}
 				}
 			);
+			if(id==true) {
+				$('<h2>Smelting</h2><hr />').prependTo('#SmeltingTables');
+			}
 			logInfo("Add Smelting <?php echo $item; ?> - Done!");
 			callback();
 		}
 	});
 }
 
-function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Middle, Right, Bottomleft, Bottom, Bottomright) {
+function addRecipeItem(Output, NumberOfOutput, RecipeType, Topleft, Top, Topright, Left, Middle, Right, Bottomleft, Bottom, Bottomright) {
 	if(Topleft != '') {
 		Topleft = '<td><span class="grid2"><span class="border"><span><span class="image"><a class="ajax-link" href="index.php?mode=material-stats&material=' + Topleft + '" title="' + addItemName(Topleft) + '"><img src="images/icons/' + Topleft + '.png" width="32px" height="32px" border="0" ></a></span></span></span></span></td>';
 	} else {
@@ -203,6 +227,14 @@ function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Mid
 	} else {
 		Bottomright = '<td><span class="grid2"><span class="border"><span><span class="image"></span></span></span></span></td>';
 	}
+	//RecipeType 0=Normal, 1=Shapeless, 2=Fixed
+	if(RecipeType == '1') {
+		RecipeType = '<td class="shapeless" title="This recipe is shapeless; the inputs may be placed in any arrangement in the crafting grid."><img alt="Grid layout Shapeless.png" src="include/recipe/images/Grid_layout_Shapeless.png" width="19" height="15" /></td>';
+	} else if(RecipeType == '2') {
+		RecipeType = '<td class="fixed" title="This recipe is fixed, the input arrangement may not be moved or mirrored."><img alt="Grid layout Fixed.png" src="include/recipe/images/Grid_layout_Fixed.png" width="19" height="15" /></td>';
+	} else {
+		RecipeType = '<td></td>';
+	}
 	$('<table cellpadding="0" cellspacing="0" class="grid-Crafting_Table" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody></tbody></table>').html(
 		'<tr>'
 			+ Topleft 
@@ -218,23 +250,42 @@ function addRecipeItem(Output, NumberOfOutput, Topleft, Top, Topright, Left, Mid
 			+ Bottomleft
 			+ Bottom
 			+ Bottomright
+			+ RecipeType
 		+ '</tr>'
 	)
 	.appendTo('#Recipe');
 }
 
 function addBrewItem(Output, NumberOfOutput, MainInput, Input1, Input2, Input3) {
+	if(Input1 != '') {
+		Input1 = '<td class="output1"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input1 + '" title="' + addItemName(Input1) + '"><img src="images/icons/' + Input1 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
+	} else {
+		Input1 = '<td class="output1"><span class="grid2"><span class="border"><span><span class="default-image"><img src="include/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';
+	}
+	if(Input2 != '') {
+		Input2 = '<td class="output2"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input2 + '" title="' + addItemName(Input2) + '"><img src="images/icons/' + Input2 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
+	} else {
+		Input2 = '<td class="output2"><span class="grid2"><span class="border"><span><span class="default-image"><img src="include/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';
+	}
+	if(Input3 != '') {
+		Input3 = '<td class="output3"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input3 + '" title="' + addItemName(Input3) + '"><img src="images/icons/' + Input3 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
+	} else {
+		Input3 = '<td class="output3"><span class="grid2"><span class="border"><span><span class="default-image"><img src="include/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';
+	}
 	$('<table cellpadding="0" cellspacing="0" class="grid-Brewing_Stand" style="width:217px; height:125px; position:relative; float:left; margin:4px;"><tbody></tbody></table>').html(
 		'<tr>'
 			+ '<td class="bubbles"><img alt="Grid layout Brewing Bubbles.gif" src="include/recipe/images/brewing_bubbles.gif" width="24px" height="57px" border="0" /></td>'
 			+ '<td class="input"><span class="grid2"><span class="border"><span><a class="ajax-link" href="index.php?mode=material-stats&material=' + MainInput + '" class="image"><img src="images/icons/' + MainInput + '.png" width="32px" height="32px" border="0" ></a></span></span></span></td>'
 			+ '<td class="arrow"><img alt="Grid layout Brewing Arrow.png" src="include/recipe/images/Grid_layout_Brewing_Arrow.png"width="18" height="57"></td>'
 		+ '</tr><tr>'
+		+ Input1
+		+ Input2
+		+ Input3
 		+ '</tr><tr>'
 			+ '<td class="paths" colspan="3"><img alt="Grid layout Brewing Paths.png" src="include/recipe/images/Grid_layout_Brewing_Paths.png" width="60" height="40" /></td>'
 		+ '</tr>'
 	)
-	.appendTo('#Recipe');
+	.appendTo('#Brew');
 }
 
 function addSmeltingItem(Output, NumberOfOutput, Input1, Input2) {
@@ -262,7 +313,7 @@ function addSmeltingItem(Output, NumberOfOutput, Input1, Input2) {
 			+ Input2
 		+ '</tr>'
 	)
-	.appendTo('#Recipe');
+	.appendTo('#Smelting');
 }
 
 $(document).ready(function() {
@@ -273,10 +324,10 @@ $(document).ready(function() {
 		$("#Recipe").fadeIn("slow");
 	});
 	addBrewInfo(function() {
-		$("#Recipe").fadeIn("slow");
+		$("#Brew").fadeIn("slow");
 	});
 	addSmeltingInfo(function() {
-		$("#Recipe").fadeIn("slow");
+		$("#Smelting").fadeIn("slow");
 	});
 });
 </script>

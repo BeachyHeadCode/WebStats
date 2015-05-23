@@ -23,7 +23,7 @@ function addItems(callback) {
 		type: "GET",
 		url: "language/items.xml", 
 		dataType: "xml",
-		success: function(xml) {	
+		success: function(xml) {
 			$(xml).find('item').each(function() {	
 				addItem(getValue(this, 'name'),
 						  getValue(this, 'icon'),
