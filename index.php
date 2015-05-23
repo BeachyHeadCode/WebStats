@@ -289,12 +289,12 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 
 <!--Side Bar Right-->
 <section>
-	<?php if($search_control == true && WS_CONFIG_SEARCH_BAR === true) {?>
+	<?php if($search_control == true and WS_CONFIG_SEARCH_BAR === true) {?>
 	<!-- SEARCH BAR -->
 	<div role="searchsidebar">
 		<?php include ROOT . 'include/search/index.php'; ?>
 	</div>
-	<?php } if (internetprotest === true && ads === true) { ?>
+	<?php } if (internetprotest === true or ads === true) { ?>
 	<div onmousedown="return false;" onselectstart="return false;" role="complementaryright">
 	<?php if (internetprotest === true) {?>
 		<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/banner_right.png" alt="Member of The Internet Defense League" /></a>

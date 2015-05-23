@@ -65,6 +65,7 @@ include_once ROOT . "assets/header.php";
 							<li><a href="?mode=ip">IP Tracker</a></li>
 							<li><a href="setup-config.php">Installer</a></li>
 							<li><a href="?mode=settings">Settings</a></li>
+							<li><a href="?mode=ini-test">PHP Settings</a></li>
 							<li><a href="achievements-install/index.php">Achievement - Installer</a></li>
 						</ul>
 						<ul class="right">
