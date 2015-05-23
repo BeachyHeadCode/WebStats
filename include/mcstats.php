@@ -1,20 +1,20 @@
 <?php
 /*  Copyright 2012-2013 Nick Smith. All rights reserved. */
 
-if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])){exit();}
 $LOG = false; /* Do you want to run a log on this php file. */
 $XML = true;
 $PHPTEST = false;
 $forever = false;
 $DUMP = false;
 
-require_once('include/functions.php');
-require_once('include/version.php');
+require_once('../config/config.php');
+require_once('functions.php');
+require_once('version.php');
 
 ignore_user_abort(1); /*  run script in background  */
 set_time_limit(0); /*  run script forever  */
 $interval = 60*30; /*  time in sec...  */
-$file = 'include/lastrun.log';
+$file = 'lastrun.log';
 /**
  * Encode text as UTF-8
  *
@@ -35,7 +35,7 @@ final class WebStatsXML{
 		return $this->getResult('RequestTime');
 	}
 	private function getResult($name){
-		$xml = @file_get_contents('include/write.xml');
+		$xml = @file_get_contents('write.xml');
 		try{
 			$response = @new SimpleXMLElement($xml);
 			foreach($response as $field=>$value){
@@ -158,10 +158,10 @@ $current = "---------------------------------------------------\n\nTotal People 
 }
 
 $url = 'http://mcstats.org/signature/webstats.png';
-$img = 'images/image-cache/webstats.png';
-file_put_contents($img, file_get_contents($url));
+$img = '../images/image-cache/webstats.png';
 
-if($XML === true && (($lastRun["RequestTime"]+$interval) < time())){
+if($XML === true && (($lastRun["RequestTime"]+$interval) < time())) {
+	file_put_contents($img, file_get_contents($url));
     $domtree = new DOMDocument('1.0', 'UTF-8');
 	$domtree->formatOutput = true; 
     $xmlRoot = $domtree->createElement("CURRENTRUN");
@@ -189,7 +189,7 @@ if($XML === true && (($lastRun["RequestTime"]+$interval) < time())){
 	$xmlRoot->appendChild($domtree->createElement('GUID', create_guid()));
 	$xmlRoot->appendChild($domtree->createElement('BASEREPORTURL', $URL));
 	$xmlRoot->appendChild($domtree->createElement('DATA', $data));
-	$domtree->save("include/write.xml");
+	$domtree->save("write.xml");
 }
 function get_web_page( $URL, $data ){
     $options = array(
