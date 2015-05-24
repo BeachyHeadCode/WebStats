@@ -317,9 +317,8 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 	<!--Migrate older jQuery code to jQuery 1.9+-->
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<!--ajax-->
-	<script src="js/charisma.js"></script>
 	<script type="text/javascript" src="js/widget.js"></script>
-
+	<script src="js/charisma.js"></script>
 	<script type="text/javascript">
 		window._idl = {};
 		_idl.variant = "banner";
@@ -330,27 +329,6 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 			idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'banner');
 			document.getElementsByTagName('body')[0].appendChild(idl);
 		})();
-	</script>
-	<script type="text/javascript">
-		//Sever pic creation request.
-		$.ajax({
-			url : 'include/pic.php', 
-			processData : false
-		})
-		.always(function(){
-			$("#pic").attr("src", "include/pic.php");
-		});
-		//MCSTATS.ORG update request.
-		$.ajax({
-			url : 'include/mcstats.php', 
-			processData : false
-		})
-		.fail(function() {
-			logError( "mstats error" );
-		})
-		.always(function(){
-			logInfo('mstats updated!');
-		})
 	</script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];

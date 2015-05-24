@@ -1,9 +1,4 @@
 $(document).ready(function(){
-	//brand click info box
-	$('.brand').click(function(){
-		$('#modal_info').modal('show');
-	});
-	
 	//highlight current / active link
 	$('ul#main-menu li a').each(function(){
 		if($($(this))[0].href==String(window.location))
@@ -15,17 +10,15 @@ $(document).ready(function(){
 		History = window.History, // Note: We are using a capital H instead of a lower h
 		State = History.getState(),
 		$log = $('#log');
-
 	// user document.on so that content loaded via Ajax also gets the "Ajax click" behaviour
-	$(document).on('click', 'a.ajax-link', function(e){
-		console.log('fire ajax call');
+	$(document).on('click', 'a.ajax-link', function(e) {
+		console.log('fire Ajax call');
 		if($.browser.msie) e.which=1;
 		if(e.which!=1){ alert('no'); return; }
 
 		e.preventDefault();
 		e.stopPropagation();
 
-		$('#loading').remove();
 		$('#modules').fadeOut().parent().append('<div id="loading" class="center">Loading...<div class="center"></div></div>');
 
 		History.pushState(null, null, this.href);
@@ -69,8 +62,26 @@ $(document).ready(function(){
 	//other things to do on document ready, seperated for ajax calls
 	docReady();
 });
-		
-		
+
 function docReady() {
+	//Sever pic creation request.
+	$.ajax({
+		url : 'include/pic.php', 
+		processData : false
+	})
+	.always(function(){
+		$("#pic").attr("src", "include/pic.php");
+	});
+	//MCSTATS.ORG update request.
+	$.ajax({
+		url : 'include/mcstats.php', 
+		processData : false
+	})
+	.fail(function() {
+		logError( "mstats error" );
+	})
+	.always(function(){
+		logInfo('mstats updated!');
+	})
 	console.log('everything loaded');
 }
