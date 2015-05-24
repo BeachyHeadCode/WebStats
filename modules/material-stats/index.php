@@ -97,21 +97,21 @@ function addRecipeInfo(callback) {
 		dataType: "xml",
 		success: function(xml) {
 			id=false;
-			$(xml).find('recipe').each(
+			$(xml).find('rec').each(
 				function() {
-					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Topleft') == "<?php echo $item; ?>") || (getValue(this, 'Topmiddle') == "<?php echo $item; ?>") || (getValue(this, 'Topright') == "<?php echo $item; ?>") || (getValue(this, 'Left') == "<?php echo $item; ?>") || (getValue(this, 'Middle') == "<?php echo $item; ?>") || (getValue(this, 'Right') == "<?php echo $item; ?>") || (getValue(this, 'Bottomleft') == "<?php echo $item; ?>") || (getValue(this, 'Bottom') == "<?php echo $item; ?>") || (getValue(this, 'Bottomright') == "<?php echo $item; ?>")) {
-						addRecipeItem(getValue(this, 'Output'),
-							  getValue(this, 'NumberOfOutput'),
-							  getValue(this, 'RecipeType'),
-							  getValue(this, 'Topleft'),
-							  getValue(this, 'Topmiddle'),
-							  getValue(this, 'Topright'),
-							  getValue(this, 'Left'),
-							  getValue(this, 'Middle'),
-							  getValue(this, 'Right'),
-							  getValue(this, 'Bottomleft'),
-							  getValue(this, 'Bottom'),
-							  getValue(this, 'Bottomright'));
+					if((getValue(this, 'o') == "<?php echo $item; ?>") || (getValue(this, 'tl') == "<?php echo $item; ?>") || (getValue(this, 'tm') == "<?php echo $item; ?>") || (getValue(this, 'tr') == "<?php echo $item; ?>") || (getValue(this, 'l') == "<?php echo $item; ?>") || (getValue(this, 'm') == "<?php echo $item; ?>") || (getValue(this, 'r') == "<?php echo $item; ?>") || (getValue(this, 'bl') == "<?php echo $item; ?>") || (getValue(this, 'b') == "<?php echo $item; ?>") || (getValue(this, 'br') == "<?php echo $item; ?>")) {
+						addRecipeItem(getValue(this, 'o'),
+							  getValue(this, 'noo'),
+							  getValue(this, 'rt'),
+							  getValue(this, 'tl'),
+							  getValue(this, 'tm'),
+							  getValue(this, 'tr'),
+							  getValue(this, 'l'),
+							  getValue(this, 'm'),
+							  getValue(this, 'r'),
+							  getValue(this, 'bl'),
+							  getValue(this, 'b'),
+							  getValue(this, 'br'));
 						id=true;
 					}
 				}
