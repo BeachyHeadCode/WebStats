@@ -10,6 +10,48 @@ $(document).ready(function(){
 		History = window.History, // Note: We are using a capital H instead of a lower h
 		State = History.getState(),
 		$log = $('#log');
+	// Check to see if History.js is enabled for our Browser
+	if ( !History.enabled ) {
+		return false;
+	}
+
+	// Bind to State Change
+	History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+		// Log the State
+		var State = History.getState(); // Note: We are using History.getState() instead of event.state
+		
+		History.log('statechange:', State.data, State.title, State.url);
+		console.log('fire Ajax call');
+
+		$('#modules').fadeOut().parent().append('<div id="loading" class="center">Loading...<div class="center"></div></div>');
+
+		History.pushState(null, null, this.href);
+		$('ul#main-menu li.active').removeClass('active');
+		$('ul#main-menu li a').each(function(){
+			if($($(this))[0].href==String(window.location))
+				$(this).parent().addClass('active');
+		});
+
+		$.ajax({
+			url: this.href,
+			success:function(msg){
+				$('#modules').html($(msg).find('#modules').html());
+				$('#loading').remove();
+				$('#modules').fadeIn();
+				docReady();
+				return false;
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log(xhr.status);
+				console.log(xhr.statusText);
+				console.log(xhr.responseText);
+				if(xhr.status == '404'){
+					alert('Page was not found [404], redirecting to dashboard.');
+					window.location.href = "index.php";
+				}
+			}
+		});
+	});
 	// user document.on so that content loaded via Ajax also gets the "Ajax click" behaviour
 	$(document).on('click', 'a.ajax-link', function(e) {
 		console.log('fire Ajax call');
@@ -19,7 +61,6 @@ $(document).ready(function(){
 		e.preventDefault();
 		e.stopPropagation();
 
-		$('#modules').fadeOut().parent().append('<div id="loading" class="center">Loading...<div class="center"></div></div>');
 
 		History.pushState(null, null, this.href);
 		$('ul#main-menu li.active').removeClass('active');
