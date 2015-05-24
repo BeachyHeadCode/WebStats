@@ -93,7 +93,7 @@ function addItem(description, added, type, name, id) {
 function addRecipeInfo(callback) {
 	$.ajax({
 		type: "GET",
-		url: "include/recipe/include/recipes.xml",
+		url: "include/recipe/recipes.xml",
 		dataType: "xml",
 		success: function(xml) {
 			id=false;
@@ -128,7 +128,7 @@ function addRecipeInfo(callback) {
 function addBrewInfo(callback) {
 	$.ajax({
 		type: "GET",
-		url: "include/recipe/include/brew.xml", 
+		url: "include/recipe/brew.xml", 
 		dataType: "xml",
 		success: function(xml) {
 			id=false;
@@ -157,7 +157,7 @@ function addBrewInfo(callback) {
 function addSmeltingInfo(callback) {
 	$.ajax({
 		type: "GET",
-		url: "include/recipe/include/smelting.xml", 
+		url: "include/recipe/smelting.xml", 
 		dataType: "xml",
 		success: function(xml) {
 			id=false;

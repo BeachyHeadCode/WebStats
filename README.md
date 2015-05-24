@@ -1,10 +1,10 @@
 <a href="https://mrplows-server.tk">WebStats</a> ~ <a href="http://forums.bukkit.org/threads/60843/">Bukkit Forum</a>
 <hr />
-MySQL - PHP web data page for public viewing of Minecraft plugin data
+MySQL - PHP web data page for public viewing of Minecraft plug-in data
 <hr />
 This was based on <a href="http://forums.bukkit.org/threads/17793/">[WEB] Webstatistic for Minecraft v1.10b [1337]</a> - the code used in this is far more superior. It is being made into a Wordpress or phpwiki or any good website project that has an installer, login, admin page, and many goodies.
 
-Beside this plugin, WS supports other plugins which collects data in MySQL databases. The following plugins are already supported:
+Beside this plug-in, WS supports other plug-ins which collects data in MySQL databases. The following plug-ins are already supported:
 
 <ul>
 	<li><a href="http://dev.bukkit.org/server-mods/achievements/">Achievements</a> *WORKS (with stats)</li>
@@ -35,7 +35,7 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 <ul>
 	<li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> ~ sets up everything for you.</li>
 	<li><a href="http://www.easyphp.org/">EasyPHP</a> ~ sets up everything for you.</li>
-	<li><a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plugin that seems to never break, try it out.</li>
+	<li><a href="http://dev.bukkit.org/server-mods/ping-motd/">Ping MOTD</a> ~ Plug-in that seems to never break, try it out.</li>
 </ul>
 					
 <h3>Installation</h3>
@@ -52,32 +52,34 @@ Beside this plugin, WS supports other plugins which collects data in MySQL datab
 	<li>Add a chat system connecting to the game, and linking that persons name to the ip tracker.</li>
 	<strike><li>Option for Photo "banner reload" with server online stats.</li></strike>
 	<li>Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement</li>
-	<li>Add Rest Of ID's and Add The Extra ID's To Main ID's Page example ( 15:1 15:2 goes onto 15 page)</li>
+	<strike><li>Add Rest Of ID's</li></strike>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/inventorysql/">InventorySQL</a> ~ <a href="https://github.com/ThisIsAreku/InventorySQL">GitHub</a></li>
 	<li><a href="http://dev.bukkit.org/server-mods/beardach/">BeardAch</a> ~ <a href="https://github.com/tehbeard/BeardAch">GitHub</a></li>
 	<li><a href="http://dev.bukkit.org/server-mods/beardstat/">BeardStat</a> ~ <a href="https://github.com/tehbeard/BeardStat">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/hawkeye/">HawkEye</a> ~ <a href="https://github.com/oliverw92/HawkEye">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/statisticianv2/">Statistician v2.0</a> ~ <a href="https://github.com/Crimsonfoxy/Statistician-v2">GitHub</a></li>
-	<strike><li>Add Smart Phone Support * iPhone, Droid.</li></strike>
-	<li>Added On/Off for Player Page Plugins, this is dynamic with your selection from the installer.</li>
-	<li>Add User login to make an about me page for their account, along with some other features.</li>
+	<strike><li>Add Smart Phone Support * iPhone, Android.</li></strike>
+	<li>Added On/Off for Player Page Plug-ins, this is dynamic with your selection from the installer.</li>
+	<li>Add User login to make an about me page for their account, along with some other features. Will work on in version 4.1</li>
 </ul>
 			
 <h3>Current Pending Update:</h3>
-<h4>v4(No ETA) - Changelog bellow is current GitHub Source changes</h4>
+<h4>v4(ETA end of may 2015) - Change-log bellow is current GitHub Source changes</h4>
 <ul>
 	<li>Moved all MySQL function to mysqli since mysql was deprecated as of PHP 5.5.0.</li>
 	<li>IP page sort function changes for the date.</li>
-	<li>Updated to latest minecraft items 5/18/15</li>
+	<li>Updated to latest minecraft items 1.8.4</li>
+	<li>Updated to latest minecraft recipes/brew/smelting 1.8.4</li>
 	<li>JavaScript materials page.</li>
 	<li>Updated to Foundation 5.5.2</li>
 	<li>Optimized CSS for multi-platform</li>
-	<li>ajax usage</li>
+	<li>Ajax usage</li>
 	<li>dynamic menu</li>
 	<li>Fixed majority of code bugs</li>
 <h4>Known Problems</h4>
 <ul>
 	<li>Tables don't fit mobile.</li>
+	<li>Ajax causes back button to not load previous page.</li>
 </ul>
 <hr />
 
