@@ -55,7 +55,7 @@ $(document).ready(function(){
 		docReady();
 	});
 	// user document.on so that content loaded via Ajax also gets the "Ajax click" behaviour
-	$('a.ajax-link').click(function(e) {
+	$(document).on('click', 'a.ajax-link', function(e) {
 		console.log('fire Ajax call');
 		if($.browser.msie) e.which=1;
 		if(e.which!=1){ alert('no'); return; }
