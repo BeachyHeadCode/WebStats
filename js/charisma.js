@@ -33,12 +33,13 @@ $(document).ready(function(){
 		});
 
 		$.ajax({
-			url: this.href,
+			url: State.url,
 			success:function(msg){
 				$('#modules').html($(msg).find('#modules').html());
 				$('#loading').remove();
 				$('#modules').fadeIn();
-				docReady();
+				var newTitle = $(msg).filter('title').text();
+				$('title').text(newTitle);
 				return false;
 			},
 			error:function (xhr, ajaxOptions, thrownError){
@@ -51,9 +52,10 @@ $(document).ready(function(){
 				}
 			}
 		});
+		docReady();
 	});
 	// user document.on so that content loaded via Ajax also gets the "Ajax click" behaviour
-	$(document).on('click', 'a.ajax-link', function(e) {
+	$('a.ajax-link').click(function(e) {
 		console.log('fire Ajax call');
 		if($.browser.msie) e.which=1;
 		if(e.which!=1){ alert('no'); return; }
@@ -67,26 +69,6 @@ $(document).ready(function(){
 		$('ul#main-menu li a').each(function(){
 			if($($(this))[0].href==String(window.location))
 				$(this).parent().addClass('active');
-		});
-
-		$.ajax({
-			url: this.href,
-			success:function(msg){
-				$('#modules').html($(msg).find('#modules').html());
-				$('#loading').remove();
-				$('#modules').fadeIn();
-				docReady();
-				return false;
-			},
-			error:function (xhr, ajaxOptions, thrownError){
-				console.log(xhr.status);
-				console.log(xhr.statusText);
-				console.log(xhr.responseText);
-				if(xhr.status == '404'){
-					alert('Page was not found [404], redirecting to dashboard.');
-					window.location.href = "index.php";
-				}
-			}
 		});
 
 		return true;
