@@ -688,16 +688,18 @@ ul.ajax-loaders{
 	padding-left: 12px;
 	cursor:pointer;
 }
-#loading{
-	margin-top: 20px;
-	width:128px;
-	font-weight: bold;
-}
 #loading {
 	margin-top:10px;
 	height:100px;
 	width:100px;
+	font-weight: bold;
 	background:url(../images/ajax-loaders/ajax-loader.gif);
+}
+#loading-ip{
+	margin-top:10px;
+	height:11px;
+	width:16px;
+	background:url(../images/ajax-loaders/ajax-loader2.gif);
 }
 .live_panel{
 	/* Styling the widget and the sliding panel at once */

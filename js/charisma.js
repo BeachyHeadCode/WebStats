@@ -87,12 +87,27 @@ $(document).ready(function(){
 
 function docReady() {
 	//Sever pic creation request.
+	$('#pic').fadeOut().parent().append('<div id="loading" class="center"></div>');
 	$.ajax({
 		url : 'include/pic.php', 
-		processData : false
-	})
-	.always(function(){
-		$("#pic").attr("src", "include/pic.php");
+		processData : false,
+		success:function(msg){
+				$("#pic").attr("src", "include/pic.php");
+				$('#loading').remove();
+				$('#pic').fadeIn();
+				logInfo( "IP Tracker Loaded!" );
+				logInfo(msg);
+				return false;
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log(xhr.status);
+				console.log(xhr.statusText);
+				console.log(xhr.responseText);
+				if(xhr.status == '404'){
+					alert('Page was not found [404], redirecting to dashboard.');
+					window.location.href = "index.php";
+				}
+			}
 	});
 	//MCSTATS.ORG update request.
 	$.ajax({
@@ -104,6 +119,6 @@ function docReady() {
 	})
 	.always(function(){
 		logInfo('mstats updated!');
-	})
+	});
 	console.log('everything loaded');
 }
