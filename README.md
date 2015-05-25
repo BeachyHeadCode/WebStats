@@ -50,7 +50,7 @@ Beside this plug-in, WS supports other plug-ins which collects data in MySQL dat
 <h3>To-Do:</h3>
 <ul>
 	<li>Add a chat system connecting to the game, and linking that persons name to the ip tracker.</li>
-	<strike><li>Option for Photo "banner reload" with server online stats.</li></strike>
+	<li>Option for Photo "banner reload" with server online stats.</li>
 	<li>Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement</li>
 	<strike><li>Add Rest Of ID's</li></strike>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/inventorysql/">InventorySQL</a> ~ <a href="https://github.com/ThisIsAreku/InventorySQL">GitHub</a></li>
@@ -79,7 +79,6 @@ Beside this plug-in, WS supports other plug-ins which collects data in MySQL dat
 <h4>Known Problems</h4>
 <ul>
 	<li>Tables don't fit mobile.</li>
-	<li>Ajax causes back button to not load previous page.</li>
 </ul>
 <hr />
 
