@@ -1,6 +1,6 @@
 <?php
 define('ROOT', './');
-define('layout','css/layout.css');
+
 require_once ROOT . 'include/version.php';
 if (version_compare(PHP_VERSION, $required_php_version) >= 0) {
 	$Timer = MicroTime( true );
@@ -8,6 +8,7 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0) {
 		include_once ROOT . 'config/config.php';
 	else
 		header("location:admin/setup-config.php");
+	define('layout','themes/'.$theme.'/css/layout.css');
 	include_once ROOT . 'config/ini.php';
 	include_once ROOT . 'include/en.php';
 	require_once ROOT . "include/logonfunctions.php";

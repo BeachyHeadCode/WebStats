@@ -4,7 +4,7 @@ body{
 	font-size: 					12px;
 	line-height: 				1.4;
 	height:						100%;
-	cursor: 					url(../images/cursors/default.cur), default  !important;
+	cursor: 					url(../../../images/cursors/default.cur), default  !important;
 	background-repeat:			repeat !important;
 	text-align:					center;
 	background-attachment:		fixed !important;
@@ -145,7 +145,7 @@ transition: 0.25s all ease-in; */
 .Stil1 {font-size: xx-large;}
 .Stil2 {font-size: large;}
 table tr td a img{
-	cursor:						url(../images/cursors/hover.cur), auto  !important;
+	cursor:						url(../../../images/cursors/hover.cur), auto  !important;
 }
 .head_language {
 	float:						left;
@@ -337,13 +337,13 @@ table tr td a img{
 	border-bottom: 				none;
 }
 a:link {
-	cursor:						url(../images/cursors/hover.cur), auto  !important;
+	cursor:						url(../../../images/cursors/hover.cur), auto  !important;
 	color:						#333322;
 	text-decoration:			none;
 	font-weight:				bold;
 }
 a:visited {
-	cursor:						url(../images/cursors/hover.cur), auto  !important;
+	cursor:						url(../../../images/cursors/hover.cur), auto  !important;
 	color: 						#333322;
 	text-decoration: 				none;
 	font-weight: 					bold;
@@ -360,7 +360,7 @@ a.footerlink:hover {
 a.footerlink:link {color:						#333322;}
 a.footerlink:visited {color:						#333322;}
 a:hover {
-	cursor:						url(../images/cursors/hover.cur), auto  !important;
+	cursor:						url(../../../images/cursors/hover.cur), auto  !important;
 	color:						#333322;
 	text-decoration: 			underline;
 	font-weight: 				bold;				
@@ -474,7 +474,7 @@ a:hover {
 	border-top-right-radius:			3px;
 	border-bottom-left-radius:			3px;
 	border-bottom-right-radius:			3px;
-	background-image:					url(../images/favicon.png);
+	background-image:					url(../../../images/favicon.png);
 	background-repeat: 					no-repeat;
 	background-position: 				4px;
 	background-color: 					rgb(221,221,221);
@@ -693,13 +693,13 @@ ul.ajax-loaders{
 	height:100px;
 	width:100px;
 	font-weight: bold;
-	background:url(../images/ajax-loaders/ajax-loader.gif);
+	background:url(../../../images/ajax-loaders/ajax-loader.gif);
 }
 #loading-ip{
 	margin-top:10px;
 	height:11px;
 	width:16px;
-	background:url(../images/ajax-loaders/ajax-loader2.gif);
+	background:url(../../../images/ajax-loaders/ajax-loader2.gif);
 }
 .live_panel{
 	/* Styling the widget and the sliding panel at once */

@@ -95,8 +95,7 @@ function docReady() {
 				$("#pic").attr("src", "include/pic.php");
 				$('#loading').remove();
 				$('#pic').fadeIn();
-				logInfo( "IP Tracker Loaded!" );
-				logInfo(msg);
+				logInfo( "Pic Loaded!" );
 				return false;
 			},
 			error:function (xhr, ajaxOptions, thrownError){
