@@ -129,7 +129,7 @@ function mcmmo_player_skills_table($player) {
 	global $link;
 	$McMMOskill = array("acrobatics","archery","axes","excavation","fishing","herbalism","mining","repair","swords","taming","unarmed","woodcutting","powerlevel");
 	$output .= '<div class="head_maintable_mcmmo">';
-	$output .= '<h2><a title="McMMO Server Stats" href="?mode=mcmmo">McMMO</a></h2>';
+	$output .= '<h2><a class="ajax-link" title="McMMO Server Stats" href="?mode=mcmmo">McMMO</a></h2>';
 	$output .= '<table style="margin:auto;">'."<tr>\n";
 	for($i=0;$i < count($McMMOskill);$i++) {
 		$output .= '<td><img src="modules/mcmmo/images/'.$McMMOskill[$i].'.png" width="24px" height="24px" border="0" id="'.$McMMOskill[$i].'" title="'.$McMMOskill[$i].'" />'."</td>\n";
