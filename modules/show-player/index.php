@@ -15,32 +15,36 @@
 ?>
 <!--MAIN BOX AND PHOTO START-->
 <div class="row">
+	<div class="row">
+		<div style="align:center; font-weight:bold;"><h4><?php echo $_GET['user'];?>:</h4></div>
+	</div>
+	<hr />
+	<div class="row">
 <?php
-		echo '<div class="row">
-					<div style="align:center; font-weight:bold;"><h4>'.$_GET['user'].':</h4></div>
-				</div><hr />';
 	if($image_control_3d === true && WS_CONFIG_3D_USER === true) {
 		$image = full_image($_GET['user']);
 	} elseif($image_control === true) {
 		$image = large_image($_GET['user']);
 	} else { $image = "No Image Controler";}
 		echo '<div class="small-6 columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
-	?>
-		<?php if(($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) || ($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) || ($statssa_control === true && pluginconfigstatussa === true))
-			echo (set_player_details_table(htmlentities($_GET['user'])));
-		?>
-		<?php 
-			if($iconomy_control == true && pluginconfigstatusiconomy === true) {
-				echo '<div align="right" style="clear:both;">';
-				echo iconomy_player_get_money_table(htmlentities($_GET['user']));
-				echo '</div>';
-			}
-			if($mineconomy_control == true && pluginconfigstatusmineconomy === true) {
-				echo '<div align="right" style="clear:both;">';
-				echo mineconomy_player_get_money_table(htmlentities($_GET['user']));
-				echo '</div>';
-			}
-		?>
+?>
+<?php 
+	if(($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) || ($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) || ($statssa_control === true && pluginconfigstatussa === true))
+		echo (set_player_details_table(htmlentities($_GET['user'])));
+?>
+	</div>
+<?php 
+	if($iconomy_control == true && pluginconfigstatusiconomy === true) {
+		echo '<div class="row" align="right"><div class="small-12 columns">';
+		echo iconomy_player_get_money_table(htmlentities($_GET['user']));
+		echo '</div></div>';
+	}
+	if($mineconomy_control == true && pluginconfigstatusmineconomy === true) {
+		echo '<div class="row" align="right"><div class="small-12 columns">';
+		echo mineconomy_player_get_money_table(htmlentities($_GET['user']));
+		echo '</div></div>';
+	}
+?>
 </div>
 <!--MAIN BOX AND PHOTO END-->
 <br />
@@ -89,18 +93,18 @@
 <div class="row">
 <?php if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) { ?>
 <div class="head_maintable_stats">
-			<div class="content_headline" style="width:735px;">
-				<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
-			</div>
-			<div style="clear: both; width: 735px; height: 25px;">&nbsp;</div>
-			<dl class="tabs">
-				<dd class="active"><a href="#Player">Player Kills/Deaths</a></dd>
-				<dd><a href="#Blocks">Destroyed/Placed Blocks</a></dd>
-				<dd><a href="#Damage">Dealt/Received Damage</a></dd>
-			</dl>
-			<ul class="tabs-content">
-			<!--Destroyed and Placed Blocks ~ START-->
-			<li class="active" id="BlocksTab">
+	<div class="content_headline" style="width:735px;">
+		<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
+	</div>
+	<div style="clear: both; width: 735px; height: 25px;">&nbsp;</div>
+	<ul class="tabs" data-tab role="tablist">
+		<li class="tab-title active"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
+		<li class="tab-title"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
+		<li class="tab-title"><a href="#DamageTab" role="tab" tabindex="0" aria-selected="false" controls="DamageTab">Dealt/Received Damage</a></li>
+	</ul>
+	<div class="tabs-content">
+		<!--Destroyed and Placed Blocks ~ START-->
+		<div role="tabpanel" aria-hidden="false" class="content active" id="BlocksTab">
 			<table>
 				<tr>
 					<td style="min-width:363px;"><?php echo translate('var8');?>:</td>
@@ -111,10 +115,10 @@
 					<td style="min-width:373px;"><?php echo(set_player_build_table(htmlentities($_GET['user']), $_GET['search']));?></td>
 				</tr>
 			</table>
-			</li>	
-			<!--Destroyed and Placed Blocks ~ END-->
-			<!--Received and Dealt Damage ~ START-->
-			<li id="DamageTab"> 
+		</div>	
+		<!--Destroyed and Placed Blocks ~ END-->
+		<!--Received and Dealt Damage ~ START-->
+		<div role="tabpanel" aria-hidden="true" class="content" id="DamageTab"> 
 			<table>
 				<tr>
 					<td style="min-width:363px;"><?php echo translate('var10');?>:</td>
@@ -125,10 +129,10 @@
 					<td style="min-width:373px;"><?php echo(set_player_damagereceived_table(htmlentities($_GET['user']), $_GET['search']));?></td>	
 				</tr>
 			</table>
-			</li>	
-			<!--Received and Dealt Damage ~ END-->
-			<!--Killed and Killed By ~ START-->
-			<li id="PlayerTab">
+		</div>	
+		<!--Received and Dealt Damage ~ END-->
+		<!--Killed and Killed By ~ START-->
+		<div role="tabpanel" aria-hidden="true" class="content" id="PlayerTab">
 			<table>
 				<tr>
 					<td style="min-width:363px;"><?php echo translate('var12');?>:</td>
@@ -139,46 +143,46 @@
 					<td style="min-width:373px;"><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
 				</tr>
 			</table>
-			</li>	
-			<!--Killed and Killed By ~ END-->
-			</ul>
-		</div>
+		</div>	
+		<!--Killed and Killed By ~ END-->
+	</div>
+</div>
 
 <?php } elseif($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) { ?>
-		<div class="head_maintable_stats">
-			<dl class="tabs">
-				<dd><a href="#Player">Player Kills/Deaths</a></dd>
-				<dd class="active"><a href="#Blocks">Destroyed/Placed Blocks</a></dd>
-			</dl>
-			<ul class="tabs-content">
-				<!--Killed and Killed By ~ START-->
-				<li id="PlayerTab">
-					<table style="margin: 0 auto;">
-						<tr>
-							<td><?php echo translate('var12');?>:</td>
-							<td><?php echo translate('var13');?>:</td>
-						</tr>
-						<tr>
-							<td><?php echo(set_player_didkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-							<td><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-						</tr>
-					</table>
-				</li>	
-				<!--Killed and Killed By ~ END-->
-				<!--Destroyed and Placed Blocks ~ START-->
-				<li class="active" id="BlocksTab">
-					<table style="margin: 0 auto;">
-						<tr>
-							<td>ID:</td>
-							<td><?php echo translate('var8');?>:</td>
-							<td><?php echo translate('var9');?>:</td>
-						</tr>
-						<?php echo(set_player_destroy_build_table(htmlentities($_GET['user'])));?>
-					</table>
-				</li>	
-				<!--Destroyed and Placed Blocks ~ END-->
-			</ul>
-		</div>
+<div class="head_maintable_stats">
+	<ul class="tabs" data-tab role="tablist">
+		<li class="tab-title active" role="presentational"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
+		<li class="tab-title" role="presentational"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
+	</ul>
+	<div class="tabs-content">
+		<!--Killed and Killed By ~ START-->
+		<div role="tabpanel" aria-hidden="false" class="content active" id="PlayerTab">
+			<table style="margin: 0 auto;">
+				<tr>
+					<td><?php echo translate('var12');?>:</td>
+					<td><?php echo translate('var13');?>:</td>
+				</tr>
+				<tr>
+					<td><?php echo(set_player_didkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
+					<td><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
+				</tr>
+			</table>
+		</div>	
+		<!--Killed and Killed By ~ END-->
+		<!--Destroyed and Placed Blocks ~ START-->
+		<div role="tabpanel" aria-hidden="true" class="content" id="BlocksTab">
+			<table style="margin: 0 auto;">
+				<tr>
+					<td>ID:</td>
+					<td><?php echo translate('var8');?>:</td>
+					<td><?php echo translate('var9');?>:</td>
+				</tr>
+				<?php echo(set_player_destroy_build_table(htmlentities($_GET['user'])));?>
+			</table>
+		</div>	
+		<!--Destroyed and Placed Blocks ~ END-->
+	</div>
+</div>
 <?php } elseif($statssa_control === true && pluginconfigstatussa === true) { ?>
 		<div class="head_maintable_stats">
 		</div>

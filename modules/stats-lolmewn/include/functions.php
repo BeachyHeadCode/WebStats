@@ -98,8 +98,7 @@ function set_player_details_table($player) {
 	$boat = get_movement($player, "1");
 	$pig = get_movement($player, "2");
 	$cart = get_movement($player, "3");
-	$output = '<div class="row">';
-	$output .= '<div class="small-3 columns">
+	$output = '<div class="small-3 columns">
 				<h6>Movement</h6>
 				<table style="margin: 0 auto;">
 					<thead>
