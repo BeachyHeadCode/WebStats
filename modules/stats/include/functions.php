@@ -69,7 +69,7 @@ function set_index_table($player, $pos) {
 }
 
 function set_player_details_table($player) {
-	$output = '<div class="six columns head_contentbox">'."\n";
+	$output = '<div class="small-6 columns head_contentbox">'."\n";
 	$output .= '<div style="clear:both">
 					<div class="head_stat">'.translate("var5").':</div>
 					<div class="head_content"> '.get_date(get_amount($player, "lastlogin", "stats")).'</div>
@@ -296,8 +296,8 @@ function get_server_played() {
 }
 
 function set_server_details_table() {
-	$output = '<div class="six columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
-	$output .= '<div class="six columns head_contentbox">'."\n";
+	$output = '<div class="small-6 columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
+	$output .= '<div class="small-6 columns head_contentbox">'."\n";
 	$output .= '<div style="clear:both">
 					<div class="head_stat">'.translate("var23").':</div>
 					<div class="head_content"> '.get_server_player().'</div>

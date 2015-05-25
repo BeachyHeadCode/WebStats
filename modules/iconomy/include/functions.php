@@ -69,8 +69,8 @@ function iconomy_server_get_money_table() {
 //TOP BOX
 function iconomy_server_details_table() {
 	$money = iconomy_server_get_money();
-	$output = '<div class="six columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
-	$output .= '<div class="six columns head_contentbox">'."\n";
+	$output = '<div class="small-6 columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
+	$output .= '<div class="small-6 columns head_contentbox">'."\n";
 	$output .= '<div style="clear:both">
 					<div class="head_stat" style="width:350px; font-weight:bold;"><div align="center">'.translate('var44').':</div></div>
 				</div>

@@ -1,6 +1,6 @@
-<?php 
-include_once "../../config/config.php";
+<?php
 define("ROOT", "../../");
+include_once ROOT . "config/config.php";
 ?>
 <!--
 3-D Minecraft Skin Viewer
@@ -20,16 +20,28 @@ Add &webgl to render in webgl
 <html>
 
 <head>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="include/resources/jquery-cookie.min.js"></script>
-	<script type="text/javascript" src="include/resources/3d/Three.js"></script>
-	<script type="text/javascript" src="include/resources/3d/RequestAnimationFrame.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="<?php echo ROOT;?>js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="include/resources/Three.js"></script>
+	<script type="text/javascript" src="include/resources/RequestAnimationFrame.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="3d-player-image/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+	background-repeat:no-repeat;
+}
+#top {
+	font-family:calibri;
+	font-size:10px;
+	left:10px;
+	position:fixed;
+	top:10px;
+}
+</style>
 	<div id="top">
 	click + drag model<br/>
 	to change view

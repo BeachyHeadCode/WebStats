@@ -122,9 +122,9 @@ function job_player_details_table($player) {
 }
 
 function job_server_details_table() {
-	$output = '<div class="six columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
+	$output = '<div class="small-6 columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
 
-	$output .= '<div class="six columns head_contentbox">';
+	$output .= '<div class="small-6 columns head_contentbox">';
 	$output .= "\n";
 	$output .= '<div style="clear:both">
 					<div class="head_stat" style="width:350px; font-weight:bold;">

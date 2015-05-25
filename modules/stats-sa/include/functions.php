@@ -100,7 +100,7 @@ function set_index_table($player, $pos) {
 function set_player_details_table($player) {
 	global $image_control, $image_control_3d;
 	$output = '<div class="row">';
-	$output .= '<div class="three columns">
+	$output .= '<div class="small-3 columns">
 				<h6>Movement</h6>
 				<table style="margin: 0 auto;">
 					<thead>
@@ -129,7 +129,7 @@ function set_player_details_table($player) {
 					</tbody>
 				</table>
 			</div>';
-	$output .= '<div class="three columns">';
+	$output .= '<div class="small-3 columns">';
 	$output .= '<table>
 					<tbody>
 				<tr>
@@ -255,7 +255,7 @@ function get_server_played() {
 
 function set_server_details_table() {
 	$output = '<div class="row head_logo" style="margin: 0 0;background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
-	$output .= '<div class="row" style="margin: 0 0;"><table class="six columns head_contentbox">';
+	$output .= '<div class="row" style="margin: 0 0;"><table class="small-6 columns head_contentbox">';
 	$output .= '<tr>
 					<td>'.translate("var23").':</td>
 					<td> '.get_server_player().'</td>
@@ -321,7 +321,7 @@ function set_server_details_table() {
 					<td>'.get_server_count_player("CHATLETTERS").'</td>
 				</tr>';
 	$output .= '</table>';
-	$output .= '<table class="six columns head_contentbox">';
+	$output .= '<table class="small-6 columns head_contentbox">';
 	$output .= '<tr>
 					<td>'.translate("var95").':</td>
 					<td> '.get_server_count_player("EGGTHROW").'</td>

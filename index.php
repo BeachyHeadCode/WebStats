@@ -341,6 +341,9 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
     <script>
       $(document).foundation();
     </script>
+	<noscript>
+		<p>This site uses JavaScript. You must allow JavaScript in your browser.</p>
+	</noscript>
 </body>
 </html>
 <?php 

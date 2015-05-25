@@ -24,7 +24,7 @@
 	} elseif($image_control === true) {
 		$image = large_image($_GET['user']);
 	} else { $image = "No Image Controler";}
-		echo '<div class="six columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
+		echo '<div class="small-6 columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 	?>
 		<?php if(($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) || ($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) || ($statssa_control === true && pluginconfigstatussa === true))
 			echo (set_player_details_table(htmlentities($_GET['user'])));

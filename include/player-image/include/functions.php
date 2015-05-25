@@ -10,7 +10,22 @@ function large_image($player) {
 }
 
 function full_image($player) {
-	$image = '<iframe frameborder="0" src="include/player-image/full_player_image.php?user='.$player.'" title="skin" width="350px" height="257px"><p>Your Browser Does Not Support \'iframes\'.</p></iframe>';
+	$image = '<script type="text/javascript">
+function getDocHeight(doc) {
+    doc = doc || document;
+    // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
+    var body = doc.body, html = doc.documentElement;
+    var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+    return height;
+}
+function setIframeHeight(id) {
+    var ifrm = document.getElementById(id);
+    var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+    ifrm.style.height = "10px"; // reset to minimal height in case going from longer to shorter doc
+    ifrm.style.height = getDocHeight( doc ) + 10 + "px";
+}
+</script>
+<iframe id="ifrm1" onload="setIframeHeight(\'ifrm1\')" scrolling="no" frameborder="0" src="include/player-image/full_player_image.php?user='.$player.'" title="skin" width="350px" height="260px" style = ""><p>Your Browser Does Not Support \'iframes\'.</p></iframe>';
 	return $image;
 }
 ?>
