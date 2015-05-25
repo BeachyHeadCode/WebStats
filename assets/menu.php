@@ -53,8 +53,11 @@ else : ?>
 			<ul class="left" id="main-menu">
 				<li class="divider"></li>
 				<?php
-$array = scandir(getcwd().'\modules');
-
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+	$array = scandir(getcwd().'\modules');
+} else {
+	$array = scandir(getcwd().'/modules');
+}
 for($i=0; $i <= sizeof($array); $i++) {
 	
 	if($array[$i] !="show-player" and $array[$i] !="id-list" and $array[$i] !="permissionsex" and $array[$i] !="creature-stats" and $array[$i] !="material-stats" and $array[$i] !="." and $array[$i] !=".." and $array[$i] != WS_CONFIG_MODULE) {
