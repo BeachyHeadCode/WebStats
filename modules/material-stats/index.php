@@ -99,7 +99,7 @@ function addRecipeInfo(callback) {
 			id=false;
 			$(xml).find('rec').each(
 				function() {
-					if((getValue(this, 'o') == "<?php echo $item; ?>") || (getValue(this, 'tl') == "<?php echo $item; ?>") || (getValue(this, 'tm') == "<?php echo $item; ?>") || (getValue(this, 'tr') == "<?php echo $item; ?>") || (getValue(this, 'l') == "<?php echo $item; ?>") || (getValue(this, 'm') == "<?php echo $item; ?>") || (getValue(this, 'r') == "<?php echo $item; ?>") || (getValue(this, 'bl') == "<?php echo $item; ?>") || (getValue(this, 'b') == "<?php echo $item; ?>") || (getValue(this, 'br') == "<?php echo $item; ?>")) {
+					if((getValue(this, 'o') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'tl') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'tm') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'tr') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'l') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'm') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'r') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'bl') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'b') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'br') == "<?php echo $_GET['material']; ?>")) {
 						addRecipeItem(getValue(this, 'o'),
 							  getValue(this, 'noo'),
 							  getValue(this, 'rt'),
@@ -134,7 +134,7 @@ function addBrewInfo(callback) {
 			id=false;
 			$(xml).find('Brew').each(
 				function() {
-					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'MainInput') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>") || (getValue(this, 'Input3') == "<?php echo $item; ?>")) {
+					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'MainInput') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'Input1') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'Input2') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'Input3') == "<?php echo $_GET['material']; ?>")) {
 						addBrewItem(getValue(this, 'Output'),
 							  getValue(this, 'NumberOfOutput'),
 							  getValue(this, 'MainInput'),
@@ -163,7 +163,7 @@ function addSmeltingInfo(callback) {
 			id=false;
 			$(xml).find('SmeltingItem').each(
 				function() {
-					if((getValue(this, 'Output') == "<?php echo $item; ?>") || (getValue(this, 'Input1') == "<?php echo $item; ?>") || (getValue(this, 'Input2') == "<?php echo $item; ?>")) {
+					if((getValue(this, 'Output') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'Input1') == "<?php echo $_GET['material']; ?>") || (getValue(this, 'Input2') == "<?php echo $_GET['material']; ?>")) {
 						addSmeltingItem(getValue(this, 'Output'),
 							  getValue(this, 'NumberOfOutput'),
 							  getValue(this, 'Input1'),
@@ -175,7 +175,7 @@ function addSmeltingInfo(callback) {
 			if(id==true) {
 				$('<h2>Smelting</h2><hr />').prependTo('#SmeltingTables');
 			}
-			logInfo("Add Smelting <?php echo $item; ?> - Done!");
+			logInfo("Add Smelting <?php echo $_GET['material']; ?> - Done!");
 			callback();
 		}
 	});

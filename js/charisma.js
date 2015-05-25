@@ -63,7 +63,6 @@ $(document).ready(function(){
 		e.preventDefault();
 		e.stopPropagation();
 
-
 		History.pushState(null, null, this.href);
 		$('ul#main-menu li.active').removeClass('active');
 		$('ul#main-menu li a').each(function(){
