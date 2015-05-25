@@ -21,7 +21,7 @@
 function addItems(callback) {
 	$.ajax({
 		type: "GET",
-		url: "language/items.xml", 
+		url: "include/items.xml", 
 		dataType: "xml",
 		success: function(xml) {
 			$(xml).find('item').each(function() {	

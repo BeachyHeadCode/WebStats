@@ -43,7 +43,7 @@ function addItemInfo(callback) {
 	$.ajax({
 		type: "GET",
 		async: false,
-		url: "language/items.xml", 
+		url: "include/items.xml", 
 		dataType: "xml",
 		success: function(xml) {
 			$(xml).find('item').each(function() {
@@ -66,7 +66,7 @@ function addItemName(id) {
 	$.ajax({
 		type: "GET",
 		async: false,
-		url: "language/items.xml",
+		url: "include/items.xml",
 		dataType: "xml",
 		success: function(xml) {	
 			$(xml).find('item').each(function() {

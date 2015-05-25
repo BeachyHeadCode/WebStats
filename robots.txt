@@ -9,7 +9,7 @@ Disallow: /include/php.ini
 Disallow: /include/sql.sql
 Disallow: /include/version.yml
 Disallow: /include/write.xml
-Disallow: /fonts/
-Disallow: /javascripts/
+Disallow: /css/
+Disallow: /js/
 Disallow: /README.md
 Disallow: /web.config

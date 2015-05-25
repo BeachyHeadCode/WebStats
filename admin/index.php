@@ -8,8 +8,7 @@ session_start();
 error_reporting(0);
 $start_time = explode(" ",microtime()); 
 $start_time = $start_time[1] + $start_time[0];
-include_once ROOT . 'language/en.php';
-include_once ROOT . 'legacy/decrypt.php';
+include_once ROOT . 'include/en.php';
 include_once ROOT . 'include/functions.php';
 require_once ROOT . "include/logonfunctions.php";
 if($_GET['LOGOUT'] == 'TRUE')

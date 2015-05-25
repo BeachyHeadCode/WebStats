@@ -9,9 +9,7 @@ if (version_compare(PHP_VERSION, $required_php_version) >= 0) {
 	else
 		header("location:admin/setup-config.php");
 	include_once ROOT . 'config/ini.php';
-	include_once ROOT . 'legacy/decrypt.php';
-	include_once ROOT . 'legacy/encrypt.php';
-	include_once ROOT . 'language/en.php';
+	include_once ROOT . 'include/en.php';
 	require_once ROOT . "include/logonfunctions.php";
 	require_once ROOT . 'include/functions.php';
 	session_start();

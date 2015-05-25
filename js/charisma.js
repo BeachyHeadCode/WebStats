@@ -23,7 +23,7 @@ $(document).ready(function(){
 		History.log('statechange:', State.data, State.title, State.url);
 		console.log('fire Ajax call');
 
-		$('#modules').fadeOut().parent().append('<div id="loading" class="center">Loading...<div class="center"></div></div>');
+		$('#modules').fadeOut().parent().append('<div id="loading" class="center"></div>');
 
 		History.pushState(null, null, this.href);
 		$('ul#main-menu li.active').removeClass('active');

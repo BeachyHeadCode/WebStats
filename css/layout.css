@@ -661,7 +661,7 @@ table tbody tr td {vertical-align: middle !important;}
 }
 @font-face{
 	font-family:Minecraft;
-	src:url("fonts/minecraft.eot?#iefix"),url("fonts/minecraft.woff") format('woff'),url("http://www.minecraftwiki.net/fonts/minecraft.ttf") format('truetype') 
+	src:url("css/fonts/minecraft.eot?#iefix"),url("css/fonts/minecraft.woff") format('woff'),url("css/fonts/minecraft.ttf") format('truetype') 
 }
 table.grid-Crafting_Table tbody tr:nth-child(even), table.grid-Furnace tbody tr:nth-child(even), table.grid-Brewing_Stand tbody tr:nth-child(even){
 	background: 			none !important;
@@ -693,10 +693,10 @@ ul.ajax-loaders{
 	width:128px;
 	font-weight: bold;
 }
-#loading div.center{
+#loading {
 	margin-top:10px;
-	height:15px;
-	width:128px;
+	height:100px;
+	width:100px;
 	background:url(../images/ajax-loaders/ajax-loader.gif);
 }
 .live_panel{
