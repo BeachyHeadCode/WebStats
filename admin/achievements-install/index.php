@@ -81,11 +81,11 @@ if($bool === TRUE)
 	</div>
 <?php
 
-$DB = new DBConfig();$DB -> config();$DB -> conn();
+$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
 
-$query = mysql_query("DROP TABLE IF EXISTS ".WS_CONFIG_ACHIEVEMENTS."");
+$query = mysqli_query($link, "DROP TABLE IF EXISTS ".WS_CONFIG_ACHIEVEMENTS."");
 
-$query2 = mysql_query("CREATE TABLE ".WS_CONFIG_ACHIEVEMENTS." (
+$query2 = mysqli_query($link, "CREATE TABLE ".WS_CONFIG_ACHIEVEMENTS." (
 `ws_a_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `ws_a_name` TEXT NOT NULL ,
 `ws_a_points` INT NULL ,
@@ -98,9 +98,9 @@ $query2 = mysql_query("CREATE TABLE ".WS_CONFIG_ACHIEVEMENTS." (
 )");
 
 if($query) {}
-else {echo mysql_error(); echo '$query';}
+else {echo mysqli_error($link); echo '$query';}
 if($query2) {}
-else {echo mysql_error(); echo '$query2';}
+else {echo mysqli_error($link); echo '$query2';}
 
 $row = 1;                        
 $handle = fopen ("achievements.txt","r");            
@@ -122,7 +122,7 @@ while ( ($data = fgetcsv ($handle, 1000, ":")) !== FALSE ) {
 		$reward[0] = $temp[1];
 	}
 
-	$iquery = mysql_query("INSERT INTO ".WS_CONFIG_ACHIEVEMENTS." (ws_a_name, ws_a_points, ws_a_category, ws_a_stat, ws_a_value, ws_a_description, ws_a_reward, ws_a_amount) VALUES ('$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$reward[0]', '$reward[2]')");
+	$iquery = mysqli_query($link, "INSERT INTO ".WS_CONFIG_ACHIEVEMENTS." (ws_a_name, ws_a_points, ws_a_category, ws_a_stat, ws_a_value, ws_a_description, ws_a_reward, ws_a_amount) VALUES ('$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$reward[0]', '$reward[2]')");
 
 	echo'
 	<div class="content_maintable_stats" style="padding-top: 5px; padding-bottom: 5px; clear:both; text-align:left;">
@@ -161,11 +161,11 @@ while ( ($data = fgetcsv ($handle, 1000, ":")) !== FALSE ) {
 }
 	if($iquery) {
 		echo ("<script type='text/javascript' src='js/Success.js'></script>");
-		$DB -> close();
+		mysqli_close($link);
 		rename("index.php", "index.installed"); 
 	} else {
-		echo mysql_error();
-		$DB -> close();
+		echo mysqli_error($link);
+		mysqli_close($link);
 	}
 fclose ($handle);
 }
