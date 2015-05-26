@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	//highlight current / active link
+	var current_location = String(window.location).split('#')
 	$('ul#main-menu li a').each(function(){
-		if($($(this))[0].href==String(window.location))
+		if($($(this))[0].href==current_location[0])
 			$(this).parent().addClass('active');
 	});
 	
@@ -40,6 +41,7 @@ $(document).ready(function(){
 				$('#modules').fadeIn();
 				var newTitle = $(msg).filter('title').text();
 				$('title').text(newTitle);
+				$(msg).foundation();
 				return false;
 			},
 			error:function (xhr, ajaxOptions, thrownError){
@@ -120,7 +122,6 @@ function docReady() {
 	.always(function(){
 		logInfo('mstats updated!');
 	});
-	console.log('everything loaded');
 	//IP request
 	$.ajax({
 		url : 'include/ip.php',
@@ -163,7 +164,6 @@ function docReady() {
 	var loaded=false;	// A flag which prevents multiple ajax calls to geodata.php;
 
 	// Binding functions to custom events:
-
 	$(document).on('open',function(){
 		$('.live_panel').slideDown("slow",function(){
 			if(!loaded)
@@ -176,4 +176,6 @@ function docReady() {
 	}).on('close',function(){
 		$('.live_panel').slideUp();
 	});
+	// Foundation load
+	$(document).foundation();
 }

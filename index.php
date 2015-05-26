@@ -96,11 +96,11 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 					<p class="lead">
 						<b>Minecraft Server: </b><?php echo MQ_SERVER_ADDR.":".MQ_SERVER_PORT; ?>
 						<br />
-						<b>Teamspeak: </b>
-							<?php
+						<?php
 								$minecraftServer = pingMineServ(MQ_SERVER_ADDR, MQ_SERVER_PORT);
 								if($minecraftServer !== -1) :
 							?>
+						<b>Server info: </b>
 							<a href="include/minecraftquery/index.php" target="_blank">Click Here For More Server Info</a>
 							<?php endif; ?>
 					</p>
@@ -234,9 +234,6 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
-	</script>
-	<script type="text/javascript">
-		$(document).foundation();
 	</script>
 	<noscript>
 		<p>This site uses JavaScript. You must allow JavaScript in your browser.</p>

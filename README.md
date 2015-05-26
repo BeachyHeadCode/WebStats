@@ -50,15 +50,12 @@ Beside this plug-in, WS supports other plug-ins which collects data in MySQL dat
 <h3>To-Do:</h3>
 <ul>
 	<li>Add a chat system connecting to the game, and linking that persons name to the ip tracker.</li>
-	<li>Option for Photo "banner reload" with server online stats.</li>
 	<li>Remove The Achievements Tab and Move It To The Players Page With It Grayed Out and Not Showing The Requirements Until The Player Unlocks The Achievement</li>
-	<strike><li>Add Rest Of ID's</li></strike>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/inventorysql/">InventorySQL</a> ~ <a href="https://github.com/ThisIsAreku/InventorySQL">GitHub</a></li>
 	<li><a href="http://dev.bukkit.org/server-mods/beardach/">BeardAch</a> ~ <a href="https://github.com/tehbeard/BeardAch">GitHub</a></li>
 	<li><a href="http://dev.bukkit.org/server-mods/beardstat/">BeardStat</a> ~ <a href="https://github.com/tehbeard/BeardStat">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/hawkeye/">HawkEye</a> ~ <a href="https://github.com/oliverw92/HawkEye">GitHub</a></li>
 	<li>Add <a href="http://dev.bukkit.org/server-mods/statisticianv2/">Statistician v2.0</a> ~ <a href="https://github.com/Crimsonfoxy/Statistician-v2">GitHub</a></li>
-	<strike><li>Add Smart Phone Support * iPhone, Android.</li></strike>
 	<li>Added On/Off for Player Page Plug-ins, this is dynamic with your selection from the installer.</li>
 	<li>Add User login to make an about me page for their account, along with some other features. Will work on in version 4.1</li>
 </ul>

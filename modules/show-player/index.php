@@ -236,6 +236,4 @@
 	</div>
 </div>
 <!-- ACHIEVMENTS END -->
-<?php
-}
-?>
+<?php } ?>
