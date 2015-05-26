@@ -41,7 +41,7 @@ $(document).ready(function(){
 				$('#modules').fadeIn();
 				var newTitle = $(msg).filter('title').text();
 				$('title').text(newTitle);
-				$(msg).foundation();
+				$(document).foundation();
 				return false;
 			},
 			error:function (xhr, ajaxOptions, thrownError){
