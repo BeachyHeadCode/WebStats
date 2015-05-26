@@ -14,7 +14,7 @@ if(($stats_control === true) and (pluginconfigstatusstats === true)) {
 <br /><br />
 <div class="content_maintable_stats">                        
 	<div class="small-12 columns content_headline">
-		<a href="index.php?mode=server-stats"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=server-stats&search=true"><?php echo translate('var2'); ?></a>
+		<a class="ajax-link" href="index.php?mode=server-stats"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=server-stats&search=true"><?php echo translate('var2'); ?></a>
 	</div>
 	<div style="clear: both; height: 25px;">&nbsp;</div>
 	<ul class="tabs" data-tab role="tablist">

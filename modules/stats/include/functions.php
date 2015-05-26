@@ -60,7 +60,7 @@ function set_index_table($player, $pos) {
 		$image = small_image($player);
 	}
 	$output .= '<tr><td>'.$pos.'</td>';
-	$output .= '<td>&nbsp;&nbsp;'.$image.'<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a></td>';
+	$output .= '<td>&nbsp;&nbsp;'.$image.'<a class="ajax-link" href="index.php?mode=show-player&user='.$player.'">'.$player.'</a></td>';
 	$output .= '<td>'.get_played(get_amount($player, "playedfor", "stats")).'</td>';
 	$output .= '<td>'.get_date(get_amount($player, "lastlogin", "stats")).'</td>';
 	$output .= '<td>'.get_status($player, 'LASTLOGIN', 'LASTLOGOUT', '_players').'</td>';
@@ -120,7 +120,7 @@ function set_player_destroy_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}
@@ -133,7 +133,7 @@ function set_player_build_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
@@ -146,14 +146,14 @@ function set_player_damagereceived_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
 	$query = mysqli_query($link, "SELECT `stat`, `value` FROM `".WS_CONFIG_STATS."` WHERE `player`='".$player."' AND `category` = 'damagetaken' AND `stat` = 'total'");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}
@@ -166,14 +166,14 @@ function set_player_damagedealt_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}  
 	$query = mysqli_query($link, "SELECT `stat`, `value` FROM `".WS_CONFIG_STATS."` WHERE `player`='".$player."' AND `category` = 'damagedealt' AND `stat` = 'total'");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}
@@ -186,14 +186,14 @@ function set_player_didkill_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	} 	
 	$query = mysqli_query($link, "SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'kills' AND stat = 'total'");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
@@ -206,14 +206,14 @@ function set_player_getkill_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[1].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 	
 	$query = mysqli_query($link, "SELECT player, category, stat, value FROM `".WS_CONFIG_STATS."` WHERE player='".$player."' AND category = 'deaths' AND stat = 'total'");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}
@@ -226,7 +226,7 @@ function set_player_founditem_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[2])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.decrypt($row[2]).'"  >'.translate(''.$row[2].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[3]."</div>\n";
 		$output .= '</div>';
 	}  	
@@ -239,7 +239,7 @@ function set_player_dropitem_table($player, $search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}  	
@@ -362,14 +362,14 @@ function set_server_didkill_table($search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}	
 	$query = mysqli_query($link, "SELECT `category`, `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'kills' AND `stat` = 'total' GROUP BY stat");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2]."</div>\n";		
 		$output .= '</div>';
 	}	
@@ -382,14 +382,14 @@ function set_server_getkill_table($search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}	
 	$query = mysqli_query($link, "SELECT `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE category = 'deaths' AND `stat` = 'total' GROUP BY `stat`");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[1]."</div>\n";	
 		$output .= '</div>';
 	}
@@ -403,7 +403,7 @@ function set_server_destroy_table($search) {
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$image = str_replace(":", "-", $row[0]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -418,7 +418,7 @@ function set_server_build_table($search) {
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$image = str_replace(":", "-", $row[0]); 
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($image)).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -432,7 +432,7 @@ function set_server_damagereceived_table($search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt(''.$row[1].'')).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt(''.$row[1].'').'"  >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt(''.$row[1].'')).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt(''.$row[1].'').'"  >'.translate(''.$row[1].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[2]."</div>\n";
 		$output .= '</div>';
 	}  
@@ -440,7 +440,7 @@ function set_server_damagereceived_table($search) {
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[1])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[1]).'"  >'.translate(''.$row[1].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[2]."</div>\n";	
 		$output .= '</div>';
 	}
@@ -453,14 +453,14 @@ function set_server_damagedealt_table($search) {
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
 	$query = mysqli_query($link, "SELECT `stat`, SUM(`value`) FROM ".WS_CONFIG_STATS." WHERE `category` = 'damagedealt' AND `stat` = 'total' GROUP BY `stat`");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
+		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:250px;"><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate(''.$row[0].'').':</a></div>';	
 		$output .= '<div class="content_line_small content_line_small_sum" align="left" style="width:100px;">'.$row[1]."</div>\n";	
 		$output .= '</div>';
 	}
@@ -476,7 +476,7 @@ function set_material_destroy_table($material, $search) {
 			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	}  
@@ -492,7 +492,7 @@ function set_material_build_table($material, $search) {
 			$image = small_image($row['player']);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
@@ -507,7 +507,7 @@ function set_creature_damagereceived_table($creature, $search) {
 			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 
@@ -523,7 +523,7 @@ function set_creature_damagedealt_table($creature, $search) {
 			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1]."</div>\n";
 		$output .= '</div>';
 	} 

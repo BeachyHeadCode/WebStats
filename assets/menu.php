@@ -52,7 +52,7 @@ else : ?>
 		<section class="top-bar-section">
 			<ul class="left" id="main-menu">
 				<li class="divider"></li>
-				<?php
+<?php
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 	$array = scandir(getcwd().'\modules');
 } else {
@@ -67,7 +67,7 @@ for($i=0; $i <= sizeof($array); $i++) {
 			echo '<li><a class="ajax-link" href="?mode='.$array[$i].'" title="'.$menuname.'"><span>'.$menuname.'</span></a></li>';
 	}
 }
-				?>
+?>
 			</ul>
 			<ul class="right" id="main-menu">
 				<li class="divider"></li>

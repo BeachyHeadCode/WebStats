@@ -15,7 +15,7 @@
 <table style="margin:0px auto;">
 	<tr>
 		<td>
-    		<a href="index.php?mode=mineconomy"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=mineconomy&sort=balance"><?php echo translate('var2'); ?></a>
+    		<a class="ajax-link" href="index.php?mode=mineconomy"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=mineconomy&sort=balance"><?php echo translate('var2'); ?></a>
 		</td>
 	</tr>
 	<tr>

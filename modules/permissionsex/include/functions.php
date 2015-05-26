@@ -17,7 +17,7 @@ function permissionsex_player_table($player) {
 					$output .= '<td>World(s):</td></tr></thead>';
 				$output .= '';
 				$output .= '<tbody>';
-					$output .= '<tr><td><a href="index.php?mode=permissionsex&group='.$data['parent'].'">'.$data['parent'].'</a></td>';
+					$output .= '<tr><td><a class="ajax-link" href="index.php?mode=permissionsex&group='.$data['parent'].'">'.$data['parent'].'</a></td>';
 					$output .= '<td>'.$noworld.'</td></tr>';
 				$output .= '</tbody>';
 			$output .= '</table></div>';
@@ -37,7 +37,7 @@ function permissionsex_player_table($player) {
 					$output .= '<td>World(s):</td>';
 				$output .= '</tr></thead>';
 				$output .= '<tr>';
-					$output .= '<td><a href="index.php?mode=permissionsex&group='.WS_PERMISSIONS_DEFAULT_GROUP.'">'.WS_PERMISSIONS_DEFAULT_GROUP.'</a></td>';
+					$output .= '<td><a class="ajax-link" href="index.php?mode=permissionsex&group='.WS_PERMISSIONS_DEFAULT_GROUP.'">'.WS_PERMISSIONS_DEFAULT_GROUP.'</a></td>';
 					$output .= '<td>'.$noworld.'</td>';
 				$output .= '</tr>';
 			$output .= '</table></div>';

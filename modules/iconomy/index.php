@@ -18,7 +18,7 @@
 <table>
 	<tr>
 		<td>
-    		<a href="index.php?mode=iconomy"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=iconomy&sort=balance"><?php echo translate('var2'); ?></a>
+    		<a class="ajax-link" href="index.php?mode=iconomy"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=iconomy&sort=balance"><?php echo translate('var2'); ?></a>
 		</td>
 	</tr>
 	<tr>

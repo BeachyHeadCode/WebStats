@@ -66,8 +66,8 @@ function jail_server_player_table($player, $pos) {
 	}
 	global $stats_control;
 	if($stats_control == true) { 
-		$stats = '<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>';
-		$jailer ='<a href="index.php?mode=show-player&user='.$data['Jailer'].'">'.$data['Jailer'].'</a>';
+		$stats = '<a class="ajax-link" href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>';
+		$jailer ='<a class="ajax-link" href="index.php?mode=show-player&user='.$data['Jailer'].'">'.$data['Jailer'].'</a>';
 	} else { 
 		$stats = ''.$player.'';
 	}
@@ -110,7 +110,7 @@ function jail_player_table($player) {
 				</tr>
 				<tr>
 					<td><span>Jailer:</span></td>
-					<td>&nbsp;&nbsp;'.$imagejailer.' <a href="index.php?mode=show-player&user='.$data['Jailer'].'">'.$data['Jailer'].'</a></td>
+					<td>&nbsp;&nbsp;'.$imagejailer.' <a class="ajax-link" href="index.php?mode=show-player&user='.$data['Jailer'].'">'.$data['Jailer'].'</a></td>
 				</tr>
 				<tr>
 					<td><span>Muted:</span></td>

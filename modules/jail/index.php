@@ -3,12 +3,12 @@
 <table style="margin:0px auto;">
 	<tr>
         <td>Num:</td>
-        <td><a href="index.php?mode=jail&amp;sort=PlayerName"><?php echo translate("var3"); ?>:</a></td>
-        <td><a href="index.php?mode=jail&amp;sort=RemainTime"><span>Time:</span></a></td>
-        <td><a href="index.php?mode=jail&amp;sort=JailName"><span>Jail:</span></a></td>
-        <td><a href="index.php?mode=jail&amp;sort=reason"><span>reason:</span></a></td>
-        <td><a href="index.php?mode=jail&amp;sort=Jailer"><span>Jailer:</span></a></td>
-        <td><a href="index.php?mode=jail&amp;sort=muted"><span>Muted:</span></a></div>
+        <td><a class="ajax-link" href="index.php?mode=jail&amp;sort=PlayerName"><?php echo translate("var3"); ?>:</a></td>
+        <td><a class="ajax-link" href="index.php?mode=jail&amp;sort=RemainTime"><span>Time:</span></a></td>
+        <td><a class="ajax-link" href="index.php?mode=jail&amp;sort=JailName"><span>Jail:</span></a></td>
+        <td><a class="ajax-link" href="index.php?mode=jail&amp;sort=reason"><span>reason:</span></a></td>
+        <td><a class="ajax-link" href="index.php?mode=jail&amp;sort=Jailer"><span>Jailer:</span></a></td>
+        <td><a class="ajax-link" href="index.php?mode=jail&amp;sort=muted"><span>Muted:</span></a></div>
 	</tr>
 		<?php	
 			if (isset($_GET["page"]) <= 0) {

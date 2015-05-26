@@ -2,9 +2,9 @@
 	<table style="margin:auto;">
 		<tr>
 			<td>Num:</td>
-			<td><a href="index.php?sort=name"><?php echo translate('var3'); ?>:</a></td>
-			<td><a href="index.php?sort=PLAYTIME"><?php echo translate('var4'); ?>:</a></td>
-			<td><a href="index.php?sort=LASTLOGIN"><?php echo translate('var5'); ?>:</a></td>
+			<td><a class="ajax-link" href="index.php?sort=name"><?php echo translate('var3'); ?>:</a></td>
+			<td><a class="ajax-link" href="index.php?sort=PLAYTIME"><?php echo translate('var4'); ?>:</a></td>
+			<td><a class="ajax-link" href="index.php?sort=LASTLOGIN"><?php echo translate('var5'); ?>:</a></td>
 			<td><?php echo translate('var15'); ?>:</td>
 		</tr><?php
 			if (isset($_GET["page"]) <= 0){

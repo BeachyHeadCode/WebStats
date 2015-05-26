@@ -106,7 +106,7 @@ function iconomy_server_player_table($player, $money) {
 		$image = small_image($player);
 	}
 	if($stats_control == true) { 
-		$stats = '<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; 
+		$stats = '<a class="ajax-link" href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; 
 	} else { 
 		$stats = ''.$player.'';
 	}

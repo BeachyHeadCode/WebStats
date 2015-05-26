@@ -69,7 +69,7 @@ function job_player_list_table($player, $dummy) {
 		if($image_control == true) {
 			$image = small_image($player);
 		}
-		if($stats_control == true) { $stats = '<a href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; } else { $stats = ''.$player.''; }
+		if($stats_control == true) { $stats = '<a class="ajax-link" href="index.php?mode=show-player&user='.$player.'">'.$player.'</a>'; } else { $stats = ''.$player.''; }
 		$output .= '<tr><td>&nbsp;&nbsp;'.$image.''.$stats.'</td>';
     		$output .= '<td>'.$info[3].'</td>';
     		$output .= '<td>'.$info[2].'</td>';
@@ -90,7 +90,7 @@ function job_player_details_table($player) {
 			$output .= '
 				<tr>
 					<td width="170px"><b>'.translate('var35').':</b></td>
-					<td><a href="index.php?mode=jobs">'.$jobinfo[$i][3].'</a></td>
+					<td><a class="ajax-link" href="index.php?mode=jobs">'.$jobinfo[$i][3].'</a></td>
 				</tr>
 				<tr>
 					<td align="left"><b>'.translate('var36').':</b></td>
@@ -101,20 +101,6 @@ function job_player_details_table($player) {
 					<td align="center"> '.$jobinfo[$i][1].'</td>
 				</tr>';
 			$output .= '</td>';	
-		/*	$output .= '<td style="vertical-align:text-top; border:1px solid #333333; padding: 10px;">';
-			$output .= '
-				<tr>
-					<td width="170px"><b>'.translate('var35').':</b></td>
-					<td> <a href="index.php?mode=jobs">'.$jobinfo[$i][3].'</a></td>
-				</tr>
-				<tr>
-					<td align="left"><b>'.translate('var36').':</b></td>
-					<td align="center"> '.$jobinfo[$i][2].'</td>
-				</tr>
-				<tr>
-				<td align="left"><b>'.translate('var37').':</b></td>
-				<td align="center"> '.$jobinfo[$i][1].'</td></tr>';
-			$output .= '</td>';	*/
 		$output .= '</tr>';
 	}
 	$output .= '</table></div>';

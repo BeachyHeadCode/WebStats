@@ -258,17 +258,17 @@ function addRecipeItem(Output, NumberOfOutput, RecipeType, Topleft, Top, Toprigh
 
 function addBrewItem(Output, NumberOfOutput, MainInput, Input1, Input2, Input3) {
 	if(Input1 != '') {
-		Input1 = '<td class="output1"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input1 + '" title="' + addItemName(Input1) + '"><img src="images/icons/' + Input1 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
+		Input1 = '<td class="output1"><span class="grid2"><span class="border"><span><span class="image"><a class="ajax-link" href="index.php?mode=material-stats&material=' + Input1 + '" title="' + addItemName(Input1) + '"><img src="images/icons/' + Input1 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
 	} else {
 		Input1 = '<td class="output1"><span class="grid2"><span class="border"><span><span class="default-image"><img src="include/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';
 	}
 	if(Input2 != '') {
-		Input2 = '<td class="output2"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input2 + '" title="' + addItemName(Input2) + '"><img src="images/icons/' + Input2 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
+		Input2 = '<td class="output2"><span class="grid2"><span class="border"><span><span class="image"><a class="ajax-link" href="index.php?mode=material-stats&material=' + Input2 + '" title="' + addItemName(Input2) + '"><img src="images/icons/' + Input2 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
 	} else {
 		Input2 = '<td class="output2"><span class="grid2"><span class="border"><span><span class="default-image"><img src="include/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';
 	}
 	if(Input3 != '') {
-		Input3 = '<td class="output3"><span class="grid2"><span class="border"><span><span class="image"><a href="index.php?mode=material-stats&material=' + Input3 + '" title="' + addItemName(Input3) + '"><img src="images/icons/' + Input3 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
+		Input3 = '<td class="output3"><span class="grid2"><span class="border"><span><span class="image"><a class="ajax-link" href="index.php?mode=material-stats&material=' + Input3 + '" title="' + addItemName(Input3) + '"><img src="images/icons/' + Input3 + '.png" width="32px" height="32px" border="0" /></a></span></span></span></span></td>';
 	} else {
 		Input3 = '<td class="output3"><span class="grid2"><span class="border"><span><span class="default-image"><img src="include/recipe/images/Grid_layout_Brewing_Empty.png" width="32" height="32" /></span></span></span></span></td>';
 	}

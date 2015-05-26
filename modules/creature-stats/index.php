@@ -15,11 +15,9 @@ if (!isset($_GET['search'])) {
 	</div>
 	<br/><br/>
 	<div class="content_headline" style="width:748px;">
-		<a href="index.php?mode=creature-stats&creature=<?php echo $_GET['creature']; ?>"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=creature-stats&search=true&creature=<?php echo $_GET['creature']; ?>"><?php echo translate('var2'); ?></a>
+		<a class="ajax-link" href="index.php?mode=creature-stats&creature=<?php echo $_GET['creature']; ?>"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=creature-stats&search=true&creature=<?php echo $_GET['creature']; ?>"><?php echo translate('var2'); ?></a>
 	</div>
-	<div style="clear: both; width: 748px; height: 25px;">
-		&nbsp;
-	</div>
+	<div style="clear: both; width: 748px; height: 25px;">&nbsp;</div>
 	<div style="clear:both;">
 		<div>
 			<div class="content_headline_stats" style="width:363px;"><?php echo translate('var32'); ?>:</div>

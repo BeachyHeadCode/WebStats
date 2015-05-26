@@ -94,7 +94,7 @@
 <?php if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) { ?>
 <div class="head_maintable_stats">
 	<div class="content_headline" style="width:735px;">
-		<a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
+		<a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
 	</div>
 	<div style="clear: both; width: 735px; height: 25px;">&nbsp;</div>
 	<ul class="tabs" data-tab role="tablist">
@@ -184,8 +184,7 @@
 	</div>
 </div>
 <?php } elseif($statssa_control === true && pluginconfigstatussa === true) { ?>
-		<div class="head_maintable_stats">
-		</div>
+		<div class="head_maintable_stats"></div>
 <?php } ?>
 	</div>
 <!-- STATS TABLE END-->

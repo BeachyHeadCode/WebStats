@@ -11,10 +11,10 @@
 		</td>
     </tr>
     <tr>
-    	<td><a href="index.php?mode=jobs&sort=player"><?php echo translate('var3'); ?></a></td>
-        <td><a href="index.php?mode=jobs&sort=job"><?php echo translate('var35'); ?></a></td>
-        <td><a href="index.php?mode=jobs&sort=level"><?php echo translate('var38'); ?></a></td>
-        <td><a href="index.php?mode=jobs&sort=experience"><?php echo translate('var39'); ?></a></td>
+    	<td><a class="ajax-link" href="index.php?mode=jobs&sort=player"><?php echo translate('var3'); ?></a></td>
+        <td><a class="ajax-link" href="index.php?mode=jobs&sort=job"><?php echo translate('var35'); ?></a></td>
+        <td><a class="ajax-link" href="index.php?mode=jobs&sort=level"><?php echo translate('var38'); ?></a></td>
+        <td><a class="ajax-link" href="index.php?mode=jobs&sort=experience"><?php echo translate('var39'); ?></a></td>
     </tr>
 <?php	
 			if (isset($_GET["page"]) <= 0){

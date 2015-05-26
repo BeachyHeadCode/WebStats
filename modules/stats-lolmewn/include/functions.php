@@ -84,7 +84,7 @@ function set_index_table($player, $pos) {
 		$image = small_image($player);
 	}
 	$output .= '<tr><td>'.$pos.'</td>';
-	$output .= '<td>&nbsp;&nbsp;'.$image.'<a href="index.php?mode=show-player&user='.$player.'"  >'.$player.'</a></td>';
+	$output .= '<td>&nbsp;&nbsp;'.$image.'<a class="ajax-link" href="index.php?mode=show-player&user='.$player.'"  >'.$player.'</a></td>';
 	$output .= '<td>'.get_played(get_amount($player, "playtime", "player")).'</td>';
 	$output .= '<td>'.get_amount($player, "lastjoin", "player").'</td>';
 	$output .= '<td>'.get_status(get_amount($player, "lastleave", "player"), get_amount($player, "lastjoin", "player")).'</td>';
@@ -177,7 +177,7 @@ function set_player_destroy_build_table($player) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q1`.`amn`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' GROUP BY `blockID` ORDER BY `blockID` asc) as sbo LEFT JOIN (SELECT `blockID`, SUM(`amount`) as amn FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' AND break = 0 GROUP BY blockID ORDER BY blockID asc) as q1 ON sbo.blockID = q1.blockID LEFT JOIN (SELECT blockID, SUM(`amount`) as brk FROM `".WS_CONFIG_STATS."block` WHERE `player` = '".$player."' AND `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as q2 ON sbo.blockID = q2.blockID");
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)){
-		$output .= '<tr><td><img src="images/icons/'.$row[0].'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<tr><td><img src="images/icons/'.$row[0].'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[2].'</td>';
 		$output .= '<td>'.$row[1].'</td></tr>';
 	}
@@ -190,7 +190,7 @@ function set_player_didkill_table($player, $search) {
 	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<tr>';
-		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[1].'</td>';
 		$output .= '</tr>';
 	}
@@ -204,7 +204,7 @@ function set_player_getkill_table($player, $search) {
 	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<tr>';
-		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[1].'</td>';
 		$output .= '</tr>';
 	}
@@ -432,7 +432,7 @@ function set_server_didkill_table($search) {
 	$output = '';
 	$output .= '<table class="head_contentbox">';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$output .= '<tr><td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<tr><td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[1].'</td></tr>';
 	}
 	$output .= '</table>';
@@ -445,7 +445,7 @@ function set_server_getkill_table($search) {
 	$output = '';
 	$output .= '<table class="head_contentbox">';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$output .= '<tr><td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<tr><td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[2].'</td></tr>';
 	}
 	$output .= '</table>';
@@ -458,7 +458,7 @@ function set_server_destroy_build_table($search) {
 	$output = '<table>';
 	$output .= '<tr><td>ID:</td><td>'.translate('var8').':</td><td>'.translate('var9').':</td></tr>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
-		$output .= '<tr><td><img src="images/icons/'.str_replace(":", "-", $row[0]).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<tr><td><img src="images/icons/'.str_replace(":", "-", $row[0]).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.$row[0].'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[2].'</td>';
 		$output .= '<td>'.$row[1].'</td></tr>';
 	}
@@ -474,7 +474,7 @@ function set_material_destroy_table($material, $search) {
 		if($image_control == true) {
 			$image = small_image($row[0]);
 		}
-		$output .= '<tr><td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
+		$output .= '<tr><td style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
 		$output .= '<td style="width:100px;">'.$row[1].'</td></tr>';
 	}
 	$output .= '</table>';
@@ -489,7 +489,7 @@ function set_material_build_table($material, $search) {
 		if($image_control == true) {
 			$image = small_image($row[0]);
 		}
-		$output .= '<tr><td style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
+		$output .= '<tr><td style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></td>';	
 		$output .= '<td style="width:100px;">'.$row[1].'</td></tr>';
 	}
 	$output .= '</table>';
@@ -505,7 +505,7 @@ function set_creature_damagereceived_table($creature, $search) {
 			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= "\n";
 		$output .= '</div>';
@@ -522,7 +522,7 @@ function set_creature_damagedealt_table($creature, $search) {
 			$image = small_image($row[0]);
 		}
 		$output .= '<div style="clear: both;">';
-		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
+		$output .= '<div class="content_line_small" align="left" style="width:250px;">'.$image.'&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=show-player&user='.$row[0].'">'.$row[0].':</a></div>';	
 		$output .= '<div class="content_line_small" align="left" style="width:100px;">'.$row[1].'</div>';
 		$output .= '</div>';
 	} 
