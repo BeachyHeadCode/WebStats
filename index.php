@@ -68,7 +68,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 	</nav>
 </div>
 <?php endif; if(ads === true) : ?>
-<section id="sidebar" role="complementaryleft">
+<section role="complementaryleft">
 	<div onmousedown="return false;" onselectstart="return false;">
 		<b>Ads</b>
 	</div>
