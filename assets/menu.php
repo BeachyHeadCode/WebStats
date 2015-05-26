@@ -64,7 +64,7 @@ for($i=0; $i <= sizeof($array); $i++) {
 		$on=false;
 		include_once('modules/'.$array[$i].'/config/config.php');
 		if($on===true)
-			echo '<li><a class="ajax-link" href="?mode='.$array[$i].'" title="'.translate(var7).'"><span>'.$menuname.'</span></a></li>';
+			echo '<li><a class="ajax-link" href="?mode='.$array[$i].'" title="'.$menuname.'"><span>'.$menuname.'</span></a></li>';
 	}
 }
 				?>

@@ -755,3 +755,6 @@ ul.ajax-loaders{
 	overflow:							hidden;
 	padding:							2px 0;
 }
+#customDropdown {
+	width:								60px;
+}
