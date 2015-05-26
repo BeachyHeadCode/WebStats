@@ -1,23 +1,21 @@
 <?php
-require_once 'functions.php';
 if(file_exists('../config/config.php'))
 	include_once '../config/config.php';
+require "../include/functions.php";
 // We don't want web bots accessing this page:
 if(is_bot()) die();
 
-$DB = new DBConfig();
-	$DB -> config();
-	$DB -> conn(WS_MySQL_DBHOST.":".WS_MySQL_PORT, WS_MySQL_USERNAME, WS_MySQL_PASSWORD, WS_MySQL_DB, true);
+$link = mysqli_connect('p:'.WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+
 // Selecting the top 15 countries with the most visitors:
-$result = mysql_query("	SELECT `countrycode`,`country`, COUNT(`IP`) AS `total`
+
+$result = mysqli_query($link, "	SELECT `countrycode`,`country`, COUNT(`IP`) AS `total`
 						FROM `ip_stats`
 						WHERE `online` = 1
 						GROUP BY `countrycode`
 						ORDER BY `total` DESC
 						LIMIT 15");
-
-while($row=mysql_fetch_assoc($result))
-{
+while($row=mysqli_fetch_array($result, MYSQLI_BOTH)) {
 	echo '
 	<div class="geoRow">
 		<div class="flag"><img src="images/countryflags/'.strtolower($row['countrycode']).'.gif" width="16" height="11" /></div>
@@ -26,5 +24,5 @@ while($row=mysql_fetch_assoc($result))
 	</div>
 	';
 }
-$DB -> close();
+mysqli_close($link);
 ?>

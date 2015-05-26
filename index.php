@@ -201,45 +201,19 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 		<?php echo WS_GOOGLE_ASIDE;}?>
 	</div><?php }?>
 </section>
-
 	<!--Included JS Files (Compressed)-->
-	<script src="js/foundation.min.js"></script>
+	<script type="text/javascript" src="js/foundation.min.js"></script>
 	<!--Initialize JS Plugins-->
 	<!-- library for cookie management -->
-	<script src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
 	<!-- data table plugin -->
-	<script src='js/vendor/jquery.dataTables.min.js'></script>
+	<script type="text/javascript" src='js/vendor/jquery.dataTables.min.js'></script>
 	<!-- history.js for cross-browser state change on ajax -->
-	<script src="js/vendor/jquery.history.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.history.js"></script>
 	<!--Migrate older jQuery code to jQuery 1.9+-->
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<!--ajax-->
-	<script type="text/javascript" src="js/widget.js"></script>
-	<script src="js/charisma.js"></script>
-	<?php if (iptracker === true) : ?>
-	<script type="text/javascript">
-	$('#ip').fadeOut().parent().append('<div id="loading-ip" class="center"></div>');
-	$.ajax({
-		url : 'include/ip.php',
-		success:function(msg){
-				$( '#ip' ).html(msg);
-				$('#loading-ip').remove();
-				$('#ip').fadeIn();
-				logInfo( "IP Tracker Loaded!" );
-				return false;
-			},
-			error:function (xhr, ajaxOptions, thrownError){
-				console.log(xhr.status);
-				console.log(xhr.statusText);
-				console.log(xhr.responseText);
-				if(xhr.status == '404'){
-					alert('Page was not found [404], redirecting to dashboard.');
-					window.location.href = "index.php";
-				}
-			}
-	})
-	</script>
-	<?php endif; ?>
+	<script type="text/javascript" src="js/charisma.js"></script>
 	<script type="text/javascript">
 		window._idl = {};
 		_idl.variant = "banner";
@@ -261,9 +235,9 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 	</script>
-    <script>
-      $(document).foundation();
-    </script>
+	<script type="text/javascript">
+		$(document).foundation();
+	</script>
 	<noscript>
 		<p>This site uses JavaScript. You must allow JavaScript in your browser.</p>
 	</noscript>

@@ -3,7 +3,7 @@ define('ROOT', '../');
 include_once ROOT . 'config/config.php';
 require_once ROOT . 'include/functions.php';
 session_start();
-
+if (iptracker === true) {
 //Load the class
 $ipLite = new ip2location_lite;
 //Get locations
@@ -103,4 +103,7 @@ if(isset($date[0]))
 	echo"&nbsp;&nbsp;Your Last Visit Was - ".$date[0];
 else
 	echo '';
+} else {
+	echo '';
+}
 ?>

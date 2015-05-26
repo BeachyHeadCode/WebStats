@@ -86,8 +86,9 @@ $(document).ready(function(){
 });
 
 function docReady() {
-	//Sever pic creation request.
 	$('#pic').fadeOut().parent().append('<div id="loading" class="center"></div>');
+	$('#ip').fadeOut().parent().append('<div id="loading-ip" class="center"></div>');
+	//Sever pic creation request.
 	$.ajax({
 		url : 'include/pic.php', 
 		processData : false,
@@ -120,4 +121,59 @@ function docReady() {
 		logInfo('mstats updated!');
 	});
 	console.log('everything loaded');
+	//IP request
+	$.ajax({
+		url : 'include/ip.php',
+		success:function(msg){
+				$('#ip').html(msg);
+				$('#loading-ip').remove();
+				$('#ip').fadeIn();
+				logInfo( "IP Tracker Loaded!" );
+				return false;
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log(xhr.status);
+				console.log(xhr.statusText);
+				console.log(xhr.responseText);
+				if(xhr.status == '404'){
+					alert('Page was not found [404], redirecting to dashboard.');
+					window.location.href = "index.php";
+				}
+			}
+	})
+	// This function is executed once the document is loaded
+	
+	// Caching the jQuery selectors:
+	//var count = $('.onlineWidget .count');
+	var panel = $('.live_panel');
+	var timeout;
+
+	// Loading the number of users online into the count div:
+	//count.load('who-is-online/online.php');
+	$(document).on('mouseenter','.onlineWidget',function(){
+   			// Setting a custom 'open' event on the sliding panel:
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){$('.live_panel').trigger('open');},500);
+	});
+	$(document).on('mouseleave','.onlineWidget',function(){
+			// Custom 'close' event:
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){$('.live_panel').trigger('close');},500);
+	});
+	var loaded=false;	// A flag which prevents multiple ajax calls to geodata.php;
+
+	// Binding functions to custom events:
+
+	$(document).on('open',function(){
+		$('.live_panel').slideDown("slow",function(){
+			if(!loaded)
+			{
+				// Loading the countries and the flags once the sliding panel is shown:
+				$('.live_panel').load('include/geodata.php');
+				loaded=true;
+			}
+		});
+	}).on('close',function(){
+		$('.live_panel').slideUp();
+	});
 }

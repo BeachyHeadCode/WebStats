@@ -143,7 +143,7 @@ table tr td a img{
 	right:							10px;
 	text-align:						right;
 	vertical-align:					top;
-	z-index:						5;
+	z-index:						3;
 }
 .head_maintable {
 	width:							640px;
@@ -608,7 +608,7 @@ table tbody tr td {vertical-align:middle !important;}
 .grid2 .border{display:block;margin:-2px -2px 0px -2px;border-style:solid none none solid;border-width:2px;border-color:#373737;height:110%}
 .grid2 .border > span{display:block;margin-right:-2px;border-style:none solid solid none;border-width:2px;border-color:#FFFFFF;height:100%}
 .grid2 .image,.grid2 .default-image{position:absolute;line-height:16px;top:2px;width:32px;height:32px}
-.grid2.output .image{top:10px;left:10px}.grid2 .image > a.new{background-image:url("http://media-mcw.cursecdn.com/3/35/Grid_Unknown.png");display:block;width:32px;height:32px;outline:none;text-indent:-99999px}
+.grid2.output .image{top:10px;left:10px}.grid2 .image > a.new{background-image:url("../../../include/recipe/images/Grid_Unknown.png");display:block;width:32px;height:32px;outline:none;text-indent:-99999px}
 .grid2 .number{position:absolute;right:-2px;bottom:-2px;text-align:right;font-family:Minecraft;font-size:16px;color:#FFF;pointer-events:none;text-shadow:2px 2px 0px #3F3F3F;filter:dropshadow(color=#3F3F3F,offx=2,offy=2)}
 .grid2 .number a{color:#FFF;text-decoration:none}
 .grid2 .number .selflink{font-weight:normal}
@@ -621,7 +621,7 @@ table tbody tr td {vertical-align:middle !important;}
 .grid .border span{display:block;margin-right:-2px;border-style:none solid solid none;border-width:2px;border-color:#FFFFFF;height:100%}
 .grid .image,.grid .default-image{position:absolute;line-height:16px;top:2px;width:32px}
 .grid.output .image{top:10px;left:10px}
-.grid .image > a.new{background-image:url("http://media-mcw.cursecdn.com/3/35/Grid_Unknown.png");display:block;width:32px;height:32px;outline:none;text-indent:-99999px}
+.grid .image > a.new{background-image:url("../../../include/recipe/images/Grid_Unknown.png");display:block;width:32px;height:32px;outline:none;text-indent:-99999px}
 .grid .number{display:block;margin:-12px -4px 0 0;text-align:right;font-family:Minecraft;font-size:16px;pointer-events:none}
 .grid .number .selflink,.grid .number a{color:#3F3F3F;text-decoration:none;font-weight:normal}
 .grid .image a.new + .number{display:none}
@@ -688,15 +688,19 @@ ul.ajax-loaders{
 	width:								16px;
 	background:							url(../../../images/ajax-loaders/ajax-loader2.gif);
 }
-.live_panel{
+/* 
+ *
+ * GEO PANEL
+ *
+ */
+.onlineWidget,.live_panel {
 	/* Styling the widget and the sliding panel at once */
 	background-color:					#F9F9F9;
 	border:								2px solid #FFFFFF;
 	height:								25px;
-	padding:							4px 8px;
 	position:							relative;
 	width:								170px;
-	cursor:								pointer;
+	cursor:								url(../../../images/cursors/hover.cur), auto !important;
 	/* CSS3 rules for rounded corners, box and text shadows:*/
 	-moz-border-radius:					6px;
 	-webkit-border-radius:				6px;
@@ -705,15 +709,24 @@ ul.ajax-loaders{
 	-webkit-box-shadow:					0 0 3px #CCCCCC;
 	box-shadow:							0 0 3px #CCCCCC;
 	text-shadow:						0 2px 0 white;
+
+}
+.live_panel{
 	/* The slideout panel */
 	position:							absolute;
-	cursor:								url(../../../images/cursors/default.cur), default !important;
+	cursor:								default;
 	bottom:								50px;
 	left:								0;
 	height:								auto;
 	display:							none;
 	margin:								-2px;
-	z-index:							1;
+	z-index:							1000;
+}
+.onlineWidget{
+	margin:30px auto 0;
+}
+.onlineWidget:hover{
+	background-color:#fcfcfc;
 }
 .flag {
 	float:								left;
