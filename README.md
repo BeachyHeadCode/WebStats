@@ -76,6 +76,7 @@ Beside this plug-in, WS supports other plug-ins which collects data in MySQL dat
 <h4>Known Problems</h4>
 <ul>
 	<li>Tables don't fit mobile.</li>
+	<li>When ads are turned on page is broken on internet explorer</li>
 </ul>
 <hr />
 

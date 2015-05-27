@@ -13,6 +13,9 @@
 	if(file_exists('modules/stats-lolmewn/index.php')) {
 		$statslolmewn_control = true;
 	}
+	if(file_exists('modules/stats-lolmewn3/index.php')) {
+		$statslolmewn3_control = true;
+	}
 	if(file_exists('modules/stats-sa/index.php')) {
 		$statssa_control = true;
 	}
