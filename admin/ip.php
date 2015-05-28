@@ -2,7 +2,7 @@
 if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])){exit();}
 $ip = $_SERVER['REMOTE_ADDR'];
 if (!isset($_GET['sort'])) {$_GET['sort'] = 'IPdesc';}
-if((isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1') {
+if((isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1' || substr($ip, 0, 7) ==='192.168') {
 	if(iptracker === true) {
 /* SETS NUMBER OF USERS TO PRINT */
 function get_IP_stats_count($link) {

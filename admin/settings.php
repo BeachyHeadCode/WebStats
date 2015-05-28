@@ -9,9 +9,9 @@ require_once ROOT . 'include/functions.php';
 if(file_exists(ROOT . 'config/config.php'))
 	include ROOT . 'config/config.php';
 else
-	header("/setup-config.php");
+	header("setup-config.php");
 	
-if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1') {
+if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1' || substr($ip, 0, 7) ==='192.168') {
 	if(!empty($_POST["submitmysql"])) { 
 		$_SESSION['mysql']['URL']=$_POST['mysql']['URL'];
 		$_SESSION['mysql']['PORT']=$_POST['mysql']['PORT'];
@@ -77,6 +77,9 @@ if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip
 		}
 	</script>
 	<article>
+		<div data-alert class="alert-box">
+			<strong><i class="fi-alert"></i>Warning:</strong> This page does not function yet. It will not update your config file.
+		</div>
 		<form action="#" method="post" class="custom">
 			<fieldset>
 				<legend style="background: none;"><h2>MySQL of Minecraft Plugin(s)</h2></legend>
@@ -149,7 +152,7 @@ if(isset($_SESSION['pml_userid']) || $ip=='127.0.0.1' || $ip=='localhost' || $ip
 			</fieldset>
 		</form>
 		<?php $DB = new DBConfig();$DB -> config();$DB -> conn($_SESSION['mysql'][URL].":".$_SESSION['mysql']['PORT'], $_SESSION['mysql']['user'], $_SESSION['mysql']['pass'], $_SESSION['mysql']['data']); $DB -> close(); ?>     
-<?php if(isset($_POST["submitmysql"])){
+<?php if(isset($_POST["submitmysql"])) {
 	include('config.php');?>
 	<form action="#" method="post" class="custom">
 		<fieldset>

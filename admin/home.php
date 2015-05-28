@@ -127,7 +127,7 @@ if($json!='API rate limit exceeded') {
 	}
 	?>
 </p>
-<h3><a href="<?php echo $repoURL; ?>" target="_blank">Latest Github Activity for <?php echo $repoName; ?></a></h3>
+<h3><a href="<?php echo $repoURL; ?>" target="_blank"><span class="fi-social-github" style="font-size: 2rem;"></span> Latest Github Activity for <?php echo $repoName; ?></a></h3>
 <?php if($repook===true) { ?>
 <table>
 	<tr colspan="2">
