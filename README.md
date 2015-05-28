@@ -61,7 +61,7 @@ Beside this plug-in, WS supports other plug-ins which collects data in MySQL dat
 </ul>
 			
 <h3>Current Pending Update:</h3>
-<h4>v4(ETA end of may 2015) - Change-log bellow is current GitHub Source changes</h4>
+<h4>v4(ETA end of june 2015) - Change-log bellow is current GitHub Source changes</h4>
 <ul>
 	<li>Moved all MySQL function to mysqli since mysql was deprecated as of PHP 5.5.0.</li>
 	<li>IP page sort function changes for the date.</li>
