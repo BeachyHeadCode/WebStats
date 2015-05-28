@@ -760,7 +760,9 @@ function translate($item) {
 		elseif ($item == "var106") 					{$item = "Buckets Emptyed";}
 		elseif ($item == "var107") 					{$item = "Items Smithed";}
 		elseif ($item == "var108") 					{$item = "Items Brewed";}
-		elseif ($item == "var109") 					{$item = "";}
+		elseif ($item == "var109") 					{$item = "Trades";}
+		elseif ($item == "var110") 					{$item = "Buckets Filled";}
+		elseif ($item == "var111") 					{$item = "Horse";}
 		//---------------	LOGIN RELATED	--------------------------------
 		elseif ($item == "login-incorrect")			{$item = "<span style='color: red;'>The username or password you entered is incorrect. Please try again.</span>";}
 		elseif ($item == "login-notactive")			{$item = "<span style='color: red;'>You're account isn't activated. Please activate your account and try again. Check your inbox for an activation e-mail if you've used the Forgot password-function.</span>";}	

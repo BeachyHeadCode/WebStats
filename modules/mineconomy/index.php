@@ -1,12 +1,10 @@
-<h2>Mine Conomy</h2><br />
+<h2>MineConomy</h2><br />
 <?php
-	if ($_GET['sort'] != 'balance'){
+	if ($_GET['sort'] != 'balance') {
 		$_GET['sort'] = 'username';
 	} else {
 		$_GET['sort'] = 'balance';
-	}	
-?>
-<?php 
+	}
 	echo (mineconomy_server_details_table());
 ?>
 
@@ -42,6 +40,5 @@
 			echo (mineconomy_server_player_table($players[$i], $i+$start));
 		}			
 ?>
-
 </table>
 <?php echo (get_pages(sizeof($player_count), $_GET['mode'], $_GET['sort']));?>

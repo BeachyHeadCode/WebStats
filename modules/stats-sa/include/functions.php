@@ -361,9 +361,11 @@ function set_server_details_table() {
 	return $output;
 }
 
-function set_server_didkill_table($search) {
+function set_server_kill_table($bool) {
 	global $link;
-	$query = mysqli_query($link, "SELECT `type`, SUM(`amount`) FROM `".WS_CONFIG_STATS."kill` GROUP BY `type` ".$search."");
+	if($bool==true) {$search="ORDER BY `entityType` ASC";}
+	else {$search="";}
+	$query = mysqli_query($link, "SELECT `type`, SUM(`amount`) FROM `".WS_CONFIG_STATS."kill` GROUP BY `type` ".$search);
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<div style="clear: both;">';
@@ -374,8 +376,10 @@ function set_server_didkill_table($search) {
 	return $output;
 }
 
-function set_server_getkill_table($search) {
+function set_server_death_table($bool) {
 	global $link;
+	if($bool==true) {$search="ORDER BY `entityType` ASC";}
+	else {$search="";}
 	$query = mysqli_query($link, "SELECT `entity`, `cause`, SUM(`amount`) FROM `".WS_CONFIG_STATS."death` GROUP BY `entity` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -387,8 +391,10 @@ function set_server_getkill_table($search) {
 	return $output;
 }
 
-function set_server_destroy_table($search) {
+function set_server_destroy_table($bool) {
 	global $link;
+	if($bool==true) {$search="ORDER BY `entityType` ASC";}
+	else {$search="";}
 	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` GROUP BY `blockID` ORDER BY `blockID` asc) as `sbo` LEFT JOIN (SELECT `blockID`, SUM(`amount`) as `brk` FROM `".WS_CONFIG_STATS."block` WHERE `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as `q2` ON `sbo`.`blockID` = `q2`.`blockID`");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -402,8 +408,10 @@ function set_server_destroy_table($search) {
 	return $output;
 }
 
-function set_server_build_table($search) {
+function set_server_build_table($bool) {
 	global $link;
+	if($bool==true) {$search="ORDER BY `entityType` ASC";}
+	else {$search="";}
 	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q1`.`amn` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` GROUP BY `blockID` ORDER BY `blockID` asc) as `sbo` LEFT JOIN (SELECT `blockID`, SUM(`amount`) as `amn` FROM `".WS_CONFIG_STATS."block` WHERE `break` = 0 GROUP BY `blockID` ORDER BY `blockID` asc) as `q1` ON `sbo`.`blockID` = `q1`.`blockID`");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {

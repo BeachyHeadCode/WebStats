@@ -58,7 +58,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 		</section>
 	</nav>
 </div>
-<?php elseif($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1' || strpos($ip,'192.168.')) : ?>
+<?php elseif($ip=='127.0.0.1' || $ip=='localhost' || $ip=='::1' || substr($ip, 0, 7) ==='192.168') : ?>
 <!-- ADMIN BAR -->
 <div class="admin-bar fixed">
 	<nav class="top-bar" data-topbar role="navigation">
@@ -170,7 +170,7 @@ if(isset($_SESSION['pml_userid']) && $_SESSION['pml_userrank']=='1') :
 		<div role="footerADMobile"><?php echo (WS_GOOGLE_FOOTER_MOBILE); ?></div><?php }?>
 		<p>
 			<em>
-				<a href="https://nicholas-smith.tk/webstats/" target="_blank">nicholas-smith.tk</a> &#169;<a href="http://bukkit.org/threads/web-webstatistic-for-minecraft-v3-1-mrplows.60843/" target="_blank" title="[WEB] Webstatistic for Minecraft">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a href="https://minecraft.net" target="_blank" title="Minecraft">Minecraft</a>
+				<a href="https://nicholas-smith.tk/webstats/" target="_blank">nicholas-smith.tk</a> &#169;<a href="http://bukkit.org/threads/webstatistic-for-minecraft-v4-0-beta-mrplows.362548/" target="_blank" title="[WEB] Webstatistic for Minecraft">Webstatistic v<?php include('include/version.php'); echo $version;?></a> for <a href="https://minecraft.net" target="_blank" title="Minecraft">Minecraft</a>
          		<?php if(date("Y") != '2011') {echo '2011-';}?>
          		<?php echo date("Y"); ?> 
 				<a href="termsofuse.php">Terms Of Use</a>

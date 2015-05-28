@@ -356,8 +356,10 @@ function set_server_details_table() {
 	return $output;
 }
 
-function set_server_didkill_table($search) {
+function set_server_kill_table($bool) {
 	global $link;
+	if($bool==true) {$search='ORDER BY `stat` ASC';}
+	else {$search='ORDER BY SUM(`value`) DESC';}
 	$query = mysqli_query($link, "SELECT `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'kills' AND `stat` != 'total' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -376,8 +378,10 @@ function set_server_didkill_table($search) {
 	return $output;
 }
 
-function set_server_getkill_table($search) {
+function set_server_death_table($bool) {
 	global $link;
+	if($bool==true) {$search='ORDER BY `stat` ASC';}
+	else {$search='ORDER BY SUM(`value`) DESC';}
 	$query = mysqli_query($link, "SELECT `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'deaths' AND `stat` != 'total' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -396,8 +400,10 @@ function set_server_getkill_table($search) {
 	return $output;
 }
 
-function set_server_destroy_table($search) {
+function set_server_destroy_table($bool) {
 	global $link;
+	if($bool==true) {$search='ORDER BY `stat` ASC';}
+	else {$search='ORDER BY SUM(`value`) DESC';}
 	$query = mysqli_query($link, "SELECT `stat`, SUM(`value`) FROM ".WS_CONFIG_STATS." WHERE `category` = 'blockdestroy' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -411,8 +417,10 @@ function set_server_destroy_table($search) {
 	return $output;
 }
 
-function set_server_build_table($search) {
+function set_server_build_table($bool) {
 	global $link;
+	if($bool==true) {$search='ORDER BY `stat` ASC';}
+	else {$search='ORDER BY SUM(`value`) DESC';}
 	$query = mysqli_query($link, "SELECT `stat`, SUM(`value`) FROM ".WS_CONFIG_STATS." WHERE `category` = 'blockcreate' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -428,6 +436,8 @@ function set_server_build_table($search) {
 
 function set_server_damagereceived_table($search) {
 	global $link;
+	if($bool==true) {$search='ORDER BY `stat` ASC';}
+	else {$search='ORDER BY SUM(`value`) DESC';}
 	$query = mysqli_query($link, "SELECT `category`, `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'damagetaken' AND `stat` != 'total' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -447,8 +457,10 @@ function set_server_damagereceived_table($search) {
 	return $output;
 }
 
-function set_server_damagedealt_table($search) {
+function set_server_damagedealt_table($bool) {
 	global $link;
+	if($bool==true) {$search='ORDER BY `stat` ASC';}
+	else {$search='ORDER BY SUM(`value`) DESC';}
 	$query = mysqli_query($link, "SELECT `stat`, SUM(`value`) FROM `".WS_CONFIG_STATS."` WHERE `category` = 'damagedealt' AND `stat` != 'total' GROUP BY `stat` ".$search."");
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {

@@ -1,6 +1,8 @@
 <?php
 	$WS_CONFIG_NoMySQL=false;
 	$menuname="Jobs";
-	if(pluginconfigstatusjobs === true)
+	if(pluginconfigstatusjobs === true) {
 		$on=true;
+		$plugintype["Jobs"]=true;
+	}
 ?>

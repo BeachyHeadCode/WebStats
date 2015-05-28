@@ -426,9 +426,11 @@ function set_server_details_table() {
 	return $output;
 }
 
-function set_server_didkill_table($search) {
+function set_server_kill_table($bool) {
 	global $link;
-	$query = mysqli_query($link, "SELECT `type`, SUM(`amount`) FROM `".WS_CONFIG_STATS."kill` GROUP BY `type` ".$search."");
+	if($bool==true) {$search='ORDER BY `type` ASC';}
+	else {$search='ORDER BY SUM(`amount`) DESC';}
+	$query = mysqli_query($link, "SELECT `type`, SUM(`amount`) FROM `".WS_CONFIG_STATS."kill` GROUP BY `type` ".$search);
 	$output = '';
 	$output .= '<table class="head_contentbox">';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -439,9 +441,11 @@ function set_server_didkill_table($search) {
 	return $output;
 }
 
-function set_server_getkill_table($search) {
+function set_server_death_table($bool) {
 	global $link;
-	$query = mysqli_query($link, "SELECT `entity`, `cause`, SUM(`amount`) FROM `".WS_CONFIG_STATS."death` GROUP BY `entity` ".$search."");
+	if($bool==true) {$search='ORDER BY `type` ASC';}
+	else {$search='ORDER BY SUM(`amount`) DESC';}
+	$query = mysqli_query($link, "SELECT `entity`, `cause`, SUM(`amount`) FROM `".WS_CONFIG_STATS."death` GROUP BY `entity` ".$search);
 	$output = '';
 	$output .= '<table class="head_contentbox">';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
@@ -452,8 +456,10 @@ function set_server_getkill_table($search) {
 	return $output;
 }
 
-function set_server_destroy_build_table($search) {
+function set_server_destroy_build_table($bool) {
 	global $link;
+	if($bool==true) {$search='ORDER BY `type` ASC';}
+	else {$search='ORDER BY SUM(`amount`) DESC';}
 	$query = mysqli_query($link, "SELECT `sbo`.`blockID`, `q1`.`amn`, `q2`.`brk` FROM (SELECT `blockID` FROM `".WS_CONFIG_STATS."block` GROUP BY `blockID` ORDER BY `blockID` asc) as sbo LEFT JOIN (SELECT `blockID`, SUM(`amount`) as amn FROM `".WS_CONFIG_STATS."block` WHERE break = 0 GROUP BY blockID ORDER BY blockID asc) as q1 ON sbo.blockID = q1.blockID LEFT JOIN (SELECT blockID, SUM(`amount`) as brk FROM `".WS_CONFIG_STATS."block` WHERE `break` = 1 GROUP BY `blockID` ORDER BY `blockID` asc) as q2 ON sbo.blockID = q2.blockID");
 	$output = '<table>';
 	$output .= '<tr><td>ID:</td><td>'.translate('var8').':</td><td>'.translate('var9').':</td></tr>';
@@ -498,7 +504,7 @@ function set_material_build_table($material, $search) {
 
 function set_creature_damagereceived_table($creature, $search) {
 	global $image_control, $link;
-	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."death` WHERE `entity` = '".encrypt($creature)."' GROUP BY `player` ".$search." ");
+	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."death` WHERE `entity` = '".encrypt($creature)."' GROUP BY `player` ".$search);
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		if($image_control == true) {
@@ -515,7 +521,7 @@ function set_creature_damagereceived_table($creature, $search) {
 
 function set_creature_damagedealt_table($creature, $search) {
 	global $image_control, $link;
-	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."kill` WHERE `type` = '".encrypt($creature)."' GROUP BY `player` ".$search."");
+	$query = mysqli_query($link, "SELECT `player`, `amount` FROM `".WS_CONFIG_STATS."kill` WHERE `type` = '".encrypt($creature)."' GROUP BY `player` ".$search);
 	$output = '';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		if($image_control == true) {
