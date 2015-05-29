@@ -47,6 +47,7 @@ function set_index_table($player, $pos) {
 	$output .= '<tr><td>'.$pos.'</td>';
 	$output .= '<td>&nbsp;&nbsp;'.$image.'<a class="ajax-link" href="index.php?mode=show-player&user='.$player['name'].'">'.$player['name'].'</a></td>';
 	$output .= '<td>'.get_played(get_amount($player['uuid'], "value", "playtime")).'</td>';
+	$output .= '<td>'.get_date(round(get_amount($player['uuid'], "value", "last_seen")/3000)).'</td>';
 	$output .= '<td>'.get_status(get_amount($player['uuid'], "value", "last_seen"), get_amount($player['uuid'], "value", "last_join")).'</td>';
 	$output .= "</tr>";
 	return $output;
@@ -225,7 +226,7 @@ function getServerTotal($stat) {
  *
  */
 function set_server_details_table() {
-	$output = '<div class="row head_logo" style="margin: 0 0;background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
+	$output = '<div class="row head_logo" style="margin: 0 0;background-image:url('.WS_CONFIG_LOGO.');"></div>';
 	$output .= '<div class="row" style="margin: 0 0;"><table class="large-6 columns head_contentbox">';
 	$output .= '<tr>
 					<td>'.translate("var23").':</td>
