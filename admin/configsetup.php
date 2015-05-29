@@ -55,12 +55,11 @@ if(!empty($_POST["submitconfig"])) {
 	$_SESSION['page']['bookmark_title']=$_POST['page']['bookmark_title'];
 	$_SESSION['page']['achiev_player_table_name']=$_POST['page']['achiev_player_table_name'];
 	$_SESSION['page']['iconomy_admin']=$_POST['page']['iconomy_admin'];
-	$_SESSION['page']['iconomy_table_name']=$_POST['page']['iconomy_table_name'];
 	$_SESSION['page']['iconomy_major_currency']=$_POST['page']['iconomy_major_currency'];
 	$_SESSION['page']['iconomy_minor_currency']=$_POST['page']['iconomy_minor_currency'];
 	$_SESSION['page']['iconomy_major_symbol']=$_POST['page']['iconomy_major_symbol'];
 	$_SESSION['page']['iconomy_minor_symbol']=$_POST['page']['iconomy_minor_symbol'];
-	$_SESSION['page']['mineconomy_table']=$_POST['page']['mineconomy_table'];
+	$_SESSION['page']['economy_table']=$_POST['page']['economy_table'];
 	$_SESSION['page']['jail_table_name']=$_POST['page']['jail_table_name'];
 	$_SESSION['page']['jobs_table_name']=$_POST['page']['jobs_table_name'];
 	$_SESSION['page']['mcmmo_table_name']=$_POST['page']['mcmmo_table_name'];
@@ -248,14 +247,12 @@ define('noclick','<span onmousedown="return false;" onselectstart="return false;
 	<label for="page">Economy - Admin User: <input name="page[iconomy_admin]" type="text" id="page[iconomy_admin]" title="Server Name" value="<?php if(!isset($_SESSION['page']['iconomy_admin'])){ echo 'admin';}else{ echo $_SESSION['page']['iconomy_admin'];} ?>" maxlength="16"/></label>
 	<label for="page">Economy - Major Symbol: <input name="page[iconomy_major_symbol]" type="text" id="page[iconomy_major_symbol]" title="iConomy Major Symbol" value="<?php if(!isset($_SESSION['page']['iconomy_major_symbol'])){ echo '$';}else{ echo $_SESSION['page']['iconomy_major_symbol'];} ?>" maxlength="1"/></label>
 	<label for="page">Economy - Minor Symbol: <input name="page[iconomy_minor_symbol]" type="text" id="page[iconomy_minor_symbol]" title="iConomy Minor Symbol" value="<?php if(!isset($_SESSION['page']['iconomy_minor_symbol'])){ echo '&#162;';}else{ echo $_SESSION['page']['iconomy_minor_symbol'];} ?>" maxlength="1"/></label>
+	<label for="page">Economy - MySQL Table Name: <input name="page[economy_table]" type="text" id="page[economy_table]" title="MineConomy Table Name" value="<?php if(!isset($_SESSION['page']['economy_table'])){ echo 'mineconomy_accounts';}else{ echo $_SESSION['page']['economy_table'];} ?>" maxlength="1"/></label>
 	<?php if($_SESSION['pluginconfigeconomy'] == 'iConomy'){?>
-		<label for="page">Iconomy - Mysql Table Name: <input name="page[iconomy_table_name]" type="text" id="page[iconomy_table_name]" title="Server Name" value="<?php if(!isset($_SESSION['page']['iconomy_table_name'])){ echo 'iconomy';}else{ echo $_SESSION['page']['iconomy_table_name'];} ?>" maxlength="16"/></label>
 		<label for="page">Iconomy - Name of Major Currency: <input name="page[iconomy_major_currency]" type="text" id="page[iconomy_major_currency]" title="iConomy Major Currency" value="<?php if(!isset($_SESSION['page']['iconomy_major_currency'])){ echo 'Dollar(s)';}else{ echo $_SESSION['page']['iconomy_major_currency'];} ?>" maxlength="20"/></label>
 		<label for="page">Iconomy - Name of Minor Currency: <input name="page[iconomy_minor_currency]" type="text" id="page[iconomy_minor_currency]" title="iConomy Minor Currency" value="<?php if(!isset($_SESSION['page']['iconomy_minor_currency'])){ echo 'Cent(s)';}else{ echo $_SESSION['page']['iconomy_minor_currency'];} ?>" maxlength="20"/></label>
 	<?php }
-		if($_SESSION['pluginconfigeconomy'] == 'MineConomy'){ ?>
-	<label for="page">MineConomy - Table Name: <input name="page[mineconomy_table]" type="text" id="page[mineconomy_table]" title="MineConomy Table Name" value="<?php if(!isset($_SESSION['page']['mineconomy_table'])){ echo 'mineconomy_accounts';}else{ echo $_SESSION['page']['mineconomy_table'];} ?>" maxlength="1"/></label>
-<?php }}
+	}
 if($_SESSION['pluginconfigjail'] == true){ ?>
 <label for="page">Jail MySQL Table Name: <input name="page[jail_table_name]" type="text" id="page[jail_table_name]" title="Jail Table Name" value="<?php if(!isset($_SESSION['page']['jail_table_name'])){ echo 'jail_';}else{ echo $_SESSION['page']['jail_table_name'];} ?>" maxlength="16"/></label>
 <?php }
@@ -315,13 +312,12 @@ if((isset($_SESSION['pluginconfigachiv'])) and ($_SESSION['pluginconfigachiv'] !
 	$pluginconfigstatusachiv="define('pluginconfigstatusachiv', true);\n";
 }
 if((isset($_SESSION['pluginconfigeconomy'])) and ($_SESSION['pluginconfigeconomy'] != 'Chose Plugin')) {
+	$economy="define('WS_ECONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\ndefine('WS_CONFIG_ECONOMY', '".$_SESSION['page']['mineconomy_table']."');\ndefine('WS_ECONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\ndefine('WS_ECONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
 	if ($_SESSION['pluginconfigeconomy']=='iConomy') {
-		$economy="define('WS_ICONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\ndefine('WS_CONFIG_MINECONOMY', '".$_SESSION['page']['mineconomy_table_name']."');\ndefine('WS_ICONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\ndefine('WS_ICONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
-		$pluginconfigstatuseconomy="define('pluginconfigstatusiconomy', true);\n";
+		$pluginconfigstatuseconomy="define('pluginconfigstatusiconomy', true);\ndefine('WS_CONFIG_ECONOMY_PLUGIN', 'iconomy');\n";
 	}
 	if ($_SESSION['pluginconfigeconomy']=='MineConomy') {
-		$economy="define('WS_ICONOMY_OMIT', '".$_SESSION['page']['iconomy_admin']."');\ndefine('WS_CONFIG_MINECONOMY', '".$_SESSION['page']['mineconomy_table']."');\ndefine('WS_ICONOMY_MAIN_SHORT', '".$_SESSION['page']['iconomy_major_symbol']."');\ndefine('WS_ICONOMY_SUB_SHORT', '".$_SESSION['page']['iconomy_minor_symbol']."');\n";
-		$pluginconfigstatuseconomy="define('pluginconfigstatusmineconomy', true);\n";
+		$pluginconfigstatuseconomy="define('pluginconfigstatusmineconomy', true);\ndefine('WS_CONFIG_ECONOMY_PLUGIN', 'mineconomy');\n";
 	}
 }
 if($_SESSION['pluginconfigjail'] == true) {

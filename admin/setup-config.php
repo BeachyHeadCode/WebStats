@@ -454,7 +454,7 @@ include_once ROOT . "assets/header.php";
 			</script>
 			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 			<p>
-				<a href="https://nicholas-smith.tk" target="_blank">nicholas-smith.tk</a> &#169;<a href="http://bukkit.org/threads/web-webstatistic-for-minecraft-v3-1-mrplows.60843/" target="_blank">Webstatistic Install v5.4</a> for <a href="https://minecraft.net/" target="_blank">Minecraft</a>
+				<a href="https://nicholas-smith.tk" target="_blank">nicholas-smith.tk</a> &#169;<a href="http://bukkit.org/threads/web-webstatistic-for-minecraft-v3-1-mrplows.60843/" target="_blank">Webstatistic Install v5.4.1</a> for <a href="https://minecraft.net/" target="_blank">Minecraft</a>
 				<?php if(date("Y") != '2011') {echo '2011-';}?><?php echo date("Y"); ?>&nbsp;<a href="../termsofuse.php">Terms Of Use</a></em>
 			</p>
 		</footer>

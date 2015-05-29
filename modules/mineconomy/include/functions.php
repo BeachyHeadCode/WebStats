@@ -2,7 +2,7 @@
 //SETS NUMBER OF USERS TO PRINT
 function get_mineconomy_user_count() {
 	global $link;
-	$query = mysqli_query($link, "SELECT COUNT(`account`) FROM ".WS_CONFIG_MINECONOMY);
+	$query = mysqli_query($link, "SELECT COUNT(`account`) FROM ".WS_CONFIG_ECONOMY);
 	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	return $row[0];
 }
@@ -16,7 +16,7 @@ function get_mineconomy_user_stats($sort, $start, $end) {
 	elseif($sort == 'balance') {
 		$sortkey = 'ORDER BY `balance` DESC';
 	}
-	$query = mysqli_query($link, "SELECT `account`, `balance` FROM `".WS_CONFIG_MINECONOMY."` ".$sortkey." LIMIT ".$start.",".$end);
+	$query = mysqli_query($link, "SELECT `account`, `balance` FROM `".WS_CONFIG_ECONOMY."` ".$sortkey." LIMIT ".$start.",".$end);
 	$time = 0;
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$players[$time] = $row[0];
@@ -28,7 +28,7 @@ function get_mineconomy_user_stats($sort, $start, $end) {
 //PLAYER MONEY COUNT
 function mineconomy_player_get_money($player) {
 	global $link;
-	$query = mysqli_query($link, "SELECT `account`, `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` = '".$player."'");
+	$query = mysqli_query($link, "SELECT `account`, `balance`, `currency` FROM `".WS_CONFIG_ECONOMY."` WHERE `account` = '".$player."'");
 	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];
@@ -39,7 +39,7 @@ function mineconomy_player_get_money($player) {
 //SERVER MONEY COUNT
 function mineconomy_server_get_money() {
 	global $link;
-	$query = mysqli_query($link, "SELECT COUNT(`account`), SUM(`balance`), `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
+	$query = mysqli_query($link, "SELECT COUNT(`account`), SUM(`balance`), `currency` FROM `".WS_CONFIG_ECONOMY."` WHERE `account` != '".WS_ECONOMY_OMIT."'");
 	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];
@@ -48,7 +48,7 @@ function mineconomy_server_get_money() {
 }
 
 //PLAYER BOX MONEY COUNT
-function mineconomy_player_get_money_table($player) {
+function player_get_money_table($player) {
 	$money = mineconomy_player_get_money($player);
 	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
 					<div class="head_stat">'.translate("var50").':</div>
@@ -72,7 +72,7 @@ function mineconomy_server_get_money_table() {
 //SERVER TOP PLAYER
 function mineconomy_server_top_money() {
 	global $link;
-	$query = mysqli_query($link, "SELECT `account`, MAX(`balance`) as `balance`, `currency` FROM `".WS_CONFIG_MINECONOMY."` WHERE `account` != '".WS_ICONOMY_OMIT."'");
+	$query = mysqli_query($link, "SELECT `account`, MAX(`balance`) as `balance`, `currency` FROM `".WS_CONFIG_ECONOMY."` WHERE `account` != '".WS_ECONOMY_OMIT."'");
 	$row = mysqli_fetch_array($query, MYSQLI_NUM);
 	$money = explode('.', $row[1]);
 	$money[1] = $row[0];
@@ -106,7 +106,7 @@ function mineconomy_server_details_table() {
 				
 				<div style="clear:both">
 					<div class="head_stat">'.translate("var46").':</div>
-					<div class="head_content">'.WS_ICONOMY_SUB.'</div>
+					<div class="head_content">'.WS_ECONOMY_SUB.'</div>
 				</div>
 				
 				<div style="clear:both">

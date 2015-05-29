@@ -29,19 +29,14 @@
 		echo '<div class="large-6 columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 ?>
 <?php 
-	if(($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) || ($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) || ($statslolmewn3_control === true && pluginconfigstatusstatslolmewnstats3 === true) || ($statssa_control === true && pluginconfigstatussa === true))
-		//echo (set_player_details_table(htmlentities($_GET['user'])));
+	if($plugintype["Stats"] === true)
+		if(function_exists('set_player_details_table')) { echo set_player_details_table(htmlentities($_GET['user'])); }
 ?>
 	</div>
 <?php 
-	if($iconomy_control == true && pluginconfigstatusiconomy === true) {
+	if($plugintype["Economy"] === true) {
 		echo '<div class="row" align="right"><div class="small-12 columns">';
-		echo iconomy_player_get_money_table(htmlentities($_GET['user']));
-		echo '</div></div>';
-	}
-	if($mineconomy_control == true && pluginconfigstatusmineconomy === true) {
-		echo '<div class="row" align="right"><div class="small-12 columns">';
-		echo mineconomy_player_get_money_table(htmlentities($_GET['user']));
+		echo player_get_money_table(htmlentities($_GET['user']));
 		echo '</div></div>';
 	}
 ?>
