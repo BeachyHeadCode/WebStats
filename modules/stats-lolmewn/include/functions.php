@@ -269,7 +269,7 @@ function get_server_played() {
 }
 
 function set_server_details_table() {
-	$output = '<div class="row head_logo" style="margin: 0 0;background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
+	$output = '<div class="row head_logo" style="margin: 0 0;background-image:url('.WS_CONFIG_LOGO.');"></div>';
 	$output .= '<div class="row" style="margin: 0 0;"><table class="small-6 columns head_contentbox">';
 	$output .= '<tr>
 					<td>'.translate("var23").':</td>

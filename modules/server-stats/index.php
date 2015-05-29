@@ -1,6 +1,6 @@
-<h2>Server Stats</h2><br/>
+<h2>Server Stats</h2>
 <?php if (!isset($_GET['search'])){$bool = true;} else {$bool = false;} ?>
-<div class="head_maintable_stats">
+<div>
 	<?php echo set_server_details_table(); ?>
 </div>
 <br /><br />

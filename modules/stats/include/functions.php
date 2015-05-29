@@ -296,7 +296,7 @@ function get_server_played() {
 }
 
 function set_server_details_table() {
-	$output = '<div class="small-6 columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.'); background-repeat: no-repeat; background-position: center"></div>';
+	$output = '<div class="small-6 columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
 	$output .= '<div class="small-6 columns head_contentbox">'."\n";
 	$output .= '<div style="clear:both">
 					<div class="head_stat">'.translate("var23").':</div>
