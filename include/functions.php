@@ -320,12 +320,15 @@ function get_pages($numbers, $mode, $sort) {
 	$output .=	'<td><span data-tooltip aria-haspopup="true" class="has-tip" title="Number of items per page"><select onchange="this.form.submit();" id="customDropdown" class="select2" name="NPP">
 				'.$dropdownselected.$dropdown.'
 			 </select></span></td>';
+		//Tests if page number is set.
 		if(isset($_GET["page"])) {
 			if(1 == $numbers) {
 				$pages = '<td class="arrow unavailable">&laquo;</td>';
 				$pages .= '<td style="background: #f5f5f5;" class="current"><a>1</a></td>';
 				$pages .='<td class="arrow unavailable">&raquo;</td>';
-			} elseif(($_GET["page"] <= 6) && ($_GET["page"] != $numbers)) {
+			} elseif($_GET["page"] <= 6 and $_GET["page"] != $numbers) {
+			//If the number of pages is less than or equal to 6, and the current page is not the last page.
+				//If/else beginning of list set-up.
 				if($_GET["page"]==1) {
 					$pages = '<td class="arrow unavailable">&laquo;</td>';
 					$pages .= '<td style="background: #f5f5f5;" class="current"><a>1</a></td>';
@@ -333,6 +336,7 @@ function get_pages($numbers, $mode, $sort) {
 					$pages = '<td class="arrow"><a class="ajax-link" href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'&NPP='.$_GET["NPP"].'">&laquo;</a></td>';
 					$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
 				}
+				//If the number of pages is larger than or equal to 10.
 				if($numbers >= 10) {
 					for($i=1; $i < 10; $i++) {
 						$page = $i + 1;
@@ -342,6 +346,8 @@ function get_pages($numbers, $mode, $sort) {
 							$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page='.$page.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$page.'</a></td>';
 						}
 					}
+					$pages .= '<td class="unavailable">&hellip;</td>';
+					$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.floor($numbers).'</a></td>';	
 				} else {
 					for($i=2; $i <= $numbers; $i++) {
 						if($_GET["page"]==$i) {
@@ -356,7 +362,8 @@ function get_pages($numbers, $mode, $sort) {
 				} else {
 					$pages .='<td class="arrow unavailable">&raquo;</td>';
 				}
-			} elseif(($_GET["page"] >= 7) && ($_GET["page"] <= ($numbers-5))) {
+			} elseif($_GET["page"] >= 7 and $_GET["page"] <= ($numbers-6)) {
+			//If the number of pages is greater than or equal to 7, and the current page is not within 5 pages from the end.
 				$pages = '<td class="arrow"><a class="ajax-link" href="?mode='.$mode.'&page='.($_GET["page"]-1).'&sort='.$sort.'&NPP='.$_GET["NPP"].'">&laquo;</a></td>';
 				$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
 				$pages .= '<td class="unavailable">&hellip;</td>';
@@ -371,7 +378,8 @@ function get_pages($numbers, $mode, $sort) {
 				$pages .= '<td class="unavailable">&hellip;</td>';
 				$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page='.$numbers.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.floor($numbers).'</a></td>';
 				$pages .='<td class="arrow"><a class="ajax-link" href="?mode='.$mode.'&page='.($_GET["page"] + 1).'&sort='.$sort.'&NPP='.$_GET["NPP"].'">&raquo;</a></td>';
-			} elseif(($_GET["page"] < $numbers) && ($_GET["page"] >= ($numbers-5))) {
+			} elseif($_GET["page"] < $numbers and $_GET["page"] >= ($numbers-5)) {
+			//If the current page is less than the number of pages, and the current page is not within 5 pages from the end.
 				$pages = '<td class="arrow"><a>&laquo;</a></td>';
 				$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
 				$pages .= '<td class="unavailable">&hellip;</td>';
@@ -385,6 +393,7 @@ function get_pages($numbers, $mode, $sort) {
 				}
 				$pages .='<td class="arrow"><a>&raquo;</a></td>';
 			} elseif($_GET["page"] > $numbers) {
+			//If the current page is greater than the number of pages.
 				if (($_GET["page"]-5) == 1) {
 					$pages = '<td class="arrow unavailable">&laquo;</td>';
 					$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
@@ -419,7 +428,7 @@ function get_pages($numbers, $mode, $sort) {
 				$pages = '<td class="arrow"><a>&laquo;</a></td>';
 				$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page=1&sort='.$sort.'&NPP='.$_GET["NPP"].'">1</a></td>';
 				$pages .= '<td class="unavailable">&hellip;</td>';
-				for($i=($_GET["page"]-5); $i < $numbers; $i++) {
+				for($i=($_GET["page"]-7); $i < $numbers; $i++) {
 					$page = $i + 1;	
 					if($_GET["page"]==$page){
 						$pages .= '<td style="background: #f5f5f5;" class="current"><a>'.$page.'</a></td>';
@@ -430,8 +439,10 @@ function get_pages($numbers, $mode, $sort) {
 				$pages .='<td class="arrow unavailable">&raquo;</td>';
 			}
 		} else {
+		//If page number is not set. It must be page 1.
 			$pages = '<td class="arrow unavailable">&laquo;</td>';
 			$pages .= '<td style="background: #f5f5f5;" class="current"><a>1</a></td>';
+			//If the number of pages is more than or equal to 10.
 			if($numbers >= 10) {
 				for($i=1; $i <= 10; $i++) {
 					if($i==$_GET["page"]){
@@ -442,6 +453,7 @@ function get_pages($numbers, $mode, $sort) {
 				}
 				$pages .='<td class="arrow"><a class="ajax-link" href="?mode='.$mode.'&page=2&sort='.$sort.'&NPP='.$_GET["NPP"].'">&raquo;</a></td>';
 			} else {
+			//Else the number of pages must be 9 or less.
 				for($i=2; $i <= $numbers; $i++) {
 					$pages .= '<td><a class="ajax-link" href="?mode='.$mode.'&page='.$i.'&sort='.$sort.'&NPP='.$_GET["NPP"].'">'.$i.'</a></td>';
 				}
