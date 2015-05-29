@@ -26,7 +26,7 @@
 	} elseif($image_control === true) {
 		$image = large_image($_GET['user']);
 	} else { $image = "No Image Controler";}
-		echo '<div class="large-6 columns head_logo" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
+		echo '<div class="large-6 columns player_background" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
 ?>
 <?php 
 	if($plugintype["Stats"] === true)

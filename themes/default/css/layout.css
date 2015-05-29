@@ -221,6 +221,12 @@ table tr td a img{
 	background-repeat:				no-repeat;
 	background-position:			center;
 }
+.player_background {
+	width:							350px;
+	height:							270px;
+	background-repeat:				no-repeat;
+	background-position:			center;
+}
 .head_contentbox {
 	vertical-align:					top;
 	border:							1px solid #333333;
