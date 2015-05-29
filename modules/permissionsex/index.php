@@ -1,3 +1,1 @@
-<?php
-	echo (permissionsex_group_table(htmlentities($_GET['group'])));
-?>
+<?php echo permissionsex_group_table(htmlentities($_GET['group']));?>

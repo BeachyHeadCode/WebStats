@@ -108,10 +108,9 @@ function job_player_details_table($player) {
 }
 
 function job_server_details_table() {
-	$output = '<div class="small-6 columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
+	$output = '<div class="large-6 columns head_logo" style="background-image:url('.WS_CONFIG_LOGO.');"></div>';
 
-	$output .= '<div class="small-6 columns head_contentbox">';
-	$output .= "\n";
+	$output .= '<div class="large-6 columns head_contentbox">';
 	$output .= '<div style="clear:both">
 					<div class="head_stat" style="width:350px; font-weight:bold;">
 						<div class="head_stat" style="width:150px;">'.translate("var34").':</div>
@@ -131,7 +130,6 @@ function job_server_details_table() {
 				<div style="float:left;">					
 					<div class="head_content" style="width:120px; text-align:center;"> '.job_experience_info_table().'</div>
 				</div>';
-	$output .= "\n";
 	$output .= '</div>';
 	return $output;
 }

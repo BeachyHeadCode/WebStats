@@ -162,12 +162,19 @@ function docReady() {
 			timeout = setTimeout(function(){$('.live_panel').trigger('close');},500);
 	});
 	var loaded=false;	// A flag which prevents multiple ajax calls to geodata.php;
-
+	/*$(document).on('click','.onlineWidget',function(){
+			$('.live_panel').toggle("slow",function(){
+			if(!loaded){
+				// Loading the countries and the flags once the sliding panel is shown:
+				$('.live_panel').load('include/geodata.php');
+				loaded=true;
+			}
+		});
+	});*/
 	// Binding functions to custom events:
 	$(document).on('open',function(){
 		$('.live_panel').slideDown("slow",function(){
-			if(!loaded)
-			{
+			if(!loaded){
 				// Loading the countries and the flags once the sliding panel is shown:
 				$('.live_panel').load('include/geodata.php');
 				loaded=true;

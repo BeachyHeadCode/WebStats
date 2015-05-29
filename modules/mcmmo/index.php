@@ -1,5 +1,5 @@
 <div class="row">
-	<h2><a href="http://mcmmo.wikia.com" target="_blank" title="McMMo Wiki">McMMO</a></h2><br />
+	<h2><a href="http://mcmmo.wikia.com" target="_blank" title="McMMo Wiki">McMMO</a></h2>
 	<center>
 	<table>
 		<tr>

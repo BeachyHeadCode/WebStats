@@ -1,4 +1,5 @@
-<h2>MineConomy</h2><br />
+<h2>MineConomy</h2>
+<div class="row">
 <?php
 	if ($_GET['sort'] != 'balance') {
 		$_GET['sort'] = 'username';
@@ -7,9 +8,8 @@
 	}
 	echo (mineconomy_server_details_table());
 ?>
-
-<br/><br/>
-
+</div>
+<div class="row"><div class="large-12 columns">
 <table style="margin:0px auto;">
 	<tr>
 		<td>
@@ -41,4 +41,7 @@
 		}			
 ?>
 </table>
+</div></div>
+<div class="row" style="clear:both;">
 <?php echo (get_pages(sizeof($player_count), $_GET['mode'], $_GET['sort']));?>
+</div>

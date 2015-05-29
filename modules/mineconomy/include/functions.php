@@ -87,15 +87,15 @@ function mineconomy_server_details_table() {
 	global $image_control, $image_control_3d;
 	if($image_control_3d == true && WS_CONFIG_3D_USER === true) {
 		$image = full_image($row[1]);
-		$output = '<div class="row" style="margin:0 auto;"><div class="small-6 columns"><div class="player_background" style="height: auto;margin:0 auto;background-image:url(include/player-image/images/player_bg.png);">'.$image.'</div>';
+		$output = '<div class="large-6 columns"><div class="player_background" style="height: auto;margin:0 auto;background-image:url(include/player-image/images/player_bg.png);">'.$image.'</div>';
 	} elseif($image_control == true) {
 		$image = large_image($row[1]);	
-		$output = '<div class="row" style="margin:0 auto;"><div class="small-6 columns"><div class="player_background" style="height: auto;margin:0 auto;background-image:url(include/player-image/images/player_bg.png);">'.$image.'</div>';
+		$output = '<div class="large-6 columns"><div class="player_background" style="height: auto;margin:0 auto;background-image:url(include/player-image/images/player_bg.png);">'.$image.'</div>';
 	} else {
-		$output = '<div class="row" style="margin:0 auto;"><div class="small-6 columns"><div class="columns player_background" style="height: auto; background-image:url('.WS_CONFIG_LOGO.');"><img src=""/></div>';
+		$output = '<div class="large-6 columns"><div class="player_background" style="height: auto; background-image:url('.WS_CONFIG_LOGO.');"><img src="" /></div>';
 	}
 	$output .= '<div class="row" style="margin:0 auto;"><h6>Top Player: '.$row[1].' with '.$row[0].' '.$row[2].'</h6></div></div>';
-	$output .= '<div class="small-6 columns head_contentbox">';
+	$output .= '<div class="large-6 columns head_contentbox">';
 	$output .= '<div style="clear:both">
 					<div class="head_stat" style="width:350px; font-weight:bold;"><div align="center">'.translate('var44').':</div></div>
 				</div>
@@ -103,7 +103,6 @@ function mineconomy_server_details_table() {
 					<div class="head_stat">'.translate("var45").':</div>
 					<div class="head_content">'.$money[2].'</div>
 				</div>
-				
 				<div style="clear:both">
 					<div class="head_stat">'.translate("var46").':</div>
 					<div class="head_content">'.WS_ECONOMY_SUB.'</div>
@@ -118,7 +117,7 @@ function mineconomy_server_details_table() {
 					<div class="head_stat">'.translate("var48").':</div>
 					<div class="head_content"> '.floor($money[0] / $money[1]) .' '.$money[2].'</div>
 				</div>';
-	$output .= '</div></div>';
+	$output .= '</div>';
 	return $output;
 }
 
