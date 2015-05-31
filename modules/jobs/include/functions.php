@@ -81,7 +81,7 @@ function job_player_list_table($player, $dummy) {
 
 function job_player_details_table($player) {
 	$controller = 0;
-	$output = '<div class="head_maintable_stats">';
+	$output = '<div class="large-9 large-centered columns head_maintable">';
 				$output .= '<h2><a title="Jobs Server Stats" href="?mode=jobs">Jobs</a></h2>';
 	$output .= '<table width="100%">';
 	$jobinfo = job_player_info_table($player);

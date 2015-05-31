@@ -7,7 +7,7 @@
 	}	
 ?>
 
-<div class="head_maintable_stats">
+<div class="head_maintable">
 	<?php 
 		echo (iconomy_server_details_table());
 	?>

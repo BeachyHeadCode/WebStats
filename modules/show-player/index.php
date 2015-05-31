@@ -87,7 +87,7 @@
 
 <div class="row">
 <?php if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) { ?>
-<div class="head_maintable_stats">
+<div class="large-9 large-centered columns head_maintable">
 	<div class="content_headline" style="width:735px;">
 		<a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
 	</div>
@@ -144,7 +144,7 @@
 </div>
 
 <?php } elseif($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) { ?>
-<div class="head_maintable_stats">
+<div class="large-9 large-centered columns head_maintable">
 	<ul class="tabs" data-tab role="tablist">
 		<li class="tab-title active" role="presentational"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
 		<li class="tab-title" role="presentational"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
@@ -179,7 +179,7 @@
 	</div>
 </div>
 <?php } elseif($statssa_control === true && pluginconfigstatussa === true) { ?>
-		<div class="head_maintable_stats"></div>
+		<div class="large-9 large-centered columns head_maintable"></div>
 <?php } ?>
 	</div>
 <!-- STATS TABLE END-->
@@ -188,20 +188,20 @@
 	if($achievements_control === true && pluginconfigstatusachiv === true) {
 		include('modules/show-player/include/functions_achievements.php');
 ?>	
-<br/>						
-<table width="740" style="border:1px solid #333333; vertical-align:text-top; margin:auto;">
+<br/>
+<div class="row"><div class="large-9 large-centered columns head_maintable">
+<table style="border:1px solid #333333; vertical-align:text-top; margin:auto;">
 	<tr>
-		<td width="375" style="vertical-align:text-top;" class="Stil2" align="left">
+		<td style="vertical-align:text-top;" class="Stil2" align="left">
 			<strong><u><?php echo translate('var68');?>:<br/><br/></u></strong>
 		</td>
 	</tr>
 	<tr>
-		<td width="740" style="vertical-align:text-top;" align="center">
+		<td style="vertical-align:text-top;" align="center">
 			<div class="gesamtfortschritt" align="left">
 				<div class="fortschritttext"><b><?php echo achievements_player_count_table(htmlentities($_GET['user'])).' / '.achievements_server_count_table();?></b></div>
 				<div class="fortschritt" style="width:<?php echo (((achievements_player_count_table(htmlentities($_GET['user'])) * 100) / (achievements_server_count_table()))); ?>%">&nbsp;</div>
 			</div>
-			<br/><br/>
 		</td>
 	</tr>
 	<tr>
@@ -210,24 +210,25 @@
 		</td>
 	</tr>
 </table>
-
+</div></div>
 <!--todo-->
 
 <script type="text/javascript">
 	$(document).ready(function() {
 	$("#hidr4").click(function () {$("span4").hide("fast", function () {$(this).prev().hide("fast", arguments.callee); });});
-	$("#showr4").click(function () {$("span4").show(1000);});
+	$("#showr4").click(function () {$("span4").show(500);});
 	});
 </script>
-
-<div class="content_maintable_achiev_title">
-	<span>Achievements</span><br/>
-	<span4_1 id="showr4" class="showhide">Show</span4_1>
-	<span4_1 id="hidr4" class="showhide">Hide</span4_1>
-</div>
-<div class="content_maintable_achiev">
-	<div class="slidingDiv_table4">
-		<span4><div class="content_maintable_achiev" style="padding-top: 25px; padding-bottom: 25px;"><?php echo (achievements_server_achievement_table());?></div></span4>
+<div class="row">
+	<div class="large-9 large-centered columns content_maintable_achiev_title">
+		<span>Achievements</span><br />
+		<span4_1 id="showr4" class="showhide">Show</span4_1>
+		<span4_1 id="hidr4" class="showhide">Hide</span4_1>
+	</div>
+	<div class="large-9 large-centered columns content_maintable_achiev">
+		<div class="slidingDiv_table4">
+			<span4><div class="content_maintable_achiev" style="padding-top: 25px; padding-bottom: 25px;"><?php echo (achievements_server_achievement_table());?></div></span4>
+		</div>
 	</div>
 </div>
 <!-- ACHIEVMENTS END -->

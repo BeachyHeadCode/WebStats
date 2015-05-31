@@ -93,7 +93,7 @@ function jail_player_table($player) {
 		}
 		if($data['muted']=="1") { $mute ='<img src="modules/jail/images/mute_icon.png" width="18px" height="18px"/>';}
 		else {$mute='<img src="modules/jail/images/sound_icon.png" width="18px" height="18px"/>';}
-			$output .= '<div class="head_maintable_jail">';
+			$output .= '<div class="large-9 large-centered columns head_maintable">';
 				$output .= '<a title="Who else is in jail?" href="?mode=jail"><h2>Jail</h2></a>';
 				$output .= '<table width="100%">
 				<tr>

@@ -10,7 +10,7 @@ function permissionsex_player_table($player) {
 			$time++;
 		}
 		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
-				$output = '<div class="head_maintable_permissionsex">';
+				$output = '<div class="large-9 large-centered columns head_maintable">';
 				$output .= '<h2>Permissions</h2>';
 				$output .= '<table style="margin: 0px auto;"><thead>';
 					$output .= '<tr><td>Role(s):</td>';
@@ -30,7 +30,7 @@ function permissionsex_player_table($player) {
 			$time++;
 		}
 		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
-			$output = '<div class="head_maintable_permissionsex">';
+			$output = '<div class="large-9 large-centered columns head_maintable">';
 				$output .= '<h2>Permissions</h2>';
 				$output .= '<table style="margin: 0px auto;"><thead><tr>';
 					$output .= '<td>Role(s):</td>';
@@ -56,7 +56,7 @@ function permissionsex_group_table($group) {
 		$data = mysqli_fetch_array($result, MYSQLI_BOTH);
 		if($permissiondata['world']=='') {$noworld='ALL';} else {$noworld=$permissiondata['world'];}
 		$output .= '<h2>Permissions For '.$group.'</h2>';
-			$output .= '<div class="head_maintable_permissionsex">';
+			$output .= '<div class="large-9 large-centered columns head_maintable">';
 			
 				$output .= '<table style="margin: 0px auto;"><thead><tr>';
 					$output .= '<td>Permissions:</td>';
