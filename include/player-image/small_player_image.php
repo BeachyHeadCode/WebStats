@@ -1,7 +1,9 @@
 <?php
 	if (function_exists('imagecreatetruecolor')) {
 		$player = $_GET['player'];
-		
+		if(!is_dir('../../images/image-cache/')) {
+			mkdir('../../images/image-cache/',0777);
+		}
 		$cache_file = '../../images/image-cache/'.$player.'.png';
 		$cache_life = 86400; //caching time, in seconds
 		$filemtime = @filemtime($cache_file);

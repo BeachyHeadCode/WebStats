@@ -58,6 +58,12 @@ function minecraft_skin_download($user) {
 	if(!file_exists('../../images/image-cache/skins/'.$user.'/base.png')) {
 		if(@getimagesize('http://s3.amazonaws.com/MinecraftSkins/'.$user.'.png')) {
 			//Make a new directory
+			if(!is_dir('../../images/image-cache/')) {
+				mkdir('../../images/image-cache/',0777);
+			}
+			if(!is_dir('../../images/image-cache/skins/')) {
+				mkdir('../../images/image-cache/skins/',0777);
+			}
 			if(!is_dir('../../images/image-cache/skins/'.$user)) {
 				mkdir('../../images/image-cache/skins/'.$user,0777);
 			}

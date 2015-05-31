@@ -1,4 +1,14 @@
 <?php
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+
+if (isset($_POST['mcmmo_player_skills_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo mcmmo_player_skills_table($_POST['mcmmo_player_skills_table']);
+	mysqli_close($link);
+}
+
 function get_mcmmo_user_count() {
 	global $link;
 	$query = mysqli_query($link, "SELECT COUNT(`user`) FROM `".WS_CONFIG_MCMMO."users`");

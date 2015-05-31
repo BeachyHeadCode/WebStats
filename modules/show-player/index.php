@@ -5,7 +5,7 @@
 	else 
 		$_GET['search'] = 'ORDER BY value DESC';
 	if (isset($_POST['user'])) {
-		include_once('include/search/api/api.php');
+		include_once('include/search/include/functions.php');
 		$check_user = search_check_user($_POST['user']);
 	}
 	if ($check_user == false)
@@ -20,14 +20,7 @@
 	</div>
 	<hr />
 	<div class="row">
-<?php
-	if($image_control_3d === true && WS_CONFIG_3D_USER === true) {
-		$image = full_image($_GET['user']);
-	} elseif($image_control === true) {
-		$image = large_image($_GET['user']);
-	} else { $image = "No Image Controler";}
-		echo '<div class="large-6 columns player_background" style="background-image:url(include/player-image/images/player_bg.png)">'.$image.'</div>';
-?>
+		<div class="large-6 columns player_background" style="background-image:url(include/player-image/images/player_bg.png)"></div>
 <?php 
 	if($plugintype["Stats"] === true)
 		if(function_exists('set_player_details_table')) { echo set_player_details_table(htmlentities($_GET['user'])); }
@@ -74,13 +67,7 @@
 <!-- JOBS TABLE END -->
 <br />
 <!-- McMMO TABLE START -->
-<div class="row">
-<?php
-	if($plugintype["McMMO"]===true) {
-		echo mcmmo_player_skills_table(htmlentities($_GET['user']));
-	}
-?>
-</div>
+<div class="row mcmmo"></div>
 <!-- McMMO TABLE END -->
 <br />
 <!-- STATS TABLE START -->
@@ -233,3 +220,71 @@
 </div>
 <!-- ACHIEVMENTS END -->
 <?php } ?>
+<script type="text/javascript">
+	//Player Image
+	<?php if($image_control_3d === true && WS_CONFIG_3D_USER === true) : ?>
+	$.ajax({
+		url : 'include/player-image/include/functions.php',
+		type: 'post',
+		data: {full_image: '<?php echo $_GET['user'];?>'},
+		success:function(msg){
+				$('.player_background').html(msg);
+				$('.player_background').fadeIn();
+				logInfo( "Player Full Image loaded!" );
+				return false;
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log(xhr.status);
+				console.log(xhr.statusText);
+				console.log(xhr.responseText);
+				if(xhr.status == '404'){
+					alert('Player image function was not found [404], redirecting to dashboard.');
+					window.location.href = "index.php";
+				}
+			}
+	});
+	<?php elseif($image_control === true) :?>
+	$.ajax({
+		url : 'include/player-image/include/functions.php',
+		type: 'post',
+		data: {large_image: '<?php echo $_GET['user'];?>'},
+		success:function(msg){
+				$('.player_background').html(msg);
+				$('.player_background').fadeIn();
+				logInfo( "Player Full Image loaded!" );
+				return false;
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log(xhr.status);
+				console.log(xhr.statusText);
+				console.log(xhr.responseText);
+				if(xhr.status == '404'){
+					alert('Player image function was not found [404], redirecting to dashboard.');
+					window.location.href = "index.php";
+				}
+			}
+	});
+	<?php endif; ?>
+	<?php if($plugintype["McMMO"]===true) :?>
+		$.ajax({
+		url : 'modules/mcmmo/include/functions.php',
+		type: 'post',
+		data: {mcmmo_player_skills_table: '<?php echo htmlentities($_GET['user']);?>'},
+		success:function(msg){
+				$('.mcmmo').html(msg);
+				$('.mcmmo').fadeIn();
+				logInfo( "Player Full Image loaded!" );
+				return false;
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log(xhr.status);
+				console.log(xhr.statusText);
+				console.log(xhr.responseText);
+				if(xhr.status == '404'){
+					alert('Player image function was not found [404], redirecting to dashboard.');
+					window.location.href = "index.php";
+				}
+			}
+	});
+	<?php endif;?>
+</script>

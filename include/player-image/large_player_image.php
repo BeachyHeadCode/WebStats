@@ -1,7 +1,9 @@
 <?php
 	if (function_exists('imagecreatetruecolor')) {	
 		header("Content-type: image/png");
-
+		if(!is_dir('../../images/image-cache/')) {
+			mkdir('../../images/image-cache/',0777);
+		}
 		$cache_file = '../../images/image-cache/large_'.$_GET['nick'].'.png';
 		$cache_life = '86400'; //caching time, in seconds
 		$filemtime = @filemtime($cache_file);

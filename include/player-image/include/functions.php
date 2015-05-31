@@ -1,4 +1,7 @@
 <?php
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
 function small_image($player) {
 	$image = '<img src="include/player-image/small_player_image.php?player='.$player.'" width="15" height="15">&nbsp;';
 	return $image;
@@ -27,5 +30,15 @@ function setIframeHeight(id) {
 </script>
 <iframe id="ifrm1" onload="setIframeHeight(\'ifrm1\')" scrolling="no" frameborder="0" src="include/player-image/full_player_image.php?user='.$player.'" title="skin" width="350px" height="260px" style = ""><p>Your Browser Does Not Support \'iframes\'.</p></iframe>';
 	return $image;
+}
+
+if (isset($_POST['full_image'])) {
+	echo full_image($_POST['full_image']);
+}
+if (isset($_POST['small_image'])) {
+	echo small_image($_POST['user']);
+}
+if (isset($_POST['large_image'])) {
+	echo large_image($_POST['large_image']);
 }
 ?>
