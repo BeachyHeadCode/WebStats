@@ -1,4 +1,14 @@
 <?php
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+
+if (isset($_POST['permissionsex_player_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo permissionsex_player_table($_POST['permissionsex_player_table']);
+	mysqli_close($link);
+}
+
 function permissionsex_player_table($player) {
 	$result = mysqli_query($link, "SELECT * FROM `".WS_CONFIG_PERMISSIONS."_inheritance` WHERE `".WS_CONFIG_PERMISSIONS."_inheritance`.`child` = '".$player."'");
 	$data = mysqli_fetch_array($result, MYSQLI_BOTH);

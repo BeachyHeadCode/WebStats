@@ -1,4 +1,13 @@
 <?php
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+
+if (isset($_POST['job_player_details_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo job_player_details_table($_POST['job_player_details_table']);
+	mysqli_close($link);
+}
 
 //SETS NUMBER OF USERS TO PRINT
 function get_jobs_user_count() {

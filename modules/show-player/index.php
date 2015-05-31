@@ -33,45 +33,13 @@
 		echo '</div></div>';
 	}
 ?>
-</div>
+</div><br />
 <!--MAIN BOX AND PHOTO END-->
-<br />
-<!-- PERMISSIONS TABLE START -->
-<div class="row">
-<?php
-	if($permissionsex_control == true && pluginconfigpermissionsex===true) {
-		echo permissionsex_player_table(htmlentities($_GET['user']));
-	}
-?>
-</div>
-<!-- PERMISSIONS TABLE END -->
-<br />
-<!-- JAIL TABLE START -->
-<div class="row">
-<?php
-	if($plugintype["Jail"]===true) {
-		echo jail_player_table(htmlentities($_GET['user']));
-	}
-?>
-</div>
-<!-- JAIL TABLE END -->
-<br />
-<!-- JOBS TABLE START -->
-<div class="row">
-<?php
-	if($job_control == true && pluginconfigstatusjobs===true) {
-		echo job_player_details_table(htmlentities($_GET['user']));
-	}
-?>
-</div>
-<!-- JOBS TABLE END -->
-<br />
-<!-- McMMO TABLE START -->
-<div class="row mcmmo"></div>
-<!-- McMMO TABLE END -->
-<br />
+<div class="row permissions"></div><br />
+<div class="row jail"></div><br />
+<div class="row jobs"></div><br />
+<div class="row mcmmo"></div><br />
 <!-- STATS TABLE START -->
-
 <div class="row">
 <?php if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) { ?>
 <div class="large-9 large-centered columns head_maintable">
@@ -232,16 +200,7 @@
 				$('.player_background').fadeIn();
 				logInfo( "Player Full Image loaded!" );
 				return false;
-			},
-			error:function (xhr, ajaxOptions, thrownError){
-				console.log(xhr.status);
-				console.log(xhr.statusText);
-				console.log(xhr.responseText);
-				if(xhr.status == '404'){
-					alert('Player image function was not found [404], redirecting to dashboard.');
-					window.location.href = "index.php";
-				}
-			}
+		}
 	});
 	<?php elseif($image_control === true) :?>
 	$.ajax({
@@ -251,40 +210,57 @@
 		success:function(msg){
 				$('.player_background').html(msg);
 				$('.player_background').fadeIn();
-				logInfo( "Player Full Image loaded!" );
+				logInfo( "Large Image loaded!" );
 				return false;
-			},
-			error:function (xhr, ajaxOptions, thrownError){
-				console.log(xhr.status);
-				console.log(xhr.statusText);
-				console.log(xhr.responseText);
-				if(xhr.status == '404'){
-					alert('Player image function was not found [404], redirecting to dashboard.');
-					window.location.href = "index.php";
-				}
-			}
+		}
 	});
-	<?php endif; ?>
-	<?php if($plugintype["McMMO"]===true) :?>
-		$.ajax({
+	<?php endif; if($plugintype["McMMO"]===true) :?>
+	$.ajax({
 		url : 'modules/mcmmo/include/functions.php',
 		type: 'post',
 		data: {mcmmo_player_skills_table: '<?php echo htmlentities($_GET['user']);?>'},
 		success:function(msg){
 				$('.mcmmo').html(msg);
 				$('.mcmmo').fadeIn();
-				logInfo( "Player Full Image loaded!" );
+				logInfo( "McMMO loaded!" );
 				return false;
-			},
-			error:function (xhr, ajaxOptions, thrownError){
-				console.log(xhr.status);
-				console.log(xhr.statusText);
-				console.log(xhr.responseText);
-				if(xhr.status == '404'){
-					alert('Player image function was not found [404], redirecting to dashboard.');
-					window.location.href = "index.php";
-				}
-			}
+		}
+	});
+	<?php endif; if($permissionsex_control == true && pluginconfigpermissionsex===true) :?>
+	$.ajax({
+		url : 'modules/permissionsex/include/functions.php',
+		type: 'post',
+		data: {permissionsex_player_table: '<?php echo htmlentities($_GET['user']);?>'},
+		success:function(msg){
+				$('.permissions').html(msg);
+				$('.permissions').fadeIn();
+				logInfo( "PermissionsEx loaded!" );
+				return false;
+		}
+	});
+	<?php endif; if($plugintype["Jail"]===true) :?>
+	$.ajax({
+		url : 'modules/jail/include/functions.php',
+		type: 'post',
+		data: {jail_player_table: '<?php echo htmlentities($_GET['user']);?>'},
+		success:function(msg){
+				$('.jail').html(msg);
+				$('.jail').fadeIn();
+				logInfo( "Jail loaded!" );
+				return false;
+		}
+	});
+	<?php endif; if($job_control == true && pluginconfigstatusjobs===true) :?>
+	$.ajax({
+		url : 'modules/jobs/include/functions.php',
+		type: 'post',
+		data: {job_player_details_table: '<?php echo htmlentities($_GET['user']);?>'},
+		success:function(msg){
+				$('.jobs').html(msg);
+				$('.jobs').fadeIn();
+				logInfo( "Jobs loaded!" );
+				return false;
+		}
 	});
 	<?php endif;?>
 </script>

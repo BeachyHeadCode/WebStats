@@ -1,4 +1,14 @@
 <?php
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+
+if (isset($_POST['jail_player_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo jail_player_table($_POST['jail_player_table']);
+	mysqli_close($link);
+}
+
 function get_jail_user_count() {
 	$query = mysql_query("SELECT COUNT(`PlayerName`) FROM `".WS_CONFIG_JAIL."prisoners`");
 	$row = mysql_fetch_array($query);
