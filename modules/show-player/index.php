@@ -20,7 +20,8 @@
 	</div>
 	<hr />
 	<div class="row">
-		<div class="large-6 columns player_background" style="background-image:url(include/player-image/images/player_bg.png)"></div>
+		<div class="large-6 columns small-centered large-uncentered player_background" style="background-image:url(include/player-image/images/player_bg.png)"></div>
+		<div class="large-6 columns small-centered large-uncentered player_stats"></div>
 <?php 
 	if($plugintype["Stats"] === true)
 		if(function_exists('set_player_details_table')) { echo set_player_details_table(htmlentities($_GET['user'])); }
@@ -40,9 +41,10 @@
 <div class="row jobs"></div><br />
 <div class="row mcmmo"></div><br />
 <!-- STATS TABLE START -->
-<div class="row">
+<div class="row stats">
+	<div class="large-9 large-centered columns head_maintable">
 <?php if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) { ?>
-<div class="large-9 large-centered columns head_maintable">
+
 	<div class="content_headline" style="width:735px;">
 		<a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
 	</div>
@@ -96,10 +98,9 @@
 		</div>	
 		<!--Killed and Killed By ~ END-->
 	</div>
-</div>
 
 <?php } elseif($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) { ?>
-<div class="large-9 large-centered columns head_maintable">
+
 	<ul class="tabs" data-tab role="tablist">
 		<li class="tab-title active" role="presentational"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
 		<li class="tab-title" role="presentational"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
@@ -132,10 +133,10 @@
 		</div>	
 		<!--Destroyed and Placed Blocks ~ END-->
 	</div>
-</div>
 <?php } elseif($statssa_control === true && pluginconfigstatussa === true) { ?>
 		<div class="large-9 large-centered columns head_maintable"></div>
 <?php } ?>
+</div>
 	</div>
 <!-- STATS TABLE END-->
 <!-- ACHIEVMENTS START-->
@@ -250,7 +251,7 @@
 				return false;
 		}
 	});
-	<?php endif; if($job_control == true && pluginconfigstatusjobs===true) :?>
+	<?php endif; if($plugintype["Jobs"]===true) :?>
 	$.ajax({
 		url : 'modules/jobs/include/functions.php',
 		type: 'post',
@@ -259,6 +260,29 @@
 				$('.jobs').html(msg);
 				$('.jobs').fadeIn();
 				logInfo( "Jobs loaded!" );
+				return false;
+		}
+	});
+	<?php endif; if($plugintype["Stats"]===true) :?>
+	$.ajax({
+		url : 'modules/<?php echo WS_CONFIG_STATS_PLUGIN;?>/include/functions.php',
+		type: 'post',
+		data: {set_player_details_table: '<?php echo htmlentities($_GET['user']);?>'},
+		success:function(msg){
+				$('.player_stats').html(msg);
+				$('.player_stats').fadeIn();
+				logInfo( "Player Details Stats loaded!" );
+				return false;
+		}
+	});
+	$.ajax({
+		url : 'modules/<?php echo WS_CONFIG_STATS_PLUGIN;?>/include/functions.php',
+		type: 'post',
+		data: {set_player_tables: '<?php echo htmlentities($_GET['user']);?>'},
+		success:function(msg){
+				$('.stats').html(msg);
+				$('.stats').fadeIn();
+				logInfo( "Player Stats Table loaded!" );
 				return false;
 		}
 	});

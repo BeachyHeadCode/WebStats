@@ -348,7 +348,7 @@ a:hover {
 .death{background-color:#c08ecc;}
 .itempickup{background-color:#eaeb98;}
 .itemuse{background-color:#eaeb98;}
-.stats{background-color:#ccaa91;}
+.stats_css{background-color:#ccaa91;}
 .fortschritt {
 	background-color:				#339900;
 	z-index:						1;
@@ -711,4 +711,8 @@ ul.ajax-loaders{
 }
 #customDropdown {
 	width:								60px;
+}
+.not-active {
+	pointer-events:						none;
+	cursor:								default;
 }

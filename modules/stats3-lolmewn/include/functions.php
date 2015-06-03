@@ -1,5 +1,33 @@
 <?php
 /**
+ * The fallowing if statements will allow for Ajax to call the functions externally.
+ *
+ * @since 4.0
+ *
+ */
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+include_once ROOT . 'include/en.php';
+require_once ROOT . 'include/functions.php';
+
+if (isset($_POST['set_player_details_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	$uuid = get_user_uuid($_POST['set_player_details_table']);
+	echo set_player_details_table($uuid);
+	mysqli_close($link);
+}
+
+if (isset($_POST['set_player_tables'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	$uuid = get_user_uuid($_POST['set_player_tables']);
+	echo '<div class="large-9 large-centered columns head_maintable">';
+	echo set_player_kill_table($uuid);
+	echo '</div>';
+	mysqli_close($link);
+}
+
+/**
  * This function will return the player amount in the table.
  *
  * @since 4.0
@@ -12,23 +40,59 @@ function findPlayerAmount() {
 	return $data[0];
 }
 /**
+ * This function will find the user uuid.
+ *
+ * @since 4.0
+ *
+ */
+function get_user_uuid($username) {
+	global $link;
+	$query = mysqli_query($link, "SELECT `uuid` FROM `".WS_CONFIG_STATS."players` WHERE `name`='$username'");
+	$row = mysqli_fetch_array($query, MYSQLI_NUM);
+	return $row[0];
+}
+/**
  * This function will extract the list of players in the table.
  *
  * @since 4.0
  *
  */
-function get_user_stats($sort, $start, $end) {
+function get_user_stats($start, $end) {
 	global $link;
-	if(!isset($sort)) {
-		$sort = 'name';
-	}
-	  $array = array();
-	$sortkey = "ORDER BY $sort";
-	$query = mysqli_query($link, "SELECT uuid,name FROM `".WS_CONFIG_STATS."players` ".$sortkey." LIMIT ".$start.",".$end);
+	$array = array();
+	$query = mysqli_query($link, "SELECT `uuid`,`name` FROM `".WS_CONFIG_STATS."players` ORDER BY `name` LIMIT ".$start.",".$end);
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$array[] = array("uuid" => $row[0], "name" => $row[1]);
 	}
 	return $array;
+}
+/**
+ * This function will create the stats homepage table.
+ *
+ * @since 4.0
+ *
+ * @param string $user array of the user containing uuid and name.
+ * @param string $stat the stat to sum.
+ * @param string $location which table to pick the data from.
+ */
+function get_amount_sum($user, $stat, $location) {
+	global $link;
+	$query = mysqli_query($link, "SELECT SUM(`$stat`) FROM `".WS_CONFIG_STATS."$location` WHERE `uuid`='$user'");
+	$data = mysqli_fetch_array($query, MYSQLI_NUM);
+	return $data[0];
+}
+/**
+ * This function will create the stats homepage table.
+ *
+ * @since 4.0
+ *
+ * @param string $user array of the user containing uuid and name.
+ */
+function get_amount_break_sum($user) {
+	global $link;
+	$query = mysqli_query($link, "SELECT SUM(`value`) FROM `".WS_CONFIG_STATS."blocks_broken` WHERE `uuid`='$user'");
+	$data = mysqli_fetch_array($query, MYSQLI_NUM);
+	return $data[0];
 }
 /**
  * This function will create the stats homepage table.
@@ -123,10 +187,32 @@ function get_server_played() {
  * @param string $type (0=walk, 1=boat, 2=train, 3=pig, 4=pig in train, 5=horse).
  */
 function get_server_count_player_move($type) {
-	global $link;
-	$query = mysqli_query($link, "SELECT SUM(`value`) FROM `".WS_CONFIG_STATS."move` WHERE `type`=$type");
-	$row = mysqli_fetch_array($query, MYSQLI_NUM);
-	return $row[0];
+	if($type > 5 || $type < 0){
+		return "Error! No movement of this type exists.";
+	} else {
+		global $link;
+		$query = mysqli_query($link, "SELECT SUM(`value`) FROM `".WS_CONFIG_STATS."move` WHERE `type`=$type");
+		$row = mysqli_fetch_array($query, MYSQLI_NUM);
+		return $row[0];
+	}
+}
+/**
+ * This function will get the sum of players move type.
+ *
+ * @since 4.0
+ *
+ * @param string $user uuid.
+ * @param intager $type (0=walk, 1=boat, 2=train, 3=pig, 4=pig in train, 5=horse).
+ */
+function get_movement($user, $type) {
+	if($type > 5 || $type < 0){
+		return "Error! No movement of this type exists.";
+	} else {
+		global $link;
+		$query = mysqli_query($link, "SELECT `value` FROM `".WS_CONFIG_STATS."move` WHERE `uuid` = '$user' AND `type` = '$type'");
+		$data = mysqli_fetch_array($query, MYSQLI_NUM);
+		return $data[0];
+	}
 }
 /**
  * This function will get the sum of players move type.
@@ -421,6 +507,123 @@ function set_server_destroy_build_table($bool) {
 		$output .= '<tr><td><img src="images/icons/'.str_replace(":", "-", $row[0]).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=material-stats&material='.$row[0].'">'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[2].'</td>';
 		$output .= '<td>'.$row[1].'</td></tr>';
+	}
+	$output .= '</table>';
+	return $output;
+}
+
+/**
+ * This function will output the table for the player page.
+ *
+ * @since 4.0
+ *
+ */
+function set_player_details_table($player) {
+	$foot = get_movement($player, "0");
+	$boat = get_movement($player, "1");
+	$cart = get_movement($player, "2");
+	$pig = get_movement($player, "3");
+	$horse = get_movement($player, "5");
+	$output = '<div class="small-6 small-centered large-uncentered columns"><h6>Movement:</h6><table style="margin:auto;">
+					<thead><tr><th>Total:</th><th>'. number_format(($foot+$boat+$pig+$cart+$horse), 2, '.', '').'</th></tr></thead>
+					<tbody>
+						<tr>
+							<td>'.translate("var85").':</td>
+							<td>'. number_format($foot, 2, '.', '').'</td>
+						</tr>
+						<tr>
+							<td>'.translate("var86").':</td>
+							<td>'.number_format($boat, 2, '.', '').'</td>
+						</tr>
+						<tr>
+							<td>'.translate("var87").':</td>
+							<td>'.number_format($cart, 2, '.', '').'</td>
+						</tr>
+						<tr>
+							<td>'.translate("var88").':</td>
+							<td>'.number_format($pig, 2, '.', '').'</td>
+						</tr>
+						<tr>
+							<td>'.translate("var111").':</td>
+							<td>'.number_format($horse, 2, '.', '').'</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>';
+	$output .= '<div class="small-6 small-centered large-uncentered columns"><h6>Stats:</h6><table style="margin:auto;"><tbody>';
+	$output .= '<tr>
+					<td>'.translate("var5").':</td>
+					<td>'.get_date(round(get_amount($player, "value", "last_join")/3000)).'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var14").':</td>
+					<td>'.get_date(round(get_amount($player, "value", "last_seen")/3000)).'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var4").':</td>
+					<td>'.get_played(get_amount($player, "value", "playtime")).'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var82").':</td>
+					<td>'.get_amount($player, "value", "joins").'</td>
+				</tr><tr>
+					<td>'.translate("var15").':</td>
+					<td>'.get_status(get_amount($player['uuid'], "value", "last_seen"), get_amount($player['uuid'], "value", "last_join")).'</td>
+				</tr><tr>
+					<td>'.translate("var16").':</td>
+					<td>'.get_amount_sum($player, "value", "kill").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var81").':</td>
+					<td>'.get_amount($player, "value", "commandsdone").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var19").':</td>
+					<td>'.get_amount_sum($player, "value", "blocks_broken").' '.translate("var18").'</td>
+				</tr>
+				<tr>
+					<td>'.translate("var20").':</td>
+					<td>'.get_amount_sum($player, "value", "blocks_placed").' '.translate("var18").'</td>
+				</tr>';
+	$output .= '</tbody></table></div>';
+	return $output;
+}
+
+/**
+ * This function will output the table for the player page.
+ *
+ * @since 4.0
+ *
+ */
+function set_player_kill_table($player) {
+	global $link;
+	$query = mysqli_query($link, "SELECT `entityType`, `value` FROM `".WS_CONFIG_STATS."kill` WHERE `uuid`='".$player."'");
+	$output = '<table>';
+	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
+		$output .= '<tr>';
+		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[1].'</td>';
+		$output .= '</tr>';
+	}
+	$output .= '</table>';
+	return $output;
+}
+
+/**
+ * This function will output the table for the player page.
+ *
+ * @since 4.0
+ *
+ */
+function set_player_death_table($player) {
+	global $link;
+	$query = mysqli_query($link, "SELECT `cause`, `value` FROM `".WS_CONFIG_STATS."death` WHERE `uuid`='".$player."'");
+	$output = '<table>';
+	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
+		$output .= '<tr>';
+		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td>'.$row[1].'</td>';
+		$output .= '</tr>';
 	}
 	$output .= '</table>';
 	return $output;
