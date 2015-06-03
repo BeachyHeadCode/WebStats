@@ -68,9 +68,6 @@ define('LOGOIMAGE', false);
 //The title to the bookmark quick drag link.
 define('WS_BOOKMARK', 'Server Stats');
 
-//What type of mode do you want to set (e.g. large_player_image, full_player_image)?
-define('WS_PHOTO_PHP_CHANGE', 'large_player_image');
-
 //Achievements Settings.
 define('WS_CONFIG_PLAYERACHIEVEMENTS', 'playerachievements');
 define('WS_CONFIG_ACHIEVEMENTS', 'ws_achievements'); 

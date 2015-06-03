@@ -8,7 +8,7 @@ function small_image($player) {
 }
 
 function large_image($player) {
-	$image = '<img src="include/player-image/'.WS_PHOTO_PHP_CHANGE.'.php?nick='.$player.'" width="128" height="256">';
+	$image = '<img src="include/player-image/large_player_image.php?nick='.$player.'" width="128" height="256">';
 	return $image;
 }
 
