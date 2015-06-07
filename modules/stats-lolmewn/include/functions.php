@@ -37,7 +37,7 @@ if (isset($_POST['set_player_tables'])) {
 					<td>'.translate('var12').':</td>
 					<td>'.translate('var13').':</td>
 				</tr>
-				<tr>	
+				<tr>
 					<td>'.set_player_didkill_table($_POST['set_player_tables'], $_POST['search']).'</td>
 					<td>'.set_player_getkill_table($_POST['set_player_tables'], $_POST['search']).'</td>
 				</tr>

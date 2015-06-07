@@ -21,9 +21,40 @@ if (isset($_POST['set_player_details_table'])) {
 if (isset($_POST['set_player_tables'])) {
 	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
 	$uuid = get_user_uuid($_POST['set_player_tables']);
-	echo '<div class="large-9 large-centered columns head_maintable">';
-	echo set_player_kill_table($uuid);
-	echo '</div>';
+	echo '<div class="large-9 large-centered columns head_maintable">
+	<ul class="tabs" data-tab role="tablist">
+		<li class="tab-title active" role="presentational"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
+		<li class="tab-title" role="presentational"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
+	</ul>
+	<div class="tabs-content">
+		<!--Killed and Killed By ~ START-->
+		<div role="tabpanel" aria-hidden="false" class="content active" id="PlayerTab">
+			<table style="margin: 0 auto;">
+				<tr>
+					<td>'.translate('var12').':</td>
+					<td>'.translate('var13').':</td>
+				</tr>
+				<tr>
+					<td>'.set_player_kill_table($uuid).'</td>
+					<td>'.set_player_death_table($uuid).'</td>
+				</tr>
+			</table>
+		</div>
+		<!--Killed and Killed By ~ END-->
+		<!--Destroyed and Placed Blocks ~ START-->
+		<div role="tabpanel" aria-hidden="true" class="content" id="BlocksTab">
+			<table style="margin: 0 auto;">
+				<tr>
+					<td>ID:</td>
+					<td>'.translate('var8').':</td>
+					<td>'.translate('var9').':</td>
+				</tr>';
+		/*		'.set_player_destroy_build_table($_POST['set_player_tables']).'*/
+		echo	'</table>
+		</div>
+		<!--Destroyed and Placed Blocks ~ END-->
+	</div>
+</div>';
 	mysqli_close($link);
 }
 
@@ -601,7 +632,7 @@ function set_player_kill_table($player) {
 	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<tr>';
-		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td><a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[1].'</td>';
 		$output .= '</tr>';
 	}
@@ -621,7 +652,7 @@ function set_player_death_table($player) {
 	$output = '<table>';
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$output .= '<tr>';
-		$output .= '<td><img src="images/icons/'.strtolower(decrypt($row[0])).'.png" width="16px" height="16px" />&nbsp;&nbsp;<a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
+		$output .= '<td><a class="ajax-link" href="index.php?mode=creature-stats&creature='.decrypt($row[0]).'"  >'.translate($row[0]).':</a></td>';	
 		$output .= '<td>'.$row[1].'</td>';
 		$output .= '</tr>';
 	}

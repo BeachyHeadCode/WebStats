@@ -24,8 +24,8 @@
 			$players = get_user_stats($sort, $start, $end);
 			$player_all = get_user($sort);
 			for($i=0; $i < sizeof($players); $i++){
-				echo (set_index_table($players[$i], $i+$start));
+				echo set_index_table($players[$i], $i+$start);
 			}?>
 	</table>
-	<?php echo (get_pages(sizeof($player_all), $_GET['mode'], $_GET['sort'])); ?>
+	<?php echo get_pages(sizeof($player_all), $_GET['mode'], $_GET['sort']); ?>
 </div>
