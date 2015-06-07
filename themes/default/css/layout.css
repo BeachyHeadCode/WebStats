@@ -186,13 +186,11 @@ table tr td a img{
 	border:							1px solid #333333;
 	padding:						10px;
 }
-.head_contentbox_iconomy {
-	vertical-align:					top;
+.head_contentbox_economy {
+	margin-top:						10px;
+	margin-left:					20px;
 	border:							1px solid #333333;
-	padding:						10px;
-	width:							350px;
-	height:							15px;
-	float:							right;
+	height:							26px;
 }
 .head_stat {
 	width:							170px;

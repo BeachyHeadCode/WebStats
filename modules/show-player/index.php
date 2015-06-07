@@ -22,7 +22,6 @@
 	<div class="row">
 		<div class="large-6 columns small-centered large-uncentered player_background" style="background-image:url(include/player-image/images/player_bg.png)"></div>
 		<div class="large-6 columns small-centered large-uncentered player_stats"></div>
-		<div class="large-12 columns small-centered large-uncentered player_economy" align="right"></div>
 	</div>
 </div>
 <br />
@@ -191,8 +190,8 @@
 		type: 'post',
 		data: {player_get_money_table: '<?php echo htmlentities($_GET['user']);?>'},
 		success:function(msg){
-				$('.player_economy').html(msg);
-				$('.player_economy').fadeIn();
+				$('.player_background').append(msg);
+				$('.player_background').fadeIn();
 				logInfo( "Economy loaded!" );
 				return false;
 		}

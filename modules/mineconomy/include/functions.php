@@ -68,18 +68,19 @@ function mineconomy_server_get_money() {
 //PLAYER BOX MONEY COUNT
 function player_get_money_table($player) {
 	$money = mineconomy_player_get_money($player);
-	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
-					<div class="head_stat">'.translate("var50").':</div>
-					<div class="head_content"> '.$money[0].' '.$money[2].'</div>
+	$output .= '<div class="row">
+					<div class="large-8 columns small-centered head_contentbox_economy">
+						<div class="head_stat">'.translate("var50").':</div>
+						<div class="head_content"> '.$money[0].' '.$money[2].'</div>
+					</div>
 				</div>';
-	$output .= "\n";
 	return $output;
 }
 
 //SERVER BOX MONEY COUNT
 function mineconomy_server_get_money_table() {
 	$money = mineconomy_server_get_money();
-	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
+	$output .= '<div class="head_contentbox_economy" style="clear:both">
 					<div class="head_stat">'.translate("var47").':</div>
 					<div class="head_content">'.$money[0].$money[2].'</div>
 				</div>';

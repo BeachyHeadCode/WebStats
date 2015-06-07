@@ -9,10 +9,10 @@ session_start(); // start or resume a session
 // http://stackoverflow.com/questions/1779205/create-temporary-file-and-auto-removed
 
 // always sanitize user input
-$fileId  = filter_input(INPUT_GET, 'fileId', FILTER_SANITIZE_NUMBER_INT);
-$token   = filter_input(INPUT_GET, 'token', FILTER_UNSAFE_RAW);
-$referer = filter_input(INPUT_SERVER, 'HTTP_REFERER', FILTER_SANITIZE_URL);
-$script  = filter_input(INPUT_SERVER, 'SCRIPT_NAME', FILTER_SANITIZE_URL);
+$fileId		= filter_input(INPUT_GET, 'fileId', FILTER_SANITIZE_NUMBER_INT);
+$token		= filter_input(INPUT_GET, 'token', FILTER_UNSAFE_RAW);
+$referer	= filter_input(INPUT_SERVER, 'HTTP_REFERER', FILTER_SANITIZE_URL);
+$script		= filter_input(INPUT_SERVER, 'SCRIPT_NAME', FILTER_SANITIZE_URL);
 
 // mush session_id and fileId into an access token
 $secret        = 'i can haz salt?';
@@ -80,22 +80,21 @@ if(!empty($_POST["reloadform"])){
 $SERVERIP=$_SERVER['SERVER_ADDR'];
 
 function dirlist($dir, $bool = "dirs"){
-   $truedir = $dir;
-   $dir = scandir($dir);
-   if($bool == "files") {
-      $direct = 'is_dir'; 
-   } elseif($bool == "dirs") {
-      $direct = 'is_file';
-   }
-   foreach($dir as $k => $v) {
-      if(($direct($truedir.$dir[$k])) || $dir[$k] == '.' || $dir[$k] == '..' || $dir[$k] == 'show-player' || $dir[$k] == 'creature-stats' || $dir[$k] == 'index.php') {
-         unset($dir[$k]);
-      }
-   }
-   $dir = array_values($dir);
-   return $dir;
+	$truedir = $dir;
+	$dir = scandir($dir);
+	if($bool == "files") {
+		$direct = 'is_dir'; 
+	} elseif($bool == "dirs") {
+		$direct = 'is_file';
+	}
+	foreach($dir as $k => $v) {
+		if(($direct($truedir.$dir[$k])) || $dir[$k] == '.' || $dir[$k] == '..' || $dir[$k] == 'show-player' || $dir[$k] == 'creature-stats' || $dir[$k] == 'index.php') {
+			unset($dir[$k]);
+		}
+	}
+	$dir = array_values($dir);
+	return $dir;
 }
-
 ?>
 <script type="text/javascript">
 function noNumbers(e){

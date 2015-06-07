@@ -133,9 +133,9 @@ include_once ROOT . "assets/header.php";
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 	</script>
-    <script>
-      $(document).foundation();
-    </script>
+	<script>
+		$(document).foundation();
+	</script>
 </body>
 </html>
 <?php } ?>

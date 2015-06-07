@@ -13,7 +13,7 @@ require_once ROOT . 'include/functions.php';
 
 if (isset($_POST['player_get_money_table'])) {
 	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
-	echo player_get_money_table($_POST['player_get_money_table']);
+	echo '<div class="large-12 columns small-centered large-uncentered player_economy">'.player_get_money_table($_POST['player_get_money_table']).'</div>';
 	mysqli_close($link);
 }
 
@@ -66,7 +66,7 @@ function iconomy_server_get_money() {
 //PLAYER BOX MONEY COUNT
 function player_get_money_table($player) {
 	$money = iconomy_player_get_money($player);
-	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
+	$output .= '<div class="head_contentbox_economy">
 					<div class="head_stat">'.translate("var50").':</div>
 					<div class="head_content"> '.$money[0].' '.WS_ECONOMY_MAIN."</div>
 				</div>\n";
@@ -76,7 +76,7 @@ function player_get_money_table($player) {
 //SERVER BOX MONEY COUNT
 function iconomy_server_get_money_table() {
 	$money = iconomy_server_get_money();
-	$output .= '<div class="head_contentbox_iconomy" style="clear:both">
+	$output .= '<div class="head_contentbox_economy">
 					<div class="head_stat">'.translate("var47").':</div>
 					<div class="head_content"> '.$money[0].' '.WS_ECONOMY_MAIN."</div>
 				</div>\n";

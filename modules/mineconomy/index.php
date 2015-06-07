@@ -37,11 +37,11 @@
 		$players = get_mineconomy_user_stats($sort, $start, $end);
 		$player_count = get_mineconomy_user_count();
 		for($i=0; $i < sizeof($players); $i++) {
-			echo (mineconomy_server_player_table($players[$i], $i+$start));
+			echo mineconomy_server_player_table($players[$i], $i+$start);
 		}			
 ?>
 </table>
 </div></div>
 <div class="row" style="clear:both;">
-<?php echo (get_pages(sizeof($player_count), $_GET['mode'], $_GET['sort']));?>
+<?php echo get_pages(sizeof($player_count), $_GET['mode'], $_GET['sort']);?>
 </div>
