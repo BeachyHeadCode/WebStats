@@ -100,7 +100,7 @@ function set_index_table($player, $pos) {
 function set_player_details_table($player) {
 	global $image_control, $image_control_3d;
 	$output = '<div class="row">';
-	$output .= '<div class="small-3 columns">
+	$output .= '<div class="small-6 columns">
 				<h6>Movement</h6>
 				<table style="margin: 0 auto;">
 					<thead>
@@ -129,7 +129,7 @@ function set_player_details_table($player) {
 					</tbody>
 				</table>
 			</div>';
-	$output .= '<div class="small-3 columns">';
+	$output .= '<div class="small-6 columns">';
 	$output .= '<table>
 					<tbody>
 				<tr>

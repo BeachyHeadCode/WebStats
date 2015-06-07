@@ -22,128 +22,21 @@
 	<div class="row">
 		<div class="large-6 columns small-centered large-uncentered player_background" style="background-image:url(include/player-image/images/player_bg.png)"></div>
 		<div class="large-6 columns small-centered large-uncentered player_stats"></div>
-<?php 
-	if($plugintype["Stats"] === true)
-		if(function_exists('set_player_details_table')) { echo set_player_details_table(htmlentities($_GET['user'])); }
-?>
+		<div class="large-12 columns small-centered large-uncentered player_economy" align="right"></div>
 	</div>
-<?php 
-	if($plugintype["Economy"] === true) {
-		echo '<div class="row" align="right"><div class="small-12 columns">';
-		echo player_get_money_table(htmlentities($_GET['user']));
-		echo '</div></div>';
-	}
-?>
-</div><br />
-<!--MAIN BOX AND PHOTO END-->
-<div class="row permissions"></div><br />
-<div class="row jail"></div><br />
-<div class="row jobs"></div><br />
-<div class="row mcmmo"></div><br />
-<!-- STATS TABLE START -->
-<div class="row stats">
-	<div class="large-9 large-centered columns head_maintable">
-<?php if($stats_control === true && (pluginconfigstatusstats === true || pluginconfigstatusbeardstats === true)) { ?>
-
-	<div class="content_headline" style="width:735px;">
-		<a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>"><?php echo translate('var1'); ?></a> - <a class="ajax-link" href="index.php?mode=show-player&user=<?php echo htmlentities($_GET['user']); ?>&search=true"><?php echo translate('var2'); ?></a>
-	</div>
-	<div style="clear: both; width: 735px; height: 25px;">&nbsp;</div>
-	<ul class="tabs" data-tab role="tablist">
-		<li class="tab-title active"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
-		<li class="tab-title"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
-		<li class="tab-title"><a href="#DamageTab" role="tab" tabindex="0" aria-selected="false" controls="DamageTab">Dealt/Received Damage</a></li>
-	</ul>
-	<div class="tabs-content">
-		<!--Destroyed and Placed Blocks ~ START-->
-		<div role="tabpanel" aria-hidden="false" class="content active" id="BlocksTab">
-			<table>
-				<tr>
-					<td style="min-width:363px;"><?php echo translate('var8');?>:</td>
-					<td style="min-width:363px;"><?php echo translate('var9');?>:</td>
-				</tr>
-				<tr>
-					<td style="min-width:373px;"><?php echo(set_player_destroy_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-					<td style="min-width:373px;"><?php echo(set_player_build_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-				</tr>
-			</table>
-		</div>	
-		<!--Destroyed and Placed Blocks ~ END-->
-		<!--Received and Dealt Damage ~ START-->
-		<div role="tabpanel" aria-hidden="true" class="content" id="DamageTab"> 
-			<table>
-				<tr>
-					<td style="min-width:363px;"><?php echo translate('var10');?>:</td>
-					<td style="min-width:363px;"><?php echo translate('var11');?>:</td>
-				</tr>
-				<tr>
-					<td style="min-width:373px;"><?php echo(set_player_damagedealt_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-					<td style="min-width:373px;"><?php echo(set_player_damagereceived_table(htmlentities($_GET['user']), $_GET['search']));?></td>	
-				</tr>
-			</table>
-		</div>	
-		<!--Received and Dealt Damage ~ END-->
-		<!--Killed and Killed By ~ START-->
-		<div role="tabpanel" aria-hidden="true" class="content" id="PlayerTab">
-			<table>
-				<tr>
-					<td style="min-width:363px;"><?php echo translate('var12');?>:</td>
-					<td style="min-width:363px;"><?php echo translate('var13');?>:</td>
-				</tr>
-				<tr>
-					<td style="min-width:373px;"><?php echo(set_player_didkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-					<td style="min-width:373px;"><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-				</tr>
-			</table>
-		</div>	
-		<!--Killed and Killed By ~ END-->
-	</div>
-
-<?php } elseif($statslolmewn_control === true && pluginconfigstatusstatslolmewnstats === true) { ?>
-
-	<ul class="tabs" data-tab role="tablist">
-		<li class="tab-title active" role="presentational"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
-		<li class="tab-title" role="presentational"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
-	</ul>
-	<div class="tabs-content">
-		<!--Killed and Killed By ~ START-->
-		<div role="tabpanel" aria-hidden="false" class="content active" id="PlayerTab">
-			<table style="margin: 0 auto;">
-				<tr>
-					<td><?php echo translate('var12');?>:</td>
-					<td><?php echo translate('var13');?>:</td>
-				</tr>
-				<tr>
-					<td><?php echo(set_player_didkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-					<td><?php echo(set_player_getkill_table(htmlentities($_GET['user']), $_GET['search']));?></td>
-				</tr>
-			</table>
-		</div>	
-		<!--Killed and Killed By ~ END-->
-		<!--Destroyed and Placed Blocks ~ START-->
-		<div role="tabpanel" aria-hidden="true" class="content" id="BlocksTab">
-			<table style="margin: 0 auto;">
-				<tr>
-					<td>ID:</td>
-					<td><?php echo translate('var8');?>:</td>
-					<td><?php echo translate('var9');?>:</td>
-				</tr>
-				<?php echo(set_player_destroy_build_table(htmlentities($_GET['user'])));?>
-			</table>
-		</div>	
-		<!--Destroyed and Placed Blocks ~ END-->
-	</div>
-<?php } elseif($statssa_control === true && pluginconfigstatussa === true) { ?>
-		<div class="large-9 large-centered columns head_maintable"></div>
-<?php } ?>
 </div>
-	</div>
-<!-- STATS TABLE END-->
-<!-- ACHIEVMENTS START-->
+<br />
+<!--MAIN BOX AND PHOTO END-->
+<div class="row permissions"></div>
+<div class="row jail"></div>
+<div class="row jobs"></div>
+<div class="row mcmmo"></div>
+<div class="row stats"></div>
 <?php
 	if($achievements_control === true && pluginconfigstatusachiv === true) {
 		include('modules/show-player/include/functions_achievements.php');
-?>	
+?>
+<!-- ACHIEVMENTS START-->
 <br/>
 <div class="row"><div class="large-9 large-centered columns head_maintable">
 <table style="border:1px solid #333333; vertical-align:text-top; margin:auto;">
@@ -156,7 +49,7 @@
 		<td style="vertical-align:text-top;" align="center">
 			<div class="gesamtfortschritt" align="left">
 				<div class="fortschritttext"><b><?php echo achievements_player_count_table(htmlentities($_GET['user'])).' / '.achievements_server_count_table();?></b></div>
-				<div class="fortschritt" style="width:<?php echo (((achievements_player_count_table(htmlentities($_GET['user'])) * 100) / (achievements_server_count_table()))); ?>%">&nbsp;</div>
+				<div class="fortschritt" style="width:<?php echo (((achievements_player_count_table(htmlentities($_GET['user'])) * 100) / achievements_server_count_table())); ?>%">&nbsp;</div>
 			</div>
 		</td>
 	</tr>
@@ -183,7 +76,7 @@
 	</div>
 	<div class="large-9 large-centered columns content_maintable_achiev">
 		<div class="slidingDiv_table4">
-			<span4><div class="content_maintable_achiev" style="padding-top: 25px; padding-bottom: 25px;"><?php echo (achievements_server_achievement_table());?></div></span4>
+			<span4><div class="content_maintable_achiev" style="padding-top: 25px; padding-bottom: 25px;"><?php echo achievements_server_achievement_table();?></div></span4>
 		</div>
 	</div>
 </div>
@@ -222,18 +115,20 @@
 		data: {mcmmo_player_skills_table: '<?php echo htmlentities($_GET['user']);?>'},
 		success:function(msg){
 				$('.mcmmo').html(msg);
+				$('.mcmmo').css("margin-top","10px");
 				$('.mcmmo').fadeIn();
 				logInfo( "McMMO loaded!" );
 				return false;
 		}
 	});
-	<?php endif; if($permissionsex_control == true && pluginconfigpermissionsex===true) :?>
+	<?php endif; if($plugintype["PermissionsEx"]===true) :?>
 	$.ajax({
 		url : 'modules/permissionsex/include/functions.php',
 		type: 'post',
 		data: {permissionsex_player_table: '<?php echo htmlentities($_GET['user']);?>'},
 		success:function(msg){
 				$('.permissions').html(msg);
+				$('.permissions').css("margin-top","10px");
 				$('.permissions').fadeIn();
 				logInfo( "PermissionsEx loaded!" );
 				return false;
@@ -246,6 +141,7 @@
 		data: {jail_player_table: '<?php echo htmlentities($_GET['user']);?>'},
 		success:function(msg){
 				$('.jail').html(msg);
+				$('.jail').css("margin-top","10px");
 				$('.jail').fadeIn();
 				logInfo( "Jail loaded!" );
 				return false;
@@ -258,6 +154,7 @@
 		data: {job_player_details_table: '<?php echo htmlentities($_GET['user']);?>'},
 		success:function(msg){
 				$('.jobs').html(msg);
+				$('.jobs').css("margin-top","10px");
 				$('.jobs').fadeIn();
 				logInfo( "Jobs loaded!" );
 				return false;
@@ -278,11 +175,25 @@
 	$.ajax({
 		url : 'modules/<?php echo WS_CONFIG_STATS_PLUGIN;?>/include/functions.php',
 		type: 'post',
-		data: {set_player_tables: '<?php echo htmlentities($_GET['user']);?>'},
+		data: {set_player_tables: '<?php echo htmlentities($_GET['user']);?>', search: '<?php echo htmlentities($_GET['search']);?>'},
 		success:function(msg){
 				$('.stats').html(msg);
+				$('.stats').css("margin-top","10px");
 				$('.stats').fadeIn();
+				$(document).foundation();
 				logInfo( "Player Stats Table loaded!" );
+				return false;
+		}
+	});
+	<?php endif; if($plugintype["Economy"]===true) :?>
+	$.ajax({
+		url : 'modules/<?php echo WS_CONFIG_ECONOMY_PLUGIN;?>/include/functions.php',
+		type: 'post',
+		data: {player_get_money_table: '<?php echo htmlentities($_GET['user']);?>'},
+		success:function(msg){
+				$('.player_economy').html(msg);
+				$('.player_economy').fadeIn();
+				logInfo( "Economy loaded!" );
 				return false;
 		}
 	});

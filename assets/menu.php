@@ -60,12 +60,12 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 }
 for($i=0; $i <= sizeof($array); $i++) {
 	
-	if($array[$i] !="show-player" and $array[$i] !="id-list" and $array[$i] !="permissionsex" and $array[$i] !="creature-stats" and $array[$i] !="material-stats" and $array[$i] !="." and $array[$i] !=".." and $array[$i] != WS_CONFIG_MODULE) {
+	if($array[$i] !="." and $array[$i] !=".." and $array[$i] != WS_CONFIG_MODULE) {
 		$on=false;
 		include_once('modules/'.$array[$i].'/config/config.php');
 		if($on===true)
 			echo '<li><a class="ajax-link" href="?mode='.$array[$i].'" title="'.$menuname.'"><span>'.$menuname.'</span></a></li>';
-	}
+	} elseif($array[$i] == WS_CONFIG_MODULE) {include_once('modules/'.WS_CONFIG_MODULE.'/config/config.php');}
 }
 ?>
 			</ul>

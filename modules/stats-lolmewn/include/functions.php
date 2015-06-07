@@ -1,4 +1,66 @@
 <?php
+/**
+ * The fallowing if statements will allow for Ajax to call the functions externally.
+ *
+ * @since 4.0
+ *
+ */
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+include_once ROOT . 'include/en.php';
+require_once ROOT . 'include/functions.php';
+
+if (isset($_POST['set_player_details_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo set_player_details_table($_POST['set_player_details_table']);
+	mysqli_close($link);
+}
+
+if (isset($_POST['set_player_tables'])) {
+	if (!isset($_POST['search']))
+		$_POST['search'] = '';
+	else 
+		$_POST['search'] = 'ORDER BY value DESC';
+
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo '<div class="large-9 large-centered columns head_maintable">
+	<ul class="tabs" data-tab role="tablist">
+		<li class="tab-title active" role="presentational"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
+		<li class="tab-title" role="presentational"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
+	</ul>
+	<div class="tabs-content">
+		<!--Killed and Killed By ~ START-->
+		<div role="tabpanel" aria-hidden="false" class="content active" id="PlayerTab">
+			<table style="margin: 0 auto;">
+				<tr>
+					<td>'.translate('var12').':</td>
+					<td>'.translate('var13').':</td>
+				</tr>
+				<tr>	
+					<td>'.set_player_didkill_table($_POST['set_player_tables'], $_POST['search']).'</td>
+					<td>'.set_player_getkill_table($_POST['set_player_tables'], $_POST['search']).'</td>
+				</tr>
+			</table>
+		</div>
+		<!--Killed and Killed By ~ END-->
+		<!--Destroyed and Placed Blocks ~ START-->
+		<div role="tabpanel" aria-hidden="true" class="content" id="BlocksTab">
+			<table style="margin: 0 auto;">
+				<tr>
+					<td>ID:</td>
+					<td>'.translate('var8').':</td>
+					<td>'.translate('var9').':</td>
+				</tr>
+				'.set_player_destroy_build_table($_POST['set_player_tables']).'
+			</table>
+		</div>
+		<!--Destroyed and Placed Blocks ~ END-->
+	</div>
+</div>';
+	mysqli_close($link);
+}
+
 function get_amount($user, $stat, $location) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `$stat` FROM `".WS_CONFIG_STATS."$location` WHERE `player`='$user'");
@@ -68,7 +130,7 @@ function get_user_stats($sort, $start, $end) {
 	}
 	$deadline = time() - WS_CONFIG_DEADLINE;
 	$sortkey = "ORDER BY $sort";
-	$query = mysqli_query($link, "SELECT $sort FROM `".WS_CONFIG_STATS."player` ".$sortkey." LIMIT ".$start.",".$end."");
+	$query = mysqli_query($link, "SELECT $sort FROM `".WS_CONFIG_STATS."player` ".$sortkey." LIMIT ".$start.",".$end);
 	$time = 0;
 	while($row = mysqli_fetch_array($query, MYSQLI_NUM)) {
 		$players[$time] = $row[0];
@@ -98,7 +160,7 @@ function set_player_details_table($player) {
 	$boat = get_movement($player, "1");
 	$pig = get_movement($player, "2");
 	$cart = get_movement($player, "3");
-	$output = '<div class="small-3 columns">
+	$output = '<div class="small-6 columns">
 				<h6>Movement</h6>
 				<table style="margin: 0 auto;">
 					<thead>
@@ -127,7 +189,7 @@ function set_player_details_table($player) {
 					</tbody>
 				</table>
 			</div>';
-	$output .= '<div class="small-3 columns">';
+	$output .= '<div class="small-6 columns">';
 	$output .= '<table>
 					<tbody>
 						

@@ -1,4 +1,87 @@
 <?php
+/**
+ * The fallowing if statements will allow for Ajax to call the functions externally.
+ *
+ * @since 4.0
+ *
+ */
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+include_once ROOT . 'include/en.php';
+require_once ROOT . 'include/functions.php';
+
+if (isset($_POST['set_player_details_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo set_player_details_table($_POST['set_player_details_table']);
+	mysqli_close($link);
+}
+
+if (isset($_POST['set_player_tables'])) {
+	if (!isset($_POST['search']))
+		$_POST['search'] = '';
+	else 
+		$_POST['search'] = 'ORDER BY value DESC';
+
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo '<div class="large-9 large-centered columns head_maintable">
+	<div class="content_headline" style="width:735px;">
+		<a class="ajax-link" href="index.php?mode=show-player&user='.htmlentities($_POST['set_player_tables']).'">'.translate('var1');.'</a> - <a class="ajax-link" href="index.php?mode=show-player&user='.htmlentities($_POST['set_player_tables']).'&search=true">'.translate('var2').'</a>
+	</div>
+	<div style="clear: both; width: 735px; height: 25px;">&nbsp;</div>
+	<ul class="tabs" data-tab role="tablist">
+		<li class="tab-title active"><a href="#PlayerTab" role="tab" tabindex="0" aria-selected="true" controls="PlayerTab">Player Kills/Deaths</a></li>
+		<li class="tab-title"><a href="#BlocksTab" role="tab" tabindex="0" aria-selected="false" controls="BlocksTab">Destroyed/Placed Blocks</a></li>
+		<li class="tab-title"><a href="#DamageTab" role="tab" tabindex="0" aria-selected="false" controls="DamageTab">Dealt/Received Damage</a></li>
+	</ul>
+	<div class="tabs-content">
+		<!--Destroyed and Placed Blocks ~ START-->
+		<div role="tabpanel" aria-hidden="false" class="content active" id="BlocksTab">
+			<table>
+				<tr>
+					<td style="min-width:363px;">'.translate('var8').':</td>
+					<td style="min-width:363px;">'.translate('var9').':</td>
+				</tr>
+				<tr>
+					<td style="min-width:373px;">'.set_player_destroy_table(htmlentities($_POST['set_player_tables']), $_POST['search']).'</td>
+					<td style="min-width:373px;">'.set_player_build_table(htmlentities($_POST['set_player_tables']), $_POST['search']).'</td>
+				</tr>
+			</table>
+		</div>	
+		<!--Destroyed and Placed Blocks ~ END-->
+		<!--Received and Dealt Damage ~ START-->
+		<div role="tabpanel" aria-hidden="true" class="content" id="DamageTab"> 
+			<table>
+				<tr>
+					<td style="min-width:363px;">'.translate('var10').':</td>
+					<td style="min-width:363px;">'.translate('var11').':</td>
+				</tr>
+				<tr>
+					<td style="min-width:373px;">'.set_player_damagedealt_table(htmlentities($_POST['set_player_tables']), $_POST['search']).'</td>
+					<td style="min-width:373px;">'.set_player_damagereceived_table(htmlentities($_POST['set_player_tables']), $_POST['search']).'</td>	
+				</tr>
+			</table>
+		</div>	
+		<!--Received and Dealt Damage ~ END-->
+		<!--Killed and Killed By ~ START-->
+		<div role="tabpanel" aria-hidden="true" class="content" id="PlayerTab">
+			<table>
+				<tr>
+					<td style="min-width:363px;">'.translate('var12').':</td>
+					<td style="min-width:363px;">'.translate('var13').':</td>
+				</tr>
+				<tr>
+					<td style="min-width:373px;">'.set_player_didkill_table(htmlentities($_POST['set_player_tables']), $_POST['search'])).'</td>
+					<td style="min-width:373px;">'.set_player_getkill_table(htmlentities($_POST['set_player_tables']), $_POST['search'])).'</td>
+				</tr>
+			</table>
+		</div>	
+		<!--Killed and Killed By ~ END-->
+	</div>
+</div>';
+	mysqli_close($link);
+}
+
 function get_amount($user, $stat, $type) {
 	global $link;
 	$query = mysqli_query($link, "SELECT `value` FROM `".WS_CONFIG_STATS."` WHERE `player`='$user' AND `stat`='$stat' AND `category`='$type'");

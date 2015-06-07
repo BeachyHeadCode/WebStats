@@ -1,4 +1,21 @@
 <?php
+/**
+ * The fallowing if statements will allow for Ajax to call the functions externally.
+ *
+ * @since 4.0
+ *
+ */
+define('ROOT', '../../../');
+if(file_exists(ROOT . 'config/config.php'))
+	include_once ROOT . 'config/config.php';
+include_once ROOT . 'include/en.php';
+require_once ROOT . 'include/functions.php';
+
+if (isset($_POST['player_get_money_table'])) {
+	$link = mysqli_connect(WS_CONFIG_DBHOST, WS_CONFIG_DBUNAME, WS_CONFIG_DBPASS, WS_CONFIG_DBNAME, WS_CONFIG_DBPORT);
+	echo player_get_money_table($_POST['player_get_money_table']);
+	mysqli_close($link);
+}
 
 //SETS NUMBER OF USERS TO PRINT
 function get_iconomy_user_count() {

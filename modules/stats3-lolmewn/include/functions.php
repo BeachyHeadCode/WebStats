@@ -524,7 +524,7 @@ function set_player_details_table($player) {
 	$cart = get_movement($player, "2");
 	$pig = get_movement($player, "3");
 	$horse = get_movement($player, "5");
-	$output = '<div class="small-6 small-centered large-uncentered columns"><h6>Movement:</h6><table style="margin:auto;">
+	$output = '<div class="small-6 columns"><h6>Movement:</h6><table style="margin:auto;">
 					<thead><tr><th>Total:</th><th>'. number_format(($foot+$boat+$pig+$cart+$horse), 2, '.', '').'</th></tr></thead>
 					<tbody>
 						<tr>
@@ -550,7 +550,7 @@ function set_player_details_table($player) {
 					</tbody>
 				</table>
 			</div>';
-	$output .= '<div class="small-6 small-centered large-uncentered columns"><h6>Stats:</h6><table style="margin:auto;"><tbody>';
+	$output .= '<div class="small-6 columns"><h6>Stats:</h6><table style="margin:auto;"><tbody>';
 	$output .= '<tr>
 					<td>'.translate("var5").':</td>
 					<td>'.get_date(round(get_amount($player, "value", "last_join")/3000)).'</td>

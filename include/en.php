@@ -330,7 +330,7 @@ function translate($item) {
 		elseif ($item == "143")           {$item = "Wooden Button";}
 		elseif ($item == "144")           {$item = "Head";}
 		elseif ($item == "145")           {$item = "Anvil";}
-		
+		elseif ($item == "171")           {$item = "Carpet (White)";}	
 		elseif ($item == "200")           {$item = "Ender Crystal";}
 		elseif ($item == "256")           {$item = "Iron Shovel";}
 		elseif ($item == "257")           {$item = "Iron Pickaxe";}
