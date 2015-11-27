@@ -77,24 +77,24 @@ function encodeDataPair($key, $value){
 /**
  * The current revision number
  */
-define(REVISION, strval("6"));
+define('REVISION', strval("6"));
 /**
  * The base url of the metrics domain
  */
-define(BASE_URL, "http://mcstats.org");
+define('BASE_URL', "http://mcstats.org");
  /**
  * The url used to report a server's status
  */
-define(REPORT_URL, '/report/%s');
+define('REPORT_URL', '/report/%s');
 
 /* Server software specific section */
-define(description, "Minecraft Stats WebPage");
-define(pluginName, "WebStats");
-define(onlineMode, true);
-define(pluginVersion, $version);
-define(serverVersion, phpversion());
+define('description', "Minecraft Stats WebPage");
+define('pluginName', "WebStats");
+define('onlineMode', true);
+define('pluginVersion', $version);
+define('serverVersion', phpversion());
 /* define(serverVersion, "git-Bukkit-1.4.5-R0.2-b2488jnks+%28MC%3A+1.4.5%29"); */
-define(PLOTTER, "1");
+define('PLOTTER', "1");
 /* The plugin's description file containg all of the plugin data such as name, version, author, etc */
 
 /* Users Online */
@@ -108,21 +108,21 @@ if(iptracker === true){
 	list($playersOnline) = mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(*) FROM `ip_stats` WHERE `online`='1'"), MYSQLI_BOTH);
 	define(playersOnline, $playersOnline);
 	mysqli_close($link);
-}else{define(playersOnline, "1");}
+}else{define('playersOnline', "1");}
 /* New data as of R6 */
 if(isset($_ENV["OS"])){
-	define(osname, $_ENV["OS"]);
+	define('osname', $_ENV["OS"]);
 } else {
-	define(osname, "Windows+8");
+	define('osname', "Windows+8");
 }
 $osarch = $_SERVER["PROCESSOR_ARCHITEW6432"];
 if($osarch =="AMD64"){$osarch = "x86_64";}
-define(osversion, "6.2");
-define(java_version, "1.7.0_09");
+define('osversion', "6.2");
+define('java_version', "1.7.0_09");
 if(isset($_ENV["NUMBER_OF_PROCESSORS"])){
-	define(coreCount, $_ENV["NUMBER_OF_PROCESSORS"]);
+	define('coreCount', $_ENV["NUMBER_OF_PROCESSORS"]);
 } else {
-	define(coreCount, 'unknown');
+	define('coreCount', 'unknown');
 }
 /**
  * Data Variable creation start

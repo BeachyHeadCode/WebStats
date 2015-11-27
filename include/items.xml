@@ -3671,6 +3671,126 @@
     <hierarchy>dark_oak_door</hierarchy>
   </item>
   <item ItemNumber="367">
+    <added>v1.9</added>
+    <name>End rod</name>
+    <icon>198</icon>
+    <id>198</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>end_rod</hierarchy>
+  </item>
+  <item ItemNumber="368">
+    <added>v1.9</added>
+    <name>Chorus Plant</name>
+    <icon>199</icon>
+    <id>199</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>chorus_plant</hierarchy>
+  </item>
+  <item ItemNumber="369">
+    <added>v1.9</added>
+    <name>Chorus Flower</name>
+    <icon>200</icon>
+    <id>200</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>chorus_flower</hierarchy>
+  </item>
+  <item ItemNumber="370">
+    <added>v1.9</added>
+    <name>Purpur Block</name>
+    <icon>201</icon>
+    <id>201</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>purpur_block</hierarchy>
+  </item>
+  <item ItemNumber="371">
+    <added>v1.9</added>
+    <name>Purpur Pillar</name>
+    <icon>202</icon>
+    <id>202</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>purpur_pillar</hierarchy>
+  </item>
+  <item ItemNumber="372">
+    <added>v1.9</added>
+    <name>Purpur Stairs</name>
+    <icon>203</icon>
+    <id>203</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>purpur_stairs</hierarchy>
+  </item>
+  <item ItemNumber="373">
+    <added>v1.9</added>
+    <name>Purpur Slab (Double)</name>
+    <icon>204</icon>
+    <id>204</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>purpur_double_slab</hierarchy>
+  </item>
+  <item ItemNumber="374">
+    <added>v1.9</added>
+    <name>Purpur Slab</name>
+    <icon>205</icon>
+    <id>205</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>purpur_slab</hierarchy>
+  </item>
+  <item ItemNumber="375">
+    <added>v1.9</added>
+    <name>End Stone Bricks</name>
+    <icon>206</icon>
+    <id>206</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>end_bricks</hierarchy>
+  </item>
+  <item ItemNumber="376">
+    <added>v1.9</added>
+    <name>Grass Path</name>
+    <icon>208</icon>
+    <id>208</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>grass_path</hierarchy>
+  </item>
+  <item ItemNumber="377">
+    <added>v1.9</added>
+    <name>End Gateway</name>
+    <icon>209</icon>
+    <id>209</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>1</spawnonly>
+    <hierarchy>end_gateway</hierarchy>
+  </item>
+  <item ItemNumber="378">
+    <added>v1.9</added>
+    <name>Structure Block</name>
+    <icon>255</icon>
+    <id>255</id>
+    <type>Block</type>
+    <description/>
+    <spawnonly>1</spawnonly>
+    <hierarchy>structure_block</hierarchy>
+  </item>
+  <item ItemNumber="379">
     <added>0.0.9a</added>
     <name>Iron Shovel</name>
     <icon>256</icon>
@@ -3680,7 +3800,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_shovel</hierarchy>
   </item>
-  <item ItemNumber="368">
+  <item ItemNumber="380">
     <added>0.0.9a</added>
     <name>Iron Pickaxe</name>
     <icon>257</icon>
@@ -3690,7 +3810,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_pickaxe</hierarchy>
   </item>
-  <item ItemNumber="369">
+  <item ItemNumber="381">
     <added>0.0.9a</added>
     <name>Iron Axe</name>
     <icon>258</icon>
@@ -3700,7 +3820,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_axe</hierarchy>
   </item>
-  <item ItemNumber="370">
+  <item ItemNumber="382">
     <added>0.0.9a</added>
     <name>Flint and Steel</name>
     <icon>259</icon>
@@ -3710,7 +3830,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>flint_and_steel</hierarchy>
   </item>
-  <item ItemNumber="371">
+  <item ItemNumber="383">
     <added>0.0.9a</added>
     <name>Apple</name>
     <icon>260</icon>
@@ -3720,7 +3840,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>apple</hierarchy>
   </item>
-  <item ItemNumber="372">
+  <item ItemNumber="384">
     <added>0.0.9a</added>
     <name>Bow</name>
     <icon>261</icon>
@@ -3730,7 +3850,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>bow</hierarchy>
   </item>
-  <item ItemNumber="373">
+  <item ItemNumber="385">
     <added>0.0.9a</added>
     <name>Arrow</name>
     <icon>262</icon>
@@ -3740,7 +3860,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>arrow</hierarchy>
   </item>
-  <item ItemNumber="374">
+  <item ItemNumber="386">
     <added>0.0.9a</added>
     <name>Coal</name>
     <icon>263</icon>
@@ -3750,7 +3870,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>coal</hierarchy>
   </item>
-  <item ItemNumber="375">
+  <item ItemNumber="387">
     <added>0.0.9a</added>
     <name>Charcoal</name>
     <icon>263-1</icon>
@@ -3760,7 +3880,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>coal:1</hierarchy>
   </item>
-  <item ItemNumber="376">
+  <item ItemNumber="388">
     <added>0.0.9a</added>
     <name>Diamond Gem</name>
     <icon>264</icon>
@@ -3770,7 +3890,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond</hierarchy>
   </item>
-  <item ItemNumber="377">
+  <item ItemNumber="389">
     <added>0.0.9a</added>
     <name>Iron Ingot</name>
     <icon>265</icon>
@@ -3780,7 +3900,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_ingot</hierarchy>
   </item>
-  <item ItemNumber="378">
+  <item ItemNumber="390">
     <added>0.0.9a</added>
     <name>Gold Ingot</name>
     <icon>266</icon>
@@ -3790,7 +3910,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>gold_ingot</hierarchy>
   </item>
-  <item ItemNumber="379">
+  <item ItemNumber="391">
     <added>0.0.9a</added>
     <name>Iron Sword</name>
     <icon>267</icon>
@@ -3800,7 +3920,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_sword</hierarchy>
   </item>
-  <item ItemNumber="380">
+  <item ItemNumber="392">
     <added>0.0.9a</added>
     <name>Wooden Sword</name>
     <icon>268</icon>
@@ -3810,7 +3930,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wooden_sword</hierarchy>
   </item>
-  <item ItemNumber="381">
+  <item ItemNumber="393">
     <added>0.0.9a</added>
     <name>Wooden Shovel</name>
     <icon>269</icon>
@@ -3820,7 +3940,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wooden_shovel</hierarchy>
   </item>
-  <item ItemNumber="382">
+  <item ItemNumber="394">
     <added>0.0.9a</added>
     <name>Wooden Pickaxe</name>
     <icon>270</icon>
@@ -3830,7 +3950,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wooden_pickaxe</hierarchy>
   </item>
-  <item ItemNumber="383">
+  <item ItemNumber="395">
     <added>0.0.9a</added>
     <name>Wooden Axe</name>
     <icon>271</icon>
@@ -3840,7 +3960,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wooden_axe</hierarchy>
   </item>
-  <item ItemNumber="384">
+  <item ItemNumber="396">
     <added>0.0.9a</added>
     <name>Stone Sword</name>
     <icon>272</icon>
@@ -3850,7 +3970,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>stone_sword</hierarchy>
   </item>
-  <item ItemNumber="385">
+  <item ItemNumber="397">
     <added>0.0.9a</added>
     <name>Stone Shovel</name>
     <icon>273</icon>
@@ -3860,7 +3980,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>stone_shovel</hierarchy>
   </item>
-  <item ItemNumber="386">
+  <item ItemNumber="398">
     <added>0.0.9a</added>
     <name>Stone Pickaxe</name>
     <icon>274</icon>
@@ -3870,7 +3990,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>stone_pickaxe</hierarchy>
   </item>
-  <item ItemNumber="387">
+  <item ItemNumber="399">
     <added>0.0.9a</added>
     <name>Stone Axe</name>
     <icon>275</icon>
@@ -3880,7 +4000,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>stone_axe</hierarchy>
   </item>
-  <item ItemNumber="388">
+  <item ItemNumber="400">
     <added>0.0.9a</added>
     <name>Diamond Sword</name>
     <icon>276</icon>
@@ -3890,7 +4010,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_sword</hierarchy>
   </item>
-  <item ItemNumber="389">
+  <item ItemNumber="401">
     <added>0.0.9a</added>
     <name>Diamond Shovel</name>
     <icon>277</icon>
@@ -3900,7 +4020,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_shovel</hierarchy>
   </item>
-  <item ItemNumber="390">
+  <item ItemNumber="402">
     <added>0.0.9a</added>
     <name>Diamond Pickaxe</name>
     <icon>278</icon>
@@ -3910,7 +4030,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_pickaxe</hierarchy>
   </item>
-  <item ItemNumber="391">
+  <item ItemNumber="403">
     <added>0.0.9a</added>
     <name>Diamond Axe</name>
     <icon>279</icon>
@@ -3920,7 +4040,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_axe</hierarchy>
   </item>
-  <item ItemNumber="392">
+  <item ItemNumber="404">
     <added>0.0.9a</added>
     <name>Stick</name>
     <icon>280</icon>
@@ -3930,7 +4050,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>stick</hierarchy>
   </item>
-  <item ItemNumber="393">
+  <item ItemNumber="405">
     <added>0.0.9a</added>
     <name>Bowl</name>
     <icon>281</icon>
@@ -3940,7 +4060,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>bowl</hierarchy>
   </item>
-  <item ItemNumber="394">
+  <item ItemNumber="406">
     <added>0.0.9a</added>
     <name>Mushroom Stew</name>
     <icon>282</icon>
@@ -3950,7 +4070,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>mushroom_stew</hierarchy>
   </item>
-  <item ItemNumber="395">
+  <item ItemNumber="407">
     <added>0.0.9a</added>
     <name>Gold Sword</name>
     <icon>283</icon>
@@ -3960,7 +4080,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_sword</hierarchy>
   </item>
-  <item ItemNumber="396">
+  <item ItemNumber="408">
     <added>0.0.9a</added>
     <name>Gold Shovel</name>
     <icon>284</icon>
@@ -3970,7 +4090,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_shovel</hierarchy>
   </item>
-  <item ItemNumber="397">
+  <item ItemNumber="409">
     <added>0.0.9a</added>
     <name>Gold Pickaxe</name>
     <icon>285</icon>
@@ -3980,7 +4100,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_pickaxe</hierarchy>
   </item>
-  <item ItemNumber="398">
+  <item ItemNumber="410">
     <added>0.0.9a</added>
     <name>Gold Axe</name>
     <icon>286</icon>
@@ -3990,7 +4110,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_axe</hierarchy>
   </item>
-  <item ItemNumber="399">
+  <item ItemNumber="411">
     <added>0.0.9a</added>
     <name>String</name>
     <icon>287</icon>
@@ -4000,7 +4120,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>string</hierarchy>
   </item>
-  <item ItemNumber="400">
+  <item ItemNumber="412">
     <added>0.0.9a</added>
     <name>Feather</name>
     <icon>288</icon>
@@ -4010,7 +4130,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>feather</hierarchy>
   </item>
-  <item ItemNumber="401">
+  <item ItemNumber="413">
     <added>0.0.9a</added>
     <name>Gunpowder</name>
     <icon>289</icon>
@@ -4020,7 +4140,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>gunpowder</hierarchy>
   </item>
-  <item ItemNumber="402">
+  <item ItemNumber="414">
     <added>0.0.9a</added>
     <name>Wooden Hoe</name>
     <icon>290</icon>
@@ -4030,7 +4150,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wooden_hoe</hierarchy>
   </item>
-  <item ItemNumber="403">
+  <item ItemNumber="415">
     <added>0.0.9a</added>
     <name>Stone Hoe</name>
     <icon>291</icon>
@@ -4040,7 +4160,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>stone_hoe</hierarchy>
   </item>
-  <item ItemNumber="404">
+  <item ItemNumber="416">
     <added>0.0.9a</added>
     <name>Iron Hoe</name>
     <icon>292</icon>
@@ -4050,7 +4170,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_hoe</hierarchy>
   </item>
-  <item ItemNumber="405">
+  <item ItemNumber="417">
     <added>0.0.9a</added>
     <name>Diamond Hoe</name>
     <icon>293</icon>
@@ -4060,7 +4180,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_hoe</hierarchy>
   </item>
-  <item ItemNumber="406">
+  <item ItemNumber="418">
     <added>0.0.9a</added>
     <name>Gold Hoe</name>
     <icon>294</icon>
@@ -4070,7 +4190,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_hoe</hierarchy>
   </item>
-  <item ItemNumber="407">
+  <item ItemNumber="419">
     <added>0.0.9a</added>
     <name>Wheat Seeds</name>
     <icon>295</icon>
@@ -4080,7 +4200,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wheat_seeds</hierarchy>
   </item>
-  <item ItemNumber="408">
+  <item ItemNumber="420">
     <added>0.0.9a</added>
     <name>Wheat</name>
     <icon>296</icon>
@@ -4090,7 +4210,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wheat</hierarchy>
   </item>
-  <item ItemNumber="409">
+  <item ItemNumber="421">
     <added>0.0.9a</added>
     <name>Bread</name>
     <icon>297</icon>
@@ -4100,7 +4220,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>bread</hierarchy>
   </item>
-  <item ItemNumber="410">
+  <item ItemNumber="422">
     <added>0.0.9a</added>
     <name>Leather Helmet</name>
     <icon>298</icon>
@@ -4110,7 +4230,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>leather_helmet</hierarchy>
   </item>
-  <item ItemNumber="411">
+  <item ItemNumber="423">
     <added>0.0.9a</added>
     <name>Leather Chestplate</name>
     <icon>299</icon>
@@ -4120,7 +4240,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>leather_chestplate</hierarchy>
   </item>
-  <item ItemNumber="412">
+  <item ItemNumber="424">
     <added>0.0.9a</added>
     <name>Leather Leggings</name>
     <icon>300</icon>
@@ -4130,7 +4250,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>leather_leggings</hierarchy>
   </item>
-  <item ItemNumber="413">
+  <item ItemNumber="425">
     <added>0.0.9a</added>
     <name>Leather Boots</name>
     <icon>301</icon>
@@ -4140,7 +4260,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>leather_boots</hierarchy>
   </item>
-  <item ItemNumber="414">
+  <item ItemNumber="426">
     <added>0.0.9a</added>
     <name>Chainmail Helmet</name>
     <icon>302</icon>
@@ -4150,7 +4270,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>chainmail_helmet</hierarchy>
   </item>
-  <item ItemNumber="415">
+  <item ItemNumber="427">
     <added>0.0.9a</added>
     <name>Chainmail Chestplate</name>
     <icon>303</icon>
@@ -4160,7 +4280,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>chainmail_chestplate</hierarchy>
   </item>
-  <item ItemNumber="416">
+  <item ItemNumber="428">
     <added>0.0.9a</added>
     <name>Chainmail Leggings</name>
     <icon>304</icon>
@@ -4170,7 +4290,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>chainmail_leggings</hierarchy>
   </item>
-  <item ItemNumber="417">
+  <item ItemNumber="429">
     <added>0.0.9a</added>
     <name>Chainmail Boots</name>
     <icon>305</icon>
@@ -4180,7 +4300,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>chainmail_boots</hierarchy>
   </item>
-  <item ItemNumber="418">
+  <item ItemNumber="430">
     <added>0.0.9a</added>
     <name>Iron Helmet</name>
     <icon>306</icon>
@@ -4190,7 +4310,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_helmet</hierarchy>
   </item>
-  <item ItemNumber="419">
+  <item ItemNumber="431">
     <added>0.0.9a</added>
     <name>Iron Chestplate</name>
     <icon>307</icon>
@@ -4200,7 +4320,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_chestplate</hierarchy>
   </item>
-  <item ItemNumber="420">
+  <item ItemNumber="432">
     <added>0.0.9a</added>
     <name>Iron Leggings</name>
     <icon>308</icon>
@@ -4210,7 +4330,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_leggings</hierarchy>
   </item>
-  <item ItemNumber="421">
+  <item ItemNumber="433">
     <added>0.0.9a</added>
     <name>Iron Boots</name>
     <icon>309</icon>
@@ -4220,7 +4340,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_boots</hierarchy>
   </item>
-  <item ItemNumber="422">
+  <item ItemNumber="434">
     <added>0.0.9a</added>
     <name>Diamond Helmet</name>
     <icon>310</icon>
@@ -4230,7 +4350,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_helmet</hierarchy>
   </item>
-  <item ItemNumber="423">
+  <item ItemNumber="435">
     <added>0.0.9a</added>
     <name>Diamond Chestplate</name>
     <icon>311</icon>
@@ -4240,7 +4360,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_chestplate</hierarchy>
   </item>
-  <item ItemNumber="424">
+  <item ItemNumber="436">
     <added>0.0.9a</added>
     <name>Diamond Leggings</name>
     <icon>312</icon>
@@ -4250,7 +4370,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_leggings</hierarchy>
   </item>
-  <item ItemNumber="425">
+  <item ItemNumber="437">
     <added>0.0.9a</added>
     <name>Diamond Boots</name>
     <icon>313</icon>
@@ -4260,7 +4380,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_boots</hierarchy>
   </item>
-  <item ItemNumber="426">
+  <item ItemNumber="438">
     <added>0.0.9a</added>
     <name>Gold Helmet</name>
     <icon>314</icon>
@@ -4270,7 +4390,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_helmet</hierarchy>
   </item>
-  <item ItemNumber="427">
+  <item ItemNumber="439">
     <added>0.0.9a</added>
     <name>Gold Chestplate</name>
     <icon>315</icon>
@@ -4280,7 +4400,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_chestplate</hierarchy>
   </item>
-  <item ItemNumber="428">
+  <item ItemNumber="440">
     <added>0.0.9a</added>
     <name>Gold Leggings</name>
     <icon>316</icon>
@@ -4290,7 +4410,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_leggings</hierarchy>
   </item>
-  <item ItemNumber="429">
+  <item ItemNumber="441">
     <added>0.0.9a</added>
     <name>Gold Boots</name>
     <icon>317</icon>
@@ -4300,7 +4420,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_boots</hierarchy>
   </item>
-  <item ItemNumber="430">
+  <item ItemNumber="442">
     <added>0.0.9a</added>
     <name>Flint</name>
     <icon>318</icon>
@@ -4310,7 +4430,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>flint</hierarchy>
   </item>
-  <item ItemNumber="431">
+  <item ItemNumber="443">
     <added>0.0.9a</added>
     <name>Raw Porkchop</name>
     <icon>319</icon>
@@ -4320,7 +4440,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>porkchop</hierarchy>
   </item>
-  <item ItemNumber="432">
+  <item ItemNumber="444">
     <added>0.0.9a</added>
     <name>Cooked Porkchop</name>
     <icon>320</icon>
@@ -4330,7 +4450,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_porkchop</hierarchy>
   </item>
-  <item ItemNumber="433">
+  <item ItemNumber="445">
     <added>0.0.9a</added>
     <name>Painting</name>
     <icon>321</icon>
@@ -4340,7 +4460,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>painting</hierarchy>
   </item>
-  <item ItemNumber="434">
+  <item ItemNumber="446">
     <added>0.0.9a</added>
     <name>Golden Apple</name>
     <icon>322</icon>
@@ -4350,7 +4470,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_apple</hierarchy>
   </item>
-  <item ItemNumber="435">
+  <item ItemNumber="447">
     <added>v1.3.1</added>
     <name>Enchanted Golden Apple</name>
     <icon>322-1</icon>
@@ -4360,7 +4480,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_apple:1</hierarchy>
   </item>
-  <item ItemNumber="436">
+  <item ItemNumber="448">
     <added>0.0.9a</added>
     <name>Sign</name>
     <icon>323</icon>
@@ -4370,7 +4490,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>sign</hierarchy>
   </item>
-  <item ItemNumber="437">
+  <item ItemNumber="449">
     <added>0.0.9a</added>
     <name>Wooden Door</name>
     <icon>324</icon>
@@ -4380,7 +4500,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>wooden_door</hierarchy>
   </item>
-  <item ItemNumber="438">
+  <item ItemNumber="450">
     <added>0.0.9a</added>
     <name>Bucket</name>
     <icon>325</icon>
@@ -4390,7 +4510,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>bucket</hierarchy>
   </item>
-  <item ItemNumber="439">
+  <item ItemNumber="451">
     <added>0.0.9a</added>
     <name>Bucket (Water)</name>
     <icon>326</icon>
@@ -4400,7 +4520,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>water_bucket</hierarchy>
   </item>
-  <item ItemNumber="440">
+  <item ItemNumber="452">
     <added>0.0.9a</added>
     <name>Bucket (Lava)</name>
     <icon>327</icon>
@@ -4410,7 +4530,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>lava_bucket</hierarchy>
   </item>
-  <item ItemNumber="441">
+  <item ItemNumber="453">
     <added>0.0.9a</added>
     <name>Minecart</name>
     <icon>328</icon>
@@ -4420,7 +4540,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>minecart</hierarchy>
   </item>
-  <item ItemNumber="442">
+  <item ItemNumber="454">
     <added>0.0.9a</added>
     <name>Saddle</name>
     <icon>329</icon>
@@ -4430,7 +4550,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>saddle</hierarchy>
   </item>
-  <item ItemNumber="443">
+  <item ItemNumber="455">
     <added>0.0.9a</added>
     <name>Iron Door</name>
     <icon>330</icon>
@@ -4440,7 +4560,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_door</hierarchy>
   </item>
-  <item ItemNumber="444">
+  <item ItemNumber="456">
     <added>0.0.9a</added>
     <name>Redstone Dust</name>
     <icon>331</icon>
@@ -4450,7 +4570,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>redstone</hierarchy>
   </item>
-  <item ItemNumber="445">
+  <item ItemNumber="457">
     <added>0.0.9a</added>
     <name>Snowball</name>
     <icon>332</icon>
@@ -4460,7 +4580,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>snowball</hierarchy>
   </item>
-  <item ItemNumber="446">
+  <item ItemNumber="458">
     <added>0.0.9a</added>
     <name>Boat</name>
     <icon>333</icon>
@@ -4470,7 +4590,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>boat</hierarchy>
   </item>
-  <item ItemNumber="447">
+  <item ItemNumber="459">
     <added>0.0.9a</added>
     <name>Leather</name>
     <icon>334</icon>
@@ -4480,7 +4600,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>leather</hierarchy>
   </item>
-  <item ItemNumber="448">
+  <item ItemNumber="460">
     <added>0.0.9a</added>
     <name>Bucket (Milk)</name>
     <icon>335</icon>
@@ -4490,7 +4610,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>milk_bucket</hierarchy>
   </item>
-  <item ItemNumber="449">
+  <item ItemNumber="461">
     <added>0.0.9a</added>
     <name>Clay Brick</name>
     <icon>336</icon>
@@ -4500,7 +4620,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>brick</hierarchy>
   </item>
-  <item ItemNumber="450">
+  <item ItemNumber="462">
     <added>0.0.9a</added>
     <name>Clay</name>
     <icon>337</icon>
@@ -4510,7 +4630,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>clay_ball</hierarchy>
   </item>
-  <item ItemNumber="451">
+  <item ItemNumber="463">
     <added>0.0.9a</added>
     <name>Sugar Cane</name>
     <icon>338</icon>
@@ -4520,7 +4640,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>reeds</hierarchy>
   </item>
-  <item ItemNumber="452">
+  <item ItemNumber="464">
     <added>0.0.9a</added>
     <name>Paper</name>
     <icon>339</icon>
@@ -4530,7 +4650,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>paper</hierarchy>
   </item>
-  <item ItemNumber="453">
+  <item ItemNumber="465">
     <added>0.0.9a</added>
     <name>Book</name>
     <icon>340</icon>
@@ -4540,7 +4660,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>book</hierarchy>
   </item>
-  <item ItemNumber="454">
+  <item ItemNumber="466">
     <added>0.0.9a</added>
     <name>Slime Ball</name>
     <icon>341</icon>
@@ -4550,7 +4670,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>slimeball</hierarchy>
   </item>
-  <item ItemNumber="455">
+  <item ItemNumber="467">
     <added>0.0.9a</added>
     <name>Minecart (Storage)</name>
     <icon>342</icon>
@@ -4560,7 +4680,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>chest_minecart</hierarchy>
   </item>
-  <item ItemNumber="456">
+  <item ItemNumber="468">
     <added>0.0.9a</added>
     <name>Minecart (Powered)</name>
     <icon>343</icon>
@@ -4570,7 +4690,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>furnace_minecart</hierarchy>
   </item>
-  <item ItemNumber="457">
+  <item ItemNumber="469">
     <added>0.0.9a</added>
     <name>Egg</name>
     <icon>344</icon>
@@ -4580,7 +4700,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>egg</hierarchy>
   </item>
-  <item ItemNumber="458">
+  <item ItemNumber="470">
     <added>0.0.9a</added>
     <name>Compass</name>
     <icon>345</icon>
@@ -4590,7 +4710,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>compass</hierarchy>
   </item>
-  <item ItemNumber="459">
+  <item ItemNumber="471">
     <added>0.0.9a</added>
     <name>Fishing Rod</name>
     <icon>346</icon>
@@ -4600,7 +4720,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fishing_rod</hierarchy>
   </item>
-  <item ItemNumber="460">
+  <item ItemNumber="472">
     <added>0.0.9a</added>
     <name>Watch</name>
     <icon>347</icon>
@@ -4610,7 +4730,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>clock</hierarchy>
   </item>
-  <item ItemNumber="461">
+  <item ItemNumber="473">
     <added>0.0.9a</added>
     <name>Glowstone Dust</name>
     <icon>348</icon>
@@ -4620,7 +4740,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>glowstone_dust</hierarchy>
   </item>
-  <item ItemNumber="462">
+  <item ItemNumber="474">
     <added>0.0.9a</added>
     <name>Raw Fish</name>
     <icon>349</icon>
@@ -4630,7 +4750,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fish</hierarchy>
   </item>
-  <item ItemNumber="463">
+  <item ItemNumber="475">
     <added>v1.7</added>
     <name>Raw Salmon</name>
     <icon>349-1</icon>
@@ -4640,7 +4760,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fish:1</hierarchy>
   </item>
-  <item ItemNumber="464">
+  <item ItemNumber="476">
     <added>v1.7</added>
     <name>Clownfish</name>
     <icon>349-2</icon>
@@ -4650,7 +4770,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fish:2</hierarchy>
   </item>
-  <item ItemNumber="465">
+  <item ItemNumber="477">
     <added>v1.7</added>
     <name>Pufferfish</name>
     <icon>349-3</icon>
@@ -4660,7 +4780,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fish:3</hierarchy>
   </item>
-  <item ItemNumber="466">
+  <item ItemNumber="478">
     <added>0.0.9a</added>
     <name>Cooked Fish</name>
     <icon>350</icon>
@@ -4670,7 +4790,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_fished</hierarchy>
   </item>
-  <item ItemNumber="467">
+  <item ItemNumber="479">
     <added>v1.7</added>
     <name>Cooked Salmon</name>
     <icon>350-1</icon>
@@ -4680,7 +4800,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_fished:1</hierarchy>
   </item>
-  <item ItemNumber="468">
+  <item ItemNumber="480">
     <added>v1.7</added>
     <name>Clownfish</name>
     <icon>350-2</icon>
@@ -4690,7 +4810,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_fished:2</hierarchy>
   </item>
-  <item ItemNumber="469">
+  <item ItemNumber="481">
     <added>v1.7</added>
     <name>Pufferfish</name>
     <icon>350-3</icon>
@@ -4700,7 +4820,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_fished:3</hierarchy>
   </item>
-  <item ItemNumber="470">
+  <item ItemNumber="482">
     <added>0.0.9a</added>
     <name>Ink Sack</name>
     <icon>351</icon>
@@ -4710,7 +4830,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye</hierarchy>
   </item>
-  <item ItemNumber="471">
+  <item ItemNumber="483">
     <added>0.0.9a</added>
     <name>Rose Red Dye</name>
     <icon>351-1</icon>
@@ -4720,7 +4840,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:1</hierarchy>
   </item>
-  <item ItemNumber="472">
+  <item ItemNumber="484">
     <added>0.0.9a</added>
     <name>Cactus Green Dye</name>
     <icon>351-2</icon>
@@ -4730,7 +4850,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:2</hierarchy>
   </item>
-  <item ItemNumber="473">
+  <item ItemNumber="485">
     <added>0.0.9a</added>
     <name>Cocoa Bean</name>
     <icon>351-3</icon>
@@ -4740,7 +4860,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:3</hierarchy>
   </item>
-  <item ItemNumber="474">
+  <item ItemNumber="486">
     <added>0.0.9a</added>
     <name>Lapis Lazuli</name>
     <icon>351-4</icon>
@@ -4750,7 +4870,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:4</hierarchy>
   </item>
-  <item ItemNumber="475">
+  <item ItemNumber="487">
     <added>0.0.9a</added>
     <name>Purple Dye</name>
     <icon>351-5</icon>
@@ -4760,7 +4880,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:5</hierarchy>
   </item>
-  <item ItemNumber="476">
+  <item ItemNumber="488">
     <added>0.0.9a</added>
     <name>Cyan Dye</name>
     <icon>351-6</icon>
@@ -4770,7 +4890,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:6</hierarchy>
   </item>
-  <item ItemNumber="477">
+  <item ItemNumber="489">
     <added>0.0.9a</added>
     <name>Light Gray Dye</name>
     <icon>351-7</icon>
@@ -4780,7 +4900,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:7</hierarchy>
   </item>
-  <item ItemNumber="478">
+  <item ItemNumber="490">
     <added>0.0.9a</added>
     <name>Gray Dye</name>
     <icon>351-8</icon>
@@ -4790,7 +4910,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:8</hierarchy>
   </item>
-  <item ItemNumber="479">
+  <item ItemNumber="491">
     <added>0.0.9a</added>
     <name>Pink Dye</name>
     <icon>351-9</icon>
@@ -4800,7 +4920,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:9</hierarchy>
   </item>
-  <item ItemNumber="480">
+  <item ItemNumber="492">
     <added>0.0.9a</added>
     <name>Lime Dye</name>
     <icon>351-10</icon>
@@ -4810,7 +4930,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:10</hierarchy>
   </item>
-  <item ItemNumber="481">
+  <item ItemNumber="493">
     <added>0.0.9a</added>
     <name>Dandelion Yellow Dye</name>
     <icon>351-11</icon>
@@ -4820,7 +4940,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:11</hierarchy>
   </item>
-  <item ItemNumber="482">
+  <item ItemNumber="494">
     <added>0.0.9a</added>
     <name>Light Blue Dye</name>
     <icon>351-12</icon>
@@ -4830,7 +4950,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:12</hierarchy>
   </item>
-  <item ItemNumber="483">
+  <item ItemNumber="495">
     <added>0.0.9a</added>
     <name>Magenta Dye</name>
     <icon>351-13</icon>
@@ -4840,7 +4960,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:13</hierarchy>
   </item>
-  <item ItemNumber="484">
+  <item ItemNumber="496">
     <added>0.0.9a</added>
     <name>Orange Dye</name>
     <icon>351-14</icon>
@@ -4850,7 +4970,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:14</hierarchy>
   </item>
-  <item ItemNumber="485">
+  <item ItemNumber="497">
     <added>0.0.9a</added>
     <name>Bone Meal</name>
     <icon>351-15</icon>
@@ -4860,7 +4980,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dye:15</hierarchy>
   </item>
-  <item ItemNumber="486">
+  <item ItemNumber="498">
     <added>0.0.9a</added>
     <name>Bone</name>
     <icon>352</icon>
@@ -4870,7 +4990,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>bone</hierarchy>
   </item>
-  <item ItemNumber="487">
+  <item ItemNumber="499">
     <added>0.0.9a</added>
     <name>Sugar</name>
     <icon>353</icon>
@@ -4880,7 +5000,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>sugar</hierarchy>
   </item>
-  <item ItemNumber="488">
+  <item ItemNumber="500">
     <added>0.0.9a</added>
     <name>Cake</name>
     <icon>354</icon>
@@ -4890,7 +5010,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cake</hierarchy>
   </item>
-  <item ItemNumber="489">
+  <item ItemNumber="501">
     <added>0.0.9a</added>
     <name>Bed</name>
     <icon>355</icon>
@@ -4900,7 +5020,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>bed</hierarchy>
   </item>
-  <item ItemNumber="490">
+  <item ItemNumber="502">
     <added>0.0.9a</added>
     <name>Redstone Repeater</name>
     <icon>356</icon>
@@ -4910,7 +5030,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>repeater</hierarchy>
   </item>
-  <item ItemNumber="491">
+  <item ItemNumber="503">
     <added>0.0.9a</added>
     <name>Cookie</name>
     <icon>357</icon>
@@ -4920,7 +5040,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cookie</hierarchy>
   </item>
-  <item ItemNumber="492">
+  <item ItemNumber="504">
     <added>0.0.9a</added>
     <name>Map</name>
     <icon>358</icon>
@@ -4930,7 +5050,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>filled_map</hierarchy>
   </item>
-  <item ItemNumber="493">
+  <item ItemNumber="505">
     <added>0.0.9a</added>
     <name>Shears</name>
     <icon>359</icon>
@@ -4940,7 +5060,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>shears</hierarchy>
   </item>
-  <item ItemNumber="494">
+  <item ItemNumber="506">
     <added>v1.8Beta</added>
     <name>Melon (Slice)</name>
     <icon>360</icon>
@@ -4950,7 +5070,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>melon</hierarchy>
   </item>
-  <item ItemNumber="495">
+  <item ItemNumber="507">
     <added>v1.8Beta</added>
     <name>Pumpkin Seeds</name>
     <icon>361</icon>
@@ -4960,7 +5080,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>pumpkin_seeds</hierarchy>
   </item>
-  <item ItemNumber="496">
+  <item ItemNumber="508">
     <added>v1.8Beta</added>
     <name>Melon Seeds</name>
     <icon>362</icon>
@@ -4970,7 +5090,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>melon_seeds</hierarchy>
   </item>
-  <item ItemNumber="497">
+  <item ItemNumber="509">
     <added>v1.8Beta</added>
     <name>Raw Beef</name>
     <icon>363</icon>
@@ -4980,7 +5100,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>beef</hierarchy>
   </item>
-  <item ItemNumber="498">
+  <item ItemNumber="510">
     <added>v1.8Beta</added>
     <name>Steak</name>
     <icon>364</icon>
@@ -4990,7 +5110,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_beef</hierarchy>
   </item>
-  <item ItemNumber="499">
+  <item ItemNumber="511">
     <added>v1.8Beta</added>
     <name>Raw Chicken</name>
     <icon>365</icon>
@@ -5000,7 +5120,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>chicken</hierarchy>
   </item>
-  <item ItemNumber="500">
+  <item ItemNumber="512">
     <added>v1.8Beta</added>
     <name>Cooked Chicken</name>
     <icon>366</icon>
@@ -5010,7 +5130,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_chicken</hierarchy>
   </item>
-  <item ItemNumber="501">
+  <item ItemNumber="513">
     <added>v1.8Beta</added>
     <name>Rotten Flesh</name>
     <icon>367</icon>
@@ -5020,7 +5140,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>rotten_flesh</hierarchy>
   </item>
-  <item ItemNumber="502">
+  <item ItemNumber="514">
     <added>v1.8Beta</added>
     <name>Ender Pearl</name>
     <icon>368</icon>
@@ -5030,7 +5150,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>ender_pearl</hierarchy>
   </item>
-  <item ItemNumber="503">
+  <item ItemNumber="515">
     <added>v1.9Beta</added>
     <name>Blaze Rod</name>
     <icon>369</icon>
@@ -5040,7 +5160,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>blaze_rod</hierarchy>
   </item>
-  <item ItemNumber="504">
+  <item ItemNumber="516">
     <added>v1.9Beta</added>
     <name>Ghast Tear</name>
     <icon>370</icon>
@@ -5050,7 +5170,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>ghast_tear</hierarchy>
   </item>
-  <item ItemNumber="505">
+  <item ItemNumber="517">
     <added>v1.9Beta</added>
     <name>Gold Nugget</name>
     <icon>371</icon>
@@ -5060,7 +5180,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>gold_nugget</hierarchy>
   </item>
-  <item ItemNumber="506">
+  <item ItemNumber="518">
     <added>v1.9Beta</added>
     <name>Nether Wart Seeds</name>
     <icon>372</icon>
@@ -5070,7 +5190,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>nether_wart</hierarchy>
   </item>
-  <item ItemNumber="507">
+  <item ItemNumber="519">
     <added>v1.9Beta</added>
     <name>Water Bottle</name>
     <icon>373</icon>
@@ -5080,7 +5200,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion</hierarchy>
   </item>
-  <item ItemNumber="508">
+  <item ItemNumber="520">
     <added>v1.9Beta</added>
     <name>Awkward Potion</name>
     <icon>373-16</icon>
@@ -5090,7 +5210,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16</hierarchy>
   </item>
-  <item ItemNumber="509">
+  <item ItemNumber="521">
     <added>v1.9Beta</added>
     <name>Thick Potion</name>
     <icon>373-32</icon>
@@ -5100,7 +5220,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:32</hierarchy>
   </item>
-  <item ItemNumber="510">
+  <item ItemNumber="522">
     <added>v1.9Beta</added>
     <name>Mundane Potion</name>
     <icon>373-64</icon>
@@ -5110,7 +5230,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:64</hierarchy>
   </item>
-  <item ItemNumber="511">
+  <item ItemNumber="523">
     <added>v1.9Beta</added>
     <name>Regeneration Potion (0:45)</name>
     <icon>373-8193</icon>
@@ -5120,7 +5240,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8193</hierarchy>
   </item>
-  <item ItemNumber="512">
+  <item ItemNumber="524">
     <added>v1.9Beta</added>
     <name>Swiftness Potion (3:00)</name>
     <icon>373-8194</icon>
@@ -5130,7 +5250,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8194</hierarchy>
   </item>
-  <item ItemNumber="513">
+  <item ItemNumber="525">
     <added>v1.9Beta</added>
     <name>Fire Resistance Potion (3:00)</name>
     <icon>373-8195</icon>
@@ -5140,7 +5260,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8195</hierarchy>
   </item>
-  <item ItemNumber="514">
+  <item ItemNumber="526">
     <added>v1.9Beta</added>
     <name>Poison Potion (0:45)</name>
     <icon>373-8196</icon>
@@ -5150,7 +5270,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8196</hierarchy>
   </item>
-  <item ItemNumber="515">
+  <item ItemNumber="527">
     <added>v1.9Beta</added>
     <name>Healing Potion</name>
     <icon>373-8197</icon>
@@ -5160,7 +5280,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8197</hierarchy>
   </item>
-  <item ItemNumber="516">
+  <item ItemNumber="528">
     <added>v1.4.2</added>
     <name>Night Vision Potion (3:00)</name>
     <icon>373-8198</icon>
@@ -5170,7 +5290,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8198</hierarchy>
   </item>
-  <item ItemNumber="517">
+  <item ItemNumber="529">
     <added>v1.9Beta</added>
     <name>Weakness Potion (1:30)</name>
     <icon>373-8200</icon>
@@ -5180,7 +5300,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8200</hierarchy>
   </item>
-  <item ItemNumber="518">
+  <item ItemNumber="530">
     <added>v1.9Beta</added>
     <name>Strength Potion (3:00)</name>
     <icon>373-8201</icon>
@@ -5190,7 +5310,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8201</hierarchy>
   </item>
-  <item ItemNumber="519">
+  <item ItemNumber="531">
     <added>v1.9Beta</added>
     <name>Slowness Potion (1:30)</name>
     <icon>373-8202</icon>
@@ -5200,7 +5320,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8202</hierarchy>
   </item>
-  <item ItemNumber="520">
+  <item ItemNumber="532">
     <added>v1.9Beta</added>
     <name>Harming Potion</name>
     <icon>373-8204</icon>
@@ -5210,7 +5330,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8204</hierarchy>
   </item>
-  <item ItemNumber="521">
+  <item ItemNumber="533">
     <added>v1.7</added>
     <name>Water Breathing Potion (3:00)</name>
     <icon>373-8205</icon>
@@ -5220,7 +5340,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8205</hierarchy>
   </item>
-  <item ItemNumber="522">
+  <item ItemNumber="534">
     <added>v1.4.2</added>
     <name>Invisibility Potion (3:00)</name>
     <icon>373-8206</icon>
@@ -5230,7 +5350,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8206</hierarchy>
   </item>
-  <item ItemNumber="523">
+  <item ItemNumber="535">
     <added>v1.9Beta</added>
     <name>Regeneration Potion II (0:22)</name>
     <icon>373-8225</icon>
@@ -5240,7 +5360,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8225</hierarchy>
   </item>
-  <item ItemNumber="524">
+  <item ItemNumber="536">
     <added>v1.9Beta</added>
     <name>Swiftness Potion II (1:30)</name>
     <icon>373-8226</icon>
@@ -5250,7 +5370,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8226</hierarchy>
   </item>
-  <item ItemNumber="525">
+  <item ItemNumber="537">
     <added>v1.9Beta</added>
     <name>Poison Potion II (0:22)</name>
     <icon>373-8228</icon>
@@ -5260,7 +5380,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8228</hierarchy>
   </item>
-  <item ItemNumber="526">
+  <item ItemNumber="538">
     <added>v1.9Beta</added>
     <name>Healing Potion II</name>
     <icon>373-8229</icon>
@@ -5270,7 +5390,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8229</hierarchy>
   </item>
-  <item ItemNumber="527">
+  <item ItemNumber="539">
     <added>v1.9Beta</added>
     <name>Strength Potion II (1:30)</name>
     <icon>373-8233</icon>
@@ -5280,7 +5400,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8233</hierarchy>
   </item>
-  <item ItemNumber="528">
+  <item ItemNumber="540">
     <added>v1.8</added>
     <name>Leaping Potion II (1:30)</name>
     <icon>373-8235</icon>
@@ -5290,7 +5410,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8235</hierarchy>
   </item>
-  <item ItemNumber="529">
+  <item ItemNumber="541">
     <added>v1.9Beta</added>
     <name>Harming Potion II</name>
     <icon>373-8236</icon>
@@ -5300,7 +5420,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8236</hierarchy>
   </item>
-  <item ItemNumber="530">
+  <item ItemNumber="542">
     <added>v1.9Beta</added>
     <name>Regeneration Potion (2:00)</name>
     <icon>373-8257</icon>
@@ -5310,7 +5430,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8257</hierarchy>
   </item>
-  <item ItemNumber="531">
+  <item ItemNumber="543">
     <added>v1.9Beta</added>
     <name>Swiftness Potion (8:00)</name>
     <icon>373-8258</icon>
@@ -5320,7 +5440,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8258</hierarchy>
   </item>
-  <item ItemNumber="532">
+  <item ItemNumber="544">
     <added>v1.9Beta</added>
     <name>Fire Resistance Potion (8:00)</name>
     <icon>373-8259</icon>
@@ -5330,7 +5450,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8259</hierarchy>
   </item>
-  <item ItemNumber="533">
+  <item ItemNumber="545">
     <added>v1.9Beta</added>
     <name>Poison Potion (2:00)</name>
     <icon>373-8260</icon>
@@ -5340,7 +5460,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8260</hierarchy>
   </item>
-  <item ItemNumber="534">
+  <item ItemNumber="546">
     <added>v1.4.2</added>
     <name>Night Vision Potion (8:00)</name>
     <icon>373-8262</icon>
@@ -5350,7 +5470,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8262</hierarchy>
   </item>
-  <item ItemNumber="535">
+  <item ItemNumber="547">
     <added>v1.9Beta</added>
     <name>Weakness Potion (4:00)</name>
     <icon>373-8264</icon>
@@ -5360,7 +5480,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8264</hierarchy>
   </item>
-  <item ItemNumber="536">
+  <item ItemNumber="548">
     <added>v1.9Beta</added>
     <name>Strength Potion (8:00)</name>
     <icon>373-8265</icon>
@@ -5370,7 +5490,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8265</hierarchy>
   </item>
-  <item ItemNumber="537">
+  <item ItemNumber="549">
     <added>v1.9Beta</added>
     <name>Slowness Potion (4:00)</name>
     <icon>373-8266</icon>
@@ -5380,7 +5500,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8266</hierarchy>
   </item>
-  <item ItemNumber="538">
+  <item ItemNumber="550">
     <added>v1.8</added>
     <name>Leaping Potion (3:00)</name>
     <icon>373-8267</icon>
@@ -5390,7 +5510,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8267</hierarchy>
   </item>
-  <item ItemNumber="539">
+  <item ItemNumber="551">
     <added>v1.7</added>
     <name>Water Breathing Potion (8:00)</name>
     <icon>373-8269</icon>
@@ -5400,7 +5520,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8269</hierarchy>
   </item>
-  <item ItemNumber="540">
+  <item ItemNumber="552">
     <added>v1.4.2</added>
     <name>Invisibility Potion (8:00)</name>
     <icon>373-8270</icon>
@@ -5410,7 +5530,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:8270</hierarchy>
   </item>
-  <item ItemNumber="541">
+  <item ItemNumber="553">
     <added>v1.9Beta</added>
     <name>Regeneration Potion II (1:00)</name>
     <icon>373-8289</icon>
@@ -5420,7 +5540,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:8289</hierarchy>
   </item>
-  <item ItemNumber="542">
+  <item ItemNumber="554">
     <added>v1.9Beta</added>
     <name>Swiftness Potion II (4:00)</name>
     <icon>373-8290</icon>
@@ -5430,7 +5550,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:8290</hierarchy>
   </item>
-  <item ItemNumber="543">
+  <item ItemNumber="555">
     <added>v1.9Beta</added>
     <name>Poison Potion II (1:00)</name>
     <icon>373-8292</icon>
@@ -5440,7 +5560,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:8292</hierarchy>
   </item>
-  <item ItemNumber="544">
+  <item ItemNumber="556">
     <added>v1.9Beta</added>
     <name>Strength Potion II (4:00)</name>
     <icon>373-8297</icon>
@@ -5450,7 +5570,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:8297</hierarchy>
   </item>
-  <item ItemNumber="545">
+  <item ItemNumber="557">
     <added>v1.0</added>
     <name>Regeneration Splash (0:33)</name>
     <icon>373-16385</icon>
@@ -5460,7 +5580,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16385</hierarchy>
   </item>
-  <item ItemNumber="546">
+  <item ItemNumber="558">
     <added>v1.0</added>
     <name>Swiftness Splash (2:15)</name>
     <icon>373-16386</icon>
@@ -5470,7 +5590,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16386</hierarchy>
   </item>
-  <item ItemNumber="547">
+  <item ItemNumber="559">
     <added>v1.0</added>
     <name>Fire Resistance Splash (2:15)</name>
     <icon>373-16387</icon>
@@ -5480,7 +5600,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16387</hierarchy>
   </item>
-  <item ItemNumber="548">
+  <item ItemNumber="560">
     <added>v1.0</added>
     <name>Poison Splash (0:33)</name>
     <icon>373-16388</icon>
@@ -5490,7 +5610,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16388</hierarchy>
   </item>
-  <item ItemNumber="549">
+  <item ItemNumber="561">
     <added>v1.0</added>
     <name>Healing Splash</name>
     <icon>373-16389</icon>
@@ -5500,7 +5620,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16389</hierarchy>
   </item>
-  <item ItemNumber="550">
+  <item ItemNumber="562">
     <added>v1.4.2</added>
     <name>Night Vision Splash (2:15)</name>
     <icon>373-16390</icon>
@@ -5510,7 +5630,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16390</hierarchy>
   </item>
-  <item ItemNumber="551">
+  <item ItemNumber="563">
     <added>v1.0</added>
     <name>Weakness Splash (1:07)</name>
     <icon>373-16392</icon>
@@ -5520,7 +5640,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16392</hierarchy>
   </item>
-  <item ItemNumber="552">
+  <item ItemNumber="564">
     <added>v1.0</added>
     <name>Strength Splash (2:15)</name>
     <icon>373-16393</icon>
@@ -5530,7 +5650,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16393</hierarchy>
   </item>
-  <item ItemNumber="553">
+  <item ItemNumber="565">
     <added>v1.0</added>
     <name>Slowness Splash (1:07)</name>
     <icon>373-16394</icon>
@@ -5540,7 +5660,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16394</hierarchy>
   </item>
-  <item ItemNumber="554">
+  <item ItemNumber="566">
     <added>v1.0</added>
     <name>Harming Splash</name>
     <icon>373-16396</icon>
@@ -5550,7 +5670,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16396</hierarchy>
   </item>
-  <item ItemNumber="555">
+  <item ItemNumber="567">
     <added>v1.7</added>
     <name>Breathing Splash (2:15)</name>
     <icon>373-16397</icon>
@@ -5560,7 +5680,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16397</hierarchy>
   </item>
-  <item ItemNumber="556">
+  <item ItemNumber="568">
     <added>v1.4.2</added>
     <name>Invisibility Splash (2:15)</name>
     <icon>373-16398</icon>
@@ -5570,7 +5690,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16398</hierarchy>
   </item>
-  <item ItemNumber="557">
+  <item ItemNumber="569">
     <added>v1.0</added>
     <name>Regeneration Splash II (0:16)</name>
     <icon>373-16417</icon>
@@ -5580,7 +5700,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16417</hierarchy>
   </item>
-  <item ItemNumber="558">
+  <item ItemNumber="570">
     <added>v1.0</added>
     <name>Swiftness Splash II (1:07)</name>
     <icon>373-16418</icon>
@@ -5590,7 +5710,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16418</hierarchy>
   </item>
-  <item ItemNumber="559">
+  <item ItemNumber="571">
     <added>v1.0</added>
     <name>Poison Splash II (0:16)</name>
     <icon>373-16420</icon>
@@ -5600,7 +5720,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16420</hierarchy>
   </item>
-  <item ItemNumber="560">
+  <item ItemNumber="572">
     <added>v1.0</added>
     <name>Healing Splash II</name>
     <icon>373-16421</icon>
@@ -5610,7 +5730,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16421</hierarchy>
   </item>
-  <item ItemNumber="561">
+  <item ItemNumber="573">
     <added>v1.0</added>
     <name>Strength Splash II (1:07)</name>
     <icon>373-16425</icon>
@@ -5620,7 +5740,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16425</hierarchy>
   </item>
-  <item ItemNumber="562">
+  <item ItemNumber="574">
     <added>v1.8</added>
     <name>Leaping Splash II (1:07)</name>
     <icon>373-16427</icon>
@@ -5630,7 +5750,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16427</hierarchy>
   </item>
-  <item ItemNumber="563">
+  <item ItemNumber="575">
     <added>v1.0</added>
     <name>Harming Splash II</name>
     <icon>373-16428</icon>
@@ -5640,7 +5760,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16428</hierarchy>
   </item>
-  <item ItemNumber="564">
+  <item ItemNumber="576">
     <added>v1.0</added>
     <name>Regeneration Splash (1:30)</name>
     <icon>373-16449</icon>
@@ -5650,7 +5770,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16449</hierarchy>
   </item>
-  <item ItemNumber="565">
+  <item ItemNumber="577">
     <added>v1.0</added>
     <name>Swiftness Splash (6:00)</name>
     <icon>373-16450</icon>
@@ -5660,7 +5780,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16450</hierarchy>
   </item>
-  <item ItemNumber="566">
+  <item ItemNumber="578">
     <added>v1.0</added>
     <name>Fire Resistance Splash (6:00)</name>
     <icon>373-16451</icon>
@@ -5670,7 +5790,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16451</hierarchy>
   </item>
-  <item ItemNumber="567">
+  <item ItemNumber="579">
     <added>v1.0</added>
     <name>Poison Splash (1:30)</name>
     <icon>373-16452</icon>
@@ -5680,7 +5800,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16452</hierarchy>
   </item>
-  <item ItemNumber="568">
+  <item ItemNumber="580">
     <added>v1.4.2</added>
     <name>Night Vision Splash (6:00)</name>
     <icon>373-16454</icon>
@@ -5690,7 +5810,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16454</hierarchy>
   </item>
-  <item ItemNumber="569">
+  <item ItemNumber="581">
     <added>v1.0</added>
     <name>Weakness Splash (3:00)</name>
     <icon>373-16456</icon>
@@ -5700,7 +5820,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16456</hierarchy>
   </item>
-  <item ItemNumber="570">
+  <item ItemNumber="582">
     <added>v1.0</added>
     <name>Strength Splash (6:00)</name>
     <icon>373-16457</icon>
@@ -5710,7 +5830,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16457</hierarchy>
   </item>
-  <item ItemNumber="571">
+  <item ItemNumber="583">
     <added>v1.0</added>
     <name>Slowness Splash (3:00)</name>
     <icon>373-16458</icon>
@@ -5720,7 +5840,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16458</hierarchy>
   </item>
-  <item ItemNumber="572">
+  <item ItemNumber="584">
     <added>v1.8</added>
     <name>Leaping Splash (2:15)</name>
     <icon>373-16459</icon>
@@ -5730,7 +5850,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16459</hierarchy>
   </item>
-  <item ItemNumber="573">
+  <item ItemNumber="585">
     <added>v1.7</added>
     <name>Breathing Splash (6:00)</name>
     <icon>373-16461</icon>
@@ -5740,7 +5860,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16461</hierarchy>
   </item>
-  <item ItemNumber="574">
+  <item ItemNumber="586">
     <added>v1.4.2</added>
     <name>Invisibility Splash (6:00)</name>
     <icon>373-16462</icon>
@@ -5750,7 +5870,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potion:16462</hierarchy>
   </item>
-  <item ItemNumber="575">
+  <item ItemNumber="587">
     <added>v1.0</added>
     <name>Regeneration Splash II (0:45)</name>
     <icon>373-16481</icon>
@@ -5760,7 +5880,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:16481</hierarchy>
   </item>
-  <item ItemNumber="576">
+  <item ItemNumber="588">
     <added>v1.0</added>
     <name>Swiftness Splash II (3:00)</name>
     <icon>373-16482</icon>
@@ -5770,7 +5890,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:16482</hierarchy>
   </item>
-  <item ItemNumber="577">
+  <item ItemNumber="589">
     <added>v1.0</added>
     <name>Poison Splash II (0:45)</name>
     <icon>373-16484</icon>
@@ -5780,7 +5900,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:16484</hierarchy>
   </item>
-  <item ItemNumber="578">
+  <item ItemNumber="590">
     <added>v1.0</added>
     <name>Strength Splash II (3:00)</name>
     <icon>373-16489</icon>
@@ -5790,7 +5910,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>potion:16489</hierarchy>
   </item>
-  <item ItemNumber="579">
+  <item ItemNumber="591">
     <added>v1.9Beta</added>
     <name>Glass Bottle</name>
     <icon>374</icon>
@@ -5800,7 +5920,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>glass_bottle</hierarchy>
   </item>
-  <item ItemNumber="580">
+  <item ItemNumber="592">
     <added>v1.9Beta</added>
     <name>Spider Eye</name>
     <icon>375</icon>
@@ -5810,7 +5930,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>spider_eye</hierarchy>
   </item>
-  <item ItemNumber="581">
+  <item ItemNumber="593">
     <added>v1.9Beta</added>
     <name>Fermented Spider Eye</name>
     <icon>376</icon>
@@ -5820,7 +5940,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fermented_spider_eye</hierarchy>
   </item>
-  <item ItemNumber="582">
+  <item ItemNumber="594">
     <added>v1.9Beta</added>
     <name>Blaze Powder</name>
     <icon>377</icon>
@@ -5830,7 +5950,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>blaze_powder</hierarchy>
   </item>
-  <item ItemNumber="583">
+  <item ItemNumber="595">
     <added>v1.9Beta</added>
     <name>Magma Cream</name>
     <icon>378</icon>
@@ -5840,7 +5960,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>magma_cream</hierarchy>
   </item>
-  <item ItemNumber="584">
+  <item ItemNumber="596">
     <added>v1.9Beta</added>
     <name>Brewing Stand</name>
     <icon>379</icon>
@@ -5850,7 +5970,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>brewing_stand</hierarchy>
   </item>
-  <item ItemNumber="585">
+  <item ItemNumber="597">
     <added>v1.9Beta</added>
     <name>Cauldron</name>
     <icon>380</icon>
@@ -5860,7 +5980,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cauldron</hierarchy>
   </item>
-  <item ItemNumber="586">
+  <item ItemNumber="598">
     <added>v1.9Beta</added>
     <name>Eye of Ender</name>
     <icon>381</icon>
@@ -5870,7 +5990,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>ender_eye</hierarchy>
   </item>
-  <item ItemNumber="587">
+  <item ItemNumber="599">
     <added>v1.9Beta</added>
     <name>Glistering Melon (Slice)</name>
     <icon>382</icon>
@@ -5880,7 +6000,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>speckled_melon</hierarchy>
   </item>
-  <item ItemNumber="588">
+  <item ItemNumber="600">
     <added>v1.2</added>
     <name>Spawn Egg (Creeper)</name>
     <icon>383-50</icon>
@@ -5890,7 +6010,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:50</hierarchy>
   </item>
-  <item ItemNumber="589">
+  <item ItemNumber="601">
     <added>v1.2</added>
     <name>Spawn Egg (Skeleton)</name>
     <icon>383-51</icon>
@@ -5900,7 +6020,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:51</hierarchy>
   </item>
-  <item ItemNumber="590">
+  <item ItemNumber="602">
     <added>v1.2</added>
     <name>Spawn Egg (Spider)</name>
     <icon>383-52</icon>
@@ -5910,7 +6030,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:52</hierarchy>
   </item>
-  <item ItemNumber="591">
+  <item ItemNumber="603">
     <added>v1.2</added>
     <name>Spawn Egg (Zombie)</name>
     <icon>383-54</icon>
@@ -5920,7 +6040,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:54</hierarchy>
   </item>
-  <item ItemNumber="592">
+  <item ItemNumber="604">
     <added>v1.2</added>
     <name>Spawn Egg (Slime)</name>
     <icon>383-55</icon>
@@ -5930,7 +6050,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:55</hierarchy>
   </item>
-  <item ItemNumber="593">
+  <item ItemNumber="605">
     <added>v1.2</added>
     <name>Spawn Egg (Ghast)</name>
     <icon>383-56</icon>
@@ -5940,7 +6060,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:56</hierarchy>
   </item>
-  <item ItemNumber="594">
+  <item ItemNumber="606">
     <added>v1.2</added>
     <name>Spawn Egg (Zombie Pigmen)</name>
     <icon>383-57</icon>
@@ -5950,7 +6070,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:57</hierarchy>
   </item>
-  <item ItemNumber="595">
+  <item ItemNumber="607">
     <added>v1.2</added>
     <name>Spawn Egg (Endermen)</name>
     <icon>383-58</icon>
@@ -5960,7 +6080,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:58</hierarchy>
   </item>
-  <item ItemNumber="596">
+  <item ItemNumber="608">
     <added>v1.2</added>
     <name>Spawn Egg (Cave Spider)</name>
     <icon>383-59</icon>
@@ -5970,7 +6090,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:59</hierarchy>
   </item>
-  <item ItemNumber="597">
+  <item ItemNumber="609">
     <added>v1.2</added>
     <name>Spawn Egg (Silverfish)</name>
     <icon>383-60</icon>
@@ -5980,7 +6100,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:60</hierarchy>
   </item>
-  <item ItemNumber="598">
+  <item ItemNumber="610">
     <added>v1.2</added>
     <name>Spawn Egg (Blaze)</name>
     <icon>383-61</icon>
@@ -5990,7 +6110,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:61</hierarchy>
   </item>
-  <item ItemNumber="599">
+  <item ItemNumber="611">
     <added>v1.2</added>
     <name>Spawn Egg (Magma Cube)</name>
     <icon>383-62</icon>
@@ -6000,7 +6120,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:62</hierarchy>
   </item>
-  <item ItemNumber="600">
+  <item ItemNumber="612">
     <added>v1.4.2</added>
     <name>Spawn Egg (Bat)</name>
     <icon>383-65</icon>
@@ -6010,7 +6130,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:65</hierarchy>
   </item>
-  <item ItemNumber="601">
+  <item ItemNumber="613">
     <added>v1.4.2</added>
     <name>Spawn Egg (Witch)</name>
     <icon>383-66</icon>
@@ -6020,7 +6140,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:66</hierarchy>
   </item>
-  <item ItemNumber="602">
+  <item ItemNumber="614">
     <added>v1.8</added>
     <name>Spawn Egg (Endermite)</name>
     <icon>383-67</icon>
@@ -6030,7 +6150,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:67</hierarchy>
   </item>
-  <item ItemNumber="603">
+  <item ItemNumber="615">
     <added>v1.8</added>
     <name>Spawn Egg (Guardian)</name>
     <icon>383-68</icon>
@@ -6040,7 +6160,17 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:68</hierarchy>
   </item>
-  <item ItemNumber="604">
+  <item ItemNumber="616">
+    <added>v1.9</added>
+    <name>Spawn Egg (Shulker)</name>
+    <icon>383-69</icon>
+    <id>383:69</id>
+    <type>Item</type>
+    <description>Spawn Eggs allow you to spawn Mobs by right clicking on the ground while they are in your hands. You can also use them in Dispencers. Hostile mobs will instantly de-spawn if the difficulty is on Peaceful.</description>
+    <spawnonly>1</spawnonly>
+    <hierarchy>spawn_egg:69</hierarchy>
+  </item>
+  <item ItemNumber="617">
     <added>v1.2</added>
     <name>Spawn Egg (Pig)</name>
     <icon>383-90</icon>
@@ -6050,7 +6180,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:90</hierarchy>
   </item>
-  <item ItemNumber="605">
+  <item ItemNumber="618">
     <added>v1.2</added>
     <name>Spawn Egg (Sheep)</name>
     <icon>383-91</icon>
@@ -6060,7 +6190,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:91</hierarchy>
   </item>
-  <item ItemNumber="606">
+  <item ItemNumber="619">
     <added>v1.2</added>
     <name>Spawn Egg (Cow)</name>
     <icon>383-92</icon>
@@ -6070,7 +6200,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:92</hierarchy>
   </item>
-  <item ItemNumber="607">
+  <item ItemNumber="620">
     <added>v1.2</added>
     <name>Spawn Egg (Chicken)</name>
     <icon>383-93</icon>
@@ -6080,7 +6210,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:93</hierarchy>
   </item>
-  <item ItemNumber="608">
+  <item ItemNumber="621">
     <added>v1.2</added>
     <name>Spawn Egg (Squid)</name>
     <icon>383-94</icon>
@@ -6090,7 +6220,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:94</hierarchy>
   </item>
-  <item ItemNumber="609">
+  <item ItemNumber="622">
     <added>v1.2</added>
     <name>Spawn Egg (Wolf)</name>
     <icon>383-95</icon>
@@ -6100,7 +6230,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:95</hierarchy>
   </item>
-  <item ItemNumber="610">
+  <item ItemNumber="623">
     <added>v1.2</added>
     <name>Spawn Egg (Mooshroom)</name>
     <icon>383-96</icon>
@@ -6110,7 +6240,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:96</hierarchy>
   </item>
-  <item ItemNumber="611">
+  <item ItemNumber="624">
     <added>v1.2</added>
     <name>Spawn Egg (Ocelot)</name>
     <icon>383-98</icon>
@@ -6120,7 +6250,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:98</hierarchy>
   </item>
-  <item ItemNumber="612">
+  <item ItemNumber="625">
     <added>v1.6.2</added>
     <name>Spawn Egg (Horse)</name>
     <icon>383-100</icon>
@@ -6130,7 +6260,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:100</hierarchy>
   </item>
-  <item ItemNumber="613">
+  <item ItemNumber="626">
     <added>v1.8</added>
     <name>Spawn Egg (Rabbit)</name>
     <icon>383-101</icon>
@@ -6140,7 +6270,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:101</hierarchy>
   </item>
-  <item ItemNumber="614">
+  <item ItemNumber="627">
     <added>v1.2</added>
     <name>Spawn Egg (Villager)</name>
     <icon>383-120</icon>
@@ -6150,7 +6280,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>spawn_egg:120</hierarchy>
   </item>
-  <item ItemNumber="615">
+  <item ItemNumber="628">
     <added>v1.2</added>
     <name>Bottle of Enchanting</name>
     <icon>384</icon>
@@ -6160,7 +6290,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>experience_bottle</hierarchy>
   </item>
-  <item ItemNumber="616">
+  <item ItemNumber="629">
     <added>v1.2</added>
     <name>Fire Charge</name>
     <icon>385</icon>
@@ -6170,7 +6300,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fire_charge</hierarchy>
   </item>
-  <item ItemNumber="617">
+  <item ItemNumber="630">
     <added>v1.3.1</added>
     <name>Book and Quill</name>
     <icon>386</icon>
@@ -6180,7 +6310,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>writable_book</hierarchy>
   </item>
-  <item ItemNumber="618">
+  <item ItemNumber="631">
     <added>v1.3.1</added>
     <name>Written Book</name>
     <icon>387</icon>
@@ -6190,7 +6320,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>written_book</hierarchy>
   </item>
-  <item ItemNumber="619">
+  <item ItemNumber="632">
     <added>v1.3.1</added>
     <name>Emerald</name>
     <icon>388</icon>
@@ -6200,7 +6330,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>emerald</hierarchy>
   </item>
-  <item ItemNumber="620">
+  <item ItemNumber="633">
     <added>v1.4.2</added>
     <name>Item Frame</name>
     <icon>389</icon>
@@ -6210,7 +6340,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>item_frame</hierarchy>
   </item>
-  <item ItemNumber="621">
+  <item ItemNumber="634">
     <added>v1.4.2</added>
     <name>Flower Pot</name>
     <icon>390</icon>
@@ -6220,7 +6350,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>flower_pot</hierarchy>
   </item>
-  <item ItemNumber="622">
+  <item ItemNumber="635">
     <added>v1.4.2</added>
     <name>Carrot</name>
     <icon>391</icon>
@@ -6230,7 +6360,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>carrot</hierarchy>
   </item>
-  <item ItemNumber="623">
+  <item ItemNumber="636">
     <added>v1.4.2</added>
     <name>Potato</name>
     <icon>392</icon>
@@ -6240,7 +6370,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>potato</hierarchy>
   </item>
-  <item ItemNumber="624">
+  <item ItemNumber="637">
     <added>v1.4.2</added>
     <name>Baked Potato</name>
     <icon>393</icon>
@@ -6250,7 +6380,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>baked_potato</hierarchy>
   </item>
-  <item ItemNumber="625">
+  <item ItemNumber="638">
     <added>v1.4.2</added>
     <name>Poisonous Potato</name>
     <icon>394</icon>
@@ -6260,7 +6390,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>poisonous_potato</hierarchy>
   </item>
-  <item ItemNumber="626">
+  <item ItemNumber="639">
     <added>v1.4.2</added>
     <name>Empty Map</name>
     <icon>395</icon>
@@ -6270,7 +6400,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>map</hierarchy>
   </item>
-  <item ItemNumber="627">
+  <item ItemNumber="640">
     <added>v1.4.2</added>
     <name>Golden Carrot</name>
     <icon>396</icon>
@@ -6280,7 +6410,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_carrot</hierarchy>
   </item>
-  <item ItemNumber="628">
+  <item ItemNumber="641">
     <added>v1.4.2</added>
     <name>Head (Skeleton)</name>
     <icon>397</icon>
@@ -6290,7 +6420,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>skull</hierarchy>
   </item>
-  <item ItemNumber="629">
+  <item ItemNumber="642">
     <added>v1.4.2</added>
     <name>Head (Wither)</name>
     <icon>397-1</icon>
@@ -6300,7 +6430,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>skull:1</hierarchy>
   </item>
-  <item ItemNumber="630">
+  <item ItemNumber="643">
     <added>v1.4.2</added>
     <name>Head (Zombie)</name>
     <icon>397-2</icon>
@@ -6310,7 +6440,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>skull:2</hierarchy>
   </item>
-  <item ItemNumber="631">
+  <item ItemNumber="644">
     <added>v1.4.2</added>
     <name>Head (Steve)</name>
     <icon>397-3</icon>
@@ -6320,7 +6450,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>skull:3</hierarchy>
   </item>
-  <item ItemNumber="632">
+  <item ItemNumber="645">
     <added>v1.4.2</added>
     <name>Head (Creeper)</name>
     <icon>397-4</icon>
@@ -6330,7 +6460,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>skull:4</hierarchy>
   </item>
-  <item ItemNumber="633">
+  <item ItemNumber="646">
     <added>v1.4.2</added>
     <name>Carrot on a Stick</name>
     <icon>398</icon>
@@ -6340,7 +6470,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>carrot_on_a_stick</hierarchy>
   </item>
-  <item ItemNumber="634">
+  <item ItemNumber="647">
     <added>v1.4.2</added>
     <name>Nether Star</name>
     <icon>399</icon>
@@ -6350,7 +6480,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>nether_star</hierarchy>
   </item>
-  <item ItemNumber="635">
+  <item ItemNumber="648">
     <added>v1.4.2</added>
     <name>Pumpkin Pie</name>
     <icon>400</icon>
@@ -6360,7 +6490,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>pumpkin_pie</hierarchy>
   </item>
-  <item ItemNumber="636">
+  <item ItemNumber="649">
     <added>v1.4.6</added>
     <name>Firework Rocket</name>
     <icon>401</icon>
@@ -6370,7 +6500,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>fireworks</hierarchy>
   </item>
-  <item ItemNumber="637">
+  <item ItemNumber="650">
     <added>v1.4.6</added>
     <name>Firework Star</name>
     <icon>402</icon>
@@ -6380,7 +6510,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>firework_charge</hierarchy>
   </item>
-  <item ItemNumber="638">
+  <item ItemNumber="651">
     <added>v1.4.6</added>
     <name>Enchanted Book</name>
     <icon>403</icon>
@@ -6390,7 +6520,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>enchanted_book</hierarchy>
   </item>
-  <item ItemNumber="639">
+  <item ItemNumber="652">
     <added>v1.5</added>
     <name>Redstone Comparator</name>
     <icon>404</icon>
@@ -6400,7 +6530,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>comparator</hierarchy>
   </item>
-  <item ItemNumber="640">
+  <item ItemNumber="653">
     <added>v1.5</added>
     <name>Nether Brick (Item)</name>
     <icon>405</icon>
@@ -6410,7 +6540,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>netherbrick</hierarchy>
   </item>
-  <item ItemNumber="641">
+  <item ItemNumber="654">
     <added>v1.5</added>
     <name>Nether Quartz</name>
     <icon>406</icon>
@@ -6420,7 +6550,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>quartz</hierarchy>
   </item>
-  <item ItemNumber="642">
+  <item ItemNumber="655">
     <added>v1.5</added>
     <name>Minecart (TNT)</name>
     <icon>407</icon>
@@ -6430,7 +6560,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>tnt_minecart</hierarchy>
   </item>
-  <item ItemNumber="643">
+  <item ItemNumber="656">
     <added>v1.5</added>
     <name>Minecart (Hopper)</name>
     <icon>408</icon>
@@ -6440,7 +6570,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>hopper_minecart</hierarchy>
   </item>
-  <item ItemNumber="644">
+  <item ItemNumber="657">
     <added>v1.8</added>
     <name>Prismarine Shard</name>
     <icon>409</icon>
@@ -6450,7 +6580,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>prismarine_shard</hierarchy>
   </item>
-  <item ItemNumber="645">
+  <item ItemNumber="658">
     <added>v1.8</added>
     <name>Prismarine Crystals</name>
     <icon>410</icon>
@@ -6460,7 +6590,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>prismarine_crystals</hierarchy>
   </item>
-  <item ItemNumber="646">
+  <item ItemNumber="659">
     <added>v1.8</added>
     <name>Raw Rabbit</name>
     <icon>411</icon>
@@ -6470,7 +6600,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>rabbit</hierarchy>
   </item>
-  <item ItemNumber="647">
+  <item ItemNumber="660">
     <added>v1.8</added>
     <name>Cooked Rabbit</name>
     <icon>412</icon>
@@ -6480,7 +6610,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_rabbit</hierarchy>
   </item>
-  <item ItemNumber="648">
+  <item ItemNumber="661">
     <added>v1.8</added>
     <name>Rabbit Stew</name>
     <icon>413</icon>
@@ -6490,7 +6620,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>rabbit_stew</hierarchy>
   </item>
-  <item ItemNumber="649">
+  <item ItemNumber="662">
     <added>0.0.9a</added>
     <name>Rabbit's Foot</name>
     <icon>414</icon>
@@ -6500,7 +6630,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>rabbit_foot</hierarchy>
   </item>
-  <item ItemNumber="650">
+  <item ItemNumber="663">
     <added>v1.8</added>
     <name>Rabbit Hide</name>
     <icon>415</icon>
@@ -6510,7 +6640,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>rabbit_hide</hierarchy>
   </item>
-  <item ItemNumber="651">
+  <item ItemNumber="664">
     <added>v1.8</added>
     <name>Armor Stand</name>
     <icon>416</icon>
@@ -6520,7 +6650,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>armor_stand</hierarchy>
   </item>
-  <item ItemNumber="652">
+  <item ItemNumber="665">
     <added>v1.6.2</added>
     <name>Iron Horse Armor</name>
     <icon>417</icon>
@@ -6530,7 +6660,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>iron_horse_armor</hierarchy>
   </item>
-  <item ItemNumber="653">
+  <item ItemNumber="666">
     <added>v1.6.2</added>
     <name>Gold Horse Armor</name>
     <icon>418</icon>
@@ -6540,7 +6670,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>golden_horse_armor</hierarchy>
   </item>
-  <item ItemNumber="654">
+  <item ItemNumber="667">
     <added>v1.6.2</added>
     <name>Diamond Horse Armor</name>
     <icon>419</icon>
@@ -6550,7 +6680,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>diamond_horse_armor</hierarchy>
   </item>
-  <item ItemNumber="655">
+  <item ItemNumber="668">
     <added>v1.6.2</added>
     <name>Lead</name>
     <icon>420</icon>
@@ -6560,7 +6690,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>lead</hierarchy>
   </item>
-  <item ItemNumber="656">
+  <item ItemNumber="669">
     <added>v1.6.2</added>
     <name>Name Tag</name>
     <icon>421</icon>
@@ -6570,7 +6700,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>name_tag</hierarchy>
   </item>
-  <item ItemNumber="657">
+  <item ItemNumber="670">
     <added>v1.7</added>
     <name>Minecart (Command Block)</name>
     <icon>422</icon>
@@ -6580,7 +6710,7 @@
     <spawnonly>1</spawnonly>
     <hierarchy>command_block_minecart</hierarchy>
   </item>
-  <item ItemNumber="658">
+  <item ItemNumber="671">
     <added>v1.8</added>
     <name>Raw Mutton</name>
     <icon>423</icon>
@@ -6590,7 +6720,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>mutton</hierarchy>
   </item>
-  <item ItemNumber="659">
+  <item ItemNumber="672">
     <added>v1.8</added>
     <name>Cooked Mutton</name>
     <icon>424</icon>
@@ -6600,7 +6730,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>cooked_mutton</hierarchy>
   </item>
-  <item ItemNumber="660">
+  <item ItemNumber="673">
     <added>v1.8</added>
     <name>Banner (Black)</name>
     <icon>425</icon>
@@ -6610,7 +6740,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner</hierarchy>
   </item>
-  <item ItemNumber="661">
+  <item ItemNumber="674">
     <added>v1.8</added>
     <name>Banner (Red)</name>
     <icon>425-1</icon>
@@ -6620,7 +6750,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:1</hierarchy>
   </item>
-  <item ItemNumber="662">
+  <item ItemNumber="675">
     <added>v1.8</added>
     <name>Banner (Green)</name>
     <icon>425-2</icon>
@@ -6630,7 +6760,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:2</hierarchy>
   </item>
-  <item ItemNumber="663">
+  <item ItemNumber="676">
     <added>v1.8</added>
     <name>Banner (Brown)</name>
     <icon>425-3</icon>
@@ -6640,7 +6770,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:3</hierarchy>
   </item>
-  <item ItemNumber="664">
+  <item ItemNumber="677">
     <added>v1.8</added>
     <name>Banner (Blue)</name>
     <icon>425-4</icon>
@@ -6650,7 +6780,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:4</hierarchy>
   </item>
-  <item ItemNumber="665">
+  <item ItemNumber="678">
     <added>v1.8</added>
     <name>Banner (Purple)</name>
     <icon>425-5</icon>
@@ -6660,7 +6790,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:5</hierarchy>
   </item>
-  <item ItemNumber="666">
+  <item ItemNumber="679">
     <added>v1.8</added>
     <name>Banner (Cyan)</name>
     <icon>425-6</icon>
@@ -6670,7 +6800,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:6</hierarchy>
   </item>
-  <item ItemNumber="667">
+  <item ItemNumber="680">
     <added>v1.8</added>
     <name>Banner (Light Gray)</name>
     <icon>425-7</icon>
@@ -6680,7 +6810,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:7</hierarchy>
   </item>
-  <item ItemNumber="668">
+  <item ItemNumber="681">
     <added>v1.8</added>
     <name>Banner (Gray)</name>
     <icon>425-8</icon>
@@ -6690,7 +6820,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:8</hierarchy>
   </item>
-  <item ItemNumber="669">
+  <item ItemNumber="682">
     <added>v1.8</added>
     <name>Banner (Pink)</name>
     <icon>425-9</icon>
@@ -6700,7 +6830,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:9</hierarchy>
   </item>
-  <item ItemNumber="670">
+  <item ItemNumber="683">
     <added>v1.8</added>
     <name>Banner (Lime)</name>
     <icon>425-10</icon>
@@ -6710,7 +6840,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:10</hierarchy>
   </item>
-  <item ItemNumber="671">
+  <item ItemNumber="684">
     <added>v1.8</added>
     <name>Banner (Yellow)</name>
     <icon>425-11</icon>
@@ -6720,7 +6850,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:11</hierarchy>
   </item>
-  <item ItemNumber="672">
+  <item ItemNumber="685">
     <added>v1.8</added>
     <name>Banner (Light Blue)</name>
     <icon>425-12</icon>
@@ -6730,7 +6860,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:12</hierarchy>
   </item>
-  <item ItemNumber="673">
+  <item ItemNumber="686">
     <added>v1.8</added>
     <name>Banner (Magenta)</name>
     <icon>425-13</icon>
@@ -6740,7 +6870,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:13</hierarchy>
   </item>
-  <item ItemNumber="674">
+  <item ItemNumber="687">
     <added>v1.8</added>
     <name>Banner (Orange)</name>
     <icon>425-14</icon>
@@ -6750,7 +6880,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:14</hierarchy>
   </item>
-  <item ItemNumber="675">
+  <item ItemNumber="688">
     <added>v1.8</added>
     <name>Banner (White)</name>
     <icon>425-15</icon>
@@ -6760,7 +6890,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>banner:15</hierarchy>
   </item>
-  <item ItemNumber="676">
+  <item ItemNumber="689">
     <added>v1.8</added>
     <name>Wooden Door (Spruce)</name>
     <icon>427</icon>
@@ -6770,7 +6900,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>spruce_door</hierarchy>
   </item>
-  <item ItemNumber="677">
+  <item ItemNumber="690">
     <added>v1.8</added>
     <name>Wooden Door (Birch)</name>
     <icon>428</icon>
@@ -6780,7 +6910,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>birch_door</hierarchy>
   </item>
-  <item ItemNumber="678">
+  <item ItemNumber="691">
     <added>v1.8</added>
     <name>Wooden Door (Jungle)</name>
     <icon>429</icon>
@@ -6790,7 +6920,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>jungle_door</hierarchy>
   </item>
-  <item ItemNumber="679">
+  <item ItemNumber="692">
     <added>v1.8</added>
     <name>Wooden Door (Acacia)</name>
     <icon>430</icon>
@@ -6800,7 +6930,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>acacia_door</hierarchy>
   </item>
-  <item ItemNumber="680">
+  <item ItemNumber="693">
     <added>v1.8</added>
     <name>Wooden Door (Dark Oak)</name>
     <icon>431</icon>
@@ -6810,7 +6940,67 @@
     <spawnonly>0</spawnonly>
     <hierarchy>dark_oak_door</hierarchy>
   </item>
-  <item ItemNumber="681">
+  <item ItemNumber="694">
+    <added>v1.9</added>
+    <name>Chorus Fruit</name>
+    <icon>432</icon>
+    <id>432</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>chorus_fruit</hierarchy>
+  </item>
+  <item ItemNumber="695">
+    <added>v1.9</added>
+    <name>Chorus Fruit (Popped)</name>
+    <icon>433</icon>
+    <id>433</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>chorus_fruit_popped</hierarchy>
+  </item>
+  <item ItemNumber="696">
+    <added>v1.9</added>
+    <name>Beetroot</name>
+    <icon>434</icon>
+    <id>434</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>beetroot</hierarchy>
+  </item>
+  <item ItemNumber="697">
+    <added>v1.9</added>
+    <name>Beetroot Seeds</name>
+    <icon>435</icon>
+    <id>435</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>beetroot_seeds</hierarchy>
+  </item>
+  <item ItemNumber="698">
+    <added>v1.9</added>
+    <name>Beetroot Soup</name>
+    <icon>436</icon>
+    <id>436</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>beetroot_soup</hierarchy>
+  </item>
+  <item ItemNumber="699">
+    <added>v1.9</added>
+    <name>Arrow (Spectral)</name>
+    <icon>439</icon>
+    <id>439</id>
+    <type>Item</type>
+    <description/>
+    <spawnonly>0</spawnonly>
+    <hierarchy>spectral_arrow</hierarchy>
+  </item>
+  <item ItemNumber="700">
     <added>0.0.9a</added>
     <name>Music Disk (13)</name>
     <icon>2256</icon>
@@ -6820,7 +7010,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_13</hierarchy>
   </item>
-  <item ItemNumber="682">
+  <item ItemNumber="701">
     <added>0.0.9a</added>
     <name>Music Disk (Cat)</name>
     <icon>2257</icon>
@@ -6830,7 +7020,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_cat</hierarchy>
   </item>
-  <item ItemNumber="683">
+  <item ItemNumber="702">
     <added>v1.9Beta</added>
     <name>Music Disk (Blocks)</name>
     <icon>2258</icon>
@@ -6840,7 +7030,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_blocks</hierarchy>
   </item>
-  <item ItemNumber="684">
+  <item ItemNumber="703">
     <added>v1.9Beta</added>
     <name>Music Disk (Chirp)</name>
     <icon>2259</icon>
@@ -6850,7 +7040,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_chirp</hierarchy>
   </item>
-  <item ItemNumber="685">
+  <item ItemNumber="704">
     <added>v1.9Beta</added>
     <name>Music Disk (Far)</name>
     <icon>2260</icon>
@@ -6860,7 +7050,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_far</hierarchy>
   </item>
-  <item ItemNumber="686">
+  <item ItemNumber="705">
     <added>v1.9Beta</added>
     <name>Music Disk (Mall)</name>
     <icon>2261</icon>
@@ -6870,7 +7060,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_mall</hierarchy>
   </item>
-  <item ItemNumber="687">
+  <item ItemNumber="706">
     <added>v1.9Beta</added>
     <name>Music Disk (Mellohi)</name>
     <icon>2262</icon>
@@ -6880,7 +7070,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_mellohi</hierarchy>
   </item>
-  <item ItemNumber="688">
+  <item ItemNumber="707">
     <added>v1.9Beta</added>
     <name>Music Disk (Stal)</name>
     <icon>2263</icon>
@@ -6890,7 +7080,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_stal</hierarchy>
   </item>
-  <item ItemNumber="689">
+  <item ItemNumber="708">
     <added>v1.9Beta</added>
     <name>Music Disk (Strad)</name>
     <icon>2264</icon>
@@ -6900,7 +7090,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_strad</hierarchy>
   </item>
-  <item ItemNumber="690">
+  <item ItemNumber="709">
     <added>v1.9Beta</added>
     <name>Music Disk (Ward)</name>
     <icon>2265</icon>
@@ -6910,7 +7100,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_ward</hierarchy>
   </item>
-  <item ItemNumber="691">
+  <item ItemNumber="710">
     <added>v1.9Beta</added>
     <name>Music Disk (11)</name>
     <icon>2266</icon>
@@ -6920,7 +7110,7 @@
     <spawnonly>0</spawnonly>
     <hierarchy>record_11</hierarchy>
   </item>
-  <item ItemNumber="692">
+  <item ItemNumber="711">
     <added>v1.4.2</added>
     <name>Music Disk (Wait)</name>
     <icon>2267</icon>
