@@ -66,6 +66,9 @@ include_once ROOT . "assets/header.php";
 							<li><a href="?mode=settings">Settings</a></li>
 							<li><a href="?mode=ini-test">PHP Settings</a></li>
 							<li><a href="achievements-install/index.php">Achievement - Installer</a></li>
+							<li><a href="update/update_brewing.php">Update Brewing</a></li>
+							<li><a href="update/update_crafting.php">Update Crafting</a></li>
+							<li><a href="update/update_smelting.php">Update Smelting</a></li>
 						</ul>
 						<ul class="right">
 							<li><a href="?LOGOUT=TRUE">LOGOUT</a></li>
