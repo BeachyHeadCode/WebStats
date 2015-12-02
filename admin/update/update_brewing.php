@@ -1,38 +1,40 @@
 <?php
+//http://minecraft.gamepedia.com/Smelting 12/1/15
+
 $smelting	=	array(
 	//--- Ores & Materials ---
-	0	=>	'265|15,263',//Iron Ingot
-	1	=>	'266|14,263',//Gold Ingot
-	2	=>	'20|12,263',//Glass
-	3	=>	'1|4,263',//Stone
-	4	=>	'336|337,263',//Clay Brick
-	5   =>  '405|87,263',//Nether Brick
-	6   =>  '172|82,263',//Hardened Clay
-	7   =>  '98-2|98,263',//Cracked Stone Bricks
-	8	=>	'264|56,263',//Diamond Gem
-	9	=>	'351-4|21,263',//Lapis Lazuli
-	10	=>	'331|73,263',//Redstone Dust
-	11	=>	'263|16,263',//Coal
-	12	=>	'388|129,263',//Emerald
-	13	=>	'406|153,263',//Nether Quartz
-	14  =>  '263-1|17,263',//Charcoal
-	15  =>  '263-1|17-1,263',//Charcoal
-	17  =>  '263-1|17-2,263',//Charcoal
-	18  =>  '263-1|17-3,263',//Charcoal
-	19  =>  '263-1|17-4,263',//Charcoal
-	20  =>  '263-1|17-5,263',//Charcoal
-	21  =>  '351-2|81,263',//Cactus Green
-	22  =>  '19|19-2,263',//Sponge
+	'265|15,263',//Iron Ingot
+	'266|14,263',//Gold Ingot
+	'20|12,263',//Glass
+	'1|4,263',//Stone
+	'336|337,263',//Clay Brick
+	'405|87,263',//Nether Brick
+	'172|82,263',//Hardened Clay
+	'98-2|98,263',//Cracked Stone Bricks
+	'264|56,263',//Diamond Gem
+	'351-4|21,263',//Lapis Lazuli
+	'331|73,263',//Redstone Dust
+	'263|16,263',//Coal
+	'388|129,263',//Emerald
+	'406|153,263',//Nether Quartz
+	'263-1|17,263',//Charcoal
+	'263-1|17-1,263',//Charcoal
+	'263-1|17-2,263',//Charcoal
+	'263-1|17-3,263',//Charcoal
+	'263-1|17-4,263',//Charcoal
+	'263-1|17-5,263',//Charcoal
+	'351-2|81,263',//Cactus Green
+	'19|19-2,263',//Sponge
 	//---END Ores & Materials ---
 	//--- FOOD ---
-	23	=>	'320|319,263',//Cooked Porkchop
-	24	=>	'364|363,263',//Steak
-	25	=>	'366|365,263',//Cooked Chicken
-	26	=>	'350|349,263',//Cooked Fish
-	27	=>	'393|392,263',//Baked Potato
-	28  => '350-1|349-1,263',//Cooked Salmon
-	29  => '424|423,263',//Cooked Mutton
-	30  => '412|411,263',//Cooked Rabbit
+	'320|319,263',//Cooked Porkchop
+	'364|363,263',//Steak
+	'366|365,263',//Cooked Chicken
+	'350|349,263',//Cooked Fish
+	'393|392,263',//Baked Potato
+	'350-1|349-1,263',//Cooked Salmon
+	'424|423,263',//Cooked Mutton
+	'412|411,263',//Cooked Rabbit
 	//--- END FOOD ---
 );
 
@@ -65,6 +67,6 @@ for($i=1; $i <= count($smelting); $i++) {
 	$xmlItem->appendChild($xmlDoc->createElement('Input2', $parser_step_2_line_2[1]));
 }
 
-$xmlDoc->save("brewing.xml");
+$xmlDoc->save("smelting.xml");
 echo "Done!";
 ?>

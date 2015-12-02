@@ -21,7 +21,7 @@
 //*************************************************
 //$array=input array, $name=name of array
 
-function xmlcreate($array, $name, $xmlDoc, $xmlRoot) {
+function xmlcrafting($array, $name, $xmlDoc, $xmlRoot) {
 	$q=0;
 	//xml attribute name creator
 	if($name=='building_blocks'){
@@ -757,43 +757,43 @@ $xmlRoot = $xmlDoc->appendChild($xmlRoot);
 
 // -- $building_blocks --
 echo '<h3><a href="http://minecraft.gamepedia.com/Crafting/Building_blocks" target="_blank">Building Blocks: '.count($building_blocks).'</a></h3>';
-$total=xmlcreate($building_blocks,'building_blocks', $xmlDoc, $xmlRoot)+$total;
+$total=xmlcrafting($building_blocks,'building_blocks', $xmlDoc, $xmlRoot)+$total;
 
 // -- $decoration_blocks --
 echo '<h3><a href="http://minecraft.gamepedia.com/Crafting/Decoration_blocks" target="_blank">Decocation Blocks: '.count($decoration_blocks).'</a></h3>';
-$total=xmlcreate($decoration_blocks,'decoration_blocks',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($decoration_blocks,'decoration_blocks',$xmlDoc,$xmlRoot)+$total;
 
 // -- $redstone --
 echo '<h3><a href="http://minecraft.gamepedia.com/Crafting/Redstone" target="_blank">Redstone: '.count($redstone).'</a></h3>';
-$total=xmlcreate($redstone,'redstone',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($redstone,'redstone',$xmlDoc,$xmlRoot)+$total;
 
 // -- $transportation --
 echo '<h3><a href="http://minecraft.gamepedia.com/Crafting/Transportation" target="_blank">Transportation: '.count($transportation).'</a></h3>';
-$total=xmlcreate($transportation,'transportation',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($transportation,'transportation',$xmlDoc,$xmlRoot)+$total;
 
 // -- $foodstuffs --
 echo '<h3><a href="" target="_blank">Foodstuff:'.count($foodstuffs).'</a></h3>';
-$total=xmlcreate($foodstuffs,'foodstuffs',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($foodstuffs,'foodstuffs',$xmlDoc,$xmlRoot)+$total;
 
 // -- $tools --
 echo '<h3><a href="" target="_blank">Tools: '.count($tools).'</a></h3>';
-$total=xmlcreate($tools,'tools',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($tools,'tools',$xmlDoc,$xmlRoot)+$total;
 
 // -- $combat --
 echo '<h3><a href="http://minecraft.gamepedia.com/Crafting/Combat" target="_blank">Combat: '.count($combat).'</a></h3>';
-$total=xmlcreate($combat,'combat',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($combat,'combat',$xmlDoc,$xmlRoot)+$total;
 
 // -- $brewing --
 echo '<h3><a href="http://minecraft.gamepedia.com/Brewing" target="_blank">Brewing: '.count($brewing).'</a></h3>';
-$total=xmlcreate($brewing,'brewing',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($brewing,'brewing',$xmlDoc,$xmlRoot)+$total;
 
 // -- $materials --
 echo '<h3><a href="http://minecraft.gamepedia.com/Crafting/Materials" target="_blank">Materials: '.count($materials).'</a></h3>';
-$total=xmlcreate($materials,'materials',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($materials,'materials',$xmlDoc,$xmlRoot)+$total;
 
 // -- $miscellaneous --
 echo '<h3><a href="http://minecraft.gamepedia.com/Crafting/Miscellaneous" target="_blank">Miscellaneous: '.count($miscellaneous).'</a></h3>';
-$total=xmlcreate($miscellaneous,'miscellaneous',$xmlDoc,$xmlRoot)+$total;
+$total=xmlcrafting($miscellaneous,'miscellaneous',$xmlDoc,$xmlRoot)+$total;
 
 $xmlDoc->save("recipes.xml");
 $total_array = count($building_blocks)+count($decoration_blocks)+count($redstone)+count($transportation)+count($foodstuffs)+count($tools)+count($combat)+count($brewing)+count($materials)+count($miscellaneous);
