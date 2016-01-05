@@ -70,7 +70,7 @@ function addItemName(id) {
 		dataType: "xml",
 		success: function(xml) {	
 			$(xml).find('item').each(function() {
-				if(getValue(this, 'id') == id) {
+				if(getValue(this, 'icon') == id) {
 					name = getValue(this, 'name');
 				}
 			});
